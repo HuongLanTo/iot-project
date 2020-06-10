@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const areaSchema = new Schema({
+const provinceSchema = new Schema({
     name: {
         type: String
     },
@@ -19,5 +19,5 @@ const areaSchema = new Schema({
     },
 })
 
-const Area = mongoose.model("Area", areaSchema);
-module.exports = Area;
+const Province = mongoose.model("Province", provinceSchema);
+module.exports = Province;

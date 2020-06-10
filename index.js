@@ -9,9 +9,10 @@ const databaseConfig = require("./config/database.json")
 const app = express();
 const server = require('http').Server(app)
 
-const userRouter = require("./api/user/router")
+const userRouter = require("./api/user")
 
-const roleConfig = require("./config/role.json")
+const provinceRouter = require("./api/province")
+
 
 app.use((req, res, next) => {
 // app.use((req, res) => {
@@ -55,6 +56,8 @@ app.use(bodyParser.json({
 }));
 
 app.use("/api/user", userRouter);
+app.use("/api/province", provinceRouter);
+
 
 // app.use("/", (req, res) => {
 //     res.send("hello")
@@ -75,5 +78,12 @@ server.listen(port, err => {
     else console.log("server started " + port);
 });
 
+const a = {}
 
-console.log(Object.keys(roleConfig))
+if (a == null) {
+    console.log('==')
+}else {
+    console.log("fsjdf")
+}
+
+// console.log(Object.keys(roleConfig))

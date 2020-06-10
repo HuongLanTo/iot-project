@@ -18,7 +18,7 @@ const userSchema = new Schema({
                 const regex = /^0(1\d{9}|9\d{8})$/;
                 return regex.test(value);
             },
-            message: '{VALUE} is not a valid email address!'
+            message: '{VALUE} is not a valid phone!'
         }
     },
     email: {
@@ -34,16 +34,16 @@ const userSchema = new Schema({
             message: "{VALUE} is not a valid email address!"
         }
     },
-    status: {type: Number, default: 1},
+    status: {type: Number, default: 1}, //1: Hoạt động, 0: tạm dừng hoạt động, -1: Chấm dứt hoạt động
     approve: {
         type: Number,
+        default: 0 //0: Chưa phê duyệt, 1: đã phê duyệt
     },
     avatar: {type: Buffer},
     contentType: {type: String},
     gender: {
         type: String,
-        enum: ['NAM', 'NU', 'NULL'],
-        default: 'NULL'
+        enum: ['NAM', 'NU', 'OTHER']
     },
     birthday: { type: String, required: true },
     created_by: {
