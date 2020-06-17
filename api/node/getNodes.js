@@ -63,7 +63,7 @@ const getUsers = async function getUsers(req, res) {
 
   Node.aggregate(
     [
-      { $match: { $text: { $search: body.name } } },
+      { $match: { $text: { $search: name } } },
       {
         $project: {
           _id: 1,
@@ -97,9 +97,16 @@ const getUsers = async function getUsers(req, res) {
     ],
     function (err, result) {
       if(err) {
-        return res.status(500).send(err.message)
+        return res.status(500).send({
+          responseCode: 0,
+          responseMessage: "Tìm kiếm không thành công, Hệ thống đang bận",
+        })
       }
-      return res.status(200).send(result)
+      return res.status(200).send({
+        responseCode: 1,
+        responseMessage: "TRẢ VỀ KẾT QUẢ TÌM KIẾM THÀNH CÔNG",
+        responseData: result,
+      })
     }
   );
 };

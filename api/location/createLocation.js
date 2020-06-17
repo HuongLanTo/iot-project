@@ -1,19 +1,21 @@
 const fs = require("fs");
-const District = require("../../models/district");
+const Location = require("../../models/location");
 const log4js = require("log4js");
 const { formatPhoneNumber } = require("../../utils/common");
 
 log4js.configure("./config/log4js.json");
 const logger = log4js.getLogger("createPrivince");
 
-const createDistrict = async function createDistrict(req, res) {
+const createLocation = async function createLocation(req, res) {
   const body = req.body;
 
   if (
-    body.name == null ||
-    body.type == null ||
-    body.code == null ||
-    body.parent_code == null
+    body.province == null ||
+    body.district == null ||
+    body.sub_district == null ||
+    body.detail_location == null ||
+    body.latitude == null ||
+    body.longitude == null
   ) {
     logger.info("Param invalid");
     return res.status(400).send({
@@ -22,15 +24,17 @@ const createDistrict = async function createDistrict(req, res) {
     });
   }
 
-  var value = new District({
-    name: body.name,
-    type: body.type,
-    code: body.code,
-    parent_code: body.parent_code
+  var value = new Location({
+    province: body.province,
+    district: body.district,
+    sub_district: body.sub_district,
+    detail_location: body.detail_location,
+    latitude: body.latitude,
+    longitude: body.longitude,
   });
 
   try {
-    const saveDistrict = await value.save();
+    const saveLocation = await value.save();
     return res.status(200).send({
       responseCode: 1,
       responseMessage: "SUCCEED",
@@ -46,4 +50,4 @@ const createDistrict = async function createDistrict(req, res) {
   }
 };
 
-module.exports = createDistrict;
+module.exports = createLocation;

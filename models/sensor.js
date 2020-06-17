@@ -2,23 +2,41 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const sensorSchema = new Schema({
-    node_ip: {
+    node_id: {
         type: mongoose.Schema.ObjectId,
         ref: "Node"
-    },
-    humidity: {
-        type: Number
     },
     temperature: {
         type: Number,
     },
+    humidity: {
+        type: Number
+    },
+    dust: {
+        type: Number,
+    },
+    co: {
+        type: Number,
+    },
+    pressure: {
+        type: Number,
+    },
+    nh3: {
+        type: Number,
+    },
+    co2: {
+        type: Number,
+    },
+    smoke: {
+        type: Number,
+    },
     sentByPiAt: {
         type: Date
-    },
-    recieved_at: {
-        type: Date,
-        default: Date.now()
-    },
+    }
+},{
+    timestamps: {
+        createdAt: 'created_at',
+    }
 })
 
 const sensorSchema = mongoose.model("Humidity", sensorSchema);

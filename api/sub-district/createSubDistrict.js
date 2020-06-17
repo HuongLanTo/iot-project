@@ -1,12 +1,12 @@
 const fs = require("fs");
-const District = require("../../models/district");
+const SubDistrict = require("../../models/sub-district");
 const log4js = require("log4js");
 const { formatPhoneNumber } = require("../../utils/common");
 
 log4js.configure("./config/log4js.json");
 const logger = log4js.getLogger("createPrivince");
 
-const createDistrict = async function createDistrict(req, res) {
+const createSubDistrict = async function createSubDistrict(req, res) {
   const body = req.body;
 
   if (
@@ -22,7 +22,7 @@ const createDistrict = async function createDistrict(req, res) {
     });
   }
 
-  var value = new District({
+  var value = new SubDistrict({
     name: body.name,
     type: body.type,
     code: body.code,
@@ -46,4 +46,4 @@ const createDistrict = async function createDistrict(req, res) {
   }
 };
 
-module.exports = createDistrict;
+module.exports = createSubDistrict;
