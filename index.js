@@ -9,9 +9,12 @@ const databaseConfig = require("./config/database.json")
 const app = express();
 const server = require('http').Server(app)
 
-const userRouter = require("./api/user")
+const userRouter = require("./api/user");
+const provinceRouter = require("./api/province");
+const authRouter = require("./api/auth");
+const nodeRouter = require("./api/node");
+const roleRouter = require("./api/role");
 
-const provinceRouter = require("./api/province")
 
 
 app.use((req, res, next) => {
@@ -55,8 +58,12 @@ app.use(bodyParser.json({
     extended: false
 }));
 
-app.use("/api/user", userRouter);
-app.use("/api/province", provinceRouter);
+app.use("/api/user", userRouter);nodeRouter
+app.use("/api/province", provinceRouter);authRouter
+app.use("/api/node", nodeRouter);
+app.use("/api/auth", authRouter);
+app.use("/api/role", roleRouter);
+
 
 
 // app.use("/", (req, res) => {

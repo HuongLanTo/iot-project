@@ -15,14 +15,12 @@ router.get("/", GetUsers);
 
 router.get("/:id", GetUser);
 
-router.put("/:id/basic", UpdateUserInfo);
+router.put("/basic/:id", UpdateUserInfo);
 
-router.put("/:id/role", UpdateUserRole);
+router.put("/role/:id", UpdateUserRole);
 
-router.put("/:id/status", UpdateUserStatus);
+router.put("/status/:id", UpdateUserStatus);
 
-router.put("/:id/approve", ApproveUser);
-
-
+router.put("/approve/:id", ApproveUser);
 
 module.exports = router;

@@ -1,3 +1,1 @@
-[2020-06-07T17:20:30.994] [ERROR] createUser - Unexpected token e in JSON at position 0
-[2020-06-07T17:21:01.283] [ERROR] createUser - Unexpected token e in JSON at position 0
-[2020-06-07T17:21:15.187] [ERROR] createUser - Unexpected token e in JSON at position 0
+[2020-06-20T18:03:31.625] [ERROR] createUser - E11000 duplicate key error collection: thesis.users index: username_1 dup key: { username: "admin" }
