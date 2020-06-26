@@ -1,0 +1,27 @@
+{
+  "development": {
+    "username": "iottlu",
+    "password": "iottlu2020",
+    "database": "iot_db",
+    "host": "tlu-iot-project.cmmzdfjhiioc.ap-southeast-1.rds.amazonaws.com",
+    "port": "2020",
+    "dialect": "mysql",
+    "operatorsAliases": false
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "iot",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "operatorsAliases": false
+  },
+  "production": {
+    "username": "root",
+    "password": null,
+    "database": "iot",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "operatorsAliases": false
+  }
+}

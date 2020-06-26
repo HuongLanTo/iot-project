@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const session = require("express-session");
 
 const databaseConfig = require("./config/database.json")
+const db = require("./models/mysql");
 
 
 const app = express();
@@ -14,6 +15,7 @@ const provinceRouter = require("./api/province");
 const authRouter = require("./api/auth");
 const nodeRouter = require("./api/node");
 const roleRouter = require("./api/role");
+const api_v1 = require("./api_v1")
 
 
 
@@ -54,15 +56,19 @@ app.use(
 app.use(bodyParser.urlencoded({
     extended: false
 }));
+
 app.use(bodyParser.json({
     extended: false
 }));
+
+db.sequelize.sync();
 
 app.use("/api/user", userRouter);nodeRouter
 app.use("/api/province", provinceRouter);authRouter
 app.use("/api/node", nodeRouter);
 app.use("/api/auth", authRouter);
 app.use("/api/role", roleRouter);
+app.use(api_v1)
 
 
 
