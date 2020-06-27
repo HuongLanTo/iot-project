@@ -3,6 +3,8 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const session = require("express-session");
 
+const cron = require('./cron')
+
 const mongo = require("./config/mongo");
 const mysql = require("./models/mysql");
 
@@ -13,6 +15,11 @@ const app = express();
 const server = require("http").Server(app);
 
 const port = process.env.PORT;
+
+/**
+ * Cron Job
+ */
+cron
 
 app.use((req, res, next) => {
   res.setHeader("X-Frame-Options", "ALLOWALL");
@@ -61,14 +68,20 @@ app.use(
   })
 );
 
-// API
+/**
+ * API
+ */
 app.use(api_mysql);
 app.use(api_mongo);
 
-// MySQL connect
+/**
+ * MySQL connect
+ */
 mysql.sequelize.sync();
 
-// Mongo connect
+/**
+ * Mongo connect
+ */
 mongoose.connect(mongo.mongoPath, (err) => {
   if (err) console.log(err);
   else console.log("Connect MongoDB success.");
