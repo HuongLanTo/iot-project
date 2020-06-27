@@ -6,11 +6,10 @@ const verifyToken = async function verifyToken(token) {
       return resolve(null);
     }
 
-    jwt.verify(token, config.jwt_token_secret, (err, user) => {
+    jwt.verify(token, "0L4f_3lsA_4nNa", (err, user) => {
       if (err || !user) {
         return resolve(null);
       }
-
       return resolve(user);
     });
   });
@@ -20,15 +19,15 @@ const generateToken = async function generateToken(user_id) {
   return new Promise((resolve, reject) => {
     jwt.sign(
       { id: user_id },
-      config.jwt_token_secret,
-      { expiresIn: config.session_duration + "h" },
+      "0L4f_3lsA_4nNa",
+      { expiresIn: 24 + "h" },
       (err, token) => {
         if (err) {
           return reject(err);
         }
         resolve({
           token,
-          durations: Number(config.session_duration) * 3600,
+          durations: Number(20) * 3600,
         });
       }
     );

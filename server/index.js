@@ -1,4 +1,5 @@
 const express = require("express");
+const cookieParser = require('cookie-parser')
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const session = require("express-session");
@@ -12,6 +13,7 @@ const api_mysql = require("./api/mysql");
 const api_mongo = require("./api/mongo");
 
 const app = express();
+app.use(cookieParser())
 const server = require("http").Server(app);
 
 const port = process.env.PORT;

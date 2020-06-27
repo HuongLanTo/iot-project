@@ -1,30 +1,50 @@
 const fs = require("fs");
 const Action = require("../../models/action");
 const log4js = require("log4js");
+const {slugify} =  require("../../../utils/common")
 
 log4js.configure("./config/log4js.json");
-const logger = log4js.getLogger("createPrivince");
+const logger = log4js.getLogger("createAction");
 
 const createAction = async function createAction(req, res) {
   const body = req.body;
 
-  if (body.name == null) {
-    logger.info("Param invalid");
+  if (!body.name) {
     return res.status(400).send({
       responseCode: 11,
       responseMessage: "PARAM.INVALID",
     });
   }
 
+  let existedAction;
+  await Action.findOne({ slug: slugify(body.name) })
+    .exec((err, data) => {
+      if (err) {
+        return res.status(500).send({
+          responseCode: 0,
+          responseMessage: "Lỗi trong quá trình tạo mới user",
+        });
+      }
+      existedAction = data;
+    });
+
+  if(existedAction) {
+    return res.status(400).send({
+      responseCode: 2,
+      responseMessage: "Action đã tồn tại",
+    });
+  }
+
   var value = new Action({
     name: body.name,
+    slug: slugify(body.name)
   });
 
   try {
-    const saveAction = await value.save();
+    await value.save();
     return res.status(200).send({
       responseCode: 1,
-      responseMessage: "SUCCEED",
+      responseMessage: "Tạo mới thành công",
       responseData: value,
     });
   } catch (err) {
