@@ -1,0 +1,300 @@
+<nav class="navbar navbar-horizontal navbar-expand-lg navbar-dark bg-default">
+    <div class="container">
+        <a class="navbar-brand" href="#">HỆ THỐNG THEO DÕI MÔI TRƯỜNG</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-default" aria-controls="navbar-default" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbar-default">
+            <div class="navbar-collapse-header">
+                <div class="row">
+                    <div class="col-6 collapse-brand">
+                        <a href="javascript:void(0)">
+                            <img src="../../assets/img/brand/tlu.png">
+                        </a>
+                    </div>
+                    <div class="col-6 collapse-close">
+                        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-default" aria-controls="navbar-default" aria-expanded="false" aria-label="Toggle navigation">
+                            <span></span>
+                            <span></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <ul class="navbar-nav ml-lg-auto">
+                <li class="nav-item">
+                    <a class="nav-link nav-link-icon" href="#">
+                        <span class="nav-link-inner--text">Trang chủ</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-link-icon" href="#">
+                        <span class="nav-link-inner--text">Giới thiệu</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-link-icon" href="/user">
+                        <span class="nav-link-inner--text">Quản lý</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-link-icon" href="#">
+                        <span class="nav-link-inner--text">Đăng xuất</span>
+                    </a>
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+</nav>
+
+<div class="card-body">
+    <div class="row">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-5">
+            <div class="form-group">
+                <label class="form-control-label" for="inputAddress">Chọn khu vực:</label>
+                <select  name="addressNode" id="inputAddress" class="form-control" (change)="selectedNode($event.target.value)" (change)="get3DayAqiData()">
+                    <option value="" disabled selected hidden>{{ current_sensor_data.nameNode }}</option>
+                    <option *ngFor="let data of sensor_data">{{ data.nameNode }}</option>
+                </select>     
+            </div>
+            <div class="row showed-main-info" style="padding: 20px;" [style.background-color]="current_aqi_info.Color">
+                <div class="col-3">
+                    <h2 style="text-align: center; font-size: 25px; color: black;">AQI: {{ current_sensor_data.aqi }}</h2>
+                    <div style="text-align: center;">
+                        <i class="fa fa-tint fa-2x" aria-hidden="true" style="color: black;"></i>
+                    </div>
+                    <div style="text-align: center;">
+                        <span style="font-weight: bold; color: black;">Độ ẩm: {{ current_sensor_data.humidity }}</span>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <h2 style="text-align: center; font-size: 22px; color: black; margin-bottom: 11px;">{{ current_aqi_info.Evaluate }}</h2>
+                    <div style="text-align: center;">
+                        <i class="fa fa-thermometer-empty fa-2x" aria-hidden="true" style="color: black;"></i>
+                    </div>
+                    <div style="text-align: center;">
+                        <span style="font-weight: bold; color: black;">Nhiệt độ: {{ current_sensor_data.temperature }}</span>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div style="text-align: center;">
+                        <img src="{{ current_aqi_info.img }}" alt="" style="width: 60px;">
+                        <p style="color: black;">{{ current_aqi_info.announcement }}</p>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="card shadow">
+                <div class="card-body">
+                    <div class="chart">
+                        <canvas id="no_chart" class="chart-canvas">{{ no_chart }}</canvas>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="card shadow">
+                <div class="card-body">
+                    <div class="chart">
+                        <canvas id="co2_chart" class="chart-canvas" height="200">{{ co2_chart }}</canvas>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="card shadow">
+                <div class="card-body">
+                    <div class="chart">
+                        <canvas id="pm25_chart" class="chart-canvas"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-5">
+            <!-- <div class="card shadow">
+                <div class="card-body"> -->
+                    <div style="margin-bottom: 450px;">
+                        <app-map ></app-map>
+                    </div>
+                <!-- </div>
+            </div> -->
+            <!-- <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br> -->
+            <div class="card shadow">
+                <div class="card-header border-0">
+                    <div class="row align-items-center">
+                        <div class="col">
+                        <h3 class="mb-0">Bảng quy đổi giá trị AQI</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                  <!-- Projects table -->
+                    <table class="table align-items-center table-flush out">
+                        <thead class="thead-light">
+                            <tr>
+                                <th scope="col">Giá trị AQI</th>
+                                <th scope="col">Đánh giá</th>
+                                <th scope="col" style="text-align: center">Ảnh hưởng sức khỏe</th>
+                                <th scope="col">Màu sắc</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let info of aqi_info">
+                                <th scope="col">{{ info.Value }}</th>
+                                <th scope="col">{{ info.Evaluate }}</th>
+                                <th scope="col">{{ info.Comment }}</th>
+                                <th scope="col">
+                                    <label *ngIf="info.Color === 'Yellow'" style="padding: 10px; color: grey;" [style.background-color]="info.Color">{{ info.vColor }}</label>
+                                    <label *ngIf="info.Color !== 'Yellow'" style="padding: 10px; color: white;" [style.background-color]="info.Color">{{ info.vColor }}</label>
+                                </th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <br>
+            <div class="card shadow">
+                <div class="card-header border-0">
+                    <div class="row align-items-center">
+                        <div class="col">
+                        <h3 class="mb-0">Chỉ số AQI 3 ngày qua tại {{ current_sensor_data.nameNode }}</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                  <!-- Projects table -->
+                    <table class="table align-items-center table-flush out">
+                        <thead class="thead-light">
+                            <tr>
+                                <th scope="col">STT</th>
+                                <th scope="col">Ngày</th>
+                                <th scope="col">Chỉ số</th>
+                                <th scope="col">Đánh giá</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let data of three_day_aqi_data; let index = index">
+                                <th scope="col">{{ index + 1 }}</th>
+                                <th scope="col">{{ data.time | date:'dd/MM/yyyy' }}</th>
+                                <th scope="col">{{ data.aqi }}</th>
+                                <th scope="col">
+                                    
+                                </th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-10">
+            <h1>Tra số chỉ số AQI:</h1>
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Ngày</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Tuần</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Tháng</a>
+                </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    <div class="form-group row">
+                        <div class="col-5">
+                            <label for="example-date-input" class=" col-form-label">Chọn ngày</label>
+                            <input class="form-control" type="date" value="2020-06-01" id="example-date-input">
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                    <div class="form-group row">
+                        <div class="col-5">
+                            <label for="example-week-input" class=" col-form-label">Chọn tuần</label>
+                            <input class="form-control" type="week" value="2020-W25" id="example-week-input">
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                    <div class="form-group row">
+                        <div class="col-5">
+                            <label for="example-month-input" class=" col-form-label">Chọn tháng</label>
+                            <input class="form-control" type="month" value="2020-06" id="example-month-input">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+    </div>
+    <div class="row">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-4">
+            <div class="table-responsive">
+                <!-- Projects table -->
+                <table class="table align-items-center table-dark table-flush out">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">STT</th>
+                            <th scope="col">Ngày</th>
+                            <th scope="col">Chỉ số</th>
+                            <th scope="col">Đánh giá</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let data of sensor_data; let index = index">
+                            <th scope="col">{{ index + 1 }}</th>
+                            <th scope="col">{{ data.nameNode }}</th>
+                            <th scope="col">{{ data.aqi }}</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="row">
+                <button class="btn btn-icon btn-2 btn-dark" type="button" (click)="setLineTypeOfChart()">
+                    <span class="btn-inner--icon"><i class="ni ni-atom"></i></span>
+                </button>
+                <button class="btn btn-icon btn-2 btn-dark" type="button" (click)="setBarTypeOfChart()">
+                    <span class="btn-inner--icon"><i class="ni ni-chart-bar-32"></i></span>
+                </button>
+            </div>
+            <br>
+            <div class="card shadow" *ngIf="lineTypeOfChart">
+                <div class="card-body">
+                    <div class="chart">
+                        <canvas id="aqi_line_chart" class="chart-canvas"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="card shadow" *ngIf="barTypeOfChart">
+                <div class="card-body">
+                    <div class="chart">
+                        <canvas id="aqi_bar_chart" class="chart-canvas"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

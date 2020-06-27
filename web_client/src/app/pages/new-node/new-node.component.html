@@ -1,0 +1,168 @@
+<div class="header bg-gradient-dark pb-8 pt-5 pt-md-8">
+  
+</div>
+<div class="container-fluid mt--7">
+  <div class="">
+    
+    <div class="">
+      <div class="card bg-secondary shadow">
+        <div class="card-header bg-white border-0">
+          <div class="row align-items-center">
+            <div class="col-8">
+              <h3 class="mb-0">Tạo mới node</h3>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <form>
+            <h6 class="heading-small text-muted mb-4">Thông tin node</h6>
+            <div class="pl-lg-4">
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="tenDangNhap">Tên node<p style="display:inline-flex !important; color: red ">*</p></label>
+                    <div class="form-group">
+                      <div class="form-group" [ngClass]="{'has-danger': isUserNameInvalid == false}">
+                        <input name="tenDangNhap" type="text" id="tenTaiKhoan" class="form-control form-control-alternative"
+                         placeholder="Tên node">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                      <label class="form-control-label" for="latitude">Vĩ độ<p style="display:inline-flex !important; color: red ">*</p></label>
+                      <div [ngClass]="{'has-danger': isNameInvalid == false}">
+                        <input 
+                          name="latitude" type="text" id="latitude" class="form-control form-control-alternative"
+                          placeholder="Vĩ độ">
+                      </div>
+                    </div>
+                  </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="inputState">Khu vực <p style="display:inline-flex !important; color: red ">*</p></label>
+                    <select  name="role" id="role" class="form-control form-control-alternative">
+                      <option value="" disabled selected hidden>Chọn khu vực</option>
+                      <option >Thanh Xuân</option>
+                      <option >Đống Đa</option>
+                      <option >Hà Đông</option>
+                    </select>     
+                    <!-- <div *ngIf="!isRoleInvalid" class="form-group has-danger">
+                      <select  name="role" id="role" id="inputState" class="form-control is-invalid">
+                        <option value="" disabled selected hidden class="is-invalid">Role không được để trống</option>
+                        <option >role</option>
+                      </select> 
+                    </div>         -->
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="longitude">Kinh độ<p style="display:inline-flex !important; color: red ">*</p></label>
+                    <div [ngClass]="{'has-danger': isNameInvalid == false}">
+                      <input 
+                        name="longitude" type="text" id="longitude" class="form-control form-control-alternative"
+                        placeholder="Kinh độ">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="address">Địa chỉ<p style="display:inline-flex !important; color: red ">*</p></label>
+                    <input  name="address" type="text" id="address" class="form-control form-control-alternative" placeholder="Địa chỉ">
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label class="form-control-label">Sensors<p style="display:inline-flex !important; color: red ">*</p></label>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label class="form-control-label">SO2</label>
+                                </div>
+                            </div>     
+                            <div class="col">
+                                <div class="form-group">
+                                    <label class="custom-toggle" for="so2Status">
+                                        <input type="checkbox" checked id="so2Status" [(ngModel)]="isSo2Status" name="so2Status">
+                                        <span class="custom-toggle-slider rounded-circle"></span>
+                                    </label>
+                                </div>
+                            </div>   
+                            <div class="col">
+                                <div class="form-group">
+                                    <label class="form-control-label">Nhiệt độ</label>
+                                </div>
+                            </div>     
+                            <div class="col">
+                                <div class="form-group">
+                                    <label class="custom-toggle" for="temperatureStatus">
+                                        <input type="checkbox" checked id="temperatureStatus" [(ngModel)]="isTemperatureStatus" name="temperatureStatus">
+                                        <span class="custom-toggle-slider rounded-circle"></span>
+                                    </label>
+                                </div>
+                            </div>   
+                            <div class="col">
+                                <div class="form-group">
+                                    <label class="form-control-label">Độ ẩm</label>
+                                </div>
+                            </div>     
+                            <div class="col">
+                                <div class="form-group">
+                                    <label class="custom-toggle" for="humidityStatus">
+                                        <input type="checkbox" checked id="humidityStatus" [(ngModel)]="isHumidityStatus" name="humidityStatus">
+                                        <span class="custom-toggle-slider rounded-circle"></span>
+                                    </label>
+                                </div>
+                            </div>   
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label class="form-control-label">NO</label>
+                                </div>
+                            </div>     
+                            <div class="col">
+                                <div class="form-group">
+                                    <label class="custom-toggle" for="noStatus">
+                                        <input type="checkbox" checked id="noStatus" [(ngModel)]="isNoStatus" name="noStatus">
+                                        <span class="custom-toggle-slider rounded-circle"></span>
+                                    </label>
+                                </div>
+                            </div>   
+                            <div class="col">
+                                <div class="form-group">
+                                    <label class="form-control-label">Bụi PM2.5</label>
+                                </div>
+                            </div>     
+                            <div class="col">
+                                <div class="form-group">
+                                    <label class="custom-toggle" for="buipm25Status">
+                                        <input type="checkbox" checked id="buipm25Status" [(ngModel)]="isBuipm25Status" name="buipm25Status">
+                                        <span class="custom-toggle-slider rounded-circle"></span>
+                                    </label>
+                                </div>
+                            </div>   
+                            <div class="col">
+                                
+                            </div>     
+                            <div class="col">
+                                
+                            </div>   
+                        </div>
+                        
+                    </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <hr style="margin: 0px;">
+        <div class="col-lg-4 card-body" style="padding-top:15px;">
+            <button type="button" class="btn btn-success" style="margin-left:24px;"  >Lưu</button>
+            <button type="button" class="btn btn-danger" >Thoát</button>
+        </div>         
+      </div>
+    </div>
+  </div>
+</div>
