@@ -1,9 +1,9 @@
 var router = require("express").Router();
 
-const NodeHour = require("./node_env_param_hour")
-const NodeDay = require("./node_env_param_day")
-const AreaHour = require("./area_env_param_hour")
-const AreaDay = require("./area_env_param_day")
+const NodeHour = require("./node_env_param_hour");
+const NodeDay = require("./node_env_param_day");
+const AreaHour = require("./area_env_param_hour");
+const AreaDay = require("./area_env_param_day");
 
 router.use("/api/v1/nodes/hours", NodeHour);
 

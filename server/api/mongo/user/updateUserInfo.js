@@ -25,11 +25,14 @@ const updateUserInfo = async function updateUserInfo(req, res) {
   }
 
   try {
-    const updatedUser = await User.update({
-        _id: req.params.id
-    }, {
-        $set: value
-    })
+    const updatedUser = await User.update(
+      {
+        _id: req.params.id,
+      },
+      {
+        $set: value,
+      }
+    );
     return res.status(200).send({
       responseCode: 1,
       responseMessage: "UPDATE SUCCEED",

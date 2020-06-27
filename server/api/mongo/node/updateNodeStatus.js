@@ -13,7 +13,7 @@ const updateNodeStatus = async function updateNodeStatus(req, res) {
 
   if (body.status != null) {
     if (body.status == 1 || body.status == 0 || body.status == -1) {
-        status = body.status;
+      status = body.status;
     } else {
       logger.info("Param invalid");
       return res.status(400).send({

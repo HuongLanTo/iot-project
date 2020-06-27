@@ -55,10 +55,10 @@ const getUsers = async function getUsers(req, res) {
   //   });
 
   var name = "";
-  if (filter.name != null){
-    name = filter.name
+  if (filter.name != null) {
+    name = filter.name;
   }
-  
+
   Node.createIndex({ name: "text" });
 
   Node.aggregate(
@@ -96,17 +96,17 @@ const getUsers = async function getUsers(req, res) {
       { $match: { "location.district": body.district } },
     ],
     function (err, result) {
-      if(err) {
+      if (err) {
         return res.status(500).send({
           responseCode: 0,
           responseMessage: "Tìm kiếm không thành công, Hệ thống đang bận",
-        })
+        });
       }
       return res.status(200).send({
         responseCode: 1,
         responseMessage: "TRẢ VỀ KẾT QUẢ TÌM KIẾM THÀNH CÔNG",
         responseData: result,
-      })
+      });
     }
   );
 };

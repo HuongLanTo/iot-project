@@ -7,7 +7,7 @@ const actionSchema = new Schema({
   },
   slug: {
     type: String,
-  }
+  },
 });
 
 const Action = mongoose.model("Action", actionSchema);

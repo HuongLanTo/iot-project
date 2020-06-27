@@ -9,11 +9,14 @@ const logger = log4js.getLogger("createUser");
 
 const approveUser = async function approveUser(req, res) {
   try {
-    const updatedUser = await User.update({
-        _id: req.params.id
-    }, {
-        approve: 1
-    })
+    const updatedUser = await User.update(
+      {
+        _id: req.params.id,
+      },
+      {
+        approve: 1,
+      }
+    );
     res.status(200).send({
       responseCode: 1,
       responseMessage: "APPROVE SUCCEED",

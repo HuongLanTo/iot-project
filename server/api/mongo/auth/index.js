@@ -1,9 +1,8 @@
 var router = require("express").Router();
 
 const GetMe = require("./getMe");
-const GetSession = require('./getSession');
-const PostLogin = require('./postLogin');
-
+const GetSession = require("./getSession");
+const PostLogin = require("./postLogin");
 
 router.get("/", GetMe);
 

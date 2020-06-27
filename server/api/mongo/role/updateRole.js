@@ -16,7 +16,6 @@ const updateRole = async function updateRole(req, res) {
     !Array.isArray(body.action_permission) ||
     body.area_permission.id == null ||
     body.area_permission.name == null
-    
   ) {
     logger.info("Param invalid");
     return res.status(400).send({
@@ -31,58 +30,57 @@ const updateRole = async function updateRole(req, res) {
 
   if (area_permission.length > 0) {
     for (let i = 0; i < area_permission.length; i++) {
-      await District.findById(area_permission[i].id)
-        .exec((err, data) => {
-          if (err) {
-            return res.status(500).send({
-              responseCode: 0,
-              responseMessage: err.message,
-            });
-          }
-          if (data == null || data._id == null) {
-            return res.status(400).send({
-              responseCode: 0,
-              responseMessage:
-                "Khu vực " +
-                area_permission[i].name +
-                " không có trong danh sách quản lý",
-            });
-          }
-        });
+      await District.findById(area_permission[i].id).exec((err, data) => {
+        if (err) {
+          return res.status(500).send({
+            responseCode: 0,
+            responseMessage: err.message,
+          });
+        }
+        if (data == null || data._id == null) {
+          return res.status(400).send({
+            responseCode: 0,
+            responseMessage:
+              "Khu vực " +
+              area_permission[i].name +
+              " không có trong danh sách quản lý",
+          });
+        }
+      });
     }
     value.area_permission = area_permission;
   }
 
   if (action_permission.length > 0) {
     for (let i = 0; i < action_permission.length; i++) {
-      await District.findById(action_permission[i].id)
-        .exec((err, data) => {
-          if (err) {
-            return res.status(500).send({
-              responseCode: 0,
-              responseMessage: err.message,
-            });
-          }
-          if (data == null || data._id == null) {
-            return res.status(400).send({
-              responseCode: 0,
-              responseMessage:
-                "Hành động " +
-                action_permission[i].name +
-                " không tồn tại",
-            });
-          }
-        });
+      await District.findById(action_permission[i].id).exec((err, data) => {
+        if (err) {
+          return res.status(500).send({
+            responseCode: 0,
+            responseMessage: err.message,
+          });
+        }
+        if (data == null || data._id == null) {
+          return res.status(400).send({
+            responseCode: 0,
+            responseMessage:
+              "Hành động " + action_permission[i].name + " không tồn tại",
+          });
+        }
+      });
     }
     value.action_permission = action_permission;
   }
 
   try {
-    const updatedRole = await Role.update({
-        _id: req.params.id
-    }, {
-        $set: value
-    })
+    const updatedRole = await Role.update(
+      {
+        _id: req.params.id,
+      },
+      {
+        $set: value,
+      }
+    );
     return res.status(200).send({
       responseCode: 1,
       responseMessage: "UPDATE SUCCEED",

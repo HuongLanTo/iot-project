@@ -2,9 +2,9 @@ const fs = require("fs");
 const User = require("../../../models/mongo/user");
 const bcrypt = require("bcrypt");
 const log4js = require("log4js");
-const {formatPhoneNumber} = require("../../../utils/common")
+const { formatPhoneNumber } = require("../../../utils/common");
 
-log4js.configure('./config/log4js.json')
+log4js.configure("./config/log4js.json");
 const logger = log4js.getLogger("createUser");
 
 const createUser = async function create(req, res) {
@@ -18,11 +18,11 @@ const createUser = async function create(req, res) {
     body.phone == null ||
     body.email == null
   ) {
-    logger.info('Param invalid')
+    logger.info("Param invalid");
     return res.status(400).send({
       responseCode: 11,
-      responseMessage: "PARAM.INVALID" 
-    })
+      responseMessage: "PARAM.INVALID",
+    });
   }
 
   const hashedPassword = await bcrypt.hash(body.password, salt);
@@ -45,14 +45,14 @@ const createUser = async function create(req, res) {
     return res.status(200).send({
       responseCode: 1,
       responseMessage: "SUCCEED",
-      responseData: value
+      responseData: value,
     });
-  } catch(err) {
-    logger.error(err.message)
+  } catch (err) {
+    logger.error(err.message);
     return res.status(500).send({
       responseCode: 0,
       responseMessage: "Tạo mới không thành công, Hệ thống đang bận",
-      responseDecription: err.message
+      responseDecription: err.message,
     });
   }
 };

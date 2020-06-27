@@ -26,7 +26,7 @@ const createDistrict = async function createDistrict(req, res) {
     name: body.name,
     type: body.type,
     code: body.code,
-    parent_code: body.parent_code
+    parent_code: body.parent_code,
   });
 
   try {

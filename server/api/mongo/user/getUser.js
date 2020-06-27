@@ -11,7 +11,7 @@ const getUser = async function getUser(req, res) {
   await User.findById(req.params.id)
     // .populate("role")
     .exec((err, data) => {
-      if (err) {    
+      if (err) {
         return res.status(500).send({
           responseCode: 0,
           responseMessage: err.message,

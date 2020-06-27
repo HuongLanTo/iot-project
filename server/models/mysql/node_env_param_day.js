@@ -1,54 +1,54 @@
-module.exports=function(sequelize, DataTypes){ 
+module.exports = function (sequelize, DataTypes) {
   const NodeEnvParamDay = sequelize.define("node_env_param_days", {
     id: {
-      type: DataTypes.INTEGER, 
+      type: DataTypes.INTEGER,
       autoIncrement: true,
-      primaryKey: true
+      primaryKey: true,
     },
-    node_id: {               
-      type: DataTypes.INTEGER
+    node_id: {
+      type: DataTypes.INTEGER,
     },
-    tem: {               
+    tem: {
       type: DataTypes.FLOAT,
-      defaultValue: 0
+      defaultValue: 0,
     },
-    hum: {               
+    hum: {
       type: DataTypes.FLOAT,
-      defaultValue: 0
+      defaultValue: 0,
     },
-    pm_25: {               
+    pm_25: {
       type: DataTypes.FLOAT,
-      defaultValue: 0
+      defaultValue: 0,
     },
-    no: {               
+    no: {
       type: DataTypes.FLOAT,
-      defaultValue: 0
+      defaultValue: 0,
     },
-    co: {               
+    co: {
       type: DataTypes.FLOAT,
-      defaultValue: 0
+      defaultValue: 0,
     },
-    co2: {               
+    co2: {
       type: DataTypes.FLOAT,
-      defaultValue: 0
+      defaultValue: 0,
     },
-    aqi: {               
+    aqi: {
       type: DataTypes.FLOAT,
-      defaultValue: 0
+      defaultValue: 0,
     },
-    datetime: {               
-      type: DataTypes.DATE
+    datetime: {
+      type: DataTypes.DATE,
     },
-    location: {               
-      type: DataTypes.STRING(255)
+    location: {
+      type: DataTypes.STRING(255),
     },
-    lat: {               
+    lat: {
       type: DataTypes.STRING(45),
     },
-    long: {               
-      type: DataTypes.STRING(45)
-    }
+    long: {
+      type: DataTypes.STRING(45),
+    },
   });
 
-  return NodeEnvParamDay
+  return NodeEnvParamDay;
 };

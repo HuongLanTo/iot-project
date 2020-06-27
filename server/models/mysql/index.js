@@ -10,9 +10,9 @@ const config = require("../../config/mysql");
 const mysql = {};
 
 const sequelize = new Sequelize(
-  config.database, 
-  config.username, 
-  config.password, 
+  config.database,
+  config.username,
+  config.password,
   {
     host: config.host,
     port: config.port,

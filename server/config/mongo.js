@@ -1,11 +1,10 @@
-const env = require("dotenv")
-env.config()
+const env = require("dotenv");
+env.config();
 
 const mongo = {
   mongoPath: process.env.MONGO_PATH,
   sessionSecret: process.env.SESSION_SECRET,
-  secureCookie: false
-}
+  secureCookie: false,
+};
 
-module.exports = mongo
-  
+module.exports = mongo;

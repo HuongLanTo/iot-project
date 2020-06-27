@@ -10,11 +10,7 @@ const logger = log4js.getLogger("createNode");
 const createPrivince = async function createPrivince(req, res) {
   const body = req.body;
 
-  if (
-    body.name == null ||
-    body.type == null ||
-    body.code == null
-  ) {
+  if (body.name == null || body.type == null || body.code == null) {
     logger.info("Param invalid");
     return res.status(400).send({
       responseCode: 11,
@@ -25,7 +21,7 @@ const createPrivince = async function createPrivince(req, res) {
   var value = new Province({
     name: body.name,
     type: body.type,
-    code: body.code
+    code: body.code,
   });
 
   try {

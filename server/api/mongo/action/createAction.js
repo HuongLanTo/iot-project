@@ -8,9 +8,7 @@ const logger = log4js.getLogger("createPrivince");
 const createAction = async function createAction(req, res) {
   const body = req.body;
 
-  if (
-    body.name == null
-  ) {
+  if (body.name == null) {
     logger.info("Param invalid");
     return res.status(400).send({
       responseCode: 11,
@@ -19,7 +17,7 @@ const createAction = async function createAction(req, res) {
   }
 
   var value = new Action({
-    name: body.name
+    name: body.name,
   });
 
   try {

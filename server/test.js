@@ -1,5 +1,5 @@
 var value = {
-    name: "Tung"
-}
+  name: "Tung",
+};
 
 console.log(Object.getOwnPropertyNames(value));

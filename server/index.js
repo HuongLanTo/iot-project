@@ -15,8 +15,8 @@ const server = require("http").Server(app);
 const port = process.env.PORT;
 
 app.use((req, res, next) => {
-  // app.use((req, res) => {
   res.setHeader("X-Frame-Options", "ALLOWALL");
+
   res.setHeader(
     "Access-Control-Allow-Methods",
     "POST, GET, PUT, DELETE, OPTIONS"
@@ -32,6 +32,7 @@ app.use((req, res, next) => {
     "Access-Control-Allow-Headers",
     "Authorization, Origin, X-Requested-With, Content-Type, Accept"
   );
+
   next();
 });
 
@@ -60,11 +61,14 @@ app.use(
   })
 );
 
+// API
 app.use(api_mysql);
 app.use(api_mongo);
 
+// MySQL connect
 mysql.sequelize.sync();
 
+// Mongo connect
 mongoose.connect(mongo.mongoPath, (err) => {
   if (err) console.log(err);
   else console.log("Connect MongoDB success.");

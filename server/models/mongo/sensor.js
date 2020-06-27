@@ -1,43 +1,46 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const sensorSchema = new Schema({
+const sensorSchema = new Schema(
+  {
     node_id: {
-        type: mongoose.Schema.ObjectId,
-        ref: "Node"
+      type: mongoose.Schema.ObjectId,
+      ref: "Node",
     },
     temperature: {
-        type: Number,
+      type: Number,
     },
     humidity: {
-        type: Number
+      type: Number,
     },
     dust: {
-        type: Number,
+      type: Number,
     },
     co: {
-        type: Number,
+      type: Number,
     },
     pressure: {
-        type: Number,
+      type: Number,
     },
     nh3: {
-        type: Number,
+      type: Number,
     },
     co2: {
-        type: Number,
+      type: Number,
     },
     smoke: {
-        type: Number,
+      type: Number,
     },
     sentByPiAt: {
-        type: Date
-    }
-},{
+      type: Date,
+    },
+  },
+  {
     timestamps: {
-        createdAt: 'created_at',
-    }
-})
+      createdAt: "created_at",
+    },
+  }
+);
 
 const sensorSchema = mongoose.model("Humidity", sensorSchema);
 module.exports = Humidity;
