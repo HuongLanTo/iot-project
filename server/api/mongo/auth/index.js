@@ -8,6 +8,6 @@ router.get("/", GetMe);
 
 router.get("/session", GetSession);
 
-router.post("/:id", PostLogin);
+router.post("/", PostLogin);
 
 module.exports = router;

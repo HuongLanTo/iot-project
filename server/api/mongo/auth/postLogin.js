@@ -3,7 +3,7 @@ const bcrypt = require("bcrypt");
 const Authorization = require("./authorization");
 const User = require("../../../models/mongo/user");
 
-const login = async function login(req, res) {
+const login = async function (req, res) {
   const body = req.body;
 
   if (!body.username || !body.password) {
@@ -13,7 +13,11 @@ const login = async function login(req, res) {
     });
   }
 
-  const user = await getUser();
+  let user = null;
+
+  await getUser(body.username).then(_user => user = _user)
+
+  console.log(user)
 
   if (!user) {
     return res.status(400).send({
@@ -22,7 +26,8 @@ const login = async function login(req, res) {
     });
   }
 
-  const is_valid = await bcrypt.compare(password, user.password);
+  console.log(user.password)
+  const is_valid = await bcrypt.compare(body.password, user.password);
 
   if (!is_valid) {
     return res.status(400).send({
@@ -42,18 +47,35 @@ const login = async function login(req, res) {
   });
 };
 
-const getUser = async function getUser(username) {
-  await User.findOne({ username: username })
-    .select({ _id, name, email, phone })
-    .exec((err, data) => {
-      if (err) {
-        return res.status(500).send({
-          responseCode: 0,
-          responseMessage: "Lỗi trong quá trình kiểm tra user",
-        });
-      }
-      return data;
-    });
-};
+function getUser(username) {
+  console.log(username);
+  // await User.findOne({ username: username })
+  //   .select({ _id: 1, name: 1, email: 1, phone:1 })
+  //   .exec((err, data) => {
+  //     if (err) {
+  //       return res.status(500).send({
+  //         responseCode: 0,
+  //         responseMessage: "Lỗi trong quá trình kiểm tra user",
+  //       });
+  //     }
+  //     console.log(data)
+  //     return data;
+  //   });
+  //   console.log('abc')
+
+  return new Promise((resolve) => {
+    User.findOne({ username: username })
+      .select({ _id: 1, name: 1, email: 1, phone: 1, password: 1 })
+      .exec((err, data) => {
+        if (err) {
+          return res.status(500).send({
+            responseCode: 0,
+            responseMessage: "Lỗi trong quá trình kiểm tra user",
+          });
+        }
+        resolve(data)
+      });
+  });
+}
 
 module.exports = login;
