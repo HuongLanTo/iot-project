@@ -18,6 +18,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { HomeComponent } from './pages/home/home.component';
 import { MapComponent } from './pages/map/map.component';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { MapComponent } from './pages/map/map.component';
     RouterModule,
     AppRoutingModule,
     HttpModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ToastrModule.forRoot()
   ],
   declarations: [
     AppComponent,

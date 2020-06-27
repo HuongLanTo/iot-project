@@ -35,7 +35,8 @@
               "src/styles.scss",
               "src/assets/scss/argon.scss",
               "./node_modules/leaflet/dist/leaflet.css",
-              "./node_modules/leaflet-geosearch/dist/geosearch.css"
+              "./node_modules/leaflet-geosearch/dist/geosearch.css",
+              "node_modules/ngx-toastr/toastr.css"
             ],
             "scripts": [
               "node_modules/chart.js/dist/Chart.min.js",
