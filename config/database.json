@@ -1,6 +1,0 @@
-{
-    "mongoPath": "mongodb://localhost:27017/thesis",
-    "sessionSecret": "himitsu",
-    "secureCookie": false
-  }
-  
