@@ -1,0 +1,5 @@
+[2020-06-27T16:25:42.237] [ERROR] createAction - Action validation failed: slug: Cast to string failed for value "Promise { 'phe-duyet-user' }" at path "slug"
+[2020-06-27T16:27:32.510] [ERROR] createAction - Action validation failed: slug: Cast to string failed for value "Promise { 'phe-duyet-user' }" at path "slug"
+[2020-06-27T16:30:44.377] [ERROR] createAction - Action validation failed: slug: Cast to string failed for value "Promise { 'phe-duyet-user' }" at path "slug"
+[2020-06-27T16:32:12.578] [ERROR] createAction - Action validation failed: slug: Cast to string failed for value "Promise { 'phe-duyet-user' }" at path "slug"
+[2020-06-27T16:32:35.760] [ERROR] createAction - Action validation failed: slug: Cast to string failed for value "Promise { 'phe-duyet-user' }" at path "slug"

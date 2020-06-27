@@ -17,6 +17,14 @@ const getUser = async function getUser(req, res) {
           responseMessage: err.message,
         });
       }
+
+      if(!data) {
+        return res.status(400).send({
+          responseCode: 2,
+          responseMessage: "Id User không tồn tài"
+        });
+      }
+
       return res.status(200).send({
         responseCode: 1,
         responseMessage: "Thành công",
