@@ -1,5 +1,5 @@
 const fs = require("fs");
-const Action = require("../../models/action");
+const Action = require("../../../models/mongo/action");
 const log4js = require("log4js");
 const {slugify} =  require("../../../utils/common")
 
@@ -17,16 +17,24 @@ const createAction = async function createAction(req, res) {
   }
 
   let existedAction;
-  await Action.findOne({ slug: slugify(body.name) })
-    .exec((err, data) => {
-      if (err) {
-        return res.status(500).send({
-          responseCode: 0,
-          responseMessage: "Lỗi trong quá trình tạo mới user",
-        });
-      }
-      existedAction = data;
+  try {
+    existedAction = await Action.findOne({ slug: await slugify(body.name) })
+  } catch (error) {
+    return res.status(500).send({
+      responseCode: 0,
+      responseMessage: "Lỗi trong quá trình tạo mới Action\n" + error.message,
     });
+  }
+  // await Action.findOne({ slug: slugify(body.name) })
+  //   .exec((err, data) => {
+  //     if (err) {
+  //       return res.status(500).send({
+  //         responseCode: 0,
+  //         responseMessage: "Lỗi trong quá trình tạo mới user",
+  //       });
+  //     }
+  //     existedAction = data;
+  //   });
 
   if(existedAction) {
     return res.status(400).send({

@@ -10,12 +10,13 @@ const provinceSchema = new Schema({
   },
   type: {
     type: String,
+    enum: ["thanh-pho", "tinh"]
   },
   name_with_type: {
     type: String,
   },
   code: {
-    type: Number,
+    type: String,
   },
 });
 

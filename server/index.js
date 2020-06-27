@@ -18,11 +18,6 @@ const server = require("http").Server(app);
 
 const port = process.env.PORT;
 
-/**
- * Cron Job
- */
-cron
-
 app.use((req, res, next) => {
   res.setHeader("X-Frame-Options", "ALLOWALL");
 
@@ -93,6 +88,13 @@ server.listen(port, (err) => {
   if (err) console.log(err);
   else console.log("Server started at port " + port);
 });
+
+
+/**
+ * Cron Job
+ */
+cron
+
 
 // const a = {}
 

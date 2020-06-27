@@ -5,17 +5,19 @@ const provinceRouter = require("./province");
 const authRouter = require("./auth");
 const nodeRouter = require("./node");
 const roleRouter = require("./role");
+const actionRouter = require("./action");
+const districtRouter = require("./district");
+
+
 
 router.use("/api/user", userRouter);
-nodeRouter;
-
 router.use("/api/province", provinceRouter);
-authRouter;
-
 router.use("/api/node", nodeRouter);
-
 router.use("/api/auth", authRouter);
-
 router.use("/api/role", roleRouter);
+router.use("/api/action", actionRouter);
+router.use("/api/district", districtRouter);
+
+
 
 module.exports = router;

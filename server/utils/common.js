@@ -1,4 +1,4 @@
-const formatPhoneNumber = async function formatPhoneNumber(msisdn, format) {
+const formatPhoneNumber = function formatPhoneNumber(msisdn, format) {
   let s;
   if (msisdn == null || msisdn.length <= 8 || msisdn.length > 12) {
     return null; // invalid
@@ -39,7 +39,7 @@ const formatPhoneNumber = async function formatPhoneNumber(msisdn, format) {
 };
 
 
-const slugify = async function slugify(str) {
+const slugify = function slugify(str) {
   str = str.toLowerCase();
   str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, "a");
   str = str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g, "e");
@@ -54,7 +54,7 @@ const slugify = async function slugify(str) {
   return str.replace(/ /g, '-').toLowerCase();
 }
 
-const minify_words = async function minify_words(words_str) {
+const minify_words = function minify_words(words_str) {
   let words = words_str.split(" ");
   for (let i = 2; i < words.length; i++) {
     if (i == 2) {
