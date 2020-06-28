@@ -4,8 +4,6 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const session = require("express-session");
 
-const cron = require('./cron')
-
 const mongo = require("./config/mongo");
 const mysql = require("./models/mysql");
 
@@ -88,13 +86,6 @@ server.listen(port, (err) => {
   if (err) console.log(err);
   else console.log("Server started at port " + port);
 });
-
-
-/**
- * Cron Job
- */
-cron
-
 
 // const a = {}
 
