@@ -7,6 +7,9 @@ const nodeSchema = new Schema(
       type: String,
       required: true,
     },
+    slug: {
+      type: String,
+    },
     created_by: {
       type: mongoose.Schema.ObjectId,
       ref: "User",
