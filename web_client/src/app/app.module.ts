@@ -44,7 +44,7 @@ import { ToastrModule } from 'ngx-toastr';
   ],
   providers: [
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
-    // JwtHelperService
+    JwtHelperService
   ],
   bootstrap: [AppComponent]
 })

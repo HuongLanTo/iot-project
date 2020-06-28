@@ -7,6 +7,8 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
+import { AuthGuardService } from './guards/auth.guard';
+
 
 const routes: Routes =[
   {
@@ -21,7 +23,8 @@ const routes: Routes =[
         path: '',
         loadChildren: './layouts/admin-layout/admin-layout.module#AdminLayoutModule'
       }
-    ]
+    ],
+    canActivate: [AuthGuardService],
   }, 
   {
     path: '',

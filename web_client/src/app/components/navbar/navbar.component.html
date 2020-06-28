@@ -23,7 +23,7 @@
               <img alt="Image placeholder" src="assets/img/theme/team-4-800x800.jpg">
             </span>
             <div class="media-body ml-2 d-none d-lg-block">
-              <span class="mb-0 text-sm  font-weight-bold" style="cursor: pointer;">Admin</span>
+              <span class="mb-0 text-sm  font-weight-bold" style="cursor: pointer;">{{ currentUser.name }}</span>
             </div>
           </div>
         </a>
@@ -36,7 +36,7 @@
             <span>Quản lý thông tin cá nhân</span>
           </a>
           <div class="dropdown-divider"></div>
-          <a href="#!" class="dropdown-item">
+          <a href="#!" class="dropdown-item" (click)="logout()">
             <i class="ni ni-user-run"></i>
             <span>Đăng xuất</span>
           </a>

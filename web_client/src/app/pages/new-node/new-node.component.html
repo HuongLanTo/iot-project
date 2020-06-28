@@ -20,7 +20,7 @@
               <div class="row">
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="form-control-label" for="nodename">Tên node<p style="display:inline-flex !important; color: red ">*</p></label>
+                    <label class="form-control-label" for="nodename">Tên node <p style="display:inline-flex !important; color: red ">*</p></label>
                     <div class="form-group">
                       <div class="form-group" [ngClass]="{'has-danger': isUserNameInvalid == false}">
                         <input class="form-control form-control-alternative" name="nodename" type="text" id="nodename" 
@@ -31,7 +31,7 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="form-group">
-                      <label class="form-control-label" for="latitude">Vĩ độ<p style="display:inline-flex !important; color: red ">*</p></label>
+                      <label class="form-control-label" for="latitude">Vĩ độ <p style="display:inline-flex !important; color: red ">*</p></label>
                       <div [ngClass]="{'has-danger': isNameInvalid == false}">
                         <input class="form-control form-control-alternative" name="latitude" type="number" id="latitude" placeholder="Vĩ độ" [(ngModel)]="newNode.latitude">
                       </div>
@@ -54,7 +54,7 @@
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="form-control-label" for="longitude">Kinh độ<p style="display:inline-flex !important; color: red ">*</p></label>
+                    <label class="form-control-label" for="longitude">Kinh độ <p style="display:inline-flex !important; color: red ">*</p></label>
                     <div [ngClass]="{'has-danger': isNameInvalid == false}">
                       <input 
                         name="longitude" type="number" id="longitude" class="form-control form-control-alternative"
@@ -64,13 +64,13 @@
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="form-control-label" for="address">Địa chỉ<p style="display:inline-flex !important; color: red ">*</p></label>
+                    <label class="form-control-label" for="address">Địa chỉ <p style="display:inline-flex !important; color: red ">*</p></label>
                     <input  name="address" type="text" id="address" class="form-control form-control-alternative" placeholder="Địa chỉ" [(ngModel)]="newNode.address">
                   </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="form-group">
-                        <label class="form-control-label">Sensors<p style="display:inline-flex !important; color: red ">*</p></label>
+                        <label class="form-control-label">Các cảm biến <p style="display:inline-flex !important; color: red ">*</p></label>
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">

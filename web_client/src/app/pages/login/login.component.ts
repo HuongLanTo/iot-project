@@ -18,19 +18,18 @@ export class LoginComponent implements OnInit {
 
 
   ngOnInit() {
-  //   if (this.authService.isAuthenticated()) {
-  //     this.router.navigate(['']);
-  //   }
-  // }
+    if (this.authService.isAuthenticated()) {
+      this.router.navigate(['/user']);
+    }
   }
  
 
-  // login() {
-  //   var userLogin = {
-  //     username: this.username,
-  //     password: this.password
-  //   }
-  //   this.authService.login(userLogin);
-  // }
+  login() {
+    var userLogin = {
+      username: this.username,
+      password: this.password
+    }
+    this.authService.signIn(userLogin);
+  }
 
 }
