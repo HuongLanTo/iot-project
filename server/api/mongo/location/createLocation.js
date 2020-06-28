@@ -32,11 +32,37 @@ const createLocation = async function createLocation(req, res) {
     latitude: body.latitude,
     longitude: body.longitude,
   };
+  var _province;
+  var _district;
+  var _sub_district;
 
-  await getProvince(body.province).then(p => _value.province = body.province);
-  await getDistrict(body.district).then(d => _value.district = body.district);
+  await getProvince(body.province).then(p => _province = p);
+  if (!_province || !_province._id) {
+    return res.status(400).send({
+      responseCode: 2,
+      responseMessage: "Không xác thực được tỉnh/thành phố",
+    });
+  }
+  _value.province = body.province;
+
+  await getDistrict(body.district).then(d => _district = d);
+  if (!_district || !_district._id) {
+    return res.status(400).send({
+      responseCode: 2,
+      responseMessage: "Không xác thực được quận/huyện",
+    });
+  }
+  _value.district = body.district;
+
   if(body.sub_district){
-    await getSub_district(body.location).then(s => _value.sub_district = body.sub_district);
+    await getSub_district(body.location).then(s => _sub_district = s);
+    if (!_sub_district || !_sub_district._id) {
+      return res.status(400).send({
+        responseCode: 2,
+        responseMessage: "Không xác thực được xã/phường",
+      });
+    }
+    _value.sub_district = body.sub_district;
   }
 
   var value = new Location(_value);
@@ -68,12 +94,6 @@ async function getProvince(provinceId) {
             responseMessage: "Lỗi trong quá trình kiểm tra tỉnh/thành phố",
           });
         }
-        if(!data || !data._id) {
-          return res.status(400).send({
-            responseCode: 2,
-            responseMessage: "Không xác thực được tỉnh/thành phố",
-          });
-        }
         resolve(data)
       });
   });
@@ -89,12 +109,6 @@ async function getDistrict(districtId) {
             responseMessage: "Lỗi trong quá trình kiểm tra quận/huyện",
           });
         }
-        if(!data || !data._id) {
-          return res.status(400).send({
-            responseCode: 2,
-            responseMessage: "Không xác thực được quận/huyện",
-          });
-        }
         resolve(data)
       });
   });
@@ -108,12 +122,6 @@ async function getSub_district(sub_districtId) {
           return res.status(500).send({
             responseCode: 0,
             responseMessage: "Lỗi trong quá trình kiểm tra xã/phường",
-          });
-        }
-        if(!data || !data._id) {
-          return res.status(400).send({
-            responseCode: 2,
-            responseMessage: "Không xác thực được xã/phường",
           });
         }
         resolve(data)

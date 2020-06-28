@@ -62,8 +62,6 @@ async function getUser(userId) {
             responseMessage: "Lỗi trong quá trình kiểm tra user",
           });
         }
-        console.log(data);
-        
         resolve(data)
       });
   });
