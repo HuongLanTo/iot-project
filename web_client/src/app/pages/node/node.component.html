@@ -38,9 +38,6 @@
                 </th>
                 <th scope="col">Khu vực
                     <div class="btn-group">
-                      <!-- <button class="btn btn-icon btn-3 btn-outline-secondary btn-sm" type="button">
-                        <span _ngcontent-c10="">Username</span>
-                      </button> -->
                       <button type="button" class="btn btn-outline-secondary dropdown-toggle-split" style="padding: 2px;" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
                         <span class="btn-inner--icon"><i class="fa fa-filter" style="font-size: 10px"></i></span>
@@ -49,7 +46,7 @@
                         <form>
                           <div class="form-group" style="margin-bottom: 0!important">
                             <div class="input-group">
-                              <input class="form-control" placeholder="Tìm kiếm username" type="text" style="height: 30px" name="username">
+                              <input class="form-control" placeholder="Tìm kiếm khu vực" type="text" style="height: 30px" name="location">
                             </div>
                           </div>
                           <div class="text-right mt-2">
@@ -58,13 +55,32 @@
                         </form>
                       </div>
                     </div>
-                  </th>
-                <th scope="col">SO2</th>
-                <th scope="col">Bụi P2.5</th>
-                <th scope="col">CO</th>
+                </th>
+                <th scope="col">Địa chỉ
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-outline-secondary dropdown-toggle-split" style="padding: 2px;" data-toggle="dropdown"
+                      aria-haspopup="true" aria-expanded="false">
+                      <span class="btn-inner--icon"><i class="fa fa-filter" style="font-size: 10px"></i></span>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left px-3" style="width: 300px">
+                      <form>
+                        <div class="form-group" style="margin-bottom: 0!important">
+                          <div class="input-group">
+                            <input class="form-control" placeholder="Tìm kiếm địa chỉ" type="text" style="height: 30px" name="address">
+                          </div>
+                        </div>
+                        <div class="text-right mt-2">
+                          <button type="button" class="btn btn-primary btn-sm" data-dismiss="dropdown">Lọc</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </th>
                 <th scope="col">Nhiệt độ</th>
-                <th scope="col">Áp suất</th>
-                <th scope="col">N2</th>
+                <th scope="col">Độ ẩm</th>
+                <th scope="col">SO2</th>
+                <th scope="col">NO</th>
+                <th scope="col">Bụi PM2.5</th>
                 <th scope="col">Lựa chọn</th>
               </tr>
             </thead>
@@ -73,36 +89,32 @@
                 <td>{{ index + 1 }}</td>
                 <td>{{ node.nameNode }}</td>
                 <td>{{ node.location}}</td>
+                <td>{{ node.address }}</td>
                 <td>
-                    <span *ngIf="node.so2" class="badge badge-pill badge-success">Đang hoạt động</span>
-                    <span *ngIf="!node.so2" class="badge badge-pill badge-danger">Dừng hoạt động</span>
+                  <span *ngIf="node.temperature" class="badge badge-pill badge-success">Đang hoạt động</span>
+                  <span *ngIf="!node.temperature" class="badge badge-pill badge-danger">Dừng hoạt động</span>
                 </td>
                 <td>
-                    <span class="badge badge-pill badge-success">Đang hoạt động</span>
-                    <!-- <span *ngIf="!user.active" class="badge badge-pill badge-danger">Dừng hoạt động</span> -->
+                  <span *ngIf="node.humidity" class="badge badge-pill badge-success">Đang hoạt động</span>
+                  <span *ngIf="!node.humidity" class="badge badge-pill badge-danger">Dừng hoạt động</span>
                 </td>
                 <td>
-                    <span class="badge badge-pill badge-success">Đang hoạt động</span>
-                    <!-- <span *ngIf="!user.active" class="badge badge-pill badge-danger">Dừng hoạt động</span> -->
+                  <span *ngIf="node.so2" class="badge badge-pill badge-success">Đang hoạt động</span>
+                  <span *ngIf="!node.so2" class="badge badge-pill badge-danger">Dừng hoạt động</span>
                 </td>
                 <td>
-                    <span class="badge badge-pill badge-success">Đang hoạt động</span>
-                    <!-- <span *ngIf="!user.active" class="badge badge-pill badge-danger">Dừng hoạt động</span> -->
+                  <span *ngIf="node.no" class="badge badge-pill badge-success">Đang hoạt động</span>
+                  <span *ngIf="!node.no" class="badge badge-pill badge-danger">Dừng hoạt động</span>
                 </td>
                 <td>
-                    <!-- <span class="badge badge-pill badge-success">Đang hoạt động</span> -->
-                    <span  class="badge badge-pill badge-danger">Dừng hoạt động</span>
+                  <span *ngIf="node.buipm25" class="badge badge-pill badge-success">Đang hoạt động</span>
+                  <span *ngIf="!node.buipm25" class="badge badge-pill badge-danger">Dừng hoạt động</span>
                 </td>
                 <td>
-                    <!-- <span class="badge badge-pill badge-success">Đang hoạt động</span> -->
-                    <span  class="badge badge-pill badge-danger">Dừng hoạt động</span>
-                </td>
-                <td>
-                    <button class="btn btn-icon btn-sm btn-info" type="button" placement="top" ngbTooltip="Sửa"
-                        data-toggle="modal" data-target="#editModal" (click)="currentUser='hieu'" >
-                        <span class="btn-inner--icon"><i class="ni ni-single-copy-04"></i></span>
-                    </button>
-                    <!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button> -->
+                  <button class="btn btn-icon btn-sm btn-info" type="button" placement="top" ngbTooltip="Sửa"
+                      data-toggle="modal" data-target="#editModal" (click)="currentNode = node" >
+                      <span class="btn-inner--icon"><i class="ni ni-single-copy-04"></i></span>
+                  </button>
                 </td>
               </tr>
             </tbody>
@@ -117,7 +129,7 @@
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h3 class="modal-title">Cập nhật thông tin tài khoản</h3>
+        <h3 class="modal-title">Cập nhật thông tin node</h3>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -126,18 +138,17 @@
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
-              <label for="hocPhan">Tên node</label>
+              <label class="form-control-label" for="nameNode">Tên node</label>
               <div class="form-group">
-                <input value="Admin" name="nameNode" id="nameNode" type="text" class="form-control" style="margin-top: 20px" readonly>
+                <input value="{{ currentNode.nameNode }}" name="nameNode" id="nameNode" type="text" class="form-control" readonly>
               </div>
             </div>
           </div>
           <div class="col-md-6">
-            <div class="form-group" >
-              <label for="address">Địa chỉ <p style="display:inline-flex !important; color: red ">*</p></label>
-              <div class="form-group" [ngClass]="{'has-danger': isNameInvalid == false}">
-                <input  name="address" id="address" type="text"
-                [placeholder]="!isNameInvalid ? 'Họ tên không hợp lệ':'Họ tên'" class="form-control">
+            <div class="form-group">
+              <label class="form-control-label" for="latitude">Vĩ độ</label>
+              <div class="form-group">
+                <input value="{{ currentNode.latitude }}" name="latitude" id="latitude" type="number" class="form-control" readonly>
               </div>
             </div>
           </div>
@@ -145,48 +156,119 @@
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
-              <label for="role">Khu vực</label>
-              <select  name="role" id="role" class="form-control">
-                <option value="" disabled selected hidden>admin</option>
-                <option >admin</option>
-              </select> 
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="form-group">
-              <label for="email">Kinh độ</label>
-              <input  name="email" id="email" type="text"
-                placeholder="Email" class="form-control">
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <label for="diaChi">Địa chỉ</label>
+              <label class="form-control-label" for="location">Khu vực</label>
               <div class="form-group">
-                <input name="diaChi" id="diaChi" type="text" class="form-control" placeholder="Địa chỉ">
+                <input value="{{ currentNode.location }}" name="location" id="location" type="text" class="form-control" readonly>
               </div>
             </div>
           </div>
           <div class="col-md-6">
             <div class="form-group">
-              <label for="moTa">Vĩ độ</label>
-              <input  name="moTa" id="moTa" type="text"
-                placeholder="Vĩ độ" class="form-control">
+              <label class="form-control-label" for="longitude">Kinh độ</label>
+              <div class="form-group">
+                <input value="{{ currentNode.longitude }}" name="longitude" id="longitude" type="number" class="form-control" readonly>
+              </div>
             </div>
           </div>
         </div>
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
-              <label for="trangThai">Trạng thái</label>
+              <label class="form-control-label" for="address">Địa chỉ</label>
               <div class="form-group">
-                <select  name="active" id="active" class="form-control">
-                  <option value="" disabled selected hidden>active</option>
-                  <option >active</option>
+                <input value="{{ currentNode.address }}" name="address" id="address" type="text" class="form-control" readonly>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="nodeStatus">Trạng thái</label>
+              <div class="form-group">
+                <select [(ngModel)]="currentNode.status" name="nodeStatus" id="nodeStatus" class="form-control">
+                  <option value="" disabled selected hidden>{{ currentNode.status }}</option>
+                  <option *ngFor="let status of Status" [ngValue]="status.status">{{ status.name }}</option>
                 </select> 
               </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="form-control-label" for="sensor">Các cảm biến</label>
+              <div class="row">
+                <div class="col">
+                  <div class="form-group">
+                    <label class="form-control-label">SO2</label>
+                  </div>
+                </div>  
+                <div class="col">
+                  <div class="form-group">
+                    <label class="custom-toggle" for="so2Status">
+                        <input type="checkbox" checked id="so2Status" name="so2Status" value="{{ currentNode.so2 }}" [(ngModel)]="currentNode.so2">
+                        <span class="custom-toggle-slider rounded-circle"></span>
+                    </label>
+                  </div>
+                </div>   
+                <div class="col">
+                  <div class="form-group">
+                      <label class="form-control-label">Nhiệt độ</label>
+                  </div>
+                </div>     
+                <div class="col">
+                  <div class="form-group">
+                      <label class="custom-toggle" for="temperatureStatus">
+                          <input type="checkbox" checked id="temperatureStatus" name="temperatureStatus" value="{{ currentNode.temperature }}" [(ngModel)]="currentNode.temperature">
+                          <span class="custom-toggle-slider rounded-circle"></span>
+                      </label>
+                  </div>
+                </div>      
+              </div>
+              <div class="row">
+                <div class="col">
+                  <div class="form-group">
+                    <label class="form-control-label">Độ ẩm</label>
+                  </div>
+                </div>  
+                <div class="col">
+                  <div class="form-group">
+                    <label class="custom-toggle" for="humidityStatus">
+                        <input type="checkbox" checked id="humidityStatus" name="humidityStatus" value="{{ currentNode.humidity }}" [(ngModel)]="currentNode.humidity">
+                        <span class="custom-toggle-slider rounded-circle"></span>
+                    </label>
+                  </div>
+                </div>   
+                <div class="col">
+                  <div class="form-group">
+                      <label class="form-control-label">NO</label>
+                  </div>
+                </div>     
+                <div class="col">
+                  <div class="form-group">
+                      <label class="custom-toggle" for="noStatus">
+                          <input type="checkbox" checked id="noStatus" name="noStatus" value="{{ currentNode.no }}" [(ngModel)]="currentNode.no">
+                          <span class="custom-toggle-slider rounded-circle"></span>
+                      </label>
+                  </div>
+                </div>      
+              </div>
+              <div class="row">
+                <div class="col">
+                  <div class="form-group">
+                    <label class="form-control-label">Bụi PM2.5</label>
+                  </div>
+                </div>  
+                <div class="col">
+                  <div class="form-group">
+                    <label class="custom-toggle" for="buipm25Status">
+                        <input type="checkbox" checked id="buipm25Status" name="buipm25Status" value="{{ currentNode.buipm25 }}" [(ngModel)]="currentNode.buipm25">
+                        <span class="custom-toggle-slider rounded-circle"></span>
+                    </label>
+                  </div>
+                </div>  
+                <div class="col"></div>  
+                <div class="col"></div>     
+              </div>  
             </div>
           </div>
         </div>  

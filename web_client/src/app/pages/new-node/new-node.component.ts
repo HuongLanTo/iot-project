@@ -24,6 +24,7 @@ export class NewNodeComponent implements OnInit {
     humidity: "",
     latitude: "",
     longitude: "",
+    status: ""
   };
   public location: any;
 
@@ -71,6 +72,7 @@ export class NewNodeComponent implements OnInit {
       this.isAddressInvalid = false;
     }
     if (!this.isLatitudeInvalid && !this.isLongitudeInvalid && !this.isLocationInvalid) {
+      this.newNode.status = 'true';
       this.nodeService
         .createNode(this.newNode)
         .then((data) => {

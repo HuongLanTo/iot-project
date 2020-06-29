@@ -7,7 +7,12 @@ import { NodeService } from '../../services/node.service';
   styleUrls: ['./node.component.css']
 })
 export class NodeComponent implements OnInit {
-  nodeList: string[];
+  nodeList: any;
+  currentNode = {};
+  Status = [
+    { status: true, name: 'Active'},
+    { status: false, name: 'Deactive'}
+  ]
 
   constructor(
     private nodeService: NodeService
@@ -18,8 +23,7 @@ export class NodeComponent implements OnInit {
   }
 
   getNodeList() {
-    this.nodeService.getNodes().subscribe(data => {
-      console.log(data);
+    this.nodeService.getNodesList().then(data => {
       this.nodeList = data;
     })
   }
