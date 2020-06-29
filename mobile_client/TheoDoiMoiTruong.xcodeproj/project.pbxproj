@@ -25,6 +25,12 @@
 		89D7F8EB246BD2CC009B3749 /* Ranking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D7F8EA246BD2CC009B3749 /* Ranking.swift */; };
 		89D7F8EE246BD517009B3749 /* RankingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D7F8EC246BD517009B3749 /* RankingTableViewCell.swift */; };
 		89D7F8EF246BD517009B3749 /* RankingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89D7F8ED246BD517009B3749 /* RankingTableViewCell.xib */; };
+		89DA00E824A9C5CB009C77CA /* TrackDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89DA00E724A9C5CB009C77CA /* TrackDestination.swift */; };
+		89E29A5624A991FD00524099 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E29A5524A991FD00524099 /* TabBarController.swift */; };
+		89E29A5A24A9964E00524099 /* InformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E29A5924A9964E00524099 /* InformationViewController.swift */; };
+		89E29A6024A99E4300524099 /* InformationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E29A5E24A99E4300524099 /* InformationCell.swift */; };
+		89E29A6124A99E4300524099 /* InformationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89E29A5F24A99E4300524099 /* InformationCell.xib */; };
+		89E29A6324A9A35C00524099 /* DetailInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E29A6224A9A35C00524099 /* DetailInformation.swift */; };
 		89E85F2E248F88E30039B6A8 /* Area.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E85F2D248F88E30039B6A8 /* Area.swift */; };
 		89E85F31248F89950039B6A8 /* AreaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E85F2F248F89950039B6A8 /* AreaCell.swift */; };
 		89E85F32248F89950039B6A8 /* AreaCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89E85F30248F89950039B6A8 /* AreaCell.xib */; };
@@ -61,6 +67,12 @@
 		89D7F8EA246BD2CC009B3749 /* Ranking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ranking.swift; sourceTree = "<group>"; };
 		89D7F8EC246BD517009B3749 /* RankingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingTableViewCell.swift; sourceTree = "<group>"; };
 		89D7F8ED246BD517009B3749 /* RankingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RankingTableViewCell.xib; sourceTree = "<group>"; };
+		89DA00E724A9C5CB009C77CA /* TrackDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackDestination.swift; sourceTree = "<group>"; };
+		89E29A5524A991FD00524099 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		89E29A5924A9964E00524099 /* InformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationViewController.swift; sourceTree = "<group>"; };
+		89E29A5E24A99E4300524099 /* InformationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationCell.swift; sourceTree = "<group>"; };
+		89E29A5F24A99E4300524099 /* InformationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InformationCell.xib; sourceTree = "<group>"; };
+		89E29A6224A9A35C00524099 /* DetailInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInformation.swift; sourceTree = "<group>"; };
 		89E85F2D248F88E30039B6A8 /* Area.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Area.swift; sourceTree = "<group>"; };
 		89E85F2F248F89950039B6A8 /* AreaCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaCell.swift; sourceTree = "<group>"; };
 		89E85F30248F89950039B6A8 /* AreaCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AreaCell.xib; sourceTree = "<group>"; };
@@ -123,12 +135,13 @@
 		89D7F8E1246BD183009B3749 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				89D7F8E4246BD235009B3749 /* Menu */,
 				89D7F8E5246BD238009B3749 /* Home */,
-				89D7F8E8246BD255009B3749 /* DetailReport */,
-				89D7F8E9246BD283009B3749 /* Ranking */,
 				89D7F8E7246BD24D009B3749 /* GoogleMap */,
-				89D7F8E6246BD23A009B3749 /* Login + Register */,
+				89D7F8E9246BD283009B3749 /* Ranking */,
+				89E29A5724A9942200524099 /* MoreInformation */,
+				89D7F8E4246BD235009B3749 /* Menu */,
+				89D7F8E6246BD23A009B3749 /* LoginRegister */,
+				89E29A5524A991FD00524099 /* TabBarController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -136,10 +149,11 @@
 		89D7F8E2246BD187009B3749 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				89DA00E924A9F06D009C77CA /* Information */,
+				89E29A5C24A99AF100524099 /* Home */,
+				89E29A5D24A99B0E00524099 /* Ranking */,
 				893931A8243F115A00C1D417 /* Main.storyboard */,
 				893931AD243F115B00C1D417 /* LaunchScreen.storyboard */,
-				8920E27C2445A25700622174 /* HomeTableViewCell.xib */,
-				89D7F8ED246BD517009B3749 /* RankingTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -152,6 +166,7 @@
 				8913DD97248D2708003FDED6 /* ThongSo3Ngay.swift */,
 				8913DD99248D2715003FDED6 /* ThongSoGio.swift */,
 				89E85F33248F8D840039B6A8 /* AreaClass.swift */,
+				89DA00E724A9C5CB009C77CA /* TrackDestination.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -170,20 +185,19 @@
 			children = (
 				89F166A42444BF3800AD0E09 /* Home.swift */,
 				8920E27B2445A25700622174 /* HomeTableViewCell.swift */,
-				89E85F2D248F88E30039B6A8 /* Area.swift */,
-				89E85F2F248F89950039B6A8 /* AreaCell.swift */,
-				89E85F30248F89950039B6A8 /* AreaCell.xib */,
+				89E29A5B24A996AD00524099 /* Area */,
+				89D7F8E8246BD255009B3749 /* DetailReport */,
 			);
 			path = Home;
 			sourceTree = "<group>";
 		};
-		89D7F8E6246BD23A009B3749 /* Login + Register */ = {
+		89D7F8E6246BD23A009B3749 /* LoginRegister */ = {
 			isa = PBXGroup;
 			children = (
 				893931B8243F3EDA00C1D417 /* SignUp.swift */,
 				893931B6243F12EB00C1D417 /* Login.swift */,
 			);
-			path = "Login + Register";
+			path = LoginRegister;
 			sourceTree = "<group>";
 		};
 		89D7F8E7246BD24D009B3749 /* GoogleMap */ = {
@@ -208,6 +222,50 @@
 			children = (
 				89D7F8EA246BD2CC009B3749 /* Ranking.swift */,
 				89D7F8EC246BD517009B3749 /* RankingTableViewCell.swift */,
+			);
+			path = Ranking;
+			sourceTree = "<group>";
+		};
+		89DA00E924A9F06D009C77CA /* Information */ = {
+			isa = PBXGroup;
+			children = (
+				89E29A5F24A99E4300524099 /* InformationCell.xib */,
+			);
+			path = Information;
+			sourceTree = "<group>";
+		};
+		89E29A5724A9942200524099 /* MoreInformation */ = {
+			isa = PBXGroup;
+			children = (
+				89E29A5924A9964E00524099 /* InformationViewController.swift */,
+				89E29A5E24A99E4300524099 /* InformationCell.swift */,
+				89E29A6224A9A35C00524099 /* DetailInformation.swift */,
+			);
+			path = MoreInformation;
+			sourceTree = "<group>";
+		};
+		89E29A5B24A996AD00524099 /* Area */ = {
+			isa = PBXGroup;
+			children = (
+				89E85F2D248F88E30039B6A8 /* Area.swift */,
+				89E85F2F248F89950039B6A8 /* AreaCell.swift */,
+			);
+			path = Area;
+			sourceTree = "<group>";
+		};
+		89E29A5C24A99AF100524099 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				8920E27C2445A25700622174 /* HomeTableViewCell.xib */,
+				89E85F30248F89950039B6A8 /* AreaCell.xib */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		89E29A5D24A99B0E00524099 /* Ranking */ = {
+			isa = PBXGroup;
+			children = (
+				89D7F8ED246BD517009B3749 /* RankingTableViewCell.xib */,
 			);
 			path = Ranking;
 			sourceTree = "<group>";
@@ -293,6 +351,7 @@
 			files = (
 				89D7F8EF246BD517009B3749 /* RankingTableViewCell.xib in Resources */,
 				89E85F32248F89950039B6A8 /* AreaCell.xib in Resources */,
+				89E29A6124A99E4300524099 /* InformationCell.xib in Resources */,
 				89CBE04F248DD3B80023F3BC /* Localizations.strings in Resources */,
 				893931AF243F115B00C1D417 /* LaunchScreen.storyboard in Resources */,
 				893931AC243F115B00C1D417 /* Assets.xcassets in Resources */,
@@ -368,6 +427,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				893931B7243F12EB00C1D417 /* Login.swift in Sources */,
+				89E29A5A24A9964E00524099 /* InformationViewController.swift in Sources */,
 				8913DD98248D2708003FDED6 /* ThongSo3Ngay.swift in Sources */,
 				89F166A72444BF8300AD0E09 /* MenuViewController.swift in Sources */,
 				89FC36C22445765C00729E75 /* Menu.swift in Sources */,
@@ -376,6 +436,9 @@
 				89D7F8EE246BD517009B3749 /* RankingTableViewCell.swift in Sources */,
 				893931B9243F3EDA00C1D417 /* SignUp.swift in Sources */,
 				8913DD9A248D2715003FDED6 /* ThongSoGio.swift in Sources */,
+				89E29A6024A99E4300524099 /* InformationCell.swift in Sources */,
+				89DA00E824A9C5CB009C77CA /* TrackDestination.swift in Sources */,
+				89E29A6324A9A35C00524099 /* DetailInformation.swift in Sources */,
 				89D7F8EB246BD2CC009B3749 /* Ranking.swift in Sources */,
 				89E85F34248F8D840039B6A8 /* AreaClass.swift in Sources */,
 				89F166A52444BF3800AD0E09 /* Home.swift in Sources */,
@@ -385,6 +448,7 @@
 				89F9379224475EEC005EA397 /* DetailReport.swift in Sources */,
 				89F8C701245FCACD00FCD91E /* GoogleMaps.swift in Sources */,
 				893931A5243F115A00C1D417 /* SceneDelegate.swift in Sources */,
+				89E29A5624A991FD00524099 /* TabBarController.swift in Sources */,
 				89E85F2E248F88E30039B6A8 /* Area.swift in Sources */,
 				8962DB7C24485E6300698687 /* DetailRPCollectionViewCell.swift in Sources */,
 			);

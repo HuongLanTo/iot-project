@@ -10,20 +10,6 @@ import UIKit
 import GoogleMaps
 import GooglePlaces
 
-class TrackDestination: NSObject {
-    let name: String
-    let location: CLLocationCoordinate2D
-    let aqi: String
-    let zoom: Float
-    
-    init (name: String, location: CLLocationCoordinate2D, aqi: String, zoom: Float) {
-        self.name = name
-        self.location = location
-        self.aqi = aqi
-        self.zoom = zoom
-    }
-}
-
 class GoogleMaps: UIViewController {
     
     var mapView:GMSMapView?
@@ -34,6 +20,8 @@ class GoogleMaps: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationItem.title = "AQI tại khu vực theo dõi"
         
         let camera = GMSCameraPosition.camera(withLatitude: 20.976106, longitude: 105.815626, zoom: 15)
         mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
@@ -50,6 +38,7 @@ class GoogleMaps: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        print("gg map will appear")
         destinations.append(TrackDestination(name: "Thang Long University", location: CLLocationCoordinate2DMake(20.976096, 105.815593), aqi: "124 AQI", zoom: 15))
     }
     

@@ -23,6 +23,12 @@ class Ranking: UIViewController {
         myTableRanking.dataSource = self
         myTableRanking.delegate = self
         myTableRanking.tableFooterView = UIView()
+        
+        self.navigationItem.title = "Bảng xếp hạng chỉ số AQI"
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        print("Ranking will apeear")
     }
 }
 
