@@ -10,7 +10,7 @@ export class NodeService {
         private http: Http
     ) {}
   
-    private API_URL = 'https://5ee4a4deddcea00016a36e04.mockapi.io/api/user';
+    private API_URL = 'https://5ee4a4deddcea00016a36e04.mockapi.io/api/user/';
 
     getNodesList() {
         return new Promise((resolve, reject) => {
@@ -30,6 +30,17 @@ export class NodeService {
                 .subscribe(res => {
                     resolve(true);
                 }, err => reject(err))
+        })
+    }
+
+    updateNodeInfo(id: string, nodeInfo) {
+        return new Promise((resolve, reject) => {
+            this.http.put(this.API_URL + id, nodeInfo)
+                .subscribe(res => {
+                    resolve(res);
+                }, err => {
+                    reject(err);
+                })
         })
     }
 }
