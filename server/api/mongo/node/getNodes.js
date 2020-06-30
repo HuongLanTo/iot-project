@@ -25,35 +25,6 @@ const getUsers = async function getUsers(req, res) {
   limit.skip = size * (page - 1);
   limit.limit = size;
 
-  // let totalDocuments = 0;
-
-  // try {
-  //   totalDocuments = await User.countDocuments(filter);
-  // } catch (err) {
-  //   logger.error(err.message);
-  //   return res.status(500).send({
-  //     responseCode: 12,
-  //     responseMessage: err.message,
-  //   });
-  // }
-
-  // User.find(filter, {}, limit)
-  //   // .populate("role")
-  //   .exec((err, data) => {
-  //     if (err) {
-  //       return res.status(500).send({
-  //         responseCode: 0,
-  //         responseMessage: err.message,
-  //       });
-  //     }
-  //     return res.status(200).send({
-  //       responseCode: 1,
-  //       responseMessage: "Thành công",
-  //       data: data,
-  //       totalDocuments: totalDocuments,
-  //     });
-  //   });
-
   var name = "";
   if (filter.name != null) {
     name = filter.name;
@@ -93,7 +64,7 @@ const getUsers = async function getUsers(req, res) {
           as: "location",
         },
       },
-      { $match: { "location.district": body.district } },
+      { $match: { "location.district": filter.district } },
     ],
     function (err, result) {
       if (err) {
