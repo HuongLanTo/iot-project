@@ -39,7 +39,7 @@ class Home: UIViewController {
         myTableHome.tableFooterView = UIView()
 
         navigationItem.title = "Theo Dõi Môi Trường" 
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(addTapped))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Thêm", style: .plain, target: self, action: #selector(addTapped))
         
         getThongSo3Ngay()
         
@@ -223,6 +223,26 @@ extension Home: UITableViewDelegate {
 }
 
 extension Home: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        var numOfSection: NSInteger = 0
+
+        if arrThongSo3Ngay.count > 0
+         {
+            myTableHome.backgroundView = nil
+            numOfSection = 1
+         }
+         else
+         {
+            var noDataLabel: UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: myTableHome.frame.size.width, height: myTableHome.frame.size.height))
+            noDataLabel.text = "No Data Available"
+            noDataLabel.textColor = UIColor(red: 22.0/255.0, green: 106.0/255.0, blue: 176.0/255.0, alpha: 1.0)
+            noDataLabel.textAlignment = NSTextAlignment.center
+            self.myTableHome.backgroundView = noDataLabel
+          }
+
+        return numOfSection
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return arrThongSo3Ngay.count
     }
