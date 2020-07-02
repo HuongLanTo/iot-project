@@ -17,6 +17,9 @@ class DetailReport: UIViewController {
     var valueDateArr:[Double] = [] //Mảng lưu thông số của giá trị theo ngày (Trục y)
     var isHourBarSelected:Bool = true //Biến kiểm tra biểu đồ GIỜ được chọn
     var isDateBarSelected:Bool = false //Biến kiểm tra biểu đồ NGÀY được chọn
+    var arrKhung8Gio:[String] = ["01:00", "04:00", "07:00", "10:00", "13:00", "16:00", "19:00", "22:00"] //String khung 8 giờ
+    var dateBefore:String = ""
+    var monthNow:String = ""
     
     @IBOutlet weak var myCollectionView: UICollectionView!
     @IBOutlet weak var myBarChartView: BarChartView!
@@ -151,23 +154,36 @@ class DetailReport: UIViewController {
         lblNgay.layer.borderWidth = 1.0
         lblNgay.layer.cornerRadius = 5
         lblNgay.clipsToBounds = true
+        
+        //Lấy ngày hôm qua hiển thị (Lịch sử)
+        getDateBefore()
+        lblDate.text = dateBefore
+        
         //Set giá trị cho mảng Hour
         gioArr = ["01:00","02:00","03:00","04:00","05:00","06:00",
                   "07:00","08:00","09:00","10:00","11:00","12:00",
                   "13:00","14:00","15:00","16:00","17:00","18:00",
                   "19:00","20:00","21:00","22:00","23:00","24:00"]
         valueGioArr = [110,110,125,120,146,137,53,51,62,123,62,91,33,167,110,85,92,44,120,95,104,107,132,165]
+        
         //Set giá trị cho mảng Date
-        dateArr = ["1", "2", "3", "4", "5", "6",
-                   "7", "8", "9", "10", "11", "12",
-                   "13", "14", "15", "16", "17", "18",
-                   "19", "20", "21", "22", "23", "24",
-                   "25", "26", "27", "28", "29", "30", "31"]
+        get31DateBefore()
         valueDateArr = [85,92,110,33,42,152,94,18,120,110,45,32,67,83,92,95,167,152,124,145,124,34,45,62,71,89,120,167,129,130,141]
         
         isHourBarSelected = true
         isDateBarSelected = false
         setHourBarChart(name: gioArr, value: valueGioArr)
+        
+        //Set high màn hình để scroll tuỳ vào thiết bị
+        if (UIScreen.main.nativeBounds.size.height >= 2436) {
+            
+        } else {
+            if (UIScreen.main.nativeBounds.size.height == 1792) /*ip11*/ {
+                
+            } else {
+                
+            }
+        }
     }
     
     //Button action khuyến nghị về sức khoẻ (click vào từng image)
@@ -269,7 +285,10 @@ class DetailReport: UIViewController {
                           setColorBarChart(value: valueDateArr[12]), setColorBarChart(value: valueDateArr[13]), setColorBarChart(value: valueDateArr[14]),
                           setColorBarChart(value: valueDateArr[15]), setColorBarChart(value: valueDateArr[16]), setColorBarChart(value: valueDateArr[17]),
                           setColorBarChart(value: valueDateArr[18]), setColorBarChart(value: valueDateArr[19]), setColorBarChart(value: valueDateArr[20]),
-                          setColorBarChart(value: valueDateArr[21]), setColorBarChart(value: valueDateArr[22]), setColorBarChart(value: valueDateArr[23])]
+                          setColorBarChart(value: valueDateArr[21]), setColorBarChart(value: valueDateArr[22]), setColorBarChart(value: valueDateArr[23]),
+                          setColorBarChart(value: valueDateArr[24]), setColorBarChart(value: valueDateArr[25]), setColorBarChart(value: valueDateArr[26]),
+                          setColorBarChart(value: valueDateArr[27]), setColorBarChart(value: valueDateArr[28]), setColorBarChart(value: valueDateArr[29]),
+                          setColorBarChart(value: valueDateArr[30])]
         //Không hiện thông số trên mỗi bar
         dataSet.drawValuesEnabled = false
         //Ko hiện chú thích
@@ -348,6 +367,7 @@ class DetailReport: UIViewController {
         lblNgay.textColor = UIColor(red: 91/255, green: 155/255, blue: 213/255, alpha: 1) //Xanh nuoc bien nhat
         lblGio.backgroundColor = UIColor(red: 91/255, green: 155/255, blue: 213/255, alpha: 1) //Xanh nuoc bien nhat
         lblNgay.backgroundColor = UIColor.white
+        lblDate.text = dateBefore
         setHourBarChart(name: gioArr, value: valueGioArr)
         myBarChartView.reloadInputViews()
     }
@@ -361,6 +381,8 @@ class DetailReport: UIViewController {
         lblGio.textColor = UIColor(red: 91/255, green: 155/255, blue: 213/255, alpha: 1) //Xanh nuoc bien nhat
         lblNgay.backgroundColor = UIColor(red: 91/255, green: 155/255, blue: 213/255, alpha: 1) //Xanh nuoc bien nhat
         lblGio.backgroundColor = UIColor.white
+        getMonthNow()
+        lblDate.text = monthNow
         setDateBarChart(name: dateArr, value: valueDateArr)
         myBarChartView.reloadInputViews()
     }
@@ -375,8 +397,12 @@ extension DetailReport: UICollectionViewDelegate, UICollectionViewDataSource, UI
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionCell", for: indexPath) as? DetailRPCollectionViewCell
-        return cell!
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionCell", for: indexPath) as? DetailRPCollectionViewCell {
+            cell.lblGio.text = arrKhung8Gio[indexPath.row]
+            //cell. ...
+            return cell
+        }
+        return UICollectionViewCell()
     }
 }
 
@@ -393,5 +419,39 @@ extension DetailReport: ChartViewDelegate {
             let valueInt:Int = Int(valueDateArr[pos])
             lblAQI.text = String(valueInt)
         }
+    }
+}
+
+extension DetailReport {
+    //Lấy String từ 31 ngày trc rồi chuyển vào mảng dateArr(Dùng cho hiển thị biểu đồ trục x)
+    func get31DateBefore() {
+        var dateString:String = ""
+        let formaterDate = DateFormatter()
+        formaterDate.dateFormat = "dd/MM"
+        
+        for i in 0..<31 {
+            let dateYesterday = Date().addingTimeInterval(TimeInterval(-60*60*24*(31-i)))
+            dateString = formaterDate.string(from: dateYesterday)
+            dateArr.append(dateString)
+        }
+    }
+    
+    //Lấy String từ ngày hôm qua
+    func getDateBefore() {
+        let dateYesterday = Date().addingTimeInterval(-60*60*24)
+        
+        let formaterDate = DateFormatter()
+        formaterDate.dateFormat = "dd-MM-YYYY"
+        
+        dateBefore = formaterDate.string(from: dateYesterday)
+    }
+    
+    //Lấy String tháng hiện tại
+    func getMonthNow() {
+        let dateNow = Date()
+        let formaterDate = DateFormatter()
+        formaterDate.dateFormat = "MM/YYYY"
+        
+        monthNow = formaterDate.string(from: dateNow)
     }
 }
