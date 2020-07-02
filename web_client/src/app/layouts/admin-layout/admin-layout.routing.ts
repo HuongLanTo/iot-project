@@ -12,6 +12,7 @@ import { NodeComponent } from 'src/app/pages/node/node.component';
 import { NewNodeComponent } from 'src/app/pages/new-node/new-node.component';
 import { LocationComponent } from 'src/app/pages/location/location.component';
 import { NewLocationComponent } from 'src/app/pages/new-location/new-location.component';
+import { LocationService } from 'src/app/services/location.service';
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: DashboardComponent },
@@ -38,5 +39,5 @@ export const AdminLayoutRoutes: Routes = [
     {
         path: 'new-node',
         component: NewNodeComponent
-    },
+    }
 ];

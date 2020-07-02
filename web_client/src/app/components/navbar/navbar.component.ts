@@ -32,9 +32,15 @@ export class NavbarComponent implements OnInit {
   }
 
   async ngOnInit() {
+    console.log(123);
+    
     this.listTitles = ROUTES.filter((listTitle) => listTitle);
+    console.log(this.currentUser);
+    
     await this.profileService.getProfile().then(data => {
       this.currentUser = data;
+      console.log(this.currentUser);
+      
     })
     
   }

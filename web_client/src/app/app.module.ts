@@ -19,7 +19,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HomeComponent } from './pages/home/home.component';
 import { MapComponent } from './pages/map/map.component';
 import { ToastrModule } from 'ngx-toastr';
-
+import { ProfileService } from './services/profile.service';
+import { AuthGuardService } from './guards/auth.guard';
+import { AuthService } from './services/auth.service';
+import { CookieService } from "angular2-cookie/services/cookies.service";
 
 @NgModule({
   imports: [
@@ -44,7 +47,11 @@ import { ToastrModule } from 'ngx-toastr';
   ],
   providers: [
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
-    JwtHelperService
+    JwtHelperService,
+    ProfileService,
+    AuthGuardService,
+    AuthService,
+    CookieService
   ],
   bootstrap: [AppComponent]
 })

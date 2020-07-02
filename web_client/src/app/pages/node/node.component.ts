@@ -9,7 +9,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class NodeComponent implements OnInit {
   nodeList: any;
-  currentNode: any;
+  currentNode: any = {};
   Status = [
     { status: true, name: 'Active'},
     { status: false, name: 'Deactive'}

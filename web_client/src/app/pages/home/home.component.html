@@ -53,7 +53,7 @@
         <div class="col-lg-1"></div>
         <div class="col-lg-5">
             <div class="form-group">
-                <label class="form-control-label" for="inputAddress">Chọn khu vực:</label>
+                <label class="form-control-label" for="inputAddress">Chọn địa điểm:</label>
                 <select  name="addressNode" id="inputAddress" class="form-control" (change)="selectedNode($event.target.value)" (change)="get3DayAqiData()">
                     <option value="" disabled selected hidden>{{ current_sensor_data.nameNode }}</option>
                     <option *ngFor="let data of sensor_data">{{ data.nameNode }}</option>
@@ -272,23 +272,23 @@
             </div>
         </div>
         <div class="col-lg-6">
-            <div class="row">
+            <div class="d-flex justify-content-end">
                 <button class="btn btn-icon btn-2 btn-dark" type="button" (click)="setLineTypeOfChart()">
-                    <span class="btn-inner--icon"><i class="ni ni-atom"></i></span>
+                    <span class="btn-inner--icon"><i class="fas fa-chart-line"></i></span>
                 </button>
                 <button class="btn btn-icon btn-2 btn-dark" type="button" (click)="setBarTypeOfChart()">
                     <span class="btn-inner--icon"><i class="ni ni-chart-bar-32"></i></span>
                 </button>
             </div>
             <br>
-            <div class="card shadow" *ngIf="lineTypeOfChart">
+            <div class="card shadow" [hidden]="!lineTypeOfChart">
                 <div class="card-body">
                     <div class="chart">
                         <canvas id="aqi_line_chart" class="chart-canvas"></canvas>
                     </div>
                 </div>
             </div>
-            <div class="card shadow" *ngIf="barTypeOfChart">
+            <div class="card shadow" [hidden]="!barTypeOfChart">
                 <div class="card-body">
                     <div class="chart">
                         <canvas id="aqi_bar_chart" class="chart-canvas"></canvas>

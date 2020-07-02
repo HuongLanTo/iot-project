@@ -45,7 +45,7 @@ import { PaginationComponent } from 'src/app/pages/pagination/pagination.compone
     LocationComponent,
     NewLocationComponent,
     PaginationComponent
-  ]
+  ],
 })
 
 export class AdminLayoutModule {}

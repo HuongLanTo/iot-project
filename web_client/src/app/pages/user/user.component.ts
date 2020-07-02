@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Http, Response } from '@angular/http';
-import 'rxjs/Rx';
-import { AuthService } from 'src/app/services/auth.service';
+import { UserService } from 'src/app/services/user.service';
 
 
 @Component({
@@ -18,7 +17,7 @@ export class UserComponent implements OnInit {
   
   constructor(
     private http: Http,
-    private authService: AuthService
+    private userService: UserService
   ) { }
 
   ngOnInit() {
@@ -27,8 +26,7 @@ export class UserComponent implements OnInit {
 
 
   getUserList() {
-    this.authService.getUsers().subscribe(data => {
-      console.log(data);
+    this.userService.getUserList().then(data => {
       this.userList = data;
     })
   }
