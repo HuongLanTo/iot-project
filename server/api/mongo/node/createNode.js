@@ -1,5 +1,6 @@
 const fs = require("fs");
 const Node = require("../../../models/mongo/node");
+const User = require("../../../models/mongo/user");
 const Location = require("../../../models/mongo/location");
 
 const bcrypt = require("bcrypt");
