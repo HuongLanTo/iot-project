@@ -9,10 +9,14 @@ const approveNode = async function approveNode(req, res) {
   const body = req.body;
 
   var approve = 0;
+  var value = {};
 
   if (body.approve != null) {
-    if (body.approve == 1 || body.approve == 0 || body.approve == -1) {
-      approve = body.approve;
+    if (body.approve == 1 || body.approve == 0) {
+      value.approve = body.approve;
+    } else if(body.approve == -1) {
+      value.approve = body.approve;
+      value.reason = body.reason;
     } else {
       logger.info("Param invalid");
       return res.status(400).send({
@@ -28,13 +32,11 @@ const approveNode = async function approveNode(req, res) {
   }
 
   try {
-    const up = await Node.update(
+    await Node.update(
       {
         _id: req.params.id,
       },
-      {
-        approve: approve,
-      }
+      value
     );
     res.status(200).send({
       responseCode: 1,

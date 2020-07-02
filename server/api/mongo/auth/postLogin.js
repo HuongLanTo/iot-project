@@ -39,7 +39,7 @@ const login = async function (req, res) {
 
   return res.status(200).send({
     responseCode: 1,
-    responseMessage: { data: { token: token } },
+    responseMessage: { data: { cookies: token } },
   });
 };
 

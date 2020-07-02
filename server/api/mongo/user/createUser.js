@@ -12,11 +12,8 @@ const createUser = async function create(req, res) {
   const salt = await bcrypt.genSalt(10);
 
   if (
-    body.username == null ||
-    body.password == null ||
-    body.name == null ||
-    body.phone == null ||
-    body.email == null
+    !body.username || !body.password || !body.name ||
+    !body.phone || !body.email || !body.role
   ) {
     logger.info("Param invalid");
     return res.status(400).send({
@@ -41,7 +38,7 @@ const createUser = async function create(req, res) {
   });
 
   try {
-    const saveUser = await value.save();
+    await value.save();
     return res.status(200).send({
       responseCode: 1,
       responseMessage: "SUCCEED",
