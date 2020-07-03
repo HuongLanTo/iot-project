@@ -1,3 +1,4 @@
+const moment = require("moment");
 const mysql = require("../../../models/mysql");
 const Op = mysql.Sequelize.Op;
 
@@ -9,14 +10,14 @@ module.exports = async function findByNode(req, res) {
     const query = req.query;
     const slot = query.slot ? query.slot : 31;
 
-    let start_date = new Date();
-    let end_date = new Date();
-
-    start_date.setDate(start_date.getDate() - slot);
-    end_date.setDate(end_date.getDate() - 1);
-
-    start_date.setHours(0, 0, 0);
-    end_date.setHours(23, 59, 59);
+    const start_date = moment()
+      .subtract(slot, "day")
+      .set({ hour: 0, minute: 0, second: 0 })
+      .toDate();
+    const end_date = moment()
+      .subtract(1, "day")
+      .set({ hour: 23, minute: 59, second: 59 })
+      .toDate();
 
     let where = {
       node_id: params.node_id,

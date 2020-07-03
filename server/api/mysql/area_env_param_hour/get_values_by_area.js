@@ -1,3 +1,4 @@
+const moment = require("moment");
 const mysql = require("../../../models/mysql");
 const Op = mysql.Sequelize.Op;
 
@@ -12,18 +13,22 @@ module.exports = async function findByArea(req, res) {
     let end_date;
 
     if (query.date) {
-      start_date = new Date(query.date);
-      end_date = new Date(query.date);
+      start_date = moment(query.date)
+        .set({ hour: 0, minute: 0, second: 0 })
+        .toDate();
+      end_date = moment(query.date)
+        .set({ hour: 23, minute: 59, second: 59 })
+        .toDate();
     } else {
-      start_date = new Date();
-      end_date = new Date();
-
-      start_date.setDate(start_date.getDate() - 1);
-      end_date.setDate(end_date.getDate() - 1);
+      start_date = moment()
+        .subtract(1, "day")
+        .set({ hour: 0, minute: 0, second: 0 })
+        .toDate();
+      end_date = moment()
+        .subtract(1, "day")
+        .set({ hour: 23, minute: 59, second: 59 })
+        .toDate();
     }
-
-    start_date.setHours(0, 0, 0);
-    end_date.setHours(23, 59, 59);
 
     let where = {
       area_id: params.area_id,

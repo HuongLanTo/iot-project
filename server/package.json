@@ -20,6 +20,7 @@
     "js-base64": "^2.5.2",
     "jsonwebtoken": "^8.5.1",
     "log4js": "^6.2.1",
+    "moment": "^2.27.0",
     "mongoose": "^5.9.14",
     "multer": "^1.4.2",
     "mysql2": "^2.1.0",
