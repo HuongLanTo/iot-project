@@ -7,7 +7,9 @@ const NodeEnvParamDay = mysql.node_env_param_days;
 
 module.exports = async function findByNodes(req, res) {
   try {
-    const filter = JSON.parse(base64.decode(req.query.filter));
+    const filter = req.query.filter
+      ? JSON.parse(base64.decode(req.query.filter))
+      : {};
 
     if (!filter.node_ids) {
       return res.status(400).send({

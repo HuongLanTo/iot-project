@@ -5,10 +5,12 @@ const Op = mysql.Sequelize.Op;
 const NodeEnvParamDay = mysql.node_env_param_days;
 
 module.exports = async function findAll(req, res) {
-  const filter = JSON.parse(base64.decode(req.query.filter));
+  const filter = req.query.filter
+    ? JSON.parse(base64.decode(req.query.filter))
+    : {};
 
-  const page = query.page || 0;
-  const size = query.size || 20;
+  const page = req.query.page || 0;
+  const size = req.query.size || 20;
 
   var where = {};
 

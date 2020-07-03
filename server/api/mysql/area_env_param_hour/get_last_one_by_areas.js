@@ -5,7 +5,9 @@ const AreaEnvParamHour = mysql.area_env_param_hours;
 
 module.exports = async function findLastByAreas(req, res) {
   try {
-    const filter = JSON.parse(base64.decode(req.query.filter));
+    const filter = req.query.filter
+      ? JSON.parse(base64.decode(req.query.filter))
+      : {};
 
     if (!filter.area_ids) {
       return res.status(400).send({

@@ -8,7 +8,9 @@ const AreaEnvParamDay = mysql.area_env_param_days;
 module.exports = async function findByArea(req, res) {
   try {
     const params = req.params;
-    const filter = JSON.parse(base64.decode(req.query.filter));
+    const filter = req.query.filter
+      ? JSON.parse(base64.decode(req.query.filter))
+      : {};
     const slot = filter.slot ? filter.slot : 31;
 
     let start_date = moment()

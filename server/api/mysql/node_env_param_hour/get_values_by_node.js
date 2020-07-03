@@ -8,7 +8,9 @@ const NodeEnvParamHour = mysql.node_env_param_hours;
 module.exports = async function findByNode(req, res) {
   try {
     const params = req.params;
-    const filter = JSON.parse(base64.decode(req.query.filter));
+    const filter = req.query.filter
+      ? JSON.parse(base64.decode(req.query.filter))
+      : {};
 
     let start_date;
     let end_date;
