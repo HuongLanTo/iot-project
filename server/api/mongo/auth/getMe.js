@@ -13,6 +13,7 @@ const getMe = async function getMe(req, res) {
   const token = req.cookies ? req.cookies.user_token : null;
   logger.info("request: " + stringify(req));
   logger.info("request.cookies: " + stringify(req.cookies));
+  console.log("request:\n" , req.header);
 
   // const token = req.headers.cookies ? req.headers.cookies.user_token : null;
 

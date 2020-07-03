@@ -1,4 +1,5 @@
 const moment = require("moment");
+const base64 = require("js-base64").Base64;
 const mysql = require("../../../models/mysql");
 const Op = mysql.Sequelize.Op;
 
@@ -7,16 +8,16 @@ const NodeEnvParamHour = mysql.node_env_param_hours;
 module.exports = async function findByNode(req, res) {
   try {
     const params = req.params;
-    const query = req.query;
+    const filter = JSON.parse(base64.decode(req.query.filter));
 
     let start_date;
     let end_date;
 
-    if (query.date) {
-      start_date = moment(query.date)
+    if (filter.date) {
+      start_date = moment(filter.date)
         .set({ hour: 0, minute: 0, second: 0 })
         .toDate();
-      end_date = moment(query.date)
+      end_date = moment(filter.date)
         .set({ hour: 23, minute: 59, second: 59 })
         .toDate();
     } else {
@@ -37,7 +38,7 @@ module.exports = async function findByNode(req, res) {
 
     let data = await NodeEnvParamHour.findAll({ where });
 
-    if (query.slot && Number(query.slot) === 8) {
+    if (filter.slot && Number(filter.slot) === 8) {
       const hours = [1, 4, 7, 10, 13, 16, 19, 22];
 
       data = data.filter((v) => {
