@@ -1,8 +1,11 @@
 const fs = require("fs");
 const Node = require("../../../models/mongo/node");
+const User = require("../../../models/mongo/user");
+const Location = require("../../../models/mongo/location");
+
 const bcrypt = require("bcrypt");
 const log4js = require("log4js");
-const { formatPhoneNumber } = require("../../../utils/common");
+const { slugify } = require("../../../utils/common");
 
 log4js.configure("./config/log4js.json");
 const logger = log4js.getLogger("createNode");
@@ -10,12 +13,7 @@ const logger = log4js.getLogger("createNode");
 const createNode = async function createNode(req, res) {
   const body = req.body;
 
-  if (
-    body.created_by == null ||
-    body.location == null ||
-    body.ip == null ||
-    body.name == null
-  ) {
+  if (!body.created_by || !body.location || !body.ip || !body.name) {
     logger.info("Param invalid");
     return res.status(400).send({
       responseCode: 11,
@@ -23,12 +21,15 @@ const createNode = async function createNode(req, res) {
     });
   }
 
-  var value = new Node({
-    created_by: body.created_by,
-    location: body.location,
+  var _value = {
     ip: body.ip,
     name: body.name,
-  });
+    slug: slugify(body.name)
+  };
+  await getUser(body.created_by).then(u => _value.created_by = body.created_by);
+  await getLocation(body.location).then(l => _value.location = body.location);
+
+  var value = new Node(_value);
 
   if (body.temperature_status != null) {
     if (body.temperature_status == 1 || body.temperature_status == 0) {
@@ -134,6 +135,50 @@ const createNode = async function createNode(req, res) {
       responseDecription: err.message,
     });
   }
+};
+
+
+async function getUser(userId) { 
+  return new Promise((resolve) => {
+    User.findById(userId)
+      .select({ _id: 1, name: 1, email: 1, phone: 1 })
+      .exec((err, data) => {
+        if (err) {
+          return res.status(500).send({
+            responseCode: 0,
+            responseMessage: "Lỗi trong quá trình kiểm tra user",
+          });
+        }
+        if(!data) {
+          return res.status(400).send({
+            responseCode: 2,
+            responseMessage: "Không xác thực được người thêm mới",
+          });
+        }
+        resolve(data)
+      });
+  });
+};
+
+async function getLocation(userId) { 
+  return new Promise((resolve) => {
+    Location.findById(userId)
+      .exec((err, data) => {
+        if (err) {
+          return res.status(500).send({
+            responseCode: 0,
+            responseMessage: "Lỗi trong quá trình kiểm tra địa chỉ",
+          });
+        }
+        if(!data || !data._id) {
+          return res.status(400).send({
+            responseCode: 2,
+            responseMessage: "Không xác thực được địa chỉ node",
+          });
+        }
+        resolve(data)
+      });
+  });
 };
 
 module.exports = createNode;

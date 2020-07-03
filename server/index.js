@@ -1,9 +1,8 @@
 const express = require("express");
+const cookieParser = require('cookie-parser')
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const session = require("express-session");
-
-const cron = require('./cron')
 
 const mongo = require("./config/mongo");
 const mysql = require("./models/mysql");
@@ -12,14 +11,10 @@ const api_mysql = require("./api/mysql");
 const api_mongo = require("./api/mongo");
 
 const app = express();
+app.use(cookieParser())
 const server = require("http").Server(app);
 
 const port = process.env.PORT;
-
-/**
- * Cron Job
- */
-cron
 
 app.use((req, res, next) => {
   res.setHeader("X-Frame-Options", "ALLOWALL");
@@ -37,7 +32,7 @@ app.use((req, res, next) => {
 
   res.setHeader(
     "Access-Control-Allow-Headers",
-    "Authorization, Origin, X-Requested-With, Content-Type, Accept"
+    "Authorization, Origin, X-Requested-With, Content-Type, Accept, cookies"
   );
 
   next();

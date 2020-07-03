@@ -14,10 +14,7 @@ const login = async function (req, res) {
   }
 
   let user = null;
-
   await getUser(body.username).then(_user => user = _user)
-
-  console.log(user)
 
   if (!user) {
     return res.status(400).send({
@@ -25,8 +22,7 @@ const login = async function (req, res) {
       responseMessage: "Không tìm thấy user",
     });
   }
-
-  console.log(user.password)
+  
   const is_valid = await bcrypt.compare(body.password, user.password);
 
   if (!is_valid) {
@@ -43,12 +39,11 @@ const login = async function (req, res) {
 
   return res.status(200).send({
     responseCode: 1,
-    responseMessage: { data: { token: token } },
+    responseMessage: { data: { cookies: token } },
   });
 };
 
 function getUser(username) {
-  console.log(username);
   // await User.findOne({ username: username })
   //   .select({ _id: 1, name: 1, email: 1, phone:1 })
   //   .exec((err, data) => {

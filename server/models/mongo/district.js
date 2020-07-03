@@ -7,6 +7,7 @@ const districtSchema = new Schema({
   },
   type: {
     type: String,
+    enum: ["quan", "huyen"]
   },
   slug: {
     type: String,
@@ -23,9 +24,8 @@ const districtSchema = new Schema({
   code: {
     type: String,
   },
-  parent_id: {
-    type: mongoose.Schema.ObjectId,
-    ref: "Province",
+  parent_code: {
+    type: String,
   },
 });
 
