@@ -12,11 +12,10 @@ const logger = log4js.getLogger("getMe");
 
 const getMe = async function getMe(req, res) {
   // const token = req.cookies ? req.cookies.user_token : null;
-  const token = req.headers.cookies ? cookie.parse(req.headers.cookies).user_token : null;
+  const token = req.headers.cookie ? cookie.parse(req.headers.cookie).user_token : null;
 
-  logger.info("request: " + stringify(req));
-  logger.info("request.cookies: " + stringify(req.headers.cookies));
-  console.log("request:\n" , req.headers);
+  logger.info("request.headers: " + stringify(req.headers));
+  logger.info("request.headers.cookies: " + stringify(req.headers.cookies));
 
   // const token = req.headers.cookies ? req.headers.cookies.user_token : null;
 

@@ -35,3 +35,47 @@ function minify_words(words_str) {
 }
 
 console.log(slugify("HÀ NỘI"));
+
+
+// import { IRequest, IResponse, INextFunction } from '../../interfaces'
+// import Authorization from '../../services/authorization'
+
+// export async function authorize(req: IRequest, res: IResponse, next: INextFunction) {
+//   const token = req.cookies ? req.cookies.user_token : null
+//   const excepts = ['/login', '/logout', '/register']
+//   const login_url = '/login'
+
+//   if (excepts.includes(req.path)) return next()
+
+//   if (!token) {
+//     return res.redirect(login_url)
+//   }
+
+//   const user = await Authorization.verifyToken(token)
+
+//   if (!user) {
+//     return res.redirect(login_url)
+//   }
+
+//   req.user_id = user.id
+
+//   next()
+// }
+
+// export async function redirectIfLogged(req: IRequest, res: IResponse, next: INextFunction) {
+//   const token = req.cookies ? req.cookies.user_token : null
+
+//   if (!token) {
+//     return next()
+//   }
+
+//   const user = await Authorization.verifyToken(token)
+
+//   if (!user) {
+//     return next()
+//   }
+
+//   req.user_id = user.id
+
+//   res.redirect('/')
+// }
