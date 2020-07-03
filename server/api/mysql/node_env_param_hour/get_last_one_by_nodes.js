@@ -1,12 +1,13 @@
+const base64 = require("js-base64").Base64;
 const mysql = require("../../../models/mysql");
 
 const NodeEnvParamHour = mysql.node_env_param_hours;
 
 module.exports = async function findLastByNodes(req, res) {
   try {
-    const query = req.query;
+    const filter = JSON.parse(base64.decode(req.query.filter));
 
-    if (!query.node_ids) {
+    if (!filter.node_ids) {
       return res.status(400).send({
         error: {
           message: "Parameters not found",
@@ -14,7 +15,7 @@ module.exports = async function findLastByNodes(req, res) {
       });
     }
 
-    const node_ids = query.node_ids.split(",").map((v) => Number(v));
+    const node_ids = filter.node_ids.split(",").map((v) => Number(v));
 
     const data = await Promise.all(
       node_ids.map(async (v) => {

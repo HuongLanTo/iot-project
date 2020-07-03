@@ -1,4 +1,5 @@
 const moment = require("moment");
+const base64 = require("js-base64").Base64;
 const mysql = require("../../../models/mysql");
 const Op = mysql.Sequelize.Op;
 
@@ -7,8 +8,8 @@ const AreaEnvParamDay = mysql.area_env_param_days;
 module.exports = async function findByArea(req, res) {
   try {
     const params = req.params;
-    const query = req.query;
-    const slot = query.slot ? query.slot : 31;
+    const filter = JSON.parse(base64.decode(req.query.filter));
+    const slot = filter.slot ? filter.slot : 31;
 
     let start_date = moment()
       .subtract(slot, "day")

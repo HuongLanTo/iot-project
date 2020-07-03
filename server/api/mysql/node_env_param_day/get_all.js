@@ -1,31 +1,32 @@
+const base64 = require("js-base64").Base64;
 const mysql = require("../../../models/mysql");
 const Op = mysql.Sequelize.Op;
 
 const NodeEnvParamDay = mysql.node_env_param_days;
 
 module.exports = async function findAll(req, res) {
-  const query = req.query;
+  const filter = JSON.parse(base64.decode(req.query.filter));
 
   const page = query.page || 0;
   const size = query.size || 20;
 
   var where = {};
 
-  if (Object.keys(query).length) {
-    if (query.start_date && query.end_date) {
-      where.datetime = { [Op.between]: [query.start_date, query.end_date] };
+  if (Object.keys(filter).length) {
+    if (filter.start_date && filter.end_date) {
+      where.datetime = { [Op.between]: [filter.start_date, filter.end_date] };
     }
 
-    if (query.start_date && !query.end_date) {
-      where.datetime = { [Op.gte]: query.start_date };
+    if (filter.start_date && !filter.end_date) {
+      where.datetime = { [Op.gte]: filter.start_date };
     }
 
-    if (query.node_id) {
-      where.node_id = query.node_id;
+    if (filter.node_id) {
+      where.node_id = filter.node_id;
     }
 
-    if (query.location) {
-      where.location = { [Op.substring]: `%${query.location}%` };
+    if (filter.location) {
+      where.location = { [Op.substring]: `%${filter.location}%` };
     }
   }
 

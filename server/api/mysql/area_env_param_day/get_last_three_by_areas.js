@@ -1,4 +1,5 @@
 const moment = require("moment");
+const base64 = require("js-base64").Base64;
 const mysql = require("../../../models/mysql");
 const Op = mysql.Sequelize.Op;
 
@@ -6,9 +7,9 @@ const AreaEnvParamDay = mysql.area_env_param_hours;
 
 module.exports = async function findByAreas(req, res) {
   try {
-    const query = req.query;
+    const filter = JSON.parse(base64.decode(req.query.filter));
 
-    if (!query.area_ids) {
+    if (!filter.area_ids) {
       return res.status(400).send({
         error: {
           message: "Parameters not found",
@@ -25,7 +26,7 @@ module.exports = async function findByAreas(req, res) {
       .set({ hour: 23, minute: 59, second: 59 })
       .toDate();
 
-    const area_ids = query.area_ids.split(",").map((v) => Number(v));
+    const area_ids = filter.area_ids.split(",").map((v) => Number(v));
 
     const data = await Promise.all(
       area_ids.map(async (v) => {

@@ -1,4 +1,5 @@
 const moment = require("moment");
+const base64 = require("js-base64").Base64;
 const mysql = require("../../../models/mysql");
 const Op = mysql.Sequelize.Op;
 
@@ -6,9 +7,9 @@ const NodeEnvParamDay = mysql.node_env_param_days;
 
 module.exports = async function findByNodes(req, res) {
   try {
-    const query = req.query;
+    const filter = JSON.parse(base64.decode(req.query.filter));
 
-    if (!query.node_ids) {
+    if (!filter.node_ids) {
       return res.status(400).send({
         error: {
           message: "Parameters not found",
@@ -25,7 +26,7 @@ module.exports = async function findByNodes(req, res) {
       .set({ hour: 23, minute: 59, second: 59 })
       .toDate();
 
-    const node_ids = query.node_ids.split(",").map((v) => Number(v));
+    const node_ids = filter.node_ids.split(",").map((v) => Number(v));
 
     const data = await Promise.all(
       node_ids.map(async (v) => {
@@ -37,8 +38,6 @@ module.exports = async function findByNodes(req, res) {
           order: [["datetime", "DESC"]],
           limit: 3,
         }).then((result) => {
-          console.log(result);
-
           return {
             node_id: v,
             data: result,
