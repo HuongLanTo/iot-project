@@ -25,3 +25,8 @@
   cd server OR cd web_client
   npm run pretty
   ```
+
+5. Docs API
+  ```shell
+  https://docs.google.com/spreadsheets/d/1I-HFTSpyrfw-ThjzmvRcaJC11_qrf0CWaZHAUiquG50/edit#gid=0
+  ```
