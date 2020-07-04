@@ -8,21 +8,21 @@ export class BaseService {
 
   protected headers = new HttpHeaders({
     "Content-Type": "application/json",
-    Accept: "application/json"
+    Accept: "application/json",
+    Cookies: document.cookie,
   });
-
   protected params = new HttpParams();
 
   private getOptions() {
     return { headers: this.headers, params: this.params };
   }
 
-  private prepareAuthorization = () => {
-    const token = localStorage.getItem("auth-cookies");
-    if (token) {
-      this.headers = this.headers.set("Authorization", "Bearer " + token);
-    }
-  };
+  // private prepareAuthorization = () => {
+  //   const token = localStorage.getItem("auth-cookies");
+  //   if (token) {
+  //     this.headers = this.headers.set("Authorization", "Bearer " + token);
+  //   }
+  // };
 
   public get(
     url: string,
@@ -30,7 +30,7 @@ export class BaseService {
       [param: string]: string | string[];
     }
   ) {
-    this.prepareAuthorization();
+    // this.prepareAuthorization();
     if (params) {
       this.params = new HttpParams({
         fromObject: params
@@ -49,7 +49,7 @@ export class BaseService {
       [param: string]: string | string[];
     }
   ) {
-    this.prepareAuthorization();
+    // this.prepareAuthorization();
     let json_body =
       this.headers.get("Content-Type") == "application/json" ? true : false;
     return this.http
@@ -71,7 +71,7 @@ export class BaseService {
       [param: string]: string | string[];
     }
   ) {
-    this.prepareAuthorization();
+    // this.prepareAuthorization();
     let json_body =
       this.headers.get("Content-Type") == "application/json" ? true : false;
     return this.http
@@ -93,7 +93,7 @@ export class BaseService {
       [param: string]: string | string[];
     }
   ) {
-    this.prepareAuthorization();
+    // this.prepareAuthorization();
     if (params) {
       this.params = new HttpParams({
         fromObject: params
