@@ -1,0 +1,168 @@
+<div class="header bg-gradient-dark pb-8 pt-5 pt-md-8">
+  
+</div>
+<div class="container-fluid mt--7">
+  <div class="">
+    
+    <div class="">
+      <div class="card bg-secondary shadow">
+        <div class="card-header bg-white border-0">
+          <div class="row align-items-center">
+            <div class="col-8">
+              <h3 class="mb-0">Tạo mới node</h3>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <form>
+            <h6 class="heading-small text-muted mb-4">Thông tin node</h6>
+            <div class="pl-lg-4">
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="inputLocation">Khu vực <p style="display:inline-flex !important; color: red ">*</p></label>
+                    <select *ngIf="!isLocationInvalid" name="location" id="location" class="form-control form-control-alternative" [(ngModel)]="newNode.location" (ngModelChange)="checkLocation($event)">
+                      <option value="" disabled selected hidden>Chọn khu vực</option>
+                      <option *ngFor="let location of location">{{ location.name }}</option>
+                    </select>     
+                    <div *ngIf="isLocationInvalid" class="form-group has-danger">
+                      <select  name="location" id="location" id="inputLocation" class="form-control is-invalid" [(ngModel)]="newNode.location" (ngModelChange)="checkLocation($event)">
+                        <option value="" disabled selected hidden class="is-invalid">Khu vực không được để trống</option>
+                        <option *ngFor="let location of location">{{ location.name }}</option>
+                      </select> 
+                    </div>        
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                      <label class="form-control-label" for="latitude">Vĩ độ <p style="display:inline-flex !important; color: red ">*</p></label>
+                      <div [ngClass]="{'has-danger': isLatitudeInvalid == true}">
+                        <input class="form-control form-control-alternative" name="latitude" type="number" id="latitude" [(ngModel)]="newNode.latitude" (input)="checkLatitude($event.target.value)" [placeholder]="isLatitudeInvalid ? 'Vĩ độ không được để trống' : 'Vĩ độ'">
+                      </div>
+                    </div>
+                  </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="nodename">Tên node <p style="display:inline-flex !important; color: red ">*</p></label>
+                    <div class="form-group">
+                      <div class="form-group">
+                        <input class="form-control form-control-alternative" name="nodename" type="text" id="nodename" 
+                         placeholder="Tên node" disabled *ngIf="isNodenameInvalid">
+                         <input class="form-control form-control-alternative" name="nodename" type="text" id="nodename" 
+                        placeholder="{{ newNode.nameNode }}" disabled *ngIf="!isNodenameInvalid">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="longitude">Kinh độ <p style="display:inline-flex !important; color: red ">*</p></label>
+                    <div [ngClass]="{'has-danger': isLongitudeInvalid == true}">
+                      <input 
+                        name="longitude" type="number" id="longitude" class="form-control form-control-alternative"
+                         [(ngModel)]="newNode.longitude" (input)="checkLongitude($event.target.value)" [placeholder]="isLongitudeInvalid ? 'Kinh độ không được để trống' : 'Kinh độ'">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="address">Địa chỉ <p style="display:inline-flex !important; color: red ">*</p></label>
+                    <div [ngClass]="{'has-danger': isAddressInvalid == true}">
+                      <input  name="address" type="text" id="address" class="form-control form-control-alternative" [(ngModel)]="newNode.address" (input)="checkLongitude($event.target.value)" [placeholder]="isAddressInvalid ? 'Địa chỉ không được để trống' : 'Địa chỉ'">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label class="form-control-label">Các cảm biến <p style="display:inline-flex !important; color: red ">*</p></label>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label class="form-control-label">SO2</label>
+                                </div>
+                            </div>     
+                            <div class="col">
+                                <div class="form-group">
+                                    <label class="custom-toggle" for="so2Status">
+                                        <input type="checkbox" checked id="so2Status" [(ngModel)]="newNode.so2" name="so2Status">
+                                        <span class="custom-toggle-slider rounded-circle"></span>
+                                    </label>
+                                </div>
+                            </div>   
+                            <div class="col">
+                                <div class="form-group">
+                                    <label class="form-control-label">Nhiệt độ</label>
+                                </div>
+                            </div>     
+                            <div class="col">
+                                <div class="form-group">
+                                    <label class="custom-toggle" for="temperatureStatus">
+                                        <input type="checkbox" checked id="temperatureStatus" [(ngModel)]="newNode.temperature" name="temperatureStatus">
+                                        <span class="custom-toggle-slider rounded-circle"></span>
+                                    </label>
+                                </div>
+                            </div>   
+                            <div class="col">
+                                <div class="form-group">
+                                    <label class="form-control-label">Độ ẩm</label>
+                                </div>
+                            </div>     
+                            <div class="col">
+                                <div class="form-group">
+                                    <label class="custom-toggle" for="humidityStatus">
+                                        <input type="checkbox" checked id="humidityStatus" [(ngModel)]="newNode.humidity" name="humidityStatus">
+                                        <span class="custom-toggle-slider rounded-circle"></span>
+                                    </label>
+                                </div>
+                            </div>   
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label class="form-control-label">NO</label>
+                                </div>
+                            </div>     
+                            <div class="col">
+                                <div class="form-group">
+                                    <label class="custom-toggle" for="noStatus">
+                                        <input type="checkbox" checked id="noStatus" [(ngModel)]="newNode.no" name="noStatus">
+                                        <span class="custom-toggle-slider rounded-circle"></span>
+                                    </label>
+                                </div>
+                            </div>   
+                            <div class="col">
+                                <div class="form-group">
+                                    <label class="form-control-label">Bụi PM2.5</label>
+                                </div>
+                            </div>     
+                            <div class="col">
+                                <div class="form-group">
+                                    <label class="custom-toggle" for="buipm25Status">
+                                        <input type="checkbox" checked id="buipm25Status" [(ngModel)]="newNode.buipm25" name="buipm25Status">
+                                        <span class="custom-toggle-slider rounded-circle"></span>
+                                    </label>
+                                </div>
+                            </div>   
+                            <div class="col">
+                                
+                            </div>     
+                            <div class="col">
+                                
+                            </div>   
+                        </div>
+                        
+                    </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <hr style="margin: 0px;">
+        <div class="col-lg-4 card-body" style="padding-top:15px;">
+            <button type="button" class="btn btn-success" style="margin-left:24px;" (click)="createNode()" >Tạo mới</button>
+            <button type="button" class="btn btn-danger" (click)="redirect()" >Thoát</button>
+        </div>         
+      </div>
+    </div>
+  </div>
+</div>

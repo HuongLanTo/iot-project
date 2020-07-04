@@ -1,0 +1,136 @@
+<div class="header bg-gradient-dark pb-8 pt-5 pt-md-8">
+  
+</div>
+<div class="container-fluid mt--7">
+  <div class="">
+    
+    <div class="">
+      <div class="card bg-secondary shadow">
+        <div class="card-header bg-white border-0">
+          <div class="row align-items-center">
+            <div class="col-8">
+              <h3 class="mb-0">Tạo mới tài khoản</h3>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <form>
+            <h6 class="heading-small text-muted mb-4">Thông tin tài khoản</h6>
+            <div class="pl-lg-4">
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="username">Tên đăng nhập <p style="display:inline-flex !important; color: red ">*</p></label>
+                      <div [ngClass]="{'has-danger': isUserNameInvalid == false}">
+                        <input name="username" type="text" id="username" class="form-control form-control-alternative"
+                         placeholder="Tên đăng nhập">
+                      </div>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="name">Tên người dùng <p style="display:inline-flex !important; color: red ">*</p></label>
+                    <div [ngClass]="{'has-danger': isNameInvalid == false}">
+                      <input 
+                        name="name" type="text" id="name" class="form-control form-control-alternative"
+                        placeholder="Họ và tên">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="password">Mật khẩu <p style="display:inline-flex !important; color: red; font-size: 14px; ">*</p></label>
+                    <div [ngClass]="{'has-danger': isNameInvalid == false}">
+                      <input 
+                        name="password" type="text" id="name" class="form-control form-control-alternative"
+                        placeholder="Mật khẩu">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="email">Email <p></p></label>
+                    <div [ngClass]="{'has-danger': isNameInvalid == false}">
+                      <input 
+                        name="email" type="text" id="email" class="form-control form-control-alternative"
+                        placeholder="Email">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="inputState">Role <p style="display:inline-flex !important; color: red;">*</p></label>
+                    <div class="custom-control custom-control-alternative custom-checkbox">
+                      <input class="custom-control-input" id="adminRole" type="checkbox" [(ngModel)]="isAdminChecked" name="admin">
+                      <label class="custom-control-label" for="adminRole">
+                        <span class="text-muted">Admin</span>
+                      </label>
+                    </div>
+                    <div class="custom-control custom-control-alternative custom-checkbox">
+                      <input class="custom-control-input" id="createUserRole" type="checkbox" [(ngModel)]="isCreateUserChecked" name="createUser">
+                      <label class="custom-control-label" for="createUserRole">
+                        <span class="text-muted">Tạo tài khoản</span>
+                      </label>
+                    </div>
+                    <div class="custom-control custom-control-alternative custom-checkbox">
+                      <input class="custom-control-input" id="editUserRole" type="checkbox" [(ngModel)]="isEditUserChecked" name="editUser">
+                      <label class="custom-control-label" for="editUserRole">
+                        <span class="text-muted">Chỉnh sửa tài khoản</span>
+                      </label>
+                    </div>
+                    <div class="custom-control custom-control-alternative custom-checkbox">
+                      <input class="custom-control-input" id="approveUserRole" type="checkbox" [(ngModel)]="isApproveUserChecked" name="approveUser">
+                      <label class="custom-control-label" for="approveUserRole">
+                        <span class="text-muted">Duyệt tài khoản</span>
+                      </label>
+                    </div>
+                    <div class="custom-control custom-control-alternative custom-checkbox">
+                      <input class="custom-control-input" id="createNodeRole" type="checkbox" [(ngModel)]="isCreateNodeChecked" name="createNode" (change)="checkCreateNodeRole=!checkCreateNodeRole">
+                      <label class="custom-control-label" for="createNodeRole">
+                        <span class="text-muted">Tạo node</span>
+                      </label>
+                    </div>
+                    <div class="custom-control custom-control-alternative custom-checkbox">
+                      <input class="custom-control-input" id="editNodeRole" type="checkbox" [(ngModel)]="isEditNodeChecked" name="editNode" (change)="checkEditNodeRole=!checkEditNodeRole">
+                      <label class="custom-control-label" for="editNodeRole">
+                        <span class="text-muted">Chỉnh sửa node</span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6 d-flex flex-column">
+                  <div class="row flex-1 flex-grow-1">
+                    <div class="form-group" *ngIf="checkCreateNodeRole">
+                      <label class="form-control-label" for="locationCreateNode">Tạo node: Chọn khu vực</label>
+                      <select  name="locationCreateNode" id="locationCreateNode" class="form-control">
+                          <option value="" disabled selected hidden>Chọn khu vực</option>
+                          <option *ngFor="let district of district">{{ district.name }}</option>
+                      </select>     
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="form-group" *ngIf="checkEditNodeRole">
+                      <label class="form-control-label" for="locationEditNode">Chỉnh sửa node: Chọn khu vực</label>
+                      <select  name="locationEditNode" id="locationEditNode" class="form-control">
+                          <option value="" disabled selected hidden>Chọn khu vực</option>
+                          <option *ngFor="let district of district">{{ district.name }}</option>
+                      </select>     
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <hr style="margin: 0px;">
+        <div class="col-lg-4 card-body" style="padding-top:15px;">
+            <button type="button" class="btn btn-success" style="margin-left:24px;"  >Lưu</button>
+            <button type="button" class="btn btn-danger" >Thoát</button>
+        </div>         
+      </div>
+    </div>
+  </div>
+</div>
