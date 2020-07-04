@@ -27,6 +27,4 @@
   ```
 
 5. Docs API
-  ```shell
-  https://docs.google.com/spreadsheets/d/1I-HFTSpyrfw-ThjzmvRcaJC11_qrf0CWaZHAUiquG50/edit#gid=0
-  ```
+  [Google Excel](https://docs.google.com/spreadsheets/d/1I-HFTSpyrfw-ThjzmvRcaJC11_qrf0CWaZHAUiquG50/edit#gid=0)
