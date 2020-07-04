@@ -22,8 +22,6 @@ var curNgay2:String = "" //2 ngày trước ngày hiện tại
 var curNgay3:String = "" //3 ngày trước ngày hiện tại
 
 class Home: UIViewController {
-
-    var menu_vc: MenuViewController!
     
     var arrThongSo3Ngay:[ThongSo3Ngay] = []
     var arrThongSoGio:[ThongSoGio] = []
@@ -37,77 +35,21 @@ class Home: UIViewController {
         myTableHome.dataSource = self
         myTableHome.delegate = self
         myTableHome.tableFooterView = UIView()
+
+        navigationItem.title = "Theo Dõi Môi Trường" 
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Thêm", style: .plain, target: self, action: #selector(addTapped))
         
         getThongSo3Ngay()
-        
-        //Làm menu
-        menu_vc = self.storyboard?.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
-        //Swipe left, right to open/close menu
-        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToGesture(gesture:)))
-        swipeRight.direction = UISwipeGestureRecognizer.Direction.right
-        self.view.addGestureRecognizer(swipeRight)
-        
-        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToGesture(gesture:)))
-        swipeLeft.direction = UISwipeGestureRecognizer.Direction.left
-        self.view.addGestureRecognizer(swipeLeft)
     }
     
-    @objc func respondToGesture(gesture: UISwipeGestureRecognizer) -> Void {
-        if gesture.direction == UISwipeGestureRecognizer.Direction.right {
-            show_menu()
-        }
-         
-        else if gesture.direction == UISwipeGestureRecognizer.Direction.left {
-            close_on_swipe()
-        }
-    }
-    
-    func close_on_swipe() {
-        if AppDelegate.menu_bool == true {
-            //show the menu
-            //show_menu()
-        }
-        else {
-            //close menu
-            close_menu()
-        }
-    }
-
-    @IBAction func menu_action(_ sender: UIBarButtonItem) {
-        //show menu
-        if AppDelegate.menu_bool == true {
-            //show the menu
-            show_menu()
-        }
-        else {
-            //close menu
-            close_menu()
-        }
-    }
-    
-    func show_menu() {
-        //self.menu_vc.view.backgroundColor = UIColor.black.withAlphaComponent(0.7)
-        UIView.animate(withDuration: 0.5) {
-            self.menu_vc.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-            self.addChild(self.menu_vc)
-            self.view.addSubview(self.menu_vc.view)
-            AppDelegate.menu_bool = false
-        }
-    }
-    
-    func close_menu() {
-        UIView.animate(withDuration: 0.5, animations: {
-            self.menu_vc.view.frame = CGRect(x: -UIScreen.main.bounds.width, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-        }) { (finished) in
-            self.menu_vc.view.removeFromSuperview()
-        }
-        AppDelegate.menu_bool = true
-    }
-    
-    @IBAction func addPlace(_ sender: UIButton) {
+    @objc func addTapped() {
         let sb = UIStoryboard.init(name: "Main", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: "Area") as? Area
         self.navigationController?.pushViewController(vc!, animated: true)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        print("Theo dõi thông số will appear")
     }
     
     func getThongSo3Ngay() {

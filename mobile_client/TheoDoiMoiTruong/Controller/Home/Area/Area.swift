@@ -88,6 +88,26 @@ extension Area: UITableViewDelegate {
 }
 
 extension Area: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        var numOfSection: NSInteger = 0
+
+        if arrArea.count > 0
+         {
+            tableViewListArea.backgroundView = nil
+            numOfSection = 1
+         }
+         else
+         {
+            var noDataLabel: UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: tableViewListArea.frame.size.width, height: tableViewListArea.frame.size.height))
+            noDataLabel.text = "Không có dữ liệu để hiển thị"
+            noDataLabel.textColor = UIColor(red: 22.0/255.0, green: 106.0/255.0, blue: 176.0/255.0, alpha: 1.0)
+            noDataLabel.textAlignment = NSTextAlignment.center
+            self.tableViewListArea.backgroundView = noDataLabel
+          }
+
+        return numOfSection
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return arrArea.count
     }

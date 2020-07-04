@@ -11,7 +11,9 @@ import UIKit
 class Ranking: UIViewController {
 
     @IBOutlet weak var myTableRanking: UITableView!
+    @IBOutlet weak var lblDateBefore: UILabel!
     
+    var dateString:String = ""
     var rankingArr: [RankingAttribute] = [RankingAttribute(stt: 1, diadiem: "Đại học Thăng Long", aqi: 155),
                                           RankingAttribute(stt: 2, diadiem: "KĐT Kim Văn Kim Lũ", aqi: 125),
                                           RankingAttribute(stt: 3, diadiem: "Royal City", aqi: 90),
@@ -23,6 +25,15 @@ class Ranking: UIViewController {
         myTableRanking.dataSource = self
         myTableRanking.delegate = self
         myTableRanking.tableFooterView = UIView()
+        
+        self.navigationItem.title = "Bảng xếp hạng chỉ số AQI"
+        
+        changeDateToString()
+        lblDateBefore.text = dateString
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        print("Ranking will apeear")
     }
 }
 
@@ -62,5 +73,17 @@ extension Ranking: UITableViewDataSource {
             return cell
         }
         return UITableViewCell()
+    }
+}
+
+extension Ranking {
+    //Lấy String từ ngày hôm qua
+    func changeDateToString() {
+        let dateYesterday = Date().addingTimeInterval(-60*60*24)
+        
+        let formaterDate = DateFormatter()
+        formaterDate.dateFormat = "dd-MM-YYYY"
+        
+        dateString = formaterDate.string(from: dateYesterday)
     }
 }
