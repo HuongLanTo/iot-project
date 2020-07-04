@@ -8,6 +8,9 @@ module.exports = function (sequelize, DataTypes) {
     node_id: {
       type: DataTypes.INTEGER,
     },
+    area_id: {
+      type: DataTypes.INTEGER,
+    },
     tem: {
       type: DataTypes.FLOAT,
       defaultValue: 0,
@@ -38,6 +41,9 @@ module.exports = function (sequelize, DataTypes) {
     },
     datetime: {
       type: DataTypes.DATE,
+    },
+    area: {
+      type: DataTypes.STRING(255),
     },
     location: {
       type: DataTypes.STRING(255),
