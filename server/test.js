@@ -1,3 +1,5 @@
+const moment = require('moment');
+moment().format(); 
 var value = {
   name: "Tung",
 };
@@ -36,6 +38,16 @@ function minify_words(words_str) {
 
 console.log(slugify("HÀ NỘI"));
 
+
+console.log(moment().format())
+console.log(new Date(Date.now()))
+
+var date = moment("2014-12-29T10:00:00").format();
+var dateMonthAsWord = moment("2014-02-27T10:00:00").format();
+console.log("date", date)
+console.log("dateMonthAsWord", dateMonthAsWord)
+
+console.log(moment("2020-07-01 09:00:00").format())
 
 // import { IRequest, IResponse, INextFunction } from '../../interfaces'
 // import Authorization from '../../services/authorization'
