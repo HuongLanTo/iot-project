@@ -11,7 +11,7 @@ const api_mysql = require("./api/mysql");
 const api_mongo = require("./api/mongo");
 
 const app = express();
-app.use(cookieParser())
+// app.use(cookieParser())
 const server = require("http").Server(app);
 
 const port = process.env.PORT;
@@ -96,3 +96,23 @@ server.listen(port, (err) => {
 // }
 
 // console.log(Object.keys(roleConfig))
+
+function middleHandler(req, res, next) {
+  console.log("execute middle ware");
+  next();
+}
+
+app.use(function (req, res, next) {
+  console.log("first middle ware");                                                                                                             
+  next();
+});
+
+app.use(function (req, res, next) {
+  console.log("second middle ware");                                                                                                             
+  next();
+});
+
+app.get('/', middleHandler, function (req, res) {
+  console.log("end middleware function");
+  res.send("page render finished");
+});
