@@ -12,16 +12,18 @@ const updateUserInfo = async function updateUserInfo(req, res) {
   const role = req.body.role;
   var roleExist = false;
 
-  Role.findOne(role)
+  await Role.findOne(role)
     // .populate("role")
     .exec((err, data) => {
+      console.log(1);
+      
       if (err) {
         return res.status(500).send({
           responseCode: 0,
           responseMessage: err.message,
         });
       }
-      if (data == null || data._id == null) {
+      if (!data || !data._id) {
         return res.status(500).send({
           responseCode: -1,
           responseMessage: "Không tìm thấy Role",
@@ -31,6 +33,8 @@ const updateUserInfo = async function updateUserInfo(req, res) {
     });
 
   if (roleExist == true) {
+    console.log(2);
+
     try {
       const updatedUser = await User.update(
         {

@@ -1,0 +1,15 @@
+/* 
+  Localizations.strings
+  TheoDoiMoiTruong
+
+  Created by Duc on 6/8/20.
+  Copyright © 2020 Duc. All rights reserved.
+*/
+
+"Monday"="Mondays";
+"Tuesday"="Tuesdays";
+"Wednesday"="Wednesdays";
+"Thursday"="Thursdays";
+"Friday"="Fridays";
+"Saturday"="Saturdays";
+"Sunday"="Sundays";

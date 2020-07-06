@@ -2,4 +2,6 @@
 
 /server/node_modules
 /web_client/node_modules
-/mobile_client/node_modules
+/mobile_client/Pods
+
+/server/logs

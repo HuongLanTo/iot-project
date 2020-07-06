@@ -1,1 +1,0 @@
-[2020-06-20T18:03:31.625] [ERROR] createUser - E11000 duplicate key error collection: thesis.users index: username_1 dup key: { username: "admin" }

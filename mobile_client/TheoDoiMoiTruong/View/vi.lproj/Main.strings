@@ -1,0 +1,123 @@
+
+/* Class = "UILabel"; text = "Không tốt cho nhóm nhạy cảm"; ObjectID = "3PY-2i-M8S"; */
+"3PY-2i-M8S.text" = "Không tốt cho nhóm nhạy cảm";
+
+/* Class = "UILabel"; text = "13 tháng 5 2020"; ObjectID = "3mT-RV-PaH"; */
+"3mT-RV-PaH.text" = "13 tháng 5 2020";
+
+/* Class = "UILabel"; text = "101-150"; ObjectID = "4c3-fT-LzZ"; */
+"4c3-fT-LzZ.text" = "101-150";
+
+/* Class = "UITextField"; placeholder = "Username"; ObjectID = "56e-sR-q2O"; */
+"56e-sR-q2O.placeholder" = "Username";
+
+/* Class = "UIButton"; normalTitle = "Sign in"; ObjectID = "8wZ-qe-pRS"; */
+"8wZ-qe-pRS.normalTitle" = "Sign in";
+
+/* Class = "UILabel"; text = "19:00"; ObjectID = "8xN-TL-RHl"; */
+"8xN-TL-RHl.text" = "19:00";
+
+/* Class = "UILabel"; text = "117"; ObjectID = "9DD-k8-Qsg"; */
+"9DD-k8-Qsg.text" = "117";
+
+/* Class = "UILabel"; text = "Create Account"; ObjectID = "9ak-x5-7b1"; */
+"9ak-x5-7b1.text" = "Create Account";
+
+/* Class = "UILabel"; text = "82%"; ObjectID = "9nn-32-pTL"; */
+"9nn-32-pTL.text" = "82%";
+
+/* Class = "UILabel"; text = "Theo dõi môi trường"; ObjectID = "AjD-A8-VHH"; */
+"AjD-A8-VHH.text" = "Theo dõi môi trường";
+
+/* Class = "UILabel"; text = "24 °C"; ObjectID = "ByU-re-xzi"; */
+"ByU-re-xzi.text" = "24 °C";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "Cuo-Oz-kxI"; */
+"Cuo-Oz-kxI.title" = "Item";
+
+/* Class = "UIButton"; normalTitle = "Sign up"; ObjectID = "FCV-um-ryY"; */
+"FCV-um-ryY.normalTitle" = "Sign up";
+
+/* Class = "UILabel"; text = "AQI"; ObjectID = "Fqz-de-NoI"; */
+"Fqz-de-NoI.text" = "AQI";
+
+/* Class = "UILabel"; text = "Đống Đa"; ObjectID = "JXf-Zi-1Kv"; */
+"JXf-Zi-1Kv.text" = "Đống Đa";
+
+/* Class = "UITextField"; placeholder = "Name"; ObjectID = "LGk-fJ-mYL"; */
+"LGk-fJ-mYL.placeholder" = "Name";
+
+/* Class = "UILabel"; text = "Lịch sử"; ObjectID = "MAK-I5-Qvz"; */
+"MAK-I5-Qvz.text" = "Lịch sử";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "Mhc-BX-0r2"; */
+"Mhc-BX-0r2.placeholder" = "Password";
+
+/* Class = "UILabel"; text = "Giờ"; ObjectID = "OcC-7x-fDF"; */
+"OcC-7x-fDF.text" = "Giờ";
+
+/* Class = "UILabel"; text = "AQI: "; ObjectID = "P1D-tQ-bsW"; */
+"P1D-tQ-bsW.text" = "AQI: ";
+
+/* Class = "UILabel"; text = "82%"; ObjectID = "P7V-3A-F3R"; */
+"P7V-3A-F3R.text" = "82%";
+
+/* Class = "UILabel"; text = "19:00"; ObjectID = "PRU-Gh-aSJ"; */
+"PRU-Gh-aSJ.text" = "19:00";
+
+/* Class = "UIButton"; normalTitle = "Guest"; ObjectID = "UWP-W4-gzW"; */
+"UWP-W4-gzW.normalTitle" = "Guest";
+
+/* Class = "UILabel"; text = "24 °C"; ObjectID = "Vk2-Gf-eQV"; */
+"Vk2-Gf-eQV.text" = "24 °C";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "W8a-Ev-C6J"; */
+"W8a-Ev-C6J.title" = "Item";
+
+/* Class = "UILabel"; text = "#"; ObjectID = "WoD-6e-YM6"; */
+"WoD-6e-YM6.text" = "#";
+
+/* Class = "UILabel"; text = "Thứ Sáu"; ObjectID = "Y07-1x-pAr"; */
+"Y07-1x-pAr.text" = "Thứ Sáu";
+
+/* Class = "UIButton"; normalTitle = "Forgot Passwords"; ObjectID = "YKY-nD-Q14"; */
+"YKY-nD-Q14.normalTitle" = "Forgot Passwords";
+
+/* Class = "UILabel"; text = "127"; ObjectID = "Z7G-23-DSZ"; */
+"Z7G-23-DSZ.text" = "127";
+
+/* Class = "UILabel"; text = "Thứ Năm"; ObjectID = "iDX-fF-UFs"; */
+"iDX-fF-UFs.text" = "Thứ Năm";
+
+/* Class = "UILabel"; text = "15/04/2020"; ObjectID = "iUS-NI-BG7"; */
+"iUS-NI-BG7.text" = "15/04/2020";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "jht-Mk-dUV"; */
+"jht-Mk-dUV.placeholder" = "Password";
+
+/* Class = "UILabel"; text = "Thứ Tư"; ObjectID = "lo5-Dt-vGA"; */
+"lo5-Dt-vGA.text" = "Thứ Tư";
+
+/* Class = "UILabel"; text = "Địa điểm"; ObjectID = "p4g-MQ-sal"; */
+"p4g-MQ-sal.text" = "Địa điểm";
+
+/* Class = "UILabel"; text = "Ngày"; ObjectID = "pIU-wS-V4G"; */
+"pIU-wS-V4G.text" = "Ngày";
+
+/* Class = "UILabel"; text = "Hà Nội, Việt Nam"; ObjectID = "pq9-3e-6cW"; */
+"pq9-3e-6cW.text" = "Hà Nội, Việt Nam";
+
+/* Class = "UILabel"; text = "AQI"; ObjectID = "qON-iC-5Cv"; */
+"qON-iC-5Cv.text" = "AQI";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "rEy-JR-j2h"; */
+"rEy-JR-j2h.text" = "Label";
+
+/* Class = "UITextField"; placeholder = "Email"; ObjectID = "tlc-CF-Mro"; */
+"tlc-CF-Mro.placeholder" = "Email";
+
+/* Class = "UILabel"; text = "Sign up"; ObjectID = "xKf-kW-NKg"; */
+"xKf-kW-NKg.text" = "Sign up";
+
+/* Class = "UILabel"; text = "Sign in"; ObjectID = "yz3-Ya-2Oq"; */
+"yz3-Ya-2Oq.text" = "Sign in";

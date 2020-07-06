@@ -1,10 +1,22 @@
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
+const cookie = require("cookie");
+const log4js = require("log4js");
+const {parse, stringify} = require('flatted');
+
 const Authorization = require("./authorization");
 const User = require("../../../models/mongo/user");
 
+log4js.configure("./config/log4js.json");
+const logger = log4js.getLogger("getMe");
+
 const getMe = async function getMe(req, res) {
-  const token = req.cookies ? req.cookies.user_token : null;
+  // const token = req.cookies ? req.cookies.user_token : null;
+  const token = req.headers.cookie ? cookie.parse(req.headers.cookie).user_token : null;
+
+  logger.info("request.headers: " + stringify(req.headers));
+  logger.info("request.headers.cookies: " + stringify(req.headers.cookies));
+
   // const token = req.headers.cookies ? req.headers.cookies.user_token : null;
 
   const user = await Authorization.verifyToken(token);
@@ -62,8 +74,6 @@ async function getUser(userId) {
             responseMessage: "Lỗi trong quá trình kiểm tra user",
           });
         }
-        console.log(data);
-        
         resolve(data)
       });
   });

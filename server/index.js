@@ -4,8 +4,6 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const session = require("express-session");
 
-const cron = require('./cron')
-
 const mongo = require("./config/mongo");
 const mysql = require("./models/mysql");
 
@@ -13,7 +11,7 @@ const api_mysql = require("./api/mysql");
 const api_mongo = require("./api/mongo");
 
 const app = express();
-app.use(cookieParser())
+// app.use(cookieParser())
 const server = require("http").Server(app);
 
 const port = process.env.PORT;
@@ -34,7 +32,7 @@ app.use((req, res, next) => {
 
   res.setHeader(
     "Access-Control-Allow-Headers",
-    "Authorization, Origin, X-Requested-With, Content-Type, Accept"
+    "Authorization, Origin, X-Requested-With, Content-Type, Accept, cookies"
   );
 
   next();
@@ -89,13 +87,6 @@ server.listen(port, (err) => {
   else console.log("Server started at port " + port);
 });
 
-
-/**
- * Cron Job
- */
-cron
-
-
 // const a = {}
 
 // if (a == null) {
@@ -105,3 +96,23 @@ cron
 // }
 
 // console.log(Object.keys(roleConfig))
+
+function middleHandler(req, res, next) {
+  console.log("execute middle ware");
+  next();
+}
+
+app.use(function (req, res, next) {
+  console.log("first middle ware");                                                                                                             
+  next();
+});
+
+app.use(function (req, res, next) {
+  console.log("second middle ware");                                                                                                             
+  next();
+});
+
+app.get('/', middleHandler, function (req, res) {
+  console.log("end middleware function");
+  res.send("page render finished");
+});

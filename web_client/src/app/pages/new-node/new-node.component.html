@@ -17,6 +17,9 @@
           <form>
             <h6 class="heading-small text-muted mb-4">Thông tin node</h6>
             <div class="pl-lg-4">
+              <div *ngFor="let item of list" class="w-50 float-left prl-15">
+
+              </div>
               <div class="row">
                 <div class="col-lg-6">
                   <div class="form-group">
@@ -34,13 +37,13 @@
                   </div>
                 </div>
                 <div class="col-lg-6">
-                    <div class="form-group">
-                      <label class="form-control-label" for="latitude">Vĩ độ <p style="display:inline-flex !important; color: red ">*</p></label>
-                      <div [ngClass]="{'has-danger': isLatitudeInvalid == true}">
-                        <input class="form-control form-control-alternative" name="latitude" type="number" id="latitude" [(ngModel)]="newNode.latitude" (input)="checkLatitude($event.target.value)" [placeholder]="isLatitudeInvalid ? 'Vĩ độ không được để trống' : 'Vĩ độ'">
-                      </div>
+                  <div class="form-group">
+                    <label class="form-control-label" for="latitude">Vĩ độ <p style="display:inline-flex !important; color: red ">*</p></label>
+                    <div [ngClass]="{'has-danger': isLatitudeInvalid == true}">
+                      <input class="form-control form-control-alternative" name="latitude" type="number" id="latitude" [(ngModel)]="newNode.latitude" (input)="checkLatitude($event.target.value)" [placeholder]="isLatitudeInvalid ? 'Vĩ độ không được để trống' : 'Vĩ độ'">
                     </div>
                   </div>
+                </div>
                 <div class="col-md-6">
                   <div class="form-group">
                     <label class="form-control-label" for="nodename">Tên node <p style="display:inline-flex !important; color: red ">*</p></label>

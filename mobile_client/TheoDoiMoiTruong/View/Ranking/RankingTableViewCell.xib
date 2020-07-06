@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" restorationIdentifier="RankingTableViewCell" selectionStyle="default" indentationWidth="10" rowHeight="50" id="KGk-i7-Jjw" customClass="RankingTableViewCell" customModule="TheoDoiMoiTruong" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZLE-3a-hT0">
+                        <rect key="frame" x="20" y="10" width="8" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="bBu-xp-GJM"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="155" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RcX-VS-Ik0">
+                        <rect key="frame" x="347" y="10" width="40" height="21"/>
+                        <color key="backgroundColor" red="0.89411764705882346" green="0.16078431372549018" blue="0.23921568627450979" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="40" id="gbK-t7-o4R"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thang Long University" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3PI-vn-Qv0">
+                        <rect key="frame" x="68" y="10" width="172" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="VvR-VX-ubJ"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="3PI-vn-Qv0" firstAttribute="leading" secondItem="ZLE-3a-hT0" secondAttribute="trailing" constant="40" id="1lo-mG-pxL"/>
+                    <constraint firstItem="ZLE-3a-hT0" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="2hZ-ih-k4P"/>
+                    <constraint firstItem="3PI-vn-Qv0" firstAttribute="centerY" secondItem="ZLE-3a-hT0" secondAttribute="centerY" id="ACm-uS-GC2"/>
+                    <constraint firstItem="RcX-VS-Ik0" firstAttribute="centerY" secondItem="ZLE-3a-hT0" secondAttribute="centerY" id="OtH-qI-0co"/>
+                    <constraint firstItem="ZLE-3a-hT0" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="q4U-RR-uid"/>
+                    <constraint firstAttribute="trailing" secondItem="RcX-VS-Ik0" secondAttribute="trailing" constant="27" id="wt5-kF-d8p"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="lblAQI" destination="RcX-VS-Ik0" id="Ko9-nQ-fhd"/>
+                <outlet property="lblDiaDiem" destination="3PI-vn-Qv0" id="v5t-bc-nS8"/>
+                <outlet property="lblID" destination="ZLE-3a-hT0" id="X93-6k-Nrk"/>
+            </connections>
+            <point key="canvasLocation" x="131.8840579710145" y="2.6785714285714284"/>
+        </tableViewCell>
+    </objects>
+</document>

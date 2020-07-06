@@ -46,7 +46,7 @@ const userSchema = new Schema(
       type: String,
       enum: ["NAM", "NU", "OTHER"],
     },
-    birthday: { type: String, required: true },
+    birthday: { type: String },
     created_by: {
       type: mongoose.Schema.ObjectId,
       ref: "User",
