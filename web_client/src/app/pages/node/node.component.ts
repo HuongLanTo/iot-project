@@ -1,13 +1,6 @@
-<<<<<<< HEAD
-import { Component, OnInit } from '@angular/core';
-import { NodeService } from '../../services/node.service';
-import { ToastrService } from 'ngx-toastr';
-import { stringify } from 'querystring';
-=======
 import { Component, OnInit } from "@angular/core";
 import { NodeService } from "../../services/node.service";
 import { ToastrService } from "ngx-toastr";
->>>>>>> quannh
 
 @Component({
   selector: "app-node",
@@ -86,16 +79,10 @@ export class NodeComponent implements OnInit {
   }
 
   getNodeList() {
-<<<<<<< HEAD
     this.nodeService.getNodesList().then(data => {
       this.nodeListFull = data;
       this.nodeList = this.nodeListFull
     })
-=======
-    this.nodeService.getNodesList().then((data) => {
-      this.nodeList = data;
-    });
->>>>>>> quannh
   }
 
   updateNodeInfo() {
@@ -115,7 +102,6 @@ export class NodeComponent implements OnInit {
         this.toastrService.warning("Cập nhật thông tin node thất bại");
       });
   }
-<<<<<<< HEAD
 
   getNodeListFromNodename() {
     var tempList = [];
@@ -132,8 +118,6 @@ export class NodeComponent implements OnInit {
     
   }
 
-=======
->>>>>>> quannh
 }
 
 const KEY_DATA = [
