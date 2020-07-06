@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LocationService } from 'src/app/services/location.service';
 
 @Component({
   selector: 'app-location',
@@ -6,10 +7,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./location.component.css']
 })
 export class LocationComponent implements OnInit {
+  locationList: any;
+  constructor(
+    private locationService: LocationService
+  ) { }
 
-  constructor() { }
+  async ngOnInit() {
+    await this.getLocationList();
+  }
 
-  ngOnInit(): void {
+  getLocationList() {
+    this.locationService.getLocationList().then(data => {
+      this.locationList = data;
+    })
   }
 
 }

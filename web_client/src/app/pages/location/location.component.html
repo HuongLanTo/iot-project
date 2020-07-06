@@ -11,13 +11,10 @@
         <div class="table-responsive">
           <table class="table align-items-center table-flush">
             <thead class="thead-light">
-              <tr>
+              <tr style="text-align: center;">
                 <th scope="col">STT</th>
                 <th scope="col">Khu vực
-                  <div class="btn-group">
-                    <!-- <button class="btn btn-icon btn-3 btn-outline-secondary btn-sm" type="button">
-                      <span _ngcontent-c10="">Username</span>
-                    </button> -->
+                  <!-- <div class="btn-group">
                     <button type="button" class="btn btn-outline-secondary dropdown-toggle-split" style="padding: 2px;" data-toggle="dropdown"
                       aria-haspopup="true" aria-expanded="false">
                       <span class="btn-inner--icon"><i class="fa fa-filter" style="font-size: 10px;"></i></span>
@@ -34,21 +31,20 @@
                         </div>
                       </form>
                     </div>
-                  </div>
+                  </div> -->
                 </th>
-                <th scope="col">Lựa chọn</th>
+                <th scope="col">Số node đang hoạt động</th>
+                <th scope="col">Số node dừng hoạt động</th>
+                <th scope="col">Tổng số node</th>
               </tr>
             </thead>
             <tbody>
-              <tr >
-                <td>1</td>
-                <td>Thanh Xuân</td>
-                <td>
-                  <button class="btn btn-icon btn-sm btn-info" type="button" placement="top" ngbTooltip="Sửa"
-                    data-toggle="modal" data-target="#editModal" (click)="currentUser='hieu'" >
-                    <span class="btn-inner--icon"><i class="ni ni-single-copy-04"></i></span>
-                  </button>
-                </td>
+              <tr *ngFor="let location of locationList; let index = index" style="text-align: center;">
+                <td>{{ index + 1 }}</td>
+                <td>{{ location.name }}</td>
+                <td>{{ location.numberActiveNode }}</td>
+                <td>{{ location.numberDeactiveNode }}</td>
+                <td>{{ location.numberNode }}</td>
               </tr>
             </tbody>
           </table>
