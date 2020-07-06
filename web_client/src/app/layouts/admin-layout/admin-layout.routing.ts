@@ -15,7 +15,7 @@ import { NewLocationComponent } from 'src/app/pages/new-location/new-location.co
 import { LocationService } from 'src/app/services/location.service';
 
 export const AdminLayoutRoutes: Routes = [
-    // { path: 'dashboard',      component: DashboardComponent },
+    { path: 'dashboard',      component: DashboardComponent },
     { path: 'user-profile',   component: UserProfileComponent },
     { path: 'tables',         component: TablesComponent },
     { path: 'icons',          component: IconsComponent },

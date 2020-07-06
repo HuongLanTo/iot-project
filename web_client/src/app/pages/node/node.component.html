@@ -1,4 +1,69 @@
-<div class="header bg-gradient-dark pb-8 pt-5 pt-md-8"></div>
+<div class="header bg-gradient-default pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+    <div class="header-body">
+      <!-- Card stats -->
+      <div class="row">
+        <div class="col-xl-3 col-lg-6">
+          <div class="form-group">
+            <label class="form-control-label-white" style="color: white;" for="inputLocation">Tên node</label>
+            <div class="input-group mb-4">
+              <input class="form-control" placeholder="Nhập tên node cần tìm kiếm" type="text" [(ngModel)]="searchNodename">
+              <div class="input-group-append">
+                <button class="btn btn-icon btn-sm btn-secondary" style="padding: 8px 12px;" type="button" placement="top" (click)="getNodeListFromNodename()">
+                      <span class="btn-inner--icon"><i class="fa fa-search" aria-hidden="true"></i></span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-3 col-lg-6">
+          <div class="form-group">
+            <label class="form-control-label-white" style="color: white;" for="inputLocation">Khu vực</label>
+            <select *ngIf="!isLocationInvalid" name="location" id="location" class="form-control form-control-alternative" >
+              <option value="" disabled selected hidden>Chọn khu vực cần tìm kiếm</option>
+              <option ></option>
+            </select>     
+            <!-- <div *ngIf="isLocationInvalid" class="form-group has-danger">
+              <select  name="location" id="location" id="inputLocation" class="form-control is-invalid" [(ngModel)]="newNode.location" (ngModelChange)="checkLocation($event)">
+                <option value="" disabled selected hidden class="is-invalid">Khu vực không được để trống</option>
+                <option *ngFor="let location of location">{{ location.name }}</option>
+              </select> 
+            </div>         -->
+          </div>
+        </div>
+        <div class="col-xl-3 col-lg-6">
+          <div class="form-group">
+            <label class="form-control-label-white" style="color: white;" for="inputAddress">Địa chỉ</label>
+            <div class="input-group mb-4">
+              <input class="form-control" placeholder="Nhập địa chỉ cần tìm kiếm" type="text">
+              <div class="input-group-append">
+                <button class="btn btn-icon btn-sm btn-secondary" style="padding: 8px 12px;" type="button" placement="top">
+                      <span class="btn-inner--icon"><i class="fa fa-search" aria-hidden="true"></i></span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-3 col-lg-6">
+          <div class="form-group">
+            <label class="form-control-label-white" style="color: white;">Trạng thái</label>
+            <select *ngIf="!isLocationInvalid" name="status" id="status" class="form-control form-control-alternative" >
+              <option value="" disabled selected hidden>Chọn trạng thái cần tìm kiếm</option>
+              <option ></option>
+            </select>     
+            <!-- <div *ngIf="isLocationInvalid" class="form-group has-danger">
+              <select  name="location" id="location" id="inputLocation" class="form-control is-invalid" [(ngModel)]="newNode.location" (ngModelChange)="checkLocation($event)">
+                <option value="" disabled selected hidden class="is-invalid">Khu vực không được để trống</option>
+                <option *ngFor="let location of location">{{ location.name }}</option>
+              </select> 
+            </div>         -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- Page content -->
 <div class="container-fluid mt--7">
   <!-- Table -->
@@ -14,10 +79,7 @@
               <tr>
                 <th scope="col">STT</th>
                 <th scope="col">Tên node
-                  <div class="btn-group">
-                    <!-- <button class="btn btn-icon btn-3 btn-outline-secondary btn-sm" type="button">
-                      <span _ngcontent-c10="">Username</span>
-                    </button> -->
+                  <!-- <div class="btn-group">
                     <button type="button" class="btn btn-outline-secondary dropdown-toggle-split" style="padding: 2px;" data-toggle="dropdown"
                       aria-haspopup="true" aria-expanded="false">
                       <span class="btn-inner--icon"><i class="fa fa-filter" style="font-size: 10px;"></i></span>
@@ -34,10 +96,10 @@
                         </div>
                       </form>
                     </div>
-                  </div>
+                  </div> -->
                 </th>
                 <th scope="col">Khu vực
-                    <div class="btn-group">
+                    <!-- <div class="btn-group">
                       <button type="button" class="btn btn-outline-secondary dropdown-toggle-split" style="padding: 2px;" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
                         <span class="btn-inner--icon"><i class="fa fa-filter" style="font-size: 10px"></i></span>
@@ -54,10 +116,10 @@
                           </div>
                         </form>
                       </div>
-                    </div>
+                    </div> -->
                 </th>
                 <th scope="col">Địa chỉ
-                  <div class="btn-group">
+                  <!-- <div class="btn-group">
                     <button type="button" class="btn btn-outline-secondary dropdown-toggle-split" style="padding: 2px;" data-toggle="dropdown"
                       aria-haspopup="true" aria-expanded="false">
                       <span class="btn-inner--icon"><i class="fa fa-filter" style="font-size: 10px"></i></span>
@@ -74,7 +136,7 @@
                         </div>
                       </form>
                     </div>
-                  </div>
+                  </div> -->
                 </th>
                 <th scope="col">Nhiệt độ</th>
                 <th scope="col">Độ ẩm</th>
