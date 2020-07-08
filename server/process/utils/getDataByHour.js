@@ -16,32 +16,31 @@ const getDataSensorByHour = async function getDataSensorByHour(req, res) {
     const endHour = parseInt(req.body.hour) + 1;
     const endTime = req.body.year + '-' + req.body.month + '-' + req.body.day + 'T' + endHour + ':00:00';
 
-
-
-
     console.log(startTime)
     console.log(endTime)
 
-    Node.createIndex( { created_at: "text" } )
-    // Node.find(
-    //     {created_at: 
-    //     {$gte: moment('2020-06-30 15:00:00').format(), $lte: moment('2020-06-30 16:00:00').format()}
-    // })
-    // .then(data => {
-    //     console.log('abc');
-    //     console.log(data)
-    //     res.send(data)
-    // })
 
     Node.find(
-        {$text: 
-        {$search: "2020-06-30T15"}
+        {created_at: 
+        // {$gte: moment('2020-06-30 15:00:00').format(), $lte: moment('2020-06-30 16:00:00').format()}
+        {$gte: "2020-06-30 20:00:00"}
     })
     .then(data => {
         console.log('abc');
         console.log(data)
         res.send(data)
     })
+
+    // Node.index({created_at: 'text'});
+    // Node.find(
+    //     {$text: 
+    //     {$search: "2020-06-30 15"}
+    // })
+    // .then(data => {
+    //     console.log('abc');
+    //     console.log(data)
+    //     res.send(data)
+    // })
 };
 
 module.exports = getDataSensorByHour;

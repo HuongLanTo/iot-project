@@ -14,10 +14,14 @@ export async function authorize(req, res, next) {
   const user = await Authorization.verifyToken(token)
 
   if (!user) {
-    return res.redirect(login_url)
+    return res.status(400).send({
+      responseCode: 0,
+      responseMessage: "Người dùng không tồn tài"
+    });
   }
 
   req.user_id = user.id
 
   next()
 }
+

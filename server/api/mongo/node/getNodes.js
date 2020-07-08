@@ -10,6 +10,7 @@ log4js.configure("./config/log4js.json");
 const logger = log4js.getLogger("createUser");
 
 const getUsers = async function getUsers(req, res) {
+  console.log(req.query.filter)
   const filter = JSON.parse(base64.decode(req.query.filter));
   var page = parseInt(req.query.page);
   var size = parseInt(req.query.size);
