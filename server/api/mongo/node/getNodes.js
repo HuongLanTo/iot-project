@@ -5,6 +5,8 @@ const Location = require("../../../models/mongo/location");
 const bcrypt = require("bcrypt");
 const log4js = require("log4js");
 const base64 = require("js-base64").Base64;
+const mongoose = require("mongoose");
+const ObjectId = mongoose.Types.ObjectId;
 
 log4js.configure("./config/log4js.json");
 const logger = log4js.getLogger("createUser");
@@ -26,47 +28,32 @@ const getUsers = async function getUsers(req, res) {
   limit.skip = size * (page - 1);
   limit.limit = size;
 
-  var name = "";
-  if (filter.name != null) {
-    name = filter.name;
+  var districtQuery = {};
+  if(filter.district) {
+    districtQuery = {
+      "location_info.district": ObjectId(filter.district)
+    }
   }
-
-  Node.createIndex({ name: "text" });
 
   Node.aggregate(
     [
-      { $match: { $text: { $search: name } } },
-      {
-        $project: {
-          _id: 1,
-          created_by: 1,
-          status: 1,
-          approve: 1,
-          reason: 1,
-          temperature_status: 1,
-          humidity_status: 1,
-          dust_status: 1,
-          co_status: 1,
-          pressure_status: 1,
-          nh3_status: 1,
-          co2_status: 1,
-          smoke_status: 1,
-          location: 1,
-          ip: 1,
-          score: { $meta: "textScore" },
-        },
+      { "$lookup": {
+          "from": 'locations',
+          "localField": "location",
+          "foreignField": "_id",
+          "as": "location_info"
+      }},
+      { "$unwind": "$location_info" },
+      { 
+          "$match":{
+              "$and":[
+                  // { "location_info.district": { "$regex": filter.district?filter.district:'', "$options": 'i' }},
+                  districtQuery,
+                  { "name": { "$regex": filter.name?filter.name:'', "$options": 'i' }},
+              ]
+           }
       },
-      { $match: { score: { $gt: 0.5 } } },
-      {
-        $lookup: {
-          from: Location.collection.name,
-          localField: "location",
-          foreignField: "_id",
-          as: "location",
-        },
-      },
-      { $match: { "location.district": filter.district } },
-    ],
+  ],
     function (err, result) {
       if (err) {
         return res.status(500).send({
@@ -81,6 +68,7 @@ const getUsers = async function getUsers(req, res) {
       });
     }
   );
+
 };
 
 module.exports = getUsers;
