@@ -23,4 +23,15 @@ export class LocationService {
             )
         })
     }
+
+    createLocation(location: any): Promise<boolean> {
+        return new Promise((resolve, reject) => {
+            this.http.post(this.API_URL + '/location', location)
+                .subscribe(res => {
+                    resolve(true);
+                }, err => {
+                    reject(err);
+                })
+        })
+    }
 }

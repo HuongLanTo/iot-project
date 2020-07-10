@@ -38,7 +38,7 @@ export class AuthService {
         return false;
       } else {
         return !this.jwtHelper.isTokenExpired(token);
-        return true;
+        //return true;
       }
     }
 

@@ -24,7 +24,7 @@ const routes: Routes =[
         loadChildren: './layouts/admin-layout/admin-layout.module#AdminLayoutModule'
       }
     ],
-    canActivate: [AuthGuardService],
+    // canActivate: [AuthGuardService],
   }, 
   {
     path: '',

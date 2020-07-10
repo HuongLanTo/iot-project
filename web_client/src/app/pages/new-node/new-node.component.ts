@@ -1,5 +1,4 @@
 import { Component, OnInit } from "@angular/core";
-import { District, district } from "src/app/data/district";
 import { Http } from "@angular/http";
 import { NodeService } from "src/app/services/node.service";
 import { ToastrService } from "ngx-toastr";

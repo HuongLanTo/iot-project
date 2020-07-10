@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup } from '@angular/forms';
-import { district, District } from 'src/app/data/district';
 import { Role, role } from 'src/app/models/role';
 
 @Component({
@@ -19,7 +18,6 @@ export class NewUserComponent implements OnInit {
   isApproveUserChecked: boolean = false;
   isCreateNodeChecked: boolean = false;
   isEditNodeChecked: boolean = false;
-  district: District[] = district;
   
   constructor() { }
 

@@ -24,6 +24,37 @@ export class UserComponent implements OnInit {
     this.getUserList();
   }
 
+  get fields() {
+    return FIELDS;
+  }
+
+  get key_data() {
+    return KEY_DATA;
+  }
+
+  get status() {
+    return STATUS;
+  }
+
+  is_string(type: string) {
+    return type === "string";
+  }
+
+  is_boolean(type: string) {
+    return type === "boolean";
+  }
+
+  is_input(type: string) {
+    return type === "input";
+  }
+
+  is_select(type: string) {
+    return type === "select";
+  }
+
+  status_vn(value: string | number) {
+    return value ? "Đang hoạt động" : "Dừng hoạt động";
+  }
 
   getUserList() {
     this.userService.getUserList().then(data => {
@@ -32,3 +63,56 @@ export class UserComponent implements OnInit {
   }
 
 }
+
+const STATUS = [
+  { value: true, name: "Active" },
+  { value: false, name: "Deactive" },
+];
+
+const KEY_DATA = [
+  {
+    key: "username",
+    type: "string",
+  },
+  {
+    key: "name",
+    type: "string",
+  },
+  {
+    key: "role",
+    type: "string",
+  },
+  {
+    key: "status",
+    type: "boolean",
+  },
+  {
+    key: "email",
+    type: "string",
+  },
+];
+
+const FIELDS = [
+  {
+    label: "Username",
+    name: "username",
+  },
+  {
+    label: "Họ và tên",
+    name: "name",
+  },
+  {
+    label: "Vai trò",
+    name: "role",
+  },
+  {
+    label: "Trạng thái",
+    name: "status"
+  }, 
+  {
+    label: "Email",
+    name: "email"
+  }
+];
+
+

@@ -1,4 +1,122 @@
-<div class="header bg-gradient-dark pb-8 pt-5 pt-md-8"></div>
+<div class="header bg-gradient-default pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+    <div class="header-body">
+      <!-- Card stats -->
+      <div class="row">
+        <div class="col-xl-3 col-lg-6">
+          <div class="form-group">
+            <label
+              class="form-control-label-white"
+              style="color: white;"
+              for="inputLocation"
+              >Username</label
+            >
+            <div class="input-group mb-4">
+              <input
+                class="form-control"
+                placeholder="Nhập username cần tìm kiếm"
+                type="text"
+                [(ngModel)]="searchNodename"
+              />
+              <div class="input-group-append">
+                <button
+                  class="btn btn-icon btn-sm btn-secondary"
+                  style="padding: 8px 12px;"
+                  type="button"
+                  placement="top"
+                  (click)="getNodeListFromNodename()"
+                >
+                  <span class="btn-inner--icon"
+                    ><i class="fa fa-search" aria-hidden="true"></i
+                  ></span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-3 col-lg-6">
+          <div class="form-group">
+            <label
+              class="form-control-label-white"
+              style="color: white;"
+              for="inputLocation"
+              >Họ và tên</label
+            >
+            <div class="input-group mb-4">
+              <input
+                class="form-control"
+                placeholder="Nhập họ và tên cần tìm kiếm"
+                type="text"
+                [(ngModel)]="searchNodename"
+              />
+              <div class="input-group-append">
+                <button
+                  class="btn btn-icon btn-sm btn-secondary"
+                  style="padding: 8px 12px;"
+                  type="button"
+                  placement="top"
+                  (click)="getNodeListFromNodename()"
+                >
+                  <span class="btn-inner--icon"
+                    ><i class="fa fa-search" aria-hidden="true"></i
+                  ></span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-3 col-lg-6">
+          <div class="form-group">
+            <label class="form-control-label-white" style="color: white;"
+              >Vai trò</label
+            >
+            <select
+              *ngIf="!isLocationInvalid"
+              name="status"
+              id="status"
+              class="form-control form-control-alternative"
+            >
+              <option value="" disabled selected hidden
+                >Chọn vai trò cần tìm kiếm</option
+              >
+              <option></option>
+            </select>
+            <!-- <div *ngIf="isLocationInvalid" class="form-group has-danger">
+              <select  name="location" id="location" id="inputLocation" class="form-control is-invalid" [(ngModel)]="newNode.location" (ngModelChange)="checkLocation($event)">
+                <option value="" disabled selected hidden class="is-invalid">Khu vực không được để trống</option>
+                <option *ngFor="let location of location">{{ location.name }}</option>
+              </select> 
+            </div>         -->
+          </div>
+        </div>
+        <div class="col-xl-3 col-lg-6">
+          <div class="form-group">
+            <label class="form-control-label-white" style="color: white;"
+              >Trạng thái</label
+            >
+            <select
+              *ngIf="!isLocationInvalid"
+              name="status"
+              id="status"
+              class="form-control form-control-alternative"
+            >
+              <option value="" disabled selected hidden
+                >Chọn trạng thái cần tìm kiếm</option
+              >
+              <option></option>
+            </select>
+            <!-- <div *ngIf="isLocationInvalid" class="form-group has-danger">
+              <select  name="location" id="location" id="inputLocation" class="form-control is-invalid" [(ngModel)]="newNode.location" (ngModelChange)="checkLocation($event)">
+                <option value="" disabled selected hidden class="is-invalid">Khu vực không được để trống</option>
+                <option *ngFor="let location of location">{{ location.name }}</option>
+              </select> 
+            </div>         -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <!-- Page content -->
 <div class="container-fluid mt--7">
   <!-- Table -->
@@ -11,70 +129,28 @@
         <div class="table-responsive">
           <table class="table align-items-center table-flush">
             <thead class="thead-light">
-              <tr>
+              <tr style="text-align: center;">
                 <th scope="col">STT</th>
-                <th scope="col">Username
-                  <div class="btn-group">
-                    <!-- <button class="btn btn-icon btn-3 btn-outline-secondary btn-sm" type="button">
-                      <span _ngcontent-c10="">Username</span>
-                    </button> -->
-                    <button type="button" class="btn btn-outline-secondary dropdown-toggle-split" style="padding: 2px;" data-toggle="dropdown"
-                      aria-haspopup="true" aria-expanded="false">
-                      <span class="btn-inner--icon"><i class="fa fa-filter" style="font-size: 10px;"></i></span>
-                    </button>
-                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left px-3" style="width: 300px">
-                      <form>
-                        <div class="form-group" style="margin-bottom: 0!important">
-                          <div class="input-group">
-                            <input class="form-control" placeholder="Tìm kiếm username" type="text" style="height: 30px" name="username">
-                          </div>
-                        </div>
-                        <div class="text-right mt-2">
-                          <button type="button" class="btn btn-primary btn-sm" data-dismiss="dropdown">Lọc</button>
-                        </div>
-                      </form>
-                    </div>
-                  </div>
-                </th>
-                <th scope="col">Họ và tên
-                  <div class="btn-group">
-                    <!-- <button class="btn btn-icon btn-3 btn-outline-secondary btn-sm" type="button">
-                      <span _ngcontent-c10="">Username</span>
-                    </button> -->
-                    <button type="button" class="btn btn-outline-secondary dropdown-toggle-split" style="padding: 2px;" data-toggle="dropdown"
-                      aria-haspopup="true" aria-expanded="false">
-                      <span class="btn-inner--icon"><i class="fa fa-filter" style="font-size: 10px"></i></span>
-                    </button>
-                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left px-3" style="width: 300px">
-                      <form>
-                        <div class="form-group" style="margin-bottom: 0!important">
-                          <div class="input-group">
-                            <input class="form-control" placeholder="Tìm kiếm username" type="text" style="height: 30px" name="username">
-                          </div>
-                        </div>
-                        <div class="text-right mt-2">
-                          <button type="button" class="btn btn-primary btn-sm" data-dismiss="dropdown">Lọc</button>
-                        </div>
-                      </form>
-                    </div>
-                  </div>
-                </th>
-                <th scope="col">Trạng thái</th>
-                <th scope="col">Role</th>
+                <th scope="col" *ngFor="let field of fields;">{{ field.label }}</th>
                 <th scope="col">Lựa chọn</th>
-                <th scope="col"></th>
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let user of userList; let index=index">
+              <tr *ngFor="let user of userList; let index=index" style="text-align: center;">
                 <td>{{ index + 1 }}</td>
-                <td>{{ user.name }}</td>
-                <td>{{ user.username }}</td>
-                <td>
-                    <span *ngIf="user.status" class="badge badge-pill badge-success">Đang hoạt động</span>
-                    <span *ngIf="!user.status" class="badge badge-pill badge-danger">Dừng hoạt động</span>
+                <td *ngFor="let key_data of key_data">
+                  <span *ngIf="is_string(key_data.type)">{{ user[key_data.key] }}</span>
+                  <div *ngIf="is_boolean(key_data.type)">
+                    <span
+                      [ngClass]="[
+                        'badge',
+                        'badge-pill',
+                        user[key_data.key] ? 'badge-success' : 'badge-danger'
+                      ]"
+                      >{{ status_vn(user[key_data.key]) }}</span
+                    >
+                  </div>
                 </td>
-                <td>{{ user.role }}</td>
                 <td>
                   <button class="btn btn-icon btn-sm btn-info" type="button" placement="top" ngbTooltip="Sửa" data-toggle="modal" data-target="#editModal" (click)="currentUser=user">
                     <span class="btn-inner--icon"><i class="ni ni-single-copy-04"></i></span>
