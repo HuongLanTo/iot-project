@@ -14,11 +14,11 @@ const createLocation = async function createLocation(req, res) {
   const body = req.body;
 
   if (
-    body.province == null ||
-    body.district == null ||
-    body.detail_location == null ||
-    body.latitude == null ||
-    body.longitude == null
+    !body.province ||
+    !body.district ||
+    !body.detail_location ||
+    !body.latitude ||
+    !body.longitude
   ) {
     logger.info("Param invalid");
     return res.status(400).send({

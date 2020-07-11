@@ -16,7 +16,7 @@ const createAction = async function createAction(req, res) {
     });
   }
 
-  let existedAction;
+  let existedAction = false;
   try {
     existedAction = await Action.findOne({ slug: await slugify(body.name) })
   } catch (error) {
@@ -59,8 +59,7 @@ const createAction = async function createAction(req, res) {
     logger.error(err.message);
     return res.status(500).send({
       responseCode: 0,
-      responseMessage: "Tạo mới không thành công, Hệ thống đang bận",
-      responseDecription: err.message,
+      responseMessage: "Tạo mới không thành công, Hệ thống đang bận\n" + err.message
     });
   }
 };
