@@ -9,7 +9,12 @@ const logger = log4js.getLogger("createUser");
 
 const getUser = async function getUser(req, res) {
   await User.findById(req.params.id)
-    // .populate("role")
+    .populate({
+      path : 'role',
+      populate : {
+        path : 'area_permission action_permission'
+      }
+    })
     .exec((err, data) => {
       if (err) {
         return res.status(500).send({
@@ -24,7 +29,6 @@ const getUser = async function getUser(req, res) {
           responseMessage: "Id User không tồn tài"
         });
       }
-
       return res.status(200).send({
         responseCode: 1,
         responseMessage: "Thành công",
