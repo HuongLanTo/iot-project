@@ -14,8 +14,26 @@ const logger = log4js.getLogger("createUser");
 const getUsers = async function getUsers(req, res) {
   console.log(req.query.filter)
   const filter = JSON.parse(base64.decode(req.query.filter));
-  var page = parseInt(req.query.page);
-  var size = parseInt(req.query.size);
+  var page = 1;
+  var size = 0;
+
+  if(req.query.page) {
+    page = parseInt(req.query.page);
+  }
+  if(req.query.size) {
+    size = parseInt(req.query.size);
+  }
+  
+  // if(!req.query.page) {
+  //   page = 1;
+  // }else {
+  //   page = parseInt(req.query.page);
+  // }
+  // if(!req.query.size) {
+  //   size = 0;
+  // }else {
+  //   size = parseInt(req.query.size);
+  // }
   var limit = {};
 
   if (page < 0 || page === 0) {
