@@ -34,7 +34,7 @@ module.exports = async function findLastByAreas(req, res) {
         order: [["area_id", "ASC"]],
       });
     } else {
-      const list_area_id = area_ids.split(",").map((v) => Number(v));
+      const list_area_id = area_ids.split(",");
 
       data = await Promise.all(
         list_area_id.map(async (v) => {

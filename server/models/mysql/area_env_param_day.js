@@ -6,7 +6,7 @@ module.exports = function (sequelize, DataTypes) {
       primaryKey: true,
     },
     area_id: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING(55),
     },
     area: {
       type: DataTypes.STRING(255),
