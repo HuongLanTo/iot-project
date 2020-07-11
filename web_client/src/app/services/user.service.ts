@@ -27,9 +27,28 @@ export class UserService {
         })
     }
 
+    // getUserList(filter: any, page: number, size: number) {
+    //     return this.get(`api/user/?page=${page}$size=${size}`, {'filter': JSON.stringify(filter)})
+    //         .then(res => {
+    //             console.log(1123, res);
+                
+    //             var object = JSON.parse((<any>res)._body);
+    //             return object;
+    //         })
+    //         .catch(err => err)
+    // }
+
     createUser(user: any) {
         console.log('Tai khoan dang cho phe duyet:', user);
         
+    }
+
+    approve(id: string, userInfo) {
+        console.log('Phe duyet tai khoan: ', userInfo);
+    }
+
+    disapprove(id: string, userInfo) {
+        console.log('Tu choi phe duyet tai khoan: ', userInfo);
     }
 
     

@@ -15,7 +15,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 export class ProfileService extends BaseService {
 
   getProfile() {
-    return this.get("/auth").then(
+    return this.get("/auth/get-me").then(
       (res: {data: any}) => {
         return res.data;
       }
