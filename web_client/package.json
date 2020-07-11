@@ -38,6 +38,7 @@
     "moment": "^2.27.0",
     "ng-apexcharts": "^1.3.0",
     "ngx-clipboard": "13.0.0",
+    "ngx-spinner": "^9.0.2",
     "ngx-toastr": "12.0.0",
     "nouislider": "13.1.1",
     "rxjs": "6.5.4",

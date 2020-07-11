@@ -27,5 +27,10 @@ export class UserService {
         })
     }
 
+    createUser(user: any) {
+        console.log('Tai khoan dang cho phe duyet:', user);
+        
+    }
+
     
 }

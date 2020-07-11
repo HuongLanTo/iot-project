@@ -52,8 +52,8 @@ export const ROUTES: RouteInfo[] = [
       path: 'Quản lý người dùng',
       role: ['admin'],
       subPath: [
-        { path: '/user', title: 'Danh sách người dùng', role: ['admin'], icon: 'ni ni-bullet-list-67' },
-        { path: '/new-user', title: 'Tạo mới người dùng', role: ['admin'], icon: 'ni ni-fat-add' },
+        { path: '/user', title: 'Danh sách', role: ['admin'], icon: 'ni ni-bullet-list-67' },
+        { path: '/new-user', title: 'Tạo mới', role: ['admin'], icon: 'ni ni-fat-add' },
         { path: '/pending-user', title: 'Chờ phê duyệt', role: ['admin'], icon: 'ni ni-check-bold' },
       ]
     },

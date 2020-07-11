@@ -19,7 +19,6 @@ import { NodeComponent } from 'src/app/pages/node/node.component';
 import { NewNodeComponent } from 'src/app/pages/new-node/new-node.component';
 import { LocationComponent } from 'src/app/pages/location/location.component';
 import { NewLocationComponent } from 'src/app/pages/new-location/new-location.component';
-import { PaginationComponent } from 'src/app/pages/pagination/pagination.component';
 // import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
@@ -43,8 +42,7 @@ import { PaginationComponent } from 'src/app/pages/pagination/pagination.compone
     NodeComponent,
     NewNodeComponent,
     LocationComponent,
-    NewLocationComponent,
-    PaginationComponent
+    NewLocationComponent
   ],
 })
 
