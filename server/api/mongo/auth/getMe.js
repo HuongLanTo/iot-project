@@ -15,7 +15,7 @@ const getMe = async function getMe(req, res) {
   const token = req.headers.cookie ? cookie.parse(req.headers.cookie).user_token : null;
 
   logger.info("request.headers: " + stringify(req.headers));
-  logger.info("request.headers.cookies: " + stringify(req.headers.cookies));
+  logger.info("request.headers.cookie: " + stringify(req.headers.cookie));
 
   // const token = req.headers.cookies ? req.headers.cookies.user_token : null;
 

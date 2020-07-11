@@ -7,6 +7,7 @@ const subDistrictSchema = new Schema({
   },
   type: {
     type: String,
+    enum: ["phuong", "xa"]
   },
   slug: {
     type: String,
@@ -23,9 +24,8 @@ const subDistrictSchema = new Schema({
   code: {
     type: String,
   },
-  parent_id: {
-    type: mongoose.Schema.ObjectId,
-    ref: "District",
+  parent_code: {
+    type: String,
   },
 });
 

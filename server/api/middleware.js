@@ -1,4 +1,13 @@
+const jwt = require("jsonwebtoken");
+const bcrypt = require("bcrypt");
+const cookie = require("cookie");
+const log4js = require("log4js");
+const {parse, stringify} = require('flatted');
 
+const Authorization = require("./mongo/auth/authorization");
+
+log4js.configure("./config/log4js.json");
+const logger = log4js.getLogger("getMe");
 
 export async function authorize(req, res, next) {
   const token = req.cookies ? req.cookies.user_token : null

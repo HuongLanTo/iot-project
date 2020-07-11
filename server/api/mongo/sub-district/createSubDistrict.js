@@ -1,7 +1,8 @@
 const fs = require("fs");
-const SubDistrict = require("../../models/sub-district");
+const SubDistrict = require(".");
 const log4js = require("log4js");
-const { formatPhoneNumber } = require("../../../utils/common");
+const { slugify } = require("../../../utils/common");
+const bodyParser = require("body-parser");
 
 log4js.configure("./config/log4js.json");
 const logger = log4js.getLogger("createPrivince");
@@ -24,7 +25,11 @@ const createSubDistrict = async function createSubDistrict(req, res) {
 
   var value = new SubDistrict({
     name: body.name,
+    slug: bodyParser.slug,
     type: body.type,
+    name_with_type: body.name_with_type,
+    path: body.path,
+    path_with_type: body.path_with_type,
     code: body.code,
     parent_code: body.parent_code,
   });
