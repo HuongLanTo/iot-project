@@ -3,35 +3,23 @@
     <div class="header-body">
       <!-- Card stats -->
       <div class="row">
-        <div class="col-xl-3 col-lg-6"></div>
+        <div class="col-xl-2 col-lg-6"></div>
         <div class="col-xl-3 col-lg-6"></div>
         <div class="col-xl-3 col-lg-6">
           <div class="form-group">
-            <label
-              class="form-control-label-white"
-              style="color: white;"
-              for="inputAddress"
-              >Tên khu vực</label
+            <label class="form-control-label-white" style="color: white;" for="province"
+              >Thành phố</label
             >
-            <div class="input-group mb-4">
-              <input
-                class="form-control"
-                placeholder="Nhập tên khu vực cần tìm kiếm"
-                type="text"
-              />
-              <div class="input-group-append">
-                <button
-                  class="btn btn-icon btn-sm btn-secondary"
-                  style="padding: 8px 12px;"
-                  type="button"
-                  placement="top"
-                >
-                  <span class="btn-inner--icon"
-                    ><i class="fa fa-search" aria-hidden="true"></i
-                  ></span>
-                </button>
-              </div>
-            </div>
+            <select
+              name="province"
+              id="province"
+              class="form-control form-control-alternative"
+              [(ngModel)]="searchProvince"
+              (ngModelChange)="getProvinceCodeAndProvinceId($event)"
+            >
+              <option value="" disabled selected hidden>Chọn thành phố cần tìm kiếm</option>
+              <option *ngFor="let province of provinceList" [ngValue]="province">{{ province.name }}</option>
+            </select>
           </div>
         </div>
         <div class="col-xl-3 col-lg-6">
@@ -40,15 +28,19 @@
               >Quận</label
             >
             <select
-              *ngIf="!isLocationInvalid"
               name="status"
               id="status"
               class="form-control form-control-alternative"
+              [(ngModel)]="searchDistrict"
+              (ngModelChange)="getDistrictId($event)"
+              [disabled]="!checkCityCode"
             >
               <option value="" disabled selected hidden
                 >Chọn quận cần tìm kiếm</option
               >
-              <option *ngFor="let district of district">{{ district.name }}</option>
+              <option *ngFor="let district of districtList"  [ngValue]="district">
+                <span *ngIf="district.parent_code==provinceCode">{{ district.name }}</span>
+              </option>
             </select>
             <!-- <div *ngIf="isLocationInvalid" class="form-group has-danger">
               <select  name="location" id="location" id="inputLocation" class="form-control is-invalid" [(ngModel)]="newNode.location" (ngModelChange)="checkLocation($event)">
@@ -57,6 +49,11 @@
               </select> 
             </div>         -->
           </div>
+        </div>
+        <div class="col-xl-1 col-lg-6">
+          <button class="btn btn-icon btn-2 btn-warning" type="button" style="margin-top: 33px" (click)="search()">
+            <span class="btn-inner--icon"><i class="fa fa-search" aria-hidden="true" style="color: black;"></i></span>
+          </button>
         </div>
       </div>
     </div>
@@ -78,13 +75,14 @@
               <tr style="text-align: center;">
                 <th scope="col">STT</th>
                 <th scope="col" *ngFor="let field of fields">{{ field.label }}</th>
+                <th scope="col">Lựa chọn</th>
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let location of locationList; let index = index" style="text-align: center;">
                 <td>{{ index + 1 }}</td>
                 <td *ngFor="let field of fields">
-                  <span *ngIf="field.name=='location'">{{ location.detail }}, {{ location.sub_district }}, {{ location.district }}</span>
+                  <span *ngIf="field.name=='location'">{{ location.detail }}</span>
                   <span *ngIf="field.name!='location'">{{ location[field.name] }}</span>
                 </td> 
                 <td>

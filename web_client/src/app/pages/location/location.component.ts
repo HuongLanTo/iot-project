@@ -9,24 +9,65 @@ import { District, district_data } from 'src/app/data/district';
 })
 export class LocationComponent implements OnInit {
   locationList: any;
-  district: District[] = district_data;
+  provinceList: any;
+  districtList: any;
   currentLocation: any = {};
+  searchProvince = "";
+  searchDistrict = "";
+
+  provinceCode: number;
+  searchByProvince = "";
+  searchByDistrict = "";
+  checkCityCode = false;
+
   constructor(
     private locationService: LocationService
   ) { }
 
   async ngOnInit() {
     await this.getLocationList();
+    await this.getProvinceList();
+    await this.getDistrictList();
   }
 
   get fields() {
     return FIELDS;
   }
 
-  getLocationList() {
+  async getLocationList() {
     this.locationService.getLocationList().then(data => {
       this.locationList = data;
     })
+  }
+
+  async getProvinceList() {
+    this.locationService.getProvinceList().then(data => {
+      this.provinceList = data;
+    })
+  }
+
+  async getDistrictList() {
+    this.locationService.getDistrictList().then(data => {
+      this.districtList = data;
+    })
+  }
+
+  getProvinceCodeAndProvinceId(value) {
+    this.checkCityCode = true
+    this.provinceCode = value.code;
+    this.searchByProvince = value._id;
+    console.log(this.provinceCode, this.searchByProvince);
+    
+  }
+
+  getDistrictId(value) {
+    this.searchByDistrict = value._id;
+    console.log(this.searchByDistrict);
+    
+  }
+
+  search() {
+    
   }
 
 }
@@ -78,6 +119,10 @@ const FIELDS = [
   {
     label: "Quận",
     name: "district",
+  },
+  {
+    label: "Thành phố",
+    name: "province"
   },
   {
     label: "Số node đang hoạt động",
