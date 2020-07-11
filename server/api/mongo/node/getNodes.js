@@ -12,8 +12,10 @@ log4js.configure("./config/log4js.json");
 const logger = log4js.getLogger("createUser");
 
 const getUsers = async function getUsers(req, res) {
-  console.log(req.query.filter)
-  const filter = JSON.parse(base64.decode(req.query.filter));
+  var filter ={};
+  if(req.query.filter) {
+    var filter = JSON.parse(base64.decode(req.query.filter));
+  }
   var page = 1;
   var size = 0;
 
@@ -23,17 +25,7 @@ const getUsers = async function getUsers(req, res) {
   if(req.query.size) {
     size = parseInt(req.query.size);
   }
-  
-  // if(!req.query.page) {
-  //   page = 1;
-  // }else {
-  //   page = parseInt(req.query.page);
-  // }
-  // if(!req.query.size) {
-  //   size = 0;
-  // }else {
-  //   size = parseInt(req.query.size);
-  // }
+
   var limit = {};
 
   if (page < 0 || page === 0) {
