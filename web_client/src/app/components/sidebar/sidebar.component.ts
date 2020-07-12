@@ -48,6 +48,15 @@ export const ROUTES: RouteInfo[] = [
         { path: '/pending-user', title: 'Chờ phê duyệt', role: ['admin'], icon: 'ni ni-fat-add' },
       ]
     },
+
+    {
+      path: 'Quản lý vai trò',
+      role: ['admin'],
+      subPath: [
+        { path: '/role', title: 'Danh sách', role: ['admin'], icon: 'ni ni-bullet-list-67' },
+        { path: '/create-role', title: 'Tạo mới', role: ['admin'], icon: 'ni ni-fat-add' },
+      ]
+    },
 ];
 
 @Component({
@@ -63,7 +72,7 @@ export class SidebarComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit() {
-    this.menuItems = ROUTES.filter(menuItem => menuItem);
+    this.menuItems = ROUTES;
     this.router.events.subscribe((event) => {
       this.isCollapsed = true;
    });
