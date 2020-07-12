@@ -12,7 +12,7 @@ export class NodeService {
   
     private API_URL = 'https://5ee4a4deddcea00016a36e04.mockapi.io/api/user/';
 
-    getNodesList() {
+    getNodeList() {
         return new Promise((resolve, reject) => {
             this.http.get(this.API_URL)
                 .subscribe(res => {
@@ -42,5 +42,18 @@ export class NodeService {
                     reject(err);
                 })
         })
+    }
+
+    // createNode(user: any) {
+    //     console.log('Tai khoan dang cho phe duyet:', user);
+        
+    // }
+
+    approve(id: string, userInfo) {
+        console.log('Phe duyet tai khoan: ', userInfo);
+    }
+
+    disapprove(id: string, userInfo) {
+        console.log('Tu choi phe duyet tai khoan: ', userInfo);
     }
 }

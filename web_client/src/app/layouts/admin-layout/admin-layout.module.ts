@@ -20,7 +20,11 @@ import { NewNodeComponent } from 'src/app/pages/new-node/new-node.component';
 import { LocationComponent } from 'src/app/pages/location/location.component';
 import { NewLocationComponent } from 'src/app/pages/new-location/new-location.component';
 import { PaginationComponent } from 'src/app/pages/pagination/pagination.component';
+import { PendingNodeComponent } from 'src/app/pages/pending-node/pending-node.component';
 // import { ToastrModule } from 'ngx-toastr';
+import { NgxSpinnerModule } from "ngx-spinner";
+
+
 
 @NgModule({
   imports: [
@@ -29,7 +33,8 @@ import { PaginationComponent } from 'src/app/pages/pagination/pagination.compone
     FormsModule,
     HttpClientModule,
     NgbModule,
-    ClipboardModule
+    ClipboardModule,
+    NgxSpinnerModule
   ],
   declarations: [
     DashboardComponent,
@@ -44,8 +49,9 @@ import { PaginationComponent } from 'src/app/pages/pagination/pagination.compone
     NewNodeComponent,
     LocationComponent,
     NewLocationComponent,
-    PaginationComponent
-  ],
+    PaginationComponent,
+    PendingNodeComponent
+  ]
 })
 
 export class AdminLayoutModule {}

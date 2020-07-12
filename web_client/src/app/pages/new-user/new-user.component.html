@@ -41,37 +41,7 @@
                     <label class="form-control-label" for="password">Mật khẩu <p style="display:inline-flex !important; color: red; font-size: 14px; ">*</p></label>
                     <div>
                       <input 
-                        name="password" type="text" id="name" class="form-control form-control-alternative" placeholder="123456" disabled>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-6">
-                  <div class="form-group">
-                    <label class="form-control-label" for="email">Email <p></p></label>
-                    <div>
-                      <input 
-                        name="email" type="text" id="email" class="form-control form-control-alternative"
-                        placeholder="Email">
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-6">
-                  <div class="form-group">
-                    <label class="form-control-label" for="phone">Điện thoại <p></p></label>
-                    <div>
-                      <input 
-                        name="phone" type="number" id="phone" class="form-control form-control-alternative"
-                        placeholder="Điện thoại">
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-6">
-                  <div class="form-group">
-                    <label class="form-control-label" for="email">Địa chỉ <p></p></label>
-                    <div>
-                      <input 
-                        name="address" type="text" id="address" class="form-control form-control-alternative"
-                        placeholder="Địa chỉ">
+                        name="password" type="text" id="password" class="form-control form-control-alternative" placeholder="123456" disabled>
                     </div>
                   </div>
                 </div>
@@ -89,6 +59,25 @@
                       </select> 
                     </div>        
                   </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="email">Email <p style="display:inline-flex !important; color: red ">*</p></label>
+                    <div [ngClass]="{'has-danger': isEmailInvalid == true}">
+                      <input 
+                        name="email" type="text" id="email" class="form-control form-control-alternative" [(ngModel)]="newUser.email" (input)="checkEmail($event.target.value)" [placeholder]="isEmailInvalid ? 'Email không được để trống' : 'Email'">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="phone">Điện thoại <p style="display:inline-flex !important; color: red ">*</p></label>
+                    <div [ngClass]="{'has-danger': isPhoneInvalid == true}">
+                      <input 
+                        name="phone" type="text" id="phone" class="form-control form-control-alternative" [(ngModel)]="newUser.phone" (input)="checkPhone($event.target.value)" [placeholder]="isPhoneInvalid ? 'Điện thoại không được để trống' : 'Điện thoại'">
+                    </div>
+                  </div>
+                </div>
                   <!-- <div class="form-group">
                     <label class="form-control-label" for="inputState">Vai trò <p style="display:inline-flex !important; color: red;">*</p></label>
                     <div class="custom-control custom-control-alternative custom-checkbox">
@@ -128,8 +117,8 @@
                       </label>
                     </div>
                   </div> -->
-                </div>
-                <div class="col-lg-6 d-flex flex-column">
+                
+                <!-- <div class="col-lg-6 d-flex flex-column">
                   <div class="row flex-1 flex-grow-1">
                     <div class="form-group" *ngIf="checkCreateNodeRole">
                       <label class="form-control-label" for="locationCreateNode">Tạo node: Chọn khu vực</label>
@@ -148,7 +137,7 @@
                       </select>     
                     </div>
                   </div>
-                </div>
+                </div> -->
                 <div class="col-lg-6">
                   
                 </div>

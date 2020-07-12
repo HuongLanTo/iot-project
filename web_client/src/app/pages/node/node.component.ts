@@ -79,7 +79,7 @@ export class NodeComponent implements OnInit {
   }
 
   getNodeList() {
-    this.nodeService.getNodesList().then(data => {
+    this.nodeService.getNodeList().then(data => {
       this.nodeListFull = data;
       this.nodeList = this.nodeListFull
     })
@@ -159,7 +159,7 @@ const FIELDS = [
   {
     label: "Tên node",
     placeholder: "Tìm kiếm node",
-    name: "node",
+    name: "name",
   },
   {
     label: "Khu vực",
@@ -167,9 +167,9 @@ const FIELDS = [
     name: "location",
   },
   {
-    label: "Địa chỉ",
-    placeholder: "Tìm kiếm địa chỉ",
-    name: "address",
+    label: "IP",
+    placeholder: "Tìm kiếm IP",
+    name: "ip",
   },
 ];
 
@@ -216,23 +216,9 @@ const MODAL = [
     readonly: true,
   },
   {
-    label: "Địa chỉ",
-    fin: "address", // fin = for, id, name
-    key: "address",
-    type: "input",
-    readonly: true,
-  },
-  {
-    label: "Vĩ độ",
-    fin: "latitude", // fin = for, id, name
-    key: "latitude",
-    type: "input",
-    readonly: true,
-  },
-  {
-    label: "Kinh độ",
-    fin: "longitude", // fin = for, id, name
-    key: "longitude",
+    label: "IP",
+    fin: "ip", // fin = for, id, name
+    key: "ip",
     type: "input",
     readonly: true,
   },

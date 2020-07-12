@@ -139,7 +139,8 @@
               <tr *ngFor="let user of userList; let index=index" style="text-align: center;">
                 <td>{{ index + 1 }}</td>
                 <td *ngFor="let key_data of key_data">
-                  <span *ngIf="is_string(key_data.type)">{{ user[key_data.key] }}</span>
+                  <span *ngIf="key_data.key=='role'">{{ user[key_data.key].name }}</span>
+                  <span *ngIf="is_string(key_data.type) && key_data.key!='role'">{{ user[key_data.key] }}</span>
                   <div *ngIf="is_boolean(key_data.type)">
                     <span
                       [ngClass]="[
@@ -163,11 +164,13 @@
             </tbody>
           </table>
         </div>
-        <!-- <app-pagination [(totalPage)]='totalPage' [(showPages)]='showPages'
-          (pageEmit)='getUserList(filter, $event, sizePage)'></app-pagination> -->
+        <ngx-spinner></ngx-spinner>
+        <app-pagination [(totalPage)]='totalPage' [(showPages)]='showPages'
+          (pageEmit)='getUserList(filter, $event, sizePage)'></app-pagination>
       </div>
     </div>
-  </div>      
+  </div>
+  
 
 <!-- Modal Sửa -->
 <div  class="modal fade bd-example-modal-lg" id="editModal" tabindex="-1" role="dialog" aria-hidden="true">
@@ -180,7 +183,45 @@
         </button>
       </div>
       <div class="modal-body">
-        <div class="row">
+        <div class="w-100 d-inline-block">
+          <div *ngFor="let modal of modals" class="w-50 float-left prl-15 col-md-6">
+            <div class="form-group">
+              <label class="form-control-label" [for]="modal.fin">{{ modal.label }}</label>
+              <div class="form-group">
+                <input
+                    *ngIf="is_input(modal.type)"
+                    value="{{ currentUser[modal.key] }}"
+                    [name]="modal.fin"
+                    [id]="modal.fin"
+                    type="text"
+                    class="form-control"
+                    [readonly]="modal.readonly"
+                />
+                <select
+                  *ngIf="is_select(modal.type) && modal.key!='role'"
+                  [(ngModel)]="currentUser[modal.key]"
+                  [name]="modal.fin"
+                  [id]="modal.fin"
+                  class="form-control"
+                >
+                  <option value="" disabled selected hidden>{{ currentUser[modal.key] }}</option>
+                  <option *ngFor="let data of data[modal.key]" [ngValue]="data.value" >{{ data.name }}</option>
+                </select>
+                <select
+                  *ngIf="is_select(modal.type) && modal.key=='role'"
+                  [(ngModel)]="currentUser[modal.key]"
+                  [name]="modal.fin"
+                  [id]="modal.fin"
+                  class="form-control"
+                >
+                  <option value="" disabled selected hidden>{{ currentUser[modal.key] }}</option>
+                  <option *ngFor="let data of data[modal.key]" [ngValue]="data.value" >{{ data.name }}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="row">
           <div class="col-md-6">
             <div class="form-group">
               <label for="username">Username</label>
@@ -198,7 +239,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> 
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
@@ -234,7 +275,7 @@
             </div>
           </div>
         </div>
-        <div class="row">
+        <div class="row"> 
           <div class="col-md-6">
             <div class="form-group">
               <label for="trangThai">Trạng thái</label>
@@ -246,7 +287,7 @@
               </div>
             </div>
           </div>
-        </div>  
+        </div>   -->
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
           <button type="button" class="btn btn-primary" data-dismiss="modal"

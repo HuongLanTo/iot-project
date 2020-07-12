@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from 'src/app/services/user.service';
+import { NodeService } from 'src/app/services/node.service';
 
 @Component({
-  selector: 'app-pending-user',
-  templateUrl: './pending-user.component.html',
-  styleUrls: ['./pending-user.component.css']
+  selector: 'app-pending-node',
+  templateUrl: './pending-node.component.html',
+  styleUrls: ['./pending-node.component.css']
 })
-export class PendingUserComponent implements OnInit {
-  public userList: any;
-  currentUser: any = {};
+export class PendingNodeComponent implements OnInit {
+  public nodeList: any;
+  currentNode: any = {};
 
   constructor(
-    private userService: UserService
+    private nodeService: NodeService
   ) { }
 
   get key_data() {
@@ -23,28 +23,28 @@ export class PendingUserComponent implements OnInit {
   }
 
   async ngOnInit() {
-    await this.getUserList();
+    await this.getNodeList();
   }
 
-  getUserList() {
-    // this.userService.getUserList().then((data) => {
-    //   this.userList = data;
-    // })
+  getNodeList() {
+    this.nodeService.getNodeList().then((data) => {
+      this.nodeList = data;
+    })
   }
 
   approve() {
-    this.userService.approve(this.currentUser.id, {
+    this.nodeService.approve(this.currentNode.id, {
       approve: 1,
       status: 1
     })
-    this.getUserList();
+    this.getNodeList();
   }
 
   disapprove() {
-    this.userService.disapprove(this.currentUser.id, {
+    this.nodeService.disapprove(this.currentNode.id, {
       approve: -1
     })
-    this.getUserList();
+    this.getNodeList();
   }
 
 }

@@ -45,6 +45,7 @@ export const ROUTES: RouteInfo[] = [
       subPath: [
         { path: '/node', title: 'Danh sách', role: ['admin', 'moderator'], icon: 'ni ni-bullet-list-67' },
         { path: '/new-node', title: 'Tạo mới', role: ['admin', 'moderator'], icon: 'ni ni-fat-add' },
+        { path: '/pending-node', title: 'Chờ phê duyệt', role: ['admin'], icon: 'ni ni-check-bold' },
       ]
     },
 
