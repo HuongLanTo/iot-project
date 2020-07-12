@@ -28,7 +28,7 @@ module.exports = async function findByAreas(req, res) {
       .set({ hour: 23, minute: 59, second: 59 })
       .toDate();
 
-    const area_ids = filter.area_ids.split(",");
+    const area_ids = filter.area_ids.split(",").map((v) => String(v));
 
     const data = await Promise.all(
       area_ids.map(async (v) => {

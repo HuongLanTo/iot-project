@@ -34,7 +34,7 @@ module.exports = async function findLastByNodes(req, res) {
         order: [["node_id", "ASC"]],
       });
     } else {
-      const list_node_id = node_ids.split(",");
+      const list_node_id = node_ids.split(",").map((v) => String(v));
 
       data = await Promise.all(
         list_node_id.map(async (v) => {

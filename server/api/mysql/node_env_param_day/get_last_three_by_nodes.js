@@ -7,15 +7,9 @@ const NodeEnvParamDay = mysql.node_env_param_days;
 
 module.exports = async function findByNodes(req, res) {
   try {
-
-    console.log(req.query.filter);
-    
     const filter = req.query.filter
       ? JSON.parse(base64.decode(req.query.filter))
       : {};
-
-    console.log(filter);
-    
 
     if (!filter.node_ids) {
       return res.status(400).send({
@@ -34,7 +28,7 @@ module.exports = async function findByNodes(req, res) {
       .set({ hour: 23, minute: 59, second: 59 })
       .toDate();
 
-    const node_ids = filter.node_ids.split(",");
+    const node_ids = filter.node_ids.split(",").map((v) => String(v));
 
     const data = await Promise.all(
       node_ids.map(async (v) => {
