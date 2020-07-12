@@ -13,7 +13,7 @@ import { LocationService } from "src/app/services/location.service";
 export class NewNodeComponent implements OnInit {
   public newNode = {
     id: "",
-    nameNode: "",
+    name: "",
     location: "",
     address: "",
     so2: "",
@@ -23,16 +23,16 @@ export class NewNodeComponent implements OnInit {
     humidity: "",
     latitude: "",
     longitude: "",
-    status: ""
+    status: "",
+    approve: "",
+    ip: ""
   };
-  public location: any;
+  public locationList: any;
 
   // declare invalid variables
-  isNodenameInvalid: boolean = true;
+  isNameInvalid: boolean = false;
   isLocationInvalid: boolean = false;
-  isLatitudeInvalid: boolean = false;
-  isLongitudeInvalid: boolean = false;
-  isAddressInvalid: boolean = false;
+  isIpInvalid: boolean = false;
 
 
   constructor(
@@ -44,9 +44,7 @@ export class NewNodeComponent implements OnInit {
   ) {}
 
   async ngOnInit() {
-    await this.locationService.getLocationList().then((data) => {
-      this.location = data;
-    });
+    await this.getLocationList();
   }
 
   createNode() {
@@ -55,23 +53,18 @@ export class NewNodeComponent implements OnInit {
     } else {
       this.isLocationInvalid = false;
     }
-    if (!this.newNode.latitude) {
-      this.isLatitudeInvalid = true;
+    if (!this.newNode.ip) {
+      this.isIpInvalid = true;
     } else {
-      this.isLatitudeInvalid = false;
+      this.isIpInvalid = false;
     }
-    if (!this.newNode.longitude) {
-      this.isLongitudeInvalid = true;
+    if (!this.newNode.name) {
+      this.isNameInvalid = true;
     } else {
-      this.isLongitudeInvalid = false;
+      this.isNameInvalid = false;
     }
-    if (!this.newNode.address) {
-      this.isAddressInvalid = true;
-    } else {
-      this.isAddressInvalid = false;
-    }
-    if (!this.isLatitudeInvalid && !this.isLongitudeInvalid && !this.isLocationInvalid) {
-      this.newNode.status = 'true';
+    if (!this.isIpInvalid && !this.isNameInvalid && !this.isLocationInvalid) {
+      this.newNode.approve = "0";
       this.nodeService
         .createNode(this.newNode)
         .then((data) => {
@@ -88,48 +81,41 @@ export class NewNodeComponent implements OnInit {
     this.router.navigate(["/node"]);
   }
 
-  checkLatitude(value: any) {
-    if (value) {
-      this.isLatitudeInvalid = false;
-    } else {
-      this.isLatitudeInvalid = true;
-    }
+  async getLocationList() {
+    this.locationService.getLocationList().then(data => {
+      this.locationList = data;
+    })
   }
 
-  checkLongitude(value: any) {
+  checkName(value: any) {
     if (value) {
-      this.isLongitudeInvalid = false;
+      this.isNameInvalid = false;
     } else {
-      this.isLongitudeInvalid = true;
-    }
-  }
-
-  checkAddress(value: any) {
-    if (value) {
-      this.isAddressInvalid = false;
-    } else {
-      this.isAddressInvalid = true;
+      this.isNameInvalid = true;
     }
   }
 
   checkLocation(value: any) {
     if (value) {
       this.isLocationInvalid = false;
-      this.newNode.location = value;
-      var numberNode = this.getNumberOfNode(value) + 1;
-      this.newNode.nameNode = value + '_' + numberNode;
-      this.isNodenameInvalid = false;
     } else {
       this.isLocationInvalid = true;
     }
   }
 
-  getNumberOfNode(value: any):number {
-    for (var i = 0; i < this.location.length; i++) {
-      if (this.location[i].name === value) {
-        return this.location[i].numberNode;
-      }
+  checkIp(value: any) {
+    if (value) {
+      this.isIpInvalid = false;
+    } else {
+      this.isIpInvalid = true;
     }
-    
   }
+
+  // getNumberOfNode(value: any):number {
+  //   for (var i = 0; i < this.locationList.length; i++) {
+  //     if (this.locationList[i].name === value) {
+  //       return this.locationList[i].numberNode;
+  //     }
+  //   }
+  // }
 }

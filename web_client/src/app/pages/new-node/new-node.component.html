@@ -1,4 +1,4 @@
-<div class="header bg-gradient-dark pb-8 pt-5 pt-md-8">
+<div class="header bg-gradient-default pb-8 pt-5 pt-md-8">
   
 </div>
 <div class="container-fluid mt--7">
@@ -20,55 +20,32 @@
               <div class="row">
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="form-control-label" for="inputLocation">Khu vực <p style="display:inline-flex !important; color: red ">*</p></label>
+                    <label class="form-control-label" for="location">Khu vực <p style="display:inline-flex !important; color: red ">*</p></label>
                     <select *ngIf="!isLocationInvalid" name="location" id="location" class="form-control form-control-alternative" [(ngModel)]="newNode.location" (ngModelChange)="checkLocation($event)">
                       <option value="" disabled selected hidden>Chọn khu vực</option>
                       <option *ngFor="let location of location">{{ location.name }}</option>
                     </select>     
                     <div *ngIf="isLocationInvalid" class="form-group has-danger">
-                      <select  name="location" id="location" id="inputLocation" class="form-control is-invalid" [(ngModel)]="newNode.location" (ngModelChange)="checkLocation($event)">
+                      <select  name="location" id="location" id="location" class="form-control is-invalid" [(ngModel)]="newNode.location" (ngModelChange)="checkLocation($event)">
                         <option value="" disabled selected hidden class="is-invalid">Khu vực không được để trống</option>
-                        <option *ngFor="let location of location">{{ location.name }}</option>
+                        <option *ngFor="let location of locationList">{{ location.name }}</option>
                       </select> 
                     </div>        
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="form-control-label" for="latitude">Vĩ độ <p style="display:inline-flex !important; color: red ">*</p></label>
-                    <div [ngClass]="{'has-danger': isLatitudeInvalid == true}">
-                      <input class="form-control form-control-alternative" name="latitude" type="number" id="latitude" [(ngModel)]="newNode.latitude" (input)="checkLatitude($event.target.value)" [placeholder]="isLatitudeInvalid ? 'Vĩ độ không được để trống' : 'Vĩ độ'">
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label class="form-control-label" for="nodename">Tên node <p style="display:inline-flex !important; color: red ">*</p></label>
-                    <div class="form-group">
-                      <div class="form-group">
-                        <input class="form-control form-control-alternative" name="nodename" type="text" id="nodename" 
-                         placeholder="Tên node" disabled *ngIf="isNodenameInvalid">
-                         <input class="form-control form-control-alternative" name="nodename" type="text" id="nodename" 
-                        placeholder="{{ newNode.nameNode }}" disabled *ngIf="!isNodenameInvalid">
-                      </div>
+                    <label class="form-control-label" for="ip">IP <p style="display:inline-flex !important; color: red ">*</p></label>
+                    <div [ngClass]="{'has-danger': isIpInvalid == true}">
+                      <input class="form-control form-control-alternative" name="ip" type="text" id="ip" [(ngModel)]="newNode.ip" (input)="checkIp($event.target.value)" [placeholder]="isLatitudeInvalid ? 'Vĩ độ không được để trống' : 'Vĩ độ'">
                     </div>
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="form-control-label" for="longitude">Kinh độ <p style="display:inline-flex !important; color: red ">*</p></label>
-                    <div [ngClass]="{'has-danger': isLongitudeInvalid == true}">
-                      <input 
-                        name="longitude" type="number" id="longitude" class="form-control form-control-alternative"
-                         [(ngModel)]="newNode.longitude" (input)="checkLongitude($event.target.value)" [placeholder]="isLongitudeInvalid ? 'Kinh độ không được để trống' : 'Kinh độ'">
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-6">
-                  <div class="form-group">
-                    <label class="form-control-label" for="address">Địa chỉ <p style="display:inline-flex !important; color: red ">*</p></label>
-                    <div [ngClass]="{'has-danger': isAddressInvalid == true}">
-                      <input  name="address" type="text" id="address" class="form-control form-control-alternative" [(ngModel)]="newNode.address" (input)="checkLongitude($event.target.value)" [placeholder]="isAddressInvalid ? 'Địa chỉ không được để trống' : 'Địa chỉ'">
+                    <label class="form-control-label" for="name">Tên node <p style="display:inline-flex !important; color: red ">*</p></label>
+                    <div [ngClass]="{'has-danger': isNameInvalid == true}">
+                      <input  name="name" type="text" id="name" class="form-control form-control-alternative" [(ngModel)]="newNode.name" (input)="checkName($event.target.value)" [placeholder]="isNameInvalid ? 'Tên node không được để trống' : 'Tên node'">
                     </div>
                   </div>
                 </div>
