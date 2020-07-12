@@ -26,11 +26,7 @@
                   <div *ngIf="is_array(item.type)">
                     <span
                       *ngFor="let val of getDatas(role, item)"
-                      [ngClass]="[
-                        'badge',
-                        'badge-pill',
-                        item.color
-                      ]"
+                      [ngClass]="['badge', 'badge-pill', item.color]"
                       style="margin-right: 10px;"
                       >{{ val }}</span
                     >
@@ -43,8 +39,8 @@
                     placement="top"
                     ngbTooltip="Sửa"
                     data-toggle="modal"
-                    data-target="#editModal"
-                    (click)="currentRole = role"
+                    data-target="#modal"
+                    (click)="setModal(role)"
                   >
                     <span class="btn-inner--icon"
                       ><i class="ni ni-single-copy-04"></i
@@ -62,7 +58,7 @@
   <!-- Modal Sửa -->
   <div
     class="modal fade bd-example-modal-lg"
-    id="editModal"
+    id="modal"
     tabindex="-1"
     role="dialog"
     aria-hidden="true"
@@ -82,73 +78,112 @@
         </div>
         <div class="modal-body">
           <div class="w-100 d-inline-block">
-            <div *ngFor="let field of modal" class="w-50 float-left prl-15">
-              <div class="form-group">
-                <label class="form-control-label" [for]="field.fin">{{
-                  field.label
-                }}</label>
+            <div class="row">
+              <div class="col-lg-6">
                 <div class="form-group">
-                  <input
-                    *ngIf="is_input(field.type)"
-                    value="{{ currentNode[field.key] }}"
-                    [name]="field.fin"
-                    [id]="field.fin"
-                    type="text"
-                    class="form-control"
-                    [readonly]="field.readonly"
-                  />
-                  <select
-                    *ngIf="is_select(field.type)"
-                    [(ngModel)]="currentNode[field.key]"
-                    [name]="field.fin"
-                    [id]="field.fin"
-                    class="form-control"
+                  <label class="form-control-label" for="name"
+                    >Tên vai trò
+                    <p
+                      style="display: inline-flex !important; color: red;"
+                      placement="right"
+                      ngbTooltip="Không được để trống"
+                    >
+                      *
+                    </p></label
                   >
-                    <option value="" disabled selected hidden>{{
-                      currentNode[field.key]
-                    }}</option>
+                  <div [ngClass]="[is_name_valid ? '' : 'has-danger']">
+                    <input
+                      class="form-control form-control-alternative"
+                      name="name"
+                      id="name"
+                      [(ngModel)]="currentRole.name"
+                      placeholder="Tên vai trò"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="col-6"></div>
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label class="form-control-label" for="permission"
+                    >Quyền
+                    <p
+                      style="display: inline-flex !important; color: red;"
+                      placement="right"
+                      ngbTooltip="Không được để trống"
+                    >
+                      *
+                    </p></label
+                  >
+                  <select
+                    name="permission"
+                    [(ngModel)]="selected_permission"
+                    id="permission"
+                    class="form-control form-control-alternative"
+                    (change)="selectPermission()"
+                  >
+                    <option value="" hidden selected>Chọn quyền</option>
                     <option
-                      *ngFor="let item of data[field.key]"
-                      [ngValue]="item.value"
-                      >{{ item.name }}</option
+                      *ngFor="let permission of permissions"
+                      [value]="permission.id"
+                      >{{ permission.name }}</option
                     >
                   </select>
-                  <div *ngIf="is_switch(field.type)">
-                    <div
-                      *ngFor="let item of data[field.key]"
-                      class="w-50 float-left prl-15"
-                    >
-                      <div
-                        class="form-group d-flex justify-content-between align-items-center"
-                      >
-                        <label class="form-control-label">{{
-                          item.label
-                        }}</label>
-                        <label
-                          class="form-control-label custom-toggle"
-                          [for]="item.fin"
-                        >
-                          <input
-                            type="checkbox"
-                            checked
-                            [id]="item.fin"
-                            [name]="item.fin"
-                            value="{{ currentNode[item.key] }}"
-                            [(ngModel)]="currentNode[item.key]"
-                          />
-                          <span
-                            class="custom-toggle-slider rounded-circle"
-                          ></span>
-                        </label>
-                      </div>
-                    </div>
-                  </div>
+                </div>
+                <div>
+                  <button
+                    *ngFor="let permission of currentRole.action_permission"
+                    type="button"
+                    class="btn btn-primary"
+                    style="margin-bottom: 10px;"
+                  >
+                    <span>{{ getPermissionName(permission) }}</span>
+                    <a
+                      (click)="removePermission(permission)"
+                      class="btn-inner--icon"
+                      ><i class="ni ni-fat-remove"></i
+                    ></a>
+                  </button>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label class="form-control-label" for="area"
+                    >Khu vực
+                    <p></p
+                  ></label>
+                  <select
+                    name="area"
+                    [(ngModel)]="selected_area"
+                    id="area"
+                    class="form-control form-control-alternative"
+                    (change)="selectArea()"
+                  >
+                    <option value="" selected hidden>Chọn khu vực</option>
+                    <option *ngFor="let area of areas" [value]="area.id">{{
+                      area.name
+                    }}</option>
+                  </select>
+                </div>
+                <div>
+                  <button
+                    *ngFor="let area of currentRole.area_permission"
+                    type="button"
+                    class="btn btn-info"
+                    style="margin-bottom: 10px;"
+                  >
+                    <span>{{ getAreaName(area) }}</span>
+                    <a (click)="removeArea(area)" class="btn-inner--icon"
+                      ><i class="ni ni-fat-remove"></i
+                    ></a>
+                  </button>
                 </div>
               </div>
             </div>
           </div>
           <div class="modal-footer">
             <button
+              id="closeModal"
               type="button"
               class="btn btn-secondary"
               data-dismiss="modal"
@@ -158,8 +193,7 @@
             <button
               type="button"
               class="btn btn-default"
-              data-dismiss="modal"
-              (click)="updateNodeInfo(currentNode)"
+              (click)="updateRole()"
             >
               Lưu
             </button>

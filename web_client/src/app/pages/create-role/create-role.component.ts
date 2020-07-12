@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 import { ToastrService } from "ngx-toastr";
 
 @Component({
@@ -9,15 +10,14 @@ import { ToastrService } from "ngx-toastr";
 export class CreateRoleComponent implements OnInit {
   public role = {
     name: "",
-    permissions: [1, 5],
-    areas: [2, 4],
+    action_permission: [1, 5],
+    area_permission: [2, 4],
   };
 
   public selected_permission = "";
   public selected_area = "";
-  public is_create = false
 
-  constructor(private toastrService: ToastrService) {}
+  constructor(private toastrService: ToastrService, private router: Router) {}
 
   ngOnInit() {}
 
@@ -26,24 +26,34 @@ export class CreateRoleComponent implements OnInit {
   }
 
   get is_permissions_valid() {
-    return this.role.permissions.length > 0;
+    return this.role.action_permission.length > 0;
   }
 
   get permissions() {
-    return PERMISSIONS.filter((v) => !this.role.permissions.includes(v.id));
+    return PERMISSIONS.filter(
+      (v) => !this.role.action_permission.includes(v.id)
+    );
   }
 
   get areas() {
-    return AREAS.filter((v) => !this.role.areas.includes(v.id));
+    return AREAS.filter((v) => !this.role.area_permission.includes(v.id));
+  }
+
+  create() {
+    if (!this.is_name_valid || !this.is_permissions_valid) {
+      return this.toastrService.warning("Vui lòng nhập đầy đủ thông tin.");
+    }
+    this.router.navigate(["/role"]);
+    console.log(this.role);
   }
 
   selectPermission() {
-    this.role.permissions.push(Number(this.selected_permission));
+    this.role.action_permission.push(Number(this.selected_permission));
     this.selected_permission = "";
   }
 
   selectArea() {
-    this.role.areas.push(Number(this.selected_area));
+    this.role.area_permission.push(Number(this.selected_area));
     this.selected_area = "";
   }
 
@@ -68,18 +78,15 @@ export class CreateRoleComponent implements OnInit {
   }
 
   removePermission(id) {
-    this.role.permissions = this.role.permissions.filter((v) => v !== id);
+    this.role.action_permission = this.role.action_permission.filter(
+      (v) => v !== id
+    );
   }
 
   removeArea(id) {
-    this.role.areas = this.role.areas.filter((v) => v !== id);
-  }
-
-  create() {
-    if (!this.is_name_valid || !this.is_permissions_valid) {
-      return this.toastrService.warning('Vui lòng nhập đầy đủ thông tin.')
-    }
-    console.log(this.role);
+    this.role.area_permission = this.role.area_permission.filter(
+      (v) => v !== id
+    );
   }
 }
 

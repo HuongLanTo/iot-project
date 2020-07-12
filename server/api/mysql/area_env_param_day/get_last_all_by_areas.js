@@ -24,10 +24,10 @@ module.exports = async function findLastByAreas(req, res) {
       : "aqi";
 
     const start_date = moment(date)
-      .set({ date: 0, minute: 0, second: 0 })
+      .set({ hour: 0, minute: 0, second: 0 })
       .toDate();
     const end_date = moment(date)
-      .set({ date: 23, minute: 59, second: 59 })
+      .set({ hour: 23, minute: 59, second: 59 })
       .toDate();
 
     const where = {
