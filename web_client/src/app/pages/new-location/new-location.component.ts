@@ -10,8 +10,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./new-location.component.css']
 })
 export class NewLocationComponent implements OnInit {
-  district: District[] = district_data;
-  currentDistrict: any = {};
   public newLocation = {
     id: "",
     province: "",
@@ -25,14 +23,23 @@ export class NewLocationComponent implements OnInit {
     longitude: "",
   };
 
+  provinceList: any;
+  districtList: any;
+  chosenProvince = "";
+  chosenDistrict = "";
+
   // declare invalid variables
+  isProvinceInvalid: boolean = false;
   isDistrictInvalid: boolean = false;
   isSubDistrictInvalid: boolean = false;
   isDetailInvalid: boolean = false;
   isLatitudeInvalid: boolean = false;
   isLongitudeInvalid: boolean = false;
 
+  checkSelectedProvince = false; 
   checkSelectedDistrict = false; 
+
+  provinceCode: number;
 
   constructor(
     private locationService: LocationService,
@@ -40,10 +47,17 @@ export class NewLocationComponent implements OnInit {
     private router: Router
   ) { }
 
-  ngOnInit(): void {
+  async ngOnInit() {
+    this.getProvinceList();
+    this.getDistrictList();
   }
 
   createLocation() {
+    if (!this.newLocation.province) {
+      this.isProvinceInvalid = true;
+    } else {
+      this.isProvinceInvalid = false;
+    }
     if (!this.newLocation.district) {
       this.isDistrictInvalid = true;
     } else {
@@ -69,7 +83,7 @@ export class NewLocationComponent implements OnInit {
     } else {
       this.isLongitudeInvalid = false;
     }
-    if (!this.isDistrictInvalid && !this.isSubDistrictInvalid && !this.isDetailInvalid && !this.isLatitudeInvalid && !this.isLongitudeInvalid) {
+    if (!this.isProvinceInvalid && !this.isDistrictInvalid && !this.isSubDistrictInvalid && !this.isDetailInvalid && !this.isLatitudeInvalid && !this.isLongitudeInvalid) {
       this.newLocation.numberNode = this.newLocation.numberActiveNode = this.newLocation.numberDeactiveNode = "0";
       this.locationService.createLocation(this.newLocation)
         .then(data => {
@@ -86,18 +100,36 @@ export class NewLocationComponent implements OnInit {
     this.router.navigate(["/location"]);
   }
 
+  async getProvinceList() {
+    this.locationService.getProvinceList().then(data => {
+      this.provinceList = data;
+    })
+  }
+
+  async getDistrictList() {
+    this.locationService.getDistrictList().then(data => {
+      this.districtList = data;
+    })
+  }
+
+  checkProvince(value: any) {
+    if (value) {
+      this.isProvinceInvalid = false;
+      this.provinceCode = value.code;
+      this.checkSelectedProvince = true;
+      this.newLocation.province = value._id;;
+    } else {
+      this.isProvinceInvalid = true;
+      this.checkSelectedProvince = false;
+    }
+  }
+
   checkDistrict(value: any) {
     if (value) {
-      this.district.forEach(e => {
-        if (e.name == value) {
-          this.currentDistrict = e;
-        }
-      });
       this.isDistrictInvalid = false;
-      this.checkSelectedDistrict = true;
+      this.newLocation.district = value._id;
     } else {
       this.isDistrictInvalid = true;
-      this.checkSelectedDistrict = false;
     }
   }
 
