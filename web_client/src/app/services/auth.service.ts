@@ -20,25 +20,27 @@ export class AuthService {
 
     signIn(user: {username, password}): Promise<boolean>{
       return new Promise((resolve, reject) => {
-        this.http.post(this.API_URL + '/auth', user)
+        this.http.post(this.API_URL + '/auth/login', user)
         .subscribe(res => {
+          console.log(res);
+          
           var object = JSON.parse((<any>res)._body);
           localStorage.setItem('auth-token', object.responseMessage.data.cookies.token);
           this.cookieService.put('user_token',object.responseMessage.data.cookies.token);
-          this.cookieService.put('durations',object.responseMessage.data.cookies.durations)
-          
+          this.cookieService.put('durations',object.responseMessage.data.cookies.durations);
           this.router.navigate(['user'])
           resolve(true);
         }, err => reject(err))
       })
     }
   
-    public isAuthenticated(): boolean {
+    public isAuthenticated() {
       const token = localStorage.getItem('auth-token');
       if (token == null){
         return false;
       } else {
         return !this.jwtHelper.isTokenExpired(token);
+        //return true;
       }
     }
 
@@ -47,16 +49,20 @@ export class AuthService {
       this.router.navigate(['login']);
     }
 
-    public checkSession() {
-      return new Promise((resolve, reject) => {
-        this.http.get(this.API_URL + '/auth/session')
-        .subscribe(res => {
-          var object = JSON.parse((<any>res)._body);
-          resolve(object.data.exprired);
-        }, err => {
-          reject(err);
-        })
+    // public checkSession() {
+    //   return new Promise((resolve, reject) => {
+    //     this.http.get(this.API_URL + '/auth/session')
+    //     .subscribe(res => {
+    //       console.log(res);
+          
+    //       var object = JSON.parse((<any>res)._body);
+    //       console.log(object.data.exprired);
+          
+    //       resolve(object.data.exprired);
+    //     }, err => {
+    //       reject(err);
+    //     })
 
-      })
-    }
+    //   })
+    // }
 }

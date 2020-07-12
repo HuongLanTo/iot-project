@@ -18,14 +18,74 @@
             <h6 class="heading-small text-muted mb-4">Thông tin khu vực</h6>
             <div class="pl-lg-4">
               <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="city">Thành phố <p style="display:inline-flex !important; color: red ">*</p></label>
+                    <div class="form-group">
+                      <div class="form-group">
+                         <input class="form-control form-control-alternative" name="city" type="text" id="city" 
+                        placeholder="Hà Nội" disabled>
+                      </div>
+                    </div>
+                  </div>
+                </div>
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="form-control-label" for="tenDangNhap">Tên khu vực <p style="display:inline-flex !important; color: red ">*</p></label>
-                    <div class="form-group">
-                      <div class="form-group" [ngClass]="{'has-danger': isUserNameInvalid == false}">
-                        <input name="tenDangNhap" type="text" id="tenTaiKhoan" class="form-control"
-                         [placeholder]="username">
-                      </div>
+                    <label class="form-control-label" for="district">Quận, huyện <p style="display:inline-flex !important; color: red ">*</p></label>
+                    <select *ngIf="!isDistrictInvalid" name="district" id="district" class="form-control form-control-alternative" [(ngModel)]="newLocation.district" (ngModelChange)="checkDistrict($event)">
+                      <option value="" disabled selected hidden>Chọn quận, huyện</option>
+                      <option *ngFor="let district of district" >{{ district.name }}</option>
+                    </select>     
+                    <div *ngIf="isDistrictInvalid" class="form-group has-danger">
+                      <select  name="district" id="district" id="district" class="form-control is-invalid" [(ngModel)]="newLocation.district" (ngModelChange)="checkDistrict($event)">
+                        <option value="" disabled selected hidden class="is-invalid">Quận không được để trống</option>
+                        <option *ngFor="let district of district" >{{ district.name }}</option>
+                      </select> 
+                    </div>        
+                  </div>
+                </div>
+              </div>
+              <div class="row" *ngIf="checkSelectedDistrict">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="sub_district">Phường <p style="display:inline-flex !important; color: red ">*</p></label>
+                    <select *ngIf="!isSubDistrictInvalid" name="sub_district" id="sub_district" class="form-control form-control-alternative"  [(ngModel)]="newLocation.sub_district" (ngModelChange)="checkSubDistrict($event)">
+                      <option value="" disabled selected hidden>Chọn phường</option>
+                      <option *ngFor="let sub_district of currentDistrict.sub_district">{{ sub_district }}</option>
+                    </select>     
+                    <div *ngIf="isSubDistrictInvalid" class="form-group has-danger">
+                      <select  name="location" id="location" id="inputLocation" class="form-control is-invalid" [(ngModel)]="newLocation.sub_district" (ngModelChange)="checkSubDistrict($event)">
+                        <option value="" disabled selected hidden class="is-invalid">Phường không được để trống</option>
+                        <option *ngFor="let sub_district of currentDistrict.sub_district">{{ sub_district }}</option>
+                      </select> 
+                    </div>        
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="detail">Địa chỉ <p style="display:inline-flex !important; color: red ">*</p></label>
+                    <div [ngClass]="{'has-danger': isDetailInvalid == true}">
+                      <input  name="detail" type="text" id="detail" class="form-control form-control-alternative" [(ngModel)]="newLocation.detail" (input)="checkDetail($event.target.value)" [placeholder]="isDetailInvalid ? 'Địa chỉ cụ thể không được để trống' : 'Địa chỉ cụ thể'">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row" *ngIf="checkSelectedDistrict">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="latitude">Vĩ độ <p style="display:inline-flex !important; color: red ">*</p></label>
+                    <div [ngClass]="{'has-danger': isLatitudeInvalid == true}">
+                      <input class="form-control form-control-alternative" name="latitude" type="number" id="latitude" [(ngModel)]="newLocation.latitude" (input)="checkLatitude($event.target.value)" [placeholder]="isLatitudeInvalid ? 'Vĩ độ không được để trống' : 'Vĩ độ'">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="longitude">Kinh độ <p style="display:inline-flex !important; color: red ">*</p></label>
+                    <div [ngClass]="{'has-danger': isLongitudeInvalid == true}">
+                      <input 
+                        name="longitude" type="number" id="longitude" class="form-control form-control-alternative"
+                         [(ngModel)]="newLocation.longitude" (input)="checkLongitude($event.target.value)" [placeholder]="isLongitudeInvalid ? 'Kinh độ không được để trống' : 'Kinh độ'">
                     </div>
                   </div>
                 </div>
@@ -35,8 +95,8 @@
         </div>
         <hr style="margin: 0px;">
         <div class="col-lg-4 card-body" style="padding-top:15px;">
-            <button type="button" class="btn btn-success" style="margin-left:24px;"  >Lưu</button>
-            <button type="button" class="btn btn-danger" >Thoát</button>
+            <button type="button" class="btn btn-success" style="margin-left:24px;" (click)="createLocation()" >Lưu</button>
+            <button type="button" class="btn btn-danger" (click)="redirect()">Thoát</button>
         </div>         
       </div>
     </div>

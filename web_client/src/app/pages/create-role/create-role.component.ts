@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { ToastrService } from "ngx-toastr";
+import { RoleService } from "src/app/services/role.service";
 
 @Component({
   selector: "app-create-role",
@@ -8,18 +9,28 @@ import { ToastrService } from "ngx-toastr";
   styleUrls: ["./create-role.component.css"],
 })
 export class CreateRoleComponent implements OnInit {
+  private PERMISSIONS: any[]
+  private AREAS: any[]
+
   public role = {
     name: "",
-    action_permission: [1, 5],
-    area_permission: [2, 4],
+    action_permission: [],
+    area_permission: [],
   };
 
   public selected_permission = "";
   public selected_area = "";
 
-  constructor(private toastrService: ToastrService, private router: Router) {}
+  constructor(
+    private toastrService: ToastrService,
+    private router: Router,
+    private roles: RoleService
+  ) {}
 
-  ngOnInit() {}
+  async ngOnInit() {
+    await this.roles.getActionPermissions().then(data => this.PERMISSIONS = data)
+    await this.roles.getAreaPermissions().then(data => this.AREAS = data)
+  }
 
   get is_name_valid() {
     return this.role.name ? true : false;
@@ -30,19 +41,33 @@ export class CreateRoleComponent implements OnInit {
   }
 
   get permissions() {
-    return PERMISSIONS.filter(
+    if (!this.PERMISSIONS || !this.PERMISSIONS.length) {
+      return []
+    }
+
+    return this.PERMISSIONS.filter(
       (v) => !this.role.action_permission.includes(v.id)
     );
   }
 
   get areas() {
-    return AREAS.filter((v) => !this.role.area_permission.includes(v.id));
+    if (!this.AREAS || !this.AREAS.length) {
+      return []
+    }
+
+    return this.AREAS.filter((v) => !this.role.area_permission.includes(v.id));
   }
 
-  create() {
+  async create() {
     if (!this.is_name_valid || !this.is_permissions_valid) {
       return this.toastrService.warning("Vui lòng nhập đầy đủ thông tin.");
     }
+
+    // await this.roles.createRole(this.role).then(result => {
+    //   if (result && result.error) {
+    //     return
+    //   }
+    // })
     this.router.navigate(["/role"]);
     console.log(this.role);
   }
@@ -58,7 +83,7 @@ export class CreateRoleComponent implements OnInit {
   }
 
   getPermissionName(id) {
-    const permission = PERMISSIONS.find((v) => v.id === id);
+    const permission = this.PERMISSIONS.find((v) => v.id === id);
 
     if (permission) {
       return permission.name;
@@ -68,7 +93,7 @@ export class CreateRoleComponent implements OnInit {
   }
 
   getAreaName(id) {
-    const area = AREAS.find((v) => v.id === id);
+    const area = this.AREAS.find((v) => v.id === id);
 
     if (area) {
       return area.name;
@@ -89,57 +114,3 @@ export class CreateRoleComponent implements OnInit {
     );
   }
 }
-
-const PERMISSIONS = [
-  {
-    id: 1,
-    name: "quyền 1",
-  },
-  {
-    id: 2,
-    name: "quyền 2",
-  },
-  {
-    id: 3,
-    name: "quyền 3",
-  },
-  {
-    id: 4,
-    name: "quyền 4",
-  },
-  {
-    id: 5,
-    name: "quyền 5",
-  },
-  {
-    id: 6,
-    name: "quyền 6",
-  },
-  {
-    id: 7,
-    name: "quyền 7",
-  },
-];
-
-const AREAS = [
-  {
-    id: 1,
-    name: "khu vực 1",
-  },
-  {
-    id: 2,
-    name: "khu vực 2",
-  },
-  {
-    id: 3,
-    name: "khu vực 3",
-  },
-  {
-    id: 4,
-    name: "khu vực 4",
-  },
-  {
-    id: 5,
-    name: "khu vực 5",
-  },
-];

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { ToastrService } from "ngx-toastr";
+import { RoleService } from 'src/app/services/role.service';
 
 @Component({
   selector: "app-role",
@@ -7,12 +8,16 @@ import { ToastrService } from "ngx-toastr";
   styleUrls: ["./role.component.css"]
 })
 export class RoleComponent implements OnInit {
+  private ROLES: any[]
+  private PERMISSIONS: any[]
+  private AREAS: any[]
+
   public currentRole: any
 
   public selected_permission = "";
   public selected_area = "";
 
-  constructor(private toastrService: ToastrService) {
+  constructor(private toastrService: ToastrService, private _roleService: RoleService) {
     this.currentRole = {
       id: '',
       name: '',
@@ -21,10 +26,18 @@ export class RoleComponent implements OnInit {
     }
   }
 
-  ngOnInit() {}
+  async ngOnInit() {
+    await this._roleService.getRoles().then(data => this.ROLES = data)
+    await this._roleService.getActionPermissions().then(data => this.PERMISSIONS = data)
+    await this._roleService.getAreaPermissions().then(data => this.AREAS = data)
+  }
 
   get roles() {
-    return FAKE_DATA
+    if (!this.ROLES || !this.ROLES.length) {
+      return []
+    }
+
+    return this.ROLES
   }
 
   get fields() {
@@ -36,15 +49,23 @@ export class RoleComponent implements OnInit {
   }
 
   get permissions() {
+    if (!this.PERMISSIONS || !this.PERMISSIONS.length) {
+      return []
+    }
+
     const ids = this.currentRole.action_permission.map(v => v.id)
 
-    return PERMISSIONS.filter((v) => !ids.includes(v.id));
+    return this.PERMISSIONS.filter((v) => !ids.includes(v.id));
   }
 
   get areas() {
+    if (!this.AREAS || !this.AREAS.length) {
+      return []
+    }
+
     const ids = this.currentRole.area_permission.map(v => v.id)
 
-    return AREAS.filter((v) => !ids.includes(v.id));
+    return this.AREAS.filter((v) => !ids.includes(v.id));
   }
 
   get is_name_valid() {
@@ -116,7 +137,7 @@ export class RoleComponent implements OnInit {
       return value.name
     }
 
-    const permission = PERMISSIONS.find((v) => v.id === value);
+    const permission = this.PERMISSIONS.find((v) => v.id === value);
 
     if (permission) {
       return permission.name;
@@ -130,7 +151,7 @@ export class RoleComponent implements OnInit {
       return value.name
     }
 
-    const area = AREAS.find((v) => v.id === value);
+    const area = this.AREAS.find((v) => v.id === value);
 
     if (area) {
       return area.name;
@@ -147,153 +168,6 @@ export class RoleComponent implements OnInit {
     this.currentRole.area_permission = this.currentRole.area_permission.filter((v) => v !== id);
   }
 }
-
-const FAKE_DATA = [
-  {
-    id: 1,
-    name: 'Admin',
-    action_permission: [
-      {
-        id: 1,
-        name: 'quyền 1'
-      },
-      {
-        id: 2,
-        name: 'quyền 2'
-      },
-      {
-        id: 3,
-        name: 'quyền 3'
-      },
-      {
-        id: 4,
-        name: 'quyền 4'
-      },
-    ],
-    area_permission: [
-      {
-        id: 1,
-        name: 'khu vực 1'
-      },
-      {
-        id: 2,
-        name: 'khu vực 2'
-      },
-      {
-        id: 3,
-        name: 'khu vực 3'
-      },
-    ]
-  },
-  {
-    id: 1,
-    name: 'Admin 1',
-    action_permission: [
-      {
-        id: 1,
-        name: 'quyền 1'
-      },
-      {
-        id: 2,
-        name: 'quyền 2'
-      },
-      {
-        id: 3,
-        name: 'quyền 3'
-      },
-      {
-        id: 4,
-        name: 'quyền 4'
-      },
-    ],
-    area_permission: [
-      {
-        id: 1,
-        name: 'khu vực 1'
-      },
-      {
-        id: 2,
-        name: 'khu vực 2'
-      },
-      {
-        id: 3,
-        name: 'khu vực 3'
-      },
-    ]
-  },
-  {
-    id: 1,
-    name: 'Admin 2',
-    action_permission: [
-      {
-        id: 1,
-        name: 'quyền 1'
-      },
-      {
-        id: 2,
-        name: 'quyền 2'
-      },
-      {
-        id: 3,
-        name: 'quyền 3'
-      },
-      {
-        id: 4,
-        name: 'quyền 4'
-      },
-    ],
-    area_permission: [
-      {
-        id: 1,
-        name: 'khu vực 1'
-      },
-      {
-        id: 2,
-        name: 'khu vực 2'
-      },
-      {
-        id: 3,
-        name: 'khu vực 3'
-      },
-    ]
-  },
-  {
-    id: 1,
-    name: 'Admin 3',
-    action_permission: [
-      {
-        id: 1,
-        name: 'quyền 1'
-      },
-      {
-        id: 2,
-        name: 'quyền 2'
-      },
-      {
-        id: 3,
-        name: 'quyền 3'
-      },
-      {
-        id: 4,
-        name: 'quyền 4'
-      },
-    ],
-    area_permission: [
-      {
-        id: 1,
-        name: 'khu vực 1'
-      },
-      {
-        id: 2,
-        name: 'khu vực 2'
-      },
-      {
-        id: 3,
-        name: 'khu vực 3'
-      },
-    ]
-  },
-]
 
 const KEY_DATA = [
   {
@@ -327,58 +201,4 @@ const FIELDS = [
   {
     label: "Lựa chọn"
   }
-];
-
-const PERMISSIONS = [
-  {
-    id: 1,
-    name: "quyền 1",
-  },
-  {
-    id: 2,
-    name: "quyền 2",
-  },
-  {
-    id: 3,
-    name: "quyền 3",
-  },
-  {
-    id: 4,
-    name: "quyền 4",
-  },
-  {
-    id: 5,
-    name: "quyền 5",
-  },
-  {
-    id: 6,
-    name: "quyền 6",
-  },
-  {
-    id: 7,
-    name: "quyền 7",
-  },
-];
-
-const AREAS = [
-  {
-    id: 1,
-    name: "khu vực 1",
-  },
-  {
-    id: 2,
-    name: "khu vực 2",
-  },
-  {
-    id: 3,
-    name: "khu vực 3",
-  },
-  {
-    id: 4,
-    name: "khu vực 4",
-  },
-  {
-    id: 5,
-    name: "khu vực 5",
-  },
 ];

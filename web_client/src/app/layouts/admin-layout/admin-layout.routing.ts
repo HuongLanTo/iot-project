@@ -51,4 +51,12 @@ export const AdminLayoutRoutes: Routes = [
         path: 'role',
         component: RoleComponent
     },
+    {
+        path: 'location',
+        component: LocationComponent
+    },
+    {
+        path: 'new-location',
+        component: NewLocationComponent
+    }
 ];

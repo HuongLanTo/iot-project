@@ -20,46 +20,77 @@
               <div class="row">
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="form-control-label" for="username">Tên đăng nhập <p style="display:inline-flex !important; color: red ">*</p></label>
-                      <div [ngClass]="{'has-danger': isUserNameInvalid == false}">
-                        <input name="username" type="text" id="username" class="form-control form-control-alternative"
-                         placeholder="Tên đăng nhập">
-                      </div>
+                    <label class="form-control-label" for="name">Tên đăng nhập <p style="display:inline-flex !important; color: red ">*</p></label>
+                    <div [ngClass]="{'has-danger': isUsernameInvalid == true}">
+                      <input 
+                        name="username" type="text" id="username" class="form-control form-control-alternative" [(ngModel)]="newUser.username" (input)="checkUsername($event.target.value)" [placeholder]="isUsernameInvalid ? 'Tên người dùng không được để trống' : 'Tên người dùng'">
+                    </div>
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group">
                     <label class="form-control-label" for="name">Tên người dùng <p style="display:inline-flex !important; color: red ">*</p></label>
-                    <div [ngClass]="{'has-danger': isNameInvalid == false}">
+                    <div [ngClass]="{'has-danger': isNameInvalid == true}">
                       <input 
-                        name="name" type="text" id="name" class="form-control form-control-alternative"
-                        placeholder="Họ và tên">
+                        name="name" type="text" id="name" class="form-control form-control-alternative" [(ngModel)]="newUser.name" (input)="checkName($event.target.value)" [placeholder]="isNameInvalid ? 'Họ và tên không được để trống' : 'Họ và tên'">
                     </div>
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group">
                     <label class="form-control-label" for="password">Mật khẩu <p style="display:inline-flex !important; color: red; font-size: 14px; ">*</p></label>
-                    <div [ngClass]="{'has-danger': isNameInvalid == false}">
+                    <div>
                       <input 
-                        name="password" type="text" id="name" class="form-control form-control-alternative"
-                        placeholder="Mật khẩu">
+                        name="password" type="password" id="name" class="form-control form-control-alternative" placeholder="Mật khẩu">
                     </div>
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group">
                     <label class="form-control-label" for="email">Email <p></p></label>
-                    <div [ngClass]="{'has-danger': isNameInvalid == false}">
+                    <div>
                       <input 
                         name="email" type="text" id="email" class="form-control form-control-alternative"
                         placeholder="Email">
                     </div>
                   </div>
                 </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="phone">Điện thoại <p></p></label>
+                    <div>
+                      <input 
+                        name="phone" type="number" id="phone" class="form-control form-control-alternative"
+                        placeholder="Điện thoại">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="email">Địa chỉ <p></p></label>
+                    <div>
+                      <input 
+                        name="address" type="text" id="address" class="form-control form-control-alternative"
+                        placeholder="Địa chỉ">
+                    </div>
+                  </div>
+                </div>
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label class="form-control-label" for="inputState">Role <p style="display:inline-flex !important; color: red;">*</p></label>
+                    <label class="form-control-label" for="role">Vai trò <p style="display:inline-flex !important; color: red ">*</p></label>
+                    <select *ngIf="!isRoleInvalid" [(ngModel)]="newUser.role" (ngModelChange)="checkRole($event)" name="role" id="role" class="form-control form-control-alternative">
+                      <option value="" disabled selected hidden>Chọn Role</option>
+                      <option *ngFor="let role of roles" [ngValue]="role._id">{{ role.role }}</option>
+                    </select>     
+                    <div *ngIf="isRoleInvalid" class="form-group has-danger">
+                      <select  [(ngModel)]="newUser.role" (ngModelChange)="checkRole($event)" name="role" id="role" class="form-control is-invalid">
+                        <option value="" disabled selected hidden class="is-invalid">Vai trò không được để trống</option>
+                        <option *ngFor="let role of roles" [ngValue]="role._id">{{ role.role }}</option>
+                      </select> 
+                    </div>        
+                  </div>
+                  <!-- <div class="form-group">
+                    <label class="form-control-label" for="inputState">Vai trò <p style="display:inline-flex !important; color: red;">*</p></label>
                     <div class="custom-control custom-control-alternative custom-checkbox">
                       <input class="custom-control-input" id="adminRole" type="checkbox" [(ngModel)]="isAdminChecked" name="admin">
                       <label class="custom-control-label" for="adminRole">
@@ -96,7 +127,7 @@
                         <span class="text-muted">Chỉnh sửa node</span>
                       </label>
                     </div>
-                  </div>
+                  </div> -->
                 </div>
                 <div class="col-lg-6 d-flex flex-column">
                   <div class="row flex-1 flex-grow-1">
@@ -127,8 +158,8 @@
         </div>
         <hr style="margin: 0px;">
         <div class="col-lg-4 card-body" style="padding-top:15px;">
-            <button type="button" class="btn btn-success" style="margin-left:24px;"  >Lưu</button>
-            <button type="button" class="btn btn-danger" >Thoát</button>
+            <button type="button" class="btn btn-success" style="margin-left:24px;" (click)="createUser()">Lưu</button>
+            <button type="button" class="btn btn-danger" (click)="redirect()">Thoát</button>
         </div>         
       </div>
     </div>

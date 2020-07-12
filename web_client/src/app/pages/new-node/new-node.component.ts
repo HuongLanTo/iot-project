@@ -1,5 +1,4 @@
 import { Component, OnInit } from "@angular/core";
-import { District, district } from "src/app/data/district";
 import { Http } from "@angular/http";
 import { NodeService } from "src/app/services/node.service";
 import { ToastrService } from "ngx-toastr";
@@ -26,7 +25,7 @@ export class NewNodeComponent implements OnInit {
     longitude: "",
     status: ""
   };
-  public location: any;
+  public locations: any;
 
   // declare invalid variables
   isNodenameInvalid: boolean = true;
@@ -46,7 +45,7 @@ export class NewNodeComponent implements OnInit {
 
   async ngOnInit() {
     await this.locationService.getLocationList().then((data) => {
-      this.location = data;
+      this.locations = data;
     });
   }
 
@@ -126,9 +125,9 @@ export class NewNodeComponent implements OnInit {
   }
 
   getNumberOfNode(value: any):number {
-    for (var i = 0; i < this.location.length; i++) {
-      if (this.location[i].name === value) {
-        return this.location[i].numberNode;
+    for (var i = 0; i < this.locations.length; i++) {
+      if (this.locations[i].name === value) {
+        return this.locations[i].numberNode;
       }
     }
     

@@ -23,24 +23,24 @@
                     <label class="form-control-label" for="inputLocation">Khu vực <p style="display:inline-flex !important; color: red ">*</p></label>
                     <select *ngIf="!isLocationInvalid" name="location" id="location" class="form-control form-control-alternative" [(ngModel)]="newNode.location" (ngModelChange)="checkLocation($event)">
                       <option value="" disabled selected hidden>Chọn khu vực</option>
-                      <option *ngFor="let location of location">{{ location.name }}</option>
+                      <option *ngFor="let location of locations">{{ location.name }}</option>
                     </select>     
                     <div *ngIf="isLocationInvalid" class="form-group has-danger">
                       <select  name="location" id="location" id="inputLocation" class="form-control is-invalid" [(ngModel)]="newNode.location" (ngModelChange)="checkLocation($event)">
                         <option value="" disabled selected hidden class="is-invalid">Khu vực không được để trống</option>
-                        <option *ngFor="let location of location">{{ location.name }}</option>
+                        <option *ngFor="let location of locations">{{ location.name }}</option>
                       </select> 
                     </div>        
                   </div>
                 </div>
                 <div class="col-lg-6">
-                    <div class="form-group">
-                      <label class="form-control-label" for="latitude">Vĩ độ <p style="display:inline-flex !important; color: red ">*</p></label>
-                      <div [ngClass]="{'has-danger': isLatitudeInvalid == true}">
-                        <input class="form-control form-control-alternative" name="latitude" type="number" id="latitude" [(ngModel)]="newNode.latitude" (input)="checkLatitude($event.target.value)" [placeholder]="isLatitudeInvalid ? 'Vĩ độ không được để trống' : 'Vĩ độ'">
-                      </div>
+                  <div class="form-group">
+                    <label class="form-control-label" for="latitude">Vĩ độ <p style="display:inline-flex !important; color: red ">*</p></label>
+                    <div [ngClass]="{'has-danger': isLatitudeInvalid == true}">
+                      <input class="form-control form-control-alternative" name="latitude" type="number" id="latitude" [(ngModel)]="newNode.latitude" (input)="checkLatitude($event.target.value)" [placeholder]="isLatitudeInvalid ? 'Vĩ độ không được để trống' : 'Vĩ độ'">
                     </div>
                   </div>
+                </div>
                 <div class="col-md-6">
                   <div class="form-group">
                     <label class="form-control-label" for="nodename">Tên node <p style="display:inline-flex !important; color: red ">*</p></label>

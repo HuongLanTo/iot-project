@@ -9,11 +9,18 @@ import { ToastrService } from "ngx-toastr";
 })
 export class NodeComponent implements OnInit {
   nodeList: any;
+  nodeListFull: any;
   currentNode: any = {};
   Status = [
     { status: true, name: "Active" },
     { status: false, name: "Deactive" },
   ];
+
+  //search
+  searchNodename = '';
+  searchLocation = '';
+  searchAddress = '';
+  searchStatus = '';
 
   constructor(
     private nodeService: NodeService,
@@ -72,9 +79,10 @@ export class NodeComponent implements OnInit {
   }
 
   getNodeList() {
-    this.nodeService.getNodesList().then((data) => {
-      this.nodeList = data;
-    });
+    this.nodeService.getNodesList().then(data => {
+      this.nodeListFull = data;
+      this.nodeList = this.nodeListFull
+    })
   }
 
   updateNodeInfo() {
@@ -94,6 +102,22 @@ export class NodeComponent implements OnInit {
         this.toastrService.warning("Cập nhật thông tin node thất bại");
       });
   }
+
+  getNodeListFromNodename() {
+    var tempList = [];
+    if (this.searchNodename === '') {
+      this.nodeList = this.nodeListFull
+    } else {
+      this.nodeListFull.forEach(e => {
+        if (e.nameNode.includes(this.searchNodename)) {
+          tempList.push(e);
+        }
+      });
+      this.nodeList = tempList;
+    }
+    
+  }
+
 }
 
 const KEY_DATA = [

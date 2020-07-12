@@ -31,6 +31,15 @@ export const ROUTES: RouteInfo[] = [
     // },
 
     {
+      path: 'Quản lý khu vực',
+      role: ['admin', 'moderator'],
+      subPath: [
+        { path: '/location', title: 'Danh sách', role: ['admin', 'moderator'], icon: 'ni ni-bullet-list-67' },
+        { path: '/new-location', title: 'Tạo mới', role: ['admin', 'moderator'], icon: 'ni ni-fat-add' }
+      ]
+    },
+
+    {
       path: 'Quản lý các node',
       role: ['admin', 'moderator'],
       subPath: [
@@ -45,7 +54,7 @@ export const ROUTES: RouteInfo[] = [
       subPath: [
         { path: '/user', title: 'Danh sách', role: ['admin'], icon: 'ni ni-bullet-list-67' },
         { path: '/new-user', title: 'Tạo mới', role: ['admin'], icon: 'ni ni-fat-add' },
-        { path: '/pending-user', title: 'Chờ phê duyệt', role: ['admin'], icon: 'ni ni-fat-add' },
+        { path: '/pending-user', title: 'Chờ phê duyệt', role: ['admin'], icon: 'ni ni-check-bold' },
       ]
     },
 
