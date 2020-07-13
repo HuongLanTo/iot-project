@@ -17,6 +17,9 @@ const locationSchema = new Schema({
   detail_location: {
     type: String,
   },
+  slug_detail_location: {
+    type: String
+  },
   latitude: {
     type: String,
   },

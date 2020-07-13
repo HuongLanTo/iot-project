@@ -1,17 +1,13 @@
 const fs = require("fs");
-const User = require("../../../models/mongo/user");
-const Node = require("../../../models/mongo/node");
-const Location = require("../../../models/mongo/location");
-const bcrypt = require("bcrypt");
+const SubDistrict = require("../../../models/mongo/sub-district");
 const log4js = require("log4js");
 const base64 = require("js-base64").Base64;
-const mongoose = require("mongoose");
-const ObjectId = mongoose.Types.ObjectId;
+const {slugify} =  require("../../../utils/common");
 
 log4js.configure("./config/log4js.json");
-const logger = log4js.getLogger("createUser");
+const logger = log4js.getLogger("getSubDistricts");
 
-const getUsers = async function getUsers(req, res) {
+const getSubDistricts = async function getSubDistricts(req, res) {
   var filter ={};
   if(req.query.filter) {
     var filter = JSON.parse(base64.decode(req.query.filter));
@@ -38,28 +34,30 @@ const getUsers = async function getUsers(req, res) {
   limit.skip = size * (page - 1);
   limit.limit = size;
 
-  var districtQuery = {};
-  if(filter.district) {
-    districtQuery = {
-      "location_info.district": ObjectId(filter.district)
-    }
+  var nameQuery = {};
+  if(filter.name) {
+    nameQuery = { "slug": { "$regex": filter.name?slugify(filter.name):'', "$options": 'i' }}
+  }
+  var parentCodeQuery = {};
+  if(filter.parent_code) {
+    parentCodeQuery = { "parent_code": filter.parent_code}
+  }
+  var codeQuery = {};
+  if(filter.code) {
+    codeQuery = { "code": filter.code}
   }
 
-  Node.aggregate(
+  SubDistrict.aggregate(
     [
-      { "$lookup": {
-          "from": 'locations',
-          "localField": "location",
-          "foreignField": "_id",
-          "as": "location_info"
-      }},
-      { "$unwind": { path: "$location_info", preserveNullAndEmptyArrays: true } },
       {
           "$match":{
               "$and":[
-                  // { "location_info.district": { "$regex": filter.district?filter.district:'', "$options": 'i' }},
-                  districtQuery,
-                  { "name": { "$regex": filter.name?filter.name:'', "$options": 'i' }},
+                    // { "slug": { "$regex": filter.name?slugify(filter.name):'', "$options": 'i' }},
+                //   { "parent_code": { "$regex": filter.parent_code?filter.parent_code:'', "$options": 'i' }},
+                //   { "code": { "$regex": filter.code?filter.code:'', "$options": 'i' }},
+                    nameQuery,
+                    parentCodeQuery,
+                    codeQuery
               ]
            }
       },
@@ -84,4 +82,4 @@ const getUsers = async function getUsers(req, res) {
 
 };
 
-module.exports = getUsers;
+module.exports = getSubDistricts;

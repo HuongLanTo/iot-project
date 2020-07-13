@@ -19,16 +19,16 @@ module.exports = async function findByNodes(req, res) {
       });
     }
 
-    const start_date = moment(moment().format("YYYY-MM-DD"))
+    const start_date = moment()
       .subtract(3, "day")
       .set({ hour: 0, minute: 0, second: 0 })
       .toDate();
-    const end_date = moment(moment().format("YYYY-MM-DD"))
+    const end_date = moment()
       .subtract(1, "day")
       .set({ hour: 23, minute: 59, second: 59 })
       .toDate();
 
-    const node_ids = filter.node_ids.split(",").map((v) => Number(v));
+    const node_ids = filter.node_ids.split(",").map((v) => String(v));
 
     const data = await Promise.all(
       node_ids.map(async (v) => {

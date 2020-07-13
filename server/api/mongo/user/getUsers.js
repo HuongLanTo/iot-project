@@ -1,11 +1,12 @@
 const fs = require("fs");
 const User = require("../../../models/mongo/user");
+const Role = require("../../../models/mongo/role");
 const bcrypt = require("bcrypt");
 const log4js = require("log4js");
 const base64 = require("js-base64").Base64;
 
 log4js.configure("./config/log4js.json");
-const logger = log4js.getLogger("createUser");
+const logger = log4js.getLogger("getUsers");
 
 const getUsers = async function getUsers(req, res) {
   const filter = JSON.parse(base64.decode(req.query.filter));
@@ -35,8 +36,13 @@ const getUsers = async function getUsers(req, res) {
     });
   }
 
-  User.find(filter, {}, limit)
-    // .populate("role")
+  await User.find(filter, {}, limit)
+    .populate({
+      path : 'role',
+      populate : {
+        path : 'area_permission action_permission'
+      }
+    })
     .exec((err, data) => {
       if (err) {
         return res.status(500).send({

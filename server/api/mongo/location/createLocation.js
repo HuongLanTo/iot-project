@@ -5,7 +5,7 @@ const District = require("../../../models/mongo/district");
 const Sub_district = require("../../../models/mongo/sub-district");
 
 const log4js = require("log4js");
-const { formatPhoneNumber } = require("../../../utils/common");
+const { slugify } = require("../../../utils/common");
 
 log4js.configure("./config/log4js.json");
 const logger = log4js.getLogger("createPrivince");
@@ -14,11 +14,11 @@ const createLocation = async function createLocation(req, res) {
   const body = req.body;
 
   if (
-    body.province == null ||
-    body.district == null ||
-    body.detail_location == null ||
-    body.latitude == null ||
-    body.longitude == null
+    !body.province ||
+    !body.district ||
+    !body.detail_location ||
+    !body.latitude ||
+    !body.longitude
   ) {
     logger.info("Param invalid");
     return res.status(400).send({
@@ -29,6 +29,7 @@ const createLocation = async function createLocation(req, res) {
 
   var _value = {
     detail_location: body.detail_location,
+    slug_detail_location: slugify(body.detail_location),
     latitude: body.latitude,
     longitude: body.longitude,
   };

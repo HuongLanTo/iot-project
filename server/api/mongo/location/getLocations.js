@@ -9,9 +9,9 @@ const mongoose = require("mongoose");
 const ObjectId = mongoose.Types.ObjectId;
 
 log4js.configure("./config/log4js.json");
-const logger = log4js.getLogger("createUser");
+const logger = log4js.getLogger("getLocations");
 
-const getUsers = async function getUsers(req, res) {
+const getLocations = async function getLocations(req, res) {
   var filter ={};
   if(req.query.filter) {
     var filter = JSON.parse(base64.decode(req.query.filter));
@@ -38,40 +38,44 @@ const getUsers = async function getUsers(req, res) {
   limit.skip = size * (page - 1);
   limit.limit = size;
 
-  var districtQuery = {};
-  if(filter.district) {
-    districtQuery = {
-      "location_info.district": ObjectId(filter.district)
-    }
-  }
-
-  Node.aggregate(
+  Location.aggregate(
     [
-      { "$lookup": {
-          "from": 'locations',
-          "localField": "location",
-          "foreignField": "_id",
-          "as": "location_info"
-      }},
-      { "$unwind": { path: "$location_info", preserveNullAndEmptyArrays: true } },
-      {
+        { "$lookup": {
+                "from": 'provinces',
+                "localField": "province",
+                "foreignField": "_id",
+                "as": "province"
+            }
+        },
+        { "$lookup": {
+                "from": 'districts',
+                "localField": "district",
+                "foreignField": "_id",
+                "as": "district"
+            }
+        },
+        { "$lookup": {
+                "from": 'sub_districts',
+                "localField": "sub_district",
+                "foreignField": "_id",
+                "as": "sub_district"
+            }
+        },
+      { "$unwind": { path: "$province", preserveNullAndEmptyArrays: true } },
+      { "$unwind": { path: "$district", preserveNullAndEmptyArrays: true } },
+      { "$unwind": { path: "$sub_district", preserveNullAndEmptyArrays: true } },
+      { 
           "$match":{
-              "$and":[
-                  // { "location_info.district": { "$regex": filter.district?filter.district:'', "$options": 'i' }},
-                  districtQuery,
-                  { "name": { "$regex": filter.name?filter.name:'', "$options": 'i' }},
-              ]
+                "detail_location": { "$regex": filter.detail_location?filter.detail_location:'', "$options": 'i' },
            }
       },
-      { "$skip": limit.skip },
-      { "$limit": limit.limit>0 ? limit.limit : 1000 }
   ],
     function (err, result) {
       if (err) {
         return res.status(500).send({
           responseCode: 0,
           responseMessage: "Tìm kiếm không thành công, Hệ thống đang bận",
-          responseError: err
+          responseErr: err.message
         });
       }
       return res.status(200).send({
@@ -84,4 +88,4 @@ const getUsers = async function getUsers(req, res) {
 
 };
 
-module.exports = getUsers;
+module.exports = getLocations;
