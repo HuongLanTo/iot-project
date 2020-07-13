@@ -81,8 +81,8 @@ export class UserComponent implements OnInit {
         this.showPages = this.totalPage;
       this.showPages = 3;    
       this.userList = data.data;
-      this.spinnerService.hide();
-    })
+    });
+    this.spinnerService.hide();
   }
 
   updateUserInfo() {
