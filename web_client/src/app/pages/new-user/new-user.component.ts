@@ -45,7 +45,19 @@ export class NewUserComponent implements OnInit {
     private userService: UserService,
     private toastrService: ToastrService,
     private router: Router
-  ) { }
+  ) { 
+    this.newUser = {
+      _id: "",
+      username: "",
+      approve: "",
+      name: "",
+      email: "",
+      password: "",
+      phone: "",
+      role: "",
+      status: "",
+    };
+  }
 
   ngOnInit() {
   }

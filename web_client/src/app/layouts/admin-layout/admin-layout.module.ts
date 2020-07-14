@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { ClipboardModule } from 'ngx-clipboard';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AdminLayoutRoutes } from './admin-layout.routing';
 import { DashboardComponent } from '../../pages/dashboard/dashboard.component';
@@ -11,7 +12,6 @@ import { IconsComponent } from '../../pages/icons/icons.component';
 import { MapsComponent } from '../../pages/maps/maps.component';
 import { UserProfileComponent } from '../../pages/user-profile/user-profile.component';
 import { TablesComponent } from '../../pages/tables/tables.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UserComponent } from 'src/app/pages/user/user.component';
 import { NewUserComponent } from 'src/app/pages/new-user/new-user.component';
 import { PendingUserComponent } from 'src/app/pages/pending-user/pending-user.component';
@@ -20,9 +20,11 @@ import { NewNodeComponent } from 'src/app/pages/new-node/new-node.component';
 import { LocationComponent } from 'src/app/pages/location/location.component';
 import { NewLocationComponent } from 'src/app/pages/new-location/new-location.component';
 import { PaginationComponent } from 'src/app/pages/pagination/pagination.component';
-import { PendingNodeComponent } from 'src/app/pages/pending-node/pending-node.component';
+import { CreateRoleComponent } from '../../pages/create-role/create-role.component'
+import { RoleComponent } from '../../pages/role/role.component'
 // import { ToastrModule } from 'ngx-toastr';
 import { NgxSpinnerModule } from "ngx-spinner";
+import { PendingNodeComponent } from 'src/app/pages/pending-node/pending-node.component';
 
 
 
@@ -50,8 +52,10 @@ import { NgxSpinnerModule } from "ngx-spinner";
     LocationComponent,
     NewLocationComponent,
     PaginationComponent,
+    CreateRoleComponent,
+    RoleComponent,
     PendingNodeComponent
-  ]
+  ],
 })
 
 export class AdminLayoutModule {}

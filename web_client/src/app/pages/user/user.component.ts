@@ -75,7 +75,7 @@ export class UserComponent implements OnInit {
 
   async getUserList(filter, currentPage, sizePage) {
     this.spinnerService.show();
-    await this.userService.getUserList(filter, currentPage, sizePage).then(data => {
+    await this.userService. getUserList(filter, currentPage, sizePage).then(data => {
       this.totalPage = Math.ceil(data.totalDocuments / sizePage);
       if(this.totalPage <= this.showPages)
         this.showPages = this.totalPage;

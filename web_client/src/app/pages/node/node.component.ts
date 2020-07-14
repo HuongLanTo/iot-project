@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { NodeService } from "../../services/node.service";
 import { ToastrService } from "ngx-toastr";
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: "app-node",
@@ -16,6 +17,13 @@ export class NodeComponent implements OnInit {
     { status: false, name: "Deactive" },
   ];
 
+  //paginaton
+  public filter = "eyJuYW1lIjoiTm9kZSIsImRpc3RyaWN0IjoiNWVmODg4NDdmNzY4ZmEyNDFjYjIyNmYyIn0=";
+  private currentPage: number = 1;
+  private showPages: number = 5;
+  private totalPage: number;
+  private sizePage = 10;
+
   //search
   searchNodename = '';
   searchLocation = '';
@@ -24,11 +32,12 @@ export class NodeComponent implements OnInit {
 
   constructor(
     private nodeService: NodeService,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private spinnerService: NgxSpinnerService
   ) {}
 
   async ngOnInit() {
-    await this.getNodeList();
+    await this.getNodeList(this.filter, this.currentPage, this.sizePage);
   }
 
   get fields() {
@@ -78,10 +87,13 @@ export class NodeComponent implements OnInit {
     return value ? "Đang hoạt động" : "Dừng hoạt động";
   }
 
-  getNodeList() {
-    this.nodeService.getNodeList().then(data => {
-      this.nodeListFull = data;
-      this.nodeList = this.nodeListFull
+  async getNodeList(filter, currentPage, sizePage) {
+    await this.nodeService.getNodeList(filter, currentPage, sizePage).then(data => {
+      this.totalPage = Math.ceil(data.totalDocuments / sizePage);
+      if(this.totalPage <= this.showPages)
+        this.showPages = this.totalPage;
+      this.showPages = 3;    
+      this.nodeList = data.data;
     })
   }
 

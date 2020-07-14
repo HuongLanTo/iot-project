@@ -14,6 +14,9 @@ import { LocationComponent } from 'src/app/pages/location/location.component';
 import { NewLocationComponent } from 'src/app/pages/new-location/new-location.component';
 import { LocationService } from 'src/app/services/location.service';
 import { PendingNodeComponent } from 'src/app/pages/pending-node/pending-node.component';
+import { CreateRoleComponent } from '../../pages/create-role/create-role.component'
+import { RoleComponent } from '../../pages/role/role.component'
+
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: DashboardComponent },
@@ -40,6 +43,14 @@ export const AdminLayoutRoutes: Routes = [
     {
         path: 'new-node',
         component: NewNodeComponent
+    },
+    {
+        path: 'create-role',
+        component: CreateRoleComponent
+    },
+    {
+        path: 'role',
+        component: RoleComponent
     },
     {
         path: 'location',

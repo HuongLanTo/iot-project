@@ -27,9 +27,9 @@ export class PendingNodeComponent implements OnInit {
   }
 
   getNodeList() {
-    this.nodeService.getNodeList().then((data) => {
-      this.nodeList = data;
-    })
+    // this.nodeService.getNodeList().then((data) => {
+    //   this.nodeList = data;
+    // })
   }
 
   approve() {

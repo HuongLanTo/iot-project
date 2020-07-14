@@ -23,7 +23,7 @@
                     <label class="form-control-label" for="location">Khu vực <p style="display:inline-flex !important; color: red ">*</p></label>
                     <select *ngIf="!isLocationInvalid" name="location" id="location" class="form-control form-control-alternative" [(ngModel)]="newNode.location" (ngModelChange)="checkLocation($event)">
                       <option value="" disabled selected hidden>Chọn khu vực</option>
-                      <option *ngFor="let location of location">{{ location.name }}</option>
+                      <option *ngFor="let location of locations">{{ location.name }}</option>
                     </select>     
                     <div *ngIf="isLocationInvalid" class="form-group has-danger">
                       <select  name="location" id="location" id="location" class="form-control is-invalid" [(ngModel)]="newNode.location" (ngModelChange)="checkLocation($event)">

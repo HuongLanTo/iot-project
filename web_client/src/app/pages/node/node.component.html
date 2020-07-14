@@ -172,6 +172,8 @@
             </tbody>
           </table>
         </div>
+        <app-pagination [(totalPage)]='totalPage' [(showPages)]='showPages'
+          (pageEmit)='getNodeList(filter, $event, sizePage)'></app-pagination>
       </div>
     </div>
   </div>

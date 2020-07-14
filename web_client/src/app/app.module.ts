@@ -22,6 +22,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { ProfileService } from './services/profile.service';
 import { AuthGuardService } from './guards/auth.guard';
 import { AuthService } from './services/auth.service';
+import { RoleService } from './services/role.service';
 import { CookieService } from "angular2-cookie/services/cookies.service";
 
 @NgModule({
@@ -51,7 +52,8 @@ import { CookieService } from "angular2-cookie/services/cookies.service";
     ProfileService,
     AuthGuardService,
     AuthService,
-    CookieService
+    CookieService,
+    RoleService
   ],
   bootstrap: [AppComponent]
 })

@@ -64,7 +64,7 @@ export class UserService extends BaseService {
     // }
 
     createUser(user) {
-        return this.post("/api/user", user).then(res => {
+        return this.post("/api/user?filter=", user).then(res => {
             console.log(res);
             
             return true;
