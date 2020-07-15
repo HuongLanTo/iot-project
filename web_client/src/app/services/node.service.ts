@@ -28,6 +28,8 @@ export class NodeService extends BaseService {
         // })
         return this.get(`/api/user/?filter=${filter}&page=${page}&size=${size}`)
             .then(res => {
+                console.log(res);
+                
                 return res;
             })
             .catch(err => err)

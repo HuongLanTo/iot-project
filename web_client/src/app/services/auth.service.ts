@@ -4,13 +4,14 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { environment } from '../../environments/environment';
 import { Router } from '@angular/router';
 import { CookieService } from 'angular2-cookie/services/cookies.service';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
     constructor(
-      private http: Http,
+      private http: HttpClient,
       private router:Router,
       public jwtHelper: JwtHelperService,
       private cookieService: CookieService
@@ -49,20 +50,20 @@ export class AuthService {
       this.router.navigate(['login']);
     }
 
-    // public checkSession() {
-    //   return new Promise((resolve, reject) => {
-    //     this.http.get(this.API_URL + '/auth/session')
-    //     .subscribe(res => {
-    //       console.log(res);
+    public checkSession() {
+      return new Promise((resolve, reject) => {
+        this.http.get(this.API_URL + '/auth/session')
+        .subscribe(res => {
+          console.log(res);
           
-    //       var object = JSON.parse((<any>res)._body);
-    //       console.log(object.data.exprired);
+          var object = JSON.parse((<any>res)._body);
+          console.log(object.data.exprired);
           
-    //       resolve(object.data.exprired);
-    //     }, err => {
-    //       reject(err);
-    //     })
+          resolve(object.data.exprired);
+        }, err => {
+          reject(err);
+        })
 
-    //   })
-    // }
+      })
+    }
 }
