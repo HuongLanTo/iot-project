@@ -156,9 +156,9 @@
                   <button class="btn btn-icon btn-sm btn-info" type="button" placement="top" ngbTooltip="Sửa" data-toggle="modal" data-target="#editModal" (click)="currentUser=user">
                     <span class="btn-inner--icon"><i class="ni ni-single-copy-04"></i></span>
                   </button>
-                  <button class="btn btn-icon btn-sm btn-danger" style="margin-right: 8px;" type="button" placement="top" ngbTooltip="Xóa" data-toggle="modal" data-target="#editModalxoa" (click)="currentUser=user">
+                  <!-- <button class="btn btn-icon btn-sm btn-danger" style="margin-right: 8px;" type="button" placement="top" ngbTooltip="Xóa" data-toggle="modal" data-target="#editModalxoa" (click)="currentUser=user">
                     <span class="btn-inner--icon"><i class="ni ni-fat-delete"></i></span>
-                </button>
+                </button> -->
                 </td>
               </tr>
             </tbody>
@@ -209,7 +209,7 @@
                 </select>
                 <select
                   *ngIf="is_select(modal.type) && modal.key=='role'"
-                  [(ngModel)]="currentUser[modal.key]"
+                  [(ngModel)]="currentUser[modal.key.name]"
                   [name]="modal.fin"
                   [id]="modal.fin"
                   class="form-control"

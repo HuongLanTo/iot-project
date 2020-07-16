@@ -12,7 +12,9 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class UserComponent implements OnInit {
   public userList: any;
-  public filter = {};
+  public filter = {
+    approve: "1"
+  };
   public currentUser: any = {};
   private currentPage: number = 1;
   private showPages: number = 5;
@@ -80,17 +82,17 @@ export class UserComponent implements OnInit {
         this.showPages = this.totalPage;
       this.showPages = 3;    
       this.userList = data.data;
+      console.log(this.userList);
+      
     });
     this.spinnerService.hide();
   }
 
   updateUserInfo() {
-    this.userService.updateUserInfo(this.currentUser.id, {
+    this.userService.updateUserInfo(this.currentUser._id, {
       name: this.currentUser.name,
-      role: this.currentUser.role,
-      status: this.currentUser.status,
-      email: this.currentUser.email,
-      phone: this.currentUser.phone,
+      // role: this.currentUser.role,
+      email: this.currentUser.email
     })
     .then(data => {
       this.toastrService.success("Cập nhật thông tin người dùng thành công");
@@ -99,12 +101,6 @@ export class UserComponent implements OnInit {
       this.toastrService.warning("Cập nhật thông tin người dùng thất bại");
     });
   }
-
-  // async getUserList() {
-  //   this.userService.getUserList().then(data => {
-  //     this.userList = data;
-  //   })
-  // }
 
 }
 

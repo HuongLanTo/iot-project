@@ -19,10 +19,10 @@ export class UserService {
 
     private API_URL = environment.apiUrl;
 
-    filter(filter: any) {
-        filter = JSON.stringify(filter);
-        filter = btoa(filter);
-    }
+    // filter(filter: any) {
+    //     filter = JSON.stringify(filter);
+    //     filter = btoa(filter);
+    // }
 
     getUserList(filter: any, page: number, size: number) {
         filter = JSON.stringify(filter);
@@ -35,15 +35,6 @@ export class UserService {
             })
         })
     }
-
-    // getRoleList() {
-    //     return this.get("/api/role")
-    //         .then(res => {
-    //             console.log(res);
-    //             return res;
-    //         })
-    //         .catch(err => err);
-    // }
 
     getUser(filter: string) {
         filter = JSON.stringify(filter);
@@ -80,7 +71,8 @@ export class UserService {
     }
 
     approve(id: string, userInfo) {
-        this.filter(userInfo);
+        userInfo = JSON.stringify(userInfo);
+        userInfo = btoa(userInfo);
         return new Promise((resolve, reject) => {
             this.http.put(this.API_URL + `/api/user/approve/${id}`, userInfo).subscribe(res => {
                 resolve(true);
@@ -90,8 +82,16 @@ export class UserService {
         })
     }
 
-    disapprove(id: string, userInfo) {
-        console.log('Tu choi phe duyet tai khoan: ', userInfo);
+    updateStatus(id: string, userInfo) {
+        userInfo = JSON.stringify(userInfo);
+        userInfo = btoa(userInfo);
+        return new Promise((resolve, reject) => {
+            this.http.put(this.API_URL + `/api/user/status/${id}`, userInfo).subscribe(res => {
+                resolve(true);
+            }, err => {
+                reject(err);
+            })
+        })
     }
 
     
