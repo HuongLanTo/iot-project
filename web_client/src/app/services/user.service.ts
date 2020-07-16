@@ -21,7 +21,7 @@ export class UserService {
 
     getUserList(filter: any, page: number, size: number) {
         return new Promise((resolve, reject) => {
-            this.http.get(this.API_URL + `/api/user/?filter=${filter}&page=${page}&size=${size}`).subscribe(res => {
+            this.http.get(this.API_URL + `/api/user?filter=${filter}&page=${page}&size=${size}`).subscribe(res => {
                 console.log(res);
                 resolve(res);
             }, err => {
@@ -38,6 +38,19 @@ export class UserService {
     //         })
     //         .catch(err => err);
     // }
+
+    getUser(filter: string) {
+        filter = JSON.stringify(filter);
+        filter = btoa(filter);
+        return new Promise((resolve, reject) => {
+            this.http.get(this.API_URL + `/api/user?filter=${filter}`).subscribe((res: {data: any}) => {
+                console.log(res.data);
+                resolve(res.data);
+            }, err => {
+                reject(err);
+            })
+        })
+    }
 
     createUser(user: any) {
         return new Promise((resolve, reject) => {

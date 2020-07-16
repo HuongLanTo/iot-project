@@ -15461,6 +15461,12 @@ button.section-darker:focus
     background: linear-gradient(87deg, black 0, black 100%) !important;
 }
 
+.bg-gradient-broken-guitar
+{
+    /* background-color: #a55c1b; */
+    background: linear-gradient(to bottom, #33ccff 0%, #ff99cc 100%) !important;
+}
+
 .fill-primary
 {
     fill: #5e72e4;

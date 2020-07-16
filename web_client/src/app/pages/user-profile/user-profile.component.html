@@ -1,6 +1,6 @@
 <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center">
   <!-- Mask -->
-  <span class="mask bg-gradient-danger opacity-8"></span>
+  <span class="mask opacity-8" style="background: linear-gradient(87deg, #13547a 0, #80d0c7 100%) !important;"></span>
   <!-- Header container -->
   <div class="container-fluid d-flex align-items-center">
     <!-- <div class="row">
@@ -50,10 +50,10 @@
           </div>
           <div class="text-center">
             <h3>
-              Jessica Jones<span class="font-weight-light">, 27</span>
+              {{ profile_user.name }}
             </h3>
             <div class="h5 font-weight-300">
-              <i class="ni location_pin mr-2"></i>Bucharest, Romania
+              <i class="ni location_pin mr-2"></i>{{ role }}
             </div>
             <div class="h5 mt-4">
               <i class="ni business_briefcase-24 mr-2"></i>Solution Manager - Creative Tim Officer
@@ -74,7 +74,7 @@
               <h3 class="mb-0">Tài khoản của tôi</h3>
             </div>
             <div class="col-4 text-right">
-              <button class="btn btn-sm btn-primary">Chỉnh sửa</button>
+              <button class="btn btn-sm btn-primary" (click)="edit()">Chỉnh sửa</button>
             </div>
           </div>
         </div>
@@ -85,28 +85,36 @@
               <div class="row">
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="form-control-label" for="input-username">Username</label>
-                    <input type="text" id="input-username" class="form-control form-control-alternative" placeholder="Username" value="lucky.jesse">
+                    <label class="form-control-label" for="username">Tên đăng nhập</label>
+                    <input type="text" id="username" class="form-control form-control-alternative" placeholder="First name" [value]="user.username" readonly>
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="form-control-label" for="input-email">Email address</label>
-                    <input type="email" id="input-email" class="form-control form-control-alternative" placeholder="jesse@example.com">
+                    <label class="form-control-label" for="name">Họ và tên</label>
+                    <input type="text" id="name" class="form-control form-control-alternative" placeholder="Last name" [value]="profile_user.name">
                   </div>
                 </div>
               </div>
               <div class="row">
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="form-control-label" for="input-first-name">First name</label>
-                    <input type="text" id="input-first-name" class="form-control form-control-alternative" placeholder="First name" value="Lucky">
+                    <label class="form-control-label" for="password">Mật khẩu</label>
+                    <input type="text" id="password" class="form-control form-control-alternative" placeholder="First name" [value]="profile_user.password">
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="form-control-label" for="input-last-name">Last name</label>
-                    <input type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="Last name" value="Jesse">
+                    <label class="form-control-label" for="email">Email</label>
+                    <input type="text" id="email" class="form-control form-control-alternative" placeholder="Last name" [value]="profile_user.email">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="phone">Điện thoại</label>
+                    <input type="text" id="phone" class="form-control form-control-alternative" placeholder="First name" [value]="profile_user.phone">
                   </div>
                 </div>
               </div>
