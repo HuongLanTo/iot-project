@@ -12,7 +12,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class UserComponent implements OnInit {
   public userList: any;
-  public filter = "e30=";
+  public filter = {};
   public currentUser: any = {};
   private currentPage: number = 1;
   private showPages: number = 5;
@@ -20,7 +20,6 @@ export class UserComponent implements OnInit {
   private sizePage = 10;
   
   constructor(
-    private http: Http,
     private userService: UserService,
     private spinnerService: NgxSpinnerService,
     private toastrService: ToastrService

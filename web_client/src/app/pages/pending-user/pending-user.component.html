@@ -8,13 +8,13 @@
         <div class="card-header border-0">
           <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item">
-              <a class="nav-link active" id="pending-tab" data-toggle="tab" href="#pending" role="tab" aria-controls="pending" aria-selected="true">Chờ phê duyệt</a>
+              <a class="nav-link active" id="pending-tab" data-toggle="tab" href="#pending" role="tab" aria-controls="pending" aria-selected="true" (click)="getPending()">Chờ phê duyệt</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" id="approved-tab" data-toggle="tab" href="#approved" role="tab" aria-controls="approved" aria-selected="false">Được phê duyệt</a>
+              <a class="nav-link" id="approved-tab" data-toggle="tab" href="#approved" role="tab" aria-controls="approved" aria-selected="false" (click)="getApprove()">Được phê duyệt</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" id="unapproved-tab" data-toggle="tab" href="#unapproved" role="tab" aria-controls="unapproved" aria-selected="false">Không được phê duyệt</a>
+              <a class="nav-link" id="unapproved-tab" data-toggle="tab" href="#unapproved" role="tab" aria-controls="unapproved" aria-selected="false" (click)="getDisapprove()">Không được phê duyệt</a>
             </li>
           </ul>
           <!-- <div class="tab-content" id="myTabContent">
@@ -36,9 +36,13 @@
                   </tr>
                 </thead>
                 <tbody>
+                  <h4 class="mb-0" style="padding: 10px 24px 20px 24px;" *ngIf="!checkUserList">Không có dữ liệu</h4>
                   <tr *ngFor="let user of userList; let index = index" style="text-align: center;">
                     <td>{{ index + 1 }}</td>
-                    <td *ngFor="let key_data of key_data">{{ user[key_data.key] }}</td>
+                    <td *ngFor="let key_data of key_data" >
+                      <span *ngIf="key_data.key!=='role'">{{ user[key_data.key] }}</span>
+                      <span *ngIf="key_data.key=='role'">{{ user[key_data.key].name }}</span>
+                    </td>
                     <td>
                       <button class="btn btn-icon btn-sm btn-info" type="button" placement="top"
                         data-toggle="modal" data-target="#approveModal" (click)="currentUser = user">Phê duyệt
@@ -52,8 +56,11 @@
                 </tbody>
               </table>
             </div>
+            <ngx-spinner></ngx-spinner>
+            <app-pagination [(totalPage)]='totalPage' [(showPages)]='showPages'
+          (pageEmit)='getUserList(filter, $event, sizePage)'></app-pagination>
           </div>
-          <div class="mb-0 tab-pane fade" id="approved" role="tabpanel" aria-labelledby="approved-tab">
+          <div class="mb-0 tab-pane fade" id="approved" role="tabpanel" aria-labelledby="approved-tab" >
             <h3 class="mb-0" style="padding: 10px 24px 20px 24px;">Danh sách người dùng được phê duyệt</h3>
             <div class="table-responsive tab-pane fade show active" id="pending" role="tabpanel" aria-labelledby="pending-tab">
               <table class="table align-items-center table-flush">
@@ -64,13 +71,20 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let user of userList; let index = index" style="text-align: center;">
+                  <h4 class="mb-0" style="padding: 10px 24px 20px 24px;" *ngIf="!checkApproveUserList">Không có dữ liệu</h4>
+                  <tr *ngFor="let user1 of approveUserList; let index = index" style="text-align: center;">
                     <td>{{ index + 1 }}</td>
-                    <td *ngFor="let key_data of key_data">{{ user[key_data.key] }}</td>
+                    <td *ngFor="let key_data of key_data" >
+                      <span *ngIf="key_data.key!=='role'">{{ user1[key_data.key] }}</span>
+                      <span *ngIf="key_data.key=='role'">{{ user1[key_data.key].name }}</span>
+                    </td>
                   </tr>
                 </tbody>
               </table>
             </div>
+            <ngx-spinner></ngx-spinner>
+            <app-pagination [(totalPage)]='totalPage1' [(showPages)]='showPages1'
+          (pageEmit)='getApprovedUserList(filter, $event, sizePage)'></app-pagination>
           </div>
           <div class="mb-0 tab-pane fade" id="unapproved" role="tabpanel" aria-labelledby="unapproved-tab">
             <h3 class="mb-0" style="padding: 10px 24px 20px 24px;">Danh sách người dùng không được phê duyệt</h3>
@@ -83,13 +97,19 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let user of userList; let index = index" style="text-align: center;">
+                  <h4 class="mb-0" style="padding: 10px 24px 20px 24px;" *ngIf="!checkDisapproveUserList">Không có dữ liệu</h4>
+                  <tr *ngFor="let user2 of disapproveUserList; let index = index" style="text-align: center;">
                     <td>{{ index + 1 }}</td>
-                    <td *ngFor="let key_data of key_data">{{ user[key_data.key] }}</td>
-                  </tr>
+                    <td *ngFor="let key_data of key_data" >
+                      <span *ngIf="key_data.key!=='role'">{{ user2[key_data.key] }}</span>
+                      <span *ngIf="key_data.key=='role'">{{ user2[key_data.key].name }}</span>
+                    </td>
                 </tbody>
               </table>
             </div>
+            <ngx-spinner></ngx-spinner>
+            <app-pagination [(totalPage)]='totalPage2' [(showPages)]='showPages2'
+          (pageEmit)='getDisapprovedUserList(filter, $event, sizePage)'></app-pagination>
           </div>
         </div>
       </div>
@@ -138,4 +158,6 @@
     </div>
   </div>
 </div>
+
+
   

@@ -19,10 +19,16 @@ export class UserService {
 
     private API_URL = environment.apiUrl;
 
+    filter(filter: any) {
+        filter = JSON.stringify(filter);
+        filter = btoa(filter);
+    }
+
     getUserList(filter: any, page: number, size: number) {
+        filter = JSON.stringify(filter);
+        filter = btoa(filter);
         return new Promise((resolve, reject) => {
             this.http.get(this.API_URL + `/api/user?filter=${filter}&page=${page}&size=${size}`).subscribe(res => {
-                console.log(res);
                 resolve(res);
             }, err => {
                 reject(err);
@@ -74,7 +80,14 @@ export class UserService {
     }
 
     approve(id: string, userInfo) {
-        console.log('Phe duyet tai khoan: ', userInfo);
+        this.filter(userInfo);
+        return new Promise((resolve, reject) => {
+            this.http.put(this.API_URL + `/api/user/approve/${id}`, userInfo).subscribe(res => {
+                resolve(true);
+            }, err => {
+                reject(err);
+            })
+        })
     }
 
     disapprove(id: string, userInfo) {
