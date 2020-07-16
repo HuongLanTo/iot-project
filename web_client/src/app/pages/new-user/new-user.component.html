@@ -23,7 +23,7 @@
                     <label class="form-control-label" for="name">Tên đăng nhập <p style="display:inline-flex !important; color: red ">*</p></label>
                     <div [ngClass]="{'has-danger': isUsernameInvalid == true}">
                       <input 
-                        name="username" type="text" id="username" class="form-control form-control-alternative" [(ngModel)]="newUser.username" (input)="checkUsername($event.target.value)" [placeholder]="isUsernameInvalid ? 'Tên người dùng không được để trống' : 'Tên người dùng'">
+                        name="username" type="text" id="username" class="form-control form-control-alternative" [(ngModel)]="newUser.username" [placeholder]="newUser.username" disabled>
                     </div>
                   </div>
                 </div>

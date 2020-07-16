@@ -4,6 +4,7 @@ import { FormGroup } from '@angular/forms';
 import { Role, role } from 'src/app/models/role';
 import { UserService } from 'src/app/services/user.service';
 import { ToastrService } from 'ngx-toastr';
+import { stringify } from 'querystring';
 
 @Component({
   selector: 'app-new-user',
@@ -24,6 +25,13 @@ export class NewUserComponent implements OnInit {
     role: "",
     status: ""
   };
+
+  private filter = {};
+  private currentPage: number = 1;
+  private showPages: number = 5;
+  private totalPage: number;
+  private sizePage = 10;
+
 
   // declare invalid variables
   isUsernameInvalid: boolean = false;
@@ -60,6 +68,14 @@ export class NewUserComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.userService.getUserList(this.filter, this.currentPage, this.sizePage).then((data: any) => {
+      var temp = data.totalDocuments + 1;
+      if (temp < 10) {
+        this.newUser.username = "A00" + temp;
+      } else if (temp >= 10) {
+        this.newUser.username = "A0" + temp;
+      }
+    })
   }
 
   get roles() {

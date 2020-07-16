@@ -60,7 +60,7 @@ export class UserService {
 
     createUser(user: any) {
         return new Promise((resolve, reject) => {
-            this.http.post(this.API_URL + "/api/user?filter=", user).subscribe(res => {
+            this.http.post(this.API_URL + "/api/user", user).subscribe(res => {
                 resolve(true);
             }, err => {
                 reject(err);
