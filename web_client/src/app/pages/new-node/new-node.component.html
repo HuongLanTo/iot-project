@@ -23,12 +23,12 @@
                     <label class="form-control-label" for="location">Khu vực <p style="display:inline-flex !important; color: red ">*</p></label>
                     <select *ngIf="!isLocationInvalid" name="location" id="location" class="form-control form-control-alternative" [(ngModel)]="newNode.location" (ngModelChange)="checkLocation($event)">
                       <option value="" disabled selected hidden>Chọn khu vực</option>
-                      <option *ngFor="let location of locations">{{ location.name }}</option>
+                      <option *ngFor="let location of locationList" [ngValue]="location._id">{{ location.detail_location }}, {{ location.district.name }}, {{ location.province.name }}</option>
                     </select>     
                     <div *ngIf="isLocationInvalid" class="form-group has-danger">
                       <select  name="location" id="location" id="location" class="form-control is-invalid" [(ngModel)]="newNode.location" (ngModelChange)="checkLocation($event)">
                         <option value="" disabled selected hidden class="is-invalid">Khu vực không được để trống</option>
-                        <option *ngFor="let location of locationList">{{ location.name }}</option>
+                        <option *ngFor="let location of locationList" [ngValue]="location._id">{{ location.detail_location }}, {{ location.district.name }}, {{ location.province.name }}</option>
                       </select> 
                     </div>        
                   </div>
@@ -37,7 +37,7 @@
                   <div class="form-group">
                     <label class="form-control-label" for="ip">IP <p style="display:inline-flex !important; color: red ">*</p></label>
                     <div [ngClass]="{'has-danger': isIpInvalid == true}">
-                      <input class="form-control form-control-alternative" name="ip" type="text" id="ip" [(ngModel)]="newNode.ip" (input)="checkIp($event.target.value)" [placeholder]="isLatitudeInvalid ? 'Vĩ độ không được để trống' : 'Vĩ độ'">
+                      <input class="form-control form-control-alternative" name="ip" type="text" id="ip" [(ngModel)]="newNode.ip" (input)="checkIp($event.target.value)" [placeholder]="isIPInvalid ? 'IP không được để trống' : 'IP'">
                     </div>
                   </div>
                 </div>
@@ -55,26 +55,13 @@
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
-                                    <label class="form-control-label">SO2</label>
-                                </div>
-                            </div>     
-                            <div class="col">
-                                <div class="form-group">
-                                    <label class="custom-toggle" for="so2Status">
-                                        <input type="checkbox" checked id="so2Status" [(ngModel)]="newNode.so2" name="so2Status">
-                                        <span class="custom-toggle-slider rounded-circle"></span>
-                                    </label>
-                                </div>
-                            </div>   
-                            <div class="col">
-                                <div class="form-group">
                                     <label class="form-control-label">Nhiệt độ</label>
                                 </div>
                             </div>     
                             <div class="col">
                                 <div class="form-group">
-                                    <label class="custom-toggle" for="temperatureStatus">
-                                        <input type="checkbox" checked id="temperatureStatus" [(ngModel)]="newNode.temperature" name="temperatureStatus">
+                                    <label class="custom-toggle" for="temperature_status">
+                                        <input type="checkbox" checked id="temperature_status" [(ngModel)]="newNode.temperature_status" name="temperature_status">
                                         <span class="custom-toggle-slider rounded-circle"></span>
                                     </label>
                                 </div>
@@ -86,8 +73,21 @@
                             </div>     
                             <div class="col">
                                 <div class="form-group">
-                                    <label class="custom-toggle" for="humidityStatus">
-                                        <input type="checkbox" checked id="humidityStatus" [(ngModel)]="newNode.humidity" name="humidityStatus">
+                                    <label class="custom-toggle" for="humidity_status">
+                                        <input type="checkbox" checked id="humidity_status" [(ngModel)]="newNode.humidity_status" name="humidity_status">
+                                        <span class="custom-toggle-slider rounded-circle"></span>
+                                    </label>
+                                </div>
+                            </div>   
+                            <div class="col">
+                                <div class="form-group">
+                                    <label class="form-control-label">Khí CO</label>
+                                </div>
+                            </div>     
+                            <div class="col">
+                                <div class="form-group">
+                                    <label class="custom-toggle" for="co_status">
+                                        <input type="checkbox" checked id="co_status" [(ngModel)]="newNode.co_status" name="co_status">
                                         <span class="custom-toggle-slider rounded-circle"></span>
                                     </label>
                                 </div>
@@ -96,13 +96,13 @@
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
-                                    <label class="form-control-label">NO</label>
+                                    <label class="form-control-label">Khí NH3</label>
                                 </div>
                             </div>     
                             <div class="col">
                                 <div class="form-group">
-                                    <label class="custom-toggle" for="noStatus">
-                                        <input type="checkbox" checked id="noStatus" [(ngModel)]="newNode.no" name="noStatus">
+                                    <label class="custom-toggle" for="nh3_status">
+                                        <input type="checkbox" checked id="nh3_status" [(ngModel)]="newNode.nh3_status" name="nh3_status">
                                         <span class="custom-toggle-slider rounded-circle"></span>
                                     </label>
                                 </div>
@@ -114,8 +114,8 @@
                             </div>     
                             <div class="col">
                                 <div class="form-group">
-                                    <label class="custom-toggle" for="buipm25Status">
-                                        <input type="checkbox" checked id="buipm25Status" [(ngModel)]="newNode.buipm25" name="buipm25Status">
+                                    <label class="custom-toggle" for="dust_status">
+                                        <input type="checkbox" checked id="dust_status" [(ngModel)]="newNode.dust_status" name="dust_status">
                                         <span class="custom-toggle-slider rounded-circle"></span>
                                     </label>
                                 </div>

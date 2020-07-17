@@ -4,6 +4,7 @@ import { NodeService } from "src/app/services/node.service";
 import { ToastrService } from "ngx-toastr";
 import { Router } from "@angular/router";
 import { LocationService } from "src/app/services/location.service";
+import { ProfileService } from "src/app/services/profile.service";
 
 @Component({
   selector: "app-new-node",
@@ -12,21 +13,19 @@ import { LocationService } from "src/app/services/location.service";
 })
 export class NewNodeComponent implements OnInit {
   public newNode = {
-    id: "",
     name: "",
     location: "",
-    address: "",
-    so2: "",
-    no: "",
-    buipm25: "",
-    temperature: "",
-    humidity: "",
-    latitude: "",
-    longitude: "",
+    nh3_status: "",
+    co_status: "",
+    dust_status: "",
+    temperature_status: "",
+    humidity_status: "",
     status: "",
     approve: "",
-    ip: ""
+    ip: "",
+    created_by: ""
   };
+  private id_current_user = "";
   public locationList: any;
 
   // declare invalid variables
@@ -36,15 +35,16 @@ export class NewNodeComponent implements OnInit {
 
 
   constructor(
-    private http: Http,
     private nodeService: NodeService,
     private toastrService: ToastrService,
     private router: Router,
-    private locationService: LocationService
+    private locationService: LocationService,
+    private profileSerive: ProfileService
   ) {}
 
   async ngOnInit() {
     await this.getLocationList();
+    await this.getMe();
   }
 
   createNode() {
@@ -64,7 +64,9 @@ export class NewNodeComponent implements OnInit {
       this.isNameInvalid = false;
     }
     if (!this.isIpInvalid && !this.isNameInvalid && !this.isLocationInvalid) {
+      console.log(this.newNode);
       this.newNode.approve = "0";
+      this.newNode.created_by = this.id_current_user;
       this.nodeService
         .createNode(this.newNode)
         .then((data) => {
@@ -84,6 +86,12 @@ export class NewNodeComponent implements OnInit {
   async getLocationList() {
     this.locationService.getLocationList().then(data => {
       this.locationList = data;
+    })
+  }
+
+  getMe() {
+    this.profileSerive.getProfile().then((data: any) => {
+      this.id_current_user = data._id;
     })
   }
 

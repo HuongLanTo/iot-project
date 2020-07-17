@@ -16,9 +16,10 @@ export class LocationService {
 
     getLocationList() {
         return new Promise((resolve, reject) => {
-            this.http.get(this.API_URL_TEMP + '/location').subscribe(
-                res => {
-                    resolve(res)
+            this.http.get(this.API_URL + '/api/location').
+                subscribe((res: {responseData: any}) => {
+                    console.log(res.responseData);
+                    resolve(res.responseData)
                 }, err => {
                     reject(err)
                 }

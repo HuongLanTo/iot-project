@@ -3,41 +3,34 @@ import { Http, Response } from "@angular/http";
 import 'rxjs/Rx';
 import { BaseService } from "./base.service";
 import { HttpClient } from "@angular/common/http";
+import { environment } from "src/environments/environment";
 
 @Injectable({
     providedIn: 'root'
 })
-export class NodeService extends BaseService {
+export class NodeService {
     constructor(
         protected http: HttpClient
-    ) {
-        super(http);
-    }
+    ) {}
   
-    private API_URL = 'https://5ee4a4deddcea00016a36e04.mockapi.io/api/user/';
+    private API_URL = environment.apiUrl;
 
     getNodeList(filter:any, page: number, size: number) {
-        // return new Promise((resolve, reject) => {
-        //     this.http.get(this.API_URL)
-        //         .subscribe(res => {
-        //             var object = JSON.parse((<any>res)._body);
-        //             resolve(object);
-        //         }, err => {
-        //             reject(err);
-        //         })
-        // })
-        return this.get(`/api/user/?filter=${filter}&page=${page}&size=${size}`)
-            .then(res => {
-                console.log(res);
-                
-                return res;
-            })
-            .catch(err => err)
+        filter = JSON.stringify(filter);
+        filter = btoa(filter);
+        return new Promise((resolve, reject) => {
+            this.http.get(this.API_URL + `/api/node?filter=${filter}&page=${page}&size=${size}`)
+                .subscribe((res: {responseData: any}) => {
+                    resolve(res.responseData);
+                }, err => {
+                    reject(err);
+                })
+        })
     }
 
     createNode(node: any): Promise<boolean> {
         return new Promise((resolve, reject) => {
-            this.http.post(this.API_URL, node)
+            this.http.post(this.API_URL + "/api/node", node)
                 .subscribe(res => {
                     resolve(true);
                 }, err => reject(err))

@@ -172,8 +172,8 @@
             </tbody>
           </table>
         </div>
-        <app-pagination [(totalPage)]='totalPage' [(showPages)]='showPages'
-          (pageEmit)='getNodeList(filter, $event, sizePage)'></app-pagination>
+        <!-- <app-pagination [(totalPage)]='totalPage' [(showPages)]='showPages'
+          (pageEmit)='getNodeList(filter, $event, sizePage)'></app-pagination> -->
       </div>
     </div>
   </div>
@@ -223,9 +223,7 @@
                     [id]="field.fin"
                     class="form-control"
                   >
-                    <option value="" disabled selected hidden>{{
-                      currentNode[field.key]
-                    }}</option>
+                    <option value="" disabled selected hidden>{{ currentNode[field.key] }}</option>
                     <option
                       *ngFor="let item of data[field.key]"
                       [ngValue]="item.value"

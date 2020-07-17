@@ -10,7 +10,6 @@ import { NgxSpinnerService } from "ngx-spinner";
 })
 export class NodeComponent implements OnInit {
   nodeList: any;
-  nodeListFull: any;
   currentNode: any = {};
   Status = [
     { status: true, name: "Active" },
@@ -18,9 +17,9 @@ export class NodeComponent implements OnInit {
   ];
 
   //paginaton
-  public filter = "eyJuYW1lIjoiTm9kZSIsImRpc3RyaWN0IjoiNWVmODg4NDdmNzY4ZmEyNDFjYjIyNmYyIn0=";
+  public filter = {};
   private currentPage: number = 1;
-  private showPages: number = 5;
+  private showPages: number;
   private totalPage: number;
   private sizePage = 10;
 
@@ -89,11 +88,13 @@ export class NodeComponent implements OnInit {
 
   async getNodeList(filter, currentPage, sizePage) {
     await this.nodeService.getNodeList(filter, currentPage, sizePage).then(data => {
-      this.totalPage = Math.ceil(data.totalDocuments / sizePage);
+      this.totalPage = Math.ceil(10 / sizePage);
       if(this.totalPage <= this.showPages)
         this.showPages = this.totalPage;
       this.showPages = 3;    
-      this.nodeList = data.data;
+      this.nodeList = data;
+      console.log(data);
+      
     })
   }
 
@@ -116,17 +117,17 @@ export class NodeComponent implements OnInit {
   }
 
   getNodeListFromNodename() {
-    var tempList = [];
-    if (this.searchNodename === '') {
-      this.nodeList = this.nodeListFull
-    } else {
-      this.nodeListFull.forEach(e => {
-        if (e.nameNode.includes(this.searchNodename)) {
-          tempList.push(e);
-        }
-      });
-      this.nodeList = tempList;
-    }
+    // var tempList = [];
+    // if (this.searchNodename === '') {
+    //   this.nodeList = this.nodeListFull
+    // } else {
+    //   this.nodeListFull.forEach(e => {
+    //     if (e.nameNode.includes(this.searchNodename)) {
+    //       tempList.push(e);
+    //     }
+    //   });
+    //   this.nodeList = tempList;
+    // }
     
   }
 
@@ -134,7 +135,7 @@ export class NodeComponent implements OnInit {
 
 const KEY_DATA = [
   {
-    key: "nameNode",
+    key: "name",
     type: "string",
   },
   {
@@ -142,47 +143,52 @@ const KEY_DATA = [
     type: "string",
   },
   {
-    key: "address",
+    key: "ip",
     type: "string",
   },
   {
-    key: "temperature",
+    key: "status",
     type: "boolean",
   },
   {
-    key: "humidity",
+    key: "temperature_status",
     type: "boolean",
   },
   {
-    key: "so2",
+    key: "humidity_status",
     type: "boolean",
   },
   {
-    key: "no",
+    key: "nh3_status",
     type: "boolean",
   },
   {
-    key: "buipm25",
+    key: "dust_status",
     type: "boolean",
   },
+  {
+    key: "co_status",
+    type: "boolean",
+  }
 ];
 
 const FIELDS = [
   {
     label: "Tên node",
-    placeholder: "Tìm kiếm node",
     name: "name",
   },
   {
     label: "Khu vực",
-    placeholder: "Tìm kiếm khu vực",
     name: "location",
   },
   {
     label: "IP",
-    placeholder: "Tìm kiếm IP",
     name: "ip",
   },
+  {
+    label: "Trạng thái",
+    name: "status",
+  }
 ];
 
 const ENV = [
@@ -193,10 +199,10 @@ const ENV = [
     label: "Độ ẩm",
   },
   {
-    label: "SO2",
+    label: "NH3",
   },
   {
-    label: "NO",
+    label: "CO",
   },
   {
     label: "Bụi PM 2.5",
@@ -209,14 +215,14 @@ const ENV = [
 const MODAL = [
   {
     label: "Tên node",
-    fin: "nameNode", // fin = for, id, name
-    key: "nameNode",
+    fin: "name", // fin = for, id, name
+    key: "name",
     type: "input",
     readonly: true,
   },
   {
     label: "Trạng thái",
-    fin: "nameStatus", // fin = for, id, name
+    fin: "status", // fin = for, id, name
     key: "status",
     type: "select",
   },
@@ -243,34 +249,34 @@ const MODAL = [
 ];
 
 const STATUS = [
-  { value: true, name: "Active" },
-  { value: false, name: "Deactive" },
+  { value: true, name: "Đang hoạt động" },
+  { value: false, name: "Dừng hoạt động" },
 ];
 
 const SENSOR = [
   {
     label: "Nhiệt độ",
     fin: "temperatureStatus",
-    key: "temperature",
+    key: "temperature_status",
   },
   {
     label: "Độ ẩm",
     fin: "humidityStatus",
-    key: "humidity",
+    key: "humidity_status",
   },
   {
-    label: "SO2",
-    fin: "so2Status",
-    key: "so2",
+    label: "NH3",
+    fin: "nh3Status",
+    key: "nh3_status",
   },
   {
-    label: "NO",
-    fin: "noStatus",
-    key: "no",
+    label: "CO",
+    fin: "coStatus",
+    key: "co_status",
   },
   {
     label: "Bụi PM2.5",
-    fin: "buipm25Status",
-    key: "buipm25",
+    fin: "dustStatus",
+    key: "dust_status",
   },
 ];
