@@ -1,4 +1,4 @@
-<div class="header bg-gradient-dark pb-8 pt-5 pt-md-8"></div>
+<div class="header pb-8 pt-5 pt-md-8" style="background: linear-gradient(87deg, #13547a 0, #80d0c7 100%) !important;"></div>
 <div class="container-fluid mt--7">
   <div class="">
     <div class="">
@@ -61,7 +61,7 @@
                       <option value="" hidden selected>Chọn quyền</option>
                       <option
                         *ngFor="let permission of permissions"
-                        [value]="permission.id"
+                        [value]="permission._id"
                         >{{ permission.name }}</option
                       >
                     </select>
@@ -86,8 +86,14 @@
                   <div class="form-group">
                     <label class="form-control-label" for="area"
                       >Khu vực
-                      <p></p
-                    ></label>
+                      <p
+                        style="display: inline-flex !important; color: red;"
+                        placement="right"
+                        ngbTooltip="Không được để trống"
+                      >
+                        *
+                      </p>
+                    </label>
                     <select
                       name="area"
                       [(ngModel)]="selected_area"
