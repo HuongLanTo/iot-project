@@ -17,7 +17,9 @@ export class NodeComponent implements OnInit {
   ];
 
   //paginaton
-  public filter = {};
+  public filter = {
+    approve: "1"
+  };
   private currentPage: number = 1;
   private showPages: number;
   private totalPage: number;

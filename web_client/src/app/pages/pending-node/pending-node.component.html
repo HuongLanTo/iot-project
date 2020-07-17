@@ -1,0 +1,156 @@
+<div class="header bg-gradient-default pb-8 pt-5 pt-md-8"></div>
+<!-- Page content -->
+<div class="container-fluid mt--7">
+  <!-- Table -->
+  <div class="row">
+    <div class="col">
+      <div class="card shadow">
+        <div class="card-header border-0">
+          <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="pending-tab" data-toggle="tab" href="#pending" role="tab" aria-controls="pending" aria-selected="true" (click)="getPending()">Chờ phê duyệt</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="approved-tab" data-toggle="tab" href="#approved" role="tab" aria-controls="approved" aria-selected="false" (click)="getApprove()">Được phê duyệt</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="unapproved-tab" data-toggle="tab" href="#unapproved" role="tab" aria-controls="unapproved" aria-selected="false" (click)="getDisapprove()">Không được phê duyệt</a>
+            </li>
+          </ul>
+          <!-- <div class="tab-content" id="myTabContent">
+            <h3 class="mb-0 tab-pane fade show active" id="pending" role="tabpanel" aria-labelledby="pending-tab">Danh sách người dùng chờ phê duyệt</h3>
+            <div class="mb-0 tab-pane fade" id="approved" role="tabpanel" aria-labelledby="approved-tab">Danh sách người dùng được phê duyệt</div>
+            <div class="mb-0 tab-pane fade" id="unapproved" role="tabpanel" aria-labelledby="unapproved-tab">Danh sách người dùng không được phê duyệt</div>
+          </div> -->
+        </div>
+        <div class="tab-content" id="myTabContent">
+          <div class="mb-0 tab-pane fade show active" id="pending" role="tabpanel" aria-labelledby="pending-tab">
+            <h3 class="mb-0" style="padding: 10px 24px 20px 24px;">Danh sách các node đang chờ phê duyệt</h3>
+            <div class="table-responsive tab-pane fade show active" id="pending" role="tabpanel" aria-labelledby="pending-tab">
+              <table class="table align-items-center table-flush">
+                <thead class="thead-light">
+                  <tr style="text-align: center;">
+                    <th scope="col">STT</th>
+                    <th scope="col" *ngFor="let field of fields">{{ field.label }}</th>
+                    <th scope="col">Lựa chọn</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <h4 class="mb-0" style="padding: 10px 24px 20px 24px;" *ngIf="!checkNodeList">Không có dữ liệu</h4>
+                  <tr *ngFor="let node of nodeList; let index = index" style="text-align: center;">
+                    <td>{{ index + 1 }}</td>
+                    <td *ngFor="let key_data of key_data" >
+                      <span>{{ node[key_data.key] }}</span>
+                    </td>
+                    <td>
+                      <button class="btn btn-icon btn-sm btn-info" type="button" placement="top"
+                        data-toggle="modal" data-target="#approveModal" (click)="currentNode = node">Phê duyệt
+                      </button>
+                      <button class="btn btn-icon btn-sm btn-danger" style="margin-right: 8px;"
+                      type="button" placement="top" data-toggle="modal"
+                      data-target="#disapproveModal" (click)="currentNode = node">Từ chối
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <ngx-spinner></ngx-spinner>
+            <app-pagination [(totalPage)]='totalPage' [(showPages)]='showPages'
+          (pageEmit)='getNodeList(filter, $event, sizePage)'></app-pagination>
+          </div>
+          <div class="mb-0 tab-pane fade" id="approved" role="tabpanel" aria-labelledby="approved-tab" >
+            <h3 class="mb-0" style="padding: 10px 24px 20px 24px;">Danh sách các node được phê duyệt</h3>
+            <div class="table-responsive tab-pane fade show active" id="pending" role="tabpanel" aria-labelledby="pending-tab">
+              <table class="table align-items-center table-flush">
+                <thead class="thead-light">
+                  <tr style="text-align: center;">
+                    <th scope="col">STT</th>
+                    <th scope="col" *ngFor="let field of fields">{{ field.label }}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <h4 class="mb-0" style="padding: 10px 24px 20px 24px;" *ngIf="!checkApproveNodeList">Không có dữ liệu</h4>
+                  <tr *ngFor="let node1 of approveNodeList; let index = index" style="text-align: center;">
+                    <td>{{ index + 1 }}</td>
+                    <td *ngFor="let key_data of key_data" >{{ node1[key_data.key] }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <ngx-spinner></ngx-spinner>
+            <app-pagination [(totalPage)]='totalPage1' [(showPages)]='showPages1'
+          (pageEmit)='getApprovedNodeList(filter, $event, sizePage)'></app-pagination>
+          </div>
+          <div class="mb-0 tab-pane fade" id="unapproved" role="tabpanel" aria-labelledby="unapproved-tab">
+            <h3 class="mb-0" style="padding: 10px 24px 20px 24px;">Danh sách các node không được phê duyệt</h3>
+            <div class="table-responsive tab-pane fade show active" id="pending" role="tabpanel" aria-labelledby="pending-tab">
+              <table class="table align-items-center table-flush">
+                <thead class="thead-light">
+                  <tr style="text-align: center;">
+                    <th scope="col">STT</th>
+                    <th scope="col" *ngFor="let field of fields">{{ field.label }}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <h4 class="mb-0" style="padding: 10px 24px 20px 24px;" *ngIf="!checkDisapproveNodeList">Không có dữ liệu</h4>
+                  <tr *ngFor="let node2 of disapproveNodeList; let index = index" style="text-align: center;">
+                    <td>{{ index + 1 }}</td>
+                    <td *ngFor="let key_data of key_data" >{{ node2[key_data.key] }}</td>
+                </tbody>
+              </table>
+            </div>
+            <ngx-spinner></ngx-spinner>
+            <app-pagination [(totalPage)]='totalPage2' [(showPages)]='showPages2'
+          (pageEmit)='getDisapprovedNodeList(filter, $event, sizePage)'></app-pagination>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>      
+
+<!-- Modal Sửa -->
+<div  class="modal fade bd-example-modal-lg" id="approveModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Bạn có chắc là muốn phê duyệt node này không?</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal"
+            (click)="approve()">Đồng ý</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Xóa -->
+<div  class="modal fade bd-example-modal-lg" id="disapproveModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Bạn có chắc là muốn từ chối phê duyệt node này không?</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal"
+            (click)="disapprove()">Đồng ý</button>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+
+
+  

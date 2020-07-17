@@ -53,11 +53,14 @@ export class NodeService {
         
     // }
 
-    approve(id: string, userInfo) {
-        console.log('Phe duyet tai khoan: ', userInfo);
+    approve(id: string, nodeInfo) {
+        return new Promise((resolve, reject) => {
+            this.http.put(this.API_URL + `/api/node/approve/${id}`, nodeInfo).subscribe(res => {
+                resolve(true);
+            }, err => {
+                reject(err);
+            })
+        })
     }
 
-    disapprove(id: string, userInfo) {
-        console.log('Tu choi phe duyet tai khoan: ', userInfo);
-    }
 }
