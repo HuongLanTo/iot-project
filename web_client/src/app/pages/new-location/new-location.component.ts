@@ -15,16 +15,17 @@ export class NewLocationComponent implements OnInit {
     province: "",
     district: "",
     sub_district: "",
-    detail: "",
-    numberNode: "",
-    numberActiveNode: "",
-    numberDeactiveNode: "",
+    detail_location: "",
+    // numberNode: "",
+    // numberActiveNode: "",
+    // numberDeactiveNode: "",
     latitude: "",
     longitude: "",
   };
 
   provinceList: any;
   districtList: any;
+  sub_districtList: any;
   chosenProvince = "";
   chosenDistrict = "";
 
@@ -32,7 +33,7 @@ export class NewLocationComponent implements OnInit {
   isProvinceInvalid: boolean = false;
   isDistrictInvalid: boolean = false;
   isSubDistrictInvalid: boolean = false;
-  isDetailInvalid: boolean = false;
+  isDetailLocationInvalid: boolean = false;
   isLatitudeInvalid: boolean = false;
   isLongitudeInvalid: boolean = false;
 
@@ -68,10 +69,10 @@ export class NewLocationComponent implements OnInit {
     } else {
       this.isSubDistrictInvalid = false;
     }
-    if (!this.newLocation.detail) {
-      this.isDetailInvalid = true;
+    if (!this.newLocation.detail_location) {
+      this.isDetailLocationInvalid = true;
     } else {
-      this.isDetailInvalid = false;
+      this.isDetailLocationInvalid = false;
     }
     if (!this.newLocation.latitude) {
       this.isLatitudeInvalid = true;
@@ -83,8 +84,8 @@ export class NewLocationComponent implements OnInit {
     } else {
       this.isLongitudeInvalid = false;
     }
-    if (!this.isProvinceInvalid && !this.isDistrictInvalid && !this.isSubDistrictInvalid && !this.isDetailInvalid && !this.isLatitudeInvalid && !this.isLongitudeInvalid) {
-      this.newLocation.numberNode = this.newLocation.numberActiveNode = this.newLocation.numberDeactiveNode = "0";
+    if (!this.isProvinceInvalid && !this.isDistrictInvalid && !this.isDetailLocationInvalid && !this.isLatitudeInvalid && !this.isLongitudeInvalid) {
+      // this.newLocation.numberNode = this.newLocation.numberActiveNode = this.newLocation.numberDeactiveNode = "0";
       this.locationService.createLocation(this.newLocation)
         .then(data => {
           this.toastrService.success("Tạo mới khu vực thành công");
@@ -109,6 +110,12 @@ export class NewLocationComponent implements OnInit {
   async getDistrictList() {
     this.locationService.getDistrictList().then(data => {
       this.districtList = data;
+    })
+  }
+
+  async getSubDistrictList() {
+    this.locationService.getSubDistrictList().then(data => {
+      this.sub_districtList = data;
     })
   }
 
@@ -143,9 +150,9 @@ export class NewLocationComponent implements OnInit {
 
   checkDetail(value: any) {
     if (value) {
-      this.isDetailInvalid = false;
+      this.isDetailLocationInvalid = false;
     } else {
-      this.isDetailInvalid = true;
+      this.isDetailLocationInvalid = true;
     }
   }
 

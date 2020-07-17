@@ -50,26 +50,26 @@
                 </div>
               </div>
               <div class="row">
-                <!-- <div class="col-lg-6">
+                <div class="col-lg-6">
                   <div class="form-group">
                     <label class="form-control-label" for="sub_district">Phường <p style="display:inline-flex !important; color: red ">*</p></label>
                     <select *ngIf="!isSubDistrictInvalid" name="sub_district" id="sub_district" class="form-control form-control-alternative"  [(ngModel)]="newLocation.sub_district" (ngModelChange)="checkSubDistrict($event)">
                       <option value="" disabled selected hidden>Chọn phường</option>
-                      <option *ngFor="let sub_district of currentDistrict.sub_district">{{ sub_district }}</option>
+                      <option *ngFor="let sub_district of sub_districtList">{{ sub_district }}</option>
                     </select>     
                     <div *ngIf="isSubDistrictInvalid" class="form-group has-danger">
                       <select  name="location" id="location" id="inputLocation" class="form-control is-invalid" [(ngModel)]="newLocation.sub_district" (ngModelChange)="checkSubDistrict($event)">
                         <option value="" disabled selected hidden class="is-invalid">Phường không được để trống</option>
-                        <option *ngFor="let sub_district of currentDistrict.sub_district">{{ sub_district }}</option>
+                        <option *ngFor="let sub_district of sub_districtList">{{ sub_district }}</option>
                       </select> 
                     </div>        
                   </div>
-                </div> -->
+                </div>
                 <div class="col-lg-6">
                   <div class="form-group">
                     <label class="form-control-label" for="detail">Địa chỉ <p style="display:inline-flex !important; color: red ">*</p></label>
                     <div [ngClass]="{'has-danger': isDetailInvalid == true}">
-                      <input  name="detail" type="text" id="detail" class="form-control form-control-alternative" [(ngModel)]="newLocation.detail" (input)="checkDetail($event.target.value)" [placeholder]="isDetailInvalid ? 'Địa chỉ cụ thể không được để trống' : 'Địa chỉ cụ thể'">
+                      <input  name="detail" type="text" id="detail" class="form-control form-control-alternative" [(ngModel)]="newLocation.detail_location" (input)="checkDetail($event.target.value)" [placeholder]="isDetailLocationInvalid ? 'Địa chỉ cụ thể không được để trống' : 'Địa chỉ cụ thể'">
                     </div>
                   </div>
                 </div>

@@ -14,41 +14,25 @@ export class RoleService {
   private API_URL = environment.apiUrl;
 
   getActionPermissions(): Promise<any[]> {
-    // Fake data
     return new Promise((resolve, reject) => {
-      resolve(PERMISSIONS)
+      this.http.get(this.API_URL + '/api/action')
+          .subscribe((res: {responseData: any}) => {
+              resolve(res.responseData);
+          }, err => {
+              reject(err);
+          })
     });
-
-    // return new Promise((resolve, reject) => {
-    //   this.http.get(this.API_URL + "/api/action-permission").subscribe(
-    //     (res) => {
-    //       var object = JSON.parse((<any>res)._body);
-    //       resolve(object);
-    //     },
-    //     (err) => {
-    //       reject(err);
-    //     }
-    //   );
-    // });
   }
 
   getAreaPermissions(): Promise<any[]> {
-    // Fake data
     return new Promise((resolve, reject) => {
-      resolve(AREAS)
+      this.http.get(this.API_URL + '/api/district')
+          .subscribe((res: {responseData: any}) => {
+              resolve(res.responseData);
+          }, err => {
+              reject(err);
+          })
     });
-
-    // return new Promise((resolve, reject) => {
-    //   this.http.get(this.API_URL + "/api/area-permission").subscribe(
-    //     (res) => {
-    //       var object = JSON.parse((<any>res)._body);
-    //       resolve(object);
-    //     },
-    //     (err) => {
-    //       reject(err);
-    //     }
-    //   );
-    // });
   }
 
   getRoles(): Promise<any[]> {
