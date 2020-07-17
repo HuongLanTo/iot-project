@@ -87,6 +87,7 @@ export class NodeComponent implements OnInit {
   }
 
   async getNodeList(filter, currentPage, sizePage) {
+    this.spinnerService.show();
     await this.nodeService.getNodeList(filter, currentPage, sizePage).then(data => {
       this.totalPage = Math.ceil(10 / sizePage);
       if(this.totalPage <= this.showPages)
@@ -94,22 +95,22 @@ export class NodeComponent implements OnInit {
       this.showPages = 3;    
       this.nodeList = data;
       console.log(data);
-      
     })
+    this.spinnerService.hide();
   }
 
-  updateNodeInfo() {
-    this.nodeService
-      .updateNodeInfo(this.currentNode.id, {
-        so2: this.currentNode.so2,
-        no: this.currentNode.no,
-        buipm25: this.currentNode.buipm25,
-        temperature: this.currentNode.temperature,
-        humidity: this.currentNode.humidity,
-        status: this.currentNode.status,
+  async updateNodeInfo() {
+    await this.nodeService
+      .updateNodeInfo(this.currentNode._id, {
+        temperature_status: this.currentNode.temperature_status,
+        humidity_status: this.currentNode.humidity_status,
+        co_status: this.currentNode.co_status,
+        nh3_status: this.currentNode.nh3_status,
+        dust_status: this.currentNode.dust_status
       })
       .then((data) => {
         this.toastrService.success("Cập nhật thông tin node thành công");
+        this.getNodeList(this.filter, this.currentPage, this.sizePage);
       })
       .catch((err) => {
         this.toastrService.warning("Cập nhật thông tin node thất bại");

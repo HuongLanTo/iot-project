@@ -44,13 +44,13 @@ export class PendingUserComponent implements OnInit {
     return FIELDS;
   }
 
-  ngOnInit() {
-    this.getPending();
+  async ngOnInit() {
+    await this.getPending();
   }
 
-  getUserList(filter, currentPage, sizePage) {
+  async getUserList(filter, currentPage, sizePage) {
     this.spinnerService.show();
-    this.userService.getUserList(filter, currentPage, sizePage).then((data: any) => {
+    await this.userService.getUserList(filter, currentPage, sizePage).then((data: any) => {
       this.totalPage = Math.ceil(data.totalDocuments / sizePage);
       if(this.totalPage <= this.showPages)
         this.showPages = this.totalPage;
@@ -66,9 +66,9 @@ export class PendingUserComponent implements OnInit {
     this.spinnerService.hide();
   }
 
-  getApprovedUserList(filter, currentPage, sizePage) {
+  async getApprovedUserList(filter, currentPage, sizePage) {
     this.spinnerService.show();
-    this.userService.getUserList(filter, currentPage, sizePage).then((data: any) => {
+    await this.userService.getUserList(filter, currentPage, sizePage).then((data: any) => {
       this.totalPage1 = Math.ceil(data.totalDocuments / sizePage);
       if(this.totalPage1 <= this.showPages1)
         this.showPages1 = this.totalPage1;
@@ -83,9 +83,9 @@ export class PendingUserComponent implements OnInit {
     this.spinnerService.hide();
   }
 
-  getDisapprovedUserList(filter, currentPage, sizePage) {
+  async getDisapprovedUserList(filter, currentPage, sizePage) {
     this.spinnerService.show();
-    this.userService.getUserList(filter, currentPage, sizePage).then((data: any) => {
+    await this.userService.getUserList(filter, currentPage, sizePage).then((data: any) => {
       this.totalPage2 = Math.ceil(data.totalDocuments / sizePage);
       if(this.totalPage2 <= this.showPages2)
         this.showPages2 = this.totalPage2;

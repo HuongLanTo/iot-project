@@ -75,17 +75,17 @@
               <tr style="text-align: center;">
                 <th scope="col">STT</th>
                 <th scope="col" *ngFor="let field of fields">{{ field.label }}</th>
-                <th scope="col">Lựa chọn</th>
+                <!-- <th scope="col">Lựa chọn</th> -->
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let location of locationList; let index = index" style="text-align: center;">
                 <td>{{ index + 1 }}</td>
                 <td *ngFor="let field of fields">
-                  <span *ngIf="field.name=='location'">{{ location.detail }}</span>
-                  <span *ngIf="field.name!='location'">{{ location[field.name] }}</span>
+                  <span *ngIf="field.name=='district' || field.name=='province'">{{ location[field.name].name }}</span>
+                  <span *ngIf="field.name!=='district' && field.name!=='province'">{{ location[field.name] }}</span>
                 </td> 
-                <td>
+                <!-- <td>
                   <button
                     class="btn btn-icon btn-sm btn-info"
                     type="button"
@@ -99,11 +99,12 @@
                       ><i class="ni ni-single-copy-04"></i
                     ></span>
                   </button>
-                </td>
+                </td> -->
               </tr>
             </tbody>
           </table>
         </div>
+        <ngx-spinner></ngx-spinner>
       </div>
     </div>
   </div>      

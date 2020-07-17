@@ -39,7 +39,7 @@ export class NodeService {
 
     updateNodeInfo(id: string, nodeInfo) {
         return new Promise((resolve, reject) => {
-            this.http.put(this.API_URL + id, nodeInfo)
+            this.http.put(this.API_URL + `/api/node/parameter/${id}`, nodeInfo)
                 .subscribe(res => {
                     resolve(res);
                 }, err => {

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LocationService } from 'src/app/services/location.service';
 import { District, district_data } from 'src/app/data/district';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-location',
@@ -21,7 +22,8 @@ export class LocationComponent implements OnInit {
   checkCityCode = false;
 
   constructor(
-    private locationService: LocationService
+    private locationService: LocationService,
+    private spinnerService: NgxSpinnerService
   ) { }
 
   async ngOnInit() {
@@ -35,9 +37,11 @@ export class LocationComponent implements OnInit {
   }
 
   async getLocationList() {
-    this.locationService.getLocationList().then(data => {
+    this.spinnerService.show();
+    await this.locationService.getLocationList().then(data => {
       this.locationList = data;
     })
+    this.spinnerService.hide();
   }
 
   async getProvinceList() {
@@ -86,7 +90,7 @@ const KEY_DATA = [
     type: "string",
   },
   {
-    key: "detail",
+    key: "detail_location",
     type: "string",
   },
   {
@@ -112,9 +116,13 @@ const KEY_DATA = [
 ];
 
 const FIELDS = [
+  // {
+  //   label: "Tên khu vực",
+  //   name: "name",
+  // },
   {
-    label: "Tên khu vực",
-    name: "location",
+    label: "Địa chỉ",
+    name: "detail_location",
   },
   {
     label: "Quận",
@@ -124,16 +132,16 @@ const FIELDS = [
     label: "Thành phố",
     name: "province"
   },
-  {
-    label: "Số node đang hoạt động",
-    name: "numberActiveNode",
-  },
-  {
-    label: "Số node dừng hoạt động",
-    name: "numberDeactiveNode"
-  }, 
-  {
-    label: "Tổng số node",
-    name: "numberNode"
-  }
+  // {
+  //   label: "Số node đang hoạt động",
+  //   name: "numberActiveNode",
+  // },
+  // {
+  //   label: "Số node dừng hoạt động",
+  //   name: "numberDeactiveNode"
+  // }, 
+  // {
+  //   label: "Tổng số node",
+  //   name: "numberNode"
+  // }
 ];
