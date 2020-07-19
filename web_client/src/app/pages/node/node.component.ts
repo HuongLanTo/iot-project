@@ -18,7 +18,7 @@ export class NodeComponent implements OnInit {
 
   //paginaton
   public filter = {
-    approve: "1"
+    // approve: "1"
   };
   private currentPage: number = 1;
   private showPages: number;
@@ -39,6 +39,7 @@ export class NodeComponent implements OnInit {
 
   async ngOnInit() {
     await this.getNodeList(this.filter, this.currentPage, this.sizePage);
+    
   }
 
   get fields() {
@@ -96,7 +97,6 @@ export class NodeComponent implements OnInit {
         this.showPages = this.totalPage;
       this.showPages = 3;    
       this.nodeList = data;
-      console.log(data);
     })
     this.spinnerService.hide();
   }

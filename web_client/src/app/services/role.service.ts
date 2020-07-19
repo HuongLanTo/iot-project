@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Http } from "@angular/http";
 import { environment } from "src/environments/environment";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 
 @Injectable({
   providedIn: "root",
@@ -11,11 +11,22 @@ export class RoleService {
     private http: HttpClient
   ) {}
 
+  protected headers = new HttpHeaders({
+    "Content-Type": "application/json",
+    Accept: "application/json",
+    Cookies: document.cookie,
+  });
+
+  private getOptions() {
+    return { headers: this.headers };
+  }
+
+
   private API_URL = environment.apiUrl;
 
   getActionPermissions(): Promise<any[]> {
     return new Promise((resolve, reject) => {
-      this.http.get(this.API_URL + '/api/action')
+      this.http.get(this.API_URL + '/api/action', this.getOptions())
           .subscribe((res: {responseData: any}) => {
               resolve(res.responseData);
           }, err => {
@@ -26,7 +37,7 @@ export class RoleService {
 
   getAreaPermissions(): Promise<any[]> {
     return new Promise((resolve, reject) => {
-      this.http.get(this.API_URL + '/api/district')
+      this.http.get(this.API_URL + '/api/district', this.getOptions())
           .subscribe((res: {responseData: any}) => {
               resolve(res.responseData);
           }, err => {
@@ -56,7 +67,7 @@ export class RoleService {
 
   createRole(role: any): Promise<boolean> {
     return new Promise((resolve, reject) => {
-      this.http.post(this.API_URL + "/api/role", role).subscribe(
+      this.http.post(this.API_URL + "/api/role", role, this.getOptions()).subscribe(
         (res) => {
           resolve(true);
         },
@@ -69,7 +80,7 @@ export class RoleService {
 
   updateRole(role: any): Promise<boolean> {
     return new Promise((resolve, reject) => {
-      this.http.put(this.API_URL + "/api/role", role).subscribe(
+      this.http.put(this.API_URL + "/api/role", role, this.getOptions()).subscribe(
         (res) => {
           resolve(true);
         },

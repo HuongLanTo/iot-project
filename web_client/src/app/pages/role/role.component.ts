@@ -17,6 +17,7 @@ export class RoleComponent implements OnInit {
   public selected_permission = "";
   public selected_area = "";
 
+
   constructor(private toastrService: ToastrService, private _roleService: RoleService) {
     this.currentRole = {
       id: '',
@@ -167,6 +168,7 @@ export class RoleComponent implements OnInit {
   removeArea(id) {
     this.currentRole.area_permission = this.currentRole.area_permission.filter((v) => v !== id);
   }
+  
 }
 
 const KEY_DATA = [

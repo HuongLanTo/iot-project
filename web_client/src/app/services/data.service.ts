@@ -23,9 +23,13 @@ export class DataService {
       })
     }
 
-    getDataBy24Hour() {
+    getDataBy24Hour(filter: any) {
+      filter = JSON.stringify(filter);
+      filter = btoa(filter);
       return new Promise((resolve, reject) => {
-        this.http.get(this.API_URL + "/api/v1/nodes/hours").subscribe((res: {data: any}) => {
+        this.http.get(this.API_URL + `/api/v1/nodes/hours?filter=${filter}`).subscribe((res: {data: any}) => {
+          console.log(res.data);
+          
           resolve(res.data)
         }, err => {
           reject(err);

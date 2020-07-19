@@ -29,15 +29,16 @@ export class HomeComponent implements OnInit {
   three_day_aqi_data: any = {};
   lineTypeOfChart = false;
   barTypeOfChart = false;
-  no_data = [];
+  co_data = [];
   co2_data = [];
   pm25_data = [];
   time = [];
 
   //filter
   filterDataBy24Hour = {
-    start_date: "",
-    end_date: ""
+    node_id: "1",
+    end_date: Moment(new Date()).format("YYYY-MM-DD HH:mm:ss"),
+    start_date: Moment(new Date()).subtract(24, 'hours').format("YYYY-MM-DD HH:mm:ss")
   }
 
   filterDataBy3Day = {
@@ -57,10 +58,12 @@ export class HomeComponent implements OnInit {
     
     console.log(145);
     // this.get3DayAqiData();
-    // parseOptions(Chart, chartOptions());
-    // this.getChart();
+    parseOptions(Chart, chartOptions());
+    
     
     await this.getDataByLastHour();
+    // this.getDataBy24Hour(this.filterDataBy24Hour);
+    await this.getChart();
   }
 
   getNodeId() {
@@ -73,13 +76,14 @@ export class HomeComponent implements OnInit {
         this.sensor_data = data;
         this.current_sensor_data = data[0];
         this.filterDataBy3Day.node_ids = this.current_sensor_data.node_id;
-        console.log(this.sensor_data);
         this.selectedNode(this.sensor_data[0].node_id);
       });
   }
 
-  async getDataBy24Hour() {
-
+  getDataBy24Hour(filter) {
+    return this.dataService.getDataBy24Hour(filter).then((data:any) => {
+      return data.rows;
+    })
   }
 
   async getDataBy3Day(filter) {
@@ -167,12 +171,12 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  // updateData(chart: Chart, data: string[], t: string[]) {
-  //   chart.data.datasets[0].data = data;
-  //   (chart.data.labels = t),
-  //     (chart.options.scales.yAxes[0].scaleLabel.labelString = "NO"),
-  //     chart.update();
-  // }
+  updateData(chart: Chart, data: string[], t: string[]) {
+    chart.data.datasets[0].data = data;
+    (chart.data.labels = t),
+      (chart.options.scales.yAxes[0].scaleLabel.labelString = "CO"),
+      chart.update();
+  }
 
   // get3DayAqiData() {
   //   this.three_day_aqi_data = [];
@@ -183,180 +187,186 @@ export class HomeComponent implements OnInit {
   //   });
   // }
 
-  // setLineTypeOfChart() {
-  //   this.lineTypeOfChart = true;
-  //   this.barTypeOfChart = false;
-  //   if (this.lineTypeOfChart) {
-  //     var aqiLineChart = document.getElementById("aqi_line_chart");
-  //     var aqiBarChart = document.getElementById("aqi_bar_chart");
-  //     var aqi_line_chart = new Chart(aqiLineChart, {
-  //       type: "line",
-  //       options: {
-  //         maintainAspectRatio: false,
-  //         scales: {
-  //           yAxes: [
-  //             {
-  //               scaleLabel: {
-  //                 labelString: "AQI",
-  //                 display: true,
-  //               },
-  //             },
-  //           ],
-  //           xAxes: [
-  //             {
-  //               ticks: {
-  //                 display: false,
-  //               },
-  //             },
-  //           ],
-  //         },
-  //       },
-  //       data: {
-  //         labels: this.time,
-  //         datasets: [
-  //           {
-  //             label: "AQI",
-  //             data: this.no_data,
-  //           },
-  //         ],
-  //       },
-  //     });
-  //   }
-  // }
+  setLineTypeOfChart() {
+    this.lineTypeOfChart = true;
+    this.barTypeOfChart = false;
+    if (this.lineTypeOfChart) {
+      var aqiLineChart = document.getElementById("aqi_line_chart");
+      var aqiBarChart = document.getElementById("aqi_bar_chart");
+      var aqi_line_chart = new Chart(aqiLineChart, {
+        type: "line",
+        options: {
+          maintainAspectRatio: false,
+          scales: {
+            yAxes: [
+              {
+                scaleLabel: {
+                  labelString: "AQI",
+                  display: true,
+                },
+              },
+            ],
+            xAxes: [
+              {
+                ticks: {
+                  display: false,
+                },
+              },
+            ],
+          },
+        },
+        data: {
+          labels: this.time,
+          datasets: [
+            {
+              label: "AQI",
+              data: this.co_data,
+            },
+          ],
+        },
+      });
+    }
+  }
 
-  // setBarTypeOfChart() {
-  //   this.lineTypeOfChart = false;
-  //   this.barTypeOfChart = true;
-  //   if (this.barTypeOfChart) {
-  //     var aqiBarChart = document.getElementById("aqi_bar_chart");
-  //     var aqi_bar_chart = new Chart(aqiBarChart, {
-  //       type: "bar",
-  //       options: {
-  //         maintainAspectRatio: false,
-  //         scales: {
-  //           yAxes: [
-  //             {
-  //               scaleLabel: {
-  //                 labelString: "AQI",
-  //                 display: true,
-  //               },
-  //             },
-  //           ],
-  //           xAxes: [
-  //             {
-  //               ticks: {
-  //                 display: false,
-  //               },
-  //             },
-  //           ],
-  //         },
-  //       },
-  //       data: {
-  //         labels: this.time,
-  //         datasets: [
-  //           {
-  //             label: "AQI",
-  //             data: this.no_data,
-  //           },
-  //         ],
-  //       },
-  //     });
-  //   }
-  // }
+  setBarTypeOfChart() {
+    this.lineTypeOfChart = false;
+    this.barTypeOfChart = true;
+    if (this.barTypeOfChart) {
+      var aqiBarChart = document.getElementById("aqi_bar_chart");
+      var aqi_bar_chart = new Chart(aqiBarChart, {
+        type: "bar",
+        options: {
+          maintainAspectRatio: false,
+          scales: {
+            yAxes: [
+              {
+                scaleLabel: {
+                  labelString: "AQI",
+                  display: true,
+                },
+              },
+            ],
+            xAxes: [
+              {
+                ticks: {
+                  display: false,
+                },
+              },
+            ],
+          },
+        },
+        data: {
+          labels: this.time,
+          datasets: [
+            {
+              label: "AQI",
+              data: this.co_data,
+            },
+          ],
+        },
+      });
+    }
+  }
 
-  // getChart() {
-  //   // declare chart via id
-  //   var noChart = document.getElementById("no_chart");
-  //   var co2Chart = document.getElementById("co2_chart");
-  //   var pm25Chart = document.getElementById("pm25_chart");
-
-  //   for (var i = 0; i < this.sensor_data.length; i++) {
-  //     this.no_data.push(this.sensor_data[i].no);
-  //     this.co2_data.push(this.sensor_data[i].co2);
-  //     this.pm25_data.push(this.sensor_data[i].pm25);
-  //     this.time.push(
-  //       Moment(this.sensor_data[i].time * 1000).format("DD/MM/YYYY HH:mm")
-  //     );
-  //   }
-
-  //   // var r = Object.assign({}, chartExample1);
-  //   var no_chart = new Chart(noChart, {
-  //     type: "line",
-  //     options: {
-  //       maintainAspectRatio: false,
-  //       scales: {
-  //         yAxes: [
-  //           {
-  //             scaleLabel: {
-  //               labelString: "NO",
-  //               display: true,
-  //             },
-  //           },
-  //         ],
-  //       },
-  //     },
-  //     data: {
-  //       labels: this.time,
-  //       datasets: [
-  //         {
-  //           label: "NO",
-  //           data: this.no_data,
-  //         },
-  //       ],
-  //     },
-  //   });
+  async getChart() {
+    const dataBy24Hour = await this.getDataBy24Hour(this.filterDataBy24Hour);
+    // declare chart via id
+    var coChart = document.getElementById("co_chart");
+    var co2Chart = document.getElementById("co2_chart");
+    var pm25Chart = document.getElementById("pm25_chart");
+    console.log("test", dataBy24Hour);
+    
+    for (var i = 0; i < dataBy24Hour.length; i++) {
+      this.co_data.push(dataBy24Hour[i].co);
+      // this.co2_data.push(this.dataBy24Hour[i].co2);
+      // this.pm25_data.push(this.dataBy24Hour[i].pm25);
+      this.time.push(
+        Moment(dataBy24Hour[i].datetime).format("DD/MM/YYYY HH:mm")
+      );
+    }
+    console.log(78,this.co_data);
+    console.log(789,this.time);
+    
     
 
-  //   var co2_chart = new Chart(co2Chart, {
-  //     type: "line",
-  //     options: {
-  //       scales: {
-  //         yAxes: [
-  //           {
-  //             scaleLabel: {
-  //               labelString: "CO2",
-  //               display: true,
-  //             },
-  //           },
-  //         ],
-  //       },
-  //     },
-  //     data: {
-  //       labels: this.time,
-  //       datasets: [
-  //         {
-  //           label: "CO2",
-  //           data: this.co2_data,
-  //         },
-  //       ],
-  //     },
-  //   });
+    // var r = Object.assign({}, chartExample1);
+    var co_chart = new Chart(coChart, {
+      type: "line",
+      options: {
+        maintainAspectRatio: false,
+        scales: {
+          yAxes: [
+            {
+              scaleLabel: {
+                labelString: "CO",
+                display: true,
+              },
+            },
+          ],
+        },
+      },
+      data: {
+        labels: this.time,
+        datasets: [
+          {
+            label: "CO",
+            data: this.co_data,
+          },
+        ],
+      },
+    });
+    
 
-  //   var pm25_chart = new Chart(pm25Chart, {
-  //     type: "line",
-  //     options: {
-  //       scales: {
-  //         yAxes: [
-  //           {
-  //             scaleLabel: {
-  //               labelString: "Bụi PM2.5",
-  //               display: true,
-  //             },
-  //           },
-  //         ],
-  //       },
-  //     },
-  //     data: {
-  //       labels: this.time,
-  //       datasets: [
-  //         {
-  //           label: "Bụi PM2.5",
-  //           data: this.pm25_data,
-  //         },
-  //       ],
-  //     },
-  //   });
-  // }
+    var co2_chart = new Chart(co2Chart, {
+      type: "line",
+      options: {
+        scales: {
+          yAxes: [
+            {
+              scaleLabel: {
+                labelString: "CO2",
+                display: true,
+              },
+            },
+          ],
+        },
+      },
+      data: {
+        labels: this.time,
+        datasets: [
+          {
+            label: "CO2",
+            data: this.co2_data,
+          },
+        ],
+      },
+    });
+
+    var pm25_chart = new Chart(pm25Chart, {
+      type: "line",
+      options: {
+        scales: {
+          yAxes: [
+            {
+              scaleLabel: {
+                labelString: "Bụi PM2.5",
+                display: true,
+              },
+            },
+          ],
+        },
+      },
+      data: {
+        labels: this.time,
+        datasets: [
+          {
+            label: "Bụi PM2.5",
+            data: this.pm25_data,
+          },
+        ],
+      },
+    });
+  }
 
   getAqiChart() {
     

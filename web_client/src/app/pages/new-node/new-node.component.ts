@@ -84,7 +84,7 @@ export class NewNodeComponent implements OnInit {
   }
 
   async getLocationList() {
-    this.locationService.getLocationList().then(data => {
+    await this.locationService.getLocationListNoFilter().then(data => {
       this.locationList = data;
     })
   }

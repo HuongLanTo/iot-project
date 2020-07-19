@@ -4,7 +4,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { environment } from '../../environments/environment';
 import { Router } from '@angular/router';
 import { BaseService } from './base.service';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +17,17 @@ export class UserService {
     ) {
     }
 
+    protected headers = new HttpHeaders({
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Cookies: document.cookie,
+      });
+    
+      private getOptions() {
+        return { headers: this.headers };
+      }
+    
+
     private API_URL = environment.apiUrl;
 
     // filter(filter: any) {
@@ -28,7 +39,7 @@ export class UserService {
         filter = JSON.stringify(filter);
         filter = btoa(filter);
         return new Promise((resolve, reject) => {
-            this.http.get(this.API_URL + `/api/user?filter=${filter}&page=${page}&size=${size}`).subscribe(res => {
+            this.http.get(this.API_URL + `/api/user?filter=${filter}&page=${page}&size=${size}`, this.getOptions()).subscribe(res => {
                 resolve(res);
             }, err => {
                 reject(err);
@@ -40,7 +51,7 @@ export class UserService {
         filter = JSON.stringify(filter);
         filter = btoa(filter);
         return new Promise((resolve, reject) => {
-            this.http.get(this.API_URL + `/api/user?filter=${filter}`).subscribe((res: {data: any}) => {
+            this.http.get(this.API_URL + `/api/user?filter=${filter}`, this.getOptions()).subscribe((res: {data: any}) => {
                 console.log(res.data);
                 resolve(res.data);
             }, err => {
@@ -51,7 +62,7 @@ export class UserService {
 
     createUser(user: any) {
         return new Promise((resolve, reject) => {
-            this.http.post(this.API_URL + "/api/user", user).subscribe(res => {
+            this.http.post(this.API_URL + "/api/user", user, this.getOptions()).subscribe(res => {
                 resolve(true);
             }, err => {
                 reject(err);
@@ -62,7 +73,7 @@ export class UserService {
 
     updateUserInfo(id: string, userInfo) {
         return new Promise((resolve, reject) => {
-            this.http.put(this.API_URL + `/api/user/basic/${id}`, userInfo).subscribe(res => {
+            this.http.put(this.API_URL + `/api/user/basic/${id}`, userInfo, this.getOptions()).subscribe(res => {
                 resolve(true);
             }, err => {
                 reject(err);
@@ -71,10 +82,8 @@ export class UserService {
     }
 
     approve(id: string, userInfo) {
-        userInfo = JSON.stringify(userInfo);
-        userInfo = btoa(userInfo);
         return new Promise((resolve, reject) => {
-            this.http.put(this.API_URL + `/api/user/approve/${id}`, userInfo).subscribe(res => {
+            this.http.put(this.API_URL + `/api/user/approve/${id}`, userInfo, this.getOptions()).subscribe(res => {
                 resolve(true);
             }, err => {
                 reject(err);
@@ -83,10 +92,8 @@ export class UserService {
     }
 
     updateStatus(id: string, userInfo) {
-        userInfo = JSON.stringify(userInfo);
-        userInfo = btoa(userInfo);
         return new Promise((resolve, reject) => {
-            this.http.put(this.API_URL + `/api/user/status/${id}`, userInfo).subscribe(res => {
+            this.http.put(this.API_URL + `/api/user/status/${id}`, userInfo, this.getOptions()).subscribe(res => {
                 resolve(true);
             }, err => {
                 reject(err);

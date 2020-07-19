@@ -21,13 +21,19 @@ export class LocationComponent implements OnInit {
   searchByDistrict = "";
   checkCityCode = false;
 
+  filter = {};
+  private currentPage: number = 1;
+  private showPages: number;
+  private totalPage: number;
+  private sizePage = 10;
+
   constructor(
     private locationService: LocationService,
     private spinnerService: NgxSpinnerService
   ) { }
 
   async ngOnInit() {
-    await this.getLocationList();
+    await this.getLocationList(this.filter, this.currentPage, this.sizePage);
     await this.getProvinceList();
     await this.getDistrictList();
   }
@@ -36,10 +42,14 @@ export class LocationComponent implements OnInit {
     return FIELDS;
   }
 
-  async getLocationList() {
+  async getLocationList(filter, currentPage, sizePage) {
     this.spinnerService.show();
-    await this.locationService.getLocationList().then(data => {
-      this.locationList = data;
+    await this.locationService.getLocationList(filter, currentPage, sizePage).then((data: any) => {
+      this.totalPage = Math.ceil(data[0].total / sizePage);
+      if(this.totalPage <= this.showPages)
+        this.showPages = this.totalPage;
+      this.showPages = 3;    
+      this.locationList = data[0].data;
     })
     this.spinnerService.hide();
   }

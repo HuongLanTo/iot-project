@@ -5,6 +5,7 @@ import { Role, role } from 'src/app/models/role';
 import { UserService } from 'src/app/services/user.service';
 import { ToastrService } from 'ngx-toastr';
 import { stringify } from 'querystring';
+import { RoleService } from 'src/app/services/role.service';
 
 @Component({
   selector: 'app-new-user',
@@ -25,6 +26,7 @@ export class NewUserComponent implements OnInit {
     role: "",
     status: ""
   };
+  roles: any;
 
   private filter = {};
   private currentPage: number = 1;
@@ -51,6 +53,7 @@ export class NewUserComponent implements OnInit {
   
   constructor(
     private userService: UserService,
+    private roleService: RoleService,
     private toastrService: ToastrService,
     private router: Router
   ) { 
@@ -67,19 +70,18 @@ export class NewUserComponent implements OnInit {
     };
   }
 
-  ngOnInit() {
-    this.userService.getUserList(this.filter, this.currentPage, this.sizePage).then((data: any) => {
+  async ngOnInit() {
+    await this.userService.getUserList(this.filter, this.currentPage, this.sizePage).then((data: any) => {
       var temp = data.totalDocuments + 1;
       if (temp < 10) {
         this.newUser.username = "A00" + temp;
       } else if (temp >= 10) {
         this.newUser.username = "A0" + temp;
       }
-    })
-  }
-
-  get roles() {
-    return ROLES;
+    });
+    // await this.roleService.getRoleList().then(data => {
+    //   this.roles = data;
+    // })
   }
 
   createUser() {

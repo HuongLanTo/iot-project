@@ -105,19 +105,20 @@
           </table>
         </div>
         <ngx-spinner></ngx-spinner>
+        <app-pagination [(totalPage)]='totalPage' [(showPages)]='showPages' (pageEmit)='getLocationList(filter, $event, sizePage)'></app-pagination>
       </div>
     </div>
   </div>      
 
 <!-- Modal Sửa -->
-<div
+<!-- <div
 class="modal fade bd-example-modal-lg"
 id="editModal"
 tabindex="-1"
 role="dialog"
 aria-hidden="true"
->
-<div class="modal-dialog modal-lg" role="document">
+> -->
+<!-- <div class="modal-dialog modal-lg" role="document">
   <div class="modal-content">
     <div class="modal-header">
       <h3 class="modal-title">Cập nhật thông tin khu vực</h3>
@@ -220,4 +221,4 @@ aria-hidden="true"
 </div>
 </div>
 
-  
+   -->

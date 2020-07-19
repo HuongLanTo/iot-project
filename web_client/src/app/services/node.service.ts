@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { Http, Response } from "@angular/http";
 import 'rxjs/Rx';
 import { BaseService } from "./base.service";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { environment } from "src/environments/environment";
 
 @Injectable({
@@ -12,6 +12,17 @@ export class NodeService {
     constructor(
         protected http: HttpClient
     ) {}
+
+    protected headers = new HttpHeaders({
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Cookies: document.cookie,
+      });
+    
+      private getOptions() {
+        return { headers: this.headers };
+      }
+    
   
     private API_URL = environment.apiUrl;
 
@@ -19,8 +30,10 @@ export class NodeService {
         filter = JSON.stringify(filter);
         filter = btoa(filter);
         return new Promise((resolve, reject) => {
-            this.http.get(this.API_URL + `/api/node?filter=${filter}&page=${page}&size=${size}`)
+            this.http.get(this.API_URL + `/api/node?filter=${filter}&page=${page}&size=${size}`, this.getOptions())
                 .subscribe((res: {responseData: any}) => {
+                    console.log(123,res.responseData);
+                    
                     resolve(res.responseData);
                 }, err => {
                     reject(err);
@@ -30,7 +43,7 @@ export class NodeService {
 
     createNode(node: any): Promise<boolean> {
         return new Promise((resolve, reject) => {
-            this.http.post(this.API_URL + "/api/node", node)
+            this.http.post(this.API_URL + "/api/node", node, this.getOptions())
                 .subscribe(res => {
                     resolve(true);
                 }, err => reject(err))
@@ -39,7 +52,7 @@ export class NodeService {
 
     updateNodeInfo(id: string, nodeInfo) {
         return new Promise((resolve, reject) => {
-            this.http.put(this.API_URL + `/api/node/parameter/${id}`, nodeInfo)
+            this.http.put(this.API_URL + `/api/node/parameter/${id}`, nodeInfo, this.getOptions())
                 .subscribe(res => {
                     resolve(res);
                 }, err => {
@@ -55,7 +68,7 @@ export class NodeService {
 
     approve(id: string, nodeInfo) {
         return new Promise((resolve, reject) => {
-            this.http.put(this.API_URL + `/api/node/approve/${id}`, nodeInfo).subscribe(res => {
+            this.http.put(this.API_URL + `/api/node/approve/${id}`, nodeInfo, this.getOptions()).subscribe(res => {
                 resolve(true);
             }, err => {
                 reject(err);
