@@ -23,6 +23,7 @@ export class CreateRoleComponent implements OnInit {
   private check = true;
   private check_areas = true;
   private name = [];
+  private numberOfArea = 0;
   private checkCreateNode = -1;
 
   public selected_permission = "";
@@ -72,6 +73,7 @@ export class CreateRoleComponent implements OnInit {
   }
 
   async create() {
+    var isCreate = true;
     if (!this.is_permissions_valid) {
       this.check = false;
     }
@@ -81,19 +83,33 @@ export class CreateRoleComponent implements OnInit {
     ) {
       this.check_areas = false;
     }
-    if (this.role.action_permission.includes("5f10c6c8aca322264669cb40") && this.role.action_permission.includes("5f10c6dcaca322264669cb41")) {
-      this.toastrService.warning("Không được chọn cùng lúc 2 quyền: Tạo mới node và Phê duyệt node");
+    if (this.role.action_permission.includes("5f10c6c8aca322264669cb40")) {
+      if (this.role.action_permission.includes("5f10c6dcaca322264669cb41")) {
+        this.toastrService.warning("Không được chọn cùng lúc 2 quyền: Tạo mới node và Phê duyệt node");
+        isCreate = false;
+      }
     }
-    if (this.role.action_permission.includes("5ef8878ff768fa241cb226f1") && this.role.action_permission.includes("5f099925b591ba349aa02e33")) {
-      this.toastrService.warning("Không được chọn cùng lúc 2 quyền: Tạo mới người dùng và Phê duyệt người dùng");
+    if (this.role.action_permission.includes("5ef8878ff768fa241cb226f1")) {
+      if (this.role.action_permission.includes("5f099925b591ba349aa02e33")) {
+        this.toastrService.warning("Không được chọn cùng lúc 2 quyền: Tạo mới người dùng và Phê duyệt người dùng");
+        isCreate = false;
+      }
     }
-    await this.roles.createRole(this.role).then((data) => {
-      this.toastrService.success("Tạo mới vai trò thành công");
-      this.router.navigate(["/role"]);
-    })
-    .catch((err) => {
-      this.toastrService.warning("Tạo mới vai trò thất bại");
-    });
+    if (this.role.action_permission.includes("5f10c6c8aca322264669cb40")) {
+      if (this.role.area_permission.length > 0) {
+        isCreate = false;
+      }
+    }
+    if (this.is_permissions_valid == true && isCreate == true) {
+        console.log(this.role);
+        await this.roles.createRole(this.role).then((data) => {
+        this.toastrService.success("Tạo mới vai trò thành công");
+        this.router.navigate(["/role"]);
+      })
+      .catch((err) => {
+        this.toastrService.warning("Tạo mới vai trò thất bại");
+      });
+    }
   }
 
   selectPermission() {
@@ -112,7 +128,7 @@ export class CreateRoleComponent implements OnInit {
         if (i == 0) {
           this.role.name = this.role.name + this.name[i];
         } else {
-          this.role.name = this.role.name + " + " + this.name[i];
+          this.role.name = this.role.name + " , " + this.name[i];
         }
       }
     }
@@ -131,7 +147,7 @@ export class CreateRoleComponent implements OnInit {
         if (i == 0) {
           this.role.name = this.role.name + this.name[i];
         } else {
-          this.role.name = this.role.name + " + " + this.name[i];
+          this.role.name = this.role.name + " , " + this.name[i];
         }
       }
     }
@@ -176,7 +192,7 @@ export class CreateRoleComponent implements OnInit {
         if (i == 0) {
           this.role.name = this.role.name + this.name[i];
         } else {
-          this.role.name = this.role.name + " + " + this.name[i];
+          this.role.name = this.role.name + " , " + this.name[i];
         }
       }
     }

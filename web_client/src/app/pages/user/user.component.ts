@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { UserService } from 'src/app/services/user.service';
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -14,14 +14,17 @@ import { RoleService } from 'src/app/services/role.service';
 export class UserComponent implements OnInit {
   userList: any = [];
   roleList: any = [];
-  public filter = {
+  private filter = {
     approve: "1"
   };
-  public currentUser: any = {};
+  private currentUser: any = {};
+
   private currentPage: number = 1;
   private showPages: number = 5;
   private totalPage: number;
   private sizePage = 5;
+
+  private temp: number = 0;
 
   // search
   searchRole = {
@@ -31,6 +34,9 @@ export class UserComponent implements OnInit {
     username: "",
     name: ""
   }
+
+  // temp
+  private nameRole = "";
   
   constructor(
     private userService: UserService,
@@ -63,7 +69,6 @@ export class UserComponent implements OnInit {
   get data() {
     return {
       status: STATUS,
-      role: ROLE
     }
   }
 
@@ -95,8 +100,6 @@ export class UserComponent implements OnInit {
         this.showPages = this.totalPage;
       this.showPages = 3;    
       this.userList = data.data;
-      console.log(this.userList);
-      
     });
     this.spinnerService.hide();
   }
@@ -123,10 +126,20 @@ export class UserComponent implements OnInit {
     })
   }
 
+  redirect() {
+    this.getUserList(this.filter, this.currentPage, this.sizePage);
+  }
+
   // search
   getUserListByUsername() {
     this.currentPage = 1;
     this.getUserList(this.searchUsername, this.currentPage, this.sizePage);
+  }
+
+  support() {
+    this.nameRole = this.currentUser.role.name;
+    console.log(this.nameRole);
+    
   }
 
 }
@@ -135,10 +148,6 @@ const STATUS = [
   { value: 1, name: "Đang hoạt động" },
   { value: 0, name: "Dừng hoạt động" },
 ];
-
-const ROLE = [
-  { value: "5ef888abf768fa241cb226f5", name: "Vai trò 1" }
-]
 
 const KEY_DATA = [
   {

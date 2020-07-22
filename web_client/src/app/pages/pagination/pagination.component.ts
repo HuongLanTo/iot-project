@@ -10,7 +10,6 @@ export class PaginationComponent implements OnInit {
   @Input() showPages: number
 
   @Output() pageEmit = new EventEmitter<number>()
-
   public startPage: number;
   public endPage: number;
   public pages = [];
@@ -23,7 +22,9 @@ export class PaginationComponent implements OnInit {
     // await this.pagination(this.currentPage);
   }
 
-  async ngOnChanges(changes: SimpleChange) {       
+  async ngOnChanges(changes: SimpleChange) {    
+    console.log(changes);
+       
     this.currentPage = 1;
     await this.pagination(this.currentPage);
   }
@@ -43,7 +44,6 @@ export class PaginationComponent implements OnInit {
     this.pages = Array.from(Array(this.endPage - this.startPage + 1), (value, index) =>{
       return this.startPage + index;
     });
-    
     this.pageEmit.emit(currentPage);
   }
 

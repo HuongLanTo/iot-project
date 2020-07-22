@@ -153,7 +153,7 @@
                   </div>
                 </td>
                 <td>
-                  <button class="btn btn-icon btn-sm btn-info" type="button" placement="top" ngbTooltip="Sửa" data-toggle="modal" data-target="#editModal" (click)="currentUser=user">
+                  <button class="btn btn-icon btn-sm btn-info" type="button" placement="top" ngbTooltip="Sửa" data-toggle="modal" data-target="#editModal" (click)="currentUser=user" (click)="support()">
                     <span class="btn-inner--icon"><i class="ni ni-single-copy-04"></i></span>
                   </button>
                   <!-- <button class="btn btn-icon btn-sm btn-danger" style="margin-right: 8px;" type="button" placement="top" ngbTooltip="Xóa" data-toggle="modal" data-target="#editModalxoa" (click)="currentUser=user">
@@ -194,7 +194,7 @@
                     [name]="modal.fin"
                     [id]="modal.fin"
                     type="text"
-                    class="form-control"
+                    class="form-control form-control-alternative"
                     [readonly]="modal.readonly"
                 />
                 <select
@@ -202,20 +202,20 @@
                   [(ngModel)]="currentUser[modal.key]"
                   [name]="modal.fin"
                   [id]="modal.fin"
-                  class="form-control"
+                  class="form-control form-control-alternative"
                 >
-                  <option value="" disabled selected hidden>{{ currentUser[modal.key] }}</option>
+                  <option value="" disabled selected hidden>{{ status_vn(currentUser[modal.key]) }}</option>
                   <option *ngFor="let data of data[modal.key]" [ngValue]="data.value" >{{ data.name }}</option>
                 </select>
                 <select
-                  *ngIf="is_select(modal.type) && modal.key=='role'"
-                  [(ngModel)]="currentUser[modal.key.name]"
+                  *ngIf="modal.key=='role'"
+                  [(ngModel)]="currentUser.role"
                   [name]="modal.fin"
                   [id]="modal.fin"
-                  class="form-control"
+                  class="form-control form-control-alternative"
                 >
-                  <option value="" disabled selected hidden>{{ currentUser[modal.key] }}</option>
-                  <option *ngFor="let data of data[modal.key]" [ngValue]="data.value" >{{ data.name }}</option>
+                <option value="" disabled selected hidden></option>
+                  <option *ngFor="let data of roleList" [value]="data" >{{ data.name }}</option>
                 </select>
               </div>
             </div>
@@ -289,7 +289,7 @@
           </div>
         </div>   -->
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="redirect()">Hủy</button>
           <button type="button" class="btn btn-primary" data-dismiss="modal"
             (click)="updateUserInfo(currentUser)">Lưu</button>
         </div>
