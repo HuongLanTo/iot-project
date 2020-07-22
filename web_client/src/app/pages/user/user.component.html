@@ -16,7 +16,7 @@
                 class="form-control"
                 placeholder="Nhập username cần tìm kiếm"
                 type="text"
-                [(ngModel)]="searchNodename"
+                [(ngModel)]="searchUsername.username"
               />
               <div class="input-group-append">
                 <button
@@ -24,7 +24,7 @@
                   style="padding: 8px 12px;"
                   type="button"
                   placement="top"
-                  (click)="getNodeListFromNodename()"
+                  (click)="getUserListByUsername()"
                 >
                   <span class="btn-inner--icon"
                     ><i class="fa fa-search" aria-hidden="true"></i

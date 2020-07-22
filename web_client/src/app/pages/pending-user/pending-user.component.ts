@@ -23,7 +23,7 @@ export class PendingUserComponent implements OnInit {
   private totalPage: number;
   private totalPage1: number;
   private totalPage2: number;
-  private sizePage = 10;
+  private sizePage = 5;
 
   //check
   checkUserList = true;
@@ -69,6 +69,7 @@ export class PendingUserComponent implements OnInit {
   async getApprovedUserList(filter, currentPage, sizePage) {
     this.spinnerService.show();
     await this.userService.getUserList(filter, currentPage, sizePage).then((data: any) => {
+      
       this.totalPage1 = Math.ceil(data.totalDocuments / sizePage);
       if(this.totalPage1 <= this.showPages1)
         this.showPages1 = this.totalPage1;
@@ -123,6 +124,8 @@ export class PendingUserComponent implements OnInit {
   }
 
   getApprove() {
+    console.log('getting approve');
+    
     this.filter.approve = "1";
     this.currentPage = 1;
     this.getApprovedUserList(this.filter, this.currentPage, this.sizePage);

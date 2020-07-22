@@ -3,6 +3,7 @@ import { Http, Response } from '@angular/http';
 import { UserService } from 'src/app/services/user.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
+import { RoleService } from 'src/app/services/role.service';
 
 
 @Component({
@@ -11,7 +12,8 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
-  public userList: any;
+  userList: any = [];
+  roleList: any = [];
   public filter = {
     approve: "1"
   };
@@ -20,15 +22,26 @@ export class UserComponent implements OnInit {
   private showPages: number = 5;
   private totalPage: number;
   private sizePage = 10;
+
+  // search
+  searchRole = {
+
+  }
+  searchUsername = {
+    username: "",
+    name: ""
+  }
   
   constructor(
     private userService: UserService,
+    private roleService: RoleService,
     private spinnerService: NgxSpinnerService,
     private toastrService: ToastrService
   ) { }
 
   async ngOnInit() {
     await this.getUserList(this.filter, this.currentPage, this.sizePage);
+    await this.getRoleList();
   }
 
   get fields() {
@@ -100,6 +113,20 @@ export class UserComponent implements OnInit {
     .catch((err) => {
       this.toastrService.warning("Cập nhật thông tin người dùng thất bại");
     });
+  }
+
+  async getRoleList() {
+    await this.roleService.getRoles().then((data: any) => {
+      this.roleList = data.data;
+      console.log(this.roleList);
+      
+    })
+  }
+
+  // search
+  getUserListByUsername() {
+    this.currentPage = 1;
+    this.getUserList(this.searchUsername, this.currentPage, this.sizePage);
   }
 
 }

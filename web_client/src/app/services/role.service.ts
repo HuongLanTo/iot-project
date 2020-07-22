@@ -47,9 +47,13 @@ export class RoleService {
   }
 
   getRoles(): Promise<any[]> {
-    // Fake data
     return new Promise((resolve, reject) => {
-      resolve(FAKE_DATA)
+      this.http.get(this.API_URL + '/api/role', this.getOptions())
+          .subscribe((res: {responseData: any}) => {
+              resolve(res.responseData);
+          }, err => {
+              reject(err);
+          })
     });
 
     // return new Promise((resolve, reject) => {

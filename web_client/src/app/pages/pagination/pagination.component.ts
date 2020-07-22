@@ -18,17 +18,22 @@ export class PaginationComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-    this.currentPage = 1;
-    this.pagination(this.currentPage);
+  async ngOnInit() {
+    // this.currentPage = 1;
+    // await this.pagination(this.currentPage);
   }
 
-  async ngOnChanges(changes: SimpleChange) {
+  async ngOnChanges(changes: SimpleChange) {       
+    console.log("hi");
+     console.log(changes);
+     
     this.currentPage = 1;
     await this.pagination(this.currentPage);
   }
 
   pagination(currentPage){
+    console.log(1);
+    
     // if(currentPage<1)
     //   currentPage = 1;
     // if(currentPage>this.totalPage)
@@ -43,6 +48,7 @@ export class PaginationComponent implements OnInit {
     this.pages = Array.from(Array(this.endPage - this.startPage + 1), (value, index) =>{
       return this.startPage + index;
     });
+    
     this.pageEmit.emit(currentPage);
   }
 

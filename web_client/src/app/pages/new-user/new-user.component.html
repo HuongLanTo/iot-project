@@ -29,8 +29,8 @@
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="form-control-label" for="name">Tên người dùng <p style="display:inline-flex !important; color: red ">*</p></label>
-                    <div [ngClass]="{'has-danger': isNameInvalid == true}">
+                    <label class="form-control-label" for="name">Tên người dùng <p style="display:inline-flex !important; color: red ">*</p><span style=" color: red; font-size: 13px; " *ngIf="!checkValidationName.length">Tên người dùng cần chứa ít nhất 5 ký tự và nhiều nhất 255 ký tự</span></label>
+                    <div [ngClass]="{'has-danger': isNameInvalid == true || checkValidationName.length == false}">
                       <input 
                         name="name" type="text" id="name" class="form-control form-control-alternative" [(ngModel)]="newUser.name" (input)="checkName($event.target.value)" [placeholder]="isNameInvalid ? 'Họ và tên không được để trống' : 'Họ và tên'">
                     </div>
@@ -50,20 +50,20 @@
                     <label class="form-control-label" for="role">Vai trò <p style="display:inline-flex !important; color: red ">*</p></label>
                     <select *ngIf="!isRoleInvalid" [(ngModel)]="newUser.role" (ngModelChange)="checkRole($event)" name="role" id="role" class="form-control form-control-alternative">
                       <option value="" disabled selected hidden>Chọn Role</option>
-                      <option *ngFor="let role of roles" [ngValue]="role._id">{{ role.role }}</option>
+                      <option *ngFor="let role of roleList" [ngValue]="role._id">{{ role.name }}</option>
                     </select>     
                     <div *ngIf="isRoleInvalid" class="form-group has-danger">
                       <select  [(ngModel)]="newUser.role" (ngModelChange)="checkRole($event)" name="role" id="role" class="form-control is-invalid">
                         <option value="" disabled selected hidden class="is-invalid">Vai trò không được để trống</option>
-                        <option *ngFor="let role of roles" [ngValue]="role._id">{{ role.role }}</option>
+                        <option *ngFor="let role of roleList" [ngValue]="role._id">{{ role.name }}</option>
                       </select> 
                     </div>        
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="form-control-label" for="email">Email <p style="display:inline-flex !important; color: red ">*</p></label>
-                    <div [ngClass]="{'has-danger': isEmailInvalid == true}">
+                    <label class="form-control-label" for="email">Email <p style="display:inline-flex !important; color: red ">*</p><span style=" color: red; font-size: 13px; " *ngIf="!checkValidationEmail.length">Email cần chứa ít nhất 6 ký tự và nhiều nhất 255 ký tự</span><span style=" color: red; font-size: 13px; " *ngIf="!checkValidationEmail.unique">Email đã tồn tại</span></label>
+                    <div [ngClass]="{'has-danger': isEmailInvalid == true || checkValidationEmail.length == false || checkValidationEmail.unique == false}">
                       <input 
                         name="email" type="text" id="email" class="form-control form-control-alternative" [(ngModel)]="newUser.email" (input)="checkEmail($event.target.value)" [placeholder]="isEmailInvalid ? 'Email không được để trống' : 'Email'">
                     </div>
@@ -71,8 +71,8 @@
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="form-control-label" for="phone">Điện thoại <p style="display:inline-flex !important; color: red ">*</p></label>
-                    <div [ngClass]="{'has-danger': isPhoneInvalid == true}">
+                    <label class="form-control-label" for="phone">Điện thoại <p style="display:inline-flex !important; color: red ">*</p><span style=" color: red; font-size: 13px; " *ngIf="!checkValidationPhone.unique">Số điện thoại đã tồn tại</span></label>
+                    <div [ngClass]="{'has-danger': isPhoneInvalid == true || checkValidationPhone.unique == false}">
                       <input 
                         name="phone" type="text" id="phone" class="form-control form-control-alternative" [(ngModel)]="newUser.phone" (input)="checkPhone($event.target.value)" [placeholder]="isPhoneInvalid ? 'Điện thoại không được để trống' : 'Điện thoại'">
                     </div>
