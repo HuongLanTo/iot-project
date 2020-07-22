@@ -23,8 +23,9 @@ export class CreateRoleComponent implements OnInit {
   private check = true;
   private check_areas = true;
   private name = [];
-  private numberOfArea = 0;
+  private area_name = [];
   private checkCreateNode = -1;
+  private temp = "";
 
   public selected_permission = "";
   public selected_area = "";
@@ -96,7 +97,7 @@ export class CreateRoleComponent implements OnInit {
       }
     }
     if (this.role.action_permission.includes("5f10c6c8aca322264669cb40")) {
-      if (this.role.area_permission.length > 0) {
+      if (this.role.area_permission.length <= 0) {
         isCreate = false;
       }
     }
@@ -128,7 +129,7 @@ export class CreateRoleComponent implements OnInit {
         if (i == 0) {
           this.role.name = this.role.name + this.name[i];
         } else {
-          this.role.name = this.role.name + " , " + this.name[i];
+          this.role.name = this.role.name + ", " + this.name[i];
         }
       }
     }
@@ -137,9 +138,21 @@ export class CreateRoleComponent implements OnInit {
 
   selectArea() {
     this.role.area_permission.push(this.selected_area);
-    var index = this.name.indexOf("Tạo mới node");
-    if (index > -1) {
-      this.name[index] = this.name[index] + " " + this.getAreaName(this.selected_area);
+    this.area_name.push(this.getAreaName(this.selected_area));
+    if (this.role.area_permission.length >= 1) {
+      this.temp = "";
+      for (var i = 0; i < this.area_name.length; i++) {
+        if (i == 0) {
+          this.temp = this.temp + this.area_name[i];
+        } else {
+          this.temp = this.temp + " + " + this.area_name[i];
+          console.log(this.temp);
+          
+        }
+      }
+    }
+    if (this.checkCreateNode > -1) {
+      this.name[this.checkCreateNode] = "Tạo mới node " + this.temp;
     }
     if (this.role.action_permission.length >= 1) {
       this.role.name = "";
@@ -147,7 +160,7 @@ export class CreateRoleComponent implements OnInit {
         if (i == 0) {
           this.role.name = this.role.name + this.name[i];
         } else {
-          this.role.name = this.role.name + " , " + this.name[i];
+          this.role.name = this.role.name + ", " + this.name[i];
         }
       }
     }
@@ -164,7 +177,7 @@ export class CreateRoleComponent implements OnInit {
   }
 
   getAreaName(id) {
-    const area = this.AREAS.find((v) => v._id == id);
+    const area = this.AREAS.find((v) => v._id === id);
 
     if (area) {
       return area.name;
@@ -192,7 +205,7 @@ export class CreateRoleComponent implements OnInit {
         if (i == 0) {
           this.role.name = this.role.name + this.name[i];
         } else {
-          this.role.name = this.role.name + " , " + this.name[i];
+          this.role.name = this.role.name + ", " + this.name[i];
         }
       }
     }
@@ -202,5 +215,34 @@ export class CreateRoleComponent implements OnInit {
     this.role.area_permission = this.role.area_permission.filter(
       (v) => v !== id
     );
+    var index = this.area_name.indexOf(this.getAreaName(id));
+    if (index > -1) {
+      this.area_name.splice(index, 1);
+    }
+    if (this.role.area_permission.length >= 1) {
+      this.temp = "";
+      for (var i = 0; i < this.area_name.length; i++) {
+        if (i == 0) {
+          this.temp = this.temp + this.area_name[i];
+        } else {
+          this.temp = this.temp + " + " + this.area_name[i];
+          console.log(this.temp);
+          
+        }
+      }
+    }
+    if (this.checkCreateNode > -1) {
+      this.name[this.checkCreateNode] = "Tạo mới node " + this.temp;
+    }
+    if (this.role.action_permission.length >= 1) {
+      this.role.name = "";
+      for (var i = 0; i < this.name.length; i++) {
+        if (i == 0) {
+          this.role.name = this.role.name + this.name[i];
+        } else {
+          this.role.name = this.role.name + ", " + this.name[i];
+        }
+      }
+    }
   }
 }
