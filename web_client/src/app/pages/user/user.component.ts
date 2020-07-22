@@ -21,7 +21,7 @@ export class UserComponent implements OnInit {
   private currentPage: number = 1;
   private showPages: number = 5;
   private totalPage: number;
-  private sizePage = 10;
+  private sizePage = 5;
 
   // search
   searchRole = {

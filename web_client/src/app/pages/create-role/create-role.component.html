@@ -54,6 +54,7 @@
                       </p></label
                     >
                     <select
+                      *ngIf="is_permissions_valid"
                       name="permission"
                       [(ngModel)]="selected_permission"
                       id="permission"
@@ -67,6 +68,21 @@
                         >{{ permission.name }}</option
                       >
                     </select>
+                    <select
+                      *ngIf="!is_permissions_valid"
+                      name="permission"
+                      [(ngModel)]="selected_permission"
+                      id="permission"
+                      class="form-control is-invalid"
+                      (change)="selectPermission()"
+                    >
+                      <option value="" hidden selected class="is-invalid">Quyền không được để trống</option>
+                      <option
+                        *ngFor="let permission of permissions"
+                        [value]="permission._id"
+                        >{{ permission.name }}</option
+                      >
+                    </select>
                   </div>
                   <div>
                     <button
@@ -74,7 +90,7 @@
                       type="button"
                       class="btn btn-primary"
                       style="margin-bottom: 10px;"
-                      (click)="removePermission(permission)"
+                      (click)="removePermission(_id)"
                     >
                       <span>{{ getPermissionName(_id) }}</span>
                       <a
@@ -98,6 +114,7 @@
                       </p>
                     </label>
                     <select
+                      [disabled]="!isCreateNode"
                       name="area"
                       [(ngModel)]="selected_area"
                       id="area"
@@ -109,6 +126,20 @@
                         area.name
                       }}</option>
                     </select>
+                    <select
+                      *ngIf="!check_areas"
+                      [disabled]="!isCreateNode"
+                      name="area"
+                      [(ngModel)]="selected_area"
+                      id="area"
+                      class="form-control is-invalid"
+                      (change)="selectArea()"
+                    >
+                      <option value="" selected hidden class="is-invalid">Quyền tạo mới node phải chọn khu vực</option>
+                      <option *ngFor="let area of areas" [value]="area._id">{{
+                        area.name
+                      }}</option>
+                    </select>
                   </div>
                   <div>
                     <button
@@ -116,7 +147,7 @@
                       type="button"
                       class="btn btn-info"
                       style="margin-bottom: 10px;"
-                      (click)="removeArea(area)"
+                      (click)="removeArea(_id)"
                     >
                       <span>{{ getAreaName(_id) }}</span>
                       <a  class="btn-inner--icon"
