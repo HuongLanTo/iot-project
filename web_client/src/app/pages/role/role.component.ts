@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { ToastrService } from "ngx-toastr";
 import { RoleService } from 'src/app/services/role.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: "app-role",
@@ -17,13 +18,36 @@ export class RoleComponent implements OnInit {
   public selected_permission = "";
   public selected_area = "";
 
+  private filter = {};
 
-  constructor(private toastrService: ToastrService, private _roleService: RoleService) {}
+  // pagination
+  private currentPage: number = 1;
+  private showPages: number = 5;
+  private totalPage: number;
+  private sizePage = 8;
+
+  constructor(
+    private toastrService: ToastrService, 
+    private roleService: RoleService,
+    private spinnerService: NgxSpinnerService
+  ) {}
 
   async ngOnInit() {
-    await this._roleService.getRoles().then((data: any) => this.ROLES = data.data)
-    await this._roleService.getActionPermissions().then((data: any) => this.PERMISSIONS = data.data)
-    await this._roleService.getAreaPermissions().then((data: any) => this.AREAS = data.data)
+    await this.getRoleList(this.filter, this.currentPage, this.sizePage)
+    await this.roleService.getActionPermissions().then((data: any) => this.PERMISSIONS = data.data)
+    await this.roleService.getAreaPermissions().then((data: any) => this.AREAS = data.data)
+  }
+
+  async getRoleList(filter, currentPage, sizePage) {
+    this.spinnerService.show();
+    await this.roleService.getRoleList(filter, currentPage, sizePage).then((data: any) => {
+      this.totalPage = Math.ceil(data.total / sizePage);
+      if(this.totalPage <= this.showPages)
+        this.showPages = this.totalPage;
+      this.showPages = 3;    
+      this.ROLES = data.data;
+    });
+    this.spinnerService.hide();
   }
 
   get roles() {

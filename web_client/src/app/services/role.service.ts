@@ -55,18 +55,18 @@ export class RoleService {
               reject(err);
           })
     });
+  }
 
-    // return new Promise((resolve, reject) => {
-    //   this.http.get(this.API_URL + "/api/role").subscribe(
-    //     (res) => {
-    //       var object = JSON.parse((<any>res)._body);
-    //       resolve(object);
-    //     },
-    //     (err) => {
-    //       reject(err);
-    //     }
-    //   );
-    // });
+  getRoleList(filter: any, page: number, size: number) {
+    filter = JSON.stringify(filter);
+        filter = btoa(filter);
+        return new Promise((resolve, reject) => {
+            this.http.get(this.API_URL + `/api/role?filter=${filter}&page=${page}&size=${size}`, this.getOptions()).subscribe((res: any) => {
+                resolve(res.responseData);
+            }, err => {
+                reject(err);
+            })
+        })
   }
 
   createRole(role: any): Promise<boolean> {
