@@ -124,8 +124,6 @@ export class PendingUserComponent implements OnInit {
   }
 
   getApprove() {
-    console.log('getting approve');
-    
     this.filter.approve = "1";
     this.currentPage = 1;
     this.getApprovedUserList(this.filter, this.currentPage, this.sizePage);

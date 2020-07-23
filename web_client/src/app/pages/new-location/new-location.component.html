@@ -21,13 +21,13 @@
                 <div class="col-lg-6">
                   <div class="form-group">
                     <label class="form-control-label" for="province">Thành phố <p style="display:inline-flex !important; color: red ">*</p></label>
-                    <select *ngIf="!isprovinceInvalid" name="province" id="province" class="form-control form-control-alternative" [(ngModel)]="chosenProvince" (ngModelChange)="checkProvince($event)">
+                    <select *ngIf="!isProvinceInvalid" name="province" id="province" class="form-control form-control-alternative" [(ngModel)]="newLocation.province" (ngModelChange)="checkProvince($event)">
                       <option value="" disabled selected hidden>Chọn thành phố</option>
                       <option *ngFor="let province of provinceList" [ngValue]="province">{{ province.name }}</option>
                     </select>     
-                    <div *ngIf="isprovinceInvalid" class="form-group has-danger">
-                      <select  name="province" id="province" id="province" class="form-control is-invalid" [(ngModel)]="chosenProvince" (ngModelChange)="checkProvince($event)">
-                        <option value="" disabled selected hidden class="is-invalid">Quận không được để trống</option>
+                    <div *ngIf="isProvinceInvalid" class="form-group has-danger">
+                      <select name="province" id="province" id="province" class="form-control is-invalid" [(ngModel)]="newLocation.province" (ngModelChange)="checkProvince($event)">
+                        <option value="" disabled selected hidden class="is-invalid">Thành phố không được để trống</option>
                         <option *ngFor="let province of provinceList" [ngValue]="province">{{ province.name }}</option>
                       </select> 
                     </div>        
@@ -36,12 +36,12 @@
                 <div class="col-lg-6">
                   <div class="form-group">
                     <label class="form-control-label" for="district">Quận, huyện <p style="display:inline-flex !important; color: red ">*</p></label>
-                    <select *ngIf="!isDistrictInvalid" [disabled]="!checkSelectedProvince" name="district" id="district" class="form-control form-control-alternative" [(ngModel)]="chosenDistrict" (ngModelChange)="checkDistrict($event)">
+                    <select *ngIf="!isDistrictInvalid" [disabled]="!checkSelectedProvince" name="district" id="district" class="form-control form-control-alternative" [(ngModel)]="newLocation.district" (ngModelChange)="checkDistrict($event)">
                       <option value="" disabled selected hidden>Chọn quận, huyện</option>
                       <option *ngFor="let district of districtList" [ngValue]="district"><span *ngIf="provinceCode==district.parent_code">{{ district.name }}</span></option>
                     </select>     
                     <div *ngIf="isDistrictInvalid" class="form-group has-danger">
-                      <select  name="district" id="district" id="district" class="form-control is-invalid" [(ngModel)]="chosenDistrict" (ngModelChange)="checkDistrict($event)">
+                      <select  name="district" id="district" id="district" class="form-control is-invalid" [(ngModel)]="newLocation.district" (ngModelChange)="checkDistrict($event)">
                         <option value="" disabled selected hidden class="is-invalid">Quận không được để trống</option>
                         <option *ngFor="let district of districtList" [ngValue]="district"><span *ngIf="provinceCode==district.parent_code">{{ district.name }}</span></option>
                       </select> 
@@ -52,10 +52,10 @@
               <div class="row">
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="form-control-label" for="sub_district">Phường <p style="display:inline-flex !important; color: red ">*</p></label>
-                    <select *ngIf="!isSubDistrictInvalid" name="sub_district" id="sub_district" class="form-control form-control-alternative"  [(ngModel)]="newLocation.sub_district" (ngModelChange)="checkSubDistrict($event)">
+                    <label class="form-control-label" for="sub_district">Phường, xã <p style="display:inline-flex !important; color: red ">*</p></label>
+                    <select *ngIf="!isSubDistrictInvalid" [disabled]="!checkSelectedDistrict" name="sub_district" id="sub_district" class="form-control form-control-alternative"  [(ngModel)]="newLocation.sub_district" (ngModelChange)="checkSubDistrict($event)">
                       <option value="" disabled selected hidden>Chọn phường</option>
-                      <option *ngFor="let sub_district of sub_districtList">{{ sub_district }}</option>
+                      <option *ngFor="let sub_district of sub_districtList" [ngValue]="sub_district"><span *ngIf="districtCode==sub_district.parent_code">{{ sub_district.name }}</span></option>
                     </select>     
                     <div *ngIf="isSubDistrictInvalid" class="form-group has-danger">
                       <select  name="location" id="location" id="inputLocation" class="form-control is-invalid" [(ngModel)]="newLocation.sub_district" (ngModelChange)="checkSubDistrict($event)">
@@ -68,7 +68,7 @@
                 <div class="col-lg-6">
                   <div class="form-group">
                     <label class="form-control-label" for="detail">Địa chỉ <p style="display:inline-flex !important; color: red ">*</p></label>
-                    <div [ngClass]="{'has-danger': isDetailInvalid == true}">
+                    <div [ngClass]="{'has-danger': isDetailLocationInvalid == true}">
                       <input  name="detail" type="text" id="detail" class="form-control form-control-alternative" [(ngModel)]="newLocation.detail_location" (input)="checkDetail($event.target.value)" [placeholder]="isDetailLocationInvalid ? 'Địa chỉ cụ thể không được để trống' : 'Địa chỉ cụ thể'">
                     </div>
                   </div>

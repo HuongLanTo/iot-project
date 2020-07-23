@@ -9,9 +9,9 @@ import { NgxSpinnerService } from 'ngx-spinner';
   styleUrls: ['./location.component.css']
 })
 export class LocationComponent implements OnInit {
-  locationList: any;
-  provinceList: any;
-  districtList: any;
+  locationList: any = [];
+  provinceList: any = [];
+  districtList: any = [];
   currentLocation: any = {};
   searchProvince = "";
   searchDistrict = "";
@@ -23,7 +23,7 @@ export class LocationComponent implements OnInit {
 
   filter = {};
   private currentPage: number = 1;
-  private showPages: number;
+  private showPages: number = 5;
   private totalPage: number;
   private sizePage = 10;
 
@@ -45,23 +45,23 @@ export class LocationComponent implements OnInit {
   async getLocationList(filter, currentPage, sizePage) {
     this.spinnerService.show();
     await this.locationService.getLocationList(filter, currentPage, sizePage).then((data: any) => {
-      this.totalPage = Math.ceil(data[0].total / sizePage);
+      this.totalPage = Math.ceil(data.total / sizePage);
       if(this.totalPage <= this.showPages)
         this.showPages = this.totalPage;
       this.showPages = 3;    
-      this.locationList = data[0].data;
+      this.locationList = data.data;
     })
     this.spinnerService.hide();
   }
 
   async getProvinceList() {
-    this.locationService.getProvinceList().then(data => {
+    await this.locationService.getProvinceList().then(data => {
       this.provinceList = data;
     })
   }
 
   async getDistrictList() {
-    this.locationService.getDistrictList().then(data => {
+    await this.locationService.getDistrictList().then(data => {
       this.districtList = data;
     })
   }

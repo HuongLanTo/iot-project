@@ -45,7 +45,7 @@
                   <div class="form-group">
                     <label class="form-control-label" for="name">Tên node <p style="display:inline-flex !important; color: red ">*</p></label>
                     <div [ngClass]="{'has-danger': isNameInvalid == true}">
-                      <input  name="name" type="text" id="name" class="form-control form-control-alternative" [(ngModel)]="newNode.name" (input)="checkName($event.target.value)" [placeholder]="isNameInvalid ? 'Tên node không được để trống' : 'Tên node'">
+                      <input  name="name" type="text" id="name" class="form-control form-control-alternative" [(ngModel)]="newNode.name" disabled [placeholder]="newNode.name">
                     </div>
                   </div>
                 </div>
@@ -96,13 +96,13 @@
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
-                                    <label class="form-control-label">Khí NH3</label>
+                                    <label class="form-control-label">Khí CO2</label>
                                 </div>
                             </div>     
                             <div class="col">
                                 <div class="form-group">
-                                    <label class="custom-toggle" for="nh3_status">
-                                        <input type="checkbox" checked id="nh3_status" [(ngModel)]="newNode.nh3_status" name="nh3_status">
+                                    <label class="custom-toggle" for="co2_status">
+                                        <input type="checkbox" checked id="co2_status" [(ngModel)]="newNode.co2_status" name="co2_status">
                                         <span class="custom-toggle-slider rounded-circle"></span>
                                     </label>
                                 </div>

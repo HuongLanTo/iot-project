@@ -15,7 +15,7 @@ export class NewNodeComponent implements OnInit {
   public newNode = {
     name: "",
     location: "",
-    nh3_status: "",
+    co2_status: "",
     co_status: "",
     dust_status: "",
     temperature_status: "",
@@ -43,6 +43,10 @@ export class NewNodeComponent implements OnInit {
   ) {}
 
   async ngOnInit() {
+    await this.nodeService.getNodeListNoFilter().then((data: any) => {
+      var temp = data.total + 1;
+      this.newNode.name = "Node " + temp;
+    })
     await this.getLocationList();
     await this.getMe();
   }
@@ -70,7 +74,7 @@ export class NewNodeComponent implements OnInit {
       this.nodeService
         .createNode(this.newNode)
         .then((data) => {
-          this.toastrService.success("Tạo mới node thành công");
+          this.toastrService.success("Node mới tạo đang trong danh sách chờ phê duyệt");
           this.router.navigate(["/node"]);
         })
         .catch((err) => {
@@ -84,8 +88,8 @@ export class NewNodeComponent implements OnInit {
   }
 
   async getLocationList() {
-    await this.locationService.getLocationListNoFilter().then(data => {
-      this.locationList = data;
+    await this.locationService.getLocationListNoFilter().then((data: any) => {
+      this.locationList = data.data;
     })
   }
 

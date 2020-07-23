@@ -11,7 +11,6 @@ import { Router } from '@angular/router';
 })
 export class NewLocationComponent implements OnInit {
   public newLocation = {
-    id: "",
     province: "",
     district: "",
     sub_district: "",
@@ -41,6 +40,7 @@ export class NewLocationComponent implements OnInit {
   checkSelectedDistrict = false; 
 
   provinceCode: number;
+  districtCode: number;
 
   constructor(
     private locationService: LocationService,
@@ -51,6 +51,7 @@ export class NewLocationComponent implements OnInit {
   async ngOnInit() {
     this.getProvinceList();
     this.getDistrictList();
+    this.getSubDistrictList();
   }
 
   createLocation() {
@@ -84,8 +85,10 @@ export class NewLocationComponent implements OnInit {
     } else {
       this.isLongitudeInvalid = false;
     }
-    if (!this.isProvinceInvalid && !this.isDistrictInvalid && !this.isDetailLocationInvalid && !this.isLatitudeInvalid && !this.isLongitudeInvalid) {
+    if (!this.isProvinceInvalid && !this.isDistrictInvalid && !this.isSubDistrictInvalid && !this.isDetailLocationInvalid && !this.isLatitudeInvalid && !this.isLongitudeInvalid) {
       // this.newLocation.numberNode = this.newLocation.numberActiveNode = this.newLocation.numberDeactiveNode = "0";
+      console.log(this.newLocation);
+      
       this.locationService.createLocation(this.newLocation)
         .then(data => {
           this.toastrService.success("Tạo mới khu vực thành công");
@@ -124,7 +127,7 @@ export class NewLocationComponent implements OnInit {
       this.isProvinceInvalid = false;
       this.provinceCode = value.code;
       this.checkSelectedProvince = true;
-      this.newLocation.province = value._id;;
+      // this.newLocation.province = value._id;;
     } else {
       this.isProvinceInvalid = true;
       this.checkSelectedProvince = false;
@@ -134,9 +137,12 @@ export class NewLocationComponent implements OnInit {
   checkDistrict(value: any) {
     if (value) {
       this.isDistrictInvalid = false;
-      this.newLocation.district = value._id;
+      this.districtCode = value.code;
+      this.checkSelectedDistrict = true;
+      // this.newLocation.district = value._id;
     } else {
       this.isDistrictInvalid = true;
+      this.checkSelectedDistrict = false;
     }
   }
 

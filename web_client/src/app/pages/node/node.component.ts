@@ -16,12 +16,11 @@ export class NodeComponent implements OnInit {
     { status: false, name: "Deactive" },
   ];
 
-  //paginaton
   public filter = {
-    // approve: "1"
+    approve: "1"
   };
   private currentPage: number = 1;
-  private showPages: number;
+  private showPages: number = 5;
   private totalPage: number;
   private sizePage = 10;
 
@@ -91,12 +90,12 @@ export class NodeComponent implements OnInit {
 
   async getNodeList(filter, currentPage, sizePage) {
     this.spinnerService.show();
-    await this.nodeService.getNodeList(filter, currentPage, sizePage).then(data => {
-      this.totalPage = Math.ceil(10 / sizePage);
+    await this.nodeService.getNodeList(filter, currentPage, sizePage).then((data: any) => {
+      this.totalPage = Math.ceil(data.total / sizePage);
       if(this.totalPage <= this.showPages)
         this.showPages = this.totalPage;
       this.showPages = 3;    
-      this.nodeList = data;
+      this.nodeList = data.data;
     })
     this.spinnerService.hide();
   }
@@ -107,7 +106,7 @@ export class NodeComponent implements OnInit {
         temperature_status: this.currentNode.temperature_status,
         humidity_status: this.currentNode.humidity_status,
         co_status: this.currentNode.co_status,
-        nh3_status: this.currentNode.nh3_status,
+        co2_status: this.currentNode.co2_status,
         dust_status: this.currentNode.dust_status
       })
       .then((data) => {
@@ -142,7 +141,7 @@ const KEY_DATA = [
     type: "string",
   },
   {
-    key: "location",
+    key: "location_info",
     type: "string",
   },
   {
@@ -162,7 +161,7 @@ const KEY_DATA = [
     type: "boolean",
   },
   {
-    key: "nh3_status",
+    key: "co2_status",
     type: "boolean",
   },
   {
@@ -182,7 +181,7 @@ const FIELDS = [
   },
   {
     label: "Khu vực",
-    name: "location",
+    name: "location_info",
   },
   {
     label: "IP",
@@ -202,7 +201,7 @@ const ENV = [
     label: "Độ ẩm",
   },
   {
-    label: "NH3",
+    label: "CO2",
   },
   {
     label: "CO",
@@ -232,7 +231,7 @@ const MODAL = [
   {
     label: "Khu vực",
     fin: "location", // fin = for, id, name
-    key: "location",
+    key: "location_info",
     type: "input",
     readonly: true,
   },
@@ -268,9 +267,9 @@ const SENSOR = [
     key: "humidity_status",
   },
   {
-    label: "NH3",
-    fin: "nh3Status",
-    key: "nh3_status",
+    label: "CO2",
+    fin: "co2Status",
+    key: "co2_status",
   },
   {
     label: "CO",

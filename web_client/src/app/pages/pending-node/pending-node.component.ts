@@ -51,13 +51,11 @@ export class PendingNodeComponent implements OnInit {
   async getNodeList(filter, currentPage, sizePage) {
     this.spinnerService.show();
     await this.nodeService.getNodeList(filter, currentPage, sizePage).then((data: any) => {
-      console.log(data);
-      
-      this.totalPage = Math.ceil(4 / sizePage);
+      this.totalPage = Math.ceil(data.total / sizePage);
       if(this.totalPage <= this.showPages)
         this.showPages = this.totalPage;
       this.showPages = 3;    
-      this.nodeList = data;
+      this.nodeList = data.data;
       if (this.nodeList == "") {
         this.checkNodeList = false;
       } else {
@@ -71,11 +69,11 @@ export class PendingNodeComponent implements OnInit {
   async getApprovedNodeList(filter, currentPage, sizePage) {
     this.spinnerService.show();
     await this.nodeService.getNodeList(filter, currentPage, sizePage).then((data: any) => {
-      this.totalPage1 = Math.ceil(4 / sizePage);
+      this.totalPage1 = Math.ceil(data.total / sizePage);
       if(this.totalPage1 <= this.showPages1)
         this.showPages1 = this.totalPage1;
       this.showPages1 = 3;    
-      this.approveNodeList = data;
+      this.approveNodeList = data.data;
       if (this.approveNodeList == "") {
         this.checkApproveNodeList = false;
       } else {
@@ -88,13 +86,11 @@ export class PendingNodeComponent implements OnInit {
   async getDisapprovedNodeList(filter, currentPage, sizePage) {
     this.spinnerService.show();
     await this.nodeService.getNodeList(filter, currentPage, sizePage).then((data: any) => {
-      console.log(data);
-      
-      this.totalPage2 = Math.ceil(4 / sizePage);
+      this.totalPage2 = Math.ceil(data.total / sizePage);
       if(this.totalPage2 <= this.showPages2)
         this.showPages2 = this.totalPage2;
       this.showPages2 = 3;    
-      this.disapproveNodeList = data;
+      this.disapproveNodeList = data.data;
       if (this.disapproveNodeList == "") {
         this.checkDisapproveNodeList = false;
       } else {
@@ -152,7 +148,7 @@ const KEY_DATA = [
     type: "string",
   },
   {
-    key: "location",
+    key: "location_info",
     type: "string",
   },
   {
@@ -167,8 +163,8 @@ const FIELDS = [
     name: "name",
   },
   {
-    label: "Địa chỉ",
-    name: "location",
+    label: "Khu vực",
+    name: "location_info",
   },
   {
     label: "IP",

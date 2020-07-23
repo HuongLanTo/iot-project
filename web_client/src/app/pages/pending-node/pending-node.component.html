@@ -40,7 +40,8 @@
                   <tr *ngFor="let node of nodeList; let index = index" style="text-align: center;">
                     <td>{{ index + 1 }}</td>
                     <td *ngFor="let key_data of key_data" >
-                      <span>{{ node[key_data.key] }}</span>
+                      <span *ngIf="key_data.key!='location_info'">{{ node[key_data.key] }}</span>
+                      <span *ngIf="key_data.key=='location_info'">{{ node[key_data.key].detail_location }}, {{ node.district.name }}, {{ node.province.name }}</span>
                     </td>
                     <td>
                       <button class="btn btn-icon btn-sm btn-info" type="button" placement="top"
@@ -73,7 +74,10 @@
                   <h4 class="mb-0" style="padding: 10px 24px 20px 24px;" *ngIf="!checkApproveNodeList">Không có dữ liệu</h4>
                   <tr *ngFor="let node1 of approveNodeList; let index = index" style="text-align: center;">
                     <td>{{ index + 1 }}</td>
-                    <td *ngFor="let key_data of key_data" >{{ node1[key_data.key] }}</td>
+                    <td *ngFor="let key_data of key_data" >
+                      <span *ngIf="key_data.key!='location_info'">{{ node1[key_data.key] }}</span>
+                      <span *ngIf="key_data.key=='location_info'">{{ node1[key_data.key].detail_location }}, {{ node1.district.name }}, {{ node1.province.name }}</span>
+                    </td>
                   </tr>
                 </tbody>
               </table>
@@ -96,7 +100,10 @@
                   <h4 class="mb-0" style="padding: 10px 24px 20px 24px;" *ngIf="!checkDisapproveNodeList">Không có dữ liệu</h4>
                   <tr *ngFor="let node2 of disapproveNodeList; let index = index" style="text-align: center;">
                     <td>{{ index + 1 }}</td>
-                    <td *ngFor="let key_data of key_data" >{{ node2[key_data.key] }}</td>
+                    <td *ngFor="let key_data of key_data" >
+                      <span *ngIf="key_data.key!='location_info'">{{ node2[key_data.key] }}</span>
+                      <span *ngIf="key_data.key=='location_info'">{{ node2[key_data.key].detail_location }}, {{ node2.district.name }}, {{ node2.province.name }}</span>
+                    </td>
                 </tbody>
               </table>
             </div>
