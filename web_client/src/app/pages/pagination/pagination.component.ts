@@ -23,8 +23,6 @@ export class PaginationComponent implements OnInit {
   }
 
   async ngOnChanges(changes: SimpleChange) {    
-    console.log(changes);
-       
     this.currentPage = 1;
     await this.pagination(this.currentPage);
   }

@@ -135,6 +135,10 @@ const FIELDS = [
     name: "detail_location",
   },
   {
+    label: "Phường",
+    name: "sub_district",
+  },
+  {
     label: "Quận",
     name: "district",
   },

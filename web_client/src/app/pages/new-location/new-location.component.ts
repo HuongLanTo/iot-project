@@ -26,7 +26,8 @@ export class NewLocationComponent implements OnInit {
   districtList: any;
   sub_districtList: any;
   chosenProvince = "";
-  chosenDistrict = "";
+  chosenDistrict= "";
+  chosenSubDistrict = "";
 
   // declare invalid variables
   isProvinceInvalid: boolean = false;
@@ -127,7 +128,7 @@ export class NewLocationComponent implements OnInit {
       this.isProvinceInvalid = false;
       this.provinceCode = value.code;
       this.checkSelectedProvince = true;
-      // this.newLocation.province = value._id;;
+      this.newLocation.province = value._id;;
     } else {
       this.isProvinceInvalid = true;
       this.checkSelectedProvince = false;
@@ -139,7 +140,7 @@ export class NewLocationComponent implements OnInit {
       this.isDistrictInvalid = false;
       this.districtCode = value.code;
       this.checkSelectedDistrict = true;
-      // this.newLocation.district = value._id;
+      this.newLocation.district = value._id;
     } else {
       this.isDistrictInvalid = true;
       this.checkSelectedDistrict = false;
@@ -149,6 +150,7 @@ export class NewLocationComponent implements OnInit {
   checkSubDistrict(value: any) {
     if (value) {
       this.isSubDistrictInvalid = false;
+      this.newLocation.sub_district = value._id;
     } else {
       this.isSubDistrictInvalid = true;
     }

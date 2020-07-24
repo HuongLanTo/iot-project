@@ -25,6 +25,7 @@ const routes: Routes =[
       }
     ],
     canActivate: [AuthGuardService],
+    runGuardsAndResolvers: 'always',
   }, 
   {
     path: '',

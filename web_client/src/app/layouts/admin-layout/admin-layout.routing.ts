@@ -31,6 +31,7 @@ export const AdminLayoutRoutes: Routes = [
     {
         path: 'new-user',
         component: NewUserComponent
+
     },
     {
         path: 'pending-user',
