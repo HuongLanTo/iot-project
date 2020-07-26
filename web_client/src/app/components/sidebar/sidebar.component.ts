@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserService } from 'src/app/services/user.service';
+import { ProfileService } from 'src/app/services/profile.service';
 
 declare interface SubPath {
     path: string;
@@ -32,41 +34,48 @@ export const ROUTES: RouteInfo[] = [
 
     {
       path: 'Quản lý khu vực',
-      role: ['admin', 'moderator'],
+      role: ['Phê duyệt user', 'Tạo mới user', 'Phê duyệt node', 'Tạo mới node'],
       subPath: [
-        { path: '/location', title: 'Danh sách', role: ['admin', 'moderator'], icon: 'ni ni-bullet-list-67' },
-        { path: '/new-location', title: 'Tạo mới', role: ['admin', 'moderator'], icon: 'ni ni-fat-add' }
+        { path: '/location', title: 'Danh sách', role: ['Phê duyệt user', 'Tạo mới user', 'Phê duyệt node', 'Tạo mới node'], icon: 'ni ni-bullet-list-67' },
+        { path: '/new-location', title: 'Tạo mới', role: ['Tạo mới node'], icon: 'ni ni-fat-add' }
       ]
     },
 
     {
       path: 'Quản lý các node',
-      role: ['admin', 'moderator'],
+      role: ['Phê duyệt user', 'Tạo mới user', 'Phê duyệt node', 'Tạo mới node'],
       subPath: [
-        { path: '/node', title: 'Danh sách', role: ['admin', 'moderator'], icon: 'ni ni-bullet-list-67' },
-        { path: '/new-node', title: 'Tạo mới', role: ['admin', 'moderator'], icon: 'ni ni-fat-add' },
-        { path: '/pending-node', title: 'Chờ phê duyệt', role: ['admin'], icon: 'ni ni-check-bold' },
+        { path: '/node', title: 'Danh sách', role: ['Phê duyệt user', 'Tạo mới user', 'Phê duyệt node', 'Tạo mới node'], icon: 'ni ni-bullet-list-67' },
+        { path: '/new-node', title: 'Tạo mới', role: ['Tạo mới node'], icon: 'ni ni-fat-add' },
+        { path: '/pending-node', title: 'Chờ phê duyệt', role: ['Phê duyệt node'], icon: 'ni ni-check-bold' },
       ]
     },
 
     {
       path: 'Quản lý người dùng',
-      role: ['admin'],
+      role: ['Phê duyệt user', 'Tạo mới user', 'Phê duyệt node', 'Tạo mới node'],
       subPath: [
-        { path: '/user', title: 'Danh sách', role: ['admin'], icon: 'ni ni-bullet-list-67' },
-        { path: '/new-user', title: 'Tạo mới', role: ['admin'], icon: 'ni ni-fat-add' },
-        { path: '/pending-user', title: 'Chờ phê duyệt', role: ['admin'], icon: 'ni ni-check-bold' },
+        { path: '/user', title: 'Danh sách', role: ['Phê duyệt user', 'Tạo mới user', 'Phê duyệt node', 'Tạo mới node'], icon: 'ni ni-bullet-list-67' },
+        { path: '/new-user', title: 'Tạo mới', role: ['Tạo mới user'], icon: 'ni ni-fat-add' },
+        { path: '/pending-user', title: 'Chờ phê duyệt', role: ['Phê duyệt user'], icon: 'ni ni-check-bold' },
       ]
     },
 
     {
       path: 'Quản lý vai trò',
-      role: ['admin'],
+      role: ['Phê duyệt user', 'Tạo mới user', 'Phê duyệt node', 'Tạo mới node'],
       subPath: [
-        { path: '/role', title: 'Danh sách', role: ['admin'], icon: 'ni ni-bullet-list-67' },
-        { path: '/create-role', title: 'Tạo mới', role: ['admin'], icon: 'ni ni-fat-add' },
+        { path: '/role', title: 'Danh sách', role: ['Phê duyệt user', 'Tạo mới user', 'Phê duyệt node', 'Tạo mới node'], icon: 'ni ni-bullet-list-67' },
+        { path: '/create-role', title: 'Tạo mới', role: ['Admin'], icon: 'ni ni-fat-add' },
       ]
     },
+    {
+      path: 'Quản lý action log',
+      role: ['Admin'],
+      subPath: [
+        { path: '/action-log', title: 'Danh sách', role: ['Admin'], icon: 'ni ni-bullet-list-67' },
+      ]
+    }
 ];
 
 @Component({
@@ -78,13 +87,38 @@ export class SidebarComponent implements OnInit {
 
   public menuItems: any[];
   public isCollapsed = true;
+  private isAdmin = false;
+  private actionName = [];
 
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router,
+    private profileService: ProfileService
+  ) { }
 
-  ngOnInit() {
+  async ngOnInit() {
+    await this.checkAdmin();
     this.menuItems = ROUTES;
     this.router.events.subscribe((event) => {
       this.isCollapsed = true;
    });
+  }
+
+  async checkAdmin() {
+    var user: any = {};
+    var actionId = [];
+    await this.profileService.getProfile().then((data: any) => {
+      user = data;
+      actionId = data.role.action_permission;
+    })   
+    if (user.role.name == "Admin") {
+      this.isAdmin = true;
+    } else {
+      this.isAdmin = false;
+      await actionId.forEach(e => {
+        this.actionName.push(e.name);
+      });
+    }
+    console.log(this.actionName);
+    
   }
 }

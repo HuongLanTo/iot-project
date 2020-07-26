@@ -13,10 +13,10 @@ export class AuthGuardService implements CanActivate {
       private profileService: ProfileService) {}
   async canActivate() {
     
-    if (!this.authService.isAuthenticated()) {
+    if (this.authService.isAuthenticated()==false) {
       this.router.navigate(['login']);
       return false;
-    } else if (!this.authService.checkSession()) {
+    } else if (await this.authService.checkSession()==true) {
       this.router.navigate(['login']);
       return false;
     } 

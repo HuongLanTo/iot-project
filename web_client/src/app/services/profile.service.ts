@@ -44,39 +44,15 @@ export class ProfileService {
         })
     })
   }
-  // getProfile() {
-    // var headers = new Headers({
-    //   'Content-Type': 'application/json',
-    //   'cookies': JSON.stringify(document.cookie)
-    // })
-
-    // let options = new RequestOptions({
-    //   headers: headers,
-    //   withCredentials: true,
-    // });
-
-    // const httpOptions = {
-    //   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
-     
-    // withCredentials: true, 
-    // cookies: 'response' as 'response'
-    // };
-
-    
-  //   return new Promise((resolve, reject) => {
-  //     console.log(456);
-      
-  //     this.http.get(this.API_URL + "/auth", this.getOptions()).subscribe(
-  //       (res: {data: any}) => {
-  //         console.log(res);
-          
-  //         var object = res;
-  //         console.log(object);
-          
-  //         resolve(object.data);
-  //       },
-  //       (err) => reject(err)
-  //     );
-  //   });
-  // }
+  
+  getId() {
+    return new Promise((resolve, reject) => {
+      this.http.get(this.API_URL + "/auth/get-me", this.getOptions())
+        .subscribe((res: {data: any}) => {
+          resolve(res.data._id);
+        }, err => {
+          reject(err);
+        })
+    })
+  }
 }

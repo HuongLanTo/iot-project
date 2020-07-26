@@ -90,11 +90,6 @@ export class HomeComponent implements OnInit {
     this.dataService.getDataBy3Day(filter).then(data => {
       this.three_day_aqi_data = data[0].data;
       this.set3DayAqiInfo(this.three_day_aqi_data[0].aqi, this.three_day_aqi_data[1].aqi, this.three_day_aqi_data[2].aqi);
-      console.log(this.three_day_aqi_data);
-      
-      console.log(typeof(data));
-      console.log(data[0].data[0]);
-      
     })
   }
 
@@ -209,7 +204,7 @@ export class HomeComponent implements OnInit {
             xAxes: [
               {
                 ticks: {
-                  display: false,
+                  display: false
                 },
               },
             ],
@@ -278,8 +273,8 @@ export class HomeComponent implements OnInit {
     
     for (var i = 0; i < dataBy24Hour.length; i++) {
       this.co_data.push(dataBy24Hour[i].co);
-      // this.co2_data.push(this.dataBy24Hour[i].co2);
-      // this.pm25_data.push(this.dataBy24Hour[i].pm25);
+      this.co2_data.push(dataBy24Hour[i].co2);
+      this.pm25_data.push(dataBy24Hour[i].pm_25);
       this.time.push(
         Moment(dataBy24Hour[i].datetime).format("DD/MM/YYYY HH:mm")
       );
@@ -301,6 +296,11 @@ export class HomeComponent implements OnInit {
                 labelString: "CO",
                 display: true,
               },
+              ticks: {
+                max: 100,
+                min: 50,
+                stepSize: 10
+              }
             },
           ],
         },
@@ -327,6 +327,11 @@ export class HomeComponent implements OnInit {
                 labelString: "CO2",
                 display: true,
               },
+              ticks: {
+                max: 100,
+                min: 50,
+                stepSize: 10
+              }
             },
           ],
         },
@@ -352,6 +357,11 @@ export class HomeComponent implements OnInit {
                 labelString: "Bụi PM2.5",
                 display: true,
               },
+              ticks: {
+                max: 100,
+                min: 40,
+                stepSize: 10
+              }
             },
           ],
         },

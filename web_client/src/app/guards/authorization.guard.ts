@@ -1,37 +1,42 @@
-// import { Injectable } from '@angular/core';
-// import {
-//   CanActivate,
-//   ActivatedRouteSnapshot,
-//   RouterStateSnapshot,
-//   ActivatedRoute,
-//   Router,
-//   CanActivateChild
-// } from '@angular/router';
-// import { Observable } from 'rxjs';
-// import { AuthService } from './auth.service';
+import { Injectable } from '@angular/core';
+import {
+  CanActivate,
+  ActivatedRouteSnapshot,
+  RouterStateSnapshot,
+  ActivatedRoute,
+  Router,
+  CanActivateChild
+} from '@angular/router';
+import { Observable } from 'rxjs';
+import { AuthService } from '../services/auth.service';
 
-// @Injectable({
-//   providedIn: 'root'
-// })
-// export class AuthorizationGuard implements CanActivate, CanActivateChild {
-//   constructor(
-//     private authorizationService: AuthService,
-//     private router: Router
-//   ) {}
+@Injectable({
+  providedIn: 'root'
+})
+export class AuthorizationGuard implements CanActivate {
+  constructor(
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
-//   canActivate(
-//     next: ActivatedRouteSnapshot,
-//     state: RouterStateSnapshot
-//   ): Observable<boolean> | Promise<boolean> | boolean {
-//     const allowedRoles = next.data.allowedRoles;
-//     const isAuthorized = this.authorizationService.isAuthorized(allowedRoles);
+  canActivate(
+    next: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ): Observable<boolean> | Promise<boolean> | boolean {
+      console.log(123);
+      
+    const allowedRoles = next.data.allowedRoles;
+    console.log("arr", allowedRoles);
+    var res = true;    
+    this.authService.isAuthorized(allowedRoles, res);
+console.log("is", res);
 
-//     if (!isAuthorized) {
-//       this.router.navigate(['dashboard']);
-//     }
+    // if (!af) {
+    //   this.router.navigate(['user']);
+    // }
 
-//     return isAuthorized;
-//   }
+    return res;
+  }
 
 //   canActivateChild(
 //     next: ActivatedRouteSnapshot,
@@ -47,4 +52,4 @@
 
 //     return isAuthorized;
 //   }
-// }
+}

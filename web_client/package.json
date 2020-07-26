@@ -33,6 +33,7 @@
     "clipboard": "2.0.4",
     "core-js": "3.6.4",
     "cors": "^2.8.5",
+    "esri-leaflet-geocoder": "^2.3.3",
     "leaflet": "^1.5.1",
     "leaflet-geosearch": "^3.0.6",
     "moment": "^2.27.0",

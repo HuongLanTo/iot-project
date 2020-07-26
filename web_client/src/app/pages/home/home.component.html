@@ -59,7 +59,7 @@
                     <option *ngFor="let data of sensor_data">{{ data.node_id }}</option>
                 </select>     
             </div>
-            <h3 class="mb-0">Chỉ số chất lượng không khí ngày {{ current_sensor_data.datetime | date:'dd/MM/yyyy' }}</h3>
+            <h3 class="mb-0">Chỉ số chất lượng không khí lúc {{ current_sensor_data.datetime | date:'HH:mm' }} ngày {{ current_sensor_data.datetime | date:'dd/MM/yyyy' }}</h3>
             <br>
             <div class="row showed-main-info" style="padding: 20px;" [style.background-color]="current_aqi_info.Color">
                 <div class="col-3">

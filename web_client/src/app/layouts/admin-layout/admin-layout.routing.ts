@@ -16,53 +16,103 @@ import { LocationService } from 'src/app/services/location.service';
 import { PendingNodeComponent } from 'src/app/pages/pending-node/pending-node.component';
 import { CreateRoleComponent } from '../../pages/create-role/create-role.component'
 import { RoleComponent } from '../../pages/role/role.component'
+import { ActionLogComponent } from 'src/app/pages/action-log/action-log.component';
+import { AuthorizationGuard } from 'src/app/guards/authorization.guard';
 
 
 export const AdminLayoutRoutes: Routes = [
-    { path: 'dashboard',      component: DashboardComponent },
+    // // { path: 'dashboard',      component: DashboardComponent },
     { path: 'user-profile',   component: UserProfileComponent },
-    { path: 'tables',         component: TablesComponent },
-    { path: 'icons',          component: IconsComponent },
-    { path: 'maps',           component: MapsComponent },
+    // { path: 'tables',         component: TablesComponent },
+    // { path: 'icons',          component: IconsComponent },
+    // { path: 'maps',           component: MapsComponent },
     {
         path: 'user',
-        component: UserComponent
+        component: UserComponent,
+        canActivate: [AuthorizationGuard],
+        data: {
+            allowedRoles: []
+        }
     },
     {
         path: 'new-user',
-        component: NewUserComponent
+        component: NewUserComponent,
+        canActivate: [AuthorizationGuard],
+        data: {
+            allowedRoles: ['Tạo mới user']
+        }
 
     },
     {
         path: 'pending-user',
-        component: PendingUserComponent
+        component: PendingUserComponent,
+        canActivate: [AuthorizationGuard],
+        data: {
+            allowedRoles: ['Phê duyệt user']
+        }
     },
     {
         path: 'node',
-        component: NodeComponent
+        component: NodeComponent,
+        canActivate: [AuthorizationGuard],
+        data: {
+            allowedRoles: ['Phê duyệt user', 'Tạo mới user', 'Phê duyệt node', 'Tạo mới node']
+        }
     },
     {
         path: 'new-node',
-        component: NewNodeComponent
+        component: NewNodeComponent,
+        canActivate: [AuthorizationGuard],
+        data: {
+            allowedRoles: ['Tạo mới node']
+        }
     },
     {
         path: 'create-role',
-        component: CreateRoleComponent
+        component: CreateRoleComponent,
+        canActivate: [AuthorizationGuard],
+        data: {
+            allowedRoles: ['Admin']
+        }
     },
     {
         path: 'role',
-        component: RoleComponent
+        component: RoleComponent,
+        canActivate: [AuthorizationGuard],
+        data: {
+            allowedRoles: ['Phê duyệt user', 'Tạo mới user', 'Phê duyệt node', 'Tạo mới node']
+        }
     },
     {
         path: 'location',
-        component: LocationComponent
+        component: LocationComponent,
+        canActivate: [AuthorizationGuard],
+        data: {
+            allowedRoles: []
+        }
     },
     {
         path: 'new-location',
-        component: NewLocationComponent
+        component: NewLocationComponent,
+        canActivate: [AuthorizationGuard],
+        data: {
+            allowedRoles: ['Tạo mới node']
+        }
     },
     {
         path: 'pending-node',
-        component: PendingNodeComponent
+        component: PendingNodeComponent,
+        canActivate: [AuthorizationGuard],
+        data: {
+            allowedRoles: ['Phê duyệt node']
+        }
+    },
+    {
+        path: 'action-log',
+        component: ActionLogComponent,
+        canActivate: [AuthorizationGuard],
+        data: {
+            allowedRoles: ['Admin']
+        }
     }
 ];

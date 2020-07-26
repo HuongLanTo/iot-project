@@ -60,6 +60,16 @@ export class UserService {
         })
     }
 
+    getUserById(id: string) {
+        return new Promise((resolve, reject) => {
+            this.http.get(this.API_URL + `/api/user/${id}`).subscribe((res: {data: any}) => {
+                resolve(res.data);
+            }, err => {
+                reject(err);
+            })
+        })
+    }
+
     createUser(user: any) {
         return new Promise((resolve, reject) => {
             this.http.post(this.API_URL + "/api/user", user, this.getOptions()).subscribe(res => {

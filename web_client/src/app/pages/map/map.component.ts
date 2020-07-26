@@ -67,31 +67,32 @@ export class MapComponent implements OnInit {
     //   this.map.addLayer(marker);
     // }
     var location = "Thanh Xuan";
-    var markers = [
-      [ -0.1244324, 51.5006728, "Big Ben" ],
-      [ -0.119623, 51.503308, "London Eye" ],
-      [ -0.1279688, 51.507728, `<b>${location}</b><table style="width: 100%;"><tbody><td><i class="fa fa-tint fa-2x" aria-hidden="true" style="float:left;margin-right:6px;"><span style="font-size:18px">30</span></i></td><td><i class="fa fa-tint fa-2x" aria-hidden="true" style="float:left;margin-right:6px;"><span>30</span></i></td></tbody></table>`] 
-   ];
+  //   var markers = [
+  //     [ -0.1244324, 51.5006728, "Big Ben" ],
+  //     [ -0.119623, 51.503308, "London Eye" ],
+  //     [ -0.1279688, 51.507728, `<b>${location}</b><table style="width: 100%;"><tbody><td><i class="fa fa-tint fa-2x" aria-hidden="true" style="float:left;margin-right:6px;"><span style="font-size:18px">30</span></i></td><td><i class="fa fa-tint fa-2x" aria-hidden="true" style="float:left;margin-right:6px;"><span>30</span></i></td></tbody></table>`] 
+  //  ];
    
-   //Loop through the markers array
-    for (var i=0; i<markers.length; i++) {
+    //Loop through the markers array
+    // for (var i=0; i<markers.length; i++) {
      
-      var lon = Number(markers[i][0]);
-      var lat = Number(markers[i][1]);
-      var popupText = String(markers[i][2]);
+    //   var lon = Number(markers[i][0]);
+    //   var lat = Number(markers[i][1]);
+    //   var popupText = String(markers[i][2]);
       
-       var markerLocation = new L.LatLng(lat, lon);
-       var marker = new L.Marker(markerLocation);
-       this.map.addLayer(marker);
+    //    var markerLocation = new L.LatLng(lat, lon);
+    //    var marker = new L.Marker(markerLocation);
+    //    this.map.addLayer(marker);
    
-       marker.bindPopup(popupText);
-   
-    }
+    //    marker.bindPopup(popupText);
+    // }
+    this.getDataByLastHour();
+    this.getMarkers();
   }
 
   private initMap() {
     this.map = L.map('map', {
-      center: [51.5056,-0.1213],
+      center: [20.992966, 105.813566],
       zoom: 15
     });
 
@@ -109,6 +110,51 @@ export class MapComponent implements OnInit {
       this.sensor_data = data;
     });
     // await this.setMarker();
+  }
+
+  getMarkers() {
+    var markers = [];
+    var temp = [];
+    for (var i = 0; i < this.sensor_data.length; i++) {
+      temp = [];
+      temp.push(this.sensor_data[i].lat);
+      temp.push(this.sensor_data[i].long);
+      temp.push(this.sensor_data[i].aqi);
+      temp.push(this.sensor_data[i].tem);
+      temp.push(this.sensor_data[i].hum);
+      temp.push(this.sensor_data[i].location);
+      temp.push(`<b style="font-size:21px">${this.sensor_data[i].location}</b>
+      <br>
+      <table>
+        <tbody>
+          <tr style="text-align:left;">
+            <td style="text-align:left; padding-right: 20px;"><span style="font-size:20px">AQI: ${this.sensor_data[i].aqi}</span></td>
+            <td style="text-align:left;"><span style="font-size:20px">Tốt</span></td>
+          </tr>
+          <tr style="text-align:left;">
+            <td style="text-align:left; padding-right: 20px;"><i class="fa fa-tint fa-2x" aria-hidden="true" style="float:left;margin-right:6px;"></i><span style="font-size:18px;line-height:24px;">${this.sensor_data[i].tem}&#8451;</span></td>
+            <td style="text-align:left;"><i class="fa fa-thermometer-empty fa-2x" aria-hidden="true" style="float:left;margin-right:6px;"></i><span style="font-size:18px;line-height:24px;">${this.sensor_data[i].hum}%</span></td>
+          </tr>
+        </tbody>
+      </table>`)
+      markers.push(temp);
+    }
+    //Loop through the markers array
+    for (var i = 0; i < markers.length; i++) {
+     
+      var lon = Number(markers[i][1]);
+      var lat = Number(markers[i][0]);
+      
+      var popupText = String(markers[i][6]);
+      
+      var markerLocation = new L.LatLng(lat, lon);
+      var marker = new L.Marker(markerLocation);
+      this.map.addLayer(marker);
+   
+      marker.bindPopup(popupText);
+    }
+    console.log(12, markers);
+    
   }
 
   // setMarker() {

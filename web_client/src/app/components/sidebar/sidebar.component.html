@@ -88,16 +88,68 @@
         </div>
       </form>
       <!-- Navigation -->
-      <div *ngFor="let menuItem of menuItems">
-        <h6 class="navbar-heading text-muted">{{ menuItem.path }}</h6>
-        <ul class="navbar-nav" >
-          <li class="nav-item" *ngFor="let sub of menuItem.subPath">       
-              <a routerLinkActive="active" [routerLink]="[sub.path]" class="nav-link">
-                  <i class="ni {{sub.icon}}"></i>
-                  {{sub.title}}
-              </a>
-          </li>
-      </ul>
+      <div *ngIf="isAdmin">
+        <div *ngFor="let menuItem of menuItems">
+          <h6 class="navbar-heading text-muted">{{ menuItem.path }}</h6>
+          <ul class="navbar-nav" >
+            <li class="nav-item" *ngFor="let sub of menuItem.subPath">       
+                <a routerLinkActive="active" [routerLink]="[sub.path]" class="nav-link">
+                    <i class="ni {{sub.icon}}"></i>
+                    {{sub.title}}
+                </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div *ngIf="!isAdmin">
+        <div *ngFor="let menuItem of menuItems">
+          <div *ngIf="menuItem.role.length == 4">
+            <h6 class="navbar-heading text-muted">{{ menuItem.path }}</h6>
+            <ul class="navbar-nav" >
+              <li class="nav-item" *ngFor="let sub of menuItem.subPath">     
+                <div *ngIf="sub.role.length == 4">
+                  <a routerLinkActive="active" [routerLink]="[sub.path]" class="nav-link">
+                    <i class="ni {{sub.icon}}"></i>{{sub.title}}
+                  </a>
+                </div>
+                <div *ngIf="sub.role.length != 4">
+                  <div *ngFor="let action of actionName">
+                    <div *ngIf="sub.role.includes(action)">
+                      <a routerLinkActive="active" [routerLink]="[sub.path]" class="nav-link">
+                        <i class="ni {{sub.icon}}"></i>{{sub.title}}
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div *ngIf="menuItem.role.length != 4">
+            <div *ngFor="let action of actionName">
+              <div *ngIf="menuItem.role.includes(action)">
+                <h6 class="navbar-heading text-muted">{{ menuItem.path }}</h6>
+                <ul class="navbar-nav" >
+                  <li class="nav-item" *ngFor="let sub of menuItem.subPath">       
+                    <div *ngIf="sub.role.length == 4">
+                      <a routerLinkActive="active" [routerLink]="[sub.path]" class="nav-link">
+                        <i class="ni {{sub.icon}}"></i>{{sub.title}}
+                      </a>
+                    </div>
+                    <div *ngIf="sub.role.length != 4">
+                      <div *ngFor="let action of actionName">
+                        <div *ngIf="sub.role.includes(action)">
+                          <a routerLinkActive="active" [routerLink]="[sub.path]" class="nav-link">
+                            <i class="ni {{sub.icon}}"></i>{{sub.title}}
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <!-- <ul class="navbar-nav">
           <li *ngFor="let menuItem of menuItems" class="{{menuItem.class}} nav-item">
