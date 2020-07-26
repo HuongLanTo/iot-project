@@ -41,9 +41,6 @@ export class AuthService {
           localStorage.setItem('auth-token', res.responseMessage.data.cookies.token);
           this.cookieService.put('user_token',res.responseMessage.data.cookies.token);
           this.cookieService.put('durations',res.responseMessage.data.cookies.durations);
-          var token = localStorage.getItem('auth-token');
-          console.log(token);
-          
           this.router.navigate(['user'])
           resolve(true);
         }, err => reject(err))
@@ -51,12 +48,15 @@ export class AuthService {
     }
   
     public isAuthenticated() {
-      const token = localStorage.getItem('auth-token');
+      // const token = localStorage.getItem('auth-token');
+      const token = this.cookieService.get('user_token');
+      console.log("c", token);
       
       if (token == null){
         return false;
       } else {
-        return true;
+        
+        return !this.jwtHelper.isTokenExpired(token);
         //return true;
       }
     }
@@ -102,19 +102,18 @@ export class AuthService {
 
     logout() {
       localStorage.removeItem('auth-token');
-      var token = localStorage.getItem('auth-token');
-      console.log(token);
-      
+      this.cookieService.remove('user_token')
+      this.cookieService.remove('durations')
       this.router.navigate(['login']);
     }
 
-    public checkSession():Promise<boolean> {
+    checkSession():Promise<boolean> {
       return new Promise((resolve, reject) => {
         this.httpClient.get(this.API_URL + '/auth/session', this.getOptions())
         .subscribe((res: {data: any}) => {
           resolve(res.data.exprired)
         }, err => {
-          reject(err)
+          reject(err);
         })
 
       })

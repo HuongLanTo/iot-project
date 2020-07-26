@@ -13,12 +13,18 @@ export class AuthGuardService implements CanActivate {
       private profileService: ProfileService) {}
   async canActivate() {
     
-    if (this.authService.isAuthenticated()==false) {
+    if (await this.authService.isAuthenticated()==false) {
       this.router.navigate(['login']);
       return false;
-    } else if (await this.authService.checkSession()==true) {
-      this.router.navigate(['login']);
-      return false;
+    } else {
+      var check: boolean
+      await this.authService.checkSession().then(data => {
+        check = data;
+      })
+      if (check == true) {
+        this.router.navigate(['login']);
+        return false;
+      }
     } 
     return true;
   }
