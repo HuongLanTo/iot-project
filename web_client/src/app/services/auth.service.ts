@@ -55,14 +55,10 @@ export class AuthService extends BaseService {
       // check if the list of allowed roles is empty, if empty, authorize the user to access the page
       if (allowedRoles == null || allowedRoles.length === 0) {
         return true;
-      } else {
-        var _id = "";
-        await this.profileService.getId().then((data: any) => {
-          _id = data;
-        })   
+      } else { 
         var nameRole = "";
         var actionName = [];
-        await this.userService.getUserById(_id).then((data: any) => {
+        await this.profileService.getProfile().then((data: any) => {
           nameRole = data.role.name;
           actionName = data.role.action_permission;
         })

@@ -13,7 +13,7 @@ import { AuthGuardService } from './guards/auth.guard';
 const routes: Routes =[
   {
     path: '',
-    redirectTo: 'dashboard',
+    redirectTo: 'user',
     pathMatch: 'full',
   }, {
     path: '',
@@ -25,7 +25,7 @@ const routes: Routes =[
       }
     ],
     canActivate: [AuthGuardService],
-    // runGuardsAndResolvers: 'always',
+    runGuardsAndResolvers: 'always',
   }, 
   {
     path: '',

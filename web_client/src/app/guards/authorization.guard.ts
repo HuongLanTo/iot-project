@@ -26,10 +26,11 @@ export class AuthorizationGuard implements CanActivate {
       console.log(123);
       
     const allowedRoles = next.data.allowedRoles;
-    console.log("arr", allowedRoles);
-    const res = this.authService.isAuthorized(allowedRoles);
-
+    const res = await this.authService.isAuthorized(allowedRoles);
+    
+    
     if (!res) {
+      console.log("res", res);
       this.router.navigate(['user']);
     }
 
