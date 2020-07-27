@@ -21,11 +21,6 @@ export class ProfileService extends BaseService {
 
 
   getProfile() {
-    // return this.get("/auth/get-me").then(
-    //   (res: {data: any}) => {
-    //     return res.data;
-    //   }
-    // ).catch(err => err);
     return new Promise((resolve, reject) => {
       this.httpClient.get(this.API_URL + "/auth/get-me", this.getOptions())
         .subscribe((res: {data: any}) => {

@@ -24,12 +24,16 @@ export class LoginComponent implements OnInit {
   }
  
 
-  login() {
+  async login() {
     var userLogin = {
       username: this.username,
       password: this.password
     }
-    this.authService.signIn(userLogin);
+    await this.authService.signIn(userLogin);
+    if (!await this.authService.isApprovedAndActive()) {
+      this.authService.logout();
+    }
+    
   }
 
 }

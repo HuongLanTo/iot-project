@@ -8,6 +8,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ProfileService } from './profile.service';
 import { UserService } from './user.service';
 import { BaseService } from './base.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,8 @@ export class AuthService extends BaseService {
       public jwtHelper: JwtHelperService,
       private cookieService: CookieService,
       private profileService: ProfileService,
-      private userService: UserService
+      private userService: UserService,
+      private toastrService: ToastrService
     ) {
       super(httpClient);
     }
@@ -40,14 +42,10 @@ export class AuthService extends BaseService {
     public isAuthenticated() {
       // const token = localStorage.getItem('auth-token');
       const token = this.cookieService.get('user_token');
-      console.log("c", token);
-      
       if (token == null){
         return false;
       } else {
-        
         return !this.jwtHelper.isTokenExpired(token);
-        //return true;
       }
     }
 
@@ -76,14 +74,7 @@ export class AuthService extends BaseService {
           }
           return false;
         }
-        
       }
-
-    
-    
-    // check if the user roles is in the list of allowed roles, return true if allowed and false if not allowed
-      // return allowedRoles.includes();
-      
     }
 
     logout() {
@@ -103,5 +94,26 @@ export class AuthService extends BaseService {
         })
 
       })
+    }
+
+    async isApprovedAndActive(): Promise<boolean> {
+      var user: any = {};
+      await this.profileService.getProfile().then(data => {
+        user = data;
+      });
+      if (user.approve == 0) {
+        this.toastrService.warning("Tài khoản đang trong quá trình chờ được phê duyệt.");
+        return false;
+      } else if (user.approve == -1) {
+        this.toastrService.warning("Tài khoản không tồn tại.");
+        return false;
+      } else if (user.approve == 1) {
+        if (user.status == 0) {
+          this.toastrService.warning("Tài khoản đang dừng hoạt động.");
+          return false;
+        } else if (user.status == 1) {
+          return true;
+        }
+      }
     }
 }
