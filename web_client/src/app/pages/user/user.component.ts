@@ -21,7 +21,7 @@ export class UserComponent implements OnInit {
 
   private currentPage: number = 1;
   private showPages: number = 5;
-  public totalPage: number = 9;
+  public totalItems: number;
   private sizePage = 5;
 
   private temp: number = 0;
@@ -95,7 +95,7 @@ export class UserComponent implements OnInit {
   async getUserList(filter, currentPage, sizePage) {
     this.spinnerService.show();
     await this.userService. getUserList(filter, currentPage, sizePage).then((data: any) => {
-      this.totalPage = Math.ceil(data.totalDocuments / sizePage);
+      this.totalItems = data.totalDocuments;
       // if(this.totalPage <= this.showPages)
       //   this.showPages = this.totalPage;
       // this.showPages = 3;    

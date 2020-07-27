@@ -7,32 +7,22 @@ import { CookieService } from 'angular2-cookie/services/cookies.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ProfileService } from './profile.service';
 import { UserService } from './user.service';
+import { BaseService } from './base.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
+export class AuthService extends BaseService {
     constructor(
-      private http: Http,
-      private httpClient: HttpClient,
+      protected httpClient: HttpClient,
       private router:Router,
       public jwtHelper: JwtHelperService,
       private cookieService: CookieService,
       private profileService: ProfileService,
       private userService: UserService
-    ) {}
-
-    protected headers = new HttpHeaders({
-      "Content-Type": "application/json",
-      Accept: "application/json",
-      Cookies: document.cookie,
-    });
-  
-    private getOptions() {
-      return { headers: this.headers };
+    ) {
+      super(httpClient);
     }
-
-    private API_URL = environment.apiUrl;
 
     signIn(user: {username, password}): Promise<boolean>{
       return new Promise((resolve, reject) => {
@@ -61,35 +51,35 @@ export class AuthService {
       }
     }
 
-    async isAuthorized(allowedRoles: string[], res: boolean) {
+    async isAuthorized(allowedRoles: string[]): Promise<boolean> {
       // check if the list of allowed roles is empty, if empty, authorize the user to access the page
       if (allowedRoles == null || allowedRoles.length === 0) {
-        res = true;
+        return true;
       } else {
-        // var _id = "";
-        // await this.profileService.getId().then((data: any) => {
-        //   _id = data;
-        // })   
-        // var nameRole = "";
-        // var actionName = [];
-        // await this.userService.getUserById(_id).then((data: any) => {
-        //   nameRole = data.role.name;
-        //   actionName = data.role.action_permission;
-        // })
-        // if (nameRole == "Admin") {
-        //   res = true;
-        // } else {
-        //   res = false;
-        //   var check = [];
-        //   await actionName.forEach(e => {
-        //     check.push(e.name);
-        //   });
-        //   for (var i = 0; i < check.length; i++) {
-        //     if (allowedRoles.includes(check[i])) {
-        //       res = true;
-        //     }
-        //   }
-        // }
+        var _id = "";
+        await this.profileService.getId().then((data: any) => {
+          _id = data;
+        })   
+        var nameRole = "";
+        var actionName = [];
+        await this.userService.getUserById(_id).then((data: any) => {
+          nameRole = data.role.name;
+          actionName = data.role.action_permission;
+        })
+        if (nameRole == "Admin") {
+          return true;
+        } else {
+          var check = [];
+          await actionName.forEach(e => {
+            check.push(e.name);
+          });
+          for (var i = 0; i < check.length; i++) {
+            if (allowedRoles.includes(check[i])) {
+              return true;
+            }
+          }
+          return false;
+        }
         
       }
 

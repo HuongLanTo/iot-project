@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { District, district_data } from 'src/app/data/district';
 import { LocationService } from 'src/app/services/location.service';
 import { ToastrService } from 'ngx-toastr';
@@ -11,7 +11,9 @@ import { SupportMapComponent } from '../support-map/support-map.component';
   styleUrls: ['./new-location.component.css']
 })
 export class NewLocationComponent implements OnInit {
-  @ViewChild(SupportMapComponent) map;
+  // @ViewChild(SupportMapComponent) map;
+  
+  message: any;
   public newLocation = {
     province: "",
     district: "",
@@ -57,12 +59,11 @@ export class NewLocationComponent implements OnInit {
     this.getSubDistrictList();
   }
 
-  ngAfterViewInit() {
-    this.newLocation.latitude = this.map.lat;
-    this.newLocation.longitude = this.map.lng;
-    console.log(4324,this.map.lat);
+  // async ngAfterViewInit() {
+  //   this.message = this.map.latlng;
+  //   console.log(this.message);
     
-  }
+  // }
 
   createLocation() {
     if (!this.newLocation.province) {
@@ -189,4 +190,8 @@ export class NewLocationComponent implements OnInit {
     }
   }
 
+  addItem(newItem: any) {
+    console.log(888, newItem);
+    
+  }
 }

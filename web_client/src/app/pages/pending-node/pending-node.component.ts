@@ -17,13 +17,10 @@ export class PendingNodeComponent implements OnInit {
   };
   public currentNode: any = {};
   private currentPage: number = 1;
-  private showPages: number = 5;
-  private showPages1: number = 5;
-  private showPages2: number = 5;
-  private totalPage: number;
-  private totalPage1: number;
-  private totalPage2: number;
-  private sizePage = 10;
+  public totalItems: number;
+  public totalItems1: number;
+  public totalItems2: number;
+  private sizePage = 5;
 
   //check
   checkNodeList = true;
@@ -51,10 +48,7 @@ export class PendingNodeComponent implements OnInit {
   async getNodeList(filter, currentPage, sizePage) {
     this.spinnerService.show();
     await this.nodeService.getNodeList(filter, currentPage, sizePage).then((data: any) => {
-      this.totalPage = Math.ceil(data.total / sizePage);
-      if(this.totalPage <= this.showPages)
-        this.showPages = this.totalPage;
-      this.showPages = 3;    
+      this.totalItems = data.total;
       this.nodeList = data.data;
       if (this.nodeList == "") {
         this.checkNodeList = false;
@@ -69,10 +63,7 @@ export class PendingNodeComponent implements OnInit {
   async getApprovedNodeList(filter, currentPage, sizePage) {
     this.spinnerService.show();
     await this.nodeService.getNodeList(filter, currentPage, sizePage).then((data: any) => {
-      this.totalPage1 = Math.ceil(data.total / sizePage);
-      if(this.totalPage1 <= this.showPages1)
-        this.showPages1 = this.totalPage1;
-      this.showPages1 = 3;    
+      this.totalItems1 = data.total;   
       this.approveNodeList = data.data;
       if (this.approveNodeList == "") {
         this.checkApproveNodeList = false;
@@ -86,10 +77,7 @@ export class PendingNodeComponent implements OnInit {
   async getDisapprovedNodeList(filter, currentPage, sizePage) {
     this.spinnerService.show();
     await this.nodeService.getNodeList(filter, currentPage, sizePage).then((data: any) => {
-      this.totalPage2 = Math.ceil(data.total / sizePage);
-      if(this.totalPage2 <= this.showPages2)
-        this.showPages2 = this.totalPage2;
-      this.showPages2 = 3;    
+      this.totalItems2 = data.total;
       this.disapproveNodeList = data.data;
       if (this.disapproveNodeList == "") {
         this.checkDisapproveNodeList = false;

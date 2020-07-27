@@ -17,12 +17,9 @@ export class PendingUserComponent implements OnInit {
   };
   public currentUser: any = {};
   private currentPage: number = 1;
-  private showPages: number = 5;
-  private showPages1: number = 5;
-  private showPages2: number = 5;
-  private totalPage: number;
-  private totalPage1: number;
-  private totalPage2: number;
+  private totalItems: number;
+  private totalItems1: number;
+  private totalItems2: number;
   private sizePage = 5;
 
   pageOfItems: Array<any>;
@@ -55,10 +52,7 @@ export class PendingUserComponent implements OnInit {
   async getUserList(filter, currentPage, sizePage) {
     this.spinnerService.show();
     await this.userService.getUserList(filter, currentPage, sizePage).then((data: any) => {
-      this.totalPage = Math.ceil(data.totalDocuments / sizePage);
-      // if(this.totalPage <= this.showPages)
-      //   this.showPages = this.totalPage;
-      // this.showPages = 3;    
+      this.totalItems = data.totalDocuments;
       this.userList = data.data;
       if (this.userList == "") {
         this.checkUserList = false;
@@ -73,11 +67,7 @@ export class PendingUserComponent implements OnInit {
   async getApprovedUserList(filter, currentPage, sizePage) {
     this.spinnerService.show();
     await this.userService.getUserList(filter, currentPage, sizePage).then((data: any) => {
-      
-      this.totalPage1 = Math.ceil(data.totalDocuments / sizePage);
-      // if(this.totalPage1 <= this.showPages1)
-      //   this.showPages1 = this.totalPage1;
-      // this.showPages1 = 3;    
+      this.totalItems1 = data.totalDocuments;
       this.approveUserList = data.data;
       if (this.approveUserList == "") {
         this.checkApproveUserList = false;
@@ -91,10 +81,7 @@ export class PendingUserComponent implements OnInit {
   async getDisapprovedUserList(filter, currentPage, sizePage) {
     this.spinnerService.show();
     await this.userService.getUserList(filter, currentPage, sizePage).then((data: any) => {
-      this.totalPage2 = Math.ceil(data.totalDocuments / sizePage);
-      if(this.totalPage2 <= this.showPages2)
-        this.showPages2 = this.totalPage2;
-      this.showPages2 = 3;    
+      this.totalItems2 = data.totalDocuments;
       this.disapproveUserList = data.data;
       if (this.disapproveUserList == "") {
         this.checkDisapproveUserList = false;
@@ -127,10 +114,6 @@ export class PendingUserComponent implements OnInit {
       })
   }
 
-  cchangePage(n) {
-    this.getUserList(this.filter, n, this.sizePage);
-  }
-
   getApprove() {
     this.filter.approve = "1";
     this.currentPage = 1;
@@ -149,20 +132,6 @@ export class PendingUserComponent implements OnInit {
     this.getUserList(this.filter, this.currentPage, this.sizePage);
   }
 
-  onChangePage(pageOfItems: Array<any>) {
-    // update current page of items
-    this.pageOfItems = pageOfItems;
-  }
-
-  onChangePage1(pageOfItems: Array<any>) {
-    // update current page of items
-    this.pageOfItems1 = pageOfItems;
-  }
-
-  onChangePage2(pageOfItems: Array<any>) {
-    // update current page of items
-    this.pageOfItems2 = pageOfItems;
-  }
 }
 
 const KEY_DATA = [

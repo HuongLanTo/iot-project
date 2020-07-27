@@ -19,21 +19,19 @@ export class AuthorizationGuard implements CanActivate {
     private router: Router
   ) {}
 
-  canActivate(
+  async canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-  ): Observable<boolean> | Promise<boolean> | boolean {
+  ): Promise<boolean> {
       console.log(123);
       
     const allowedRoles = next.data.allowedRoles;
     console.log("arr", allowedRoles);
-    var res = true;    
-    this.authService.isAuthorized(allowedRoles, res);
-console.log("is", res);
+    const res = this.authService.isAuthorized(allowedRoles);
 
-    // if (!af) {
-    //   this.router.navigate(['user']);
-    // }
+    if (!res) {
+      this.router.navigate(['user']);
+    }
 
     return res;
   }

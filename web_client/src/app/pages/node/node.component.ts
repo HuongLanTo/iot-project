@@ -20,9 +20,8 @@ export class NodeComponent implements OnInit {
     approve: "1"
   };
   private currentPage: number = 1;
-  private showPages: number = 5;
-  private totalPage: number;
-  private sizePage = 10;
+  private totalItems: number;
+  private sizePage = 5;
 
   //search
   searchNodename = '';
@@ -91,10 +90,7 @@ export class NodeComponent implements OnInit {
   async getNodeList(filter, currentPage, sizePage) {
     this.spinnerService.show();
     await this.nodeService.getNodeList(filter, currentPage, sizePage).then((data: any) => {
-      this.totalPage = Math.ceil(data.total / sizePage);
-      if(this.totalPage <= this.showPages)
-        this.showPages = this.totalPage;
-      this.showPages = 3;    
+      this.totalItems = data.total;
       this.nodeList = data.data;
     })
     this.spinnerService.hide();

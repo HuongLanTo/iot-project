@@ -105,8 +105,7 @@
           </table>
         </div>
         <ngx-spinner></ngx-spinner>
-        <app-pagination [(totalPage)]='totalPage' [(showPages)]='showPages'
-          (pageEmit)='getLocationList(filter, $event, sizePage)'></app-pagination>
+        <app-pagination [totalPages]='totalItems' (pageEmit)='getLocationList(filter, $event, sizePage)'></app-pagination>
       </div>
     </div>
   </div>      

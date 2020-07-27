@@ -53,8 +53,7 @@
           </table>
         </div>
         <ngx-spinner></ngx-spinner>
-        <app-pagination [(totalPage)]='totalPage' [(showPages)]='showPages'
-          (pageEmit)='getRoleList(filter, $event, sizePage)'></app-pagination>
+        <app-pagination [totalPages]='totalItems' (pageEmit)='getRoleList(filter, $event, sizePage)'></app-pagination>
       </div>
     </div>
   </div>

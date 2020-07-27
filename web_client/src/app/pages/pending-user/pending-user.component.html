@@ -57,9 +57,7 @@
               </table>
             </div>
             <ngx-spinner></ngx-spinner>
-            <!-- <app-pagination [(totalPage)]='totalPage' [(showPages)]='showPages'
-          (pageEmit)='getUserList(filter, $event, sizePage)'></app-pagination> -->
-          <!-- <app-pagination [totalPages]="totalPage" [items]="userList" (changePage)="onChangePage(userList)" (pageEmit)="getUserList(filter, $event, sizePage)"></app-pagination> -->
+            <app-pagination [totalPages]="totalItems" (pageEmit)="getUserList(filter, $event, sizePage)"></app-pagination>
           </div>
           <div class="mb-0 tab-pane fade" id="approved" role="tabpanel" aria-labelledby="approved-tab" >
             <h3 class="mb-0" style="padding: 10px 24px 20px 24px;">Danh sách người dùng được phê duyệt</h3>
@@ -84,9 +82,7 @@
               </table>
             </div>
             <ngx-spinner></ngx-spinner>
-            <!-- <app-pagination [(totalPage)]='totalPage1' [(showPages)]='showPages1'
-          (pageEmit)='getApprovedUserList(filter, $event, sizePage)'></app-pagination> -->
-          <!-- <app-pagination [totalPages]="totalPage1" [items]="approveUserList" (changePage)="onChangePage(approveUserList)" (pageEmit)="cchangePage($event)"></app-pagination> -->
+          <app-pagination [totalPages]="totalItems1" (pageEmit)="getApprovedUserList(filter, $event, sizePage)"></app-pagination>
           </div>
           <div class="mb-0 tab-pane fade" id="unapproved" role="tabpanel" aria-labelledby="unapproved-tab">
             <h3 class="mb-0" style="padding: 10px 24px 20px 24px;">Danh sách người dùng không được phê duyệt</h3>
@@ -110,9 +106,7 @@
               </table>
             </div>
             <ngx-spinner></ngx-spinner>
-            <!-- <app-pagination [(totalPage)]='totalPage2' [(showPages)]='showPages2'
-          (pageEmit)='getDisapprovedUserList(filter, $event, sizePage)'></app-pagination> -->
-          <!-- <app-pagination [items]="approveUserList" (changePage)="onChangePage2($event)"></app-pagination> -->
+          <app-pagination [totalPages]="totalItems2" (pageEmit)="getDisapprovedUserList(filter, $event, sizePage)"></app-pagination>
           </div>
         </div>
       </div>

@@ -23,8 +23,8 @@ export class RoleComponent implements OnInit {
   // pagination
   private currentPage: number = 1;
   private showPages: number = 5;
-  private totalPage: number;
-  private sizePage = 8;
+  private totalItems: number;
+  private sizePage = 5;
 
   constructor(
     private toastrService: ToastrService, 
@@ -41,10 +41,7 @@ export class RoleComponent implements OnInit {
   async getRoleList(filter, currentPage, sizePage) {
     this.spinnerService.show();
     await this.roleService.getRoleList(filter, currentPage, sizePage).then((data: any) => {
-      this.totalPage = Math.ceil(data.total / sizePage);
-      if(this.totalPage <= this.showPages)
-        this.showPages = this.totalPage;
-      this.showPages = 3;    
+      this.totalItems = data.total;
       this.ROLES = data.data;
     });
     this.spinnerService.hide();

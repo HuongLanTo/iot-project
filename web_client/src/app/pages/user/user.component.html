@@ -165,8 +165,7 @@
           </table>
         </div>
         <ngx-spinner></ngx-spinner>
-        <app-pagination [(totalPage)]='totalPage' 
-          (pageEmit)='getUserList(filter, $event, sizePage)'></app-pagination>
+        <app-pagination [totalPages]='totalItems' (pageEmit)='getUserList(filter, $event, sizePage)'></app-pagination>
       </div>
     </div>
   </div>

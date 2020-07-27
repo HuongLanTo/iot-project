@@ -57,8 +57,7 @@
               </table>
             </div>
             <ngx-spinner></ngx-spinner>
-            <app-pagination [(totalPage)]='totalPage' [(showPages)]='showPages'
-          (pageEmit)='getNodeList(filter, $event, sizePage)'></app-pagination>
+            <app-pagination [totalPages]='totalItems' (pageEmit)='getNodeList(filter, $event, sizePage)'></app-pagination>
           </div>
           <div class="mb-0 tab-pane fade" id="approved" role="tabpanel" aria-labelledby="approved-tab" >
             <h3 class="mb-0" style="padding: 10px 24px 20px 24px;">Danh sách các node được phê duyệt</h3>
@@ -83,8 +82,7 @@
               </table>
             </div>
             <ngx-spinner></ngx-spinner>
-            <app-pagination [(totalPage)]='totalPage1' [(showPages)]='showPages1'
-          (pageEmit)='getApprovedNodeList(filter, $event, sizePage)'></app-pagination>
+            <app-pagination [totalPages]="totalItems1" (pageEmit)='getApprovedNodeList(filter, $event, sizePage)'></app-pagination>
           </div>
           <div class="mb-0 tab-pane fade" id="unapproved" role="tabpanel" aria-labelledby="unapproved-tab">
             <h3 class="mb-0" style="padding: 10px 24px 20px 24px;">Danh sách các node không được phê duyệt</h3>
@@ -108,8 +106,7 @@
               </table>
             </div>
             <ngx-spinner></ngx-spinner>
-            <app-pagination [(totalPage)]='totalPage2' [(showPages)]='showPages2'
-          (pageEmit)='getDisapprovedNodeList(filter, $event, sizePage)'></app-pagination>
+            <app-pagination [totalPages]='totalItems2' (pageEmit)='getDisapprovedNodeList(filter, $event, sizePage)'></app-pagination>
           </div>
         </div>
       </div>

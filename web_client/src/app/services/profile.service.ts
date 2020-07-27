@@ -12,22 +12,13 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 @Injectable({
   providedIn: "root",
 })
-export class ProfileService {
+export class ProfileService extends BaseService {
   constructor(
-    private http: HttpClient
-  ) {}
-
-  protected headers = new HttpHeaders({
-    "Content-Type": "application/json",
-    Accept: "application/json",
-    Cookies: document.cookie,
-  });
-
-  private getOptions() {
-    return { headers: this.headers };
+    protected httpClient: HttpClient
+  ) {
+    super(httpClient)
   }
 
-  private API_URL = environment.apiUrl;
 
   getProfile() {
     // return this.get("/auth/get-me").then(
@@ -36,7 +27,7 @@ export class ProfileService {
     //   }
     // ).catch(err => err);
     return new Promise((resolve, reject) => {
-      this.http.get(this.API_URL + "/auth/get-me", this.getOptions())
+      this.httpClient.get(this.API_URL + "/auth/get-me", this.getOptions())
         .subscribe((res: {data: any}) => {
           resolve(res.data)
         }, err => {
@@ -47,7 +38,7 @@ export class ProfileService {
   
   getId() {
     return new Promise((resolve, reject) => {
-      this.http.get(this.API_URL + "/auth/get-me", this.getOptions())
+      this.httpClient.get(this.API_URL + "/auth/get-me", this.getOptions())
         .subscribe((res: {data: any}) => {
           resolve(res.data._id);
         }, err => {

@@ -6,16 +6,7 @@ import { Component, OnInit, Input, Output, SimpleChange, EventEmitter, SimpleCha
   styleUrls: ['./pagination.component.css']
 })
 export class PaginationComponent implements OnInit {
-  // @Input() totalPage: number
-  // @Input() showPages: number
 
-  // @Output() pageEmit = new EventEmitter<number>()
-  // public startPage: number;
-  // public endPage: number;
-  // public pages = [];
-  // public currentPage: number;
-
-  @Input() items: Array<any>;
   @Output() changePage = new EventEmitter<any>(true);
   @Input() initialPage = 1;
   @Input() pageSize = 5;
@@ -30,58 +21,21 @@ export class PaginationComponent implements OnInit {
 
   async ngOnInit() {
     this.currentPage = 1;
-    await this.pagination(this.currentPage);
-    if (this.items && this.items.length) {
-      this.setPage(1);
-  }
-    this.setPage(1);
+    // await this.pagination(this.currentPage);
+    this.setPage(this.initialPage);
   }
 
-  async ngOnChanges(changes: any) {    
-    console.log(changes);
-    
-    if (changes.items.currentValue !== changes.items.previousValue) {
-      this.setPage(this.initialPage);
-  }
-  }
-
-  pagination(currentPage){
-    // if(currentPage<1)
-    //   currentPage = 1;
-    // if(currentPage>this.totalPage)
-    //   currentPage = this.totalPage;
-    // if(this.totalPage==1)
-    //   currentPage = 1
-    // this.currentPage = currentPage,
-    // this.endPage = this.currentPage + Math.floor(this.showPages / 2) > this.totalPage ? this.totalPage : this.currentPage + Math.floor(this.showPages / 2);
-    // this.startPage = this.endPage - this.showPages + 1 < 1 ? 1 : this.endPage - this.showPages + 1;
-    // this.endPage = this.startPage == 1 ? (this.startPage + this.showPages - 1 > this.totalPage ? this.totalPage : this.startPage + this.showPages - 1) : this.endPage;
-    // // console.log(this.currentPage, this.startPage, this.endPage, this.totalPage);
-    // this.pages = Array.from(Array(this.endPage - this.startPage + 1), (value, index) =>{
-    //   return this.startPage + index;
-    // });
-    // this.pageEmit.emit(currentPage);
+  async ngOnChanges(changes: SimpleChanges) {
+    const {totalPages} = changes; 
+    if(totalPages && totalPages.currentValue !== totalPages.previousValue){
+      this.setPage(this.pager.currentPage)
+    }
   }
 
   async setPage(page: number) {
     // get new pager object for specified page
     await this.pageEmit.emit(page);
-    // await this.total.emit(this.totalPages);
     this.pager = await this.paginate(this.totalPages, page, this.pageSize, this.maxPages);
-
-    // get new page of items from items array
-    // var pageOfItems = this.items.slice(this.pager.startIndex, this.pager.endIndex + 1);
-    var pageOfItems = this.items;
-
-    // call change page function in parent component
-    await this.changePage.emit(pageOfItems);
-    console.log(this.totalPages);
-    console.log(pageOfItems);
-    console.log(page);
-    
-    
-    
-    
   }
 
   paginate(totalItems, currentPage, pageSize, maxPages) {

@@ -17,7 +17,7 @@ export class AuthGuardService implements CanActivate {
       this.router.navigate(['login']);
       return false;
     } else {
-      var check: boolean
+      var check: boolean;
       await this.authService.checkSession().then(data => {
         check = data;
       })

@@ -1,7 +1,5 @@
-import { Component, OnInit, SimpleChange, Output } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import * as L from 'leaflet';
-const provider = new OpenStreetMapProvider();
-import * as GeoSearch from 'leaflet-geosearch';
 
 // const provider = new AlgoliaProvider();
 // add to leaflet
@@ -53,9 +51,16 @@ interface result {
   styleUrls: ['./support-map.component.scss']
 })
 export class SupportMapComponent implements OnInit {
+  @Output() newItemEvent = new EventEmitter<any>();
+
+
   private map;
   sensor_data: any;
   polygon = [];
+  latlng = {
+    lat: "",
+    lon: ""
+  }
 
   constructor(
     private dataService: DataService
@@ -97,15 +102,14 @@ export class SupportMapComponent implements OnInit {
       keepResult: true,
     }).addTo(this.map);
 
-    function onMapClick(e) {
-      alert(e.latlng);
-      lat = e.latlng.lat;
-      lon = e.latlng.lng;
+    const onMapClick = (e) => {
+      this.latlng = {
+        lat: e.latlng.lat,
+        lon: e.latlng.lng,
+      }
+      this.newItemEvent.emit(this.latlng)
     }
-
     this.map.on('click', onMapClick);
-    
-    
   }
    
   private initMap() {
@@ -121,6 +125,7 @@ export class SupportMapComponent implements OnInit {
 
     tiles.addTo(this.map);
   }
+
 
   async getDataByLastHour() {
     await this.dataService.getDataByLastHour().then(data => {
