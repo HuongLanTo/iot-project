@@ -96,7 +96,7 @@ const KEY_DATA = [
     type: "string",
   },
   {
-    key: "sub-district",
+    key: "sub_district",
     type: "string",
   },
   {

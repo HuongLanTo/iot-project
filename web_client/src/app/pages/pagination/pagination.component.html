@@ -1,4 +1,4 @@
-<div class="card-footer py-4">
+<!-- <div class="card-footer py-4">
     <nav aria-label="...">
       <ul class="pagination justify-content-end mb-0">
         <li [ngClass]="{'page-item': true, 'disabled':currentPage==1}">
@@ -32,4 +32,40 @@
         </li>
       </ul>
     </nav>
+</div> -->
+
+<div class="card-footer py-4">
+  <nav aria-label="...">
+    <ul class="pagination justify-content-end mb-0" *ngIf="pager.pages && pager.pages.length">
+      <li [ngClass]="{'page-item': true, 'disabled':pager.currentPage === 1}">
+        <a class="page-link" tabindex="-1" (click)="setPage(1)">
+          <i class="fas fa-angle-left"></i>
+          <i class="fas fa-angle-left"></i>
+          <span class="sr-only">Trang đầu</span>
+        </a>
+      </li>
+      <li [ngClass]="{'page-item': true, 'disabled':pager.currentPage === 1}" (click)="setPage(pager.currentPage - 1)">
+        <a class="page-link" tabindex="-1">
+          <i class="fas fa-angle-left"></i>
+          <span class="sr-only">Trước</span>
+        </a>
+      </li>
+      <li *ngFor="let page of pager.pages" [ngClass]="{'active': pager.currentPage === page, 'page-item':true}">
+        <a class="page-link" (click)="setPage(page)">{{page}}</a>
+      </li>
+      <li [ngClass]="{'page-item': true, 'disabled':pager.currentPage === pager.totalPages}">
+        <a class="page-link" (click)="setPage(pager.currentPage + 1)">
+          <i class="fas fa-angle-right"></i>
+          <span class="sr-only">Sau</span>
+        </a>
+      </li>
+      <li [ngClass]="{'page-item': true, 'disabled':pager.currentPage === pager.totalPages}">
+        <a class="page-link" (click)="setPage(pager.totalPages)">
+          <i class="fas fa-angle-right"></i>
+          <i class="fas fa-angle-right"></i>
+          <span class="sr-only">Trang cuối</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
 </div>

@@ -25,6 +25,10 @@ export class PendingUserComponent implements OnInit {
   private totalPage2: number;
   private sizePage = 5;
 
+  pageOfItems: Array<any>;
+  pageOfItems1: Array<any>;
+  pageOfItems2: Array<any>;
+
   //check
   checkUserList = true;
   checkApproveUserList = true;
@@ -52,9 +56,9 @@ export class PendingUserComponent implements OnInit {
     this.spinnerService.show();
     await this.userService.getUserList(filter, currentPage, sizePage).then((data: any) => {
       this.totalPage = Math.ceil(data.totalDocuments / sizePage);
-      if(this.totalPage <= this.showPages)
-        this.showPages = this.totalPage;
-      this.showPages = 3;    
+      // if(this.totalPage <= this.showPages)
+      //   this.showPages = this.totalPage;
+      // this.showPages = 3;    
       this.userList = data.data;
       if (this.userList == "") {
         this.checkUserList = false;
@@ -71,9 +75,9 @@ export class PendingUserComponent implements OnInit {
     await this.userService.getUserList(filter, currentPage, sizePage).then((data: any) => {
       
       this.totalPage1 = Math.ceil(data.totalDocuments / sizePage);
-      if(this.totalPage1 <= this.showPages1)
-        this.showPages1 = this.totalPage1;
-      this.showPages1 = 3;    
+      // if(this.totalPage1 <= this.showPages1)
+      //   this.showPages1 = this.totalPage1;
+      // this.showPages1 = 3;    
       this.approveUserList = data.data;
       if (this.approveUserList == "") {
         this.checkApproveUserList = false;
@@ -123,6 +127,10 @@ export class PendingUserComponent implements OnInit {
       })
   }
 
+  cchangePage(n) {
+    this.getUserList(this.filter, n, this.sizePage);
+  }
+
   getApprove() {
     this.filter.approve = "1";
     this.currentPage = 1;
@@ -141,6 +149,20 @@ export class PendingUserComponent implements OnInit {
     this.getUserList(this.filter, this.currentPage, this.sizePage);
   }
 
+  onChangePage(pageOfItems: Array<any>) {
+    // update current page of items
+    this.pageOfItems = pageOfItems;
+  }
+
+  onChangePage1(pageOfItems: Array<any>) {
+    // update current page of items
+    this.pageOfItems1 = pageOfItems;
+  }
+
+  onChangePage2(pageOfItems: Array<any>) {
+    // update current page of items
+    this.pageOfItems2 = pageOfItems;
+  }
 }
 
 const KEY_DATA = [
