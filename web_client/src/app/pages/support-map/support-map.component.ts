@@ -1,4 +1,4 @@
-import { Component, OnInit, SimpleChange } from '@angular/core';
+import { Component, OnInit, SimpleChange, Output } from '@angular/core';
 import * as L from 'leaflet';
 const provider = new OpenStreetMapProvider();
 import * as GeoSearch from 'leaflet-geosearch';
@@ -53,7 +53,6 @@ interface result {
   styleUrls: ['./support-map.component.scss']
 })
 export class SupportMapComponent implements OnInit {
-
   private map;
   sensor_data: any;
   polygon = [];
@@ -85,15 +84,27 @@ export class SupportMapComponent implements OnInit {
     //   }),
     // );
     const provider = new OpenStreetMapProvider();
- 
+    var lat: number;
+    var lon: number;
     const searchControl = new GeoSearchControl({
       provider: provider,
+      showPopup: true,
       marker: {
         icon: iconDefault,
         draggable: false,
-      }
+      },
+      popupFormat: ({ query, result }) => result.label,
+      keepResult: true,
     }).addTo(this.map);
-    console.log(searchControl);
+
+    function onMapClick(e) {
+      alert(e.latlng);
+      lat = e.latlng.lat;
+      lon = e.latlng.lng;
+    }
+
+    this.map.on('click', onMapClick);
+    
     
   }
    
