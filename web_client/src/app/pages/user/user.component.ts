@@ -34,6 +34,7 @@ export class UserComponent implements OnInit {
     username: "",
     name: ""
   }
+  searchValue = '';
 
   // temp
   private nameRole = "";
@@ -141,6 +142,7 @@ export class UserComponent implements OnInit {
     console.log(this.nameRole);
     
   }
+
 
 }
 

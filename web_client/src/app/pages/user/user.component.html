@@ -9,6 +9,7 @@
               class="form-control-label-white"
               style="color: white;"
               for="inputLocation"
+              [nzActive]="searchValue.length > 0"
               >Username</label
             >
             <div class="input-group mb-4">
@@ -71,15 +72,14 @@
               >Vai trò</label
             >
             <select
-              *ngIf="!isLocationInvalid"
-              name="status"
-              id="status"
+              name="role"
+              id="role"
               class="form-control form-control-alternative"
             >
               <option value="" disabled selected hidden
                 >Chọn vai trò cần tìm kiếm</option
               >
-              <option></option>
+              <option *ngFor="let role of roleList">{{ role.name }}</option>
             </select>
             <!-- <div *ngIf="isLocationInvalid" class="form-group has-danger">
               <select  name="location" id="location" id="inputLocation" class="form-control is-invalid" [(ngModel)]="newNode.location" (ngModelChange)="checkLocation($event)">
@@ -95,7 +95,6 @@
               >Trạng thái</label
             >
             <select
-              *ngIf="!isLocationInvalid"
               name="status"
               id="status"
               class="form-control form-control-alternative"
@@ -103,7 +102,7 @@
               <option value="" disabled selected hidden
                 >Chọn trạng thái cần tìm kiếm</option
               >
-              <option></option>
+              <option *ngFor="let status of status">{{ status.name }}</option>
             </select>
             <!-- <div *ngIf="isLocationInvalid" class="form-group has-danger">
               <select  name="location" id="location" id="inputLocation" class="form-control is-invalid" [(ngModel)]="newNode.location" (ngModelChange)="checkLocation($event)">
@@ -214,7 +213,7 @@
                   class="form-control form-control-alternative"
                 >
                 <option value="" disabled selected hidden></option>
-                  <option *ngFor="let data of roleList" [value]="data" >{{ data.name }}</option>
+                  <option *ngFor="let data of roleList" [value]="data._id" >{{ data.name }}</option>
                 </select>
               </div>
             </div>
