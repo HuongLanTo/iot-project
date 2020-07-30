@@ -138,7 +138,7 @@
                   </div>
                 </td>
                 <td>
-                  <button class="btn btn-icon btn-sm btn-info" type="button" placement="top" ngbTooltip="Sửa" data-toggle="modal" data-target="#editModal" (click)="currentUser=user" (click)="support()">
+                  <button class="btn btn-icon btn-sm btn-info" type="button" placement="top" ngbTooltip="Sửa" data-toggle="modal" data-target="#editModal" (click)="currentUser=user" (click)="nameRole = currentUser.role.name">
                     <span class="btn-inner--icon"><i class="ni ni-single-copy-04"></i></span>
                   </button>
                   <!-- <button class="btn btn-icon btn-sm btn-danger" style="margin-right: 8px;" type="button" placement="top" ngbTooltip="Xóa" data-toggle="modal" data-target="#editModalxoa" (click)="currentUser=user">
@@ -192,89 +192,22 @@
                   <option *ngFor="let data of data[modal.key]" [ngValue]="data.value" >{{ data.name }}</option>
                 </select>
                 <select
-                  *ngIf="modal.key=='role'"
-                  [(ngModel)]="currentUser.role"
+                  *ngIf="is_select(modal.type) && modal.key=='role'"
+                  [(ngModel)]="currentUser[modal.key]"
                   [name]="modal.fin"
                   [id]="modal.fin"
                   class="form-control form-control-alternative"
                 >
-                <option value="" disabled selected hidden></option>
+                <option value="" disabled selected hidden>{{ nameRole }}</option>
                   <option *ngFor="let data of roleList" [value]="data._id" >{{ data.name }}</option>
                 </select>
               </div>
             </div>
           </div>
         </div>
-        <!-- <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <label for="username">Username</label>
-              <div class="form-group">
-                <input value="{{currentUser.username}}" name="username" id="username" type="text" class="form-control" style="margin-top: 20px" readonly>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="form-group" >
-              <label for="name">Họ tên <p style="display:inline-flex !important; color: red ">*</p></label>
-              <div class="form-group" [ngClass]="{'has-danger': isNameInvalid == false}">
-                <input  name="name" id="name" type="text"
-                [placeholder]="!isNameInvalid ? 'Họ tên không hợp lệ':'Họ tên'" class="form-control">
-              </div>
-            </div>
-          </div>
-        </div> 
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <label for="role">Role</label>
-              <select  name="role" id="role" class="form-control">
-                <option value="" disabled selected hidden>admin</option>
-                <option >admin</option>
-              </select> 
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="form-group">
-              <label for="email">Email</label>
-              <input  name="email" id="email" type="text"
-                placeholder="Email" class="form-control">
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <label for="diaChi">Địa chỉ</label>
-              <div class="form-group">
-                <input name="diaChi" id="diaChi" type="text" class="form-control" placeholder="Địa chỉ">
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="form-group">
-              <label for="moTa">Mô tả</label>
-              <input  name="moTa" id="moTa" type="text"
-                placeholder="Mô tả" class="form-control">
-            </div>
-          </div>
-        </div>
-        <div class="row"> 
-          <div class="col-md-6">
-            <div class="form-group">
-              <label for="trangThai">Trạng thái</label>
-              <div class="form-group">
-                <select  name="active" id="active" class="form-control">
-                  <option value="" disabled selected hidden>active</option>
-                  <option >active</option>
-                </select> 
-              </div>
-            </div>
-          </div>
-        </div>   -->
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="redirect()">Hủy</button>
-          <button type="button" class="btn btn-primary" data-dismiss="modal"
+          <button type="button" class="btn btn-primary" data-dismiss="modal" style="background-color: #004D90; border-color:#013E7A"
             (click)="updateUserInfo(currentUser)">Lưu</button>
         </div>
       </div>

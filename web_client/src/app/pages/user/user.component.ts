@@ -103,15 +103,23 @@ export class UserComponent implements OnInit {
   updateUserInfo() {
     this.userService.updateUserInfo(this.currentUser._id, {
       name: this.currentUser.name,
-      // role: this.currentUser.role,
-      email: this.currentUser.email
+      role: this.currentUser.role,
+      email: this.currentUser.email,
+      phone: this.currentUser.phone
     })
     .then(data => {
-      this.toastrService.success("Cập nhật thông tin người dùng thành công");
+      this.toastrService.success("Cập nhật thông tin người dùng thành công.");
     })
     .catch((err) => {
-      this.toastrService.warning("Cập nhật thông tin người dùng thất bại");
+      this.toastrService.warning("Cập nhật thông tin người dùng thất bại.");
     });
+    this.userService.updateStatus(this.currentUser._id, {
+      status: this.currentUser.status
+    })
+    .then(data => {})
+    .catch(err => {
+      this.toastrService.warning("Cập nhật trạng thái người dùng thất bại.")
+    })
   }
 
   async getRoleList() {
@@ -124,11 +132,6 @@ export class UserComponent implements OnInit {
 
   redirect() {
     this.getUserList(this.filter, this.currentPage, this.sizePage);
-  }
-
-  support() {
-    this.nameRole = this.currentUser.role.name;
-    console.log(this.nameRole);
   }
 
   async search() {
