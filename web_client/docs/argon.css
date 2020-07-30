@@ -17791,6 +17791,7 @@ a.btn-icon-only
 .custom-toggle input:checked + .custom-toggle-slider
 {
     border: 1px solid #5e72e4;
+    
 }
 .custom-toggle input:checked + .custom-toggle-slider:before
 {

@@ -107,26 +107,18 @@ export class NodeComponent implements OnInit {
       })
       .then((data) => {
         this.toastrService.success("Cập nhật thông tin node thành công");
-        this.getNodeList(this.filter, this.currentPage, this.sizePage);
       })
       .catch((err) => {
         this.toastrService.warning("Cập nhật thông tin node thất bại");
       });
-  }
-
-  getNodeListFromNodename() {
-    // var tempList = [];
-    // if (this.searchNodename === '') {
-    //   this.nodeList = this.nodeListFull
-    // } else {
-    //   this.nodeListFull.forEach(e => {
-    //     if (e.nameNode.includes(this.searchNodename)) {
-    //       tempList.push(e);
-    //     }
-    //   });
-    //   this.nodeList = tempList;
-    // }
     
+    await this.nodeService.updateStatus(this.currentNode._id, {
+      status: this.currentNode.status
+    })
+    .then(data => {})
+    .catch(err => {
+      this.toastrService.warning("Cập nhật trạng thái node thất bại");
+    })
   }
 
 }

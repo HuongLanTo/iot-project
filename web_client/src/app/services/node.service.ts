@@ -70,11 +70,6 @@ export class NodeService {
         })
     }
 
-    // createNode(user: any) {
-    //     console.log('Tai khoan dang cho phe duyet:', user);
-        
-    // }
-
     approve(id: string, nodeInfo) {
         return new Promise((resolve, reject) => {
             this.http.put(this.API_URL + `/api/node/approve/${id}`, nodeInfo, this.getOptions()).subscribe(res => {
@@ -82,6 +77,17 @@ export class NodeService {
             }, err => {
                 reject(err);
             })
+        })
+    }
+
+    updateStatus(id: string, status) {
+        return new Promise((resolve, reject) => {
+            this.http.put(this.API_URL + `/api/node/status/${id}`, status, this.getOptions())
+                .subscribe(res => {
+                    resolve(res);
+                }, err => {
+                    reject(err);
+                })
         })
     }
 

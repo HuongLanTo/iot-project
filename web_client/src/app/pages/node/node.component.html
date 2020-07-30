@@ -209,7 +209,16 @@
                 }}</label>
                 <div class="form-group">
                   <input
-                    *ngIf="is_input(field.type)"
+                    *ngIf="is_input(field.type) && field.name!='location_info'"
+                    value="{{ currentNode[field.key] }}"
+                    [name]="field.fin"
+                    [id]="field.fin"
+                    type="text"
+                    class="form-control"
+                    [readonly]="field.readonly"
+                  />
+                  <input
+                    *ngIf="is_input(field.type) && field.name=='location_info'"
                     value="{{ currentNode[field.key] }}"
                     [name]="field.fin"
                     [id]="field.fin"
@@ -222,9 +231,9 @@
                     [(ngModel)]="currentNode[field.key]"
                     [name]="field.fin"
                     [id]="field.fin"
-                    class="form-control"
+                    class="form-control form-control-alternative"
                   >
-                    <option value="" disabled selected hidden>{{ currentNode[field.key] }}</option>
+                    <option value="" disabled selected hidden>{{ status(currentNode[field.key]) }}</option>
                     <option
                       *ngFor="let item of data[field.key]"
                       [ngValue]="item.value"
@@ -277,6 +286,7 @@
               type="button"
               class="btn btn-default"
               data-dismiss="modal"
+              style="background-color: #004D90; border-color:#013E7A"
               (click)="updateNodeInfo(currentNode)"
             >
               Lưu
