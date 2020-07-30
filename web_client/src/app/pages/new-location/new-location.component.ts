@@ -191,7 +191,7 @@ export class NewLocationComponent implements OnInit {
   }
 
   addItem(newItem: any) {
-    console.log(888, newItem);
-    
+    this.newLocation.latitude = newItem.lat;
+    this.newLocation.longitude = newItem.lon;
   }
 }

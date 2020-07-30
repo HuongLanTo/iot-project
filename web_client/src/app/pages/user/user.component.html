@@ -3,115 +3,101 @@
     <div class="header-body">
       <!-- Card stats -->
       <div class="row">
-        <div class="col-xl-3 col-lg-6">
-          <div class="form-group">
-            <label
-              class="form-control-label-white"
-              style="color: white;"
-              for="inputLocation"
-              [nzActive]="searchValue.length > 0"
-              >Username</label
-            >
-            <div class="input-group mb-4">
-              <input
-                class="form-control"
-                placeholder="Nhập username cần tìm kiếm"
-                type="text"
-                [(ngModel)]="searchUsername.username"
-              />
-              <div class="input-group-append">
-                <button
-                  class="btn btn-icon btn-sm btn-secondary"
-                  style="padding: 8px 12px;"
-                  type="button"
-                  placement="top"
-                  (click)="getUserListByUsername()"
+        <div class="col-xl-5">
+          <div class="row">
+            <div class="col-xl-6">
+              <div class="form-group">
+                <label
+                  class="form-control-label-white"
+                  style="color: white;"
+                  for="inputLocation"
+                  >Username</label
                 >
-                  <span class="btn-inner--icon"
-                    ><i class="fa fa-search" aria-hidden="true"></i
-                  ></span>
-                </button>
+                <div class="input-group mb-4">
+                  <input
+                    class="form-control"
+                    placeholder="Nhập username cần tìm kiếm"
+                    type="text"
+                    [(ngModel)]="searchUsername"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-6">
+              <div class="form-group">
+                <label
+                  class="form-control-label-white"
+                  style="color: white;"
+                  for="inputLocation"
+                  >Họ và tên</label
+                >
+                <div class="input-group mb-4">
+                  <input
+                    class="form-control"
+                    placeholder="Nhập họ và tên cần tìm kiếm"
+                    type="text"
+                    [(ngModel)]="searchName"
+                  />
+                </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-xl-3 col-lg-6">
-          <div class="form-group">
-            <label
-              class="form-control-label-white"
-              style="color: white;"
-              for="inputLocation"
-              >Họ và tên</label
-            >
-            <div class="input-group mb-4">
-              <input
-                class="form-control"
-                placeholder="Nhập họ và tên cần tìm kiếm"
-                type="text"
-                [(ngModel)]="searchNodename"
-              />
-              <div class="input-group-append">
-                <button
-                  class="btn btn-icon btn-sm btn-secondary"
-                  style="padding: 8px 12px;"
-                  type="button"
-                  placement="top"
-                  (click)="getNodeListFromNodename()"
+        <div class="col-xl-5">
+          <div class="row">
+            <div class="col-xl-6">
+              <div class="form-group">
+                <label class="form-control-label-white" style="color: white;"
+                  >Vai trò</label
                 >
-                  <span class="btn-inner--icon"
-                    ><i class="fa fa-search" aria-hidden="true"></i
-                  ></span>
-                </button>
+                <select
+                  name="role"
+                  id="role"
+                  class="form-control form-control-alternative"
+                  [(ngModel)]="searchRole" 
+                >
+                  <option value="" disabled selected hidden
+                    >Chọn vai trò cần tìm kiếm</option
+                  >
+                  <option *ngFor="let role of roleList" name="role" [ngValue]="role" id="role">{{ role.name }}</option>
+                  <option value="all">Tất cả</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-xl-6">
+              <div class="form-group">
+                <label class="form-control-label-white" style="color: white;"
+                  >Trạng thái</label
+                >
+                <select
+                  name="status"
+                  id="status"
+                  class="form-control form-control-alternative"
+                  [(ngModel)]="searchStatus" 
+                >
+                  <option value="" disabled selected hidden
+                    >Chọn trạng thái cần tìm kiếm</option
+                  >
+                  <option *ngFor="let status of status" [ngValue]="status.value">{{ status.name }}</option>
+                  <option value="all">Tất cả</option>
+                </select>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-xl-3 col-lg-6">
-          <div class="form-group">
-            <label class="form-control-label-white" style="color: white;"
-              >Vai trò</label
-            >
-            <select
-              name="role"
-              id="role"
-              class="form-control form-control-alternative"
-            >
-              <option value="" disabled selected hidden
-                >Chọn vai trò cần tìm kiếm</option
-              >
-              <option *ngFor="let role of roleList">{{ role.name }}</option>
-            </select>
-            <!-- <div *ngIf="isLocationInvalid" class="form-group has-danger">
-              <select  name="location" id="location" id="inputLocation" class="form-control is-invalid" [(ngModel)]="newNode.location" (ngModelChange)="checkLocation($event)">
-                <option value="" disabled selected hidden class="is-invalid">Khu vực không được để trống</option>
-                <option *ngFor="let location of location">{{ location.name }}</option>
-              </select> 
-            </div>         -->
+        <div class="col-xl-2">
+          <label class="form-control-label-white" style="color: white;"
+                  ></label
+                >
+          <div class="row" style="margin-top: 8px;">
+            <button type="button" class="btn btn-primary" style="background-color: #FDC667; border-color: #FEA200;" (click)="search()"><i class="fa fa-search" aria-hidden="true"></i></button>
+            <button type="button" class="btn btn-primary" style="background-color: #0165B9; border-color: #0165B9;" (click)="reset()"><i class="fa fa-times" aria-hidden="true"></i>
+            </button>
           </div>
         </div>
-        <div class="col-xl-3 col-lg-6">
-          <div class="form-group">
-            <label class="form-control-label-white" style="color: white;"
-              >Trạng thái</label
-            >
-            <select
-              name="status"
-              id="status"
-              class="form-control form-control-alternative"
-            >
-              <option value="" disabled selected hidden
-                >Chọn trạng thái cần tìm kiếm</option
-              >
-              <option *ngFor="let status of status">{{ status.name }}</option>
-            </select>
-            <!-- <div *ngIf="isLocationInvalid" class="form-group has-danger">
-              <select  name="location" id="location" id="inputLocation" class="form-control is-invalid" [(ngModel)]="newNode.location" (ngModelChange)="checkLocation($event)">
-                <option value="" disabled selected hidden class="is-invalid">Khu vực không được để trống</option>
-                <option *ngFor="let location of location">{{ location.name }}</option>
-              </select> 
-            </div>         -->
-          </div>
-        </div>
+        
+        
+        
       </div>
     </div>
   </div>
@@ -136,7 +122,7 @@
             </thead>
             <tbody>
               <tr *ngFor="let user of userList; let index=index" style="text-align: center;">
-                <td>{{ index + 1 }}</td>
+                <td>{{ (currentPage - 1) * sizePage + index + 1 }}</td>
                 <td *ngFor="let key_data of key_data">
                   <span *ngIf="key_data.key=='role'">{{ user[key_data.key].name }}</span>
                   <span *ngIf="is_string(key_data.type) && key_data.key!='role'">{{ user[key_data.key] }}</span>

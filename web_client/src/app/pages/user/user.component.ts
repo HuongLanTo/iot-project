@@ -15,29 +15,26 @@ export class UserComponent implements OnInit {
   userList: any = [];
   roleList: any = [];
   private filter = {
-    approve: "1"
+    approve: "1",
+    username: undefined,
+    name: undefined,
+    role: undefined,
+    status: undefined
   };
   private currentUser: any = {};
 
   private currentPage: number = 1;
-  private showPages: number = 5;
   public totalItems: number;
   private sizePage = 5;
 
-  private temp: number = 0;
-
-  // search
-  searchRole = {
-
-  }
-  searchUsername = {
-    username: "",
-    name: ""
-  }
-  searchValue = '';
-
   // temp
   private nameRole = "";
+
+  // search
+  searchUsername = "";
+  searchName = "";
+  searchRole = "";
+  searchStatus = "";
   
   constructor(
     private userService: UserService,
@@ -95,11 +92,9 @@ export class UserComponent implements OnInit {
 
   async getUserList(filter, currentPage, sizePage) {
     this.spinnerService.show();
+    this.currentPage = currentPage;
     await this.userService. getUserList(filter, currentPage, sizePage).then((data: any) => {
       this.totalItems = data.totalDocuments;
-      // if(this.totalPage <= this.showPages)
-      //   this.showPages = this.totalPage;
-      // this.showPages = 3;    
       this.userList = data.data;
     });
     this.spinnerService.hide();
@@ -131,18 +126,53 @@ export class UserComponent implements OnInit {
     this.getUserList(this.filter, this.currentPage, this.sizePage);
   }
 
-  // search
-  getUserListByUsername() {
-    this.currentPage = 1;
-    this.getUserList(this.searchUsername, this.currentPage, this.sizePage);
-  }
-
   support() {
     this.nameRole = this.currentUser.role.name;
     console.log(this.nameRole);
-    
   }
 
+  async search() {
+    if (this.searchUsername.length == 0) {
+      this.filter.username = undefined;
+    } else {
+      this.filter.username = this.searchUsername;
+    }
+    if (this.searchName.length == 0) {
+      this.filter.name = undefined;
+    } else {
+      this.filter.name = this.searchName;
+    }
+    if (this.searchRole.length == 0) {
+      this.filter.role = undefined;
+    } else {
+      if (this.searchRole == "all") {
+        this.filter.role = undefined;
+      } else {
+        this.filter.role = this.searchRole;
+      }
+    }
+    if (this.searchStatus.length == 0) {
+      this.filter.status = undefined;
+    } else {
+      if (this.searchStatus == "all") {
+        this.filter.status = undefined;
+      } else {
+        this.filter.status = this.searchStatus;
+      }
+    }
+    this.currentPage = 1;
+    await this.getUserList(this.filter, this.currentPage, this.sizePage);
+  }
+
+  async reset() {
+    this.filter.username = undefined;
+    this.filter.name = undefined;
+    this.filter.role = undefined;
+    this.filter.status = undefined;
+    this.searchName = this.searchUsername = this.searchRole = this.searchStatus = "";
+    this.currentPage = 1;
+    await this.getUserList(this.filter, this.currentPage, this.sizePage);
+  }
 
 }
 

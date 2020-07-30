@@ -37,7 +37,7 @@ export class UserService {
 
     getUserList(filter: any, page: number, size: number) {
         filter = JSON.stringify(filter);
-        filter = btoa(filter);
+        filter = btoa(unescape(encodeURIComponent(filter)));
         return new Promise((resolve, reject) => {
             this.http.get(this.API_URL + `/api/user?filter=${filter}&page=${page}&size=${size}`, this.getOptions()).subscribe(res => {
                 resolve(res);

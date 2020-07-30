@@ -31,9 +31,7 @@ export class NewUserComponent implements OnInit {
 
   private filter = {};
   private currentPage: number = 1;
-  private showPages: number = 5;
-  private totalPage: number;
-  private sizePage = 10;
+  private sizePage = 5;
 
   // declare variables to check validation of inputs
   checkValidationEmail = {

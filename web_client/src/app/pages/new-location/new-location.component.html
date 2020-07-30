@@ -60,7 +60,7 @@
                     <div *ngIf="isSubDistrictInvalid" class="form-group has-danger">
                       <select  name="location" id="location" id="inputLocation" class="form-control is-invalid" [(ngModel)]="chosenSubDistrict" (ngModelChange)="checkSubDistrict($event)">
                         <option value="" disabled selected hidden class="is-invalid">Phường không được để trống</option>
-                        <option *ngFor="let sub_district of sub_districtList">{{ sub_district }}</option>
+                        <option *ngFor="let sub_district of sub_districtList">{{ sub_district.name }}</option>
                       </select> 
                     </div>        
                   </div>
