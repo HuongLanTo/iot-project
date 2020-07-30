@@ -51,7 +51,8 @@
         </a>
       </li>
       <li *ngFor="let page of pager.pages" [ngClass]="{'active': pager.currentPage === page, 'page-item':true}">
-        <a class="page-link" (click)="setPage(page)">{{page}}</a>
+        <a *ngIf="pager.currentPage === page" style="background-color: #004D90; border-color:#013E7A" class="page-link" (click)="setPage(page)">{{page}}</a>
+        <a *ngIf="pager.currentPage !== page" class="page-link" (click)="setPage(page)">{{page}}</a>
       </li>
       <li [ngClass]="{'page-item': true, 'disabled':pager.currentPage === pager.totalPages}">
         <a class="page-link" (click)="setPage(pager.currentPage + 1)">
