@@ -104,6 +104,9 @@ export class UserComponent implements OnInit {
     await this.userService.getUserList(filter, currentPage, sizePage).then((data: any) => {
       this.totalItems = data.totalDocuments;
       this.userList = data.data;
+    })
+    .catch(err => {
+      this.currentPage = 1;
     });
   }
 
@@ -220,7 +223,6 @@ export class UserComponent implements OnInit {
       console.log(value[modal.key].name);
     }
     console.log(modal);
-    
   }
 }
 

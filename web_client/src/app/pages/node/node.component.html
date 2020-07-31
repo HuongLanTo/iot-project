@@ -3,115 +3,96 @@
     <div class="header-body">
       <!-- Card stats -->
       <div class="row">
-        <div class="col-xl-3 col-lg-6">
-          <div class="form-group">
-            <label
-              class="form-control-label-white"
-              style="color: white;"
-              for="inputLocation"
-              >Tên node</label
-            >
-            <div class="input-group mb-4">
-              <input
-                class="form-control"
-                placeholder="Nhập tên node cần tìm kiếm"
-                type="text"
-                [(ngModel)]="searchNodename"
-              />
-              <div class="input-group-append">
-                <button
-                  class="btn btn-icon btn-sm btn-secondary"
-                  style="padding: 8px 12px;"
-                  type="button"
-                  placement="top"
-                  (click)="getNodeListFromNodename()"
+        <div class="col-xl-5">
+          <div class="row">
+            <div class="col-xl-6">
+              <div class="form-group">
+                <label
+                  class="form-control-label-white"
+                  style="color: white;"
+                  for="inputLocation"
+                  >Tên node</label
                 >
-                  <span class="btn-inner--icon"
-                    ><i class="fa fa-search" aria-hidden="true"></i
-                  ></span>
-                </button>
+                <div class="input-group mb-4">
+                  <input
+                    class="form-control"
+                    placeholder="Nhập tên node cần tìm kiếm"
+                    type="text"
+                    [(ngModel)]="searchName"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-6">
+              <div class="form-group">
+                <label
+                  class="form-control-label-white"
+                  style="color: white;"
+                  for="inputLocation"
+                  >Địa chỉ cụ thể</label
+                >
+                <div class="input-group mb-4">
+                  <input
+                    class="form-control"
+                    placeholder="Nhập địa chỉ cần tìm kiếm"
+                    type="text"
+                    [(ngModel)]="searchDetailLocation"
+                  />
+                </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-xl-3 col-lg-6">
-          <div class="form-group">
-            <label
-              class="form-control-label-white"
-              style="color: white;"
-              for="inputLocation"
-              >Khu vực</label
-            >
-            <select
-              *ngIf="!isLocationInvalid"
-              name="location"
-              id="location"
-              class="form-control form-control-alternative"
-            >
-              <option value="" disabled selected hidden
-                >Chọn khu vực cần tìm kiếm</option
-              >
-              <option></option>
-            </select>
-            <!-- <div *ngIf="isLocationInvalid" class="form-group has-danger">
-              <select  name="location" id="location" id="inputLocation" class="form-control is-invalid" [(ngModel)]="newNode.location" (ngModelChange)="checkLocation($event)">
-                <option value="" disabled selected hidden class="is-invalid">Khu vực không được để trống</option>
-                <option *ngFor="let location of location">{{ location.name }}</option>
-              </select> 
-            </div>         -->
-          </div>
-        </div>
-        <div class="col-xl-3 col-lg-6">
-          <div class="form-group">
-            <label
-              class="form-control-label-white"
-              style="color: white;"
-              for="inputAddress"
-              >Địa chỉ</label
-            >
-            <div class="input-group mb-4">
-              <input
-                class="form-control"
-                placeholder="Nhập địa chỉ cần tìm kiếm"
-                type="text"
-              />
-              <div class="input-group-append">
-                <button
-                  class="btn btn-icon btn-sm btn-secondary"
-                  style="padding: 8px 12px;"
-                  type="button"
-                  placement="top"
+        <div class="col-xl-5">
+          <div class="row">
+            <div class="col-xl-6">
+              <div class="form-group">
+                <label class="form-control-label-white" style="color: white;"
+                  >Quận</label
                 >
-                  <span class="btn-inner--icon"
-                    ><i class="fa fa-search" aria-hidden="true"></i
-                  ></span>
-                </button>
+                <select
+                  name="district"
+                  id="district"
+                  class="form-control form-control-alternative"
+                  [(ngModel)]="searchDistrict" 
+                >
+                  <option value="" disabled selected hidden
+                    >Chọn quận cần tìm kiếm</option
+                  >
+                  <option *ngFor="let district of districtList" name="district" [ngValue]="district._id" id="district">{{ district.name }}</option>
+                  <option value="all">Tất cả</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-xl-6">
+              <div class="form-group">
+                <label class="form-control-label-white" style="color: white;"
+                  >Trạng thái</label
+                >
+                <select
+                  name="status"
+                  id="status"
+                  class="form-control form-control-alternative"
+                  [(ngModel)]="searchStatus" 
+                >
+                  <option value="" disabled selected hidden
+                    >Chọn trạng thái cần tìm kiếm</option
+                  >
+                  <option *ngFor="let status of data.status" [ngValue]="status.value">{{ status.name }}</option>
+                  <option value="all">Tất cả</option>
+                </select>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-xl-3 col-lg-6">
-          <div class="form-group">
-            <label class="form-control-label-white" style="color: white;"
-              >Trạng thái</label
-            >
-            <select
-              *ngIf="!isLocationInvalid"
-              name="status"
-              id="status"
-              class="form-control form-control-alternative"
-            >
-              <option value="" disabled selected hidden
-                >Chọn trạng thái cần tìm kiếm</option
-              >
-              <option></option>
-            </select>
-            <!-- <div *ngIf="isLocationInvalid" class="form-group has-danger">
-              <select  name="location" id="location" id="inputLocation" class="form-control is-invalid" [(ngModel)]="newNode.location" (ngModelChange)="checkLocation($event)">
-                <option value="" disabled selected hidden class="is-invalid">Khu vực không được để trống</option>
-                <option *ngFor="let location of location">{{ location.name }}</option>
-              </select> 
-            </div>         -->
+        <div class="col-xl-2">
+          <label class="form-control-label-white" style="color: white;"
+                  ></label
+                >
+          <div class="row" style="margin-top: 8px;">
+            <button type="button" class="btn btn-primary" style="background-color: #FDC667; border-color: #FEA200;" (click)="search()"><i class="fa fa-search" aria-hidden="true"></i></button>
+            <button type="button" class="btn btn-primary" style="background-color: #0165B9; border-color: #0165B9;" (click)="reset()"><i class="fa fa-times" aria-hidden="true"></i>
+            </button>
           </div>
         </div>
       </div>

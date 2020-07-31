@@ -3,6 +3,7 @@ import { NodeService } from "../../services/node.service";
 import { ToastrService } from "ngx-toastr";
 import { NgxSpinnerService } from "ngx-spinner";
 import { ProfileService } from "src/app/services/profile.service";
+import { LocationService } from "src/app/services/location.service";
 
 @Component({
   selector: "app-node",
@@ -11,14 +12,15 @@ import { ProfileService } from "src/app/services/profile.service";
 })
 export class NodeComponent implements OnInit {
   nodeList: any;
+  districtList: any = [];
   currentNode: any = {};
-  Status = [
-    { status: true, name: "Active" },
-    { status: false, name: "Deactive" },
-  ];
 
   public filter = {
-    approve: "1"
+    approve: "1",
+    status: undefined,
+    name: undefined,
+    district: undefined,
+    location_info: undefined
   };
   private currentPage: number = 1;
   private totalItems: number;
@@ -29,14 +31,18 @@ export class NodeComponent implements OnInit {
   private provinceCode = [];
 
   //search
-  searchNodename = '';
-  searchLocation = '';
-  searchAddress = '';
-  searchStatus = '';
+  searchName = "";
+  searchDistrict = "";
+  searchDetailLocation = "";
+  searchStatus = "";
+
+  // check 
+  check = true;
 
   constructor(
     private nodeService: NodeService,
     private profileService: ProfileService,
+    private locationService: LocationService,
     private toastrService: ToastrService,
     private spinnerService: NgxSpinnerService
   ) {}
@@ -44,6 +50,7 @@ export class NodeComponent implements OnInit {
   async ngOnInit() {
     await this.checkEditNodePermission();
     await this.getNodeList(this.filter, this.currentPage, this.sizePage);
+    this.locationService.getDistrictList().then(data => this.districtList = data);
   }
 
   get fields() {
@@ -97,8 +104,12 @@ export class NodeComponent implements OnInit {
     this.spinnerService.show();
     this.currentPage = currentPage;
     await this.nodeService.getNodeList(filter, currentPage, sizePage).then((data: any) => {
+      this.check = true;
       this.totalItems = data.total;
       this.nodeList = data.data;
+    }).catch(err => {
+      this.check = false;
+      this.currentPage = 1;
     })
     this.spinnerService.hide();
   }
@@ -165,6 +176,51 @@ export class NodeComponent implements OnInit {
           this.currentNode.district.name + 
           ', ' +
           this.currentNode.province.name
+  }
+
+  async search() {
+    if (this.searchName.length == 0) {
+      this.filter.name = undefined;
+    } else {
+      this.filter.name = this.searchName;
+    }
+    if (this.searchDetailLocation.length == 0) {
+      this.filter.location_info = undefined;
+    } else {
+      this.filter.location_info = this.searchDetailLocation;
+    }
+    if (this.searchDistrict.length == 0) {
+      this.filter.district = undefined;
+    } else {
+      if (this.searchDistrict == "all") {
+        this.filter.district = undefined;
+      } else {
+        this.filter.district = this.searchDistrict;
+      }
+    }
+    if (this.searchStatus.length == 0) {
+      this.filter.status = undefined;
+    } else {
+      if (this.searchStatus == "all") {
+        this.filter.status = undefined;
+      } else {
+        this.filter.status = this.searchStatus;
+      }
+    }
+    console.log(this.filter);
+    
+    this.currentPage = 1;
+    await this.getNodeList(this.filter, this.currentPage, this.sizePage);
+  }
+
+  async reset() {
+    this.filter.district = undefined;
+    this.filter.name = undefined;
+    this.filter.location_info = undefined;
+    this.filter.status = undefined;
+    this.searchName = this.searchDistrict = this.searchDetailLocation = this.searchStatus = "";
+    this.currentPage = 1;
+    await this.getNodeList(this.filter, this.currentPage, this.sizePage);
   }
 
 }
