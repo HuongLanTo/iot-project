@@ -117,7 +117,7 @@
               <tr style="text-align: center;">
                 <th scope="col">STT</th>
                 <th scope="col" *ngFor="let field of fields;">{{ field.label }}</th>
-                <th scope="col">Lựa chọn</th>
+                <th scope="col" *ngIf="isHavingEditUserPermission">Lựa chọn</th>
               </tr>
             </thead>
             <tbody>
@@ -137,13 +137,10 @@
                     >
                   </div>
                 </td>
-                <td>
+                <td *ngIf="isHavingEditUserPermission">
                   <button class="btn btn-icon btn-sm btn-info" type="button" placement="top" ngbTooltip="Sửa" data-toggle="modal" data-target="#editModal" (click)="currentUser=user" (click)="nameRole = currentUser.role.name">
                     <span class="btn-inner--icon"><i class="ni ni-single-copy-04"></i></span>
                   </button>
-                  <!-- <button class="btn btn-icon btn-sm btn-danger" style="margin-right: 8px;" type="button" placement="top" ngbTooltip="Xóa" data-toggle="modal" data-target="#editModalxoa" (click)="currentUser=user">
-                    <span class="btn-inner--icon"><i class="ni ni-fat-delete"></i></span>
-                </button> -->
                 </td>
               </tr>
             </tbody>

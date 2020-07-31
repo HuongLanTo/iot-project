@@ -4,6 +4,7 @@ import { UserService } from 'src/app/services/user.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 import { RoleService } from 'src/app/services/role.service';
+import { ProfileService } from 'src/app/services/profile.service';
 
 
 @Component({
@@ -27,8 +28,8 @@ export class UserComponent implements OnInit {
   public totalItems: number;
   private sizePage = 5;
 
-  // temp
-  private nameRole = "";
+  // check permission
+  private isHavingEditUserPermission: boolean;
 
   // search
   searchUsername = "";
@@ -39,6 +40,7 @@ export class UserComponent implements OnInit {
   constructor(
     private userService: UserService,
     private roleService: RoleService,
+    private profileService: ProfileService,
     private spinnerService: NgxSpinnerService,
     private toastrService: ToastrService
   ) { }
@@ -46,6 +48,7 @@ export class UserComponent implements OnInit {
   async ngOnInit() {
     await this.getUserList(this.filter, this.currentPage, this.sizePage);
     await this.getRoleList();
+    this.checkEditUserPermission();
   }
 
   get fields() {
@@ -177,6 +180,27 @@ export class UserComponent implements OnInit {
     await this.getUserList(this.filter, this.currentPage, this.sizePage);
   }
 
+  async checkEditUserPermission() {
+    var nameRole = "";
+    var actionName = [];
+    await this.profileService.getProfile().then((data: any) => {
+      nameRole = data.role.name;
+      actionName = data.role.action_permission;
+    })
+    if (nameRole == "Admin") {
+      this.isHavingEditUserPermission = true;;
+    } else {
+      var check = [];
+      await actionName.forEach(e => {
+        check.push(e.name);
+      });
+      if (actionName.includes("Tạo mới user")) {
+        this.isHavingEditUserPermission = true;
+      } else {
+        this.isHavingEditUserPermission = false;
+      }
+    }
+  }
 }
 
 const STATUS = [
