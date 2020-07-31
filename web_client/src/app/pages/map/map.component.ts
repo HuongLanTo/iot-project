@@ -66,7 +66,7 @@ export class MapComponent implements OnInit {
     //   var marker = new L.Marker(markerLocation);
     //   this.map.addLayer(marker);
     // }
-    var location = "Thanh Xuan";
+    // var location = "Thanh Xuan";
   //   var markers = [
   //     [ -0.1244324, 51.5006728, "Big Ben" ],
   //     [ -0.119623, 51.503308, "London Eye" ],
@@ -93,7 +93,7 @@ export class MapComponent implements OnInit {
   private initMap() {
     this.map = L.map('map', {
       center: [20.992966, 105.813566],
-      zoom: 15
+      zoom: 10
     });
 
     const tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {

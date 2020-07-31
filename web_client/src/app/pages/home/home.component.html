@@ -55,8 +55,8 @@
             <div class="form-group">
                 <label class="form-control-label" for="inputAddress">Chọn địa điểm:</label>
                 <select  name="addressNode" id="inputAddress" class="form-control" (change)="selectedNode($event.target.value)">
-                    <option value="" disabled selected hidden>{{ current_sensor_data.node_id }}</option>
-                    <option *ngFor="let data of sensor_data">{{ data.node_id }}</option>
+                    <option value="" disabled selected hidden>{{ current_sensor_data.name }} - {{ current_sensor_data.location }}</option>
+                    <option *ngFor="let data of sensor_data" [value]="data.node_id">{{ data.name }} - {{ data.location }}</option>
                 </select>     
             </div>
             <h3 class="mb-0">Chỉ số chất lượng không khí lúc {{ current_sensor_data.datetime | date:'HH:mm' }} ngày {{ current_sensor_data.datetime | date:'dd/MM/yyyy' }}</h3>
@@ -278,7 +278,7 @@
                     <thead class="thead-dark">
                         <tr style="text-align: center;">
                             <th scope="col">STT</th>
-                            <th scope="col">Ngày</th>
+                            <th scope="col">Tên node</th>
                             <th scope="col">Chỉ số</th>
                             <th scope="col">Đánh giá</th>
                         </tr>
@@ -288,7 +288,7 @@
                             <th scope="col">{{ index + 1 }}</th>
                             <th scope="col">{{ data.name }}</th>
                             <th scope="col">{{ data.aqi }}</th>
-                            <th scope="col"></th>
+                            <th scope="col">{{ evaluate(data.aqi) }}</th>
                         </tr>
                     </tbody>
                 </table>

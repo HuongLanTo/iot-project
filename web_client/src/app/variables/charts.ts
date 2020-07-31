@@ -249,11 +249,11 @@ export function chartOptions() {
     ticks: {
       beginAtZero: true,
       padding: 10,
-      callback: function(value) {
-        if (!(value % 10)) {
-          return value
-        }
-      }
+      // callback: function(value) {
+      //   if (!(value % 10)) {
+      //     return value
+      //   }
+      // }
     }
   });
 

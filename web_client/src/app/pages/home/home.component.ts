@@ -23,6 +23,7 @@ import { DataService } from "src/app/services/data.service";
 export class HomeComponent implements OnInit {
   sensor_data: any = [];
   current_sensor_data: any = {};
+  current_sensor_node_id: "";
   aqi_info: AqiInfo[] = aqiInfo;                                            
   current_aqi_info: any = {};
   three_day_aqi_info: any = [];
@@ -54,6 +55,8 @@ export class HomeComponent implements OnInit {
   searchingWeek: any;
   searchingMonth: any;
   searchList: any = [];
+  searchAqiList: any = [];
+  searchNameList: any = [];
   currentDay = Moment(new Date()).subtract(1, 'day').format("YYYY-MM-DD");
 
   public sensorChart: any;
@@ -71,9 +74,25 @@ export class HomeComponent implements OnInit {
     parseOptions(Chart, chartOptions());
     
     await this.getDataByLastHour();
-    // this.getDataBy24Hour(this.filterDataBy24Hour);
+    this.getDataBy24Hour(this.filterDataBy24Hour);
     await this.getChart();
     await this.searchByDay(this.searchingDay);
+  }
+
+  evaluate(aqi) {
+    if (aqi >= 0 && aqi <= 50) {
+      return "Tốt";
+    } else if (aqi >= 51 && aqi <= 100) {
+      return "Trung bình";
+    } else if (aqi >= 101 && aqi <= 150) {
+      return "Kém";
+    } else if (aqi >= 151 && aqi <= 200) {
+      return "Xấu";
+    } else if (aqi >= 201 && aqi <= 300) {
+      return "Rất xấu";
+    } else {
+      return "Nguy hại";
+    }
   }
 
   getNodeId() {
@@ -86,26 +105,31 @@ export class HomeComponent implements OnInit {
         this.sensor_data = data;
         this.current_sensor_data = data[0];
         this.filterDataBy3Day.node_ids = this.current_sensor_data.node_id;
+        this.current_sensor_node_id = this.sensor_data[0].node_id;
         this.selectedNode(this.sensor_data[0].node_id);
       });
   }
 
   getDataBy24Hour(filter) {
     return this.dataService.getDataBy24Hour(filter).then((data:any) => {
+      console.log(34324, data);
+      
       return data.rows;
     })
   }
 
   async getDataBy3Day(filter) {
-    // this.dataService.getDataBy3Day(filter).then(data => {
-    //   this.three_day_aqi_data = data[0].data;
-    //   this.set3DayAqiInfo(this.three_day_aqi_data[0].aqi, this.three_day_aqi_data[1].aqi, this.three_day_aqi_data[2].aqi);
-    // })
+    this.dataService.getDataBy3Day(filter).then(data => {
+      this.three_day_aqi_data = data[0].data;
+      this.set3DayAqiInfo(this.three_day_aqi_data[0].aqi, this.three_day_aqi_data[1].aqi, this.three_day_aqi_data[2].aqi);
+    })
   }
 
-  selectedNode(nameNode) {
+  selectedNode(id) {
+    console.log(id);
+    
     for (var i = 0; i < this.sensor_data.length; i++) {
-      if (nameNode == this.sensor_data[i].node_id) {
+      if (id == this.sensor_data[i].node_id) {
         this.current_sensor_data = this.sensor_data[i];
       }
     }
@@ -221,11 +245,11 @@ export class HomeComponent implements OnInit {
           },
         },
         data: {
-          labels: this.time,
+          labels: this.searchNameList,
           datasets: [
             {
               label: "AQI",
-              data: this.co_data,
+              data: this.searchAqiList,
             },
           ],
         },
@@ -261,11 +285,11 @@ export class HomeComponent implements OnInit {
           },
         },
         data: {
-          labels: this.time,
+          labels: this.searchNameList,
           datasets: [
             {
               label: "AQI",
-              data: this.co_data,
+              data: this.searchAqiList,
             },
           ],
         },
@@ -289,6 +313,10 @@ export class HomeComponent implements OnInit {
         Moment(dataBy24Hour[i].datetime).format("DD/MM/YYYY HH:mm")
       );
     }
+    console.log(1, this.co_data);
+    console.log(2, this.time);
+    
+    
 
     // var r = Object.assign({}, chartExample1);
     var co_chart = new Chart(coChart, {
@@ -303,9 +331,9 @@ export class HomeComponent implements OnInit {
                 display: true,
               },
               ticks: {
-                max: 1,
-                min: 0,
-                stepSize: 5
+                // max: 1,
+                // min: -1,
+                // stepSize: 5
               }
             },
           ],
@@ -334,9 +362,9 @@ export class HomeComponent implements OnInit {
                 display: true,
               },
               ticks: {
-                max: 100,
-                min: 0,
-                stepSize: 10
+                // max: 100,
+                // min: 0,
+                // stepSize: 10
               }
             },
           ],
@@ -364,9 +392,9 @@ export class HomeComponent implements OnInit {
                 display: true,
               },
               ticks: {
-                max: 100,
-                min: 0,
-                stepSize: 10
+                // max: 100,
+                // min: 0,
+                // stepSize: 10
               }
             },
           ],
@@ -390,10 +418,17 @@ export class HomeComponent implements OnInit {
 
   async searchByDay(value) {
     var temp = value;
+    this.searchNameList = [];
+    this.searchAqiList = [];
     this.filterSearch.date = Moment(new Date(temp)).format("YYYY-MM-DD");
     await this.dataService.getDataOfAllNodeByDay(this.filterSearch).then(data => {
       this.searchList = data;
     })
+    this.searchList.forEach(e => {
+      this.searchAqiList.push(e.aqi);
+      this.searchNameList.push(e.name);
+    });
+    this.setLineTypeOfChart()
   }
     
 }
