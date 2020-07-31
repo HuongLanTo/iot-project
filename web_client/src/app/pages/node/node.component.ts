@@ -95,6 +95,7 @@ export class NodeComponent implements OnInit {
 
   async getNodeList(filter, currentPage, sizePage) {
     this.spinnerService.show();
+    this.currentPage = currentPage;
     await this.nodeService.getNodeList(filter, currentPage, sizePage).then((data: any) => {
       this.totalItems = data.total;
       this.nodeList = data.data;
