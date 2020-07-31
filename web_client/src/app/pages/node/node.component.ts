@@ -89,7 +89,7 @@ export class NodeComponent implements OnInit {
     return type === "switch";
   }
 
-  status(value: string | number) {
+  status_vn(value: string | number) {
     return value ? "Đang hoạt động" : "Dừng hoạt động";
   }
 
@@ -153,6 +153,18 @@ export class NodeComponent implements OnInit {
         this.isHavingEditNodePermission = false;
       }
     }
+  }
+
+  getFullLocation() {
+    if (!Object.keys(this.currentNode).length) {
+      return
+    }
+
+    return this.currentNode.location_info.detail_location + 
+          ', ' +
+          this.currentNode.district.name + 
+          ', ' +
+          this.currentNode.province.name
   }
 
 }
@@ -270,8 +282,8 @@ const MODAL = [
 ];
 
 const STATUS = [
-  { value: true, name: "Đang hoạt động" },
-  { value: false, name: "Dừng hoạt động" },
+  { value: 1, name: "Đang hoạt động" },
+  { value: 0, name: "Dừng hoạt động" },
 ];
 
 const SENSOR = [

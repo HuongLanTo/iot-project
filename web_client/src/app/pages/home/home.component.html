@@ -246,7 +246,7 @@
                     <div class="form-group row">
                         <div class="col-5">
                             <label for="example-date-input" class=" col-form-label">Chọn ngày</label>
-                            <input class="form-control" type="date" value="2020-06-01" id="example-date-input">
+                            <input class="form-control" type="date" value="30-07-2020" id="example-date-input" [(ngModel)]="searchingDay" (change)="searchByDay($event.target.value)">
                         </div>
                     </div>
                 </div>
@@ -284,9 +284,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let data of sensor_data; let index = index" style="text-align: center;">
+                        <tr *ngFor="let data of searchList; let index = index" style="text-align: center;">
                             <th scope="col">{{ index + 1 }}</th>
-                            <th scope="col">{{ data.node_id }}</th>
+                            <th scope="col">{{ data.name }}</th>
                             <th scope="col">{{ data.aqi }}</th>
                             <th scope="col"></th>
                         </tr>

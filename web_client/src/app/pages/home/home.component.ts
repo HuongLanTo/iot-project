@@ -3,7 +3,7 @@ import { SensorData, sensorData } from "../../data/sensor_data";
 import { AqiInfo, aqiInfo } from "../../data/aqi";
 import * as _ from "lodash";
 import Chart from "chart.js";
-import Moment from "moment";
+import Moment, { max } from "moment";
 
 // core components
 import {
@@ -29,9 +29,9 @@ export class HomeComponent implements OnInit {
   three_day_aqi_data: any = {};
   lineTypeOfChart = false;
   barTypeOfChart = false;
-  co_data = [];
-  co2_data = [];
-  pm25_data = [];
+  co_data: Array<number>;
+  co2_data: Array<number>;
+  pm25_data: Array<number>;
   time = [];
 
   //filter
@@ -45,6 +45,17 @@ export class HomeComponent implements OnInit {
     node_ids: ""
   }
 
+  filterSearch: any = {
+    date: Moment(new Date()).format("YYYY-MM-DD HH:mm:ss")
+  }
+
+  // search
+  searchingDay = Moment(new Date()).subtract(1, 'day').format("YYYY-MM-DD");
+  searchingWeek: any;
+  searchingMonth: any;
+  searchList: any = [];
+  currentDay = Moment(new Date()).subtract(1, 'day').format("YYYY-MM-DD");
+
   public sensorChart: any;
   public datasets: any;
   public data: any;
@@ -57,13 +68,12 @@ export class HomeComponent implements OnInit {
   async ngOnInit() {
     
     console.log(145);
-    // this.get3DayAqiData();
     parseOptions(Chart, chartOptions());
-    
     
     await this.getDataByLastHour();
     // this.getDataBy24Hour(this.filterDataBy24Hour);
     await this.getChart();
+    await this.searchByDay(this.searchingDay);
   }
 
   getNodeId() {
@@ -87,10 +97,10 @@ export class HomeComponent implements OnInit {
   }
 
   async getDataBy3Day(filter) {
-    this.dataService.getDataBy3Day(filter).then(data => {
-      this.three_day_aqi_data = data[0].data;
-      this.set3DayAqiInfo(this.three_day_aqi_data[0].aqi, this.three_day_aqi_data[1].aqi, this.three_day_aqi_data[2].aqi);
-    })
+    // this.dataService.getDataBy3Day(filter).then(data => {
+    //   this.three_day_aqi_data = data[0].data;
+    //   this.set3DayAqiInfo(this.three_day_aqi_data[0].aqi, this.three_day_aqi_data[1].aqi, this.three_day_aqi_data[2].aqi);
+    // })
   }
 
   selectedNode(nameNode) {
@@ -272,17 +282,13 @@ export class HomeComponent implements OnInit {
     console.log("test", dataBy24Hour);
     
     for (var i = 0; i < dataBy24Hour.length; i++) {
-      this.co_data.push(dataBy24Hour[i].co);
-      this.co2_data.push(dataBy24Hour[i].co2);
-      this.pm25_data.push(dataBy24Hour[i].pm_25);
+      this.co_data.push(Number(dataBy24Hour[i].co));
+      this.co2_data.push(Number(dataBy24Hour[i].co2));
+      this.pm25_data.push(Number(dataBy24Hour[i].pm_25));
       this.time.push(
         Moment(dataBy24Hour[i].datetime).format("DD/MM/YYYY HH:mm")
       );
     }
-    console.log(78,this.co_data);
-    console.log(789,this.time);
-    
-    
 
     // var r = Object.assign({}, chartExample1);
     var co_chart = new Chart(coChart, {
@@ -297,9 +303,9 @@ export class HomeComponent implements OnInit {
                 display: true,
               },
               ticks: {
-                max: 100,
-                min: 50,
-                stepSize: 10
+                max: 1,
+                min: 0,
+                stepSize: 5
               }
             },
           ],
@@ -329,7 +335,7 @@ export class HomeComponent implements OnInit {
               },
               ticks: {
                 max: 100,
-                min: 50,
+                min: 0,
                 stepSize: 10
               }
             },
@@ -359,7 +365,7 @@ export class HomeComponent implements OnInit {
               },
               ticks: {
                 max: 100,
-                min: 40,
+                min: 0,
                 stepSize: 10
               }
             },
@@ -380,10 +386,14 @@ export class HomeComponent implements OnInit {
 
   getAqiChart() {
     
-    
-    
   }
 
-    
+  async searchByDay(value) {
+    var temp = value;
+    this.filterSearch.date = Moment(new Date(temp)).format("YYYY-MM-DD");
+    await this.dataService.getDataOfAllNodeByDay(this.filterSearch).then(data => {
+      this.searchList = data;
+    })
+  }
     
 }

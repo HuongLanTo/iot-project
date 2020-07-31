@@ -151,7 +151,7 @@
                         'badge-pill',
                         node[item.key] ? 'badge-success' : 'badge-danger'
                       ]"
-                      >{{ status(node[item.key]) }}</span
+                      >{{ status_vn(node[item.key]) }}</span
                     >
                   </div>
                 </td>
@@ -210,7 +210,7 @@
                 }}</label>
                 <div class="form-group">
                   <input
-                    *ngIf="is_input(field.type) && field.name!='location_info'"
+                    *ngIf="is_input(field.type) && field.key!='location_info'"
                     value="{{ currentNode[field.key] }}"
                     [name]="field.fin"
                     [id]="field.fin"
@@ -219,8 +219,8 @@
                     [readonly]="field.readonly"
                   />
                   <input
-                    *ngIf="is_input(field.type) && field.name=='location_info'"
-                    value="{{ currentNode[field.key] }}"
+                    *ngIf="is_input(field.type) && field.key=='location_info'"
+                    value="{{ getFullLocation(field) }}"
                     [name]="field.fin"
                     [id]="field.fin"
                     type="text"
@@ -234,7 +234,6 @@
                     [id]="field.fin"
                     class="form-control form-control-alternative"
                   >
-                    <option value="" disabled selected hidden>{{ status(currentNode[field.key]) }}</option>
                     <option
                       *ngFor="let item of data[field.key]"
                       [ngValue]="item.value"

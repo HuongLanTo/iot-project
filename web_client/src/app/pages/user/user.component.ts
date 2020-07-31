@@ -46,9 +46,11 @@ export class UserComponent implements OnInit {
   ) { }
 
   async ngOnInit() {
-    await this.getUserList(this.filter, this.currentPage, this.sizePage);
+    this.spinnerService.show();
+    await this.checkEditUserPermission();
     await this.getRoleList();
-    this.checkEditUserPermission();
+    await this.getUserList(this.filter, this.currentPage, this.sizePage);
+    this.spinnerService.hide();
   }
 
   get fields() {
@@ -73,6 +75,10 @@ export class UserComponent implements OnInit {
     }
   }
 
+  get is_have_data() {
+    return Object.keys(this.currentUser).length
+  }
+
   is_string(type: string) {
     return type === "string";
   }
@@ -94,13 +100,11 @@ export class UserComponent implements OnInit {
   }
 
   async getUserList(filter, currentPage, sizePage) {
-    this.spinnerService.show();
     this.currentPage = currentPage;
-    await this.userService. getUserList(filter, currentPage, sizePage).then((data: any) => {
+    await this.userService.getUserList(filter, currentPage, sizePage).then((data: any) => {
       this.totalItems = data.totalDocuments;
       this.userList = data.data;
     });
-    this.spinnerService.hide();
   }
 
   updateUserInfo() {
@@ -135,6 +139,12 @@ export class UserComponent implements OnInit {
 
   redirect() {
     this.getUserList(this.filter, this.currentPage, this.sizePage);
+  }
+
+  async goToPage(page) {
+    this.spinnerService.show()
+    await this.getUserList(this.filter, page, this.sizePage)
+    this.spinnerService.hide()
   }
 
   async search() {
@@ -186,20 +196,31 @@ export class UserComponent implements OnInit {
     await this.profileService.getProfile().then((data: any) => {
       nameRole = data.role.name;
       actionName = data.role.action_permission;
-    })
-    if (nameRole == "Admin") {
-      this.isHavingEditUserPermission = true;;
-    } else {
-      var check = [];
-      await actionName.forEach(e => {
-        check.push(e.name);
-      });
-      if (actionName.includes("Tạo mới user")) {
-        this.isHavingEditUserPermission = true;
+      
+      if (nameRole == "Admin") {
+        this.isHavingEditUserPermission = true;;
       } else {
-        this.isHavingEditUserPermission = false;
+        var check = [];
+
+        actionName.forEach(e => {
+          check.push(e.name);
+        });
+
+        if (actionName.includes("Tạo mới người dùng")) {
+          this.isHavingEditUserPermission = true;
+        } else {
+          this.isHavingEditUserPermission = false;
+        }
       }
+    })
+  }
+
+  log(value, modal) {
+    if (value[modal.key]) {
+      console.log(value[modal.key].name);
     }
+    console.log(modal);
+    
   }
 }
 

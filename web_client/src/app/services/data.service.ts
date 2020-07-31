@@ -38,13 +38,24 @@ export class DataService {
     }
 
     getDataBy3Day(filter: any) {
-      console.log(filter);
-      
       filter = JSON.stringify(filter);
       filter = btoa(filter);
       console.log(filter);
       return new Promise((resolve, reject) => {
         this.http.get(this.API_URL + `/api/v1/nodes/days/last/three/?filter=${filter}`).subscribe((res: {data: any}) => {
+          resolve(res.data)
+        }, err => {
+          reject(err);
+        })
+      })
+    }
+
+    getDataOfAllNodeByDay(filter: any) {
+      filter = JSON.stringify(filter);
+      filter = btoa(filter);
+      console.log(filter);
+      return new Promise((resolve, reject) => {
+        this.http.get(this.API_URL + `/api/v1/nodes/days/last/all/?filter=${filter}`).subscribe((res: {data: any}) => {
           resolve(res.data)
         }, err => {
           reject(err);

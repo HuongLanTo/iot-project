@@ -113,6 +113,8 @@ export class MapComponent implements OnInit {
   }
 
   getMarkers() {
+    console.log(4324, this.sensor_data);
+    
     var markers = [];
     var temp = [];
     for (var i = 0; i < this.sensor_data.length; i++) {
@@ -141,6 +143,10 @@ export class MapComponent implements OnInit {
     }
     //Loop through the markers array
     for (var i = 0; i < markers.length; i++) {
+
+      var icon = L.divIcon({
+        html:'<div class="map-label"><div class="map-label-content"></div><div class="map-label-arrow">Hello</div></div>'
+      });
      
       var lon = Number(markers[i][1]);
       var lat = Number(markers[i][0]);
@@ -148,6 +154,7 @@ export class MapComponent implements OnInit {
       var popupText = String(markers[i][6]);
       
       var markerLocation = new L.LatLng(lat, lon);
+      
       var marker = new L.Marker(markerLocation);
       this.map.addLayer(marker);
    

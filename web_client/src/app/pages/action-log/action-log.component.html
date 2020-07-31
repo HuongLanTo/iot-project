@@ -1,0 +1,128 @@
+<div
+  class="header pb-8 pt-5 pt-md-8"
+  style="
+    background: linear-gradient(87deg, #13547a 0, #80d0c7 100%) !important;
+  "
+>
+  <div class="container-fluid">
+    <div class="header-body">
+      <!-- Card stats -->
+    </div>
+  </div>
+</div>
+<!-- Page content -->
+<div class="container-fluid mt--7">
+  <!-- Table -->
+  <div class="row">
+    <div class="col">
+      <div class="card shadow">
+        <div class="card-header border-0">
+          <h3 class="mb-0">Danh sách Action Log</h3>
+        </div>
+        <div class="table-responsive">
+          <table class="table align-items-center table-flush">
+            <thead class="thead-light">
+              <tr style="text-align: center;">
+                <th scope="col">STT</th>
+                <th scope="col" *ngFor="let field of fields">
+                  {{ field.label }}
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                *ngFor="let action of actionLogList; let index = index"
+                style="text-align: center;"
+                data-toggle="modal" data-target="#detailModal" (click)="currentActionLog=action"
+              >
+                <td>{{ (currentPage - 1) * sizePage + index + 1 }}</td>
+                <td *ngFor="let field of fields">
+                  <span *ngIf="field.name!='action_time' && field.name!='action_user'">{{
+                    action[field.name]
+                  }}</span>
+                  <span *ngIf="field.name=='action_time'">{{
+                    action[field.name] | date:'dd/MM/yyyy HH:mm:ss'
+                  }}</span>
+                  <span *ngIf="field.name=='action_user'">{{
+                    action[field.name]
+                  }}</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <ngx-spinner></ngx-spinner>
+        <app-pagination
+          [totalPages]="totalItems"
+          (pageEmit)="getActionLogList(filter, $event, sizePage)"
+        ></app-pagination>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div  class="modal fade bd-example-modal-lg" id="detailModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h3 class="modal-title">Chi tiết action log</h3>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+            <div class="w-100 d-inline-block">
+                <div *ngFor="let field of fields" class="w-50 float-left prl-15 col-md-6">
+                    <div class="form-group">
+                        <label class="form-control-label">{{ field.label }}</label>
+                        <div class="form-group">
+                            <input
+                                *ngIf="field.name!='action_time' && field.name!='action_user'"
+                                value="{{ currentActionLog[field.name] }}"
+                                type="text"
+                                class="form-control"
+                                readonly
+                            />
+                            <input
+                                *ngIf="field.name=='action_time'"
+                                value="{{ currentActionLog[field.name] | date:'dd/MM/yyyy HH:mm:ss' }}"
+                                type="text"
+                                class="form-control"
+                                readonly
+                            />
+                            <input
+                                *ngIf="field.name=='action_user'"
+                                value="{{ currentActionLog[field.name] }}"
+                                type="text"
+                                class="form-control"
+                                readonly
+                            />
+                        </div>
+                    </div>
+                </div>
+                <div *ngFor="let detail of details" class="w-50 float-left prl-15 col-md-6">
+                    <div class="form-group">
+                        <label class="form-control-label">{{ detail.label }}</label>
+                        <div class="form-group">
+                            <textarea 
+                                value=""
+                                type="text"
+                                class="form-control"
+                                readonly
+                                style="height: 250px;"
+                            >{{ currentActionLog[detail.name] }}
+                            </textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="redirect()">Hủy</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" style="background-color: #004D90; border-color:#013E7A"
+                (click)="updateUserInfo(currentUser)">Lưu</button> -->
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+    
