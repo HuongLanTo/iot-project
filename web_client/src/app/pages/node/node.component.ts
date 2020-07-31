@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { NodeService } from "../../services/node.service";
 import { ToastrService } from "ngx-toastr";
 import { NgxSpinnerService } from "ngx-spinner";
+import { ProfileService } from "src/app/services/profile.service";
 
 @Component({
   selector: "app-node",
@@ -23,6 +24,10 @@ export class NodeComponent implements OnInit {
   private totalItems: number;
   private sizePage = 5;
 
+  // check permission
+  private isHavingEditNodePermission: boolean;
+  private provinceCode = [];
+
   //search
   searchNodename = '';
   searchLocation = '';
@@ -31,13 +36,14 @@ export class NodeComponent implements OnInit {
 
   constructor(
     private nodeService: NodeService,
+    private profileService: ProfileService,
     private toastrService: ToastrService,
     private spinnerService: NgxSpinnerService
   ) {}
 
   async ngOnInit() {
+    await this.checkEditNodePermission();
     await this.getNodeList(this.filter, this.currentPage, this.sizePage);
-    
   }
 
   get fields() {
@@ -121,6 +127,33 @@ export class NodeComponent implements OnInit {
     })
   }
 
+  async checkEditNodePermission() {
+    var nameRole = "";
+    var actionName = [];
+    var areaName = [];
+    await this.profileService.getProfile().then((data: any) => {
+      nameRole = data.role.name;
+      actionName = data.role.action_permission;
+      areaName = data.role.area_permission;
+    })
+    if (nameRole == "Admin") {
+      this.isHavingEditNodePermission = true;;
+    } else {
+      var check = [];
+      await actionName.forEach(e => {
+        check.push(e.name);
+      });
+      if (actionName.includes("Tạo mới node")) {
+        this.isHavingEditNodePermission = true;
+        await areaName.forEach(e => {
+          this.provinceCode.push(e._id);
+        });
+      } else {
+        this.isHavingEditNodePermission = false;
+      }
+    }
+  }
+
 }
 
 const KEY_DATA = [
@@ -196,10 +229,7 @@ const ENV = [
   },
   {
     label: "Bụi PM 2.5",
-  },
-  {
-    label: "Lựa chọn",
-  },
+  }
 ];
 
 const MODAL = [

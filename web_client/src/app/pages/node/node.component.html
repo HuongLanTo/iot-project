@@ -135,6 +135,7 @@
                 <th scope="col">STT</th>
                 <th scope="col" *ngFor="let field of fields">{{ field.label }}</th>
                 <th scope="col" *ngFor="let env of envs">{{ env.label }}</th>
+                <th scope="col" *ngIf="isHavingEditNodePermission">Lựa chọn</th>
               </tr>
             </thead>
             <tbody>
@@ -154,7 +155,7 @@
                     >
                   </div>
                 </td>
-                <td>
+                <td *ngIf="isHavingEditNodePermission">
                   <button
                     class="btn btn-icon btn-sm btn-info"
                     type="button"
