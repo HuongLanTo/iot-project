@@ -39,7 +39,7 @@ export class CreateRoleComponent implements OnInit {
   async ngOnInit() {
     await this.roles
       .getActionPermissions()
-      .then((data) => (this.PERMISSIONS = data));
+      .then((data: any) => (this.PERMISSIONS = data.data));
     await this.roles.getAreaPermissions().then((data) => (this.AREAS = data));
   }
 
