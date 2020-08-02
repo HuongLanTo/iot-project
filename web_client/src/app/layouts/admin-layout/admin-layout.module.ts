@@ -27,6 +27,7 @@ import { NgxSpinnerModule } from "ngx-spinner";
 import { PendingNodeComponent } from 'src/app/pages/pending-node/pending-node.component';
 import { ActionLogComponent } from 'src/app/pages/action-log/action-log.component';
 import { SupportMapComponent } from 'src/app/pages/support-map/support-map.component';
+import { ReportComponent } from 'src/app/pages/report/report.component';
 
 
 
@@ -58,7 +59,8 @@ import { SupportMapComponent } from 'src/app/pages/support-map/support-map.compo
     RoleComponent,
     PendingNodeComponent,
     ActionLogComponent,
-    SupportMapComponent
+    SupportMapComponent,
+    ReportComponent
   ],
 })
 

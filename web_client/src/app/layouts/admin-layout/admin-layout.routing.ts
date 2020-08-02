@@ -18,6 +18,7 @@ import { CreateRoleComponent } from '../../pages/create-role/create-role.compone
 import { RoleComponent } from '../../pages/role/role.component'
 import { ActionLogComponent } from 'src/app/pages/action-log/action-log.component';
 import { AuthorizationGuard } from 'src/app/guards/authorization.guard';
+import { ReportComponent } from 'src/app/pages/report/report.component';
 
 
 export const AdminLayoutRoutes: Routes = [
@@ -110,6 +111,14 @@ export const AdminLayoutRoutes: Routes = [
     {
         path: 'action-log',
         component: ActionLogComponent,
+        canActivate: [AuthorizationGuard],
+        data: {
+            allowedRoles: ['Admin']
+        }
+    },
+    {
+        path: 'report',
+        component: ReportComponent,
         canActivate: [AuthorizationGuard],
         data: {
             allowedRoles: ['Admin']

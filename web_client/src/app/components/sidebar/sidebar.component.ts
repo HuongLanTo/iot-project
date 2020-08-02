@@ -75,6 +75,13 @@ export const ROUTES: RouteInfo[] = [
       subPath: [
         { path: '/action-log', title: 'Danh sách', role: ['Admin'], icon: 'ni ni-bullet-list-67' },
       ]
+    },
+    {
+      path: 'Báo cáo',
+      role: ['Admin'],
+      subPath: [
+        { path: '/report', title: 'Báo cáo', role: ['Admin'], icon: 'ni ni-collection' },
+      ]
     }
 ];
 
