@@ -50,6 +50,22 @@ export class ActionLogComponent implements OnInit {
     });
     this.spinnerService.hide();
   }
+
+  getModalInfo(field) {
+    if (Object.keys(this.currentActionLog).length && this.currentActionLog[field.name]) {
+      return this.currentActionLog[field.name][field.key]
+    }
+  }
+
+  getTableInfo(data, name, key = '') {
+    if (Object.keys(data).length && data[name]) {
+      if (key) {
+        return data[name][key]
+      } else {
+        return data[name]
+      }
+    }
+  }
 }
 
 const FIELDS = [
@@ -69,7 +85,11 @@ const FIELDS = [
   {
     label: "Thời gian tác động",
     name: "action_time"
-  }
+  },
+  {
+    label: "Thời gian xử lý",
+    name: "execution_time"
+  },
 ];
 
 const DETAILS = [

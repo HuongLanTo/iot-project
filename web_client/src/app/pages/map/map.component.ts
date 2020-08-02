@@ -23,6 +23,11 @@ const iconDefault = L.icon({
   tooltipAnchor: [16, -28],
   shadowSize: [41, 41]
 });
+// const icon = L.divIcon({
+//   // iconUrl: 'assets/icon/happy.png',
+//   // iconSize: [25, 41],
+//   html: '<div class="container"><img src="assets/icon/happy.png"><div class="centered">50</div></div>'
+// })
 L.Marker.prototype.options.icon = iconDefault;
 interface result {
   x: number; // lon
@@ -144,9 +149,9 @@ export class MapComponent implements OnInit {
     //Loop through the markers array
     for (var i = 0; i < markers.length; i++) {
 
-      var icon = L.divIcon({
-        html:'<div class="map-label"><div class="map-label-content"></div><div class="map-label-arrow">Hello</div></div>'
-      });
+      // var icon = L.divIcon({
+      //   html:'<div class="map-label"><div class="map-label-content"></div><div class="map-label-arrow">Hello</div></div>'
+      // });
      
       var lon = Number(markers[i][1]);
       var lat = Number(markers[i][0]);

@@ -102,7 +102,7 @@ export class UserComponent implements OnInit {
   async getUserList(filter, currentPage, sizePage) {
     this.currentPage = currentPage;
     await this.userService.getUserList(filter, currentPage, sizePage).then((data: any) => {
-      this.totalItems = data.totalDocuments;
+      this.totalItems = data.total;
       this.userList = data.data;
     })
     .catch(err => {

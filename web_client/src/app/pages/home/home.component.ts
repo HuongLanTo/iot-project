@@ -1,9 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { SensorData, sensorData } from "../../data/sensor_data";
-import { AqiInfo, aqiInfo } from "../../data/aqi";
+import { aqiInfo } from "../../data/aqi";
 import * as _ from "lodash";
 import Chart from "chart.js";
-import Moment, { max } from "moment";
+import moment, { max } from "moment";
 
 // core components
 import {
@@ -14,6 +14,7 @@ import {
 } from "../../variables/charts";
 import { ThreeDay, threeDay } from "src/app/data/three_day";
 import { DataService } from "src/app/services/data.service";
+import { NodeService } from "src/app/services/node.service";
 
 @Component({
   selector: "app-home",
@@ -24,22 +25,22 @@ export class HomeComponent implements OnInit {
   sensor_data: any = [];
   current_sensor_data: any = {};
   current_sensor_node_id: "";
-  aqi_info: AqiInfo[] = aqiInfo;                                            
+  aqi_info = [];                                            
   current_aqi_info: any = {};
   three_day_aqi_info: any = [];
   three_day_aqi_data: any = {};
   lineTypeOfChart = false;
   barTypeOfChart = false;
-  co_data: Array<number>;
-  co2_data: Array<number>;
-  pm25_data: Array<number>;
+  co_data = [];
+  co2_data = [];
+  pm25_data = [];
   time = [];
 
   //filter
   filterDataBy24Hour = {
-    node_id: "1",
-    end_date: Moment(new Date()).format("YYYY-MM-DD HH:mm:ss"),
-    start_date: Moment(new Date()).subtract(24, 'hours').format("YYYY-MM-DD HH:mm:ss")
+    node_id: "5f22874423e46173242227ae",
+    end_date: moment(new Date()).format("YYYY-MM-DD HH:mm:ss"),
+    start_date: moment(new Date()).subtract(24, 'hours').format("YYYY-MM-DD HH:mm:ss")
   }
 
   filterDataBy3Day = {
@@ -47,17 +48,21 @@ export class HomeComponent implements OnInit {
   }
 
   filterSearch: any = {
-    date: Moment(new Date()).format("YYYY-MM-DD HH:mm:ss")
+    date: moment(new Date()).format("YYYY-MM-DD HH:mm:ss")
   }
 
   // search
-  searchingDay = Moment(new Date()).subtract(1, 'day').format("YYYY-MM-DD");
+  searchingDay = moment(new Date()).subtract(1, 'day').format("YYYY-MM-DD");
   searchingWeek: any;
   searchingMonth: any;
   searchList: any = [];
   searchAqiList: any = [];
   searchNameList: any = [];
-  currentDay = Moment(new Date()).subtract(1, 'day').format("YYYY-MM-DD");
+  currentDay = moment(new Date()).subtract(1, 'day').format("YYYY-MM-DD");
+
+  activeNode = [];
+  activeNodeId = [];
+  sensor_data_all: any = []
 
   public sensorChart: any;
   public datasets: any;
@@ -65,14 +70,17 @@ export class HomeComponent implements OnInit {
   public Chart: any;
 
   constructor(
-    private dataService: DataService
+    private dataService: DataService,
+    private nodeService: NodeService
   ) {}
 
   async ngOnInit() {
-    
-    console.log(145);
+    this.aqi_info = aqiInfo
     parseOptions(Chart, chartOptions());
-    
+    await this.nodeService.getNodeList({approve: 1, status: 1}, 1, 20).then((data: any) => this.activeNode = data.data);
+    this.activeNode.forEach(e => {
+      this.activeNodeId.push(e._id);
+    });
     await this.getDataByLastHour();
     this.getDataBy24Hour(this.filterDataBy24Hour);
     await this.getChart();
@@ -95,25 +103,21 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  getNodeId() {
-
-  }
-
   async getDataByLastHour() {
     this.dataService.getDataByLastHour()
       .then(data => {
         this.sensor_data = data;
-        this.current_sensor_data = data[0];
-        this.filterDataBy3Day.node_ids = this.current_sensor_data.node_id;
-        this.current_sensor_node_id = this.sensor_data[0].node_id;
-        this.selectedNode(this.sensor_data[0].node_id);
+        if (this.sensor_data.length) {
+          this.current_sensor_data = data[0];
+          this.filterDataBy3Day.node_ids = this.current_sensor_data.node_id;
+          this.current_sensor_node_id = this.sensor_data[0].node_id;
+          this.selectedNode(this.sensor_data[0].node_id);
+        }
       });
   }
 
   getDataBy24Hour(filter) {
     return this.dataService.getDataBy24Hour(filter).then((data:any) => {
-      console.log(34324, data);
-      
       return data.rows;
     })
   }
@@ -135,9 +139,10 @@ export class HomeComponent implements OnInit {
     }
     this.filterDataBy3Day.node_ids = this.current_sensor_data.node_id;
     var temp = this.current_sensor_data.aqi;
+    // this.filterDataBy24Hour.node_id = id;
     this.setCurrentAqiInfo(temp);
     this.getDataBy3Day(this.filterDataBy3Day);
-    
+    this.getChart();
   }
 
   setCurrentAqiInfo(temp) {
@@ -207,14 +212,14 @@ export class HomeComponent implements OnInit {
       chart.update();
   }
 
-  // get3DayAqiData() {
-  //   this.three_day_aqi_data = [];
-  //   threeDay.forEach((e) => {
-  //     if (e.nameNode == this.current_sensor_data.nameNode) {
-  //       this.three_day_aqi_data.push(e);
-  //     }
-  //   });
-  // }
+  get3DayAqiData() {
+    this.three_day_aqi_data = [];
+    threeDay.forEach((e) => {
+      if (e.nameNode == this.current_sensor_data.nameNode) {
+        this.three_day_aqi_data.push(e);
+      }
+    });
+  }
 
   setLineTypeOfChart() {
     this.lineTypeOfChart = true;
@@ -303,14 +308,21 @@ export class HomeComponent implements OnInit {
     var coChart = document.getElementById("co_chart");
     var co2Chart = document.getElementById("co2_chart");
     var pm25Chart = document.getElementById("pm25_chart");
-    console.log("test", dataBy24Hour);
+    this.co_data = [];
+    this.co2_data = [];
+    this.pm25_data = []
+    this.time = [];
+    console.log(999, this.filterDataBy24Hour);
+    
+    console.log(999, dataBy24Hour);
+    
     
     for (var i = 0; i < dataBy24Hour.length; i++) {
-      this.co_data.push(Number(dataBy24Hour[i].co));
-      this.co2_data.push(Number(dataBy24Hour[i].co2));
-      this.pm25_data.push(Number(dataBy24Hour[i].pm_25));
+      this.co_data.push((dataBy24Hour[i].co));
+      this.co2_data.push((dataBy24Hour[i].co2));
+      this.pm25_data.push((dataBy24Hour[i].pm_25));
       this.time.push(
-        Moment(dataBy24Hour[i].datetime).format("DD/MM/YYYY HH:mm")
+        moment(dataBy24Hour[i].datetime).format("DD/MM/YYYY HH:mm")
       );
     }
     console.log(1, this.co_data);
@@ -327,7 +339,7 @@ export class HomeComponent implements OnInit {
           yAxes: [
             {
               scaleLabel: {
-                labelString: "CO",
+                labelString: "CO (µg/m3)",
                 display: true,
               },
               ticks: {
@@ -358,7 +370,7 @@ export class HomeComponent implements OnInit {
           yAxes: [
             {
               scaleLabel: {
-                labelString: "CO2",
+                labelString: "CO2 (µg/m3)",
                 display: true,
               },
               ticks: {
@@ -388,7 +400,7 @@ export class HomeComponent implements OnInit {
           yAxes: [
             {
               scaleLabel: {
-                labelString: "Bụi PM2.5",
+                labelString: "Bụi PM2.5 (µg/m3)",
                 display: true,
               },
               ticks: {
@@ -420,7 +432,7 @@ export class HomeComponent implements OnInit {
     var temp = value;
     this.searchNameList = [];
     this.searchAqiList = [];
-    this.filterSearch.date = Moment(new Date(temp)).format("YYYY-MM-DD");
+    this.filterSearch.date = moment(new Date(temp)).format("YYYY-MM-DD");
     await this.dataService.getDataOfAllNodeByDay(this.filterSearch).then(data => {
       this.searchList = data;
     })
