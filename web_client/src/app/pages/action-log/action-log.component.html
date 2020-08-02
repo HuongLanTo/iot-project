@@ -7,6 +7,118 @@
   <div class="container-fluid">
     <div class="header-body">
       <!-- Card stats -->
+      <div class="row">
+        <div class="col-xl-4">
+          <div class="form-group">
+            <label
+              class="form-control-label-white"
+              style="color: white;"
+              for="inputLocation"
+              >Kiểu tác động</label
+            >
+            <div class="input-group mb-4">
+              <input
+                class="form-control"
+                placeholder="Nhập hành động cần tìm kiếm"
+                type="text"
+                [(ngModel)]="searchActionType"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-4">
+          <div class="form-group">
+            <label
+              class="form-control-label-white"
+              style="color: white;"
+              for="inputLocation"
+              >Tên bảng</label
+            >
+            <div class="input-group mb-4">
+              <input
+                class="form-control"
+                placeholder="Nhập tên bảng cần tìm kiếm"
+                type="text"
+                [(ngModel)]="searchLocationStore"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-4">
+          <div class="form-group">
+            <label
+              class="form-control-label-white"
+              style="color: white;"
+              for="inputLocation"
+              >Tài khoản tác động</label
+            >
+            <div class="input-group mb-4">
+              <input
+                class="form-control"
+                placeholder="Nhập tài khoản cần tìm kiếm"
+                type="text"
+                [(ngModel)]="searchActionUser"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xl-4">
+          <div class="form-group">
+            <label
+              class="form-control-label-white"
+              style="color: white;"
+              for="inputLocation"
+              >Ngày bắt đầu</label
+            >
+            <div class="input-group mb-4">
+              <input
+                  class="form-control"
+                  type="date"
+                  value="30-07-2020"
+                  id="example-date-input"
+                  [(ngModel)]="searchActionTime"
+                />
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-4">
+          <div class="form-group">
+            <label
+              class="form-control-label-white"
+              style="color: white;"
+              for="inputLocation"
+              >Ngày kết thúc</label
+            >
+            <div class="input-group mb-4">
+              <input
+                  class="form-control"
+                  type="date"
+                  value="30-07-2020"
+                  id="example-date-input"
+                  [(ngModel)]="searchEndDate"
+                />
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-4">
+          <div class="form-group">
+            <label
+              class="form-control-label-white"
+              style="color: white;"
+              for="inputLocation"
+              ></label
+            >
+            <div class="row" style="margin-top: 8px;">
+              <div class="col-1"></div>
+              <button type="button" class="btn btn-primary" style="background-color: #FDC667; border-color: #FEA200;" (click)="search()"><i class="fa fa-search" aria-hidden="true"></i></button>
+              <button type="button" class="btn btn-primary" style="background-color: #0165B9; border-color: #0165B9;" (click)="reset()"><i class="fa fa-times" aria-hidden="true"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -30,6 +142,7 @@
               </tr>
             </thead>
             <tbody>
+              <h4 class="mb-0" style="padding: 10px 24px 20px 24px;" *ngIf="actionLogList.length==0">Không tìm thấy kết quả phù hợp</h4>
               <tr
                 *ngFor="let action of actionLogList; let index = index"
                 style="text-align: center;"
