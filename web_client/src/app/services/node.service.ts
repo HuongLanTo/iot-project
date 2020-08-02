@@ -32,6 +32,9 @@ export class NodeService {
         return new Promise((resolve, reject) => {
             this.http.get(this.API_URL + `/api/node?filter=${filter}&page=${page}&size=${size}`, this.getOptions())
                 .subscribe((res: {responseData: any}) => {
+                    console.log(1, filter);
+                    console.log(2, res.responseData);
+                    
                     resolve(res.responseData);
                 }, err => {
                     reject(err);

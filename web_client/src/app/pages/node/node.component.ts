@@ -11,7 +11,7 @@ import { LocationService } from "src/app/services/location.service";
   styleUrls: ["./node.component.css"],
 })
 export class NodeComponent implements OnInit {
-  nodeList: any;
+  nodeList: any = [];
   districtList: any = [];
   currentNode: any = {};
 
@@ -107,6 +107,9 @@ export class NodeComponent implements OnInit {
       this.check = true;
       this.totalItems = data.total;
       this.nodeList = data.data;
+      console.log(this.nodeList);
+      console.log(data);
+      
     }).catch(err => {
       this.check = false;
       this.currentPage = 1;
@@ -338,8 +341,8 @@ const MODAL = [
 ];
 
 const STATUS = [
-  { value: 1, name: "Đang hoạt động" },
-  { value: 0, name: "Dừng hoạt động" },
+  { value: "1", name: "Đang hoạt động" },
+  { value: "0", name: "Dừng hoạt động" },
 ];
 
 const SENSOR = [
