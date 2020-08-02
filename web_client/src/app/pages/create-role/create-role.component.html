@@ -122,11 +122,12 @@
                       (change)="selectArea()"
                     >
                       <option value="" selected hidden>Chọn khu vực</option>
+                      <option *ngIf="!check_areas" value="" hidden selected class="is-invalid">Quyền tạo mới node phải chọn khu vực</option>
                       <option *ngFor="let area of areas" [value]="area._id">{{
                         area.name
                       }}</option>
                     </select>
-                    <select
+                    <!-- <select
                       *ngIf="!check_areas"
                       [disabled]="!isCreateNode"
                       name="area"
@@ -139,7 +140,7 @@
                       <option *ngFor="let area of areas" [value]="area._id">{{
                         area.name
                       }}</option>
-                    </select>
+                    </select> -->
                   </div>
                   <div>
                     <button

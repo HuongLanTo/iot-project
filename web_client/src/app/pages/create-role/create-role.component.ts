@@ -198,6 +198,8 @@ export class CreateRoleComponent implements OnInit {
       this.isCreateNode = false;
       this.name.splice(this.checkCreateNode, 1);
       this.checkCreateNode = -1;
+      this.role.area_permission = [];
+      this.area_name = []
     }
     if (this.role.action_permission.length >= 1) {
       this.role.name = "";
@@ -211,29 +213,40 @@ export class CreateRoleComponent implements OnInit {
     }
   }
 
-  removeArea(id) {
-    this.role.area_permission = this.role.area_permission.filter(
+  async removeArea(id) {
+    this.role.area_permission = await this.role.area_permission.filter(
       (v) => v !== id
     );
-    var index = this.area_name.indexOf(this.getAreaName(id));
+    console.log(1, this.role.area_permission);
+    
+    var index = await this.area_name.indexOf(this.getAreaName(id));
     if (index > -1) {
-      this.area_name.splice(index, 1);
-    }
-    if (this.role.area_permission.length >= 1) {
+      await this.area_name.splice(index, 1);
+    } 
+    console.log(2, this.area_name);
+    
+    if (this.role.area_permission.length > 0) {
       this.temp = "";
       for (var i = 0; i < this.area_name.length; i++) {
         if (i == 0) {
           this.temp = this.temp + this.area_name[i];
         } else {
           this.temp = this.temp + " + " + this.area_name[i];
-          console.log(this.temp);
-          
         }
       }
     }
+    if (this.role.area_permission.length == 0) {
+      this.temp = "";
+    }
+    console.log(3, this.temp);
+    
     if (this.checkCreateNode > -1) {
       this.name[this.checkCreateNode] = "Tạo mới node " + this.temp;
     }
+    console.log(4, this.name[this.checkCreateNode]);
+    console.log(5, this.checkCreateNode);
+    
+    
     if (this.role.action_permission.length >= 1) {
       this.role.name = "";
       for (var i = 0; i < this.name.length; i++) {
@@ -244,5 +257,7 @@ export class CreateRoleComponent implements OnInit {
         }
       }
     }
+    console.log(6, this.role.name);
+    
   }
 }
