@@ -50,6 +50,19 @@ export class NodeService {
         })
     }
 
+    getNodeListApprovedFilter(filter:any) {
+        filter = JSON.stringify(filter);
+        filter = btoa(unescape(encodeURIComponent(filter)));
+        return new Promise((resolve, reject) => {
+            this.http.get(this.API_URL + `/api/node?filter=${filter}`, this.getOptions())
+                .subscribe((res: {responseData: any}) => {
+                    resolve(res.responseData);
+                }, err => {
+                    reject(err);
+                })
+        })
+    }
+
     createNode(node: any): Promise<boolean> {
         return new Promise((resolve, reject) => {
             this.http.post(this.API_URL + "/api/node", node, this.getOptions())

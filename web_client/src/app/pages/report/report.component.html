@@ -1,0 +1,132 @@
+<div
+  class="header pb-8 pt-5 pt-md-8"
+  style="
+    background: linear-gradient(87deg, #13547a 0, #80d0c7 100%) !important;
+  "
+>
+  <div class="container-fluid">
+    <div class="header-body">
+      <!-- Card stats -->
+      <div class="row">
+        <div class="col-xl-5">
+          <div class="row">
+            <div class="col-xl-6">
+              <div class="form-group">
+                <label class="form-control-label-white" style="color: white;"
+                  >Node</label
+                >
+                <select
+                  name="role"
+                  id="role"
+                  class="form-control form-control-alternative"
+                  [(ngModel)]="filter.node_id"
+                >
+                  <option value="" disabled selected hidden>Chọn node</option>
+                  <option
+                    *ngFor="let node of nodeList"
+                    name="node"
+                    [ngValue]="node._id"
+                    id="node"
+                    >{{ node.name }}</option
+                  >
+                </select>
+              </div>
+            </div>
+            <div class="col-xl-6">
+              <div class="form-group">
+                <label class="form-control-label-white" style="color: white;"
+                  >Ngày bắt đầu</label
+                >
+                <input
+                  class="form-control"
+                  type="date"
+                  value="30-07-2020"
+                  id="example-date-input"
+                  [(ngModel)]="filter.start_date"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-5">
+          <div class="row">
+            <div class="col-xl-6">
+              <div class="form-group">
+                <label class="form-control-label-white" style="color: white;"
+                  >Ngày kết thúc</label
+                >
+                <input
+                  class="form-control"
+                  type="date"
+                  value="30-07-2020"
+                  id="example-date-input"
+                  [(ngModel)]="filter.end_date"
+                />
+              </div>
+            </div>
+            <div class="col-xl-6">
+              <div class="form-group">
+                <label class="form-control-label-white" style="color: white;"
+                  ></label
+                >
+                <button
+                    type="button"
+                    class="btn btn-primary"
+                    style="background-color: #fdc667; border-color: #fea200;"
+                    (click)="makeAReport()"
+                >
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Page content -->
+<div class="container-fluid mt--7">
+  <!-- Table -->
+  <div class="row">
+    <div class="col">
+      <div class="card shadow">
+        <div class="card-header border-0">
+          <h3 class="mb-0">Danh sách Action Log</h3>
+        </div>
+        <div class="table-responsive">
+          <table class="table align-items-center table-flush">
+            <thead class="thead-light">
+              <tr style="text-align: center;">
+                <th scope="col">STT</th>
+                <th scope="col" *ngFor="let field of fields">
+                  {{ field.label }}
+                </th>
+              </tr>
+            </thead>
+            <tbody *ngIf="dataList!=0">
+              <tr
+                *ngFor="let data of dataList; let index = index"
+                style="text-align: center;"
+              >
+                <td>{{ (currentPage - 1) * sizePage + index + 1 }}</td>
+                <td *ngFor="let field of fields">
+                  <span *ngIf="field.name!=datetime">{{ data[field.name] }}</span
+                  >
+                  <span *ngIf="field.name==datetime">{{ data[datetime] | date:'DD/MM/YYYY HH:mm' }}</span
+                    >
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <ngx-spinner></ngx-spinner>
+        <!-- <app-pagination
+          [totalPages]="totalItems"
+          (pageEmit)="getDataOfNode(filter, $event)"
+          *ngIf="dataList!=0"
+        ></app-pagination> -->
+      </div>
+    </div>
+  </div>
+</div>

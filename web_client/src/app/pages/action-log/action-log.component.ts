@@ -24,12 +24,7 @@ export class ActionLogComponent implements OnInit {
   ) { }
 
   async ngOnInit() {
-    console.log(999);
-    
     await this.getActionLogList(this.filter, this.currentPage, this.sizePage);
-    console.log(999, this.actionLogList);
-    console.log(this.actionLogList[0].request);
-    
     
   }
 

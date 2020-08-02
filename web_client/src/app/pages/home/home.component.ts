@@ -40,7 +40,8 @@ export class HomeComponent implements OnInit {
   filterDataBy24Hour = {
     node_id: "5f22874423e46173242227ae",
     end_date: moment(new Date()).format("YYYY-MM-DD HH:mm:ss"),
-    start_date: moment(new Date()).subtract(24, 'hours').format("YYYY-MM-DD HH:mm:ss")
+    start_date: moment(new Date()).subtract(24, 'hours').format("YYYY-MM-DD HH:mm:ss"),
+    size: "24"
   }
 
   filterDataBy3Day = {
