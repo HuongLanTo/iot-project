@@ -451,6 +451,8 @@ export class HomeComponent implements OnInit {
     })
     console.log(this.filterSearch);
     console.log(this.activeNodeId);
+    console.log(this.searchList);
+    
     
     this.searchList.forEach(e => {
       this.searchAqiList.push(e.aqi);

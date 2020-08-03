@@ -207,7 +207,7 @@ export class NodeComponent implements OnInit {
       if (this.searchStatus == "all") {
         this.filter.status = undefined;
       } else {
-        this.filter.status = this.searchStatus;
+        this.filter.status = String(this.searchStatus);
       }
     }
     console.log(this.filter);
@@ -341,8 +341,8 @@ const MODAL = [
 ];
 
 const STATUS = [
-  { value: "1", name: "Đang hoạt động" },
-  { value: "0", name: "Dừng hoạt động" },
+  { value: 1, name: "Đang hoạt động" },
+  { value: 0, name: "Dừng hoạt động" },
 ];
 
 const SENSOR = [

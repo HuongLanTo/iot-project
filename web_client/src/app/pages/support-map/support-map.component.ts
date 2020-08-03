@@ -6,6 +6,7 @@ import * as L from 'leaflet';
 import { GeoSearchControl, SearchControl, OpenStreetMapProvider } from 'leaflet-geosearch';
 import { SensorData, sensorData } from 'src/app/data/sensor_data';
 import { DataService } from 'src/app/services/data.service';
+import { LocationService } from 'src/app/services/location.service';
 const iconRetinaUrl = 'assets/marker-icon-2x.png';
 const iconUrl = 'assets/marker-icon.png';
 const shadowUrl = 'assets/marker-shadow.png';
@@ -63,31 +64,13 @@ export class SupportMapComponent implements OnInit {
   }
 
   constructor(
-    private dataService: DataService
+    private dataService: DataService,
+    private locationService: LocationService
   ) { }
 
   async ngOnInit() {
     this.initMap();
-    // var marker = L.marker([20.975986, 105.815191]).addTo(this.map);
-    // marker.bindPopup("<b>nameNode1</b><br>AQI:96");
-    await this.getDataByLastHour();
-    this.getDataByLastHour();
-    // this.getMarkers();
-    // var searchControl = L.esri.Geocoding.geosearch().addTo(this.map);
-
-    // var results = L.layerGroup().addTo(this.map);
-
-    // searchControl.on('results', function (data) {
-    //   results.clearLayers();
-    //   for (var i = data.results.length - 1; i >= 0; i--) {
-    //     results.addLayer(L.marker(data.results[i].latlng));
-    //   }
-    // });
-    // this.map.addControl(
-    //   new GeoSearchControl({
-    //     provider,
-    //   }),
-    // );
+    
     const provider = new OpenStreetMapProvider();
     var lat: number;
     var lon: number;
@@ -126,14 +109,6 @@ export class SupportMapComponent implements OnInit {
     tiles.addTo(this.map);
   }
 
-
-  async getDataByLastHour() {
-    await this.dataService.getDataByLastHour().then(data => {
-      console.log(data);
-      this.sensor_data = data;
-    });
-    // await this.setMarker();
-  }
 
   // getMarkers() {
   //   var markers = [];

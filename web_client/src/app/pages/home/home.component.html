@@ -237,9 +237,9 @@
                 <li class="nav-item">
                     <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Ngày</a>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Tuần</a>
-                </li>
+                </li> -->
                 <li class="nav-item">
                     <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Tháng</a>
                 </li>
@@ -253,14 +253,14 @@
                         </div>
                     </div>
                 </div>
-                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                <!-- <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                     <div class="form-group row">
                         <div class="col-5">
                             <label for="example-week-input" class=" col-form-label">Chọn tuần</label>
                             <input class="form-control" type="week" value="2020-W25" id="example-week-input">
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
                     <div class="form-group row">
                         <div class="col-5">
@@ -277,7 +277,8 @@
         <div class="col-lg-4">
             <div class="table-responsive">
                 <!-- Projects table -->
-                <table class="table align-items-center table-dark table-flush out">
+                <h4 *ngIf="searchList.length==0" class="mb-0" style="padding: 10px 24px 20px 24px;" >Không có dữ liệu</h4>
+                <table *ngIf="searchList.length!=0" class="table align-items-center table-dark table-flush out">
                     <thead class="thead-dark">
                         <tr style="text-align: center;">
                             <th scope="col">STT</th>
@@ -297,7 +298,7 @@
                 </table>
             </div>
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-6" *ngIf="searchList.length!=0">
             <div class="d-flex justify-content-end">
                 <button class="btn btn-icon btn-2 btn-dark" type="button" (click)="setLineTypeOfChart()">
                     <span class="btn-inner--icon"><i class="fas fa-chart-line"></i></span>
