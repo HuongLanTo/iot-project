@@ -32,7 +32,7 @@ export const AdminLayoutRoutes: Routes = [
         component: UserComponent,
         canActivate: [AuthorizationGuard],
         data: {
-            allowedRoles: []
+            allowedRoles: ['Phê duyệt user', 'Tạo mới user']
         }
     },
     {
@@ -57,7 +57,7 @@ export const AdminLayoutRoutes: Routes = [
         component: NodeComponent,
         canActivate: [AuthorizationGuard],
         data: {
-            allowedRoles: []
+            allowedRoles: ['Phê duyệt node', 'Tạo mới node']
         }
     },
     {
@@ -81,7 +81,7 @@ export const AdminLayoutRoutes: Routes = [
         component: RoleComponent,
         canActivate: [AuthorizationGuard],
         data: {
-            allowedRoles: []
+            allowedRoles: ['Phê duyệt user', 'Tạo mới user']
         }
     },
     {
@@ -89,7 +89,7 @@ export const AdminLayoutRoutes: Routes = [
         component: LocationComponent,
         canActivate: [AuthorizationGuard],
         data: {
-            allowedRoles: []
+            allowedRoles: ['Phê duyệt node', 'Tạo mới node']
         }
     },
     {
@@ -97,7 +97,7 @@ export const AdminLayoutRoutes: Routes = [
         component: NewLocationComponent,
         canActivate: [AuthorizationGuard],
         data: {
-            allowedRoles: ['Tạo mới node']
+            allowedRoles: ['Admin']
         }
     },
     {

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ProfileService } from 'src/app/services/profile.service';
 import { UserService } from 'src/app/services/user.service';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-user-profile',
@@ -8,52 +10,70 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./user-profile.component.scss']
 })
 export class UserProfileComponent implements OnInit {
-  profile_user: any = {};
-  user: any = {};
+  profile_user: any = {
+    name: "",
+    email: "", 
+    phone: "",
+    password: "",
+  };
   checkEdit = false;
-  filter = {
-    _id: ""
-  }
-  role: any = {}
+  roleName: any = "";
+
 
   constructor(
     private profileService: ProfileService,
-    private userService: UserService
+    private userService: UserService,
+    private spinnerService: NgxSpinnerService,
+    private toastrService: ToastrService
   ) { }
 
   async ngOnInit() {
+    this.spinnerService.show();
     await this.getProfile();
+    this.spinnerService.hide();
   }
 
   async getProfile() {
-    this.profileService.getProfile().then((data: any) => {
+    await this.profileService.getProfile().then((data: any) => {
       this.profile_user = data;
-      this.filter._id = data._id;
-      this.getUser(this.filter);
+      console.log(data);
+      this.roleName = data.role.name;
+      // this.getUser(this.filter);
     })
   }
 
-  async getUser(filter) {
-    this.userService.getUser(filter).then((data: any) => {
-      this.user = data[0];
-      this.role = data[0].role.action_permission[0].name;
-      console.log(456, data[0].role.action_permission[0].name);
+  // async getUser(filter) {
+  //   this.userService.getUser(filter).then((data: any) => {
+  //     this.user = data[0];
+  //     this.role = data[0].role.action_permission[0].name;
+  //     console.log(456, data[0].role.action_permission[0].name);
       
-      console.log(123,this.user.username);
+  //     console.log(123,this.user.username);
       
-    })
-  }
+  //   })
+  // }
 
   edit() {
-    this.checkEdit = !true;
+    this.checkEdit = true;
   }
 
   out() {
+    this.getProfile();
     this.checkEdit = false;
   }
 
-  save() {
-    
+  async save() {
+    this.checkEdit = false;
+    await this.userService.updateUserInfo(this.profile_user._id, {
+      email: this.profile_user.email,
+      phone: this.profile_user.phone,
+      name: this.profile_user.name,
+      password: this.profile_user.password
+    }).then(data => {
+      this.toastrService.success("Cập nhật thông tin cá nhân thành công.");
+    }).catch(err => {
+      this.toastrService.warning("Cập nhật thất bại.")
+    })
   }
 
 }

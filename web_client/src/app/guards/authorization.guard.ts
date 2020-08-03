@@ -31,7 +31,7 @@ export class AuthorizationGuard implements CanActivate {
     
     if (!res) {
       console.log("res", res);
-      this.router.navigate(['user']);
+      this.router.navigate(['user-profile']);
     }
 
     return res;
