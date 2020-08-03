@@ -147,6 +147,7 @@ export class NewUserComponent implements OnInit {
     }
     if (!this.isUsernameInvalid && !this.isNameInvalid && !this.isRoleInvalid && !this.isEmailInvalid && !this.isPhoneInvalid) {
       this.newUser.approve = "0";
+      this.newUser.status = "0";
       this.newUser.password = "123456";
       this.userService.createUser(this.newUser)
         .then((data) => {

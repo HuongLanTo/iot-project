@@ -47,6 +47,7 @@ export class PendingNodeComponent implements OnInit {
 
   async getNodeList(filter, currentPage, sizePage) {
     this.spinnerService.show();
+    this.currentPage = currentPage;
     await this.nodeService.getNodeList(filter, currentPage, sizePage).then((data: any) => {
       this.totalItems = data.total;
       this.nodeList = data.data;
@@ -62,6 +63,7 @@ export class PendingNodeComponent implements OnInit {
 
   async getApprovedNodeList(filter, currentPage, sizePage) {
     this.spinnerService.show();
+    this.currentPage = currentPage;
     await this.nodeService.getNodeList(filter, currentPage, sizePage).then((data: any) => {
       this.totalItems1 = data.total;   
       this.approveNodeList = data.data;
@@ -76,6 +78,7 @@ export class PendingNodeComponent implements OnInit {
 
   async getDisapprovedNodeList(filter, currentPage, sizePage) {
     this.spinnerService.show();
+    this.currentPage = currentPage;
     await this.nodeService.getNodeList(filter, currentPage, sizePage).then((data: any) => {
       this.totalItems2 = data.total;
       this.disapproveNodeList = data.data;

@@ -43,6 +43,7 @@ export class LocationComponent implements OnInit {
 
   async getLocationList(filter, currentPage, sizePage) {
     this.spinnerService.show();
+    this.currentPage = currentPage;
     await this.locationService.getLocationList(filter, currentPage, sizePage).then((data: any) => {
       this.totalItems = data.total;
       this.locationList = data.data;

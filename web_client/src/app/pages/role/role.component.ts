@@ -40,6 +40,7 @@ export class RoleComponent implements OnInit {
 
   async getRoleList(filter, currentPage, sizePage) {
     this.spinnerService.show();
+    this.currentPage = currentPage;
     await this.roleService.getRoleList(filter, currentPage, sizePage).then((data: any) => {
       this.totalItems = data.total;
       this.ROLES = data.data;

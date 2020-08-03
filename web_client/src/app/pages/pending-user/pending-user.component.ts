@@ -51,6 +51,7 @@ export class PendingUserComponent implements OnInit {
 
   async getUserList(filter, currentPage, sizePage) {
     this.spinnerService.show();
+    this.currentPage = currentPage;
     await this.userService.getUserList(filter, currentPage, sizePage).then((data: any) => {
       this.totalItems = data.totalDocuments;
       this.userList = data.data;
@@ -66,6 +67,7 @@ export class PendingUserComponent implements OnInit {
 
   async getApprovedUserList(filter, currentPage, sizePage) {
     this.spinnerService.show();
+    this.currentPage = currentPage;
     await this.userService.getUserList(filter, currentPage, sizePage).then((data: any) => {
       this.totalItems1 = data.totalDocuments;
       this.approveUserList = data.data;
@@ -80,6 +82,7 @@ export class PendingUserComponent implements OnInit {
 
   async getDisapprovedUserList(filter, currentPage, sizePage) {
     this.spinnerService.show();
+    this.currentPage = currentPage;
     await this.userService.getUserList(filter, currentPage, sizePage).then((data: any) => {
       this.totalItems2 = data.totalDocuments;
       this.disapproveUserList = data.data;
@@ -100,7 +103,8 @@ export class PendingUserComponent implements OnInit {
       })
       .catch(err => {
         this.toastrService.warning("Xảy ra lỗi trong quá trình phê duyệt tài khoản");
-      })
+      });
+    this.userService.updateStatus(this.currentUser._id, {status: "1"});
   }
 
   disapprove() {
@@ -111,7 +115,7 @@ export class PendingUserComponent implements OnInit {
       })
       .catch(err => {
         this.toastrService.warning("Xảy ra lỗi trong quá trình từ chối phê duyệt tài khoản");
-      })
+      });
   }
 
   getApprove() {

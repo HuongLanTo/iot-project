@@ -37,7 +37,7 @@
                 </thead>
                 <tbody>
                   <tr *ngFor="let user of userList; let index = index" style="text-align: center;">
-                    <td>{{ index + 1 }}</td>
+                    <td>{{ (currentPage - 1) * sizePage + index + 1 }}</td>
                     <td *ngFor="let key_data of key_data" >
                       <span *ngIf="key_data.key!=='role'">{{ user[key_data.key] }}</span>
                       <span *ngIf="key_data.key=='role'">{{ user[key_data.key].name }}</span>
@@ -71,7 +71,7 @@
                 </thead>
                 <tbody>
                   <tr *ngFor="let user1 of approveUserList; let index = index" style="text-align: center;">
-                    <td>{{ index + 1 }}</td>
+                    <td>{{ (currentPage - 1) * sizePage + index + 1 }}</td>
                     <td *ngFor="let key_data of key_data" >
                       <span *ngIf="key_data.key!=='role'">{{ user1[key_data.key] }}</span>
                       <span *ngIf="key_data.key=='role'">{{ user1[key_data.key].name }}</span>
@@ -96,7 +96,7 @@
                 </thead>
                 <tbody>
                   <tr *ngFor="let user2 of disapproveUserList; let index = index" style="text-align: center;">
-                    <td>{{ index + 1 }}</td>
+                    <td>{{ (currentPage - 1) * sizePage + index + 1 }}</td>
                     <td *ngFor="let key_data of key_data" >
                       <span *ngIf="key_data.key!=='role'">{{ user2[key_data.key] }}</span>
                       <span *ngIf="key_data.key=='role'">{{ user2[key_data.key].name }}</span>
