@@ -298,12 +298,12 @@
                 </table>
             </div>
         </div>
-        <div class="col-lg-6" *ngIf="searchList.length!=0">
+        <div class="col-lg-6" >
             <div class="d-flex justify-content-end">
-                <button class="btn btn-icon btn-2 btn-dark" type="button" (click)="setLineTypeOfChart()">
+                <button *ngIf="searchList.length!=0" class="btn btn-icon btn-2 btn-dark" type="button" (click)="setLineTypeOfChart()">
                     <span class="btn-inner--icon"><i class="fas fa-chart-line"></i></span>
                 </button>
-                <button class="btn btn-icon btn-2 btn-dark" type="button" (click)="setBarTypeOfChart()">
+                <button *ngIf="searchList.length!=0" class="btn btn-icon btn-2 btn-dark" type="button" (click)="setBarTypeOfChart()">
                     <span class="btn-inner--icon"><i class="ni ni-chart-bar-32"></i></span>
                 </button>
             </div>

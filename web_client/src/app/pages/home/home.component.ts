@@ -53,7 +53,6 @@ export class HomeComponent implements OnInit {
 
   filterSearch: any = {
     date: moment(new Date()).format("YYYY-MM-DD HH:mm:ss"),
-    node_ids: this.activeNodeId
   }
 
   // search
@@ -441,24 +440,22 @@ export class HomeComponent implements OnInit {
   }
 
   async searchByDay(value) {
-    var temp = value;
     this.searchNameList = [];
     this.searchAqiList = [];
-    this.filterSearch.date = moment(new Date(temp)).format("YYYY-MM-DD");
-    this.filterSearch.node_ids = this.activeNodeId;
+    this.filterSearch.date = value;
     await this.dataService.getDataOfAllNodeByDay(this.filterSearch).then(data => {
+      console.log(555, data);
+      
       this.searchList = data;
-    })
-    console.log(this.filterSearch);
-    console.log(this.activeNodeId);
-    console.log(this.searchList);
-    
-    
-    this.searchList.forEach(e => {
-      this.searchAqiList.push(e.aqi);
-      this.searchNameList.push(e.name);
     });
-    this.setLineTypeOfChart()
+    
+    if (this.searchList.length != 0) {
+      this.searchList.forEach(e => {
+        this.searchAqiList.push(e.aqi);
+        this.searchNameList.push(e.name);
+      });
+      this.setLineTypeOfChart()
+    }
   }
     
 }
