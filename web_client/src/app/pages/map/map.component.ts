@@ -7,6 +7,7 @@ import { OpenStreetMapProvider } from 'leaflet-geosearch';
 import { GeoSearchControl, SearchControl } from 'leaflet-geosearch';
 import { SensorData, sensorData } from 'src/app/data/sensor_data';
 import { DataService } from 'src/app/services/data.service';
+import { NodeService } from 'src/app/services/node.service';
 const iconRetinaUrl = 'assets/marker-icon-2x.png';
 const iconUrl = 'assets/marker-icon.png';
 const shadowUrl = 'assets/marker-shadow.png';
@@ -25,8 +26,9 @@ const iconDefault = L.icon({
 });
 // const icon = L.divIcon({
 //   // iconUrl: 'assets/icon/happy.png',
-//   // iconSize: [25, 41],
-//   html: '<div class="container"><img src="assets/icon/happy.png"><div class="centered">50</div></div>'
+//   iconSize: [0, 0],
+//   // iconAnchor:   [22, 94],
+//   html: '<div class="container"><img style="margin-left: -30px; margin-top: -20px; width: 35px;" src="assets/marker/Marker1.png"><div><h1 style="color: black; font-size: 18px; margin-left: -24px; margin-top: -34px;">50</h1></div></div>'
 // })
 L.Marker.prototype.options.icon = iconDefault;
 interface result {
@@ -49,16 +51,20 @@ export class MapComponent implements OnInit {
   private map;
   sensor_data: any;
   polygon = [];
+  activeNode = [];
+  activeNodeId = "";
 
   constructor(
-    private dataService: DataService
+    private dataService: DataService,
+    private nodeService: NodeService
   ) { }
 
   async ngOnInit() {
     this.initMap();
     // var marker = L.marker([20.975986, 105.815191]).addTo(this.map);
     // marker.bindPopup("<b>nameNode1</b><br>AQI:96");
-    await this.getDataByLastHour();
+    await this.getNodeList();
+    await this.getDataByLastHour({node_ids:this.activeNodeId});
     // this.sensor_data.forEach(e => {
     //   this.polygon.push([Number(e.long), Number(e.lat)]);
     // });
@@ -91,8 +97,21 @@ export class MapComponent implements OnInit {
    
     //    marker.bindPopup(popupText);
     // }
-    this.getDataByLastHour();
     this.getMarkers();
+  }
+
+  async getNodeList() {
+    await this.nodeService.getNodeListApprovedFilter({approve: 1, status: 1}).then((data: any) => {
+      this.activeNode = data.data;
+    });
+    this.activeNode.forEach(e => {
+      if (this.activeNodeId.length == 0) {
+        this.activeNodeId = this.activeNodeId + e._id;
+      } else {
+        this.activeNodeId = this.activeNodeId + "," + e._id;
+      }
+    });
+    
   }
 
   private initMap() {
@@ -109,8 +128,8 @@ export class MapComponent implements OnInit {
     tiles.addTo(this.map);
   }
 
-  async getDataByLastHour() {
-    await this.dataService.getDataByLastHour().then(data => {
+  async getDataByLastHour(filter) {
+    await this.dataService.getDataByLastHour(filter).then(data => {
       console.log(data);
       this.sensor_data = data;
     });
@@ -130,13 +149,26 @@ export class MapComponent implements OnInit {
       temp.push(this.sensor_data[i].tem);
       temp.push(this.sensor_data[i].hum);
       temp.push(this.sensor_data[i].location);
+      if (this.sensor_data[i].aqi >= 0 && this.sensor_data[i].aqi <= 50) {
+        temp.push("Tốt");
+      } else if (this.sensor_data[i].aqi >= 51 && this.sensor_data[i].aqi <= 100) {
+        temp.push("Trung bình");
+      } else if (this.sensor_data[i].aqi >= 101 && this.sensor_data[i].aqi <= 150) {
+        temp.push("Kém");
+      } else if (this.sensor_data[i].aqi >= 151 && this.sensor_data[i].aqi <= 200) {
+        temp.push("Xấu");
+      } else if (this.sensor_data[i].aqi >= 201 && this.sensor_data[i].aqi <= 300) {
+        temp.push("Rất xấu");
+      } else if (this.sensor_data[i].aqi >= 301) {
+        temp.push("Nguy hại");
+      };
       temp.push(`<b style="font-size:21px">${this.sensor_data[i].location}</b>
       <br>
       <table>
         <tbody>
           <tr style="text-align:left;">
             <td style="text-align:left; padding-right: 20px;"><span style="font-size:20px">AQI: ${this.sensor_data[i].aqi}</span></td>
-            <td style="text-align:left;"><span style="font-size:20px">Tốt</span></td>
+            <td style="text-align:left;"><span style="font-size:20px">${temp[6]}</span></td>
           </tr>
           <tr style="text-align:left;">
             <td style="text-align:left; padding-right: 20px;"><i class="fa fa-tint fa-2x" aria-hidden="true" style="float:left;margin-right:6px;"></i><span style="font-size:18px;line-height:24px;">${this.sensor_data[i].tem}&#8451;</span></td>
@@ -156,11 +188,48 @@ export class MapComponent implements OnInit {
       var lon = Number(markers[i][1]);
       var lat = Number(markers[i][0]);
       
-      var popupText = String(markers[i][6]);
+      var popupText = String(markers[i][7]);
       
       var markerLocation = new L.LatLng(lat, lon);
       
-      var marker = new L.Marker(markerLocation);
+      if (markers[i][6] == "Tốt") {
+        var icon1 = L.divIcon({
+          iconSize: [0, 0],
+          html: `<div class="container"><img style="margin-left: -30px; margin-top: -20px; width: 35px;" src="assets/marker/Marker1.png"><div><h1 style="color: black; font-size: 18px; margin-left: -24px; margin-top: -34px;">${markers[i][2]}</h1></div></div>`
+        });
+        var marker = new L.Marker(markerLocation, {icon: icon1});
+      } else if (markers[i][6] == "Trung bình" ) {
+        var icon2 = L.divIcon({
+          iconSize: [0, 0],
+          html: `<div class="container"><img style="margin-left: -30px; margin-top: -20px; width: 35px;" src="assets/marker/Marker2.png"><div><h1 style="color: black; font-size: 18px; margin-left: -24px; margin-top: -34px;">${markers[i][2]}</h1></div></div>`
+        });
+        var marker = new L.Marker(markerLocation, {icon: icon2});
+      } else if (markers[i][6] == "Kém" ) {
+        var icon3 = L.divIcon({
+          iconSize: [0, 0],
+          html: `<div class="container"><img style="margin-left: -30px; margin-top: -20px; width: 35px;" src="assets/marker/Marker3.png"><div><h1 style="color: black; font-size: 18px; margin-left: -24px; margin-top: -34px;">${markers[i][2]}</h1></div></div>`
+        });
+        var marker = new L.Marker(markerLocation, {icon: icon3});
+      } else if (markers[i][6] == "Xấu" ) {
+        var icon4 = L.divIcon({
+          iconSize: [0, 0],
+          html: `<div class="container"><img style="margin-left: -30px; margin-top: -20px; width: 35px;" src="assets/marker/Marker4.png"><div><h1 style="color: black; font-size: 18px; margin-left: -24px; margin-top: -34px;">${markers[i][2]}</h1></div></div>`
+        });
+        var marker = new L.Marker(markerLocation, {icon: icon4});
+      } else if (markers[i][6] == "Rất xấu" ) {
+        var icon5 = L.divIcon({
+          iconSize: [0, 0],
+          html: `<div class="container"><img style="margin-left: -30px; margin-top: -20px; width: 35px;" src="assets/marker/Marker5.png"><div><h1 style="color: black; font-size: 18px; margin-left: -24px; margin-top: -34px;">${markers[i][2]}</h1></div></div>`
+        });
+        var marker = new L.Marker(markerLocation, {icon: icon5});
+      } else if (markers[i][6] == "Nguy hại" ) {
+        var icon6 = L.divIcon({
+          iconSize: [0, 0],
+          html: `<div class="container"><img style="margin-left: -30px; margin-top: -20px; width: 35px;" src="assets/marker/Marker6.png"><div><h1 style="color: black; font-size: 18px; margin-left: -24px; margin-top: -34px;">${markers[i][2]}</h1></div></div>`
+        });
+        var marker = new L.Marker(markerLocation, {icon: icon6});
+      }
+      
       this.map.addLayer(marker);
    
       marker.bindPopup(popupText);
@@ -168,19 +237,5 @@ export class MapComponent implements OnInit {
     console.log(12, markers);
     
   }
-
-  // setMarker() {
-  //   console.log(56465348756453);
-    
-  //   var polygon: any = [];
-  //   this.sensor_data.forEach(e => {
-  //     polygon.push([Number(e.long), Number(e.lat)]);
-  //   });
-  //   for (var i = 0; i < polygon.length; i++) {
-  //     var markerLocation = new L.LatLng(polygon[i].lat, polygon[i].long);
-  //     var marker = new L.Marker(markerLocation);
-  //     this.map.addLayer(marker);
-  //   }
-  // }
 
 }

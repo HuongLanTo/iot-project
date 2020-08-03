@@ -69,7 +69,7 @@ export const aqiInfo = [
     v_color: "Tím",
     img: "../../../assets/icon/unhappy.png",
     announcement: "Cảnh báo: mọi người bị ảnh hưởng tới sức khỏe nghiêm trọng",
-    border: "1px solid #57F83B",
+    border: "1px solid #CC3399",
   },
   {
     id: "006",
@@ -81,6 +81,6 @@ export const aqiInfo = [
     v_color: "Nâu",
     img: "../../../assets/icon/cry.png",
     announcement: "Cảnh báo: mọi người bị ảnh hưởng tới sức khỏe nghiêm trọng",
-    border: "1px solid #57F83B",
+    border: "1px solid #A52A2A",
   },
 ];

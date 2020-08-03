@@ -36,6 +36,9 @@ export class HomeComponent implements OnInit {
   pm25_data = [];
   time = [];
 
+  activeNode = [];
+  activeNodeId = "";
+
   //filter
   filterDataBy24Hour = {
     node_id: "5f22874423e46173242227ae",
@@ -49,7 +52,8 @@ export class HomeComponent implements OnInit {
   }
 
   filterSearch: any = {
-    date: moment(new Date()).format("YYYY-MM-DD HH:mm:ss")
+    date: moment(new Date()).format("YYYY-MM-DD HH:mm:ss"),
+    node_ids: this.activeNodeId
   }
 
   // search
@@ -61,9 +65,7 @@ export class HomeComponent implements OnInit {
   searchNameList: any = [];
   currentDay = moment(new Date()).subtract(1, 'day').format("YYYY-MM-DD");
 
-  activeNode = [];
-  activeNodeId = [];
-  sensor_data_all: any = []
+  
 
   public sensorChart: any;
   public datasets: any;
@@ -76,13 +78,10 @@ export class HomeComponent implements OnInit {
   ) {}
 
   async ngOnInit() {
+    await this.getNodeList();
     this.aqi_info = aqiInfo
     parseOptions(Chart, chartOptions());
-    await this.nodeService.getNodeList({approve: 1, status: 1}, 1, 20).then((data: any) => this.activeNode = data.data);
-    this.activeNode.forEach(e => {
-      this.activeNodeId.push(e._id);
-    });
-    await this.getDataByLastHour();
+    await this.getDataByLastHour({node_ids: this.activeNodeId});
     this.getDataBy24Hour(this.filterDataBy24Hour);
     await this.getChart();
     await this.searchByDay(this.searchingDay);
@@ -104,8 +103,22 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  async getDataByLastHour() {
-    this.dataService.getDataByLastHour()
+  async getNodeList() {
+    await this.nodeService.getNodeListApprovedFilter({approve: 1, status: 1}).then((data: any) => {
+      this.activeNode = data.data;
+    });
+    this.activeNode.forEach(e => {
+      if (this.activeNodeId.length == 0) {
+        this.activeNodeId = this.activeNodeId + e._id;
+      } else {
+        this.activeNodeId = this.activeNodeId + "," + e._id;
+      }
+    });
+    
+  }
+
+  async getDataByLastHour(filter) {
+    this.dataService.getDataByLastHour(filter)
       .then(data => {
         this.sensor_data = data;
         if (this.sensor_data.length) {
@@ -131,8 +144,6 @@ export class HomeComponent implements OnInit {
   }
 
   selectedNode(id) {
-    console.log(id);
-    
     for (var i = 0; i < this.sensor_data.length; i++) {
       if (id == this.sensor_data[i].node_id) {
         this.current_sensor_data = this.sensor_data[i];
@@ -434,9 +445,13 @@ export class HomeComponent implements OnInit {
     this.searchNameList = [];
     this.searchAqiList = [];
     this.filterSearch.date = moment(new Date(temp)).format("YYYY-MM-DD");
+    this.filterSearch.node_ids = this.activeNodeId;
     await this.dataService.getDataOfAllNodeByDay(this.filterSearch).then(data => {
       this.searchList = data;
     })
+    console.log(this.filterSearch);
+    console.log(this.activeNodeId);
+    
     this.searchList.forEach(e => {
       this.searchAqiList.push(e.aqi);
       this.searchNameList.push(e.name);
