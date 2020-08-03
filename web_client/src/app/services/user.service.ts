@@ -9,37 +9,20 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class UserService extends BaseService {
     constructor(
-      protected http: HttpClient,
+      protected httpClient: HttpClient,
       private router:Router,
       public jwtHelper: JwtHelperService
     ) {
+        super(httpClient)
     }
-
-    protected headers = new HttpHeaders({
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        Cookies: document.cookie,
-      });
-    
-      private getOptions() {
-        return { headers: this.headers };
-      }
-    
-
-    private API_URL = environment.apiUrl;
-
-    // filter(filter: any) {
-    //     filter = JSON.stringify(filter);
-    //     filter = btoa(filter);
-    // }
 
     getUserList(filter: any, page: number, size: number) {
         filter = JSON.stringify(filter);
         filter = btoa(unescape(encodeURIComponent(filter)));
         return new Promise((resolve, reject) => {
-            this.http.get(this.API_URL + `/api/user?filter=${filter}&page=${page}&size=${size}`, this.getOptions()).subscribe((res: any) => {
+            this.httpClient.get(this.API_URL + `/api/user?filter=${filter}&page=${page}&size=${size}`, this.getOptions()).subscribe((res: any) => {
                 resolve(res.responseData);
             }, err => {
                 reject(err);
@@ -49,9 +32,9 @@ export class UserService {
 
     getUser(filter: string) {
         filter = JSON.stringify(filter);
-        filter = btoa(filter);
+        filter = btoa(unescape(encodeURIComponent(filter)));
         return new Promise((resolve, reject) => {
-            this.http.get(this.API_URL + `/api/user?filter=${filter}`, this.getOptions()).subscribe((res: {data: any}) => {
+            this.httpClient.get(this.API_URL + `/api/user?filter=${filter}`, this.getOptions()).subscribe((res: {data: any}) => {
                 console.log(res.data);
                 resolve(res.data);
             }, err => {
@@ -62,7 +45,7 @@ export class UserService {
 
     getUserById(id: string) {
         return new Promise((resolve, reject) => {
-            this.http.get(this.API_URL + `/api/user/${id}`).subscribe((res: {data: any}) => {
+            this.httpClient.get(this.API_URL + `/api/user/${id}`).subscribe((res: {data: any}) => {
                 resolve(res.data);
             }, err => {
                 reject(err);
@@ -72,7 +55,7 @@ export class UserService {
 
     createUser(user: any) {
         return new Promise((resolve, reject) => {
-            this.http.post(this.API_URL + "/api/user", user, this.getOptions()).subscribe(res => {
+            this.httpClient.post(this.API_URL + "/api/user", user, this.getOptions()).subscribe(res => {
                 resolve(true);
             }, err => {
                 reject(err);
@@ -83,7 +66,7 @@ export class UserService {
 
     updateUserInfo(id: string, userInfo) {
         return new Promise((resolve, reject) => {
-            this.http.put(this.API_URL + `/api/user/basic/${id}`, userInfo, this.getOptions()).subscribe(res => {
+            this.httpClient.put(this.API_URL + `/api/user/basic/${id}`, userInfo, this.getOptions()).subscribe(res => {
                 resolve(true);
             }, err => {
                 reject(err);
@@ -93,7 +76,7 @@ export class UserService {
 
     approve(id: string, userInfo) {
         return new Promise((resolve, reject) => {
-            this.http.put(this.API_URL + `/api/user/approve/${id}`, userInfo, this.getOptions()).subscribe(res => {
+            this.httpClient.put(this.API_URL + `/api/user/approve/${id}`, userInfo, this.getOptions()).subscribe(res => {
                 resolve(true);
             }, err => {
                 reject(err);
@@ -103,7 +86,7 @@ export class UserService {
 
     updateStatus(id: string, userInfo) {
         return new Promise((resolve, reject) => {
-            this.http.put(this.API_URL + `/api/user/status/${id}`, userInfo, this.getOptions()).subscribe(res => {
+            this.httpClient.put(this.API_URL + `/api/user/status/${id}`, userInfo, this.getOptions()).subscribe(res => {
                 resolve(true);
             }, err => {
                 reject(err);

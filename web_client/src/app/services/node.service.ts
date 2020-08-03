@@ -8,29 +8,18 @@ import { environment } from "src/environments/environment";
 @Injectable({
     providedIn: 'root'
 })
-export class NodeService {
+export class NodeService extends BaseService {
     constructor(
-        protected http: HttpClient
-    ) {}
-
-    protected headers = new HttpHeaders({
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        Cookies: document.cookie,
-      });
-    
-      private getOptions() {
-        return { headers: this.headers };
-      }
-    
-  
-    private API_URL = environment.apiUrl;
+        protected httpClient: HttpClient
+    ) {
+        super(httpClient)
+    }
 
     getNodeList(filter:any, page: number, size: number) {
         filter = JSON.stringify(filter);
         filter = btoa(unescape(encodeURIComponent(filter)));
         return new Promise((resolve, reject) => {
-            this.http.get(this.API_URL + `/api/node?filter=${filter}&page=${page}&size=${size}`, this.getOptions())
+            this.httpClient.get(this.API_URL + `/api/node?filter=${filter}&page=${page}&size=${size}`, this.getOptions())
                 .subscribe((res: {responseData: any}) => {
                     console.log(1, filter);
                     console.log(2, res.responseData);
@@ -44,7 +33,7 @@ export class NodeService {
 
     getNodeListNoFilter() {
         return new Promise((resolve, reject) => {
-            this.http.get(this.API_URL + "/api/node", this.getOptions())
+            this.httpClient.get(this.API_URL + "/api/node", this.getOptions())
                 .subscribe((res: {responseData: any}) => {
                     resolve(res.responseData);
                 }, err => {
@@ -57,7 +46,7 @@ export class NodeService {
         filter = JSON.stringify(filter);
         filter = btoa(unescape(encodeURIComponent(filter)));
         return new Promise((resolve, reject) => {
-            this.http.get(this.API_URL + `/api/node?filter=${filter}`)
+            this.httpClient.get(this.API_URL + `/api/node?filter=${filter}`)
                 .subscribe((res: {responseData: any}) => {
                     resolve(res.responseData);
                 }, err => {
@@ -68,7 +57,7 @@ export class NodeService {
 
     createNode(node: any): Promise<boolean> {
         return new Promise((resolve, reject) => {
-            this.http.post(this.API_URL + "/api/node", node, this.getOptions())
+            this.httpClient.post(this.API_URL + "/api/node", node, this.getOptions())
                 .subscribe(res => {
                     resolve(true);
                 }, err => reject(err))
@@ -77,7 +66,7 @@ export class NodeService {
 
     updateNodeInfo(id: string, nodeInfo) {
         return new Promise((resolve, reject) => {
-            this.http.put(this.API_URL + `/api/node/parameter/${id}`, nodeInfo, this.getOptions())
+            this.httpClient.put(this.API_URL + `/api/node/parameter/${id}`, nodeInfo, this.getOptions())
                 .subscribe(res => {
                     resolve(res);
                 }, err => {
@@ -88,7 +77,7 @@ export class NodeService {
 
     approve(id: string, nodeInfo) {
         return new Promise((resolve, reject) => {
-            this.http.put(this.API_URL + `/api/node/approve/${id}`, nodeInfo, this.getOptions()).subscribe(res => {
+            this.httpClient.put(this.API_URL + `/api/node/approve/${id}`, nodeInfo, this.getOptions()).subscribe(res => {
                 resolve(true);
             }, err => {
                 reject(err);
@@ -98,7 +87,7 @@ export class NodeService {
 
     updateStatus(id: string, status) {
         return new Promise((resolve, reject) => {
-            this.http.put(this.API_URL + `/api/node/status/${id}`, status, this.getOptions())
+            this.httpClient.put(this.API_URL + `/api/node/status/${id}`, status, this.getOptions())
                 .subscribe(res => {
                     resolve(res);
                 }, err => {

@@ -1,32 +1,23 @@
 import { Injectable } from "@angular/core";
 import { environment } from "src/environments/environment";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { BaseService } from "./base.service";
 
 @Injectable({
     providedIn: 'root'
 })
-export class LocationService {
+export class LocationService extends BaseService {
     constructor(
-        private http: HttpClient
-    ) {}
-
-    protected headers = new HttpHeaders({
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        Cookies: document.cookie,
-      });
-    
-    private getOptions() {
-    return { headers: this.headers };
+        protected httpClient: HttpClient
+    ) {
+        super(httpClient)
     }
-    
-    private API_URL = environment.apiUrl;
 
     getLocationList(filter:any, page: number, size: number) {
         filter = JSON.stringify(filter);
-        filter = btoa(filter);
+        filter = btoa(unescape(encodeURIComponent(filter)));
         return new Promise((resolve, reject) => {
-            this.http.get(this.API_URL + `/api/location?filter=${filter}&page=${page}&size=${size}`, this.getOptions()).
+            this.httpClient.get(this.API_URL + `/api/location?filter=${filter}&page=${page}&size=${size}`, this.getOptions()).
                 subscribe((res: {responseData: any}) => {
                     resolve(res.responseData)
                 }, err => {
@@ -38,7 +29,7 @@ export class LocationService {
 
     getLocationListNoFilter() {
         return new Promise((resolve, reject) => {
-            this.http.get(this.API_URL + "/api/location", this.getOptions()).
+            this.httpClient.get(this.API_URL + "/api/location", this.getOptions()).
                 subscribe((res: {responseData: any}) => {
                     console.log(res.responseData);
                     resolve(res.responseData)
@@ -51,7 +42,7 @@ export class LocationService {
 
     createLocation(location: any): Promise<boolean> {
         return new Promise((resolve, reject) => {
-            this.http.post(this.API_URL + '/api/location', location, this.getOptions())
+            this.httpClient.post(this.API_URL + '/api/location', location, this.getOptions())
                 .subscribe(res => {
                     resolve(true);
                 }, err => {
@@ -62,7 +53,7 @@ export class LocationService {
 
     getProvinceList() {
         return new Promise((resolve, reject) => {
-            this.http.get(this.API_URL + '/api/province', this.getOptions())
+            this.httpClient.get(this.API_URL + '/api/province', this.getOptions())
                 .subscribe((res: {responseData: any}) => {
                     resolve(res.responseData);
                 }, err => {
@@ -73,7 +64,7 @@ export class LocationService {
 
     getDistrictList() {
         return new Promise((resolve, reject) => {
-            this.http.get(this.API_URL + '/api/district', this.getOptions())
+            this.httpClient.get(this.API_URL + '/api/district', this.getOptions())
                 .subscribe((res: {responseData: any}) => {
                     resolve(res.responseData);
                 }, err => {
@@ -84,7 +75,7 @@ export class LocationService {
 
     getSubDistrictList() {
         return new Promise((resolve, reject) => {
-            this.http.get(this.API_URL + '/api/subdistrict', this.getOptions())
+            this.httpClient.get(this.API_URL + '/api/subdistrict', this.getOptions())
                 .subscribe((res: {responseData: any}) => {
                     resolve(res.responseData);
                 }, err => {

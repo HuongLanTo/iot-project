@@ -15,7 +15,7 @@ export class DataService {
     
     getDataByLastHour(filter?: any) {
       filter = JSON.stringify(filter);
-      filter = btoa(filter);
+      filter = btoa(unescape(encodeURIComponent(filter)));
       return new Promise((resolve, reject) => {
         this.http.get(this.API_URL + `/api/v1/nodes/hours/last?filter=${filter}`).subscribe((res: {data: any}) => {
           resolve(res.data)
@@ -27,7 +27,7 @@ export class DataService {
 
     getDataOfNode(filter: any, page: number) {
       filter = JSON.stringify(filter);
-      filter = btoa(filter);
+      filter = btoa(unescape(encodeURIComponent(filter)));
       console.log(filter);
       
       return new Promise((resolve, reject) => {
@@ -41,7 +41,7 @@ export class DataService {
 
     getDataBy24Hour(filter: any) {
       filter = JSON.stringify(filter);
-      filter = btoa(filter);
+      filter = btoa(unescape(encodeURIComponent(filter)));
       return new Promise((resolve, reject) => {
         this.http.get(this.API_URL + `/api/v1/nodes/hours?filter=${filter}`).subscribe((res: {data: any}) => {
           console.log(res.data);
@@ -55,7 +55,7 @@ export class DataService {
 
     getDataBy3Day(filter: any) {
       filter = JSON.stringify(filter);
-      filter = btoa(filter);
+      filter = btoa(unescape(encodeURIComponent(filter)));
       console.log(filter);
       return new Promise((resolve, reject) => {
         this.http.get(this.API_URL + `/api/v1/nodes/days/last/three?filter=${filter}`).subscribe((res: {data: any}) => {
@@ -68,8 +68,8 @@ export class DataService {
 
     getDataOfAllNodeByDay(filter: any) {
       filter = JSON.stringify(filter);
-      filter = btoa(filter);
-      console.log(filter);
+      filter = btoa(unescape(encodeURIComponent(filter)));
+      console.log(9999999, filter);
       return new Promise((resolve, reject) => {
         this.http.get(this.API_URL + `/api/v1/nodes/days/last/all?filter=${filter}`).subscribe((res: {data: any}) => {
           resolve(res.data)
