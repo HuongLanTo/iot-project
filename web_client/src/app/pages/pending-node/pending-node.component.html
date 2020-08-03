@@ -36,7 +36,6 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <h4 class="mb-0" style="padding: 10px 24px 20px 24px;" *ngIf="!checkNodeList">Không có dữ liệu</h4>
                   <tr *ngFor="let node of nodeList; let index = index" style="text-align: center;">
                     <td>{{ index + 1 }}</td>
                     <td *ngFor="let key_data of key_data" >
@@ -55,6 +54,7 @@
                   </tr>
                 </tbody>
               </table>
+              <h4 class="mb-0" style="padding: 10px 24px 20px 24px;" *ngIf="!checkNodeList">Không có dữ liệu</h4>
             </div>
             <ngx-spinner></ngx-spinner>
             <app-pagination [totalPages]='totalItems' (pageEmit)='getNodeList(filter, $event, sizePage)'></app-pagination>
@@ -70,7 +70,6 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <h4 class="mb-0" style="padding: 10px 24px 20px 24px;" *ngIf="!checkApproveNodeList">Không có dữ liệu</h4>
                   <tr *ngFor="let node1 of approveNodeList; let index = index" style="text-align: center;">
                     <td>{{ index + 1 }}</td>
                     <td *ngFor="let key_data of key_data" >
@@ -80,6 +79,7 @@
                   </tr>
                 </tbody>
               </table>
+              <h4 class="mb-0" style="padding: 10px 24px 20px 24px;" *ngIf="!checkApproveNodeList">Không có dữ liệu</h4>
             </div>
             <ngx-spinner></ngx-spinner>
             <app-pagination [totalPages]="totalItems1" (pageEmit)='getApprovedNodeList(filter, $event, sizePage)'></app-pagination>
@@ -95,7 +95,6 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <h4 class="mb-0" style="padding: 10px 24px 20px 24px;" *ngIf="!checkDisapproveNodeList">Không có dữ liệu</h4>
                   <tr *ngFor="let node2 of disapproveNodeList; let index = index" style="text-align: center;">
                     <td>{{ index + 1 }}</td>
                     <td *ngFor="let key_data of key_data" >
@@ -104,6 +103,7 @@
                     </td>
                 </tbody>
               </table>
+              <h4 class="mb-0" style="padding: 10px 24px 20px 24px;" *ngIf="!checkDisapproveNodeList">Không có dữ liệu</h4>
             </div>
             <ngx-spinner></ngx-spinner>
             <app-pagination [totalPages]='totalItems2' (pageEmit)='getDisapprovedNodeList(filter, $event, sizePage)'></app-pagination>

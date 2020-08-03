@@ -142,7 +142,6 @@
               </tr>
             </thead>
             <tbody>
-              <h4 class="mb-0" style="padding: 10px 24px 20px 24px;" *ngIf="actionLogList.length==0">Không tìm thấy kết quả phù hợp</h4>
               <tr
                 *ngFor="let action of actionLogList; let index = index"
                 style="text-align: center;"
@@ -163,6 +162,7 @@
               </tr>
             </tbody>
           </table>
+          <h4 class="mb-0" style="padding: 10px 24px 20px 24px;" *ngIf="actionLogList.length==0">Không tìm thấy kết quả phù hợp</h4>
         </div>
         <ngx-spinner></ngx-spinner>
         <app-pagination
