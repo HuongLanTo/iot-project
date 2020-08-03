@@ -97,6 +97,8 @@ export class PendingNodeComponent implements OnInit {
       .catch(err => {
         this.toastrService.warning("Xảy ra lỗi trong quá trình phê duyệt node");
       })
+    
+    this.nodeService.updateStatus(this.currentNode._id, {status: "1"});
   }
 
   disapprove() {

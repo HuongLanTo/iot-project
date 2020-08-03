@@ -48,7 +48,6 @@ export class NewNodeComponent implements OnInit {
       this.newNode.name = "Node " + temp;
     })
     await this.getLocationList();
-    await this.getMe();
   }
 
   createNode() {
@@ -70,6 +69,7 @@ export class NewNodeComponent implements OnInit {
     if (!this.isIpInvalid && !this.isNameInvalid && !this.isLocationInvalid) {
       console.log(this.newNode);
       this.newNode.approve = "0";
+      this.newNode.status = "0";
       this.newNode.created_by = this.id_current_user;
       this.nodeService
         .createNode(this.newNode)
@@ -93,11 +93,6 @@ export class NewNodeComponent implements OnInit {
     })
   }
 
-  getMe() {
-    this.profileSerive.getProfile().then((data: any) => {
-      this.id_current_user = data._id;
-    })
-  }
 
   checkName(value: any) {
     if (value) {

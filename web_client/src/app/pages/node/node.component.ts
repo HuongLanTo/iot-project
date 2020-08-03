@@ -22,12 +22,19 @@ export class NodeComponent implements OnInit {
     district: undefined,
     location_info: undefined
   };
+  public filter1 = {
+    approve: "1",
+    status: undefined,
+    name: undefined,
+    district: undefined,
+    location_info: undefined
+  };
   private currentPage: number = 1;
   private totalItems: number;
   private sizePage = 5;
 
   // check permission
-  private isHavingEditNodePermission: boolean;
+  private isHavingEditNodePermission: boolean = true;
   private provinceCode = [];
 
   //search
@@ -49,7 +56,6 @@ export class NodeComponent implements OnInit {
 
   async ngOnInit() {
     await this.checkEditNodePermission();
-    await this.getNodeList(this.filter, this.currentPage, this.sizePage);
     this.locationService.getDistrictList().then(data => this.districtList = data);
   }
 
@@ -166,6 +172,11 @@ export class NodeComponent implements OnInit {
       } else {
         this.isHavingEditNodePermission = false;
       }
+    }
+    if (this.isHavingEditNodePermission == true) {
+      this.getNodeList(this.filter1, this.currentPage, this.sizePage);
+    } else {
+      this.getNodeList(this.filter, this.currentPage, this.sizePage);
     }
   }
 
