@@ -34,8 +34,8 @@ export class NodeComponent implements OnInit {
   private sizePage = 5;
 
   // check permission
-  private isHavingEditNodePermission: boolean = true;
-  private provinceCode = [];
+  private isHavingEditNodePermission: number = 0; //1: Admin   2: Tạo mới node    3: Phê duyệt node
+  private districCode = [];
 
   //search
   searchName = "";
@@ -55,8 +55,10 @@ export class NodeComponent implements OnInit {
   ) {}
 
   async ngOnInit() {
+    this.currentPage = 1;
+    this.spinnerService.show();
     await this.checkEditNodePermission();
-    this.locationService.getDistrictList({}).then(data => this.districtList = data);
+    this.spinnerService.hide();
   }
 
   get fields() {
@@ -107,20 +109,17 @@ export class NodeComponent implements OnInit {
   }
 
   async getNodeList(filter, currentPage, sizePage) {
-    this.spinnerService.show();
     this.currentPage = currentPage;
     await this.nodeService.getNodeList(filter, currentPage, sizePage).then((data: any) => {
       this.check = true;
       this.totalItems = data.total;
       this.nodeList = data.data;
-      console.log(this.nodeList);
       console.log(data);
       
     }).catch(err => {
       this.check = false;
       this.currentPage = 1;
     })
-    this.spinnerService.hide();
   }
 
   async updateNodeInfo() {
@@ -156,27 +155,31 @@ export class NodeComponent implements OnInit {
       nameRole = data.role.name;
       actionName = data.role.action_permission;
       areaName = data.role.area_permission;
+      this.districtList = data.role.area_permission;
     })
     if (nameRole == "Admin") {
-      this.isHavingEditNodePermission = true;;
+      this.isHavingEditNodePermission = 1;
+      this.currentPage = 1;
+      await this.getNodeList(this.filter, this.currentPage, this.sizePage);
+      await this.locationService.getDistrictList({}).then(data => this.districtList = data);
     } else {
       var check = [];
       await actionName.forEach(e => {
         check.push(e.name);
       });
-      if (actionName.includes("Tạo mới node")) {
-        this.isHavingEditNodePermission = true;
+      if (check.includes("Tạo mới node")) {
         await areaName.forEach(e => {
-          this.provinceCode.push(e._id);
+          this.districCode.push(e._id);
         });
+        console.log('districtCode', this.districCode);
+        
+        this.filter.district = this.districCode;
+        this.currentPage = 1;
+        await this.getNodeList(this.filter, this.currentPage, this.sizePage);
+        this.isHavingEditNodePermission = 2;
       } else {
-        this.isHavingEditNodePermission = false;
+        this.isHavingEditNodePermission = 3;
       }
-    }
-    if (this.isHavingEditNodePermission == true) {
-      this.getNodeList(this.filter1, this.currentPage, this.sizePage);
-    } else {
-      this.getNodeList(this.filter, this.currentPage, this.sizePage);
     }
   }
 
@@ -203,13 +206,27 @@ export class NodeComponent implements OnInit {
     } else {
       this.filter.detail_location = this.searchDetailLocation;
     }
-    if (this.searchDistrict.length == 0) {
-      this.filter.district = undefined;
+    if (this.isHavingEditNodePermission == 2) {
+      if (this.searchDistrict.length == 0) {
+        this.filter.district = this.districCode;
+      } else {
+        if (this.searchDistrict == "all") {
+          this.filter.district = this.districCode;
+        } else {
+          this.filter.district = [];
+          this.filter.district.push(this.searchDistrict);
+        }
+      }
     } else {
-      if (this.searchDistrict == "all") {
+      if (this.searchDistrict.length == 0) {
         this.filter.district = undefined;
       } else {
-        this.filter.district = this.searchDistrict;
+        if (this.searchDistrict == "all") {
+          this.filter.district = undefined;
+        } else {
+          this.filter.district = [];
+          this.filter.district.push(this.searchDistrict);
+        }
       }
     }
     if (this.searchStatus.length == 0) {
@@ -224,7 +241,9 @@ export class NodeComponent implements OnInit {
     console.log(this.filter);
     
     this.currentPage = 1;
+    this.spinnerService.show();
     await this.getNodeList(this.filter, this.currentPage, this.sizePage);
+    this.spinnerService.hide();
   }
 
   async reset() {
@@ -233,8 +252,13 @@ export class NodeComponent implements OnInit {
     this.filter.detail_location = undefined;
     this.filter.status = undefined;
     this.searchName = this.searchDistrict = this.searchDetailLocation = this.searchStatus = "";
+    if (this.isHavingEditNodePermission == 2) {
+      this.filter.district = this.districCode;
+    }
     this.currentPage = 1;
+    this.spinnerService.show();
     await this.getNodeList(this.filter, this.currentPage, this.sizePage);
+    this.spinnerService.hide();
   }
 
 }

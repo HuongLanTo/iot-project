@@ -110,13 +110,13 @@
           <h3 class="mb-0">Danh sách các node</h3>
         </div>
         <div class="table-responsive">
-          <table class="table align-items-center table-flush">
+          <table class="table align-items-center table-flush" *ngIf="isHavingEditNodePermission!=0">
             <thead class="thead-light">
               <tr style="text-align: center;">
                 <th scope="col">STT</th>
                 <th scope="col" *ngFor="let field of fields">{{ field.label }}</th>
                 <th scope="col" *ngFor="let env of envs">{{ env.label }}</th>
-                <th scope="col" *ngIf="isHavingEditNodePermission">Lựa chọn</th>
+                <th scope="col" *ngIf="isHavingEditNodePermission!=3">Lựa chọn</th>
               </tr>
             </thead>
             <tbody>
@@ -136,7 +136,7 @@
                     >
                   </div>
                 </td>
-                <td *ngIf="isHavingEditNodePermission">
+                <td *ngIf="isHavingEditNodePermission!=3">
                   <button
                     class="btn btn-icon btn-sm btn-info"
                     type="button"
