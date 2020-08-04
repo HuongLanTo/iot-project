@@ -34,7 +34,7 @@ export class LocationComponent implements OnInit {
   async ngOnInit() {
     await this.getLocationList(this.filter, this.currentPage, this.sizePage);
     await this.getProvinceList();
-    await this.getDistrictList();
+    // await this.getDistrictList();
   }
 
   get fields() {
@@ -57,11 +57,11 @@ export class LocationComponent implements OnInit {
     })
   }
 
-  async getDistrictList() {
-    await this.locationService.getDistrictList().then(data => {
-      this.districtList = data;
-    })
-  }
+  // async getDistrictList() {
+  //   await this.locationService.getDistrictList().then(data => {
+  //     this.districtList = data;
+  //   })
+  // }
 
   getProvinceCodeAndProvinceId(value) {
     this.checkCityCode = true

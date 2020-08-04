@@ -56,7 +56,7 @@ export class NodeComponent implements OnInit {
 
   async ngOnInit() {
     await this.checkEditNodePermission();
-    this.locationService.getDistrictList().then(data => this.districtList = data);
+    this.locationService.getDistrictList({}).then(data => this.districtList = data);
   }
 
   get fields() {

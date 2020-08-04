@@ -62,9 +62,11 @@ export class LocationService extends BaseService {
         })
     }
 
-    getDistrictList() {
+    getDistrictList(filter: any) {
+        filter = JSON.stringify(filter);
+        filter = btoa(unescape(encodeURIComponent(filter)));
         return new Promise((resolve, reject) => {
-            this.httpClient.get(this.API_URL + '/api/district', this.getOptions())
+            this.httpClient.get(this.API_URL + `/api/district?filter=${filter}`, this.getOptions())
                 .subscribe((res: {responseData: any}) => {
                     resolve(res.responseData);
                 }, err => {
@@ -73,9 +75,11 @@ export class LocationService extends BaseService {
         })
     }
 
-    getSubDistrictList() {
+    getSubDistrictList(filter: any) {
+        filter = JSON.stringify(filter);
+        filter = btoa(unescape(encodeURIComponent(filter)));
         return new Promise((resolve, reject) => {
-            this.httpClient.get(this.API_URL + '/api/subdistrict', this.getOptions())
+            this.httpClient.get(this.API_URL + `/api/subdistrict?filter=${filter}`, this.getOptions())
                 .subscribe((res: {responseData: any}) => {
                     resolve(res.responseData);
                 }, err => {

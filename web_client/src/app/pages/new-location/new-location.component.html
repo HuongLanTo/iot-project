@@ -38,12 +38,12 @@
                     <label class="form-control-label" for="district">Quận, huyện <p style="display:inline-flex !important; color: red ">*</p></label>
                     <select *ngIf="!isDistrictInvalid" [disabled]="!checkSelectedProvince" name="district" id="district" class="form-control form-control-alternative" [(ngModel)]="chosenDistrict" (ngModelChange)="checkDistrict($event)">
                       <option value="" disabled selected hidden>Chọn quận, huyện</option>
-                      <option *ngFor="let district of districtList" [ngValue]="district"><span *ngIf="provinceCode==district.parent_code">{{ district.name }}</span></option>
+                      <option *ngFor="let district of districtList" [ngValue]="district"><span >{{ district.name }}</span></option>
                     </select>     
                     <div *ngIf="isDistrictInvalid" class="form-group has-danger">
                       <select  name="district" id="district" id="district" class="form-control is-invalid" [(ngModel)]="chosenDistrict" (ngModelChange)="checkDistrict($event)">
                         <option value="" disabled selected hidden class="is-invalid">Quận không được để trống</option>
-                        <option *ngFor="let district of districtList" [ngValue]="district"><span *ngIf="provinceCode==district.parent_code">{{ district.name }}</span></option>
+                        <option *ngFor="let district of districtList" [ngValue]="district"><span >{{ district.name }}</span></option>
                       </select> 
                     </div>        
                   </div>
@@ -60,7 +60,7 @@
                     <div *ngIf="isSubDistrictInvalid" class="form-group has-danger">
                       <select  name="location" id="location" id="inputLocation" class="form-control is-invalid" [(ngModel)]="chosenSubDistrict" (ngModelChange)="checkSubDistrict($event)">
                         <option value="" disabled selected hidden class="is-invalid">Phường không được để trống</option>
-                        <option *ngFor="let sub_district of sub_districtList">{{ sub_district.name }}</option>
+                        <option *ngFor="let sub_district of sub_districtList" [ngValue]="sub_district"><span *ngIf="districtCode==sub_district.parent_code">{{ sub_district.name }}</span></option>
                       </select> 
                     </div>        
                   </div>

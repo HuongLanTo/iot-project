@@ -55,8 +55,8 @@ export class NewLocationComponent implements OnInit {
 
   async ngOnInit() {
     this.getProvinceList();
-    this.getDistrictList();
-    this.getSubDistrictList();
+    // this.getDistrictList();
+    // this.getSubDistrictList();
   }
 
   // async ngAfterViewInit() {
@@ -121,24 +121,27 @@ export class NewLocationComponent implements OnInit {
     })
   }
 
-  async getDistrictList() {
-    this.locationService.getDistrictList().then(data => {
-      this.districtList = data;
-    })
-  }
+  // async getDistrictList() {
+  //   this.locationService.getDistrictList().then(data => {
+  //     this.districtList = data;
+  //   })
+  // }
 
-  async getSubDistrictList() {
-    this.locationService.getSubDistrictList().then(data => {
-      this.sub_districtList = data;
-    })
-  }
+  // async getSubDistrictList() {
+  //   this.locationService.getSubDistrictList().then(data => {
+  //     this.sub_districtList = data;
+  //   })
+  // }
 
   checkProvince(value: any) {
     if (value) {
       this.isProvinceInvalid = false;
       this.provinceCode = value.code;
       this.checkSelectedProvince = true;
-      this.newLocation.province = value._id;;
+      this.newLocation.province = value._id;
+      this.locationService.getDistrictList({parent_code: value.code}).then(data => {
+        this.districtList = data;
+      })
     } else {
       this.isProvinceInvalid = true;
       this.checkSelectedProvince = false;
@@ -151,6 +154,9 @@ export class NewLocationComponent implements OnInit {
       this.districtCode = value.code;
       this.checkSelectedDistrict = true;
       this.newLocation.district = value._id;
+      this.locationService.getSubDistrictList({parent_code: value.code}).then(data => {
+        this.sub_districtList = data;
+      })
     } else {
       this.isDistrictInvalid = true;
       this.checkSelectedDistrict = false;
