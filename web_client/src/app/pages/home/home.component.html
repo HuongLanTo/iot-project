@@ -186,8 +186,12 @@
                                 <th scope="col">{{ info.evaluate }}</th>
                                 <th scope="col">{{ info.comment }}</th>
                                 <th scope="col">
-                                    <label *ngIf="info.color === 'Yellow'" style="padding: 10px; color: grey;" [style.background-color]="info.color">{{ info.v_color }}</label>
-                                    <label *ngIf="info.color !== 'Yellow'" style="padding: 10px; color: white;" [style.background-color]="info.color">{{ info.v_color }}</label>
+                                    <label *ngIf="info.v_color === 'Xanh'" style="padding: 10px 9px; color: white;" [style.background-color]="info.color">{{ info.v_color }}</label>
+                                    <label *ngIf="info.v_color === 'Vàng'" style="padding: 10px 9px; color: white;" [style.background-color]="info.color">{{ info.v_color }}</label>
+                                    <label *ngIf="info.v_color === 'Cam'" style="padding: 10px; color: white;" [style.background-color]="info.color">{{ info.v_color }}</label>
+                                    <label *ngIf="info.v_color === 'Đỏ'" style="padding: 10px 15px; color: white;" [style.background-color]="info.color">{{ info.v_color }}</label>
+                                    <label *ngIf="info.v_color === 'Tím'" style="padding: 10px 12px; color: white;" [style.background-color]="info.color">{{ info.v_color }}</label>
+                                    <label *ngIf="info.v_color === 'Nâu'" style="padding: 10px 11px; color: white;" [style.background-color]="info.color">{{ info.v_color }}</label>
                                 </th>
                             </tr>
                         </tbody>
@@ -233,17 +237,17 @@
         <div class="col-lg-1"></div>
         <div class="col-lg-10">
             <h1>Tra số chỉ số AQI:</h1>
-            <ul class="nav nav-tabs" id="myTab" role="tablist">
-                <li class="nav-item">
+            <!-- <ul class="nav nav-tabs" id="myTab" role="tablist"> -->
+                <!-- <li class="nav-item">
                     <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Ngày</a>
-                </li>
+                </li> -->
                 <!-- <li class="nav-item">
                     <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Tuần</a>
                 </li> -->
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Tháng</a>
-                </li>
-            </ul>
+                </li> -->
+            <!-- </ul> -->
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                     <div class="form-group row">
@@ -261,14 +265,14 @@
                         </div>
                     </div>
                 </div> -->
-                <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                <!-- <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
                     <div class="form-group row">
                         <div class="col-5">
                             <label for="example-month-input" class=" col-form-label">Chọn tháng</label>
                             <input class="form-control" type="month" value="2020-06" id="example-month-input">
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div> 
     </div>
