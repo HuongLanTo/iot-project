@@ -60,7 +60,7 @@
                   type="date"
                   value="30-07-2020"
                   id="example-date-input"
-                  [(ngModel)]="filter.end_date"
+                  [(ngModel)]="end_date"
                 />
               </div>
             </div>
@@ -72,7 +72,7 @@
                 <button
                     type="button"
                     class="btn btn-primary"
-                    style="background-color: #fdc667; border-color: #fea200;"
+                    style="background-color: #fdc667; border-color: #fea200; margin-top: 32px;"
                     (click)="makeAReport()"
                 >
                     <i class="fa fa-search" aria-hidden="true"></i>
@@ -102,31 +102,34 @@
                 <th scope="col" *ngFor="let field of fields">
                   {{ field.label }}
                 </th>
+                <th>Đánh giá</th>
               </tr>
             </thead>
-            <tbody *ngIf="dataList!=0">
+            <tbody *ngIf="check==true">
               <tr
                 *ngFor="let data of dataList; let index = index"
                 style="text-align: center;"
               >
                 <td>{{ (currentPage - 1) * sizePage + index + 1 }}</td>
                 <td *ngFor="let field of fields">
-                  <span *ngIf="field.name!=datetime">{{ data[field.name] }}</span
+                  <span *ngIf="field.name!='datetime'">{{ data[field.name] }}</span
                   >
-                  <span *ngIf="field.name==datetime">{{ data[datetime] | date:'DD/MM/YYYY HH:mm' }}</span
+                  <span *ngIf="field.name=='datetime'">{{ data.datetime | date:'dd/MM/yyyy HH' }}h</span
                     >
                 </td>
+                <td>{{ evaluate(data.aqi) }}</td>
               </tr>
             </tbody>
           </table>
           <h4 class="mb-0" style="padding: 10px 24px 20px 24px;" *ngIf="dataList.length==0">Không tìm thấy kết quả phù hợp</h4>
         </div>
         <ngx-spinner></ngx-spinner>
-        <!-- <app-pagination
+        <app-pagination
           [totalPages]="totalItems"
-          (pageEmit)="getDataOfNode(filter, $event)"
-          *ngIf="dataList!=0"
-        ></app-pagination> -->
+          [pageSize]="sizePage"
+          (pageEmit)="getDataOfNode(filter, $event, sizePage)"
+          *ngIf="check==true"
+        ></app-pagination>
       </div>
     </div>
   </div>

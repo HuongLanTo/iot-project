@@ -25,13 +25,13 @@ export class DataService {
       })
     }
 
-    getDataOfNode(filter: any, page: number) {
+    getDataOfNode(filter: any, page: number, size: number) {
       filter = JSON.stringify(filter);
       filter = btoa(unescape(encodeURIComponent(filter)));
       console.log(filter);
       
       return new Promise((resolve, reject) => {
-        this.http.get(this.API_URL + `/api/v1/nodes/hours?filter=${filter}&page=${page}`).subscribe((res: {data: any}) => {
+        this.http.get(this.API_URL + `/api/v1/nodes/hours?filter=${filter}&page=${page}&size=${size}`).subscribe((res: {data: any}) => {
           resolve(res.data)
         }, err => {
           reject(err);
