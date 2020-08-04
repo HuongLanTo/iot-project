@@ -43,9 +43,9 @@ export class HomeComponent implements OnInit {
   filterDataBy24Hour = {
     node_id: "5f22874423e46173242227ae",
     end_date: moment(new Date()).format("YYYY-MM-DD HH:mm:ss"),
-    start_date: moment(new Date()).subtract(24, 'hours').format("YYYY-MM-DD HH:mm:ss"),
-    size: "24"
+    start_date: moment(new Date()).subtract(24, 'hours').format("YYYY-MM-DD HH:mm:ss")
   }
+  size: number = 24;
 
   filterDataBy3Day = {
     node_ids: ""
@@ -81,7 +81,7 @@ export class HomeComponent implements OnInit {
     this.aqi_info = aqiInfo
     parseOptions(Chart, chartOptions());
     await this.getDataByLastHour({node_ids: this.activeNodeId});
-    this.getDataBy24Hour(this.filterDataBy24Hour);
+    this.getDataBy24Hour(this.filterDataBy24Hour, this.size);
     await this.getChart();
     await this.searchByDay(this.searchingDay);
   }
@@ -129,8 +129,8 @@ export class HomeComponent implements OnInit {
       });
   }
 
-  getDataBy24Hour(filter) {
-    return this.dataService.getDataBy24Hour(filter).then((data:any) => {
+  getDataBy24Hour(filter, size) {
+    return this.dataService.getDataBy24Hour(filter, size).then((data:any) => {
       return data.rows;
     })
   }
@@ -314,7 +314,7 @@ export class HomeComponent implements OnInit {
   }
 
   async getChart() {
-    const dataBy24Hour = await this.getDataBy24Hour(this.filterDataBy24Hour);
+    const dataBy24Hour = await this.getDataBy24Hour(this.filterDataBy24Hour, this.size);
     // declare chart via id
     var coChart = document.getElementById("co_chart");
     var co2Chart = document.getElementById("co2_chart");
