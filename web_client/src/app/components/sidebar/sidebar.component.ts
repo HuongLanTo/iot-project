@@ -34,18 +34,18 @@ export const ROUTES: RouteInfo[] = [
 
     {
       path: 'Quản lý khu vực',
-      role: ['Phê duyệt user', 'Tạo mới user', 'Phê duyệt node', 'Tạo mới node'],
+      role: ['Phê duyệt node', 'Tạo mới node'],
       subPath: [
-        { path: '/location', title: 'Danh sách', role: ['Phê duyệt user', 'Tạo mới user', 'Phê duyệt node', 'Tạo mới node'], icon: 'ni ni-bullet-list-67' },
-        { path: '/new-location', title: 'Tạo mới', role: ['Tạo mới node'], icon: 'ni ni-fat-add' }
+        { path: '/location', title: 'Danh sách', role: ['Phê duyệt node', 'Tạo mới node'], icon: 'ni ni-bullet-list-67' },
+        { path: '/new-location', title: 'Tạo mới', role: ['Admin'], icon: 'ni ni-fat-add' }
       ]
     },
 
     {
       path: 'Quản lý các node',
-      role: ['Phê duyệt user', 'Tạo mới user', 'Phê duyệt node', 'Tạo mới node'],
+      role: ['Phê duyệt node', 'Tạo mới node'],
       subPath: [
-        { path: '/node', title: 'Danh sách', role: ['Phê duyệt user', 'Tạo mới user', 'Phê duyệt node', 'Tạo mới node'], icon: 'ni ni-bullet-list-67' },
+        { path: '/node', title: 'Danh sách', role: ['Phê duyệt node', 'Tạo mới node'], icon: 'ni ni-bullet-list-67' },
         { path: '/new-node', title: 'Tạo mới', role: ['Tạo mới node'], icon: 'ni ni-fat-add' },
         { path: '/pending-node', title: 'Chờ phê duyệt', role: ['Phê duyệt node'], icon: 'ni ni-check-bold' },
       ]
@@ -53,9 +53,9 @@ export const ROUTES: RouteInfo[] = [
 
     {
       path: 'Quản lý người dùng',
-      role: ['Phê duyệt user', 'Tạo mới user', 'Phê duyệt node', 'Tạo mới node'],
+      role: ['Phê duyệt user', 'Tạo mới user'],
       subPath: [
-        { path: '/user', title: 'Danh sách', role: ['Phê duyệt user', 'Tạo mới user', 'Phê duyệt node', 'Tạo mới node'], icon: 'ni ni-bullet-list-67' },
+        { path: '/user', title: 'Danh sách', role: ['Phê duyệt user', 'Tạo mới user'], icon: 'ni ni-bullet-list-67' },
         { path: '/new-user', title: 'Tạo mới', role: ['Tạo mới user'], icon: 'ni ni-fat-add' },
         { path: '/pending-user', title: 'Chờ phê duyệt', role: ['Phê duyệt user'], icon: 'ni ni-check-bold' },
       ]
@@ -63,9 +63,9 @@ export const ROUTES: RouteInfo[] = [
 
     {
       path: 'Quản lý vai trò',
-      role: ['Phê duyệt user', 'Tạo mới user', 'Phê duyệt node', 'Tạo mới node'],
+      role: ['Phê duyệt user', 'Tạo mới user'],
       subPath: [
-        { path: '/role', title: 'Danh sách', role: ['Phê duyệt user', 'Tạo mới user', 'Phê duyệt node', 'Tạo mới node'], icon: 'ni ni-bullet-list-67' },
+        { path: '/role', title: 'Danh sách', role: ['Phê duyệt user', 'Tạo mới user'], icon: 'ni ni-bullet-list-67' },
         { path: '/create-role', title: 'Tạo mới', role: ['Admin'], icon: 'ni ni-fat-add' },
       ]
     },
