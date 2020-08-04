@@ -1,4 +1,9 @@
-<div class="header py-7 py-lg-8" style="background: linear-gradient(360deg, #172B4D 0, #80d0c7 100%) !important;">
+<div
+  class="header py-7 py-lg-8"
+  style="
+    background: linear-gradient(360deg, #172b4d 0, #80d0c7 100%) !important;
+  "
+>
   <div class="container">
     <div class="header-body text-center mb-7">
       <div class="row justify-content-center">
@@ -9,7 +14,14 @@
     </div>
   </div>
   <div class="separator separator-bottom separator-skew zindex-100">
-    <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      x="0"
+      y="0"
+      viewBox="0 0 2560 100"
+      preserveAspectRatio="none"
+      version="1.1"
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <polygon class="fill-default" points="2560 0 2560 100 0 100"></polygon>
     </svg>
   </div>
@@ -24,27 +36,49 @@
             <div class="form-group mb-3">
               <div class="input-group input-group-alternative">
                 <div class="input-group-prepend">
-                  <span class="input-group-text"><i class="ni ni-circle-08"></i></span>
+                  <span class="input-group-text"
+                    ><i class="ni ni-circle-08"></i
+                  ></span>
                 </div>
-                <input class="form-control" placeholder="Username" type="text" [(ngModel)]="username" name="username">
+                <input
+                  class="form-control"
+                  placeholder="Tên đăng nhập"
+                  type="text"
+                  [(ngModel)]="username"
+                  name="username"
+                />
               </div>
             </div>
             <div class="form-group">
               <div class="input-group input-group-alternative">
                 <div class="input-group-prepend">
-                  <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                  <span class="input-group-text"
+                    ><i class="ni ni-lock-circle-open"></i
+                  ></span>
                 </div>
-                <input class="form-control" placeholder="Password" type="password" [(ngModel)]="password" name="password">
+                <input
+                  class="form-control"
+                  placeholder="Mật khẩu"
+                  type="password"
+                  [(ngModel)]="password"
+                  name="password"
+                />
               </div>
             </div>
-            <div class="custom-control custom-control-alternative custom-checkbox">
+            <!-- <div class="custom-control custom-control-alternative custom-checkbox">
               <input class="custom-control-input" id=" customCheckLogin" type="checkbox">
               <label class="custom-control-label" for=" customCheckLogin">
                 <span class="text-muted">Remember me</span>
               </label>
-            </div>
+            </div> -->
             <div class="text-center">
-              <button type="button" class="btn btn-primary my-4" (click)="login()">Đăng nhập</button>
+              <button
+                type="button"
+                class="btn btn-primary my-4"
+                (click)="login()"
+              >
+                Đăng nhập
+              </button>
             </div>
           </form>
         </div>
