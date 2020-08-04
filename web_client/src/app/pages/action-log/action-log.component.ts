@@ -61,7 +61,7 @@ export class ActionLogComponent implements OnInit {
 
   getModalInfo(field) {
     if (Object.keys(this.currentActionLog).length && this.currentActionLog[field.name]) {
-      return this.currentActionLog[field.name][field.key]
+      return this.currentActionLog[field.name];
     }
   }
 
@@ -129,10 +129,10 @@ const FIELDS = [
     label: "Thời gian tác động",
     name: "action_time"
   },
-  {
-    label: "Thời gian xử lý",
-    name: "execution_time"
-  },
+  // {
+  //   label: "Thời gian xử lý",
+  //   name: "execution_time"
+  // },
 ];
 
 const DETAILS = [

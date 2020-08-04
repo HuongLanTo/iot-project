@@ -139,6 +139,7 @@
                 <th scope="col" *ngFor="let field of fields">
                   {{ field.label }}
                 </th>
+                <th>Thời gian xử lý</th>
               </tr>
             </thead>
             <tbody>
@@ -159,6 +160,7 @@
                     getTableInfo(action, field.name, field.key)
                   }}</span>
                 </td>
+                <td><span>{{ action.execution_time }}</span></td>
               </tr>
             </tbody>
           </table>
@@ -227,6 +229,19 @@
                             </textarea>
                         </div>
                     </div>
+                </div>
+                <div class="w-50 float-left prl-15 col-md-6">
+                  <div class="form-group">
+                    <label class="form-control-label">Thời gian xử lý</label>
+                    <div class="form-group">
+                        <input 
+                          value="{{ currentActionLog.execution_time }}"
+                          type="text"
+                          class="form-control"
+                          readonly
+                        />
+                    </div>
+                </div>
                 </div>
             </div>
             <div class="modal-footer">

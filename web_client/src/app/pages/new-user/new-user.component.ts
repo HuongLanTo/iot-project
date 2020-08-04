@@ -84,7 +84,7 @@ export class NewUserComponent implements OnInit {
 
   async ngOnInit() {
     await this.userService.getUserList(this.filter, this.currentPage, this.sizePage).then((data: any) => {
-      var temp = data.totalDocuments + 1;
+      var temp = data.total + 1;
       if (temp < 10) {
         this.newUser.username = "A000" + temp;
       } else if (temp >= 10) {

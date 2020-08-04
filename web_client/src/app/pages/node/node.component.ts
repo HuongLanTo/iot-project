@@ -20,7 +20,7 @@ export class NodeComponent implements OnInit {
     status: undefined,
     name: undefined,
     district: undefined,
-    location_info: undefined
+    detail_location: undefined
   };
   public filter1 = {
     approve: "1",
@@ -199,9 +199,9 @@ export class NodeComponent implements OnInit {
       this.filter.name = this.searchName;
     }
     if (this.searchDetailLocation.length == 0) {
-      this.filter.location_info = undefined;
+      this.filter.detail_location = undefined;
     } else {
-      this.filter.location_info = this.searchDetailLocation;
+      this.filter.detail_location = this.searchDetailLocation;
     }
     if (this.searchDistrict.length == 0) {
       this.filter.district = undefined;
@@ -230,7 +230,7 @@ export class NodeComponent implements OnInit {
   async reset() {
     this.filter.district = undefined;
     this.filter.name = undefined;
-    this.filter.location_info = undefined;
+    this.filter.detail_location = undefined;
     this.filter.status = undefined;
     this.searchName = this.searchDistrict = this.searchDetailLocation = this.searchStatus = "";
     this.currentPage = 1;
