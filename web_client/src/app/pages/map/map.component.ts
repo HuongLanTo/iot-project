@@ -65,6 +65,7 @@ export class MapComponent implements OnInit {
     // marker.bindPopup("<b>nameNode1</b><br>AQI:96");
     await this.getNodeList();
     await this.getDataByLastHour({node_ids:this.activeNodeId});
+    // await this.getDataByLastHour();
     // this.sensor_data.forEach(e => {
     //   this.polygon.push([Number(e.long), Number(e.lat)]);
     // });
@@ -97,7 +98,10 @@ export class MapComponent implements OnInit {
    
     //    marker.bindPopup(popupText);
     // }
-    this.getMarkers();
+    if (this.sensor_data!="" && this.sensor_data!=null) {
+      await this.getMarkers();
+    }
+    
   }
 
   async getNodeList() {
@@ -111,6 +115,7 @@ export class MapComponent implements OnInit {
         this.activeNodeId = this.activeNodeId + "," + e._id;
       }
     });
+    console.log("active", this.activeNodeId);
     
   }
 

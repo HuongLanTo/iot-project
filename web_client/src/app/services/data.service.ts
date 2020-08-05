@@ -13,11 +13,13 @@ export class DataService {
 
     private API_URL = environment.apiUrl;
     
-    getDataByLastHour(filter?: any) {
+    getDataByLastHour(filter: any) {
+      console.log(filter);
+      
       filter = JSON.stringify(filter);
       filter = btoa(unescape(encodeURIComponent(filter)));
       return new Promise((resolve, reject) => {
-        this.http.get(this.API_URL + `/api/v1/nodes/hours/last?filter=${filter}`).subscribe((res: {data: any}) => {
+        this.http.get(this.API_URL + `/api/v1/nodes/hours/last${filter}`).subscribe((res: {data: any}) => {
           resolve(res.data)
         }, err => {
           reject(err);

@@ -54,16 +54,16 @@
         <div class="col-lg-5">
             <div class="form-group">
                 <label class="form-control-label" for="inputAddress">Chọn địa điểm:</label>
-                <div *ngIf="!sensor_data.length">Không có dữ liệu</div>
-                <select *ngIf="sensor_data.length" [value]="current_sensor_data.node_id" name="addressNode" id="inputAddress" class="form-control" (change)="selectedNode($event.target.value)">
+                <div *ngIf="sensor_data=='' || sensor_data==null">Không có dữ liệu</div>
+                <select *ngIf="sensor_data!='' && sensor_data!=null" [value]="current_sensor_data.node_id" name="addressNode" id="inputAddress" class="form-control" (change)="selectedNode($event.target.value)">
                     <!-- <option value="" disabled selected hidden>{{ current_sensor_data.name }} - {{ current_sensor_data.location }}</option> -->
                     <option *ngFor="let data of sensor_data" [value]="data.node_id">{{ data.name }} - {{ data.location }}</option>
                 </select>     
             </div>
-            <h3 *ngIf="sensor_data.length" class="mb-0">Chỉ số chất lượng không khí lúc {{ current_sensor_data.datetime | date:'HH:mm' }} ngày {{ current_sensor_data.datetime | date:'dd/MM/yyyy' }}</h3>
+            <h3 *ngIf="sensor_data!='' && sensor_data!=null" class="mb-0">Chỉ số chất lượng không khí lúc {{ current_sensor_data.datetime | date:'HH:mm' }} ngày {{ current_sensor_data.datetime | date:'dd/MM/yyyy' }}</h3>
             <br>
             <!-- <div *ngIf="!sensor_data.length">Không có dữ liệu</div> -->
-            <div *ngIf="sensor_data.length" class="row showed-main-info" style="padding: 20px;" [style.background-color]="current_aqi_info.color">
+            <div *ngIf="sensor_data!='' && sensor_data!=null" class="row showed-main-info" style="padding: 20px;" [style.background-color]="current_aqi_info.color">
                 <div class="col-3">
                     <h2 style="text-align: center; font-size: 25px; color: black;">AQI: {{ current_sensor_data.aqi }}</h2>
                     <div style="text-align: center;">
@@ -90,7 +90,7 @@
                 </div>
             </div>
             <br>
-            <div class="card shadow">
+            <div class="card shadow" *ngIf="sensor_data!='' && sensor_data!=null">
                 <div class="card-body">
                     <div class="chart">
                         <canvas id="co_chart" class="chart-canvas">{{ co_chart }}</canvas>
@@ -98,7 +98,7 @@
                 </div>
             </div>
             <br>
-            <div class="card shadow">
+            <div class="card shadow" *ngIf="sensor_data!='' && sensor_data!=null">
                 <div class="card-body">
                     <div class="chart">
                         <canvas id="co2_chart" class="chart-canvas" height="200">{{ co2_chart }}</canvas>
@@ -106,7 +106,7 @@
                 </div>
             </div>
             <br>
-            <div class="card shadow">
+            <div class="card shadow" *ngIf="sensor_data!='' && sensor_data!=null">
                 <div class="card-body">
                     <div class="chart">
                         <canvas id="pm25_chart" class="chart-canvas"></canvas>
@@ -119,12 +119,11 @@
                 <app-map></app-map>
             </div>
             <hr>
-            <div class="row">
+            <div class="row" *ngIf="sensor_data!='' && sensor_data!=null">
                 <div class="col" *ngFor="let data of three_day_aqi_data; let index = index">
                     <div class="card card-stats mb-4 mb-lg-0">
                         <div class="card-body">
-                            <div *ngIf="!sensor_data.length">Không có dữ liệu</div>
-                            <div *ngIf="sensor_data.length" class="row">
+                            <div class="row">
                                 <div class="col">
                                 <h4 class="card-title text-uppercase mb-0" style="text-align: center; color: black; padding-bottom: 10px;">{{ data.datetime | date:'dd/MM/yyyy' }}</h4>
                                 <hr [style.border]="three_day_aqi_info[index].border" style="margin-bottom: 15px; margin-top: 5px;">

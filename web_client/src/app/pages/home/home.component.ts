@@ -28,7 +28,7 @@ export class HomeComponent implements OnInit {
   aqi_info = [];                                            
   current_aqi_info: any = {};
   three_day_aqi_info: any = [];
-  three_day_aqi_data: any = {};
+  three_day_aqi_data: any = [];
   lineTypeOfChart = false;
   barTypeOfChart = false;
   co_data = [];
@@ -41,7 +41,7 @@ export class HomeComponent implements OnInit {
 
   //filter
   filterDataBy24Hour = {
-    node_id: "5f22874423e46173242227ae",
+    node_id: "",
     end_date: moment(new Date()).format("YYYY-MM-DD HH:mm:ss"),
     start_date: moment(new Date()).subtract(24, 'hours').format("YYYY-MM-DD HH:mm:ss")
   }
@@ -77,12 +77,15 @@ export class HomeComponent implements OnInit {
   ) {}
 
   async ngOnInit() {
-    await this.getNodeList();
     this.aqi_info = aqiInfo
+    await this.getNodeList();
     parseOptions(Chart, chartOptions());
     await this.getDataByLastHour({node_ids: this.activeNodeId});
-    this.getDataBy24Hour(this.filterDataBy24Hour, this.size);
-    await this.getChart();
+    // await this.getDataByLastHour();
+    // this.getDataBy24Hour(this.filterDataBy24Hour, this.size);
+    if (this.sensor_data!="" && this.sensor_data!=null) {
+      await this.getChart();
+    }
     await this.searchByDay(this.searchingDay);
   }
 
@@ -116,11 +119,12 @@ export class HomeComponent implements OnInit {
     
   }
 
+
   async getDataByLastHour(filter) {
     this.dataService.getDataByLastHour(filter)
       .then(data => {
         this.sensor_data = data;
-        if (this.sensor_data.length) {
+        if (this.sensor_data!="" && this.sensor_data!=null) {
           this.current_sensor_data = data[0];
           this.filterDataBy3Day.node_ids = this.current_sensor_data.node_id;
           this.current_sensor_node_id = this.sensor_data[0].node_id;
@@ -136,9 +140,13 @@ export class HomeComponent implements OnInit {
   }
 
   async getDataBy3Day(filter) {
-    this.dataService.getDataBy3Day(filter).then(data => {
-      this.three_day_aqi_data = data[0].data;
-      this.set3DayAqiInfo(this.three_day_aqi_data[0].aqi, this.three_day_aqi_data[1].aqi, this.three_day_aqi_data[2].aqi);
+    var temp: any = [];
+    await this.dataService.getDataBy3Day(filter).then(data => {
+      this.three_day_aqi_data = data[0];
+      if (this.three_day_aqi_data.length == 3) {
+        this.set3DayAqiInfo(this.three_day_aqi_data[0].aqi, this.three_day_aqi_data[1].aqi, this.three_day_aqi_data[2].aqi);
+      }
+      
     })
   }
 
@@ -150,8 +158,9 @@ export class HomeComponent implements OnInit {
     }
     this.filterDataBy3Day.node_ids = this.current_sensor_data.node_id;
     var temp = this.current_sensor_data.aqi;
-    // this.filterDataBy24Hour.node_id = id;
+    this.filterDataBy24Hour.node_id = id;
     this.setCurrentAqiInfo(temp);
+    this.getDataBy24Hour(this.filterDataBy24Hour, this.size);
     this.getDataBy3Day(this.filterDataBy3Day);
     this.getChart();
   }
@@ -328,7 +337,7 @@ export class HomeComponent implements OnInit {
     console.log(999, dataBy24Hour);
     
     
-    for (var i = 0; i < dataBy24Hour.length; i++) {
+    for (var i = dataBy24Hour.length - 1; i >= 0; i--) {
       this.co_data.push((dataBy24Hour[i].co));
       this.co2_data.push((dataBy24Hour[i].co2));
       this.pm25_data.push((dataBy24Hour[i].pm_25));
@@ -336,11 +345,6 @@ export class HomeComponent implements OnInit {
         moment(dataBy24Hour[i].datetime).format("DD/MM/YYYY HH:mm")
       );
     }
-    console.log(1, this.co_data);
-    console.log(2, this.time);
-    
-    
-
     // var r = Object.assign({}, chartExample1);
     var co_chart = new Chart(coChart, {
       type: "line",
