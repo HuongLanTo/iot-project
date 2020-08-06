@@ -122,10 +122,14 @@ export class HomeComponent implements OnInit {
 
   async getDataByLastHour(filter) {
     this.dataService.getDataByLastHour(filter)
-      .then(data => {
-        this.sensor_data = data;
+      .then((data: any) => {
+        console.log("data", data);
+        
+        this.sensor_data = data.data.filter(v => v && v.id);
+        console.log('sensor', this.sensor_data);
+        
         if (this.sensor_data!="" && this.sensor_data!=null) {
-          this.current_sensor_data = data[0];
+          this.current_sensor_data = this.sensor_data[0];
           this.filterDataBy3Day.node_ids = this.current_sensor_data.node_id;
           this.current_sensor_node_id = this.sensor_data[0].node_id;
           this.selectedNode(this.sensor_data[0].node_id);
@@ -140,14 +144,16 @@ export class HomeComponent implements OnInit {
   }
 
   async getDataBy3Day(filter) {
-    var temp: any = [];
-    await this.dataService.getDataBy3Day(filter).then(data => {
-      this.three_day_aqi_data = data[0];
-      if (this.three_day_aqi_data.length == 3) {
-        this.set3DayAqiInfo(this.three_day_aqi_data[0].aqi, this.three_day_aqi_data[1].aqi, this.three_day_aqi_data[2].aqi);
-      }
+    // var temp: any = [];
+    // await this.dataService.getDataBy3Day(filter).then((data: any) => {
+    //   this.three_day_aqi_data = data.data;
+    //   console.log(2324324, this.three_day_aqi_data);
       
-    })
+    //   if (this.three_day_aqi_data.length == 3) {
+    //     this.set3DayAqiInfo(this.three_day_aqi_data[0].aqi, this.three_day_aqi_data[1].aqi, this.three_day_aqi_data[2].aqi);
+    //   }
+      
+    // })
   }
 
   selectedNode(id) {

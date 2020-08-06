@@ -18,9 +18,15 @@ export class DataService {
       
       filter = JSON.stringify(filter);
       filter = btoa(unescape(encodeURIComponent(filter)));
+      console.log(filter);
+      
+      
       return new Promise((resolve, reject) => {
-        this.http.get(this.API_URL + `/api/v1/nodes/hours/last${filter}`).subscribe((res: {data: any}) => {
-          resolve(res.data)
+        this.http.get(this.API_URL + `/api/v1/nodes/hours/last?filter=${filter}`).subscribe((res) => {
+          
+          console.log(res);
+          
+          resolve(res)
         }, err => {
           reject(err);
         })
@@ -60,8 +66,10 @@ export class DataService {
       filter = btoa(unescape(encodeURIComponent(filter)));
       console.log(filter);
       return new Promise((resolve, reject) => {
-        this.http.get(this.API_URL + `/api/v1/nodes/days/last/three?filter=${filter}`).subscribe((res: {data: any}) => {
-          resolve(res.data)
+        this.http.get(this.API_URL + `/api/v1/nodes/days/last/three?filter=${filter}`).subscribe((res) => {
+          console.log(this.API_URL + `/api/v1/nodes/days/last/three?filter=${filter}`);
+          
+          resolve(res)
         }, err => {
           reject(err);
         })

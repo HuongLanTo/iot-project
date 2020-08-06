@@ -59,7 +59,7 @@
                   <option value="" disabled selected hidden
                     >Chọn vai trò cần tìm kiếm</option
                   >
-                  <option *ngFor="let role of roleList" name="role" [ngValue]="role" id="role">{{ role.name }}</option>
+                  <option *ngFor="let role of roleList" name="role" [ngValue]="role._id" id="role">{{ role.name }}</option>
                   <option value="all">Tất cả</option>
                 </select>
               </div>
@@ -109,7 +109,7 @@
           <h3 class="mb-0">Danh sách người dùng</h3>
         </div>
         <div class="table-responsive">
-          <table class="table align-items-center table-flush">
+          <table class="table align-items-center table-flush" *ngIf="check==true">
             <thead class="thead-light">
               <tr style="text-align: center;">
                 <th scope="col">STT</th>
@@ -142,7 +142,7 @@
               </tr>
             </tbody>
           </table>
-          <h4 class="mb-0" style="padding: 10px 24px 20px 24px;" *ngIf="userList.length==0">Không có dữ liệu</h4>
+          <h4 class="mb-0" style="padding: 10px 24px 20px 24px;" *ngIf="userList.length==0">Không có kết quả tìm kiếm phù hợp</h4>
         </div>
         <ngx-spinner></ngx-spinner>
         <app-pagination [totalPages]='totalItems' (pageEmit)='goToPage($event)'></app-pagination>

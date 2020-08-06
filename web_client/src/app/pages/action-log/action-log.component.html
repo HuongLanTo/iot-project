@@ -139,7 +139,7 @@
                 <th scope="col" *ngFor="let field of fields">
                   {{ field.label }}
                 </th>
-                <th>Thời gian xử lý</th>
+                <th>Thời gian xử lý (ms)</th>
               </tr>
             </thead>
             <tbody>
@@ -232,7 +232,7 @@
                 </div>
                 <div class="w-50 float-left prl-15 col-md-6">
                   <div class="form-group">
-                    <label class="form-control-label">Thời gian xử lý</label>
+                    <label class="form-control-label">Thời gian xử lý (ms)</label>
                     <div class="form-group">
                         <input 
                           value="{{ currentActionLog.execution_time }}"

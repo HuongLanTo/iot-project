@@ -57,6 +57,8 @@ export class PendingNodeComponent implements OnInit {
         this.checkNodeList = true;
       }
       
+    }).catch(err => {
+      this.currentPage = 1;
     });
     this.spinnerService.hide();
   }
@@ -72,6 +74,8 @@ export class PendingNodeComponent implements OnInit {
       } else {
         this.checkApproveNodeList = true;
       }
+    }).catch(err => {
+      this.currentPage = 1;
     });
     this.spinnerService.hide();
   }
@@ -87,6 +91,8 @@ export class PendingNodeComponent implements OnInit {
       } else {
         this.checkDisapproveNodeList = true;
       }
+    }).catch(err => {
+      this.currentPage = 1;
     });
     this.spinnerService.hide();
   }

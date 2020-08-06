@@ -24,8 +24,8 @@ const iconDefault = L.icon({
   shadowSize: [41, 41]
 });
 L.Marker.prototype.options.icon = iconDefault;
-var greenIcon = L.icon({
-  iconUrl: '../../../assets/icon/happy.png',
+var supportIcon = L.icon({
+  iconUrl: '../../../assets/icon/support.png',
   // shadowUrl: 'leaf-shadow.png',
 
   iconSize:     [38, 95], // size of the icon
@@ -56,7 +56,7 @@ export class SupportMapComponent implements OnInit {
 
 
   private map;
-  sensor_data: any;
+  locationList: any = [];
   polygon = [];
   latlng = {
     lat: "",
@@ -70,6 +70,10 @@ export class SupportMapComponent implements OnInit {
 
   async ngOnInit() {
     this.initMap();
+    await this.getLocationList();
+    if (this.locationList.length != 0) {
+      this.getMarkers();
+    }
     
     const provider = new OpenStreetMapProvider();
     var lat: number;
@@ -109,50 +113,41 @@ export class SupportMapComponent implements OnInit {
     tiles.addTo(this.map);
   }
 
+  async getLocationList() {
+    await this.locationService.getLocationListNoFilter().then((data: any) => {
+      this.locationList = data.data;
+    })
+  }
 
-  // getMarkers() {
-  //   var markers = [];
-  //   var temp = [];
-  //   for (var i = 0; i < this.sensor_data.length; i++) {
-  //     temp = [];
-  //     temp.push(this.sensor_data[i].lat);
-  //     temp.push(this.sensor_data[i].long);
-  //     temp.push(this.sensor_data[i].aqi);
-  //     temp.push(this.sensor_data[i].tem);
-  //     temp.push(this.sensor_data[i].hum);
-  //     temp.push(this.sensor_data[i].location);
-  //     temp.push(`<b style="font-size:21px">${this.sensor_data[i].location}</b>
-  //     <br>
-  //     <table>
-  //       <tbody>
-  //         <tr style="text-align:left;">
-  //           <td style="text-align:left; padding-right: 20px;"><span style="font-size:20px">AQI: ${this.sensor_data[i].aqi}</span></td>
-  //           <td style="text-align:left;"><span style="font-size:20px">Tốt</span></td>
-  //         </tr>
-  //         <tr style="text-align:left;">
-  //           <td style="text-align:left; padding-right: 20px;"><i class="fa fa-tint fa-2x" aria-hidden="true" style="float:left;margin-right:6px;"></i><span style="font-size:18px;line-height:24px;">${this.sensor_data[i].tem}&#8451;</span></td>
-  //           <td style="text-align:left;"><i class="fa fa-thermometer-empty fa-2x" aria-hidden="true" style="float:left;margin-right:6px;"></i><span style="font-size:18px;line-height:24px;">${this.sensor_data[i].hum}%</span></td>
-  //         </tr>
-  //       </tbody>
-  //     </table>`)
-  //     markers.push(temp);
-  //   }
-  //   //Loop through the markers array
-  //   for (var i = 0; i < markers.length; i++) {
+  getMarkers() {
+    var markers = [];
+    var temp = [];
+    for (var i = 0; i < this.locationList.length; i++) {
+      temp = [];
+      temp.push(this.locationList[i].latitude);
+      temp.push(this.locationList[i].longitude);
+      temp.push(this.locationList[i].detail_location);
+      temp.push(this.locationList[i].sub_district);
+      temp.push(this.locationList[i].district);
+      temp.push(`<b style="font-size:15px">${this.locationList[i].detail_location}, ${this.locationList[i].sub_district.name}, ${this.locationList[i].district.path}</b>`)
+      markers.push(temp);
+    }
+    //Loop through the markers array
+    for (var i = 0; i < markers.length; i++) {
      
-  //     var lon = Number(markers[i][1]);
-  //     var lat = Number(markers[i][0]);
+      var lon = Number(markers[i][1]);
+      var lat = Number(markers[i][0]);
       
-  //     var popupText = String(markers[i][6]);
+      var popupText = String(markers[i][5]);
       
-  //     var markerLocation = new L.LatLng(lat, lon);
-  //     var marker = new L.Marker(markerLocation);
-  //     this.map.addLayer(marker);
+      var markerLocation = new L.LatLng(lat, lon);
+      var marker = new L.Marker(markerLocation);
+      this.map.addLayer(marker);
    
-  //     marker.bindPopup(popupText);
-  //   }
-  //   console.log(12, markers);
+      marker.bindPopup(popupText);
+    }
+    console.log(12, markers);
     
-  // }
+  }
 
 }

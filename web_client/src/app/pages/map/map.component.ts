@@ -134,9 +134,8 @@ export class MapComponent implements OnInit {
   }
 
   async getDataByLastHour(filter) {
-    await this.dataService.getDataByLastHour(filter).then(data => {
-      console.log(data);
-      this.sensor_data = data;
+    await this.dataService.getDataByLastHour(filter).then((data: any) => {
+      this.sensor_data = data.data.filter(v => v && v.id);
     });
     // await this.setMarker();
   }

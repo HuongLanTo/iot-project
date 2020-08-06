@@ -1,6 +1,6 @@
 <nav class="navbar navbar-horizontal navbar-expand-lg navbar-dark" style="background: linear-gradient(87deg, #13547a 0, #80d0c7 100%) !important;">
     <div class="container">
-        <a class="navbar-brand" href="#">HỆ THỐNG THEO DÕI MÔI TRƯỜNG</a>
+        <a class="navbar-brand" href="#">HỆ THỐNG THEO DÕI CHẤT LƯỢNG KHÔNG KHÍ</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-default" aria-controls="navbar-default" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -27,21 +27,21 @@
                         <span class="nav-link-inner--text">Trang chủ</span>
                     </a>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link nav-link-icon" href="#">
                         <span class="nav-link-inner--text">Giới thiệu</span>
                     </a>
-                </li>
+                </li> -->
                 <li class="nav-item">
                     <a class="nav-link nav-link-icon" href="/user">
                         <span class="nav-link-inner--text">Quản lý</span>
                     </a>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link nav-link-icon" href="#">
                         <span class="nav-link-inner--text">Đăng xuất</span>
                     </a>
-                </li>
+                </li> -->
             </ul>
             
         </div>
@@ -247,6 +247,11 @@
                     <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Tháng</a>
                 </li> -->
             <!-- </ul> -->
+        </div> 
+    </div>
+    <div class="row">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-8">
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                     <div class="form-group row">
@@ -273,7 +278,17 @@
                     </div>
                 </div> -->
             </div>
-        </div> 
+        </div>
+        <div class="col-lg-2" style="margin-top: 55px;">
+            <div class="d-flex justify-content-end">
+                <button *ngIf="searchList.length!=0" class="btn btn-icon btn-2 btn-dark" type="button" (click)="setLineTypeOfChart()">
+                    <span class="btn-inner--icon"><i class="fas fa-chart-line"></i></span>
+                </button>
+                <button *ngIf="searchList.length!=0" class="btn btn-icon btn-2 btn-dark" type="button" (click)="setBarTypeOfChart()">
+                    <span class="btn-inner--icon"><i class="ni ni-chart-bar-32"></i></span>
+                </button>
+            </div>
+        </div>
     </div>
     <div class="row">
         <div class="col-lg-1"></div>
@@ -302,15 +317,6 @@
             </div>
         </div>
         <div class="col-lg-6" >
-            <div class="d-flex justify-content-end">
-                <button *ngIf="searchList.length!=0" class="btn btn-icon btn-2 btn-dark" type="button" (click)="setLineTypeOfChart()">
-                    <span class="btn-inner--icon"><i class="fas fa-chart-line"></i></span>
-                </button>
-                <button *ngIf="searchList.length!=0" class="btn btn-icon btn-2 btn-dark" type="button" (click)="setBarTypeOfChart()">
-                    <span class="btn-inner--icon"><i class="ni ni-chart-bar-32"></i></span>
-                </button>
-            </div>
-            <br>
             <div class="card shadow" [hidden]="!lineTypeOfChart">
                 <div class="card-body">
                     <div class="chart">

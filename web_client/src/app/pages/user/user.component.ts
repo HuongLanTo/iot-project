@@ -27,6 +27,7 @@ export class UserComponent implements OnInit {
   private currentPage: number = 1;
   public totalItems: number;
   private sizePage = 5;
+  check: boolean = false;
 
   // check permission
   private isHavingEditUserPermission: boolean;
@@ -46,11 +47,10 @@ export class UserComponent implements OnInit {
   ) { }
 
   async ngOnInit() {
-    this.spinnerService.show();
     await this.checkEditUserPermission();
     await this.getRoleList();
     await this.getUserList(this.filter, this.currentPage, this.sizePage);
-    this.spinnerService.hide();
+    this.check = true;
   }
 
   get fields() {
@@ -101,6 +101,7 @@ export class UserComponent implements OnInit {
 
   async getUserList(filter, currentPage, sizePage) {
     this.currentPage = currentPage;
+    this.spinnerService.show();
     await this.userService.getUserList(filter, currentPage, sizePage).then((data: any) => {
       this.totalItems = data.total;
       this.userList = data.data;
@@ -108,6 +109,7 @@ export class UserComponent implements OnInit {
     .catch(err => {
       this.currentPage = 1;
     });
+    this.spinnerService.hide();
   }
 
   updateUserInfo() {
@@ -176,10 +178,12 @@ export class UserComponent implements OnInit {
       if (this.searchStatus == "all") {
         this.filter.status = undefined;
       } else {
-        this.filter.status = this.searchStatus;
+        this.filter.status = String(this.searchStatus);
       }
     }
     this.currentPage = 1;
+    console.log("filter", this.filter);
+    
     await this.getUserList(this.filter, this.currentPage, this.sizePage);
   }
 
