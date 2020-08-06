@@ -144,16 +144,21 @@ export class HomeComponent implements OnInit {
   }
 
   async getDataBy3Day(filter) {
-    // var temp: any = [];
-    // await this.dataService.getDataBy3Day(filter).then((data: any) => {
-    //   this.three_day_aqi_data = data.data;
-    //   console.log(2324324, this.three_day_aqi_data);
+    var temp: any = [];
+    this.three_day_aqi_data = [];
+    this.three_day_aqi_info = [];
+    await this.dataService.getDataBy3Day(filter).then((data: any) => {
+      temp = data.data[0].data;
+      for (var i = temp.length - 1; i >= 0; i--) {
+        this.three_day_aqi_data.push(temp[i]);
+      }
+      console.log(2324324, this.three_day_aqi_data);
       
-    //   if (this.three_day_aqi_data.length == 3) {
-    //     this.set3DayAqiInfo(this.three_day_aqi_data[0].aqi, this.three_day_aqi_data[1].aqi, this.three_day_aqi_data[2].aqi);
-    //   }
+      if (this.three_day_aqi_data.length == 3) {
+        this.set3DayAqiInfo(this.three_day_aqi_data[0].aqi, this.three_day_aqi_data[1].aqi, this.three_day_aqi_data[2].aqi);
+      }
       
-    // })
+    })
   }
 
   selectedNode(id) {
@@ -264,6 +269,11 @@ export class HomeComponent implements OnInit {
                   labelString: "AQI",
                   display: true,
                 },
+                ticks: {
+                  max: Math.ceil((10 - Math.max(...this.searchAqiList) % 10) + Math.max(...this.searchAqiList)),
+                  min: Math.floor(Math.min(...this.searchAqiList) - Math.min(...this.searchAqiList) % 10),
+                  // stepSize: 10
+                }
               },
             ],
             xAxes: [
@@ -364,9 +374,9 @@ export class HomeComponent implements OnInit {
                 display: true,
               },
               ticks: {
-                // max: 1,
-                // min: -1,
-                // stepSize: 5
+                max: Math.ceil((10 - Math.max(...this.co_data) % 10) + Math.max(...this.co_data)),
+                min: Math.floor(Math.min(...this.co_data) - Math.min(...this.co_data) % 10),
+                // stepSize: 10
               }
             },
           ],
@@ -395,8 +405,8 @@ export class HomeComponent implements OnInit {
                 display: true,
               },
               ticks: {
-                // max: 100,
-                // min: 0,
+                max: Math.ceil((100 - Math.max(...this.co2_data) % 100) + Math.max(...this.co2_data)),
+                min: Math.floor(Math.min(...this.co2_data) - Math.min(...this.co2_data) % 100),
                 // stepSize: 10
               }
             },
@@ -425,8 +435,8 @@ export class HomeComponent implements OnInit {
                 display: true,
               },
               ticks: {
-                // max: 100,
-                // min: 0,
+                max: Math.ceil((10 - Math.max(...this.pm25_data) % 10) + Math.max(...this.pm25_data)),
+                min: Math.floor(Math.min(...this.pm25_data) - Math.min(...this.pm25_data) % 10),
                 // stepSize: 10
               }
             },

@@ -297,11 +297,11 @@ export const chartExample1 = {
         },
         ticks: {
           // maxTicksLimit: 3,
-          callback: function(value) {
-            if (!(value % 10)) {
-              return value;
-            }
-          }
+          // callback: function(value) {
+          //   if (!(value % 10)) {
+          //     return 5;
+          //   }
+          // }
         },
         scaleLabel: {
           display: true,
