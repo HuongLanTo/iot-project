@@ -18,7 +18,7 @@ export class UserService extends BaseService {
         super(httpClient)
     }
 
-    getUserList(filter: any, page: number, size: number) {
+    getUserList(filter?: any, page?: number, size?: number) {
         filter = JSON.stringify(filter);
         filter = btoa(unescape(encodeURIComponent(filter)));
         return new Promise((resolve, reject) => {

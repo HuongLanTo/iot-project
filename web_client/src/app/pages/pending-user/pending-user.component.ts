@@ -17,6 +17,8 @@ export class PendingUserComponent implements OnInit {
   };
   public currentUser: any = {};
   private currentPage: number = 1;
+  private currentPage1: number = 1;
+  private currentPage2: number = 1;
   private totalItems: number;
   private totalItems1: number;
   private totalItems2: number;
@@ -53,7 +55,7 @@ export class PendingUserComponent implements OnInit {
     this.spinnerService.show();
     this.currentPage = currentPage;
     await this.userService.getUserList(filter, currentPage, sizePage).then((data: any) => {
-      this.totalItems = data.totalDocuments;
+      this.totalItems = data.total;
       this.userList = data.data;
       if (this.userList == "") {
         this.checkUserList = false;
@@ -61,36 +63,42 @@ export class PendingUserComponent implements OnInit {
         this.checkUserList = true;
       }
       
+    }).catch(err => {
+      this.currentPage = 1;
     });
     this.spinnerService.hide();
   }
 
   async getApprovedUserList(filter, currentPage, sizePage) {
     this.spinnerService.show();
-    this.currentPage = currentPage;
+    this.currentPage1 = currentPage;
     await this.userService.getUserList(filter, currentPage, sizePage).then((data: any) => {
-      this.totalItems1 = data.totalDocuments;
+      this.totalItems1 = data.total;
       this.approveUserList = data.data;
       if (this.approveUserList == "") {
         this.checkApproveUserList = false;
       } else {
         this.checkApproveUserList = true;
       }
+    }).catch(err => {
+      this.currentPage1 = 1;
     });
     this.spinnerService.hide();
   }
 
   async getDisapprovedUserList(filter, currentPage, sizePage) {
     this.spinnerService.show();
-    this.currentPage = currentPage;
+    this.currentPage2 = currentPage;
     await this.userService.getUserList(filter, currentPage, sizePage).then((data: any) => {
-      this.totalItems2 = data.totalDocuments;
+      this.totalItems2 = data.total;
       this.disapproveUserList = data.data;
       if (this.disapproveUserList == "") {
         this.checkDisapproveUserList = false;
       } else {
         this.checkDisapproveUserList = true;
       }
+    }).catch(err => {
+      this.currentPage2 = 1;
     });
     this.spinnerService.hide();
   }
@@ -120,14 +128,14 @@ export class PendingUserComponent implements OnInit {
 
   getApprove() {
     this.filter.approve = "1";
-    this.currentPage = 1;
-    this.getApprovedUserList(this.filter, this.currentPage, this.sizePage);
+    this.currentPage1 = 1;
+    this.getApprovedUserList(this.filter, this.currentPage1, this.sizePage);
   }
 
   getDisapprove() {
     this.filter.approve = "-1";
-    this.currentPage = 1;
-    this.getDisapprovedUserList(this.filter, this.currentPage, this.sizePage);
+    this.currentPage2 = 1;
+    this.getDisapprovedUserList(this.filter, this.currentPage2, this.sizePage);
   }
 
   getPending() {

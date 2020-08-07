@@ -83,23 +83,31 @@ export class NewUserComponent implements OnInit {
   }
 
   async ngOnInit() {
+    var temp;
     await this.userService.getUserList(this.filter, this.currentPage, this.sizePage).then((data: any) => {
-      var temp = data.total + 1;
-      if (temp < 10) {
-        this.newUser.username = "A000" + temp;
-      } else if (temp >= 10) {
-        this.newUser.username = "A00" + temp;
+      temp = data.total + 1;
+      console.log("temp", temp);
+      console.log(data.total);
+      if (data.total < 10) {
+        this.newUser.username = "A000" + data.total;
+      } else if (data.total >= 10) {
+        this.newUser.username = "A00" + data.total;
       }
     });
-    await this.getUserList();
+    
+    // await this.getUserList();
     await this.getRoleList();
   }
 
-  async getUserList() {
-    await this.userService.getUserList({ approve: "1" }, 1, 20).then((data: any) => {
-      this.userList = data.data;
-    })
-  }
+  // async getUserList() {
+  //   await this.userService.getUserList({}, 1, 20).then((data: any) => {
+  //     if (data.total < 10) {
+  //       this.newUser.username = "A000" + String(data.total + 1);
+  //     } else if (data.total >= 10) {
+  //       this.newUser.username = "A00" + String(data.total + 1);
+  //     }
+  //   })
+  // }
 
   async getRoleList() {
     await this.roleService.getRoles().then((data: any) => {
@@ -152,7 +160,7 @@ export class NewUserComponent implements OnInit {
       this.userService.createUser(this.newUser)
         .then((data) => {
           this.toastrService.success("Tài khoản đang trong danh sách chờ phê duyệt");
-          this.router.navigate(["/new-user"]);
+          this.router.navigate(["/user"]);
         })
         .catch((err) => {
           this.toastrService.warning("Yêu cầu tạo tài khoản thất bại");
