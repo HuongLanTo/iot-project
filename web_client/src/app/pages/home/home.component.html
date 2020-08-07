@@ -198,37 +198,6 @@
                 </div>
             </div>
             <br>
-            <!-- <div class="card shadow">
-                <div class="card-header border-0">
-                    <div class="row align-items-center">
-                        <div class="col">
-                        <h3 class="mb-0">Chỉ số AQI 3 ngày qua tại {{ current_sensor_data.nameNode }}</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="table-responsive">
-                    <table class="table align-items-center table-flush out">
-                        <thead class="thead-light">
-                            <tr>
-                                <th scope="col">STT</th>
-                                <th scope="col">Ngày</th>
-                                <th scope="col">Chỉ số</th>
-                                <th scope="col">Đánh giá</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr *ngFor="let data of three_day_aqi_data; let index = index">
-                                <th scope="col">{{ index + 1 }}</th>
-                                <th scope="col">{{ data.time | date:'dd/MM/yyyy' }}</th>
-                                <th scope="col">{{ data.aqi }}</th>
-                                <th scope="col">
-                                    
-                                </th>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div> -->
         </div>
     </div>
     <br>
@@ -236,17 +205,6 @@
         <div class="col-lg-1"></div>
         <div class="col-lg-10">
             <h1>Tra cứu chỉ số AQI:</h1>
-            <!-- <ul class="nav nav-tabs" id="myTab" role="tablist"> -->
-                <!-- <li class="nav-item">
-                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Ngày</a>
-                </li> -->
-                <!-- <li class="nav-item">
-                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Tuần</a>
-                </li> -->
-                <!-- <li class="nav-item">
-                    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Tháng</a>
-                </li> -->
-            <!-- </ul> -->
         </div> 
     </div>
     <div class="row">
@@ -261,22 +219,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                    <div class="form-group row">
-                        <div class="col-5">
-                            <label for="example-week-input" class=" col-form-label">Chọn tuần</label>
-                            <input class="form-control" type="week" value="2020-W25" id="example-week-input">
-                        </div>
-                    </div>
-                </div> -->
-                <!-- <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-                    <div class="form-group row">
-                        <div class="col-5">
-                            <label for="example-month-input" class=" col-form-label">Chọn tháng</label>
-                            <input class="form-control" type="month" value="2020-06" id="example-month-input">
-                        </div>
-                    </div>
-                </div> -->
             </div>
         </div>
         <div class="col-lg-2" style="margin-top: 55px;">

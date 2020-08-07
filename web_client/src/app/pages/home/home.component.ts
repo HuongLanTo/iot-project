@@ -1,9 +1,8 @@
 import { Component, OnInit } from "@angular/core";
-import { SensorData, sensorData } from "../../data/sensor_data";
 import { aqiInfo } from "../../data/aqi";
 import * as _ from "lodash";
 import Chart from "chart.js";
-import moment, { max } from "moment";
+import moment from "moment";
 
 // core components
 import {
@@ -12,7 +11,6 @@ import {
   chartExample1,
   chartExample2,
 } from "../../variables/charts";
-import { ThreeDay, threeDay } from "src/app/data/three_day";
 import { DataService } from "src/app/services/data.service";
 import { NodeService } from "src/app/services/node.service";
 
@@ -237,21 +235,12 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  updateData(chart: Chart, data: string[], t: string[]) {
-    chart.data.datasets[0].data = data;
-    (chart.data.labels = t),
-      (chart.options.scales.yAxes[0].scaleLabel.labelString = "CO"),
-      chart.update();
-  }
-
-  get3DayAqiData() {
-    this.three_day_aqi_data = [];
-    threeDay.forEach((e) => {
-      if (e.nameNode == this.current_sensor_data.nameNode) {
-        this.three_day_aqi_data.push(e);
-      }
-    });
-  }
+  // updateData(chart: Chart, data: string[], t: string[]) {
+  //   chart.data.datasets[0].data = data;
+  //   (chart.data.labels = t),
+  //     (chart.options.scales.yAxes[0].scaleLabel.labelString = "CO"),
+  //     chart.update();
+  // }
 
   setLineTypeOfChart() {
     this.lineTypeOfChart = true;

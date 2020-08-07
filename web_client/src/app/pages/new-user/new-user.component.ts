@@ -86,12 +86,10 @@ export class NewUserComponent implements OnInit {
     var temp;
     await this.userService.getUserList(this.filter, this.currentPage, this.sizePage).then((data: any) => {
       temp = data.total + 1;
-      console.log("temp", temp);
-      console.log(data.total);
       if (data.total < 10) {
-        this.newUser.username = "A000" + data.total;
+        this.newUser.username = "A000" + temp;
       } else if (data.total >= 10) {
-        this.newUser.username = "A00" + data.total;
+        this.newUser.username = "A00" + temp;
       }
     });
     

@@ -2,7 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { NodeService } from 'src/app/services/node.service';
-import moment, { max } from "moment";
+import Chart from "chart.js";
+import moment from "moment";
+
+// core components
+import {
+  chartOptions,
+  parseOptions,
+  chartExample1,
+  chartExample2,
+} from "../../variables/charts";
 
 @Component({
   selector: 'app-report',
@@ -22,6 +31,9 @@ export class ReportComponent implements OnInit {
   totalItems: number;
   nodeList: any = [];
   dataList: any = [];
+  dayList: any = [];
+  aqiList: any = [];
+  backgroundColor: any = [];
   filter = {
     node_id: "",
     start_date: "",
@@ -32,6 +44,7 @@ export class ReportComponent implements OnInit {
   check: boolean = false;
 
   async ngOnInit() {
+    parseOptions(Chart, chartOptions());
     await this.getNodeList();
     console.log(this.dataList);
     
@@ -56,12 +69,83 @@ export class ReportComponent implements OnInit {
     }).catch(err => {
       this.currentPage = 1;
     });
-    console.log(999, this.dataList);
-    
     this.spinnerService.hide();
   }
 
-  makeAReport() {
+  async getChart() {
+    var tempList = [];
+    this.aqiList = [];
+    this.dayList = [];
+    var percentageList = [0, 0, 0, 0, 0, 0];
+    this.backgroundColor = [];
+    await this.dataService.getDataOfNode(this.filter, 1, this.totalItems).then((data: any) => {
+      tempList = data.rows;
+    })
+    tempList.forEach(e => {
+      this.dayList.push(moment(e.datetime).format("DD/MM/YYYY HH:mm"));
+      this.aqiList.push(e.aqi);
+      if (e.aqi >= 0 && e.aqi <= 50) {
+        this.backgroundColor.push("#57F83B");
+        percentageList[0]++;
+      } else if (e.aqi >= 51 && e.aqi <= 100) {
+        this.backgroundColor.push("#F8D82E");
+        percentageList[1]++;
+      } else if (e.aqi >= 101 && e.aqi <= 150) {
+        this.backgroundColor.push("#F1923D");
+        percentageList[2]++;
+      } else if (e.aqi >= 151 && e.aqi <= 200) {
+        this.backgroundColor.push("#FF3232");
+        percentageList[3]++;
+      } else if (e.aqi >= 201 && e.aqi <= 300) {
+        this.backgroundColor.push("#CC3399");
+        percentageList[4]++;
+      } else if (e.aqi >= 301) {
+        this.backgroundColor.push("#A52A2A");
+        percentageList[5]++;
+      }
+    });
+    console.log("date", this.dayList);
+    console.log("date", this.aqiList);
+    console.log("date", this.backgroundColor);
+
+    // create chart
+    var aqiBarChart = document.getElementById("aqi_bar_chart");
+    var aqi_bar_chart = new Chart(aqiBarChart, {
+      type: "bar",
+      options: {
+        maintainAspectRatio: false,
+        scales: {
+          yAxes: [
+            {
+              scaleLabel: {
+                labelString: "AQI",
+                display: true,
+              },
+            },
+          ],
+          xAxes: [
+            {
+              ticks: {
+                display: false,
+              },
+            },
+          ],
+        },
+      },
+      data: {
+        labels: this.dayList,
+        datasets: [
+          {
+            label: "AQI",
+            data: this.aqiList,
+            backgroundColor: this.backgroundColor
+          },
+        ],
+      },
+    });
+  }
+
+  async makeAReport() {
     this.check = true;
     console.log(this.filter);
     if (this.currentNode != {}) {
@@ -72,8 +156,9 @@ export class ReportComponent implements OnInit {
     }
     if (this.filter.node_id != "" && this.filter.start_date != "" && this.filter.end_date != "") {
       this.currentPage = 1;
-      this.getDataOfNode(this.filter, this.currentPage, this.sizePage);
-      this.getDate();
+      await this.getDataOfNode(this.filter, this.currentPage, this.sizePage);
+      await this.getDate();
+      await this.getChart();
     }
   }
 
