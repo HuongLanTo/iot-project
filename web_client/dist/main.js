@@ -333,7 +333,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<nav class=\"navbar navbar-top navbar-expand-md navbar-dark\" id=\"navbar-main\">\r\n  <div class=\"container-fluid\">\r\n    <!-- Brand -->\r\n    <a class=\"h4 mb-0 text-white text-uppercase d-none d-lg-inline-block\" routerLinkActive=\"active\" [routerLink]=\"['/home']\">HỆ THỐNG THEO DÕI MÔI TRƯỜNG</a>\r\n    <!-- Form -->\r\n    <!-- <form class=\"navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto\">\r\n      <div class=\"form-group mb-0\" [ngClass]=\"{ 'focused': focus === true }\">\r\n        <div class=\"input-group input-group-alternative\">\r\n          <div class=\"input-group-prepend\">\r\n            <span class=\"input-group-text\"><i class=\"fas fa-search\"></i></span>\r\n          </div>\r\n          <input class=\"form-control\" placeholder=\"Search\" type=\"text\" (focus)=\"focus = true\"\r\n          (blur)=\"focus = false\">\r\n        </div>\r\n      </div>\r\n    </form> -->\r\n    <!-- User -->\r\n    <ul class=\"navbar-nav align-items-center d-none d-md-flex\">\r\n      <!-- <li class=\"nav-item\">\r\n        <a class=\"nav-link nav-link-icon\" href=\"home\">\r\n            <span class=\"nav-link-inner--text\">Trang chủ</span>\r\n        </a>\r\n      </li> -->\r\n      <li class=\"nav-item\" ngbDropdown placement=\"bottom-right\">\r\n        <a class=\"nav-link pr-0\" role=\"button\" ngbDropdownToggle>\r\n          <div class=\"media align-items-center\">\r\n            <span class=\"avatar avatar-sm rounded-circle\">\r\n              <img alt=\"Image placeholder\" src=\"assets/img/theme/team-4-800x800.jpg\">\r\n            </span>\r\n            <div class=\"media-body ml-2 d-none d-lg-block\">\r\n              <span class=\"mb-0 text-sm  font-weight-bold\" style=\"cursor: pointer;\">{{ currentUser.username }} - {{ currentUser.name }}</span>\r\n            </div>\r\n          </div>\r\n        </a>\r\n        <div class=\"dropdown-menu-arrow dropdown-menu-right\" ngbDropdownMenu>\r\n          <div class=\" dropdown-header noti-title\">\r\n            <h6 class=\"text-overflow m-0\">Admin</h6>\r\n          </div>\r\n          <a routerLinkActive=\"active\" [routerLink]=\"['/user-profile']\" class=\"dropdown-item\">\r\n            <i class=\"ni ni-single-02\"></i>\r\n            <span>Quản lý thông tin cá nhân</span>\r\n          </a>\r\n          <div class=\"dropdown-divider\"></div>\r\n          <a href=\"#!\" class=\"dropdown-item\" (click)=\"logout()\">\r\n            <i class=\"ni ni-user-run\"></i>\r\n            <span>Đăng xuất</span>\r\n          </a>\r\n        </div>\r\n      </li>\r\n    </ul>\r\n  </div>\r\n</nav>\r\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<nav class=\"navbar navbar-top navbar-expand-md navbar-dark\" id=\"navbar-main\">\r\n  <div class=\"container-fluid\">\r\n    <!-- Brand -->\r\n    <a class=\"h4 mb-0 text-white text-uppercase d-none d-lg-inline-block\" routerLinkActive=\"active\" [routerLink]=\"['/home']\">HỆ THỐNG THEO DÕI CHẤT LƯỢNG KHÔNG KHÍ</a>\r\n    <!-- Form -->\r\n    <!-- <form class=\"navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto\">\r\n      <div class=\"form-group mb-0\" [ngClass]=\"{ 'focused': focus === true }\">\r\n        <div class=\"input-group input-group-alternative\">\r\n          <div class=\"input-group-prepend\">\r\n            <span class=\"input-group-text\"><i class=\"fas fa-search\"></i></span>\r\n          </div>\r\n          <input class=\"form-control\" placeholder=\"Search\" type=\"text\" (focus)=\"focus = true\"\r\n          (blur)=\"focus = false\">\r\n        </div>\r\n      </div>\r\n    </form> -->\r\n    <!-- User -->\r\n    <ul class=\"navbar-nav align-items-center d-none d-md-flex\">\r\n      <!-- <li class=\"nav-item\">\r\n        <a class=\"nav-link nav-link-icon\" href=\"home\">\r\n            <span class=\"nav-link-inner--text\">Trang chủ</span>\r\n        </a>\r\n      </li> -->\r\n      <li class=\"nav-item\" ngbDropdown placement=\"bottom-right\">\r\n        <a class=\"nav-link pr-0\" role=\"button\" ngbDropdownToggle>\r\n          <div class=\"media align-items-center\">\r\n            <span class=\"avatar avatar-sm rounded-circle\">\r\n              <img alt=\"Image placeholder\" src=\"assets/icon/avatar.jpg\">\r\n            </span>\r\n            <div class=\"media-body ml-2 d-none d-lg-block\">\r\n              <span class=\"mb-0 text-sm  font-weight-bold\" style=\"cursor: pointer;\">{{ currentUser.username }} - {{ currentUser.name }}</span>\r\n            </div>\r\n          </div>\r\n        </a>\r\n        <div class=\"dropdown-menu-arrow dropdown-menu-right\" ngbDropdownMenu>\r\n          <div class=\" dropdown-header noti-title\">\r\n            <h6 class=\"text-overflow m-0\">Admin</h6>\r\n          </div>\r\n          <a routerLinkActive=\"active\" [routerLink]=\"['/user-profile']\" class=\"dropdown-item\">\r\n            <i class=\"ni ni-single-02\"></i>\r\n            <span>Quản lý thông tin cá nhân</span>\r\n          </a>\r\n          <div class=\"dropdown-divider\"></div>\r\n          <a href=\"#!\" class=\"dropdown-item\" (click)=\"logout()\">\r\n            <i class=\"ni ni-user-run\"></i>\r\n            <span>Đăng xuất</span>\r\n          </a>\r\n        </div>\r\n      </li>\r\n    </ul>\r\n  </div>\r\n</nav>\r\n");
 
 /***/ }),
 
@@ -346,7 +346,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<nav class=\"navbar navbar-vertical navbar-expand-md navbar-light bg-white\" id=\"sidenav-main\">\r\n  <div class=\"container-fluid\">\r\n    <!-- Toggler -->\r\n    <button class=\"navbar-toggler\" type=\"button\" (click)=\"isCollapsed=!isCollapsed\"\r\n       aria-controls=\"sidenav-collapse-main\">\r\n      <span class=\"navbar-toggler-icon\"></span>\r\n    </button>\r\n    <!-- Brand -->\r\n    <a class=\"navbar-brand pt-0\" routerLinkActive=\"active\" [routerLink]=\"['/dashboard']\">\r\n      <img src=\"./assets/img/brand/tlu2.png\" class=\"navbar-brand-img\" alt=\"\" style=\"max-height: 300px;\">\r\n    </a>\r\n    <!-- User -->\r\n    <ul class=\"nav align-items-center d-md-none\">\r\n      <li class=\"nav-item\" ngbDropdown placement=\"bottom-right\">\r\n        <a class=\"nav-link nav-link-icon\" role=\"button\" ngbDropdownToggle>\r\n          <i class=\"ni ni-bell-55\"></i>\r\n        </a>\r\n        <div class=\"dropdown-menu-arrow dropdown-menu-right\" ngbDropdownMenu>\r\n          <a class=\"dropdown-item\" href=\"javascript:void(0)\">Action</a>\r\n          <a class=\"dropdown-item\" href=\"javascript:void(0)\">Another action</a>\r\n          <div class=\"dropdown-divider\"></div>\r\n          <a class=\"dropdown-item\" href=\"javascript:void(0)\">Something else here</a>\r\n        </div>\r\n      </li>\r\n      <li class=\"nav-item\" ngbDropdown placement=\"bottom-right\">\r\n        <a class=\"nav-link\" role=\"button\" ngbDropdownToggle>\r\n          <div class=\"media align-items-center\">\r\n            <span class=\"avatar avatar-sm rounded-circle\">\r\n              <img alt=\"Image placeholder\" src=\"./assets/img/theme/team-1-800x800.jpg\">\r\n            </span>\r\n          </div>\r\n        </a>\r\n        <div class=\"dropdown-menu-arrow dropdown-menu-right\" ngbDropdownMenu>\r\n          <div class=\" dropdown-header noti-title\">\r\n            <h6 class=\"text-overflow m-0\">Welcome!</h6>\r\n          </div>\r\n          <a routerLinkActive=\"active\" [routerLink]=\"['/user-profile']\" class=\"dropdown-item\">\r\n            <i class=\"ni ni-single-02\"></i>\r\n            <span>My profile</span>\r\n          </a>\r\n          <a routerLinkActive=\"active\" [routerLink]=\"['/user-profile']\" class=\"dropdown-item\">\r\n            <i class=\"ni ni-settings-gear-65\"></i>\r\n            <span>Settings</span>\r\n          </a>\r\n          <a routerLinkActive=\"active\" [routerLink]=\"['/user-profile']\" class=\"dropdown-item\">\r\n            <i class=\"ni ni-calendar-grid-58\"></i>\r\n            <span>Activity</span>\r\n          </a>\r\n          <a routerLinkActive=\"active\" [routerLink]=\"['/user-profile']\" class=\"dropdown-item\">\r\n            <i class=\"ni ni-support-16\"></i>\r\n            <span>Support</span>\r\n          </a>\r\n          <div class=\"dropdown-divider\"></div>\r\n          <a href=\"#!\" class=\"dropdown-item\">\r\n            <i class=\"ni ni-user-run\"></i>\r\n            <span>Logout</span>\r\n          </a>\r\n        </div>\r\n      </li>\r\n    </ul>\r\n    <!-- Collapse -->\r\n    <div class=\"collapse navbar-collapse\"  [ngbCollapse]=\"isCollapsed\" id=\"sidenav-collapse-main\">\r\n      <!-- Collapse header -->\r\n      <div class=\"navbar-collapse-header d-md-none\">\r\n        <div class=\"row\">\r\n          <div class=\"col-6 collapse-brand\">\r\n            <a  routerLinkActive=\"active\" [routerLink]=\"['/dashboard']\">\r\n              <img src=\"./assets/img/brand/blue.png\">\r\n            </a>\r\n          </div>\r\n          <div class=\"col-6 collapse-close\">\r\n            <button type=\"button\" class=\"navbar-toggler\" (click)=\"isCollapsed=!isCollapsed\">\r\n              <span></span>\r\n              <span></span>\r\n            </button>\r\n          </div>\r\n        </div>\r\n      </div>\r\n      <!-- Form -->\r\n      <form class=\"mt-4 mb-3 d-md-none\">\r\n        <div class=\"input-group input-group-rounded input-group-merge\">\r\n          <input type=\"search\" class=\"form-control form-control-rounded form-control-prepended\" placeholder=\"Search\" aria-label=\"Search\">\r\n          <div class=\"input-group-prepend\">\r\n            <div class=\"input-group-text\">\r\n              <span class=\"fa fa-search\"></span>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </form>\r\n      <!-- Navigation -->\r\n      <div *ngIf=\"isAdmin\">\r\n        <div *ngFor=\"let menuItem of menuItems\">\r\n          <h6 class=\"navbar-heading text-muted\">{{ menuItem.path }}</h6>\r\n          <ul class=\"navbar-nav\" >\r\n            <li class=\"nav-item\" *ngFor=\"let sub of menuItem.subPath\">       \r\n                <a routerLinkActive=\"active\" [routerLink]=\"[sub.path]\" class=\"nav-link\">\r\n                    <i class=\"ni {{sub.icon}}\"></i>\r\n                    {{sub.title}}\r\n                </a>\r\n            </li>\r\n          </ul>\r\n        </div>\r\n      </div>\r\n      <div *ngIf=\"!isAdmin\">\r\n        <div *ngFor=\"let menuItem of menuItems\">\r\n          <div *ngIf=\"menuItem.role.length == 4\">\r\n            <h6 class=\"navbar-heading text-muted\">{{ menuItem.path }}</h6>\r\n            <ul class=\"navbar-nav\" >\r\n              <li class=\"nav-item\" *ngFor=\"let sub of menuItem.subPath\">     \r\n                <div *ngIf=\"sub.role.length == 4\">\r\n                  <a routerLinkActive=\"active\" [routerLink]=\"[sub.path]\" class=\"nav-link\">\r\n                    <i class=\"ni {{sub.icon}}\"></i>{{sub.title}}\r\n                  </a>\r\n                </div>\r\n                <div *ngIf=\"sub.role.length != 4\">\r\n                  <div *ngFor=\"let action of actionName\">\r\n                    <div *ngIf=\"sub.role.includes(action)\">\r\n                      <a routerLinkActive=\"active\" [routerLink]=\"[sub.path]\" class=\"nav-link\">\r\n                        <i class=\"ni {{sub.icon}}\"></i>{{sub.title}}\r\n                      </a>\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n              </li>\r\n            </ul>\r\n          </div>\r\n          <div *ngIf=\"menuItem.role.length != 4\">\r\n            <div *ngFor=\"let action of actionName\">\r\n              <div *ngIf=\"menuItem.role.includes(action)\">\r\n                <h6 class=\"navbar-heading text-muted\">{{ menuItem.path }}</h6>\r\n                <ul class=\"navbar-nav\" >\r\n                  <li class=\"nav-item\" *ngFor=\"let sub of menuItem.subPath\">       \r\n                    <div *ngIf=\"sub.role.length == 4\">\r\n                      <a routerLinkActive=\"active\" [routerLink]=\"[sub.path]\" class=\"nav-link\">\r\n                        <i class=\"ni {{sub.icon}}\"></i>{{sub.title}}\r\n                      </a>\r\n                    </div>\r\n                    <div *ngIf=\"sub.role.length != 4\">\r\n                      <div *ngFor=\"let action of actionName\">\r\n                        <div *ngIf=\"sub.role.includes(action)\">\r\n                          <a routerLinkActive=\"active\" [routerLink]=\"[sub.path]\" class=\"nav-link\">\r\n                            <i class=\"ni {{sub.icon}}\"></i>{{sub.title}}\r\n                          </a>\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n                  </li>\r\n                </ul>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n      <!-- <ul class=\"navbar-nav\">\r\n          <li *ngFor=\"let menuItem of menuItems\" class=\"{{menuItem.class}} nav-item\">\r\n            \r\n              <a routerLinkActive=\"active\" [routerLink]=\"[menuItem.path]\" class=\"nav-link\">\r\n                  <i class=\"ni {{menuItem.icon}}\"></i>\r\n                  {{menuItem.title}}\r\n              </a>\r\n          </li>\r\n      </ul> -->\r\n      <!-- Divider -->\r\n      <!-- <hr class=\"my-3\"> -->\r\n      <!-- Heading -->\r\n      <!-- <h6 class=\"navbar-heading text-muted\">Documentation</h6> -->\r\n      <!-- Navigation -->\r\n      <!-- <ul class=\"navbar-nav mb-md-3\">\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link\" href=\"https://demos.creative-tim.com/argon-dashboard-angular/documentation/tutorial\">\r\n            <i class=\"ni ni-spaceship\"></i> Getting started\r\n          </a>\r\n        </li>\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link\" href=\"https://demos.creative-tim.com/argon-dashboard-angular/documentation/colors\">\r\n            <i class=\"ni ni-palette\"></i> Foundation\r\n          </a>\r\n        </li>\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link\" href=\"https://demos.creative-tim.com/argon-dashboard-angular/documentation/alerts\">\r\n            <i class=\"ni ni-ui-04\"></i> Components\r\n          </a>\r\n        </li>\r\n      </ul> -->\r\n    </div>\r\n  </div>\r\n</nav>\r\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<nav class=\"navbar navbar-vertical navbar-expand-md navbar-light bg-white\" id=\"sidenav-main\">\r\n  <div class=\"container-fluid\">\r\n    <!-- Toggler -->\r\n    <button class=\"navbar-toggler\" type=\"button\" (click)=\"isCollapsed=!isCollapsed\"\r\n       aria-controls=\"sidenav-collapse-main\">\r\n      <span class=\"navbar-toggler-icon\"></span>\r\n    </button>\r\n    <!-- Brand -->\r\n    <a class=\"navbar-brand pt-0\" routerLinkActive=\"active\" [routerLink]=\"['/dashboard']\">\r\n      <img src=\"./assets/img/brand/tlu2.png\" class=\"navbar-brand-img\" alt=\"\" style=\"max-height: 300px;\">\r\n    </a>\r\n    <!-- User -->\r\n    <ul class=\"nav align-items-center d-md-none\">\r\n      <li class=\"nav-item\" ngbDropdown placement=\"bottom-right\">\r\n        <a class=\"nav-link nav-link-icon\" role=\"button\" ngbDropdownToggle>\r\n          <i class=\"ni ni-bell-55\"></i>\r\n        </a>\r\n        <div class=\"dropdown-menu-arrow dropdown-menu-right\" ngbDropdownMenu>\r\n          <a class=\"dropdown-item\" href=\"javascript:void(0)\">Action</a>\r\n          <a class=\"dropdown-item\" href=\"javascript:void(0)\">Another action</a>\r\n          <div class=\"dropdown-divider\"></div>\r\n          <a class=\"dropdown-item\" href=\"javascript:void(0)\">Something else here</a>\r\n        </div>\r\n      </li>\r\n      <li class=\"nav-item\" ngbDropdown placement=\"bottom-right\">\r\n        <a class=\"nav-link\" role=\"button\" ngbDropdownToggle>\r\n          <div class=\"media align-items-center\">\r\n            <span class=\"avatar avatar-sm rounded-circle\">\r\n              <img alt=\"Image placeholder\" src=\"./assets/img/theme/team-1-800x800.jpg\">\r\n            </span>\r\n          </div>\r\n        </a>\r\n        <div class=\"dropdown-menu-arrow dropdown-menu-right\" ngbDropdownMenu>\r\n          <div class=\" dropdown-header noti-title\">\r\n            <h6 class=\"text-overflow m-0\">Welcome!</h6>\r\n          </div>\r\n          <a routerLinkActive=\"active\" [routerLink]=\"['/user-profile']\" class=\"dropdown-item\">\r\n            <i class=\"ni ni-single-02\"></i>\r\n            <span>My profile</span>\r\n          </a>\r\n          <a routerLinkActive=\"active\" [routerLink]=\"['/user-profile']\" class=\"dropdown-item\">\r\n            <i class=\"ni ni-settings-gear-65\"></i>\r\n            <span>Settings</span>\r\n          </a>\r\n          <a routerLinkActive=\"active\" [routerLink]=\"['/user-profile']\" class=\"dropdown-item\">\r\n            <i class=\"ni ni-calendar-grid-58\"></i>\r\n            <span>Activity</span>\r\n          </a>\r\n          <a routerLinkActive=\"active\" [routerLink]=\"['/user-profile']\" class=\"dropdown-item\">\r\n            <i class=\"ni ni-support-16\"></i>\r\n            <span>Support</span>\r\n          </a>\r\n          <div class=\"dropdown-divider\"></div>\r\n          <a href=\"#!\" class=\"dropdown-item\">\r\n            <i class=\"ni ni-user-run\"></i>\r\n            <span>Logout</span>\r\n          </a>\r\n        </div>\r\n      </li>\r\n    </ul>\r\n    <!-- Collapse -->\r\n    <div class=\"collapse navbar-collapse\"  [ngbCollapse]=\"isCollapsed\" id=\"sidenav-collapse-main\">\r\n      <!-- Collapse header -->\r\n      <div class=\"navbar-collapse-header d-md-none\">\r\n        <div class=\"row\">\r\n          <div class=\"col-6 collapse-brand\">\r\n            <a  routerLinkActive=\"active\" [routerLink]=\"['/dashboard']\">\r\n              <img src=\"./assets/img/brand/blue.png\">\r\n            </a>\r\n          </div>\r\n          <div class=\"col-6 collapse-close\">\r\n            <button type=\"button\" class=\"navbar-toggler\" (click)=\"isCollapsed=!isCollapsed\">\r\n              <span></span>\r\n              <span></span>\r\n            </button>\r\n          </div>\r\n        </div>\r\n      </div>\r\n      <!-- Form -->\r\n      <form class=\"mt-4 mb-3 d-md-none\">\r\n        <div class=\"input-group input-group-rounded input-group-merge\">\r\n          <input type=\"search\" class=\"form-control form-control-rounded form-control-prepended\" placeholder=\"Search\" aria-label=\"Search\">\r\n          <div class=\"input-group-prepend\">\r\n            <div class=\"input-group-text\">\r\n              <span class=\"fa fa-search\"></span>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </form>\r\n      <!-- Navigation -->\r\n      <div *ngIf=\"isAdmin\">\r\n        <div *ngFor=\"let menuItem of menuItems\">\r\n          <h6 class=\"navbar-heading text-muted\">{{ menuItem.path }}</h6>\r\n          <ul class=\"navbar-nav\">\r\n            <li class=\"nav-item\" *ngFor=\"let sub of menuItem.subPath\">       \r\n                <a routerLinkActive=\"active\" [routerLink]=\"[sub.path]\" class=\"nav-link\">\r\n                    <i class=\"ni {{sub.icon}}\"></i>\r\n                    {{sub.title}}\r\n                </a>\r\n            </li>\r\n          </ul>\r\n        </div>\r\n      </div>\r\n      <div *ngIf=\"!isAdmin\">\r\n        <div *ngFor=\"let menuItem of menuItems\">\r\n          <div *ngIf=\"menuItem.role.length == 4\">\r\n            <h6 class=\"navbar-heading text-muted\">{{ menuItem.path }}</h6>\r\n            <ul class=\"navbar-nav\">\r\n              <li class=\"nav-item\" *ngFor=\"let sub of menuItem.subPath\">     \r\n                <div *ngIf=\"sub.role.length == 4\">\r\n                  <a routerLinkActive=\"active\" [routerLink]=\"[sub.path]\" class=\"nav-link\">\r\n                    <i class=\"ni {{sub.icon}}\"></i>{{sub.title}}\r\n                  </a>\r\n                </div>\r\n                <div *ngIf=\"sub.role.length != 4\">\r\n                  <div *ngFor=\"let action of actionName\">\r\n                    <div *ngIf=\"sub.role.includes(action)\">\r\n                      <a routerLinkActive=\"active\" [routerLink]=\"[sub.path]\" class=\"nav-link\">\r\n                        <i class=\"ni {{sub.icon}}\"></i>{{sub.title}}\r\n                      </a>\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n              </li>\r\n            </ul>\r\n          </div>\r\n          <div *ngIf=\"menuItem.role.length != 4\">\r\n            <div *ngFor=\"let action of actionName\">\r\n              <div *ngIf=\"menuItem.role.includes(action)\">\r\n                <h6 class=\"navbar-heading text-muted\">{{ menuItem.path }}</h6>\r\n                <ul class=\"navbar-nav\" >\r\n                  <li class=\"nav-item\" *ngFor=\"let sub of menuItem.subPath\">       \r\n                    <div *ngIf=\"sub.role.length == 4\">\r\n                      <a routerLinkActive=\"active\" [routerLink]=\"[sub.path]\" class=\"nav-link\">\r\n                        <i class=\"ni {{sub.icon}}\"></i>{{sub.title}}\r\n                      </a>\r\n                    </div>\r\n                    <div *ngIf=\"sub.role.length != 4\">\r\n                      <div *ngFor=\"let action of actionName\">\r\n                        <div *ngIf=\"sub.role.includes(action)\">\r\n                          <a routerLinkActive=\"active\" [routerLink]=\"[sub.path]\" class=\"nav-link\">\r\n                            <i class=\"ni {{sub.icon}}\"></i>{{sub.title}}\r\n                          </a>\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n                  </li>\r\n                </ul>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n      <!-- <ul class=\"navbar-nav\">\r\n          <li *ngFor=\"let menuItem of menuItems\" class=\"{{menuItem.class}} nav-item\">\r\n            \r\n              <a routerLinkActive=\"active\" [routerLink]=\"[menuItem.path]\" class=\"nav-link\">\r\n                  <i class=\"ni {{menuItem.icon}}\"></i>\r\n                  {{menuItem.title}}\r\n              </a>\r\n          </li>\r\n      </ul> -->\r\n      <!-- Divider -->\r\n      <!-- <hr class=\"my-3\"> -->\r\n      <!-- Heading -->\r\n      <!-- <h6 class=\"navbar-heading text-muted\">Documentation</h6> -->\r\n      <!-- Navigation -->\r\n      <!-- <ul class=\"navbar-nav mb-md-3\">\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link\" href=\"https://demos.creative-tim.com/argon-dashboard-angular/documentation/tutorial\">\r\n            <i class=\"ni ni-spaceship\"></i> Getting started\r\n          </a>\r\n        </li>\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link\" href=\"https://demos.creative-tim.com/argon-dashboard-angular/documentation/colors\">\r\n            <i class=\"ni ni-palette\"></i> Foundation\r\n          </a>\r\n        </li>\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link\" href=\"https://demos.creative-tim.com/argon-dashboard-angular/documentation/alerts\">\r\n            <i class=\"ni ni-ui-04\"></i> Components\r\n          </a>\r\n        </li>\r\n      </ul> -->\r\n    </div>\r\n  </div>\r\n</nav>\r\n");
 
 /***/ }),
 
@@ -372,7 +372,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"main-content\">\r\n  <nav class=\"navbar navbar-top navbar-horizontal navbar-expand-md navbar-dark\">\r\n    <div class=\"container px-4\">\r\n      <a class=\"navbar-brand\" routerLinkActive=\"active\" [routerLink]=\"['/home']\">\r\n        <img src=\"assets/img/brand/tlu2.png\" style=\"background-color: white; width: 200px; height: 60px;\"/>\r\n      </a>\r\n      <button class=\"navbar-toggler\" type=\"button\" (click)=\"isCollapsed=!isCollapsed\"\r\n         aria-controls=\"sidenav-collapse-main\">\r\n        <span class=\"navbar-toggler-icon\"></span>\r\n      </button>\r\n      <div class=\"collapse navbar-collapse\"  [ngbCollapse]=\"isCollapsed\" id=\"sidenav-collapse-main\">\r\n        <!-- Collapse header -->\r\n        <div class=\"navbar-collapse-header d-md-none\">\r\n          <div class=\"row\">\r\n            <div class=\"col-6 collapse-brand\">\r\n              <a routerLinkActive=\"active\" [routerLink]=\"['/dashboard']\">\r\n                <img src=\"assets/img/brand/blue.png\">\r\n              </a>\r\n            </div>\r\n            <div class=\"col-6 collapse-close\">\r\n              <button type=\"button\" class=\"navbar-toggler\" (click)=\"isCollapsed=!isCollapsed\" >\r\n                <span></span>\r\n                <span></span>\r\n              </button>\r\n            </div>\r\n          </div>\r\n        </div>\r\n        <!-- Navbar items -->\r\n        <ul class=\"navbar-nav ml-auto\">\r\n          <li class=\"nav-item\">\r\n            <a class=\"nav-link nav-link-icon\" routerLinkActive=\"active\" [routerLink]=\"['/home']\">\r\n              <span class=\"nav-link-inner--text\">Trang chủ</span>\r\n            </a>\r\n          </li>\r\n          <li class=\"nav-item\">\r\n            <a class=\"nav-link nav-link-icon\" routerLinkActive=\"active\" [routerLink]=\"['/register']\">\r\n              <span class=\"nav-link-inner--text\">Giới thiệu</span>\r\n            </a>\r\n          </li>\r\n        </ul>\r\n      </div>\r\n    </div>\r\n  </nav>\r\n  <router-outlet></router-outlet>\r\n</div>\r\n<footer class=\"py-5\">\r\n  <div class=\"container\">\r\n    <div class=\"row align-items-center justify-content-xl-between\">\r\n      <div class=\"col-xl-6\">\r\n        <div class=\"copyright text-center text-xl-left text-muted\">\r\n          &copy; {{ test | date: \"yyyy\" }} <a href=\"https://www.creative-tim.com?ref=ada-footer-auth-layout\" class=\"font-weight-bold ml-1\" target=\"_blank\">IOT Project</a>\r\n        </div>\r\n      </div>\r\n      <div class=\"col-xl-6\">\r\n        <ul class=\"nav nav-footer justify-content-center justify-content-xl-end\">\r\n          <li class=\"nav-item\">\r\n            <a href=\"https://www.creative-tim.com?ref=ada-footer-auth-layout\" class=\"nav-link\" target=\"_blank\">LNTQ</a>\r\n          </li>\r\n        </ul>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</footer>\r\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"main-content\">\r\n  <nav class=\"navbar navbar-top navbar-horizontal navbar-expand-md navbar-dark\">\r\n    <div class=\"container px-4\">\r\n      <a class=\"navbar-brand\" routerLinkActive=\"active\" [routerLink]=\"['/home']\">\r\n        <img src=\"assets/img/brand/tlu2.png\" style=\"background-color: white; width: 200px; height: 60px;\"/>\r\n      </a>\r\n      <button class=\"navbar-toggler\" type=\"button\" (click)=\"isCollapsed=!isCollapsed\"\r\n         aria-controls=\"sidenav-collapse-main\">\r\n        <span class=\"navbar-toggler-icon\"></span>\r\n      </button>\r\n      <div class=\"collapse navbar-collapse\"  [ngbCollapse]=\"isCollapsed\" id=\"sidenav-collapse-main\">\r\n        <!-- Collapse header -->\r\n        <div class=\"navbar-collapse-header d-md-none\">\r\n          <div class=\"row\">\r\n            <div class=\"col-6 collapse-brand\">\r\n              <a routerLinkActive=\"active\" [routerLink]=\"['/dashboard']\">\r\n                <img src=\"assets/img/brand/blue.png\">\r\n              </a>\r\n            </div>\r\n            <div class=\"col-6 collapse-close\">\r\n              <button type=\"button\" class=\"navbar-toggler\" (click)=\"isCollapsed=!isCollapsed\" >\r\n                <span></span>\r\n                <span></span>\r\n              </button>\r\n            </div>\r\n          </div>\r\n        </div>\r\n        <!-- Navbar items -->\r\n        <ul class=\"navbar-nav ml-auto\">\r\n          <li class=\"nav-item\">\r\n            <a class=\"nav-link nav-link-icon\" routerLinkActive=\"active\" [routerLink]=\"['/home']\">\r\n              <span class=\"nav-link-inner--text\">Trang chủ</span>\r\n            </a>\r\n          </li>\r\n          <!-- <li class=\"nav-item\">\r\n            <a class=\"nav-link nav-link-icon\" routerLinkActive=\"active\" [routerLink]=\"['/register']\">\r\n              <span class=\"nav-link-inner--text\">Giới thiệu</span>\r\n            </a>\r\n          </li> -->\r\n        </ul>\r\n      </div>\r\n    </div>\r\n  </nav>\r\n  <router-outlet></router-outlet>\r\n</div>\r\n<footer class=\"py-5\">\r\n  <div class=\"container\">\r\n    <div class=\"row align-items-center justify-content-xl-between\">\r\n      <div class=\"col-xl-6\">\r\n        <div class=\"copyright text-center text-xl-left text-muted\">\r\n          &copy; {{ test | date: \"yyyy\" }} <a href=\"https://www.creative-tim.com?ref=ada-footer-auth-layout\" class=\"font-weight-bold ml-1\" target=\"_blank\">IOT Project</a>\r\n        </div>\r\n      </div>\r\n      <div class=\"col-xl-6\">\r\n        <ul class=\"nav nav-footer justify-content-center justify-content-xl-end\">\r\n          <li class=\"nav-item\">\r\n            <a href=\"https://www.creative-tim.com?ref=ada-footer-auth-layout\" class=\"nav-link\" target=\"_blank\">LNTQ</a>\r\n          </li>\r\n        </ul>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</footer>\r\n");
 
 /***/ }),
 
@@ -385,7 +385,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<nav class=\"navbar navbar-horizontal navbar-expand-lg navbar-dark\" style=\"background: linear-gradient(87deg, #13547a 0, #80d0c7 100%) !important;\">\r\n    <div class=\"container\">\r\n        <a class=\"navbar-brand\" href=\"#\">HỆ THỐNG THEO DÕI MÔI TRƯỜNG</a>\r\n        <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbar-default\" aria-controls=\"navbar-default\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\r\n            <span class=\"navbar-toggler-icon\"></span>\r\n        </button>\r\n        <div class=\"collapse navbar-collapse\" id=\"navbar-default\">\r\n            <div class=\"navbar-collapse-header\">\r\n                <div class=\"row\">\r\n                    <div class=\"col-6 collapse-brand\">\r\n                        <a href=\"javascript:void(0)\">\r\n                            <img src=\"../../assets/img/brand/tlu.png\">\r\n                        </a>\r\n                    </div>\r\n                    <div class=\"col-6 collapse-close\">\r\n                        <button type=\"button\" class=\"navbar-toggler\" data-toggle=\"collapse\" data-target=\"#navbar-default\" aria-controls=\"navbar-default\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\r\n                            <span></span>\r\n                            <span></span>\r\n                        </button>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            \r\n            <ul class=\"navbar-nav ml-lg-auto\">\r\n                <li class=\"nav-item\">\r\n                    <a class=\"nav-link nav-link-icon\" href=\"#\">\r\n                        <span class=\"nav-link-inner--text\">Trang chủ</span>\r\n                    </a>\r\n                </li>\r\n                <li class=\"nav-item\">\r\n                    <a class=\"nav-link nav-link-icon\" href=\"#\">\r\n                        <span class=\"nav-link-inner--text\">Giới thiệu</span>\r\n                    </a>\r\n                </li>\r\n                <li class=\"nav-item\">\r\n                    <a class=\"nav-link nav-link-icon\" href=\"/user\">\r\n                        <span class=\"nav-link-inner--text\">Quản lý</span>\r\n                    </a>\r\n                </li>\r\n                <li class=\"nav-item\">\r\n                    <a class=\"nav-link nav-link-icon\" href=\"#\">\r\n                        <span class=\"nav-link-inner--text\">Đăng xuất</span>\r\n                    </a>\r\n                </li>\r\n            </ul>\r\n            \r\n        </div>\r\n    </div>\r\n</nav>\r\n\r\n<div class=\"card-body\">\r\n    <div class=\"row\">\r\n        <div class=\"col-lg-1\"></div>\r\n        <div class=\"col-lg-5\">\r\n            <div class=\"form-group\">\r\n                <label class=\"form-control-label\" for=\"inputAddress\">Chọn địa điểm:</label>\r\n                <select  name=\"addressNode\" id=\"inputAddress\" class=\"form-control\" (change)=\"selectedNode($event.target.value)\">\r\n                    <option value=\"\" disabled selected hidden>{{ current_sensor_data.node_id }}</option>\r\n                    <option *ngFor=\"let data of sensor_data\">{{ data.node_id }}</option>\r\n                </select>     \r\n            </div>\r\n            <h3 class=\"mb-0\">Chỉ số chất lượng không khí lúc {{ current_sensor_data.datetime | date:'HH:mm' }} ngày {{ current_sensor_data.datetime | date:'dd/MM/yyyy' }}</h3>\r\n            <br>\r\n            <div class=\"row showed-main-info\" style=\"padding: 20px;\" [style.background-color]=\"current_aqi_info.Color\">\r\n                <div class=\"col-3\">\r\n                    <h2 style=\"text-align: center; font-size: 25px; color: black;\">AQI: {{ current_sensor_data.aqi }}</h2>\r\n                    <div style=\"text-align: center;\">\r\n                        <i class=\"fa fa-tint fa-2x\" aria-hidden=\"true\" style=\"color: black;\"></i>\r\n                    </div>\r\n                    <div style=\"text-align: center;\">\r\n                        <span style=\"font-weight: bold; color: black;\">Độ ẩm: {{ current_sensor_data.hum }}%</span>\r\n                    </div>\r\n                </div>\r\n                <div class=\"col-3\">\r\n                    <h2 style=\"text-align: center; font-size: 22px; color: black; margin-bottom: 11px;\">{{ current_aqi_info.Evaluate }}</h2>\r\n                    <div style=\"text-align: center;\">\r\n                        <i class=\"fa fa-thermometer-empty fa-2x\" aria-hidden=\"true\" style=\"color: black;\"></i>\r\n                    </div>\r\n                    <div style=\"text-align: center;\">\r\n                        <span style=\"font-weight: bold; color: black;\">Nhiệt độ: {{ current_sensor_data.tem }}&#8451;</span>\r\n                    </div>\r\n                </div>\r\n                <div class=\"col-6\">\r\n                    <div style=\"text-align: center;\">\r\n                        <img src=\"{{ current_aqi_info.img }}\" alt=\"\" style=\"width: 60px;\">\r\n                        <p style=\"color: black;\">{{ current_aqi_info.announcement }}</p>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <br>\r\n            <div class=\"card shadow\">\r\n                <div class=\"card-body\">\r\n                    <div class=\"chart\">\r\n                        <canvas id=\"co_chart\" class=\"chart-canvas\">{{ co_chart }}</canvas>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <br>\r\n            <div class=\"card shadow\">\r\n                <div class=\"card-body\">\r\n                    <div class=\"chart\">\r\n                        <canvas id=\"co2_chart\" class=\"chart-canvas\" height=\"200\">{{ co2_chart }}</canvas>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <br>\r\n            <div class=\"card shadow\">\r\n                <div class=\"card-body\">\r\n                    <div class=\"chart\">\r\n                        <canvas id=\"pm25_chart\" class=\"chart-canvas\"></canvas>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n        <div class=\"col-lg-5\">\r\n            <div style=\"margin-bottom: 420px;\">\r\n                <app-map></app-map>\r\n            </div>\r\n            <hr>\r\n            <div class=\"row\">\r\n                <div class=\"col\" *ngFor=\"let data of three_day_aqi_data; let index = index\">\r\n                    <div class=\"card card-stats mb-4 mb-lg-0\">\r\n                        <div class=\"card-body\">\r\n                            <div class=\"row\">\r\n                                <div class=\"col\">\r\n                                <h4 class=\"card-title text-uppercase mb-0\" style=\"text-align: center; color: black; padding-bottom: 10px;\">{{ data.datetime | date:'dd/MM/yyyy' }}</h4>\r\n                                <hr [style.border]=\"three_day_aqi_info[index].Border\" style=\"margin-bottom: 15px; margin-top: 5px;\">\r\n                                <div style=\"text-align: center; padding-bottom: 10px;\">\r\n                                    <img src=\"{{ three_day_aqi_info[index].img }}\" alt=\"\" style=\"width: 50px;\">\r\n                                </div>\r\n                                <div style=\"text-align: center;\">\r\n                                    <p class=\"h4 font-weight-bold mb-0\">AQI: {{ data.aqi }}</p>\r\n                                    <p class=\"h4 font-weight-bold mb-0\">{{ three_day_aqi_info[index].Evaluate }}</p>\r\n                                </div>\r\n                                <div class=\"row\">\r\n                                    <div class=\"col\" style=\"text-align: center;\">\r\n                                        <i class=\"fa fa-thermometer-empty fa-2x\" aria-hidden=\"true\" style=\"color: black;\"> </i>\r\n                                        <span style=\"font-weight: bold; color: black;\">{{ data.tem }}&#8451;</span>\r\n                                    </div>\r\n                                    <div class=\"col\" style=\"text-align: center;\">\r\n                                        <i class=\"fa fa-tint fa-2x\" aria-hidden=\"true\" style=\"color: black;\"> </i>\r\n                                        <span style=\"font-weight: bold; color: black;\">{{ data.hum }}%</span>\r\n                                    </div>\r\n                                </div>\r\n                                </div>\r\n                                <!-- <div class=\"col-auto\">\r\n                                <div class=\"icon icon-shape bg-danger text-white rounded-circle shadow\">\r\n                                    <i class=\"fas fa-chart-bar\"></i>\r\n                                </div>\r\n                                </div> -->\r\n                            </div>\r\n                            <!-- <p class=\"mt-3 mb-0 text-muted text-sm\">\r\n                                <span class=\"text-success mr-2\"><i class=\"fa fa-arrow-up\"></i> 3.48%</span>\r\n                                <span class=\"text-nowrap\">Since last month</span>\r\n                            </p> -->\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <hr>\r\n            <div class=\"card shadow\">\r\n                <div class=\"card-header border-0\">\r\n                    <div class=\"row align-items-center\">\r\n                        <div class=\"col\">\r\n                        <h3 class=\"mb-0\">Bảng quy đổi giá trị AQI</h3>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <div class=\"table-responsive\">\r\n                  <!-- Projects table -->\r\n                    <table class=\"table align-items-center table-flush out\">\r\n                        <thead class=\"thead-light\">\r\n                            <tr>\r\n                                <th scope=\"col\">Giá trị AQI</th>\r\n                                <th scope=\"col\">Đánh giá</th>\r\n                                <th scope=\"col\" style=\"text-align: center\">Ảnh hưởng sức khỏe</th>\r\n                                <th scope=\"col\">Màu sắc</th>\r\n                            </tr>\r\n                        </thead>\r\n                        <tbody>\r\n                            <tr *ngFor=\"let info of aqi_info\">\r\n                                <th scope=\"col\">{{ info.Value }}</th>\r\n                                <th scope=\"col\">{{ info.Evaluate }}</th>\r\n                                <th scope=\"col\">{{ info.Comment }}</th>\r\n                                <th scope=\"col\">\r\n                                    <label *ngIf=\"info.Color === 'Yellow'\" style=\"padding: 10px; color: grey;\" [style.background-color]=\"info.Color\">{{ info.vColor }}</label>\r\n                                    <label *ngIf=\"info.Color !== 'Yellow'\" style=\"padding: 10px; color: white;\" [style.background-color]=\"info.Color\">{{ info.vColor }}</label>\r\n                                </th>\r\n                            </tr>\r\n                        </tbody>\r\n                    </table>\r\n                </div>\r\n            </div>\r\n            <br>\r\n            <!-- <div class=\"card shadow\">\r\n                <div class=\"card-header border-0\">\r\n                    <div class=\"row align-items-center\">\r\n                        <div class=\"col\">\r\n                        <h3 class=\"mb-0\">Chỉ số AQI 3 ngày qua tại {{ current_sensor_data.nameNode }}</h3>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <div class=\"table-responsive\">\r\n                    <table class=\"table align-items-center table-flush out\">\r\n                        <thead class=\"thead-light\">\r\n                            <tr>\r\n                                <th scope=\"col\">STT</th>\r\n                                <th scope=\"col\">Ngày</th>\r\n                                <th scope=\"col\">Chỉ số</th>\r\n                                <th scope=\"col\">Đánh giá</th>\r\n                            </tr>\r\n                        </thead>\r\n                        <tbody>\r\n                            <tr *ngFor=\"let data of three_day_aqi_data; let index = index\">\r\n                                <th scope=\"col\">{{ index + 1 }}</th>\r\n                                <th scope=\"col\">{{ data.time | date:'dd/MM/yyyy' }}</th>\r\n                                <th scope=\"col\">{{ data.aqi }}</th>\r\n                                <th scope=\"col\">\r\n                                    \r\n                                </th>\r\n                            </tr>\r\n                        </tbody>\r\n                    </table>\r\n                </div>\r\n            </div> -->\r\n        </div>\r\n    </div>\r\n    <br>\r\n    <div class=\"row\">\r\n        <div class=\"col-lg-1\"></div>\r\n        <div class=\"col-lg-10\">\r\n            <h1>Tra số chỉ số AQI:</h1>\r\n            <ul class=\"nav nav-tabs\" id=\"myTab\" role=\"tablist\">\r\n                <li class=\"nav-item\">\r\n                    <a class=\"nav-link active\" id=\"home-tab\" data-toggle=\"tab\" href=\"#home\" role=\"tab\" aria-controls=\"home\" aria-selected=\"true\">Ngày</a>\r\n                </li>\r\n                <li class=\"nav-item\">\r\n                    <a class=\"nav-link\" id=\"profile-tab\" data-toggle=\"tab\" href=\"#profile\" role=\"tab\" aria-controls=\"profile\" aria-selected=\"false\">Tuần</a>\r\n                </li>\r\n                <li class=\"nav-item\">\r\n                    <a class=\"nav-link\" id=\"contact-tab\" data-toggle=\"tab\" href=\"#contact\" role=\"tab\" aria-controls=\"contact\" aria-selected=\"false\">Tháng</a>\r\n                </li>\r\n            </ul>\r\n            <div class=\"tab-content\" id=\"myTabContent\">\r\n                <div class=\"tab-pane fade show active\" id=\"home\" role=\"tabpanel\" aria-labelledby=\"home-tab\">\r\n                    <div class=\"form-group row\">\r\n                        <div class=\"col-5\">\r\n                            <label for=\"example-date-input\" class=\" col-form-label\">Chọn ngày</label>\r\n                            <input class=\"form-control\" type=\"date\" value=\"2020-06-01\" id=\"example-date-input\">\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <div class=\"tab-pane fade\" id=\"profile\" role=\"tabpanel\" aria-labelledby=\"profile-tab\">\r\n                    <div class=\"form-group row\">\r\n                        <div class=\"col-5\">\r\n                            <label for=\"example-week-input\" class=\" col-form-label\">Chọn tuần</label>\r\n                            <input class=\"form-control\" type=\"week\" value=\"2020-W25\" id=\"example-week-input\">\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <div class=\"tab-pane fade\" id=\"contact\" role=\"tabpanel\" aria-labelledby=\"contact-tab\">\r\n                    <div class=\"form-group row\">\r\n                        <div class=\"col-5\">\r\n                            <label for=\"example-month-input\" class=\" col-form-label\">Chọn tháng</label>\r\n                            <input class=\"form-control\" type=\"month\" value=\"2020-06\" id=\"example-month-input\">\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div> \r\n    </div>\r\n    <div class=\"row\">\r\n        <div class=\"col-lg-1\"></div>\r\n        <div class=\"col-lg-4\">\r\n            <div class=\"table-responsive\">\r\n                <!-- Projects table -->\r\n                <table class=\"table align-items-center table-dark table-flush out\">\r\n                    <thead class=\"thead-dark\">\r\n                        <tr style=\"text-align: center;\">\r\n                            <th scope=\"col\">STT</th>\r\n                            <th scope=\"col\">Ngày</th>\r\n                            <th scope=\"col\">Chỉ số</th>\r\n                            <th scope=\"col\">Đánh giá</th>\r\n                        </tr>\r\n                    </thead>\r\n                    <tbody>\r\n                        <tr *ngFor=\"let data of sensor_data; let index = index\" style=\"text-align: center;\">\r\n                            <th scope=\"col\">{{ index + 1 }}</th>\r\n                            <th scope=\"col\">{{ data.node_id }}</th>\r\n                            <th scope=\"col\">{{ data.aqi }}</th>\r\n                            <th scope=\"col\"></th>\r\n                        </tr>\r\n                    </tbody>\r\n                </table>\r\n            </div>\r\n        </div>\r\n        <div class=\"col-lg-6\">\r\n            <div class=\"d-flex justify-content-end\">\r\n                <button class=\"btn btn-icon btn-2 btn-dark\" type=\"button\" (click)=\"setLineTypeOfChart()\">\r\n                    <span class=\"btn-inner--icon\"><i class=\"fas fa-chart-line\"></i></span>\r\n                </button>\r\n                <button class=\"btn btn-icon btn-2 btn-dark\" type=\"button\" (click)=\"setBarTypeOfChart()\">\r\n                    <span class=\"btn-inner--icon\"><i class=\"ni ni-chart-bar-32\"></i></span>\r\n                </button>\r\n            </div>\r\n            <br>\r\n            <div class=\"card shadow\" [hidden]=\"!lineTypeOfChart\">\r\n                <div class=\"card-body\">\r\n                    <div class=\"chart\">\r\n                        <canvas id=\"aqi_line_chart\" class=\"chart-canvas\"></canvas>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div class=\"card shadow\" [hidden]=\"!barTypeOfChart\">\r\n                <div class=\"card-body\">\r\n                    <div class=\"chart\">\r\n                        <canvas id=\"aqi_bar_chart\" class=\"chart-canvas\"></canvas>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>");
+/* harmony default export */ __webpack_exports__["default"] = ("<nav class=\"navbar navbar-horizontal navbar-expand-lg navbar-dark\" style=\"background: linear-gradient(87deg, #13547a 0, #80d0c7 100%) !important;\">\r\n    <div class=\"container\">\r\n        <a class=\"navbar-brand\" href=\"/home\">HỆ THỐNG THEO DÕI CHẤT LƯỢNG KHÔNG KHÍ</a>\r\n        <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbar-default\" aria-controls=\"navbar-default\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\r\n            <span class=\"navbar-toggler-icon\"></span>\r\n        </button>\r\n        <div class=\"collapse navbar-collapse\" id=\"navbar-default\">\r\n            <div class=\"navbar-collapse-header\">\r\n                <div class=\"row\">\r\n                    <div class=\"col-6 collapse-brand\">\r\n                        <a href=\"javascript:void(0)\">\r\n                            <img src=\"../../assets/img/brand/tlu.png\">\r\n                        </a>\r\n                    </div>\r\n                    <div class=\"col-6 collapse-close\">\r\n                        <button type=\"button\" class=\"navbar-toggler\" data-toggle=\"collapse\" data-target=\"#navbar-default\" aria-controls=\"navbar-default\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\r\n                            <span></span>\r\n                            <span></span>\r\n                        </button>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            \r\n            <ul class=\"navbar-nav ml-lg-auto\">\r\n                <li class=\"nav-item\">\r\n                    <a class=\"nav-link nav-link-icon\" href=\"/home\">\r\n                        <span class=\"nav-link-inner--text\">Trang chủ</span>\r\n                    </a>\r\n                </li>\r\n                <!-- <li class=\"nav-item\">\r\n                    <a class=\"nav-link nav-link-icon\" href=\"#\">\r\n                        <span class=\"nav-link-inner--text\">Giới thiệu</span>\r\n                    </a>\r\n                </li> -->\r\n                <li class=\"nav-item\">\r\n                    <a class=\"nav-link nav-link-icon\" href=\"/user\">\r\n                        <span class=\"nav-link-inner--text\">Quản lý</span>\r\n                    </a>\r\n                </li>\r\n                <!-- <li class=\"nav-item\">\r\n                    <a class=\"nav-link nav-link-icon\" href=\"#\">\r\n                        <span class=\"nav-link-inner--text\">Đăng xuất</span>\r\n                    </a>\r\n                </li> -->\r\n            </ul>\r\n            \r\n        </div>\r\n    </div>\r\n</nav>\r\n\r\n<div class=\"card-body\">\r\n    <div class=\"row\">\r\n        <div class=\"col-lg-1\"></div>\r\n        <div class=\"col-lg-5\">\r\n            <div class=\"form-group\">\r\n                <label class=\"form-control-label\" for=\"inputAddress\">Chọn địa điểm:</label>\r\n                <div *ngIf=\"sensor_data=='' || sensor_data==null\">Không có dữ liệu</div>\r\n                <select *ngIf=\"sensor_data!='' && sensor_data!=null\" [value]=\"current_sensor_data.node_id\" name=\"addressNode\" id=\"inputAddress\" class=\"form-control\" (change)=\"selectedNode($event.target.value)\">\r\n                    <!-- <option value=\"\" disabled selected hidden>{{ current_sensor_data.name }} - {{ current_sensor_data.location }}</option> -->\r\n                    <option *ngFor=\"let data of sensor_data\" [value]=\"data.node_id\">{{ data.name }} - {{ data.location }}</option>\r\n                </select>     \r\n            </div>\r\n            <h3 *ngIf=\"sensor_data!='' && sensor_data!=null\" class=\"mb-0\">Chỉ số chất lượng không khí lúc {{ current_sensor_data.datetime | date:'HH:mm' }} ngày {{ current_sensor_data.datetime | date:'dd/MM/yyyy' }}</h3>\r\n            <br>\r\n            <!-- <div *ngIf=\"!sensor_data.length\">Không có dữ liệu</div> -->\r\n            <div *ngIf=\"sensor_data!='' && sensor_data!=null\" class=\"row showed-main-info\" style=\"padding: 20px;\" [style.background-color]=\"current_aqi_info.color\">\r\n                <div class=\"col-3\">\r\n                    <h2 style=\"text-align: center; font-size: 25px; color: black;\">AQI: {{ current_sensor_data.aqi }}</h2>\r\n                    <div style=\"text-align: center;\">\r\n                        <i class=\"fa fa-tint fa-2x\" aria-hidden=\"true\" style=\"color: black;\"></i>\r\n                    </div>\r\n                    <div style=\"text-align: center;\">\r\n                        <span style=\"font-weight: bold; color: black;\">Độ ẩm: {{ current_sensor_data.hum }}%</span>\r\n                    </div>\r\n                </div>\r\n                <div class=\"col-3\">\r\n                    <h2 style=\"text-align: center; font-size: 22px; color: black; margin-bottom: 11px;\">{{ current_aqi_info.evaluate }}</h2>\r\n                    <div style=\"text-align: center;\">\r\n                        <i class=\"fa fa-thermometer-empty fa-2x\" aria-hidden=\"true\" style=\"color: black;\"></i>\r\n                    </div>\r\n                    <div style=\"text-align: center;\">\r\n                        <span style=\"font-weight: bold; color: black;\">Nhiệt độ: {{ current_sensor_data.tem }}&#8451;</span>\r\n                    </div>\r\n                </div>\r\n                <div class=\"col-6\">\r\n                    <div style=\"text-align: center;\">\r\n                        <img src=\"{{ current_aqi_info.img }}\" alt=\"\" style=\"width: 60px;\">\r\n                        <p style=\"color: black;\">{{ current_aqi_info.announcement }}</p>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <br>\r\n            <div class=\"card shadow\" *ngIf=\"sensor_data!='' && sensor_data!=null\">\r\n                <div class=\"card-body\">\r\n                    <div class=\"chart\">\r\n                        <canvas id=\"co_chart\" class=\"chart-canvas\">{{ co_chart }}</canvas>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <br>\r\n            <div class=\"card shadow\" *ngIf=\"sensor_data!='' && sensor_data!=null\">\r\n                <div class=\"card-body\">\r\n                    <div class=\"chart\">\r\n                        <canvas id=\"co2_chart\" class=\"chart-canvas\" height=\"200\">{{ co2_chart }}</canvas>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <br>\r\n            <div class=\"card shadow\" *ngIf=\"sensor_data!='' && sensor_data!=null\">\r\n                <div class=\"card-body\">\r\n                    <div class=\"chart\">\r\n                        <canvas id=\"pm25_chart\" class=\"chart-canvas\"></canvas>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n        <div class=\"col-lg-5\">\r\n            <div style=\"margin-bottom: 420px;\">\r\n                <app-map></app-map>\r\n            </div>\r\n            <hr>\r\n            <div class=\"row\" *ngIf=\"sensor_data!='' && sensor_data!=null\">\r\n                <div class=\"col\" *ngFor=\"let data of three_day_aqi_data; let index = index\">\r\n                    <div class=\"card card-stats mb-4 mb-lg-0\">\r\n                        <div class=\"card-body\">\r\n                            <div class=\"row\">\r\n                                <div class=\"col\">\r\n                                <h4 class=\"card-title text-uppercase mb-0\" style=\"text-align: center; color: black; padding-bottom: 10px;\">{{ data.datetime | date:'dd/MM/yyyy' }}</h4>\r\n                                <hr [style.border]=\"three_day_aqi_info[index].border\" style=\"margin-bottom: 15px; margin-top: 5px;\">\r\n                                <div style=\"text-align: center; padding-bottom: 10px;\">\r\n                                    <img src=\"{{ three_day_aqi_info[index].img }}\" alt=\"\" style=\"width: 50px;\">\r\n                                </div>\r\n                                <div style=\"text-align: center;\">\r\n                                    <p class=\"h4 font-weight-bold mb-0\">AQI: {{ data.aqi }}</p>\r\n                                    <p class=\"h4 font-weight-bold mb-0\">{{ three_day_aqi_info[index].evaluate }}</p>\r\n                                </div>\r\n                                <div class=\"row\">\r\n                                    <div class=\"col\" style=\"text-align: center;\">\r\n                                        <i class=\"fa fa-thermometer-empty fa-2x\" aria-hidden=\"true\" style=\"color: black;\"> </i>\r\n                                        <span style=\"font-weight: bold; color: black;\">{{ data.tem }}&#8451;</span>\r\n                                    </div>\r\n                                    <div class=\"col\" style=\"text-align: center;\">\r\n                                        <i class=\"fa fa-tint fa-2x\" aria-hidden=\"true\" style=\"color: black;\"> </i>\r\n                                        <span style=\"font-weight: bold; color: black;\">{{ data.hum }}%</span>\r\n                                    </div>\r\n                                </div>\r\n                                </div>\r\n                                <!-- <div class=\"col-auto\">\r\n                                <div class=\"icon icon-shape bg-danger text-white rounded-circle shadow\">\r\n                                    <i class=\"fas fa-chart-bar\"></i>\r\n                                </div>\r\n                                </div> -->\r\n                            </div>\r\n                            <!-- <p class=\"mt-3 mb-0 text-muted text-sm\">\r\n                                <span class=\"text-success mr-2\"><i class=\"fa fa-arrow-up\"></i> 3.48%</span>\r\n                                <span class=\"text-nowrap\">Since last month</span>\r\n                            </p> -->\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <hr>\r\n            <div class=\"card shadow\">\r\n                <div class=\"card-header border-0\">\r\n                    <div class=\"row align-items-center\">\r\n                        <div class=\"col\">\r\n                        <h3 class=\"mb-0\">Bảng quy đổi giá trị AQI</h3>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <div class=\"table-responsive\">\r\n                  <!-- Projects table -->\r\n                    <table class=\"table align-items-center table-flush out\">\r\n                        <thead class=\"thead-light\">\r\n                            <tr>\r\n                                <th scope=\"col\">Giá trị AQI</th>\r\n                                <th scope=\"col\">Đánh giá</th>\r\n                                <th scope=\"col\" style=\"text-align: center\">Ảnh hưởng sức khỏe</th>\r\n                                <th scope=\"col\">Màu sắc</th>\r\n                            </tr>\r\n                        </thead>\r\n                        <tbody>\r\n                            <tr *ngFor=\"let info of aqi_info\">\r\n                                <th scope=\"col\">{{ info.value }}</th>\r\n                                <th scope=\"col\">{{ info.evaluate }}</th>\r\n                                <th scope=\"col\">{{ info.comment }}</th>\r\n                                <th scope=\"col\">\r\n                                    <label *ngIf=\"info.v_color === 'Xanh'\" style=\"padding: 10px 9px; color: white;\" [style.background-color]=\"info.color\">{{ info.v_color }}</label>\r\n                                    <label *ngIf=\"info.v_color === 'Vàng'\" style=\"padding: 10px 9px; color: white;\" [style.background-color]=\"info.color\">{{ info.v_color }}</label>\r\n                                    <label *ngIf=\"info.v_color === 'Cam'\" style=\"padding: 10px; color: white;\" [style.background-color]=\"info.color\">{{ info.v_color }}</label>\r\n                                    <label *ngIf=\"info.v_color === 'Đỏ'\" style=\"padding: 10px 15px; color: white;\" [style.background-color]=\"info.color\">{{ info.v_color }}</label>\r\n                                    <label *ngIf=\"info.v_color === 'Tím'\" style=\"padding: 10px 12px; color: white;\" [style.background-color]=\"info.color\">{{ info.v_color }}</label>\r\n                                    <label *ngIf=\"info.v_color === 'Nâu'\" style=\"padding: 10px 11px; color: white;\" [style.background-color]=\"info.color\">{{ info.v_color }}</label>\r\n                                </th>\r\n                            </tr>\r\n                        </tbody>\r\n                    </table>\r\n                </div>\r\n            </div>\r\n            <br>\r\n        </div>\r\n    </div>\r\n    <br>\r\n    <div class=\"row\">\r\n        <div class=\"col-lg-1\"></div>\r\n        <div class=\"col-lg-10\">\r\n            <h1>Tra cứu chỉ số AQI:</h1>\r\n        </div> \r\n    </div>\r\n    <div class=\"row\">\r\n        <div class=\"col-lg-1\"></div>\r\n        <div class=\"col-lg-8\">\r\n            <div class=\"tab-content\" id=\"myTabContent\">\r\n                <div class=\"tab-pane fade show active\" id=\"home\" role=\"tabpanel\" aria-labelledby=\"home-tab\">\r\n                    <div class=\"form-group row\">\r\n                        <div class=\"col-5\">\r\n                            <label for=\"example-date-input\" class=\" col-form-label\">Chọn ngày</label>\r\n                            <input class=\"form-control\" type=\"date\" value=\"30-07-2020\" id=\"example-date-input\" [(ngModel)]=\"searchingDay\" (change)=\"searchByDay($event.target.value)\">\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n        <div class=\"col-lg-2\" style=\"margin-top: 55px;\">\r\n            <div class=\"d-flex justify-content-end\">\r\n                <button *ngIf=\"searchList.length!=0\" class=\"btn btn-icon btn-2 btn-dark\" type=\"button\" (click)=\"setLineTypeOfChart()\">\r\n                    <span class=\"btn-inner--icon\"><i class=\"fas fa-chart-line\"></i></span>\r\n                </button>\r\n                <button *ngIf=\"searchList.length!=0\" class=\"btn btn-icon btn-2 btn-dark\" type=\"button\" (click)=\"setBarTypeOfChart()\">\r\n                    <span class=\"btn-inner--icon\"><i class=\"ni ni-chart-bar-32\"></i></span>\r\n                </button>\r\n            </div>\r\n        </div>\r\n    </div>\r\n    <div class=\"row\">\r\n        <div class=\"col-lg-1\"></div>\r\n        <div class=\"col-lg-4\">\r\n            <div class=\"table-responsive\">\r\n                <!-- Projects table -->\r\n                <h4 *ngIf=\"searchList.length==0\" class=\"mb-0\" style=\"padding: 10px 24px 20px 24px;\" >Không có dữ liệu</h4>\r\n                <table *ngIf=\"searchList.length!=0\" class=\"table align-items-center table-dark table-flush out\">\r\n                    <thead class=\"thead-dark\">\r\n                        <tr style=\"text-align: center;\">\r\n                            <th scope=\"col\">STT</th>\r\n                            <th scope=\"col\">Tên node</th>\r\n                            <th scope=\"col\">Chỉ số</th>\r\n                            <th scope=\"col\">Đánh giá</th>\r\n                        </tr>\r\n                    </thead>\r\n                    <tbody>\r\n                        <tr *ngFor=\"let data of searchList; let index = index\" style=\"text-align: center;\">\r\n                            <th scope=\"col\">{{ index + 1 }}</th>\r\n                            <th scope=\"col\">{{ data.name }}</th>\r\n                            <th scope=\"col\">{{ data.aqi }}</th>\r\n                            <th scope=\"col\">{{ evaluate(data.aqi) }}</th>\r\n                        </tr>\r\n                    </tbody>\r\n                </table>\r\n            </div>\r\n        </div>\r\n        <div class=\"col-lg-6\" >\r\n            <div class=\"card shadow\" [hidden]=\"!lineTypeOfChart\">\r\n                <div class=\"card-body\">\r\n                    <div class=\"chart\">\r\n                        <canvas id=\"aqi_line_chart\" class=\"chart-canvas\"></canvas>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div class=\"card shadow\" [hidden]=\"!barTypeOfChart\">\r\n                <div class=\"card-body\">\r\n                    <div class=\"chart\">\r\n                        <canvas id=\"aqi_bar_chart\" class=\"chart-canvas\"></canvas>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>");
 
 /***/ }),
 
@@ -398,7 +398,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"header py-7 py-lg-8\" style=\"background: linear-gradient(360deg, #172B4D 0, #80d0c7 100%) !important;\">\r\n  <div class=\"container\">\r\n    <div class=\"header-body text-center mb-7\">\r\n      <div class=\"row justify-content-center\">\r\n        <div class=\"col-lg-5 col-md-6\">\r\n          <h1 class=\"text-white\">Hệ thống theo dõi môi trường</h1>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <div class=\"separator separator-bottom separator-skew zindex-100\">\r\n    <svg x=\"0\" y=\"0\" viewBox=\"0 0 2560 100\" preserveAspectRatio=\"none\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\">\r\n      <polygon class=\"fill-default\" points=\"2560 0 2560 100 0 100\"></polygon>\r\n    </svg>\r\n  </div>\r\n</div>\r\n<!-- Page content -->\r\n<div class=\"container mt--8 pb-5\">\r\n  <div class=\"row justify-content-center\">\r\n    <div class=\"col-lg-5 col-md-7\">\r\n      <div class=\"card bg-secondary shadow border-0\">\r\n        <div class=\"card-body px-lg-5 py-lg-5\">\r\n          <form role=\"form\">\r\n            <div class=\"form-group mb-3\">\r\n              <div class=\"input-group input-group-alternative\">\r\n                <div class=\"input-group-prepend\">\r\n                  <span class=\"input-group-text\"><i class=\"ni ni-circle-08\"></i></span>\r\n                </div>\r\n                <input class=\"form-control\" placeholder=\"Username\" type=\"text\" [(ngModel)]=\"username\" name=\"username\">\r\n              </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n              <div class=\"input-group input-group-alternative\">\r\n                <div class=\"input-group-prepend\">\r\n                  <span class=\"input-group-text\"><i class=\"ni ni-lock-circle-open\"></i></span>\r\n                </div>\r\n                <input class=\"form-control\" placeholder=\"Password\" type=\"password\" [(ngModel)]=\"password\" name=\"password\">\r\n              </div>\r\n            </div>\r\n            <div class=\"custom-control custom-control-alternative custom-checkbox\">\r\n              <input class=\"custom-control-input\" id=\" customCheckLogin\" type=\"checkbox\">\r\n              <label class=\"custom-control-label\" for=\" customCheckLogin\">\r\n                <span class=\"text-muted\">Remember me</span>\r\n              </label>\r\n            </div>\r\n            <div class=\"text-center\">\r\n              <button type=\"button\" class=\"btn btn-primary my-4\" (click)=\"login()\">Đăng nhập</button>\r\n            </div>\r\n          </form>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div\r\n  class=\"header py-7 py-lg-8\"\r\n  style=\"\r\n    background: linear-gradient(360deg, #172b4d 0, #80d0c7 100%) !important;\r\n  \"\r\n>\r\n  <div class=\"container\">\r\n    <div class=\"header-body text-center mb-7\">\r\n      <div class=\"row justify-content-center\">\r\n        <div class=\"col-lg-6 col-md-6\">\r\n          <h1 class=\"text-white\">Hệ thống theo dõi chất lượng không khí</h1>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <div class=\"separator separator-bottom separator-skew zindex-100\">\r\n    <svg\r\n      x=\"0\"\r\n      y=\"0\"\r\n      viewBox=\"0 0 2560 100\"\r\n      preserveAspectRatio=\"none\"\r\n      version=\"1.1\"\r\n      xmlns=\"http://www.w3.org/2000/svg\"\r\n    >\r\n      <polygon class=\"fill-default\" points=\"2560 0 2560 100 0 100\"></polygon>\r\n    </svg>\r\n  </div>\r\n</div>\r\n<!-- Page content -->\r\n<div class=\"container mt--8 pb-5\">\r\n  <div class=\"row justify-content-center\">\r\n    <div class=\"col-lg-5 col-md-7\">\r\n      <div class=\"card bg-secondary shadow border-0\">\r\n        <div class=\"card-body px-lg-5 py-lg-5\">\r\n          <form role=\"form\">\r\n            <div class=\"form-group mb-3\">\r\n              <div class=\"input-group input-group-alternative\">\r\n                <div class=\"input-group-prepend\">\r\n                  <span class=\"input-group-text\"\r\n                    ><i class=\"ni ni-circle-08\"></i\r\n                  ></span>\r\n                </div>\r\n                <input\r\n                  class=\"form-control\"\r\n                  placeholder=\"Tên đăng nhập\"\r\n                  type=\"text\"\r\n                  [(ngModel)]=\"username\"\r\n                  name=\"username\"\r\n                />\r\n              </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n              <div class=\"input-group input-group-alternative\">\r\n                <div class=\"input-group-prepend\">\r\n                  <span class=\"input-group-text\"\r\n                    ><i class=\"ni ni-lock-circle-open\"></i\r\n                  ></span>\r\n                </div>\r\n                <input\r\n                  class=\"form-control\"\r\n                  placeholder=\"Mật khẩu\"\r\n                  type=\"password\"\r\n                  [(ngModel)]=\"password\"\r\n                  name=\"password\"\r\n                />\r\n              </div>\r\n            </div>\r\n            <!-- <div class=\"custom-control custom-control-alternative custom-checkbox\">\r\n              <input class=\"custom-control-input\" id=\" customCheckLogin\" type=\"checkbox\">\r\n              <label class=\"custom-control-label\" for=\" customCheckLogin\">\r\n                <span class=\"text-muted\">Remember me</span>\r\n              </label>\r\n            </div> -->\r\n            <div class=\"text-center\">\r\n              <button\r\n                type=\"button\"\r\n                class=\"btn btn-primary my-4\"\r\n                (click)=\"login()\"\r\n              >\r\n                Đăng nhập\r\n              </button>\r\n            </div>\r\n          </form>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n");
 
 /***/ }),
 
@@ -1083,35 +1083,35 @@ var ROUTES = [
     // },
     {
         path: 'Quản lý khu vực',
-        role: ['Phê duyệt user', 'Tạo mới user', 'Phê duyệt node', 'Tạo mới node'],
+        role: ['Phê duyệt node', 'Tạo mới node'],
         subPath: [
-            { path: '/location', title: 'Danh sách', role: ['Phê duyệt user', 'Tạo mới user', 'Phê duyệt node', 'Tạo mới node'], icon: 'ni ni-bullet-list-67' },
-            { path: '/new-location', title: 'Tạo mới', role: ['Tạo mới node'], icon: 'ni ni-fat-add' }
+            { path: '/location', title: 'Danh sách', role: ['Phê duyệt node', 'Tạo mới node'], icon: 'ni ni-bullet-list-67' },
+            { path: '/new-location', title: 'Tạo mới', role: ['Admin'], icon: 'ni ni-fat-add' }
         ]
     },
     {
         path: 'Quản lý các node',
-        role: ['Phê duyệt user', 'Tạo mới user', 'Phê duyệt node', 'Tạo mới node'],
+        role: ['Phê duyệt node', 'Tạo mới node'],
         subPath: [
-            { path: '/node', title: 'Danh sách', role: ['Phê duyệt user', 'Tạo mới user', 'Phê duyệt node', 'Tạo mới node'], icon: 'ni ni-bullet-list-67' },
+            { path: '/node', title: 'Danh sách', role: ['Phê duyệt node', 'Tạo mới node'], icon: 'ni ni-bullet-list-67' },
             { path: '/new-node', title: 'Tạo mới', role: ['Tạo mới node'], icon: 'ni ni-fat-add' },
             { path: '/pending-node', title: 'Chờ phê duyệt', role: ['Phê duyệt node'], icon: 'ni ni-check-bold' },
         ]
     },
     {
         path: 'Quản lý người dùng',
-        role: ['Phê duyệt user', 'Tạo mới user', 'Phê duyệt node', 'Tạo mới node'],
+        role: ['Phê duyệt user', 'Tạo mới user'],
         subPath: [
-            { path: '/user', title: 'Danh sách', role: ['Phê duyệt user', 'Tạo mới user', 'Phê duyệt node', 'Tạo mới node'], icon: 'ni ni-bullet-list-67' },
+            { path: '/user', title: 'Danh sách', role: ['Phê duyệt user', 'Tạo mới user'], icon: 'ni ni-bullet-list-67' },
             { path: '/new-user', title: 'Tạo mới', role: ['Tạo mới user'], icon: 'ni ni-fat-add' },
             { path: '/pending-user', title: 'Chờ phê duyệt', role: ['Phê duyệt user'], icon: 'ni ni-check-bold' },
         ]
     },
     {
         path: 'Quản lý vai trò',
-        role: ['Phê duyệt user', 'Tạo mới user', 'Phê duyệt node', 'Tạo mới node'],
+        role: ['Phê duyệt user', 'Tạo mới user'],
         subPath: [
-            { path: '/role', title: 'Danh sách', role: ['Phê duyệt user', 'Tạo mới user', 'Phê duyệt node', 'Tạo mới node'], icon: 'ni ni-bullet-list-67' },
+            { path: '/role', title: 'Danh sách', role: ['Phê duyệt user', 'Tạo mới user'], icon: 'ni ni-bullet-list-67' },
             { path: '/create-role', title: 'Tạo mới', role: ['Admin'], icon: 'ni ni-fat-add' },
         ]
     },
@@ -1120,6 +1120,13 @@ var ROUTES = [
         role: ['Admin'],
         subPath: [
             { path: '/action-log', title: 'Danh sách', role: ['Admin'], icon: 'ni ni-bullet-list-67' },
+        ]
+    },
+    {
+        path: 'Báo cáo',
+        role: ['Admin'],
+        subPath: [
+            { path: '/report', title: 'Báo cáo', role: ['Admin'], icon: 'ni ni-collection' },
         ]
     }
 ];
@@ -1205,89 +1212,94 @@ var SidebarComponent = /** @class */ (function () {
 /*!*****************************!*\
   !*** ./src/app/data/aqi.ts ***!
   \*****************************/
-/*! exports provided: AqiInfo, aqiInfo */
+/*! exports provided: aqiInfo */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AqiInfo", function() { return AqiInfo; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "aqiInfo", function() { return aqiInfo; });
 var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
   return (mod && mod.__esModule) ? mod : { "default": mod };
 };
-var AqiInfo = /** @class */ (function () {
-    function AqiInfo() {
-    }
-    return AqiInfo;
-}());
-
-;
-var aqiInfo = [{
-        "ID": "001",
-        "Value": "0-50",
-        "Evaluate": "Tốt",
-        "Comment": "Chất lượng không khí tốt, không ảnh hưởng tới sức khỏe.",
-        "Color": "#57F83B",
-        "vColor": "Xanh",
-        "img": "../../../assets/icon/happy.png",
-        "announcement": "Không ảnh hưởng tới sức khỏe",
-        "Border": "1px solid #57F83B"
+// export interface AqiInfo {
+//     id: string;
+//     value: string;
+//     evaluate: string;
+//     comment: string;
+//     color: string;
+//     v_color: string;
+//     img: string;
+//     announcement: string;
+//     border: string
+// };
+var aqiInfo = [
+    {
+        id: "001",
+        value: "0-50",
+        evaluate: "Tốt",
+        comment: "Chất lượng không khí tốt, không ảnh hưởng tới sức khỏe.",
+        color: "#57F83B",
+        v_color: "Xanh",
+        img: "../../../assets/icon/happy.png",
+        announcement: "Không ảnh hưởng tới sức khỏe",
+        border: "1px solid #57F83B",
     },
     {
-        "ID": "002",
-        "Value": "51-100",
-        "Evaluate": "Trung bình",
-        "Comment": "Chất lượng không khí ở mức chấp nhận được. Tuy nhiên, một số ít người nhạy cảm với ô nhiễm không khí có thể chịu những tác động nhất định tới sức khỏe.",
-        "Color": "#F8D82E",
-        "vColor": "Vàng",
-        "img": "../../../assets/icon/smiling.png",
-        "announcement": "Nhóm nhạy cảm có thể chịu những tác động nhất định tới sức khỏe",
-        "Border": "1px solid #F8D82E"
+        id: "002",
+        value: "51-100",
+        evaluate: "Trung bình",
+        comment: "Chất lượng không khí ở mức chấp nhận được. Tuy nhiên, một số ít người nhạy cảm với ô nhiễm không khí có thể chịu những tác động nhất định tới sức khỏe.",
+        color: "#F8D82E",
+        v_color: "Vàng",
+        img: "../../../assets/icon/smiling.png",
+        announcement: "Nhóm nhạy cảm có thể chịu những tác động nhất định tới sức khỏe",
+        border: "1px solid #F8D82E",
     },
     {
-        "ID": "003",
-        "Value": "101-150",
-        "Evaluate": "Kém",
-        "Comment": "Những người nhạy cảm có thể gặp phải các vấn đề về sức khỏe. Những người bình thường ít có khả năng bị ảnh hưởng.",
-        "Color": "#F1923D",
-        "vColor": "Cam",
-        "img": "../../../assets/icon/confused.png",
-        "announcement": "Nhóm nhạy cảm sẽ gặp phải các vấn đề về sức khỏe",
-        "Border": "1px solid #F1923D"
+        id: "003",
+        value: "101-150",
+        evaluate: "Kém",
+        comment: "Những người nhạy cảm có thể gặp phải các vấn đề về sức khỏe. Những người bình thường ít có khả năng bị ảnh hưởng.",
+        color: "#F1923D",
+        v_color: "Cam",
+        img: "../../../assets/icon/confused.png",
+        announcement: "Nhóm nhạy cảm sẽ gặp phải các vấn đề về sức khỏe",
+        border: "1px solid #F1923D",
     },
     {
-        "ID": "004",
-        "Value": "151-200",
-        "Evaluate": "Xấu",
-        "Comment": "Những người bình thường bắt đầu có các ảnh hưởng tới sức khỏe. Những người nhạy cảm có thể gặp những vấn đề sức khỏe nghiêm trọng hơn.",
-        "Color": "#FF3232",
-        "vColor": "Đỏ",
-        "img": "../../../assets/icon/sad.png",
-        "announcement": "Nhóm nhạy cảm sẽ gặp phải các vấn đề nghiêm trọng về sức khỏe. Nhóm người bình thường có thể chịu những tác động nhất định tới sức khỏe",
-        "Border": "1px solid #FF3232"
+        id: "004",
+        value: "151-200",
+        evaluate: "Xấu",
+        comment: "Những người bình thường bắt đầu có các ảnh hưởng tới sức khỏe. Những người nhạy cảm có thể gặp những vấn đề sức khỏe nghiêm trọng hơn.",
+        color: "#FF3232",
+        v_color: "Đỏ",
+        img: "../../../assets/icon/sad.png",
+        announcement: "Nhóm nhạy cảm sẽ gặp phải các vấn đề nghiêm trọng về sức khỏe. Nhóm người bình thường có thể chịu những tác động nhất định tới sức khỏe",
+        border: "1px solid #FF3232",
     },
     {
-        "ID": "005",
-        "Value": "201-300",
-        "Evaluate": "Rất xấu",
-        "Comment": "Cảnh báo hưởng tới sức khỏe: mọi người có thể bị ảnh hưởng tới sức khỏe nhiều hơn.",
-        "Color": "Purple",
-        "vColor": "Tím",
-        "img": "../../../assets/icon/unhappy.png",
-        "announcement": "Cảnh báo: mọi người bị ảnh hưởng tới sức khỏe nghiêm trọng",
-        "Border": "1px solid #57F83B"
+        id: "005",
+        value: "201-300",
+        evaluate: "Rất xấu",
+        comment: "Cảnh báo hưởng tới sức khỏe: mọi người có thể bị ảnh hưởng tới sức khỏe nhiều hơn.",
+        color: "Purple",
+        v_color: "Tím",
+        img: "../../../assets/icon/unhappy.png",
+        announcement: "Cảnh báo: mọi người bị ảnh hưởng tới sức khỏe nghiêm trọng",
+        border: "1px solid #CC3399",
     },
     {
-        "ID": "006",
-        "Value": "301",
-        "Evaluate": "Nguy hại",
-        "Comment": "Cảnh báo khẩn cấp về sức khỏe: Mọi người có thể bị ảnh hưởng nghiêm trọng tới sức khỏe.",
-        "Color": "Brown",
-        "vColor": "Nâu",
-        "img": "../../../assets/icon/cry.png",
-        "announcement": "Cảnh báo: mọi người bị ảnh hưởng tới sức khỏe nghiêm trọng",
-        "Border": "1px solid #57F83B"
-    }];
+        id: "006",
+        value: "301",
+        evaluate: "Nguy hại",
+        comment: "Cảnh báo khẩn cấp về sức khỏe: Mọi người có thể bị ảnh hưởng nghiêm trọng tới sức khỏe.",
+        color: "Brown",
+        v_color: "Nâu",
+        img: "../../../assets/icon/cry.png",
+        announcement: "Cảnh báo: mọi người bị ảnh hưởng tới sức khỏe nghiêm trọng",
+        border: "1px solid #A52A2A",
+    },
+];
 
 
 /***/ }),
@@ -1576,6 +1588,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _variables_charts__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../variables/charts */ "./src/app/variables/charts.ts");
 /* harmony import */ var src_app_services_data_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/services/data.service */ "./src/app/services/data.service.ts");
+/* harmony import */ var src_app_services_node_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/app/services/node.service */ "./src/app/services/node.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1631,96 +1644,180 @@ var __importDefault = (undefined && undefined.__importDefault) || function (mod)
 // core components
 
 
+
 var HomeComponent = /** @class */ (function () {
-    function HomeComponent(dataService) {
+    function HomeComponent(dataService, nodeService) {
         this.dataService = dataService;
+        this.nodeService = nodeService;
         this.sensor_data = [];
         this.current_sensor_data = {};
-        this.aqi_info = _data_aqi__WEBPACK_IMPORTED_MODULE_1__["aqiInfo"];
+        this.aqi_info = [];
         this.current_aqi_info = {};
         this.three_day_aqi_info = [];
-        this.three_day_aqi_data = {};
+        this.three_day_aqi_data = [];
         this.lineTypeOfChart = false;
         this.barTypeOfChart = false;
         this.co_data = [];
         this.co2_data = [];
         this.pm25_data = [];
         this.time = [];
+        this.backgroundColor = [];
+        this.activeNode = [];
+        this.activeNodeId = "";
         //filter
         this.filterDataBy24Hour = {
-            node_id: "1",
+            node_id: "",
             end_date: moment__WEBPACK_IMPORTED_MODULE_3___default()(new Date()).format("YYYY-MM-DD HH:mm:ss"),
             start_date: moment__WEBPACK_IMPORTED_MODULE_3___default()(new Date()).subtract(24, 'hours').format("YYYY-MM-DD HH:mm:ss")
         };
+        this.size = 24;
         this.filterDataBy3Day = {
             node_ids: ""
         };
+        this.filterSearch = {
+            date: moment__WEBPACK_IMPORTED_MODULE_3___default()(new Date()).format("YYYY-MM-DD HH:mm:ss"),
+        };
+        // search
+        this.searchingDay = moment__WEBPACK_IMPORTED_MODULE_3___default()(new Date()).subtract(1, 'day').format("YYYY-MM-DD");
+        this.searchList = [];
+        this.searchAqiList = [];
+        this.searchNameList = [];
+        this.currentDay = moment__WEBPACK_IMPORTED_MODULE_3___default()(new Date()).subtract(1, 'day').format("YYYY-MM-DD");
     }
     HomeComponent.prototype.ngOnInit = function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        console.log(145);
-                        // this.get3DayAqiData();
-                        Object(_variables_charts__WEBPACK_IMPORTED_MODULE_4__["parseOptions"])(chart_js__WEBPACK_IMPORTED_MODULE_2___default.a, Object(_variables_charts__WEBPACK_IMPORTED_MODULE_4__["chartOptions"])());
-                        return [4 /*yield*/, this.getDataByLastHour()];
+                        this.aqi_info = _data_aqi__WEBPACK_IMPORTED_MODULE_1__["aqiInfo"];
+                        return [4 /*yield*/, this.getNodeList()];
                     case 1:
                         _a.sent();
-                        // this.getDataBy24Hour(this.filterDataBy24Hour);
-                        return [4 /*yield*/, this.getChart()];
+                        Object(_variables_charts__WEBPACK_IMPORTED_MODULE_4__["parseOptions"])(chart_js__WEBPACK_IMPORTED_MODULE_2___default.a, Object(_variables_charts__WEBPACK_IMPORTED_MODULE_4__["chartOptions"])());
+                        return [4 /*yield*/, this.getDataByLastHour({ node_ids: this.activeNodeId })];
                     case 2:
-                        // this.getDataBy24Hour(this.filterDataBy24Hour);
+                        _a.sent();
+                        if (!(this.sensor_data != "" && this.sensor_data != null)) return [3 /*break*/, 4];
+                        return [4 /*yield*/, this.getChart()];
+                    case 3:
+                        _a.sent();
+                        _a.label = 4;
+                    case 4: return [4 /*yield*/, this.searchByDay(this.searchingDay)];
+                    case 5:
                         _a.sent();
                         return [2 /*return*/];
                 }
             });
         });
     };
-    HomeComponent.prototype.getNodeId = function () {
+    HomeComponent.prototype.evaluate = function (aqi) {
+        if (aqi >= 0 && aqi <= 50) {
+            return "Tốt";
+        }
+        else if (aqi >= 51 && aqi <= 100) {
+            return "Trung bình";
+        }
+        else if (aqi >= 101 && aqi <= 150) {
+            return "Kém";
+        }
+        else if (aqi >= 151 && aqi <= 200) {
+            return "Xấu";
+        }
+        else if (aqi >= 201 && aqi <= 300) {
+            return "Rất xấu";
+        }
+        else {
+            return "Nguy hại";
+        }
     };
-    HomeComponent.prototype.getDataByLastHour = function () {
+    HomeComponent.prototype.getNodeList = function () {
         return __awaiter(this, void 0, void 0, function () {
             var _this = this;
             return __generator(this, function (_a) {
-                this.dataService.getDataByLastHour()
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.nodeService.getNodeListApprovedFilter({ approve: 1, status: 1 }).then(function (data) {
+                            _this.activeNode = data.data;
+                        })];
+                    case 1:
+                        _a.sent();
+                        this.activeNode.forEach(function (e) {
+                            if (_this.activeNodeId.length == 0) {
+                                _this.activeNodeId = _this.activeNodeId + e._id;
+                            }
+                            else {
+                                _this.activeNodeId = _this.activeNodeId + "," + e._id;
+                            }
+                        });
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    HomeComponent.prototype.getDataByLastHour = function (filter) {
+        return __awaiter(this, void 0, void 0, function () {
+            var _this = this;
+            return __generator(this, function (_a) {
+                this.dataService.getDataByLastHour(filter)
                     .then(function (data) {
-                    _this.sensor_data = data;
-                    _this.current_sensor_data = data[0];
-                    _this.filterDataBy3Day.node_ids = _this.current_sensor_data.node_id;
-                    _this.selectedNode(_this.sensor_data[0].node_id);
+                    console.log("data", data);
+                    _this.sensor_data = data.data.filter(function (v) { return v && v.id; });
+                    console.log('sensor', _this.sensor_data);
+                    if (_this.sensor_data != "" && _this.sensor_data != null) {
+                        _this.current_sensor_data = _this.sensor_data[0];
+                        _this.filterDataBy3Day.node_ids = _this.current_sensor_data.node_id;
+                        _this.current_sensor_node_id = _this.sensor_data[0].node_id;
+                        _this.selectedNode(_this.sensor_data[0].node_id);
+                    }
                 });
                 return [2 /*return*/];
             });
         });
     };
-    HomeComponent.prototype.getDataBy24Hour = function (filter) {
-        return this.dataService.getDataBy24Hour(filter).then(function (data) {
+    HomeComponent.prototype.getDataBy24Hour = function (filter, size) {
+        return this.dataService.getDataBy24Hour(filter, size).then(function (data) {
             return data.rows;
         });
     };
     HomeComponent.prototype.getDataBy3Day = function (filter) {
         return __awaiter(this, void 0, void 0, function () {
+            var temp;
             var _this = this;
             return __generator(this, function (_a) {
-                this.dataService.getDataBy3Day(filter).then(function (data) {
-                    _this.three_day_aqi_data = data[0].data;
-                    _this.set3DayAqiInfo(_this.three_day_aqi_data[0].aqi, _this.three_day_aqi_data[1].aqi, _this.three_day_aqi_data[2].aqi);
-                });
-                return [2 /*return*/];
+                switch (_a.label) {
+                    case 0:
+                        temp = [];
+                        this.three_day_aqi_data = [];
+                        this.three_day_aqi_info = [];
+                        return [4 /*yield*/, this.dataService.getDataBy3Day(filter).then(function (data) {
+                                temp = data.data[0].data;
+                                for (var i = temp.length - 1; i >= 0; i--) {
+                                    _this.three_day_aqi_data.push(temp[i]);
+                                }
+                                console.log(2324324, _this.three_day_aqi_data);
+                                if (_this.three_day_aqi_data.length == 3) {
+                                    _this.set3DayAqiInfo(_this.three_day_aqi_data[0].aqi, _this.three_day_aqi_data[1].aqi, _this.three_day_aqi_data[2].aqi);
+                                }
+                            })];
+                    case 1:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
             });
         });
     };
-    HomeComponent.prototype.selectedNode = function (nameNode) {
+    HomeComponent.prototype.selectedNode = function (id) {
         for (var i = 0; i < this.sensor_data.length; i++) {
-            if (nameNode == this.sensor_data[i].node_id) {
+            if (id == this.sensor_data[i].node_id) {
                 this.current_sensor_data = this.sensor_data[i];
             }
         }
         this.filterDataBy3Day.node_ids = this.current_sensor_data.node_id;
         var temp = this.current_sensor_data.aqi;
+        this.filterDataBy24Hour.node_id = id;
         this.setCurrentAqiInfo(temp);
+        this.getDataBy24Hour(this.filterDataBy24Hour, this.size);
         this.getDataBy3Day(this.filterDataBy3Day);
+        this.getChart();
     };
     HomeComponent.prototype.setCurrentAqiInfo = function (temp) {
         if (temp >= 0 && temp <= 50) {
@@ -1798,19 +1895,11 @@ var HomeComponent = /** @class */ (function () {
             this.three_day_aqi_info[2] = this.aqi_info[5];
         }
     };
-    HomeComponent.prototype.updateData = function (chart, data, t) {
-        chart.data.datasets[0].data = data;
-        (chart.data.labels = t),
-            (chart.options.scales.yAxes[0].scaleLabel.labelString = "CO"),
-            chart.update();
-    };
-    // get3DayAqiData() {
-    //   this.three_day_aqi_data = [];
-    //   threeDay.forEach((e) => {
-    //     if (e.nameNode == this.current_sensor_data.nameNode) {
-    //       this.three_day_aqi_data.push(e);
-    //     }
-    //   });
+    // updateData(chart: Chart, data: string[], t: string[]) {
+    //   chart.data.datasets[0].data = data;
+    //   (chart.data.labels = t),
+    //     (chart.options.scales.yAxes[0].scaleLabel.labelString = "CO"),
+    //     chart.update();
     // }
     HomeComponent.prototype.setLineTypeOfChart = function () {
         this.lineTypeOfChart = true;
@@ -1829,6 +1918,10 @@ var HomeComponent = /** @class */ (function () {
                                     labelString: "AQI",
                                     display: true,
                                 },
+                                ticks: {
+                                    max: Math.ceil((10 - Math.max.apply(Math, this.searchAqiList) % 10) + Math.max.apply(Math, this.searchAqiList)),
+                                    min: Math.floor(Math.min.apply(Math, this.searchAqiList) - Math.min.apply(Math, this.searchAqiList) % 10),
+                                }
                             },
                         ],
                         xAxes: [
@@ -1841,11 +1934,11 @@ var HomeComponent = /** @class */ (function () {
                     },
                 },
                 data: {
-                    labels: this.time,
+                    labels: this.searchNameList,
                     datasets: [
                         {
                             label: "AQI",
-                            data: this.co_data,
+                            data: this.searchAqiList,
                         },
                     ],
                 },
@@ -1880,11 +1973,12 @@ var HomeComponent = /** @class */ (function () {
                     },
                 },
                 data: {
-                    labels: this.time,
+                    labels: this.searchNameList,
                     datasets: [
                         {
                             label: "AQI",
-                            data: this.co_data,
+                            data: this.searchAqiList,
+                            backgroundColor: this.backgroundColor
                         },
                     ],
                 },
@@ -1896,21 +1990,24 @@ var HomeComponent = /** @class */ (function () {
             var dataBy24Hour, coChart, co2Chart, pm25Chart, i, co_chart, co2_chart, pm25_chart;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.getDataBy24Hour(this.filterDataBy24Hour)];
+                    case 0: return [4 /*yield*/, this.getDataBy24Hour(this.filterDataBy24Hour, this.size)];
                     case 1:
                         dataBy24Hour = _a.sent();
                         coChart = document.getElementById("co_chart");
                         co2Chart = document.getElementById("co2_chart");
                         pm25Chart = document.getElementById("pm25_chart");
-                        console.log("test", dataBy24Hour);
-                        for (i = 0; i < dataBy24Hour.length; i++) {
-                            this.co_data.push(dataBy24Hour[i].co);
-                            this.co2_data.push(dataBy24Hour[i].co2);
-                            this.pm25_data.push(dataBy24Hour[i].pm_25);
+                        this.co_data = [];
+                        this.co2_data = [];
+                        this.pm25_data = [];
+                        this.time = [];
+                        console.log(999, this.filterDataBy24Hour);
+                        console.log(999, dataBy24Hour);
+                        for (i = dataBy24Hour.length - 1; i >= 0; i--) {
+                            this.co_data.push((dataBy24Hour[i].co));
+                            this.co2_data.push((dataBy24Hour[i].co2));
+                            this.pm25_data.push((dataBy24Hour[i].pm_25));
                             this.time.push(moment__WEBPACK_IMPORTED_MODULE_3___default()(dataBy24Hour[i].datetime).format("DD/MM/YYYY HH:mm"));
                         }
-                        console.log(78, this.co_data);
-                        console.log(789, this.time);
                         co_chart = new chart_js__WEBPACK_IMPORTED_MODULE_2___default.a(coChart, {
                             type: "line",
                             options: {
@@ -1919,13 +2016,12 @@ var HomeComponent = /** @class */ (function () {
                                     yAxes: [
                                         {
                                             scaleLabel: {
-                                                labelString: "CO",
+                                                labelString: "CO (µg/m3)",
                                                 display: true,
                                             },
                                             ticks: {
-                                                max: 100,
-                                                min: 50,
-                                                stepSize: 10
+                                                max: Math.ceil((10 - Math.max.apply(Math, this.co_data) % 10) + Math.max.apply(Math, this.co_data)),
+                                                min: Math.floor(Math.min.apply(Math, this.co_data) - Math.min.apply(Math, this.co_data) % 10),
                                             }
                                         },
                                     ],
@@ -1948,13 +2044,12 @@ var HomeComponent = /** @class */ (function () {
                                     yAxes: [
                                         {
                                             scaleLabel: {
-                                                labelString: "CO2",
+                                                labelString: "CO2 (µg/m3)",
                                                 display: true,
                                             },
                                             ticks: {
-                                                max: 100,
-                                                min: 50,
-                                                stepSize: 10
+                                                max: Math.ceil((100 - Math.max.apply(Math, this.co2_data) % 100) + Math.max.apply(Math, this.co2_data)),
+                                                min: Math.floor(Math.min.apply(Math, this.co2_data) - Math.min.apply(Math, this.co2_data) % 100),
                                             }
                                         },
                                     ],
@@ -1977,13 +2072,12 @@ var HomeComponent = /** @class */ (function () {
                                     yAxes: [
                                         {
                                             scaleLabel: {
-                                                labelString: "Bụi PM2.5",
+                                                labelString: "Bụi PM2.5 (µg/m3)",
                                                 display: true,
                                             },
                                             ticks: {
-                                                max: 100,
-                                                min: 40,
-                                                stepSize: 10
+                                                max: Math.ceil((10 - Math.max.apply(Math, this.pm25_data) % 10) + Math.max.apply(Math, this.pm25_data)),
+                                                min: Math.floor(Math.min.apply(Math, this.pm25_data) - Math.min.apply(Math, this.pm25_data) % 10),
                                             }
                                         },
                                     ],
@@ -2006,8 +2100,55 @@ var HomeComponent = /** @class */ (function () {
     };
     HomeComponent.prototype.getAqiChart = function () {
     };
+    HomeComponent.prototype.searchByDay = function (value) {
+        return __awaiter(this, void 0, void 0, function () {
+            var _this = this;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        this.searchNameList = [];
+                        this.searchAqiList = [];
+                        this.backgroundColor = [];
+                        this.filterSearch.date = value;
+                        return [4 /*yield*/, this.dataService.getDataOfAllNodeByDay(this.filterSearch).then(function (data) {
+                                console.log(555, data);
+                                _this.searchList = data;
+                            })];
+                    case 1:
+                        _a.sent();
+                        if (this.searchList.length != 0) {
+                            this.searchList.forEach(function (e) {
+                                _this.searchAqiList.push(e.aqi);
+                                _this.searchNameList.push(e.name);
+                                if (e.aqi >= 0 && e.aqi <= 50) {
+                                    _this.backgroundColor.push("#57F83B");
+                                }
+                                else if (e.aqi >= 51 && e.aqi <= 100) {
+                                    _this.backgroundColor.push("#F8D82E");
+                                }
+                                else if (e.aqi >= 101 && e.aqi <= 150) {
+                                    _this.backgroundColor.push("#F1923D");
+                                }
+                                else if (e.aqi >= 151 && e.aqi <= 200) {
+                                    _this.backgroundColor.push("#FF3232");
+                                }
+                                else if (e.aqi >= 201 && e.aqi <= 300) {
+                                    _this.backgroundColor.push("#CC3399");
+                                }
+                                else if (e.aqi >= 301) {
+                                    _this.backgroundColor.push("#A52A2A");
+                                }
+                            });
+                            this.setBarTypeOfChart();
+                        }
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
     HomeComponent.ctorParameters = function () { return [
-        { type: src_app_services_data_service__WEBPACK_IMPORTED_MODULE_5__["DataService"] }
+        { type: src_app_services_data_service__WEBPACK_IMPORTED_MODULE_5__["DataService"] },
+        { type: src_app_services_node_service__WEBPACK_IMPORTED_MODULE_6__["NodeService"] }
     ]; };
     HomeComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -2015,7 +2156,8 @@ var HomeComponent = /** @class */ (function () {
             template: __importDefault(__webpack_require__(/*! raw-loader!./home.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/home/home.component.html")).default,
             styles: [__importDefault(__webpack_require__(/*! ./home.component.scss */ "./src/app/pages/home/home.component.scss")).default]
         }),
-        __metadata("design:paramtypes", [src_app_services_data_service__WEBPACK_IMPORTED_MODULE_5__["DataService"]])
+        __metadata("design:paramtypes", [src_app_services_data_service__WEBPACK_IMPORTED_MODULE_5__["DataService"],
+            src_app_services_node_service__WEBPACK_IMPORTED_MODULE_6__["NodeService"]])
     ], HomeComponent);
     return HomeComponent;
 }());
@@ -2050,6 +2192,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/__ivy_ngcc__/fesm5/router.js");
 /* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../services/auth.service */ "./src/app/services/auth.service.ts");
+/* harmony import */ var ngx_toastr__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ngx-toastr */ "./node_modules/ngx-toastr/__ivy_ngcc__/fesm5/ngx-toastr.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2101,10 +2244,14 @@ var __importDefault = (undefined && undefined.__importDefault) || function (mod)
 
 
 
+
 var LoginComponent = /** @class */ (function () {
-    function LoginComponent(authService, router) {
+    function LoginComponent(authService, toastrService, router) {
         this.authService = authService;
+        this.toastrService = toastrService;
         this.router = router;
+        this.username = "";
+        this.password = "";
     }
     LoginComponent.prototype.ngOnInit = function () {
         if (this.authService.isAuthenticated()) {
@@ -2114,6 +2261,7 @@ var LoginComponent = /** @class */ (function () {
     LoginComponent.prototype.login = function () {
         return __awaiter(this, void 0, void 0, function () {
             var userLogin;
+            var _this = this;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -2121,7 +2269,18 @@ var LoginComponent = /** @class */ (function () {
                             username: this.username,
                             password: this.password
                         };
-                        return [4 /*yield*/, this.authService.signIn(userLogin)];
+                        if (this.username.length == 0) {
+                            this.toastrService.warning("Tên đăng nhập không được để trống.");
+                        }
+                        if (this.password.length == 0) {
+                            this.toastrService.warning("Mật khẩu không được để trống.");
+                        }
+                        if (!(this.username.length != 0 && this.username.length != 0)) return [3 /*break*/, 3];
+                        return [4 /*yield*/, this.authService.signIn(userLogin)
+                                .then(function (data) { })
+                                .catch(function (err) {
+                                _this.toastrService.warning("Tên đăng nhập hoặc mật khẩu không chính xác.");
+                            })];
                     case 1:
                         _a.sent();
                         return [4 /*yield*/, this.authService.isApprovedAndActive()];
@@ -2129,13 +2288,15 @@ var LoginComponent = /** @class */ (function () {
                         if (!(_a.sent())) {
                             this.authService.logout();
                         }
-                        return [2 /*return*/];
+                        _a.label = 3;
+                    case 3: return [2 /*return*/];
                 }
             });
         });
     };
     LoginComponent.ctorParameters = function () { return [
         { type: _services_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"] },
+        { type: ngx_toastr__WEBPACK_IMPORTED_MODULE_3__["ToastrService"] },
         { type: _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"] }
     ]; };
     LoginComponent = __decorate([
@@ -2145,6 +2306,7 @@ var LoginComponent = /** @class */ (function () {
             styles: [__importDefault(__webpack_require__(/*! ./login.component.scss */ "./src/app/pages/login/login.component.scss")).default]
         }),
         __metadata("design:paramtypes", [_services_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"],
+            ngx_toastr__WEBPACK_IMPORTED_MODULE_3__["ToastrService"],
             _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"]])
     ], LoginComponent);
     return LoginComponent;
@@ -2163,7 +2325,7 @@ var LoginComponent = /** @class */ (function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("/* required styles */\r\n\r\n.leaflet-pane,\r\n.leaflet-tile,\r\n.leaflet-marker-icon,\r\n.leaflet-marker-shadow,\r\n.leaflet-tile-container,\r\n.leaflet-pane > svg,\r\n.leaflet-pane > canvas,\r\n.leaflet-zoom-box,\r\n.leaflet-image-layer,\r\n.leaflet-layer {\r\n\tposition: absolute;\r\n\tleft: 0;\r\n\ttop: 0;\r\n\t}\r\n\r\n.leaflet-container {\r\n\toverflow: hidden;\r\n\t}\r\n\r\n.leaflet-tile,\r\n.leaflet-marker-icon,\r\n.leaflet-marker-shadow {\r\n\t-webkit-user-select: none;\r\n\t   -moz-user-select: none;\r\n\t        -ms-user-select: none;\r\n\t    user-select: none;\r\n\t  -webkit-user-drag: none;\r\n\t}\r\n\r\n/* Prevents IE11 from highlighting tiles in blue */\r\n\r\n.leaflet-tile::-moz-selection {\r\n\tbackground: transparent;\r\n}\r\n\r\n.leaflet-tile::selection {\r\n\tbackground: transparent;\r\n}\r\n\r\n/* Safari renders non-retina tile on retina better with this, but Chrome is worse */\r\n\r\n.leaflet-safari .leaflet-tile {\r\n\timage-rendering: -webkit-optimize-contrast;\r\n\t}\r\n\r\n/* hack that prevents hw layers \"stretching\" when loading new tiles */\r\n\r\n.leaflet-safari .leaflet-tile-container {\r\n\twidth: 1600px;\r\n\theight: 1600px;\r\n\t-webkit-transform-origin: 0 0;\r\n\t}\r\n\r\n.leaflet-marker-icon,\r\n.leaflet-marker-shadow {\r\n\tdisplay: block;\r\n\t}\r\n\r\n/* .leaflet-container svg: reset svg max-width decleration shipped in Joomla! (joomla.org) 3.x */\r\n\r\n/* .leaflet-container img: map is broken in FF if you have max-width: 100% on tiles */\r\n\r\n.leaflet-container .leaflet-overlay-pane svg,\r\n.leaflet-container .leaflet-marker-pane img,\r\n.leaflet-container .leaflet-shadow-pane img,\r\n.leaflet-container .leaflet-tile-pane img,\r\n.leaflet-container img.leaflet-image-layer,\r\n.leaflet-container .leaflet-tile {\r\n\tmax-width: none !important;\r\n\tmax-height: none !important;\r\n\t}\r\n\r\n.leaflet-container.leaflet-touch-zoom {\r\n\ttouch-action: pan-x pan-y;\r\n\t}\r\n\r\n.leaflet-container.leaflet-touch-drag {\r\n\t/* Fallback for FF which doesn't support pinch-zoom */\r\n\ttouch-action: none;\r\n\ttouch-action: pinch-zoom;\r\n}\r\n\r\n.leaflet-container.leaflet-touch-drag.leaflet-touch-zoom {\r\n\ttouch-action: none;\r\n}\r\n\r\n.leaflet-container {\r\n\t-webkit-tap-highlight-color: transparent;\r\n}\r\n\r\n.leaflet-container a {\r\n\t-webkit-tap-highlight-color: rgba(51, 181, 229, 0.4);\r\n}\r\n\r\n.leaflet-tile {\r\n\t-webkit-filter: inherit;\r\n\t        filter: inherit;\r\n\tvisibility: hidden;\r\n\t}\r\n\r\n.leaflet-tile-loaded {\r\n\tvisibility: inherit;\r\n\t}\r\n\r\n.leaflet-zoom-box {\r\n\twidth: 0;\r\n\theight: 0;\r\n\tbox-sizing: border-box;\r\n\tz-index: 800;\r\n\t}\r\n\r\n/* workaround for https://bugzilla.mozilla.org/show_bug.cgi?id=888319 */\r\n\r\n.leaflet-overlay-pane svg {\r\n\t-moz-user-select: none;\r\n\t}\r\n\r\n.leaflet-pane         { z-index: 400; }\r\n\r\n.leaflet-tile-pane    { z-index: 200; }\r\n\r\n.leaflet-overlay-pane { z-index: 400; }\r\n\r\n.leaflet-shadow-pane  { z-index: 500; }\r\n\r\n.leaflet-marker-pane  { z-index: 600; }\r\n\r\n.leaflet-tooltip-pane   { z-index: 650; }\r\n\r\n.leaflet-popup-pane   { z-index: 700; }\r\n\r\n.leaflet-map-pane canvas { z-index: 100; }\r\n\r\n.leaflet-map-pane svg    { z-index: 200; }\r\n\r\n.leaflet-vml-shape {\r\n\twidth: 1px;\r\n\theight: 1px;\r\n\t}\r\n\r\n.lvml {\r\n\tbehavior: url(#default#VML);\r\n\tdisplay: inline-block;\r\n\tposition: absolute;\r\n\t}\r\n\r\n/* control positioning */\r\n\r\n.leaflet-control {\r\n\tposition: relative;\r\n\tz-index: 800;\r\n\tpointer-events: visiblePainted; /* IE 9-10 doesn't have auto */\r\n\tpointer-events: auto;\r\n\t}\r\n\r\n.leaflet-top,\r\n.leaflet-bottom {\r\n\tposition: absolute;\r\n\tz-index: 1000;\r\n\tpointer-events: none;\r\n\t}\r\n\r\n.leaflet-top {\r\n\ttop: 0;\r\n\t}\r\n\r\n.leaflet-right {\r\n\tright: 0;\r\n\t}\r\n\r\n.leaflet-bottom {\r\n\tbottom: 0;\r\n\t}\r\n\r\n.leaflet-left {\r\n\tleft: 0;\r\n\t}\r\n\r\n.leaflet-control {\r\n\tfloat: left;\r\n\tclear: both;\r\n\t}\r\n\r\n.leaflet-right .leaflet-control {\r\n\tfloat: right;\r\n\t}\r\n\r\n.leaflet-top .leaflet-control {\r\n\tmargin-top: 10px;\r\n\t}\r\n\r\n.leaflet-bottom .leaflet-control {\r\n\tmargin-bottom: 10px;\r\n\t}\r\n\r\n.leaflet-left .leaflet-control {\r\n\tmargin-left: 10px;\r\n\t}\r\n\r\n.leaflet-right .leaflet-control {\r\n\tmargin-right: 10px;\r\n\t}\r\n\r\n/* zoom and fade animations */\r\n\r\n.leaflet-fade-anim .leaflet-tile {\r\n\twill-change: opacity;\r\n\t}\r\n\r\n.leaflet-fade-anim .leaflet-popup {\r\n\topacity: 0;\r\n\t-webkit-transition: opacity 0.2s linear;\r\n\t        transition: opacity 0.2s linear;\r\n\t}\r\n\r\n.leaflet-fade-anim .leaflet-map-pane .leaflet-popup {\r\n\topacity: 1;\r\n\t}\r\n\r\n.leaflet-zoom-animated {\r\n\t-webkit-transform-origin: 0 0;\r\n\t        transform-origin: 0 0;\r\n\t}\r\n\r\n.leaflet-zoom-anim .leaflet-zoom-animated {\r\n\twill-change: transform;\r\n\t}\r\n\r\n.leaflet-zoom-anim .leaflet-zoom-animated {\r\n\t-webkit-transition: -webkit-transform 0.25s cubic-bezier(0,0,0.25,1);\r\n\t        transition:         -webkit-transform 0.25s cubic-bezier(0,0,0.25,1);\r\n\t        transition:         transform 0.25s cubic-bezier(0,0,0.25,1);\r\n\t        transition:         transform 0.25s cubic-bezier(0,0,0.25,1), -webkit-transform 0.25s cubic-bezier(0,0,0.25,1);\r\n\t}\r\n\r\n.leaflet-zoom-anim .leaflet-tile,\r\n.leaflet-pan-anim .leaflet-tile {\r\n\t-webkit-transition: none;\r\n\t        transition: none;\r\n\t}\r\n\r\n.leaflet-zoom-anim .leaflet-zoom-hide {\r\n\tvisibility: hidden;\r\n\t}\r\n\r\n/* cursors */\r\n\r\n.leaflet-interactive {\r\n\tcursor: pointer;\r\n\t}\r\n\r\n.leaflet-grab {\r\n\tcursor: -webkit-grab;\r\n\tcursor:         grab;\r\n\t}\r\n\r\n.leaflet-crosshair,\r\n.leaflet-crosshair .leaflet-interactive {\r\n\tcursor: crosshair;\r\n\t}\r\n\r\n.leaflet-popup-pane,\r\n.leaflet-control {\r\n\tcursor: auto;\r\n\t}\r\n\r\n.leaflet-dragging .leaflet-grab,\r\n.leaflet-dragging .leaflet-grab .leaflet-interactive,\r\n.leaflet-dragging .leaflet-marker-draggable {\r\n\tcursor: move;\r\n\tcursor: -webkit-grabbing;\r\n\tcursor:         grabbing;\r\n\t}\r\n\r\n/* marker & overlays interactivity */\r\n\r\n.leaflet-marker-icon,\r\n.leaflet-marker-shadow,\r\n.leaflet-image-layer,\r\n.leaflet-pane > svg path,\r\n.leaflet-tile-container {\r\n\tpointer-events: none;\r\n\t}\r\n\r\n.leaflet-marker-icon.leaflet-interactive,\r\n.leaflet-image-layer.leaflet-interactive,\r\n.leaflet-pane > svg path.leaflet-interactive,\r\nsvg.leaflet-image-layer.leaflet-interactive path {\r\n\tpointer-events: visiblePainted; /* IE 9-10 doesn't have auto */\r\n\tpointer-events: auto;\r\n\t}\r\n\r\n/* visual tweaks */\r\n\r\n.leaflet-container {\r\n\tbackground: #ddd;\r\n\toutline: 0;\r\n\t}\r\n\r\n.leaflet-container a {\r\n\tcolor: #0078A8;\r\n\t}\r\n\r\n.leaflet-container a.leaflet-active {\r\n\toutline: 2px solid orange;\r\n\t}\r\n\r\n.leaflet-zoom-box {\r\n\tborder: 2px dotted #38f;\r\n\tbackground: rgba(255,255,255,0.5);\r\n\t}\r\n\r\n/* general typography */\r\n\r\n.leaflet-container {\r\n\tfont: 12px/1.5 \"Helvetica Neue\", Arial, Helvetica, sans-serif;\r\n\t}\r\n\r\n/* general toolbar styles */\r\n\r\n.leaflet-bar {\r\n\tbox-shadow: 0 1px 5px rgba(0,0,0,0.65);\r\n\tborder-radius: 4px;\r\n\t}\r\n\r\n.leaflet-bar a,\r\n.leaflet-bar a:hover {\r\n\tbackground-color: #fff;\r\n\tborder-bottom: 1px solid #ccc;\r\n\twidth: 26px;\r\n\theight: 26px;\r\n\tline-height: 26px;\r\n\tdisplay: block;\r\n\ttext-align: center;\r\n\ttext-decoration: none;\r\n\tcolor: black;\r\n\t}\r\n\r\n.leaflet-bar a,\r\n.leaflet-control-layers-toggle {\r\n\tbackground-position: 50% 50%;\r\n\tbackground-repeat: no-repeat;\r\n\tdisplay: block;\r\n\t}\r\n\r\n.leaflet-bar a:hover {\r\n\tbackground-color: #f4f4f4;\r\n\t}\r\n\r\n.leaflet-bar a:first-child {\r\n\tborder-top-left-radius: 4px;\r\n\tborder-top-right-radius: 4px;\r\n\t}\r\n\r\n.leaflet-bar a:last-child {\r\n\tborder-bottom-left-radius: 4px;\r\n\tborder-bottom-right-radius: 4px;\r\n\tborder-bottom: none;\r\n\t}\r\n\r\n.leaflet-bar a.leaflet-disabled {\r\n\tcursor: default;\r\n\tbackground-color: #f4f4f4;\r\n\tcolor: #bbb;\r\n\t}\r\n\r\n.leaflet-touch .leaflet-bar a {\r\n\twidth: 30px;\r\n\theight: 30px;\r\n\tline-height: 30px;\r\n\t}\r\n\r\n.leaflet-touch .leaflet-bar a:first-child {\r\n\tborder-top-left-radius: 2px;\r\n\tborder-top-right-radius: 2px;\r\n\t}\r\n\r\n.leaflet-touch .leaflet-bar a:last-child {\r\n\tborder-bottom-left-radius: 2px;\r\n\tborder-bottom-right-radius: 2px;\r\n\t}\r\n\r\n/* zoom control */\r\n\r\n.leaflet-control-zoom-in,\r\n.leaflet-control-zoom-out {\r\n\tfont: bold 18px 'Lucida Console', Monaco, monospace;\r\n\ttext-indent: 1px;\r\n\t}\r\n\r\n.leaflet-touch .leaflet-control-zoom-in, .leaflet-touch .leaflet-control-zoom-out  {\r\n\tfont-size: 22px;\r\n\t}\r\n\r\n/* layers control */\r\n\r\n.leaflet-control-layers {\r\n\tbox-shadow: 0 1px 5px rgba(0,0,0,0.4);\r\n\tbackground: #fff;\r\n\tborder-radius: 5px;\r\n\t}\r\n\r\n.leaflet-control-layers-toggle {\r\n\tbackground-image: url('layers.png');\r\n\twidth: 36px;\r\n\theight: 36px;\r\n\t}\r\n\r\n.leaflet-retina .leaflet-control-layers-toggle {\r\n\tbackground-image: url('layers-2x.png');\r\n\tbackground-size: 26px 26px;\r\n\t}\r\n\r\n.leaflet-touch .leaflet-control-layers-toggle {\r\n\twidth: 44px;\r\n\theight: 44px;\r\n\t}\r\n\r\n.leaflet-control-layers .leaflet-control-layers-list,\r\n.leaflet-control-layers-expanded .leaflet-control-layers-toggle {\r\n\tdisplay: none;\r\n\t}\r\n\r\n.leaflet-control-layers-expanded .leaflet-control-layers-list {\r\n\tdisplay: block;\r\n\tposition: relative;\r\n\t}\r\n\r\n.leaflet-control-layers-expanded {\r\n\tpadding: 6px 10px 6px 6px;\r\n\tcolor: #333;\r\n\tbackground: #fff;\r\n\t}\r\n\r\n.leaflet-control-layers-scrollbar {\r\n\toverflow-y: scroll;\r\n\toverflow-x: hidden;\r\n\tpadding-right: 5px;\r\n\t}\r\n\r\n.leaflet-control-layers-selector {\r\n\tmargin-top: 2px;\r\n\tposition: relative;\r\n\ttop: 1px;\r\n\t}\r\n\r\n.leaflet-control-layers label {\r\n\tdisplay: block;\r\n\t}\r\n\r\n.leaflet-control-layers-separator {\r\n\theight: 0;\r\n\tborder-top: 1px solid #ddd;\r\n\tmargin: 5px -10px 5px -6px;\r\n\t}\r\n\r\n/* Default icon URLs */\r\n\r\n.leaflet-default-icon-path {\r\n\tbackground-image: url('marker-icon.png');\r\n\t}\r\n\r\n/* attribution and scale controls */\r\n\r\n.leaflet-container .leaflet-control-attribution {\r\n\tbackground: #fff;\r\n\tbackground: rgba(255, 255, 255, 0.7);\r\n\tmargin: 0;\r\n\t}\r\n\r\n.leaflet-control-attribution,\r\n.leaflet-control-scale-line {\r\n\tpadding: 0 5px;\r\n\tcolor: #333;\r\n\t}\r\n\r\n.leaflet-control-attribution a {\r\n\ttext-decoration: none;\r\n\t}\r\n\r\n.leaflet-control-attribution a:hover {\r\n\ttext-decoration: underline;\r\n\t}\r\n\r\n.leaflet-container .leaflet-control-attribution,\r\n.leaflet-container .leaflet-control-scale {\r\n\tfont-size: 11px;\r\n\t}\r\n\r\n.leaflet-left .leaflet-control-scale {\r\n\tmargin-left: 5px;\r\n\t}\r\n\r\n.leaflet-bottom .leaflet-control-scale {\r\n\tmargin-bottom: 5px;\r\n\t}\r\n\r\n.leaflet-control-scale-line {\r\n\tborder: 2px solid #777;\r\n\tborder-top: none;\r\n\tline-height: 1.1;\r\n\tpadding: 2px 5px 1px;\r\n\tfont-size: 11px;\r\n\twhite-space: nowrap;\r\n\toverflow: hidden;\r\n\tbox-sizing: border-box;\r\n\r\n\tbackground: #fff;\r\n\tbackground: rgba(255, 255, 255, 0.5);\r\n\t}\r\n\r\n.leaflet-control-scale-line:not(:first-child) {\r\n\tborder-top: 2px solid #777;\r\n\tborder-bottom: none;\r\n\tmargin-top: -2px;\r\n\t}\r\n\r\n.leaflet-control-scale-line:not(:first-child):not(:last-child) {\r\n\tborder-bottom: 2px solid #777;\r\n\t}\r\n\r\n.leaflet-touch .leaflet-control-attribution,\r\n.leaflet-touch .leaflet-control-layers,\r\n.leaflet-touch .leaflet-bar {\r\n\tbox-shadow: none;\r\n\t}\r\n\r\n.leaflet-touch .leaflet-control-layers,\r\n.leaflet-touch .leaflet-bar {\r\n\tborder: 2px solid rgba(0,0,0,0.2);\r\n\tbackground-clip: padding-box;\r\n\t}\r\n\r\n/* popup */\r\n\r\n.leaflet-popup {\r\n\tposition: absolute;\r\n\ttext-align: center;\r\n\tmargin-bottom: 20px;\r\n\t}\r\n\r\n.leaflet-popup-content-wrapper {\r\n\tpadding: 1px;\r\n\ttext-align: left;\r\n\tborder-radius: 12px;\r\n\t}\r\n\r\n.leaflet-popup-content {\r\n\tmargin: 13px 19px;\r\n\tline-height: 1.4;\r\n\t}\r\n\r\n.leaflet-popup-content p {\r\n\tmargin: 18px 0;\r\n\t}\r\n\r\n.leaflet-popup-tip-container {\r\n\twidth: 40px;\r\n\theight: 20px;\r\n\tposition: absolute;\r\n\tleft: 50%;\r\n\tmargin-left: -20px;\r\n\toverflow: hidden;\r\n\tpointer-events: none;\r\n\t}\r\n\r\n.leaflet-popup-tip {\r\n\twidth: 17px;\r\n\theight: 17px;\r\n\tpadding: 1px;\r\n\r\n\tmargin: -10px auto 0;\r\n\r\n\t-webkit-transform: rotate(45deg);\r\n\t        transform: rotate(45deg);\r\n\t}\r\n\r\n.leaflet-popup-content-wrapper,\r\n.leaflet-popup-tip {\r\n\tbackground: white;\r\n\tcolor: #333;\r\n\tbox-shadow: 0 3px 14px rgba(0,0,0,0.4);\r\n\t}\r\n\r\n.leaflet-container a.leaflet-popup-close-button {\r\n\tposition: absolute;\r\n\ttop: 0;\r\n\tright: 0;\r\n\tpadding: 4px 4px 0 0;\r\n\tborder: none;\r\n\ttext-align: center;\r\n\twidth: 18px;\r\n\theight: 14px;\r\n\tfont: 16px/14px Tahoma, Verdana, sans-serif;\r\n\tcolor: #c3c3c3;\r\n\ttext-decoration: none;\r\n\tfont-weight: bold;\r\n\tbackground: transparent;\r\n\t}\r\n\r\n.leaflet-container a.leaflet-popup-close-button:hover {\r\n\tcolor: #999;\r\n\t}\r\n\r\n.leaflet-popup-scrolled {\r\n\toverflow: auto;\r\n\tborder-bottom: 1px solid #ddd;\r\n\tborder-top: 1px solid #ddd;\r\n\t}\r\n\r\n.leaflet-oldie .leaflet-popup-content-wrapper {\r\n\tzoom: 1;\r\n\t}\r\n\r\n.leaflet-oldie .leaflet-popup-tip {\r\n\twidth: 24px;\r\n\tmargin: 0 auto;\r\n\r\n\t-ms-filter: \"progid:DXImageTransform.Microsoft.Matrix(M11=0.70710678, M12=0.70710678, M21=-0.70710678, M22=0.70710678)\";\r\n\tfilter: progid:DXImageTransform.Microsoft.Matrix(M11=0.70710678, M12=0.70710678, M21=-0.70710678, M22=0.70710678);\r\n\t}\r\n\r\n.leaflet-oldie .leaflet-popup-tip-container {\r\n\tmargin-top: -1px;\r\n\t}\r\n\r\n.leaflet-oldie .leaflet-control-zoom,\r\n.leaflet-oldie .leaflet-control-layers,\r\n.leaflet-oldie .leaflet-popup-content-wrapper,\r\n.leaflet-oldie .leaflet-popup-tip {\r\n\tborder: 1px solid #999;\r\n\t}\r\n\r\n/* div icon */\r\n\r\n.leaflet-div-icon {\r\n\tbackground: #fff;\r\n\tborder: 1px solid #666;\r\n\t}\r\n\r\n/* Tooltip */\r\n\r\n/* Base styles for the element that has a tooltip */\r\n\r\n.leaflet-tooltip {\r\n\tposition: absolute;\r\n\tpadding: 6px;\r\n\tbackground-color: #fff;\r\n\tborder: 1px solid #fff;\r\n\tborder-radius: 3px;\r\n\tcolor: #222;\r\n\twhite-space: nowrap;\r\n\t-webkit-user-select: none;\r\n\t-moz-user-select: none;\r\n\t-ms-user-select: none;\r\n\tuser-select: none;\r\n\tpointer-events: none;\r\n\tbox-shadow: 0 1px 3px rgba(0,0,0,0.4);\r\n\t}\r\n\r\n.leaflet-tooltip.leaflet-clickable {\r\n\tcursor: pointer;\r\n\tpointer-events: auto;\r\n\t}\r\n\r\n.leaflet-tooltip-top:before,\r\n.leaflet-tooltip-bottom:before,\r\n.leaflet-tooltip-left:before,\r\n.leaflet-tooltip-right:before {\r\n\tposition: absolute;\r\n\tpointer-events: none;\r\n\tborder: 6px solid transparent;\r\n\tbackground: transparent;\r\n\tcontent: \"\";\r\n\t}\r\n\r\n/* Directions */\r\n\r\n.leaflet-tooltip-bottom {\r\n\tmargin-top: 6px;\r\n}\r\n\r\n.leaflet-tooltip-top {\r\n\tmargin-top: -6px;\r\n}\r\n\r\n.leaflet-tooltip-bottom:before,\r\n.leaflet-tooltip-top:before {\r\n\tleft: 50%;\r\n\tmargin-left: -6px;\r\n\t}\r\n\r\n.leaflet-tooltip-top:before {\r\n\tbottom: 0;\r\n\tmargin-bottom: -12px;\r\n\tborder-top-color: #fff;\r\n\t}\r\n\r\n.leaflet-tooltip-bottom:before {\r\n\ttop: 0;\r\n\tmargin-top: -12px;\r\n\tmargin-left: -6px;\r\n\tborder-bottom-color: #fff;\r\n\t}\r\n\r\n.leaflet-tooltip-left {\r\n\tmargin-left: -6px;\r\n}\r\n\r\n.leaflet-tooltip-right {\r\n\tmargin-left: 6px;\r\n}\r\n\r\n.leaflet-tooltip-left:before,\r\n.leaflet-tooltip-right:before {\r\n\ttop: 50%;\r\n\tmargin-top: -6px;\r\n\t}\r\n\r\n.leaflet-tooltip-left:before {\r\n\tright: 0;\r\n\tmargin-right: -12px;\r\n\tborder-left-color: #fff;\r\n\t}\r\n\r\n.leaflet-tooltip-right:before {\r\n\tleft: 0;\r\n\tmargin-left: -12px;\r\n\tborder-right-color: #fff;\r\n\t}\r\n\r\n.map-container {\n  position: absolute;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  margin: 30px;\n}\r\n\r\n.map-frame {\n  border: 2px solid black;\n  height: 100%;\n}\r\n\r\n#map {\n  height: 100%;\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm5vZGVfbW9kdWxlcy9sZWFmbGV0L2Rpc3QvbGVhZmxldC5jc3MiLCJzcmMvYXBwL3BhZ2VzL21hcC9DOlxcVXNlcnNcXEh1b25nTGFuVG9cXHNhbmRib3hcXFRoZXNpc1xcd2ViX2NsaWVudC9zcmNcXGFwcFxccGFnZXNcXG1hcFxcbWFwLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9wYWdlcy9tYXAvbWFwLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLG9CQUFvQjs7QUFFcEI7Ozs7Ozs7Ozs7Q0FVQyxrQkFBa0I7Q0FDbEIsT0FBTztDQUNQLE1BQU07Q0FDTjs7QUFDRDtDQUNDLGdCQUFnQjtDQUNoQjs7QUFDRDs7O0NBR0MseUJBQXlCO0lBQ3RCLHNCQUFzQjtTQUNqQixxQkFBaUI7S0FBakIsaUJBQWlCO0dBQ3ZCLHVCQUF1QjtDQUN6Qjs7QUFDRCxrREFBa0Q7O0FBQ2xEO0NBQ0MsdUJBQXVCO0FBQ3hCOztBQUZBO0NBQ0MsdUJBQXVCO0FBQ3hCOztBQUNBLG1GQUFtRjs7QUFDbkY7Q0FDQywwQ0FBMEM7Q0FDMUM7O0FBQ0QscUVBQXFFOztBQUNyRTtDQUNDLGFBQWE7Q0FDYixjQUFjO0NBQ2QsNkJBQTZCO0NBQzdCOztBQUNEOztDQUVDLGNBQWM7Q0FDZDs7QUFDRCxnR0FBZ0c7O0FBQ2hHLHFGQUFxRjs7QUFDckY7Ozs7OztDQU1DLDBCQUEwQjtDQUMxQiwyQkFBMkI7Q0FDM0I7O0FBRUQ7Q0FFQyx5QkFBeUI7Q0FDekI7O0FBQ0Q7Q0FFQyxxREFBcUQ7Q0FDckQsa0JBQWtCO0NBQ2xCLHdCQUF3QjtBQUN6Qjs7QUFDQTtDQUVDLGtCQUFrQjtBQUNuQjs7QUFDQTtDQUNDLHdDQUF3QztBQUN6Qzs7QUFDQTtDQUNDLG9EQUFvRDtBQUNyRDs7QUFDQTtDQUNDLHVCQUFlO1NBQWYsZUFBZTtDQUNmLGtCQUFrQjtDQUNsQjs7QUFDRDtDQUNDLG1CQUFtQjtDQUNuQjs7QUFDRDtDQUNDLFFBQVE7Q0FDUixTQUFTO0NB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UUFBQTtFQUNBLFNBQUE7RUFDQSxZQUFBO0FDQUo7O0FER0E7RUFDSSx1QkFBQTtFQUNBLFlBQUE7QUNBSjs7QURHQTtFQUNJLFlBQUE7QUNBSiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL21hcC9tYXAuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIvKiByZXF1aXJlZCBzdHlsZXMgKi9cclxuXHJcbi5sZWFmbGV0LXBhbmUsXHJcbi5sZWFmbGV0LXRpbGUsXHJcbi5sZWFmbGV0LW1hcmtlci1pY29uLFxyXG4ubGVhZmxldC1tYXJrZXItc2hhZG93LFxyXG4ubGVhZmxldC10aWxlLWNvbnRhaW5lcixcclxuLmxlYWZsZXQtcGFuZSA+IHN2ZyxcclxuLmxlYWZsZXQtcGFuZSA+IGNhbnZhcyxcclxuLmxlYWZsZXQtem9vbS1ib3gsXHJcbi5sZWFmbGV0LWltYWdlLWxheWVyLFxyXG4ubGVhZmxldC1sYXllciB7XHJcblx0cG9zaXRpb246IGFic29sdXRlO1xyXG5cdGxlZnQ6IDA7XHJcblx0dG9wOiAwO1xyXG5cdH1cclxuLmxlYWZsZXQtY29udGFpbmVyIHtcclxuXHRvdmVyZmxvdzogaGlkZGVuO1xyXG5cdH1cclxuLmxlYWZsZXQtdGlsZSxcclxuLmxlYWZsZXQtbWFya2VyLWljb24sXHJcbi5sZWFmbGV0LW1hcmtlci1zaGFkb3cge1xyXG5cdC13ZWJraXQtdXNlci1zZWxlY3Q6IG5vbmU7XHJcblx0ICAgLW1vei11c2VyLXNlbGVjdDogbm9uZTtcclxuXHQgICAgICAgIHVzZXItc2VsZWN0OiBub25lO1xyXG5cdCAgLXdlYmtpdC11c2VyLWRyYWc6IG5vbmU7XHJcblx0fVxyXG4vKiBQcmV2ZW50cyBJRTExIGZyb20gaGlnaGxpZ2h0aW5nIHRpbGVzIGluIGJsdWUgKi9cclxuLmxlYWZsZXQtdGlsZTo6c2VsZWN0aW9uIHtcclxuXHRiYWNrZ3JvdW5kOiB0cmFuc3BhcmVudDtcclxufVxyXG4vKiBTYWZhcmkgcmVuZGVycyBub24tcmV0aW5hIHRpbGUgb24gcmV0aW5hIGJldHRlciB3aXRoIHRoaXMsIGJ1dCBDaHJvbWUgaXMgd29yc2UgKi9cclxuLmxlYWZsZXQtc2FmYXJpIC5sZWFmbGV0LXRpbGUge1xyXG5cdGltYWdlLXJlbmRlcmluZzogLXdlYmtpdC1vcHRpbWl6ZS1jb250cmFzdDtcclxuXHR9XHJcbi8qIGhhY2sgdGhhdCBwcmV2ZW50cyBodyBsYXllcnMgXCJzdHJldGNoaW5nXCIgd2hlbiBsb2FkaW5nIG5ldyB0aWxlcyAqL1xyXG4ubGVhZmxldC1zYWZhcmkgLmxlYWZsZXQtdGlsZS1jb250YWluZXIge1xyXG5cdHdpZHRoOiAxNjAwcHg7XHJcblx0aGVpZ2h0OiAxNjAwcHg7XHJcblx0LXdlYmtpdC10cmFuc2Zvcm0tb3JpZ2luOiAwIDA7XHJcblx0fVxyXG4ubGVhZmxldC1tYXJrZXItaWNvbixcclxuLmxlYWZsZXQtbWFya2VyLXNoYWRvdyB7XHJcblx0ZGlzcGxheTogYmxvY2s7XHJcblx0fVxyXG4vKiAubGVhZmxldC1jb250YWluZXIgc3ZnOiByZXNldCBzdmcgbWF4LXdpZHRoIGRlY2xlcmF0aW9uIHNoaXBwZWQgaW4gSm9vbWxhISAoam9vbWxhLm9yZykgMy54ICovXHJcbi8qIC5sZWFmbGV0LWNvbnRhaW5lciBpbWc6IG1hcCBpcyBicm9rZW4gaW4gRkYgaWYgeW91IGhhdmUgbWF4LXdpZHRoOiAxMDAlIG9uIHRpbGVzICovXHJcbi5sZWFmbGV0LWNvbnRhaW5lciAubGVhZmxldC1vdmVybGF5LXBhbmUgc3ZnLFxyXG4ubGVhZmxldC1jb250YWluZXIgLmxlYWZsZXQtbWFya2VyLXBhbmUgaW1nLFxyXG4ubGVhZmxldC1jb250YWluZXIgLmxlYWZsZXQtc2hhZG93LXBhbmUgaW1nLFxyXG4ubGVhZmxldC1jb250YWluZXIgLmxlYWZsZXQtdGlsZS1wYW5lIGltZyxcclxuLmxlYWZsZXQtY29udGFpbmVyIGltZy5sZWFmbGV0LWltYWdlLWxheWVyLFxyXG4ubGVhZmxldC1jb250YWluZXIgLmxlYWZsZXQtdGlsZSB7XHJcblx0bWF4LXdpZHRoOiBub25lICFpbXBvcnRhbnQ7XHJcblx0bWF4LWhlaWdodDogbm9uZSAhaW1wb3J0YW50O1xyXG5cdH1cclxuXHJcbi5sZWFmbGV0LWNvbnRhaW5lci5sZWFmbGV0LXRvdWNoLXpvb20ge1xyXG5cdC1tcy10b3VjaC1hY3Rpb246IHBhbi14IHBhbi15O1xyXG5cdHRvdWNoLWFjdGlvbjogcGFuLXggcGFuLXk7XHJcblx0fVxyXG4ubGVhZmxldC1jb250YWluZXIubGVhZmxldC10b3VjaC1kcmFnIHtcclxuXHQtbXMtdG91Y2gtYWN0aW9uOiBwaW5jaC16b29tO1xyXG5cdC8qIEZhbGxiYWNrIGZvciBGRiB3aGljaCBkb2Vzbid0IHN1cHBvcnQgcGluY2gtem9vbSAqL1xyXG5cdHRvdWNoLWFjdGlvbjogbm9uZTtcclxuXHR0b3VjaC1hY3Rpb246IHBpbmNoLXpvb207XHJcbn1cclxuLmxlYWZsZXQtY29udGFpbmVyLmxlYWZsZXQtdG91Y2gtZHJhZy5sZWFmbGV0LXRvdWNoLXpvb20ge1xyXG5cdC1tcy10b3VjaC1hY3Rpb246IG5vbmU7XHJcblx0dG91Y2gtYWN0aW9uOiBub25lO1xyXG59XHJcbi5sZWFmbGV0LWNvbnRhaW5lciB7XHJcblx0LXdlYmtpdC10YXAtaGlnaGxpZ2h0LWNvbG9yOiB0cmFuc3BhcmVudDtcclxufVxyXG4ubGVhZmxldC1jb250YWluZXIgYSB7XHJcblx0LXdlYmtpdC10YXAtaGlnaGxpZ2h0LWNvbG9yOiByZ2JhKDUxLCAxODEsIDIyOSwgMC40KTtcclxufVxyXG4ubGVhZmxldC10aWxlIHtcclxuXHRmaWx0ZXI6IGluaGVyaXQ7XHJcblx0dmlzaWJpbGl0eTogaGlkZGVuO1xyXG5cdH1cclxuLmxlYWZsZXQtdGlsZS1sb2FkZWQge1xyXG5cdHZpc2liaWxpdHk6IGluaGVyaXQ7XHJcblx0fVxyXG4ubGVhZmxldC16b29tLWJveCB7XHJcblx0d2lkdGg6IDA7XHJcblx0aGVpZ2h0OiAwO1xyXG5cdC1tb3otYm94LXNpemluZzogYm9yZGVyLWJveDtcclxuXHQgICAgIGJveC1zaXppbmc6IGJvcmRlci1ib3g7XHJcblx0ei1pbmRleDogODAwO1xyXG5cdH1cclxuLyogd29ya2Fyb3VuZCBmb3IgaHR0cHM6Ly9idWd6aWxsYS5tb3ppbGxhLm9yZy9zaG93X2J1Zy5jZ2k/aWQ9ODg4MzE5ICovXHJcbi5sZWFmbGV0LW92ZXJsYXktcGFuZSBzdmcge1xyXG5cdC1tb3otdXNlci1zZWxlY3Q6IG5vbmU7XHJcblx0fVxyXG5cclxuLmxlYWZsZXQtcGFuZSAgICAgICAgIHsgei1pbmRleDogNDAwOyB9XHJcblxyXG4ubGVhZmxldC10aWxlLXBhbmUgICAgeyB6LWluZGV4OiAyMDA7IH1cclxuLmxlYWZsZXQtb3ZlcmxheS1wYW5lIHsgei1pbmRleDogNDAwOyB9XHJcbi5sZWFmbGV0LXNoYWRvdy1wYW5lICB7IHotaW5kZXg6IDUwMDsgfVxyXG4ubGVhZmxldC1tYXJrZXItcGFuZSAgeyB6LWluZGV4OiA2MDA7IH1cclxuLmxlYWZsZXQtdG9vbHRpcC1wYW5lICAgeyB6LWluZGV4OiA2NTA7IH1cclxuLmxlYWZsZXQtcG9wdXAtcGFuZSAgIHsgei1pbmRleDogNzAwOyB9XHJcblxyXG4ubGVhZmxldC1tYXAtcGFuZSBjYW52YXMgeyB6LWluZGV4OiAxMDA7IH1cclxuLmxlYWZsZXQtbWFwLXBhbmUgc3ZnICAgIHsgei1pbmRleDogMjAwOyB9XHJcblxyXG4ubGVhZmxldC12bWwtc2hhcGUge1xyXG5cdHdpZHRoOiAxcHg7XHJcblx0aGVpZ2h0OiAxcHg7XHJcblx0fVxyXG4ubHZtbCB7XHJcblx0YmVoYXZpb3I6IHVybCgjZGVmYXVsdCNWTUwpO1xyXG5cdGRpc3BsYXk6IGlubGluZS1ibG9jaztcclxuXHRwb3NpdGlvbjogYWJzb2x1dGU7XHJcblx0fVxyXG5cclxuXHJcbi8qIGNvbnRyb2wgcG9zaXRpb25pbmcgKi9cclxuXHJcbi5sZWFmbGV0LWNvbnRyb2wge1xyXG5cdHBvc2l0aW9uOiByZWxhdGl2ZTtcclxuXHR6LWluZGV4OiA4MDA7XHJcblx0cG9pbnRlci1ldmVudHM6IHZpc2libGVQYWludGVkOyAvKiBJRSA5LTEwIGRvZXNuJ3QgaGF2ZSBhdXRvICovXHJcblx0cG9pbnRlci1ldmVudHM6IGF1dG87XHJcblx0fVxyXG4ubGVhZmxldC10b3AsXHJcbi5sZWFmbGV0LWJvdHRvbSB7XHJcblx0cG9zaXRpb246IGFic29sdXRlO1xyXG5cdHotaW5kZXg6IDEwMDA7XHJcblx0cG9pbnRlci1ldmVudHM6IG5vbmU7XHJcblx0fVxyXG4ubGVhZmxldC10b3Age1xyXG5cdHRvcDogMDtcclxuXHR9XHJcbi5sZWFmbGV0LXJpZ2h0IHtcclxuXHRyaWdodDogMDtcclxuXHR9XHJcbi5sZWFmbGV0LWJvdHRvbSB7XHJcblx0Ym90dG9tOiAwO1xyXG5cdH1cclxuLmxlYWZsZXQtbGVmdCB7XHJcblx0bGVmdDogMDtcclxuXHR9XHJcbi5sZWFmbGV0LWNvbnRyb2wge1xyXG5cdGZsb2F0OiBsZWZ0O1xyXG5cdGNsZWFyOiBib3RoO1xyXG5cdH1cclxuLmxlYWZsZXQtcmlnaHQgLmxlYWZsZXQtY29udHJvbCB7XHJcblx0ZmxvYXQ6IHJpZ2h0O1xyXG5cdH1cclxuLmxlYWZsZXQtdG9wIC5sZWFmbGV0LWNvbnRyb2wge1xyXG5cdG1hcmdpbi10b3A6IDEwcHg7XHJcblx0fVxyXG4ubGVhZmxldC1ib3R0b20gLmxlYWZsZXQtY29udHJvbCB7XHJcblx0bWFyZ2luLWJvdHRvbTogMTBweDtcclxuXHR9XHJcbi5sZWFmbGV0LWxlZnQgLmxlYWZsZXQtY29udHJvbCB7XHJcblx0bWFyZ2luLWxlZnQ6IDEwcHg7XHJcblx0fVxyXG4ubGVhZmxldC1yaWdodCAubGVhZmxldC1jb250cm9sIHtcclxuXHRtYXJnaW4tcmlnaHQ6IDEwcHg7XHJcblx0fVxyXG5cclxuXHJcbi8qIHpvb20gYW5kIGZhZGUgYW5pbWF0aW9ucyAqL1xyXG5cclxuLmxlYWZsZXQtZmFkZS1hbmltIC5sZWFmbGV0LXRpbGUge1xyXG5cdHdpbGwtY2hhbmdlOiBvcGFjaXR5O1xyXG5cdH1cclxuLmxlYWZsZXQtZmFkZS1hbmltIC5sZWFmbGV0LXBvcHVwIHtcclxuXHRvcGFjaXR5OiAwO1xyXG5cdC13ZWJraXQtdHJhbnNpdGlvbjogb3BhY2l0eSAwLjJzIGxpbmVhcjtcclxuXHQgICAtbW96LXRyYW5zaXRpb246IG9wYWNpdHkgMC4ycyBsaW5lYXI7XHJcblx0ICAgICAgICB0cmFuc2l0aW9uOiBvcGFjaXR5IDAuMnMgbGluZWFyO1xyXG5cdH1cclxuLmxlYWZsZXQtZmFkZS1hbmltIC5sZWFmbGV0LW1hcC1wYW5lIC5sZWFmbGV0LXBvcHVwIHtcclxuXHRvcGFjaXR5OiAxO1xyXG5cdH1cclxuLmxlYWZsZXQtem9vbS1hbmltYXRlZCB7XHJcblx0LXdlYmtpdC10cmFuc2Zvcm0tb3JpZ2luOiAwIDA7XHJcblx0ICAgIC1tcy10cmFuc2Zvcm0tb3JpZ2luOiAwIDA7XHJcblx0ICAgICAgICB0cmFuc2Zvcm0tb3JpZ2luOiAwIDA7XHJcblx0fVxyXG4ubGVhZmxldC16b29tLWFuaW0gLmxlYWZsZXQtem9vbS1hbmltYXRlZCB7XHJcblx0d2lsbC1jaGFuZ2U6IHRyYW5zZm9ybTtcclxuXHR9XHJcbi5sZWFmbGV0LXpvb20tYW5pbSAubGVhZmxldC16b29tLWFuaW1hdGVkIHtcclxuXHQtd2Via2l0LXRyYW5zaXRpb246IC13ZWJraXQtdHJhbnNmb3JtIDAuMjVzIGN1YmljLWJlemllcigwLDAsMC4yNSwxKTtcclxuXHQgICAtbW96LXRyYW5zaXRpb246ICAgIC1tb3otdHJhbnNmb3JtIDAuMjVzIGN1YmljLWJlemllcigwLDAsMC4yNSwxKTtcclxuXHQgICAgICAgIHRyYW5zaXRpb246ICAgICAgICAgdHJhbnNmb3JtIDAuMjVzIGN1YmljLWJlemllcigwLDAsMC4yNSwxKTtcclxuXHR9XHJcbi5sZWFmbGV0LXpvb20tYW5pbSAubGVhZmxldC10aWxlLFxyXG4ubGVhZmxldC1wYW4tYW5pbSAubGVhZmxldC10aWxlIHtcclxuXHQtd2Via2l0LXRyYW5zaXRpb246IG5vbmU7XHJcblx0ICAgLW1vei10cmFuc2l0aW9uOiBub25lO1xyXG5cdCAgICAgICAgdHJhbnNpdGlvbjogbm9uZTtcclxuXHR9XHJcblxyXG4ubGVhZmxldC16b29tLWFuaW0gLmxlYWZsZXQtem9vbS1oaWRlIHtcclxuXHR2aXNpYmlsaXR5OiBoaWRkZW47XHJcblx0fVxyXG5cclxuXHJcbi8qIGN1cnNvcnMgKi9cclxuXHJcbi5sZWFmbGV0LWludGVyYWN0aXZlIHtcclxuXHRjdXJzb3I6IHBvaW50ZXI7XHJcblx0fVxyXG4ubGVhZmxldC1ncmFiIHtcclxuXHRjdXJzb3I6IC13ZWJraXQtZ3JhYjtcclxuXHRjdXJzb3I6ICAgIC1tb3otZ3JhYjtcclxuXHRjdXJzb3I6ICAgICAgICAgZ3JhYjtcclxuXHR9XHJcbi5sZWFmbGV0LWNyb3NzaGFpcixcclxuLmxlYWZsZXQtY3Jvc3NoYWlyIC5sZWFmbGV0LWludGVyYWN0aXZlIHtcclxuXHRjdXJzb3I6IGNyb3NzaGFpcjtcclxuXHR9XHJcbi5sZWFmbGV0LXBvcHVwLXBhbmUsXHJcbi5sZWFmbGV0LWNvbnRyb2wge1xyXG5cdGN1cnNvcjogYXV0bztcclxuXHR9XHJcbi5sZWFmbGV0LWRyYWdnaW5nIC5sZWFmbGV0LWdyYWIsXHJcbi5sZWFmbGV0LWRyYWdnaW5nIC5sZWFmbGV0LWdyYWIgLmxlYWZsZXQtaW50ZXJhY3RpdmUsXHJcbi5sZWFmbGV0LWRyYWdnaW5nIC5sZWFmbGV0LW1hcmtlci1kcmFnZ2FibGUge1xyXG5cdGN1cnNvcjogbW92ZTtcclxuXHRjdXJzb3I6IC13ZWJraXQtZ3JhYmJpbmc7XHJcblx0Y3Vyc29yOiAgICAtbW96LWdyYWJiaW5nO1xyXG5cdGN1cnNvcjogICAgICAgICBncmFiYmluZztcclxuXHR9XHJcblxyXG4vKiBtYXJrZXIgJiBvdmVybGF5cyBpbnRlcmFjdGl2aXR5ICovXHJcbi5sZWFmbGV0LW1hcmtlci1pY29uLFxyXG4ubGVhZmxldC1tYXJrZXItc2hhZG93LFxyXG4ubGVhZmxldC1pbWFnZS1sYXllcixcclxuLmxlYWZsZXQtcGFuZSA+IHN2ZyBwYXRoLFxyXG4ubGVhZmxldC10aWxlLWNvbnRhaW5lciB7XHJcblx0cG9pbnRlci1ldmVudHM6IG5vbmU7XHJcblx0fVxyXG5cclxuLmxlYWZsZXQtbWFya2VyLWljb24ubGVhZmxldC1pbnRlcmFjdGl2ZSxcclxuLmxlYWZsZXQtaW1hZ2UtbGF5ZXIubGVhZmxldC1pbnRlcmFjdGl2ZSxcclxuLmxlYWZsZXQtcGFuZSA+IHN2ZyBwYXRoLmxlYWZsZXQtaW50ZXJhY3RpdmUsXHJcbnN2Zy5sZWFmbGV0LWltYWdlLWxheWVyLmxlYWZsZXQtaW50ZXJhY3RpdmUgcGF0aCB7XHJcblx0cG9pbnRlci1ldmVudHM6IHZpc2libGVQYWludGVkOyAvKiBJRSA5LTEwIGRvZXNuJ3QgaGF2ZSBhdXRvICovXHJcblx0cG9pbnRlci1ldmVudHM6IGF1dG87XHJcblx0fVxyXG5cclxuLyogdmlzdWFsIHR3ZWFrcyAqL1xyXG5cclxuLmxlYWZsZXQtY29udGFpbmVyIHtcclxuXHRiYWNrZ3JvdW5kOiAjZGRkO1xyXG5cdG91dGxpbmU6IDA7XHJcblx0fVxyXG4ubGVhZmxldC1jb250YWluZXIgYSB7XHJcblx0Y29sb3I6ICMwMDc4QTg7XHJcblx0fVxyXG4ubGVhZmxldC1jb250YWluZXIgYS5sZWFmbGV0LWFjdGl2ZSB7XHJcblx0b3V0bGluZTogMnB4IHNvbGlkIG9yYW5nZTtcclxuXHR9XHJcbi5sZWFmbGV0LXpvb20tYm94IHtcclxuXHRib3JkZXI6IDJweCBkb3R0ZWQgIzM4ZjtcclxuXHRiYWNrZ3JvdW5kOiByZ2JhKDI1NSwyNTUsMjU1LDAuNSk7XHJcblx0fVxyXG5cclxuXHJcbi8qIGdlbmVyYWwgdHlwb2dyYXBoeSAqL1xyXG4ubGVhZmxldC1jb250YWluZXIge1xyXG5cdGZvbnQ6IDEycHgvMS41IFwiSGVsdmV0aWNhIE5ldWVcIiwgQXJpYWwsIEhlbHZldGljYSwgc2Fucy1zZXJpZjtcclxuXHR9XHJcblxyXG5cclxuLyogZ2VuZXJhbCB0b29sYmFyIHN0eWxlcyAqL1xyXG5cclxuLmxlYWZsZXQtYmFyIHtcclxuXHRib3gtc2hhZG93OiAwIDFweCA1cHggcmdiYSgwLDAsMCwwLjY1KTtcclxuXHRib3JkZXItcmFkaXVzOiA0cHg7XHJcblx0fVxyXG4ubGVhZmxldC1iYXIgYSxcclxuLmxlYWZsZXQtYmFyIGE6aG92ZXIge1xyXG5cdGJhY2tncm91bmQtY29sb3I6ICNmZmY7XHJcblx0Ym9yZGVyLWJvdHRvbTogMXB4IHNvbGlkICNjY2M7XHJcblx0d2lkdGg6IDI2cHg7XHJcblx0aGVpZ2h0OiAyNnB4O1xyXG5cdGxpbmUtaGVpZ2h0OiAyNnB4O1xyXG5cdGRpc3BsYXk6IGJsb2NrO1xyXG5cdHRleHQtYWxpZ246IGNlbnRlcjtcclxuXHR0ZXh0LWRlY29yYXRpb246IG5vbmU7XHJcblx0Y29sb3I6IGJsYWNrO1xyXG5cdH1cclxuLmxlYWZsZXQtYmFyIGEsXHJcbi5sZWFmbGV0LWNvbnRyb2wtbGF5ZXJzLXRvZ2dsZSB7XHJcblx0YmFja2dyb3VuZC1wb3NpdGlvbjogNTAlIDUwJTtcclxuXHRiYWNrZ3JvdW5kLXJlcGVhdDogbm8tcmVwZWF0O1xyXG5cdGRpc3BsYXk6IGJsb2NrO1xyXG5cdH1cclxuLmxlYWZsZXQtYmFyIGE6aG92ZXIge1xyXG5cdGJhY2tncm91bmQtY29sb3I6ICNmNGY0ZjQ7XHJcblx0fVxyXG4ubGVhZmxldC1iYXIgYTpmaXJzdC1jaGlsZCB7XHJcblx0Ym9yZGVyLXRvcC1sZWZ0LXJhZGl1czogNHB4O1xyXG5cdGJvcmRlci10b3AtcmlnaHQtcmFkaXVzOiA0cHg7XHJcblx0fVxyXG4ubGVhZmxldC1iYXIgYTpsYXN0LWNoaWxkIHtcclxuXHRib3JkZXItYm90dG9tLWxlZnQtcmFkaXVzOiA0cHg7XHJcblx0Ym9yZGVyLWJvdHRvbS1yaWdodC1yYWRpdXM6IDRweDtcclxuXHRib3JkZXItYm90dG9tOiBub25lO1xyXG5cdH1cclxuLmxlYWZsZXQtYmFyIGEubGVhZmxldC1kaXNhYmxlZCB7XHJcblx0Y3Vyc29yOiBkZWZhdWx0O1xyXG5cdGJhY2tncm91bmQtY29sb3I6ICNmNGY0ZjQ7XHJcblx0Y29sb3I6ICNiYmI7XHJcblx0fVxyXG5cclxuLmxlYWZsZXQtdG91Y2ggLmxlYWZsZXQtYmFyIGEge1xyXG5cdHdpZHRoOiAzMHB4O1xyXG5cdGhlaWdodDogMzBweDtcclxuXHRsaW5lLWhlaWdodDogMzBweDtcclxuXHR9XHJcbi5sZWFmbGV0LXRvdWNoIC5sZWFmbGV0LWJhciBhOmZpcnN0LWNoaWxkIHtcclxuXHRib3JkZXItdG9wLWxlZnQtcmFkaXVzOiAycHg7XHJcblx0Ym9yZGVyLXRvcC1yaWdodC1yYWRpdXM6IDJweDtcclxuXHR9XHJcbi5sZWFmbGV0LXRvdWNoIC5sZWFmbGV0LWJhciBhOmxhc3QtY2hpbGQge1xyXG5cdGJvcmRlci1ib3R0b20tbGVmdC1yYWRpdXM6IDJweDtcclxuXHRib3JkZXItYm90dG9tLXJpZ2h0LXJhZGl1czogMnB4O1xyXG5cdH1cclxuXHJcbi8qIHpvb20gY29udHJvbCAqL1xyXG5cclxuLmxlYWZsZXQtY29udHJvbC16b29tLWluLFxyXG4ubGVhZmxldC1jb250cm9sLXpvb20tb3V0IHtcclxuXHRmb250OiBib2xkIDE4cHggJ0x1Y2lkYSBDb25zb2xlJywgTW9uYWNvLCBtb25vc3BhY2U7XHJcblx0dGV4dC1pbmRlbnQ6IDFweDtcclxuXHR9XHJcblxyXG4ubGVhZmxldC10b3VjaCAubGVhZmxldC1jb250cm9sLXpvb20taW4sIC5sZWFmbGV0LXRvdWNoIC5sZWFmbGV0LWNvbnRyb2wtem9vbS1vdXQgIHtcclxuXHRmb250LXNpemU6IDIycHg7XHJcblx0fVxyXG5cclxuXHJcbi8qIGxheWVycyBjb250cm9sICovXHJcblxyXG4ubGVhZmxldC1jb250cm9sLWxheWVycyB7XHJcblx0Ym94LXNoYWRvdzogMCAxcHggNXB4IHJnYmEoMCwwLDAsMC40KTtcclxuXHRiYWNrZ3JvdW5kOiAjZmZmO1xyXG5cdGJvcmRlci1yYWRpdXM6IDVweDtcclxuXHR9XHJcbi5sZWFmbGV0LWNvbnRyb2wtbGF5ZXJzLXRvZ2dsZSB7XHJcblx0YmFja2dyb3VuZC1pbWFnZTogdXJsKGltYWdlcy9sYXllcnMucG5nKTtcclxuXHR3aWR0aDogMzZweDtcclxuXHRoZWlnaHQ6IDM2cHg7XHJcblx0fVxyXG4ubGVhZmxldC1yZXRpbmEgLmxlYWZsZXQtY29udHJvbC1sYXllcnMtdG9nZ2xlIHtcclxuXHRiYWNrZ3JvdW5kLWltYWdlOiB1cmwoaW1hZ2VzL2xheWVycy0yeC5wbmcpO1xyXG5cdGJhY2tncm91bmQtc2l6ZTogMjZweCAyNnB4O1xyXG5cdH1cclxuLmxlYWZsZXQtdG91Y2ggLmxlYWZsZXQtY29udHJvbC1sYXllcnMtdG9nZ2xlIHtcclxuXHR3aWR0aDogNDRweDtcclxuXHRoZWlnaHQ6IDQ0cHg7XHJcblx0fVxyXG4ubGVhZmxldC1jb250cm9sLWxheWVycyAubGVhZmxldC1jb250cm9sLWxheWVycy1saXN0LFxyXG4ubGVhZmxldC1jb250cm9sLWxheWVycy1leHBhbmRlZCAubGVhZmxldC1jb250cm9sLWxheWVycy10b2dnbGUge1xyXG5cdGRpc3BsYXk6IG5vbmU7XHJcblx0fVxyXG4ubGVhZmxldC1jb250cm9sLWxheWVycy1leHBhbmRlZCAubGVhZmxldC1jb250cm9sLWxheWVycy1saXN0IHtcclxuXHRkaXNwbGF5OiBibG9jaztcclxuXHRwb3NpdGlvbjogcmVsYXRpdmU7XHJcblx0fVxyXG4ubGVhZmxldC1jb250cm9sLWxheWVycy1leHBhbmRlZCB7XHJcblx0cGFkZGluZzogNnB4IDEwcHggNnB4IDZweDtcclxuXHRjb2xvcjogIzMzMztcclxuXHRiYWNrZ3JvdW5kOiAjZmZmO1xyXG5cdH1cclxuLmxlYWZsZXQtY29udHJvbC1sYXllcnMtc2Nyb2xsYmFyIHtcclxuXHRvdmVyZmxvdy15OiBzY3JvbGw7XHJcblx0b3ZlcmZsb3cteDogaGlkZGVuO1xyXG5cdHBhZGRpbmctcmlnaHQ6IDVweDtcclxuXHR9XHJcbi5sZWFmbGV0LWNvbnRyb2wtbGF5ZXJzLXNlbGVjdG9yIHtcclxuXHRtYXJnaW4tdG9wOiAycHg7XHJcblx0cG9zaXRpb246IHJlbGF0aXZlO1xyXG5cdHRvcDogMXB4O1xyXG5cdH1cclxuLmxlYWZsZXQtY29udHJvbC1sYXllcnMgbGFiZWwge1xyXG5cdGRpc3BsYXk6IGJsb2NrO1xyXG5cdH1cclxuLmxlYWZsZXQtY29udHJvbC1sYXllcnMtc2VwYXJhdG9yIHtcclxuXHRoZWlnaHQ6IDA7XHJcblx0Ym9yZGVyLXRvcDogMXB4IHNvbGlkICNkZGQ7XHJcblx0bWFyZ2luOiA1cHggLTEwcHggNXB4IC02cHg7XHJcblx0fVxyXG5cclxuLyogRGVmYXVsdCBpY29uIFVSTHMgKi9cclxuLmxlYWZsZXQtZGVmYXVsdC1pY29uLXBhdGgge1xyXG5cdGJhY2tncm91bmQtaW1hZ2U6IHVybChpbWFnZXMvbWFya2VyLWljb24ucG5nKTtcclxuXHR9XHJcblxyXG5cclxuLyogYXR0cmlidXRpb24gYW5kIHNjYWxlIGNvbnRyb2xzICovXHJcblxyXG4ubGVhZmxldC1jb250YWluZXIgLmxlYWZsZXQtY29udHJvbC1hdHRyaWJ1dGlvbiB7XHJcblx0YmFja2dyb3VuZDogI2ZmZjtcclxuXHRiYWNrZ3JvdW5kOiByZ2JhKDI1NSwgMjU1LCAyNTUsIDAuNyk7XHJcblx0bWFyZ2luOiAwO1xyXG5cdH1cclxuLmxlYWZsZXQtY29udHJvbC1hdHRyaWJ1dGlvbixcclxuLmxlYWZsZXQtY29udHJvbC1zY2FsZS1saW5lIHtcclxuXHRwYWRkaW5nOiAwIDVweDtcclxuXHRjb2xvcjogIzMzMztcclxuXHR9XHJcbi5sZWFmbGV0LWNvbnRyb2wtYXR0cmlidXRpb24gYSB7XHJcblx0dGV4dC1kZWNvcmF0aW9uOiBub25lO1xyXG5cdH1cclxuLmxlYWZsZXQtY29udHJvbC1hdHRyaWJ1dGlvbiBhOmhvdmVyIHtcclxuXHR0ZXh0LWRlY29yYXRpb246IHVuZGVybGluZTtcclxuXHR9XHJcbi5sZWFmbGV0LWNvbnRhaW5lciAubGVhZmxldC1jb250cm9sLWF0dHJpYnV0aW9uLFxyXG4ubGVhZmxldC1jb250YWluZXIgLmxlYWZsZXQtY29udHJvbC1zY2FsZSB7XHJcblx0Zm9udC1zaXplOiAxMXB4O1xyXG5cdH1cclxuLmxlYWZsZXQtbGVmdCAubGVhZmxldC1jb250cm9sLXNjYWxlIHtcclxuXHRtYXJnaW4tbGVmdDogNXB4O1xyXG5cdH1cclxuLmxlYWZsZXQtYm90dG9tIC5sZWFmbGV0LWNvbnRyb2wtc2NhbGUge1xyXG5cdG1hcmdpbi1ib3R0b206IDVweDtcclxuXHR9XHJcbi5sZWFmbGV0LWNvbnRyb2wtc2NhbGUtbGluZSB7XHJcblx0Ym9yZGVyOiAycHggc29saWQgIzc3NztcclxuXHRib3JkZXItdG9wOiBub25lO1xyXG5cdGxpbmUtaGVpZ2h0OiAxLjE7XHJcblx0cGFkZGluZzogMnB4IDVweCAxcHg7XHJcblx0Zm9udC1zaXplOiAxMXB4O1xyXG5cdHdoaXRlLXNwYWNlOiBub3dyYXA7XHJcblx0b3ZlcmZsb3c6IGhpZGRlbjtcclxuXHQtbW96LWJveC1zaXppbmc6IGJvcmRlci1ib3g7XHJcblx0ICAgICBib3gtc2l6aW5nOiBib3JkZXItYm94O1xyXG5cclxuXHRiYWNrZ3JvdW5kOiAjZmZmO1xyXG5cdGJhY2tncm91bmQ6IHJnYmEoMjU1LCAyNTUsIDI1NSwgMC41KTtcclxuXHR9XHJcbi5sZWFmbGV0LWNvbnRyb2wtc2NhbGUtbGluZTpub3QoOmZpcnN0LWNoaWxkKSB7XHJcblx0Ym9yZGVyLXRvcDogMnB4IHNvbGlkICM3Nzc7XHJcblx0Ym9yZGVyLWJvdHRvbTogbm9uZTtcclxuXHRtYXJnaW4tdG9wOiAtMnB4O1xyXG5cdH1cclxuLmxlYWZsZXQtY29udHJvbC1zY2FsZS1saW5lOm5vdCg6Zmlyc3QtY2hpbGQpOm5vdCg6bGFzdC1jaGlsZCkge1xyXG5cdGJvcmRlci1ib3R0b206IDJweCBzb2xpZCAjNzc3O1xyXG5cdH1cclxuXHJcbi5sZWFmbGV0LXRvdWNoIC5sZWFmbGV0LWNvbnRyb2wtYXR0cmlidXRpb24sXHJcbi5sZWFmbGV0LXRvdWNoIC5sZWFmbGV0LWNvbnRyb2wtbGF5ZXJzLFxyXG4ubGVhZmxldC10b3VjaCAubGVhZmxldC1iYXIge1xyXG5cdGJveC1zaGFkb3c6IG5vbmU7XHJcblx0fVxyXG4ubGVhZmxldC10b3VjaCAubGVhZmxldC1jb250cm9sLWxheWVycyxcclxuLmxlYWZsZXQtdG91Y2ggLmxlYWZsZXQtYmFyIHtcclxuXHRib3JkZXI6IDJweCBzb2xpZCByZ2JhKDAsMCwwLDAuMik7XHJcblx0YmFja2dyb3VuZC1jbGlwOiBwYWRkaW5nLWJveDtcclxuXHR9XHJcblxyXG5cclxuLyogcG9wdXAgKi9cclxuXHJcbi5sZWFmbGV0LXBvcHVwIHtcclxuXHRwb3NpdGlvbjogYWJzb2x1dGU7XHJcblx0dGV4dC1hbGlnbjogY2VudGVyO1xyXG5cdG1hcmdpbi1ib3R0b206IDIwcHg7XHJcblx0fVxyXG4ubGVhZmxldC1wb3B1cC1jb250ZW50LXdyYXBwZXIge1xyXG5cdHBhZGRpbmc6IDFweDtcclxuXHR0ZXh0LWFsaWduOiBsZWZ0O1xyXG5cdGJvcmRlci1yYWRpdXM6IDEycHg7XHJcblx0fVxyXG4ubGVhZmxldC1wb3B1cC1jb250ZW50IHtcclxuXHRtYXJnaW46IDEzcHggMTlweDtcclxuXHRsaW5lLWhlaWdodDogMS40O1xyXG5cdH1cclxuLmxlYWZsZXQtcG9wdXAtY29udGVudCBwIHtcclxuXHRtYXJnaW46IDE4cHggMDtcclxuXHR9XHJcbi5sZWFmbGV0LXBvcHVwLXRpcC1jb250YWluZXIge1xyXG5cdHdpZHRoOiA0MHB4O1xyXG5cdGhlaWdodDogMjBweDtcclxuXHRwb3NpdGlvbjogYWJzb2x1dGU7XHJcblx0bGVmdDogNTAlO1xyXG5cdG1hcmdpbi1sZWZ0OiAtMjBweDtcclxuXHRvdmVyZmxvdzogaGlkZGVuO1xyXG5cdHBvaW50ZXItZXZlbnRzOiBub25lO1xyXG5cdH1cclxuLmxlYWZsZXQtcG9wdXAtdGlwIHtcclxuXHR3aWR0aDogMTdweDtcclxuXHRoZWlnaHQ6IDE3cHg7XHJcblx0cGFkZGluZzogMXB4O1xyXG5cclxuXHRtYXJnaW46IC0xMHB4IGF1dG8gMDtcclxuXHJcblx0LXdlYmtpdC10cmFuc2Zvcm06IHJvdGF0ZSg0NWRlZyk7XHJcblx0ICAgLW1vei10cmFuc2Zvcm06IHJvdGF0ZSg0NWRlZyk7XHJcblx0ICAgIC1tcy10cmFuc2Zvcm06IHJvdGF0ZSg0NWRlZyk7XHJcblx0ICAgICAgICB0cmFuc2Zvcm06IHJvdGF0ZSg0NWRlZyk7XHJcblx0fVxyXG4ubGVhZmxldC1wb3B1cC1jb250ZW50LXdyYXBwZXIsXHJcbi5sZWFmbGV0LXBvcHVwLXRpcCB7XHJcblx0YmFja2dyb3VuZDogd2hpdGU7XHJcblx0Y29sb3I6ICMzMzM7XHJcblx0Ym94LXNoYWRvdzogMCAzcHggMTRweCByZ2JhKDAsMCwwLDAuNCk7XHJcblx0fVxyXG4ubGVhZmxldC1jb250YWluZXIgYS5sZWFmbGV0LXBvcHVwLWNsb3NlLWJ1dHRvbiB7XHJcblx0cG9zaXRpb246IGFic29sdXRlO1xyXG5cdHRvcDogMDtcclxuXHRyaWdodDogMDtcclxuXHRwYWRkaW5nOiA0cHggNHB4IDAgMDtcclxuXHRib3JkZXI6IG5vbmU7XHJcblx0dGV4dC1hbGlnbjogY2VudGVyO1xyXG5cdHdpZHRoOiAxOHB4O1xyXG5cdGhlaWdodDogMTRweDtcclxuXHRmb250OiAxNnB4LzE0cHggVGFob21hLCBWZXJkYW5hLCBzYW5zLXNlcmlmO1xyXG5cdGNvbG9yOiAjYzNjM2MzO1xyXG5cdHRleHQtZGVjb3JhdGlvbjogbm9uZTtcclxuXHRmb250LXdlaWdodDogYm9sZDtcclxuXHRiYWNrZ3JvdW5kOiB0cmFuc3BhcmVudDtcclxuXHR9XHJcbi5sZWFmbGV0LWNvbnRhaW5lciBhLmxlYWZsZXQtcG9wdXAtY2xvc2UtYnV0dG9uOmhvdmVyIHtcclxuXHRjb2xvcjogIzk5OTtcclxuXHR9XHJcbi5sZWFmbGV0LXBvcHVwLXNjcm9sbGVkIHtcclxuXHRvdmVyZmxvdzogYXV0bztcclxuXHRib3JkZXItYm90dG9tOiAxcHggc29saWQgI2RkZDtcclxuXHRib3JkZXItdG9wOiAxcHggc29saWQgI2RkZDtcclxuXHR9XHJcblxyXG4ubGVhZmxldC1vbGRpZSAubGVhZmxldC1wb3B1cC1jb250ZW50LXdyYXBwZXIge1xyXG5cdHpvb206IDE7XHJcblx0fVxyXG4ubGVhZmxldC1vbGRpZSAubGVhZmxldC1wb3B1cC10aXAge1xyXG5cdHdpZHRoOiAyNHB4O1xyXG5cdG1hcmdpbjogMCBhdXRvO1xyXG5cclxuXHQtbXMtZmlsdGVyOiBcInByb2dpZDpEWEltYWdlVHJhbnNmb3JtLk1pY3Jvc29mdC5NYXRyaXgoTTExPTAuNzA3MTA2NzgsIE0xMj0wLjcwNzEwNjc4LCBNMjE9LTAuNzA3MTA2NzgsIE0yMj0wLjcwNzEwNjc4KVwiO1xyXG5cdGZpbHRlcjogcHJvZ2lkOkRYSW1hZ2VUcmFuc2Zvcm0uTWljcm9zb2Z0Lk1hdHJpeChNMTE9MC43MDcxMDY3OCwgTTEyPTAuNzA3MTA2NzgsIE0yMT0tMC43MDcxMDY3OCwgTTIyPTAuNzA3MTA2NzgpO1xyXG5cdH1cclxuLmxlYWZsZXQtb2xkaWUgLmxlYWZsZXQtcG9wdXAtdGlwLWNvbnRhaW5lciB7XHJcblx0bWFyZ2luLXRvcDogLTFweDtcclxuXHR9XHJcblxyXG4ubGVhZmxldC1vbGRpZSAubGVhZmxldC1jb250cm9sLXpvb20sXHJcbi5sZWFmbGV0LW9sZGllIC5sZWFmbGV0LWNvbnRyb2wtbGF5ZXJzLFxyXG4ubGVhZmxldC1vbGRpZSAubGVhZmxldC1wb3B1cC1jb250ZW50LXdyYXBwZXIsXHJcbi5sZWFmbGV0LW9sZGllIC5sZWFmbGV0LXBvcHVwLXRpcCB7XHJcblx0Ym9yZGVyOiAxcHggc29saWQgIzk5OTtcclxuXHR9XHJcblxyXG5cclxuLyogZGl2IGljb24gKi9cclxuXHJcbi5sZWFmbGV0LWRpdi1pY29uIHtcclxuXHRiYWNrZ3JvdW5kOiAjZmZmO1xyXG5cdGJvcmRlcjogMXB4IHNvbGlkICM2NjY7XHJcblx0fVxyXG5cclxuXHJcbi8qIFRvb2x0aXAgKi9cclxuLyogQmFzZSBzdHlsZXMgZm9yIHRoZSBlbGVtZW50IHRoYXQgaGFzIGEgdG9vbHRpcCAqL1xyXG4ubGVhZmxldC10b29sdGlwIHtcclxuXHRwb3NpdGlvbjogYWJzb2x1dGU7XHJcblx0cGFkZGluZzogNnB4O1xyXG5cdGJhY2tncm91bmQtY29sb3I6ICNmZmY7XHJcblx0Ym9yZGVyOiAxcHggc29saWQgI2ZmZjtcclxuXHRib3JkZXItcmFkaXVzOiAzcHg7XHJcblx0Y29sb3I6ICMyMjI7XHJcblx0d2hpdGUtc3BhY2U6IG5vd3JhcDtcclxuXHQtd2Via2l0LXVzZXItc2VsZWN0OiBub25lO1xyXG5cdC1tb3otdXNlci1zZWxlY3Q6IG5vbmU7XHJcblx0LW1zLXVzZXItc2VsZWN0OiBub25lO1xyXG5cdHVzZXItc2VsZWN0OiBub25lO1xyXG5cdHBvaW50ZXItZXZlbnRzOiBub25lO1xyXG5cdGJveC1zaGFkb3c6IDAgMXB4IDNweCByZ2JhKDAsMCwwLDAuNCk7XHJcblx0fVxyXG4ubGVhZmxldC10b29sdGlwLmxlYWZsZXQtY2xpY2thYmxlIHtcclxuXHRjdXJzb3I6IHBvaW50ZXI7XHJcblx0cG9pbnRlci1ldmVudHM6IGF1dG87XHJcblx0fVxyXG4ubGVhZmxldC10b29sdGlwLXRvcDpiZWZvcmUsXHJcbi5sZWFmbGV0LXRvb2x0aXAtYm90dG9tOmJlZm9yZSxcclxuLmxlYWZsZXQtdG9vbHRpcC1sZWZ0OmJlZm9yZSxcclxuLmxlYWZsZXQtdG9vbHRpcC1yaWdodDpiZWZvcmUge1xyXG5cdHBvc2l0aW9uOiBhYnNvbHV0ZTtcclxuXHRwb2ludGVyLWV2ZW50czogbm9uZTtcclxuXHRib3JkZXI6IDZweCBzb2xpZCB0cmFuc3BhcmVudDtcclxuXHRiYWNrZ3JvdW5kOiB0cmFuc3BhcmVudDtcclxuXHRjb250ZW50OiBcIlwiO1xyXG5cdH1cclxuXHJcbi8qIERpcmVjdGlvbnMgKi9cclxuXHJcbi5sZWFmbGV0LXRvb2x0aXAtYm90dG9tIHtcclxuXHRtYXJnaW4tdG9wOiA2cHg7XHJcbn1cclxuLmxlYWZsZXQtdG9vbHRpcC10b3Age1xyXG5cdG1hcmdpbi10b3A6IC02cHg7XHJcbn1cclxuLmxlYWZsZXQtdG9vbHRpcC1ib3R0b206YmVmb3JlLFxyXG4ubGVhZmxldC10b29sdGlwLXRvcDpiZWZvcmUge1xyXG5cdGxlZnQ6IDUwJTtcclxuXHRtYXJnaW4tbGVmdDogLTZweDtcclxuXHR9XHJcbi5sZWFmbGV0LXRvb2x0aXAtdG9wOmJlZm9yZSB7XHJcblx0Ym90dG9tOiAwO1xyXG5cdG1hcmdpbi1ib3R0b206IC0xMnB4O1xyXG5cdGJvcmRlci10b3AtY29sb3I6ICNmZmY7XHJcblx0fVxyXG4ubGVhZmxldC10b29sdGlwLWJvdHRvbTpiZWZvcmUge1xyXG5cdHRvcDogMDtcclxuXHRtYXJnaW4tdG9wOiAtMTJweDtcclxuXHRtYXJnaW4tbGVmdDogLTZweDtcclxuXHRib3JkZXItYm90dG9tLWNvbG9yOiAjZmZmO1xyXG5cdH1cclxuLmxlYWZsZXQtdG9vbHRpcC1sZWZ0IHtcclxuXHRtYXJnaW4tbGVmdDogLTZweDtcclxufVxyXG4ubGVhZmxldC10b29sdGlwLXJpZ2h0IHtcclxuXHRtYXJnaW4tbGVmdDogNnB4O1xyXG59XHJcbi5sZWFmbGV0LXRvb2x0aXAtbGVmdDpiZWZvcmUsXHJcbi5sZWFmbGV0LXRvb2x0aXAtcmlnaHQ6YmVmb3JlIHtcclxuXHR0b3A6IDUwJTtcclxuXHRtYXJnaW4tdG9wOiAtNnB4O1xyXG5cdH1cclxuLmxlYWZsZXQtdG9vbHRpcC1sZWZ0OmJlZm9yZSB7XHJcblx0cmlnaHQ6IDA7XHJcblx0bWFyZ2luLXJpZ2h0OiAtMTJweDtcclxuXHRib3JkZXItbGVmdC1jb2xvcjogI2ZmZjtcclxuXHR9XHJcbi5sZWFmbGV0LXRvb2x0aXAtcmlnaHQ6YmVmb3JlIHtcclxuXHRsZWZ0OiAwO1xyXG5cdG1hcmdpbi1sZWZ0OiAtMTJweDtcclxuXHRib3JkZXItcmlnaHQtY29sb3I6ICNmZmY7XHJcblx0fVxyXG4iLCJAaW1wb3J0IFwifmxlYWZsZXQvZGlzdC9sZWFmbGV0LmNzc1wiO1xyXG5cclxuLm1hcC1jb250YWluZXIge1xyXG4gICAgcG9zaXRpb246IGFic29sdXRlO1xyXG4gICAgdG9wOiAwO1xyXG4gICAgbGVmdDogMDtcclxuICAgIHJpZ2h0OiAwO1xyXG4gICAgYm90dG9tOiAwO1xyXG4gICAgbWFyZ2luOiAzMHB4O1xyXG59XHJcbiAgXHJcbi5tYXAtZnJhbWUge1xyXG4gICAgYm9yZGVyOiAycHggc29saWQgYmxhY2s7XHJcbiAgICBoZWlnaHQ6IDEwMCU7XHJcbn1cclxuICBcclxuI21hcCB7XHJcbiAgICBoZWlnaHQ6IDEwMCU7XHJcbn0iLCJAaW1wb3J0IFwifmxlYWZsZXQvZGlzdC9sZWFmbGV0LmNzc1wiO1xuLm1hcC1jb250YWluZXIge1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIHRvcDogMDtcbiAgbGVmdDogMDtcbiAgcmlnaHQ6IDA7XG4gIGJvdHRvbTogMDtcbiAgbWFyZ2luOiAzMHB4O1xufVxuXG4ubWFwLWZyYW1lIHtcbiAgYm9yZGVyOiAycHggc29saWQgYmxhY2s7XG4gIGhlaWdodDogMTAwJTtcbn1cblxuI21hcCB7XG4gIGhlaWdodDogMTAwJTtcbn0iXX0= */");
+/* harmony default export */ __webpack_exports__["default"] = ("/* required styles */\r\n\r\n.leaflet-pane,\r\n.leaflet-tile,\r\n.leaflet-marker-icon,\r\n.leaflet-marker-shadow,\r\n.leaflet-tile-container,\r\n.leaflet-pane > svg,\r\n.leaflet-pane > canvas,\r\n.leaflet-zoom-box,\r\n.leaflet-image-layer,\r\n.leaflet-layer {\r\n\tposition: absolute;\r\n\tleft: 0;\r\n\ttop: 0;\r\n\t}\r\n\r\n.leaflet-container {\r\n\toverflow: hidden;\r\n\t}\r\n\r\n.leaflet-tile,\r\n.leaflet-marker-icon,\r\n.leaflet-marker-shadow {\r\n\t-webkit-user-select: none;\r\n\t   -moz-user-select: none;\r\n\t        -ms-user-select: none;\r\n\t    user-select: none;\r\n\t  -webkit-user-drag: none;\r\n\t}\r\n\r\n/* Prevents IE11 from highlighting tiles in blue */\r\n\r\n.leaflet-tile::-moz-selection {\r\n\tbackground: transparent;\r\n}\r\n\r\n.leaflet-tile::selection {\r\n\tbackground: transparent;\r\n}\r\n\r\n/* Safari renders non-retina tile on retina better with this, but Chrome is worse */\r\n\r\n.leaflet-safari .leaflet-tile {\r\n\timage-rendering: -webkit-optimize-contrast;\r\n\t}\r\n\r\n/* hack that prevents hw layers \"stretching\" when loading new tiles */\r\n\r\n.leaflet-safari .leaflet-tile-container {\r\n\twidth: 1600px;\r\n\theight: 1600px;\r\n\t-webkit-transform-origin: 0 0;\r\n\t}\r\n\r\n.leaflet-marker-icon,\r\n.leaflet-marker-shadow {\r\n\tdisplay: block;\r\n\t}\r\n\r\n/* .leaflet-container svg: reset svg max-width decleration shipped in Joomla! (joomla.org) 3.x */\r\n\r\n/* .leaflet-container img: map is broken in FF if you have max-width: 100% on tiles */\r\n\r\n.leaflet-container .leaflet-overlay-pane svg,\r\n.leaflet-container .leaflet-marker-pane img,\r\n.leaflet-container .leaflet-shadow-pane img,\r\n.leaflet-container .leaflet-tile-pane img,\r\n.leaflet-container img.leaflet-image-layer,\r\n.leaflet-container .leaflet-tile {\r\n\tmax-width: none !important;\r\n\tmax-height: none !important;\r\n\t}\r\n\r\n.leaflet-container.leaflet-touch-zoom {\r\n\ttouch-action: pan-x pan-y;\r\n\t}\r\n\r\n.leaflet-container.leaflet-touch-drag {\r\n\t/* Fallback for FF which doesn't support pinch-zoom */\r\n\ttouch-action: none;\r\n\ttouch-action: pinch-zoom;\r\n}\r\n\r\n.leaflet-container.leaflet-touch-drag.leaflet-touch-zoom {\r\n\ttouch-action: none;\r\n}\r\n\r\n.leaflet-container {\r\n\t-webkit-tap-highlight-color: transparent;\r\n}\r\n\r\n.leaflet-container a {\r\n\t-webkit-tap-highlight-color: rgba(51, 181, 229, 0.4);\r\n}\r\n\r\n.leaflet-tile {\r\n\t-webkit-filter: inherit;\r\n\t        filter: inherit;\r\n\tvisibility: hidden;\r\n\t}\r\n\r\n.leaflet-tile-loaded {\r\n\tvisibility: inherit;\r\n\t}\r\n\r\n.leaflet-zoom-box {\r\n\twidth: 0;\r\n\theight: 0;\r\n\tbox-sizing: border-box;\r\n\tz-index: 800;\r\n\t}\r\n\r\n/* workaround for https://bugzilla.mozilla.org/show_bug.cgi?id=888319 */\r\n\r\n.leaflet-overlay-pane svg {\r\n\t-moz-user-select: none;\r\n\t}\r\n\r\n.leaflet-pane         { z-index: 400; }\r\n\r\n.leaflet-tile-pane    { z-index: 200; }\r\n\r\n.leaflet-overlay-pane { z-index: 400; }\r\n\r\n.leaflet-shadow-pane  { z-index: 500; }\r\n\r\n.leaflet-marker-pane  { z-index: 600; }\r\n\r\n.leaflet-tooltip-pane   { z-index: 650; }\r\n\r\n.leaflet-popup-pane   { z-index: 700; }\r\n\r\n.leaflet-map-pane canvas { z-index: 100; }\r\n\r\n.leaflet-map-pane svg    { z-index: 200; }\r\n\r\n.leaflet-vml-shape {\r\n\twidth: 1px;\r\n\theight: 1px;\r\n\t}\r\n\r\n.lvml {\r\n\tbehavior: url(#default#VML);\r\n\tdisplay: inline-block;\r\n\tposition: absolute;\r\n\t}\r\n\r\n/* control positioning */\r\n\r\n.leaflet-control {\r\n\tposition: relative;\r\n\tz-index: 800;\r\n\tpointer-events: visiblePainted; /* IE 9-10 doesn't have auto */\r\n\tpointer-events: auto;\r\n\t}\r\n\r\n.leaflet-top,\r\n.leaflet-bottom {\r\n\tposition: absolute;\r\n\tz-index: 1000;\r\n\tpointer-events: none;\r\n\t}\r\n\r\n.leaflet-top {\r\n\ttop: 0;\r\n\t}\r\n\r\n.leaflet-right {\r\n\tright: 0;\r\n\t}\r\n\r\n.leaflet-bottom {\r\n\tbottom: 0;\r\n\t}\r\n\r\n.leaflet-left {\r\n\tleft: 0;\r\n\t}\r\n\r\n.leaflet-control {\r\n\tfloat: left;\r\n\tclear: both;\r\n\t}\r\n\r\n.leaflet-right .leaflet-control {\r\n\tfloat: right;\r\n\t}\r\n\r\n.leaflet-top .leaflet-control {\r\n\tmargin-top: 10px;\r\n\t}\r\n\r\n.leaflet-bottom .leaflet-control {\r\n\tmargin-bottom: 10px;\r\n\t}\r\n\r\n.leaflet-left .leaflet-control {\r\n\tmargin-left: 10px;\r\n\t}\r\n\r\n.leaflet-right .leaflet-control {\r\n\tmargin-right: 10px;\r\n\t}\r\n\r\n/* zoom and fade animations */\r\n\r\n.leaflet-fade-anim .leaflet-tile {\r\n\twill-change: opacity;\r\n\t}\r\n\r\n.leaflet-fade-anim .leaflet-popup {\r\n\topacity: 0;\r\n\t-webkit-transition: opacity 0.2s linear;\r\n\t        transition: opacity 0.2s linear;\r\n\t}\r\n\r\n.leaflet-fade-anim .leaflet-map-pane .leaflet-popup {\r\n\topacity: 1;\r\n\t}\r\n\r\n.leaflet-zoom-animated {\r\n\t-webkit-transform-origin: 0 0;\r\n\t        transform-origin: 0 0;\r\n\t}\r\n\r\n.leaflet-zoom-anim .leaflet-zoom-animated {\r\n\twill-change: transform;\r\n\t}\r\n\r\n.leaflet-zoom-anim .leaflet-zoom-animated {\r\n\t-webkit-transition: -webkit-transform 0.25s cubic-bezier(0,0,0.25,1);\r\n\t        transition:         -webkit-transform 0.25s cubic-bezier(0,0,0.25,1);\r\n\t        transition:         transform 0.25s cubic-bezier(0,0,0.25,1);\r\n\t        transition:         transform 0.25s cubic-bezier(0,0,0.25,1), -webkit-transform 0.25s cubic-bezier(0,0,0.25,1);\r\n\t}\r\n\r\n.leaflet-zoom-anim .leaflet-tile,\r\n.leaflet-pan-anim .leaflet-tile {\r\n\t-webkit-transition: none;\r\n\t        transition: none;\r\n\t}\r\n\r\n.leaflet-zoom-anim .leaflet-zoom-hide {\r\n\tvisibility: hidden;\r\n\t}\r\n\r\n/* cursors */\r\n\r\n.leaflet-interactive {\r\n\tcursor: pointer;\r\n\t}\r\n\r\n.leaflet-grab {\r\n\tcursor: -webkit-grab;\r\n\tcursor:         grab;\r\n\t}\r\n\r\n.leaflet-crosshair,\r\n.leaflet-crosshair .leaflet-interactive {\r\n\tcursor: crosshair;\r\n\t}\r\n\r\n.leaflet-popup-pane,\r\n.leaflet-control {\r\n\tcursor: auto;\r\n\t}\r\n\r\n.leaflet-dragging .leaflet-grab,\r\n.leaflet-dragging .leaflet-grab .leaflet-interactive,\r\n.leaflet-dragging .leaflet-marker-draggable {\r\n\tcursor: move;\r\n\tcursor: -webkit-grabbing;\r\n\tcursor:         grabbing;\r\n\t}\r\n\r\n/* marker & overlays interactivity */\r\n\r\n.leaflet-marker-icon,\r\n.leaflet-marker-shadow,\r\n.leaflet-image-layer,\r\n.leaflet-pane > svg path,\r\n.leaflet-tile-container {\r\n\tpointer-events: none;\r\n\t}\r\n\r\n.leaflet-marker-icon.leaflet-interactive,\r\n.leaflet-image-layer.leaflet-interactive,\r\n.leaflet-pane > svg path.leaflet-interactive,\r\nsvg.leaflet-image-layer.leaflet-interactive path {\r\n\tpointer-events: visiblePainted; /* IE 9-10 doesn't have auto */\r\n\tpointer-events: auto;\r\n\t}\r\n\r\n/* visual tweaks */\r\n\r\n.leaflet-container {\r\n\tbackground: #ddd;\r\n\toutline: 0;\r\n\t}\r\n\r\n.leaflet-container a {\r\n\tcolor: #0078A8;\r\n\t}\r\n\r\n.leaflet-container a.leaflet-active {\r\n\toutline: 2px solid orange;\r\n\t}\r\n\r\n.leaflet-zoom-box {\r\n\tborder: 2px dotted #38f;\r\n\tbackground: rgba(255,255,255,0.5);\r\n\t}\r\n\r\n/* general typography */\r\n\r\n.leaflet-container {\r\n\tfont: 12px/1.5 \"Helvetica Neue\", Arial, Helvetica, sans-serif;\r\n\t}\r\n\r\n/* general toolbar styles */\r\n\r\n.leaflet-bar {\r\n\tbox-shadow: 0 1px 5px rgba(0,0,0,0.65);\r\n\tborder-radius: 4px;\r\n\t}\r\n\r\n.leaflet-bar a,\r\n.leaflet-bar a:hover {\r\n\tbackground-color: #fff;\r\n\tborder-bottom: 1px solid #ccc;\r\n\twidth: 26px;\r\n\theight: 26px;\r\n\tline-height: 26px;\r\n\tdisplay: block;\r\n\ttext-align: center;\r\n\ttext-decoration: none;\r\n\tcolor: black;\r\n\t}\r\n\r\n.leaflet-bar a,\r\n.leaflet-control-layers-toggle {\r\n\tbackground-position: 50% 50%;\r\n\tbackground-repeat: no-repeat;\r\n\tdisplay: block;\r\n\t}\r\n\r\n.leaflet-bar a:hover {\r\n\tbackground-color: #f4f4f4;\r\n\t}\r\n\r\n.leaflet-bar a:first-child {\r\n\tborder-top-left-radius: 4px;\r\n\tborder-top-right-radius: 4px;\r\n\t}\r\n\r\n.leaflet-bar a:last-child {\r\n\tborder-bottom-left-radius: 4px;\r\n\tborder-bottom-right-radius: 4px;\r\n\tborder-bottom: none;\r\n\t}\r\n\r\n.leaflet-bar a.leaflet-disabled {\r\n\tcursor: default;\r\n\tbackground-color: #f4f4f4;\r\n\tcolor: #bbb;\r\n\t}\r\n\r\n.leaflet-touch .leaflet-bar a {\r\n\twidth: 30px;\r\n\theight: 30px;\r\n\tline-height: 30px;\r\n\t}\r\n\r\n.leaflet-touch .leaflet-bar a:first-child {\r\n\tborder-top-left-radius: 2px;\r\n\tborder-top-right-radius: 2px;\r\n\t}\r\n\r\n.leaflet-touch .leaflet-bar a:last-child {\r\n\tborder-bottom-left-radius: 2px;\r\n\tborder-bottom-right-radius: 2px;\r\n\t}\r\n\r\n/* zoom control */\r\n\r\n.leaflet-control-zoom-in,\r\n.leaflet-control-zoom-out {\r\n\tfont: bold 18px 'Lucida Console', Monaco, monospace;\r\n\ttext-indent: 1px;\r\n\t}\r\n\r\n.leaflet-touch .leaflet-control-zoom-in, .leaflet-touch .leaflet-control-zoom-out  {\r\n\tfont-size: 22px;\r\n\t}\r\n\r\n/* layers control */\r\n\r\n.leaflet-control-layers {\r\n\tbox-shadow: 0 1px 5px rgba(0,0,0,0.4);\r\n\tbackground: #fff;\r\n\tborder-radius: 5px;\r\n\t}\r\n\r\n.leaflet-control-layers-toggle {\r\n\tbackground-image: url('layers.png');\r\n\twidth: 36px;\r\n\theight: 36px;\r\n\t}\r\n\r\n.leaflet-retina .leaflet-control-layers-toggle {\r\n\tbackground-image: url('layers-2x.png');\r\n\tbackground-size: 26px 26px;\r\n\t}\r\n\r\n.leaflet-touch .leaflet-control-layers-toggle {\r\n\twidth: 44px;\r\n\theight: 44px;\r\n\t}\r\n\r\n.leaflet-control-layers .leaflet-control-layers-list,\r\n.leaflet-control-layers-expanded .leaflet-control-layers-toggle {\r\n\tdisplay: none;\r\n\t}\r\n\r\n.leaflet-control-layers-expanded .leaflet-control-layers-list {\r\n\tdisplay: block;\r\n\tposition: relative;\r\n\t}\r\n\r\n.leaflet-control-layers-expanded {\r\n\tpadding: 6px 10px 6px 6px;\r\n\tcolor: #333;\r\n\tbackground: #fff;\r\n\t}\r\n\r\n.leaflet-control-layers-scrollbar {\r\n\toverflow-y: scroll;\r\n\toverflow-x: hidden;\r\n\tpadding-right: 5px;\r\n\t}\r\n\r\n.leaflet-control-layers-selector {\r\n\tmargin-top: 2px;\r\n\tposition: relative;\r\n\ttop: 1px;\r\n\t}\r\n\r\n.leaflet-control-layers label {\r\n\tdisplay: block;\r\n\t}\r\n\r\n.leaflet-control-layers-separator {\r\n\theight: 0;\r\n\tborder-top: 1px solid #ddd;\r\n\tmargin: 5px -10px 5px -6px;\r\n\t}\r\n\r\n/* Default icon URLs */\r\n\r\n.leaflet-default-icon-path {\r\n\tbackground-image: url('marker-icon.png');\r\n\t}\r\n\r\n/* attribution and scale controls */\r\n\r\n.leaflet-container .leaflet-control-attribution {\r\n\tbackground: #fff;\r\n\tbackground: rgba(255, 255, 255, 0.7);\r\n\tmargin: 0;\r\n\t}\r\n\r\n.leaflet-control-attribution,\r\n.leaflet-control-scale-line {\r\n\tpadding: 0 5px;\r\n\tcolor: #333;\r\n\t}\r\n\r\n.leaflet-control-attribution a {\r\n\ttext-decoration: none;\r\n\t}\r\n\r\n.leaflet-control-attribution a:hover {\r\n\ttext-decoration: underline;\r\n\t}\r\n\r\n.leaflet-container .leaflet-control-attribution,\r\n.leaflet-container .leaflet-control-scale {\r\n\tfont-size: 11px;\r\n\t}\r\n\r\n.leaflet-left .leaflet-control-scale {\r\n\tmargin-left: 5px;\r\n\t}\r\n\r\n.leaflet-bottom .leaflet-control-scale {\r\n\tmargin-bottom: 5px;\r\n\t}\r\n\r\n.leaflet-control-scale-line {\r\n\tborder: 2px solid #777;\r\n\tborder-top: none;\r\n\tline-height: 1.1;\r\n\tpadding: 2px 5px 1px;\r\n\tfont-size: 11px;\r\n\twhite-space: nowrap;\r\n\toverflow: hidden;\r\n\tbox-sizing: border-box;\r\n\r\n\tbackground: #fff;\r\n\tbackground: rgba(255, 255, 255, 0.5);\r\n\t}\r\n\r\n.leaflet-control-scale-line:not(:first-child) {\r\n\tborder-top: 2px solid #777;\r\n\tborder-bottom: none;\r\n\tmargin-top: -2px;\r\n\t}\r\n\r\n.leaflet-control-scale-line:not(:first-child):not(:last-child) {\r\n\tborder-bottom: 2px solid #777;\r\n\t}\r\n\r\n.leaflet-touch .leaflet-control-attribution,\r\n.leaflet-touch .leaflet-control-layers,\r\n.leaflet-touch .leaflet-bar {\r\n\tbox-shadow: none;\r\n\t}\r\n\r\n.leaflet-touch .leaflet-control-layers,\r\n.leaflet-touch .leaflet-bar {\r\n\tborder: 2px solid rgba(0,0,0,0.2);\r\n\tbackground-clip: padding-box;\r\n\t}\r\n\r\n/* popup */\r\n\r\n.leaflet-popup {\r\n\tposition: absolute;\r\n\ttext-align: center;\r\n\tmargin-bottom: 20px;\r\n\t}\r\n\r\n.leaflet-popup-content-wrapper {\r\n\tpadding: 1px;\r\n\ttext-align: left;\r\n\tborder-radius: 12px;\r\n\t}\r\n\r\n.leaflet-popup-content {\r\n\tmargin: 13px 19px;\r\n\tline-height: 1.4;\r\n\t}\r\n\r\n.leaflet-popup-content p {\r\n\tmargin: 18px 0;\r\n\t}\r\n\r\n.leaflet-popup-tip-container {\r\n\twidth: 40px;\r\n\theight: 20px;\r\n\tposition: absolute;\r\n\tleft: 50%;\r\n\tmargin-left: -20px;\r\n\toverflow: hidden;\r\n\tpointer-events: none;\r\n\t}\r\n\r\n.leaflet-popup-tip {\r\n\twidth: 17px;\r\n\theight: 17px;\r\n\tpadding: 1px;\r\n\r\n\tmargin: -10px auto 0;\r\n\r\n\t-webkit-transform: rotate(45deg);\r\n\t        transform: rotate(45deg);\r\n\t}\r\n\r\n.leaflet-popup-content-wrapper,\r\n.leaflet-popup-tip {\r\n\tbackground: white;\r\n\tcolor: #333;\r\n\tbox-shadow: 0 3px 14px rgba(0,0,0,0.4);\r\n\t}\r\n\r\n.leaflet-container a.leaflet-popup-close-button {\r\n\tposition: absolute;\r\n\ttop: 0;\r\n\tright: 0;\r\n\tpadding: 4px 4px 0 0;\r\n\tborder: none;\r\n\ttext-align: center;\r\n\twidth: 18px;\r\n\theight: 14px;\r\n\tfont: 16px/14px Tahoma, Verdana, sans-serif;\r\n\tcolor: #c3c3c3;\r\n\ttext-decoration: none;\r\n\tfont-weight: bold;\r\n\tbackground: transparent;\r\n\t}\r\n\r\n.leaflet-container a.leaflet-popup-close-button:hover {\r\n\tcolor: #999;\r\n\t}\r\n\r\n.leaflet-popup-scrolled {\r\n\toverflow: auto;\r\n\tborder-bottom: 1px solid #ddd;\r\n\tborder-top: 1px solid #ddd;\r\n\t}\r\n\r\n.leaflet-oldie .leaflet-popup-content-wrapper {\r\n\tzoom: 1;\r\n\t}\r\n\r\n.leaflet-oldie .leaflet-popup-tip {\r\n\twidth: 24px;\r\n\tmargin: 0 auto;\r\n\r\n\t-ms-filter: \"progid:DXImageTransform.Microsoft.Matrix(M11=0.70710678, M12=0.70710678, M21=-0.70710678, M22=0.70710678)\";\r\n\tfilter: progid:DXImageTransform.Microsoft.Matrix(M11=0.70710678, M12=0.70710678, M21=-0.70710678, M22=0.70710678);\r\n\t}\r\n\r\n.leaflet-oldie .leaflet-popup-tip-container {\r\n\tmargin-top: -1px;\r\n\t}\r\n\r\n.leaflet-oldie .leaflet-control-zoom,\r\n.leaflet-oldie .leaflet-control-layers,\r\n.leaflet-oldie .leaflet-popup-content-wrapper,\r\n.leaflet-oldie .leaflet-popup-tip {\r\n\tborder: 1px solid #999;\r\n\t}\r\n\r\n/* div icon */\r\n\r\n.leaflet-div-icon {\r\n\tbackground: #fff;\r\n\tborder: 1px solid #666;\r\n\t}\r\n\r\n/* Tooltip */\r\n\r\n/* Base styles for the element that has a tooltip */\r\n\r\n.leaflet-tooltip {\r\n\tposition: absolute;\r\n\tpadding: 6px;\r\n\tbackground-color: #fff;\r\n\tborder: 1px solid #fff;\r\n\tborder-radius: 3px;\r\n\tcolor: #222;\r\n\twhite-space: nowrap;\r\n\t-webkit-user-select: none;\r\n\t-moz-user-select: none;\r\n\t-ms-user-select: none;\r\n\tuser-select: none;\r\n\tpointer-events: none;\r\n\tbox-shadow: 0 1px 3px rgba(0,0,0,0.4);\r\n\t}\r\n\r\n.leaflet-tooltip.leaflet-clickable {\r\n\tcursor: pointer;\r\n\tpointer-events: auto;\r\n\t}\r\n\r\n.leaflet-tooltip-top:before,\r\n.leaflet-tooltip-bottom:before,\r\n.leaflet-tooltip-left:before,\r\n.leaflet-tooltip-right:before {\r\n\tposition: absolute;\r\n\tpointer-events: none;\r\n\tborder: 6px solid transparent;\r\n\tbackground: transparent;\r\n\tcontent: \"\";\r\n\t}\r\n\r\n/* Directions */\r\n\r\n.leaflet-tooltip-bottom {\r\n\tmargin-top: 6px;\r\n}\r\n\r\n.leaflet-tooltip-top {\r\n\tmargin-top: -6px;\r\n}\r\n\r\n.leaflet-tooltip-bottom:before,\r\n.leaflet-tooltip-top:before {\r\n\tleft: 50%;\r\n\tmargin-left: -6px;\r\n\t}\r\n\r\n.leaflet-tooltip-top:before {\r\n\tbottom: 0;\r\n\tmargin-bottom: -12px;\r\n\tborder-top-color: #fff;\r\n\t}\r\n\r\n.leaflet-tooltip-bottom:before {\r\n\ttop: 0;\r\n\tmargin-top: -12px;\r\n\tmargin-left: -6px;\r\n\tborder-bottom-color: #fff;\r\n\t}\r\n\r\n.leaflet-tooltip-left {\r\n\tmargin-left: -6px;\r\n}\r\n\r\n.leaflet-tooltip-right {\r\n\tmargin-left: 6px;\r\n}\r\n\r\n.leaflet-tooltip-left:before,\r\n.leaflet-tooltip-right:before {\r\n\ttop: 50%;\r\n\tmargin-top: -6px;\r\n\t}\r\n\r\n.leaflet-tooltip-left:before {\r\n\tright: 0;\r\n\tmargin-right: -12px;\r\n\tborder-left-color: #fff;\r\n\t}\r\n\r\n.leaflet-tooltip-right:before {\r\n\tleft: 0;\r\n\tmargin-left: -12px;\r\n\tborder-right-color: #fff;\r\n\t}\r\n\r\n.map-container {\n  position: absolute;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  margin: 30px;\n}\r\n\r\n.map-frame {\n  border: 2px solid black;\n  height: 100%;\n}\r\n\r\n#map {\n  height: 100%;\n}\r\n\r\n.centered {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translate(-50%, -30%);\n          transform: translate(-50%, -30%);\n}\r\n\r\n.container {\n  position: relative;\n  text-align: center;\n  color: white;\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm5vZGVfbW9kdWxlcy9sZWFmbGV0L2Rpc3QvbGVhZmxldC5jc3MiLCJzcmMvYXBwL3BhZ2VzL21hcC9DOlxcVXNlcnNcXEh1b25nTGFuVG9cXHNhbmRib3hcXFRoZXNpc1xcd2ViX2NsaWVudC9zcmNcXGFwcFxccGFnZXNcXG1hcFxcbWFwLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9wYWdlcy9tYXAvbWFwLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLG9CQUFvQjs7QUFFcEI7Ozs7Ozs7Ozs7Q0FVQyxrQkFBa0I7Q0FDbEIsT0FBTztDQUNQLE1BQU07Q0FDTjs7QUFDRDtDQUNDLGdCQUFnQjtDQUNoQjs7QUFDRDs7O0NBR0MseUJBQXlCO0lBQ3RCLHNCQUFzQjtTQUNqQixxQkFBaUI7S0FBakIsaUJBQWlCO0dBQ3ZCLHVCQUF1QjtDQUN6Qjs7QUFDRCxrREFBa0Q7O0FBQ2xEO0NBQ0MsdUJBQXVCO0FBQ3hCOztBQUZBO0NBQ0MsdUJBQXVCO0FBQ3hCOztBQUNBLG1GQUFtRjs7QUFDbkY7Q0FDQywwQ0FBMEM7Q0FDMUM7O0FBQ0QscUVBQXFFOztBQUNyRTtDQUNDLGFBQWE7Q0FDYixjQUFjO0NBQ2QsNkJBQTZCO0NBQzdCOztBQUNEOztDQUVDLGNBQWM7Q0FDZDs7QUFDRCxnR0FBZ0c7O0FBQ2hHLHFGQUFxRjs7QUFDckY7Ozs7OztDQU1DLDBCQUEwQjtDQUMxQiwyQkFBMkI7Q0FDM0I7O0FBRUQ7Q0FFQyx5QkFBeUI7Q0FDekI7O0FBQ0Q7Q0FFQyxxREFBcUQ7Q0FDckQsa0JBQWtCO0NBQ2xCLHdCQUF3QjtBQUN6Qjs7QUFDQTtDQUVDLGtCQUFrQjtBQUNuQjs7QUFDQTtDQUNDLHdDQUF3QztBQUN6Qzs7QUFDQTtDQUNDLG9EQUFvRDtBQUNyRDs7QUFDQTtDQUNDLHVCQUFlO1NBQWYsZUFBZTtDQUNmLGtCQUFrQjtDQUNsQjs7QUFDRDtDQUNDLG1CQUFtQjtDQUNuQjs7QUFDRDtDQUNDLFFBQVE7Q0FDUixTQUFTO0NBRUosc0JBQXNCO0NBQzNCLFlBQVk7Q0FDWjs7QUFDRCx1RUFBdUU7O0FBQ3ZFO0NBQ0Msc0JBQXNCO0NBQ3RCOztBQUVELHdCQUF3QixZQUFZLEVBQUU7O0FBRXRDLHdCQUF3QixZQUFZLEVBQUU7O0FBQ3RDLHdCQUF3QixZQUFZLEVBQUU7O0FBQ3RDLHdCQUF3QixZQUFZLEVBQUU7O0FBQ3RDLHdCQUF3QixZQUFZLEVBQUU7O0FBQ3RDLDBCQUEwQixZQUFZLEVBQUU7O0FBQ3hDLHdCQUF3QixZQUFZLEVBQUU7O0FBRXRDLDJCQUEyQixZQUFZLEVBQUU7O0FBQ3pDLDJCQUEyQixZQUFZLEVBQUU7O0FBRXpDO0NBQ0MsVUFBVTtDQUNWLFdBQVc7Q0FDWDs7QUFDRDtDQUNDLDJCQUEyQjtDQUMzQixxQkFBcUI7Q0FDckIsa0JBQWtCO0NBQ2xCOztBQUdELHdCQUF3Qjs7QUFFeEI7Q0FDQyxrQkFBa0I7Q0FDbEIsWUFBWTtDQUNaLDhCQUE4QixFQUFFLDhCQUE4QjtDQUM5RCxvQkFBb0I7Q0FDcEI7O0FBQ0Q7O0NBRUMsa0JBQWtCO0NBQ2xCLGFBQWE7Q0FDYixvQkFBb0I7Q0FDcEI7O0FBQ0Q7Q0FDQyxNQUFNO0NBQ047O0FBQ0Q7Q0FDQyxRQUFRO0NBQ1I7O0FBQ0Q7Q0FDQyxTQUFTO0NBQ1Q7O0FBQ0Q7Q0FDQyxPQUFPO0NBQ1A7O0FBQ0Q7Q0FDQyxXQUFXO0NBQ1gsV0FBVztDQUNYOztBQUNEO0NBQ0MsWUFBWTtDQUNaOztBQUNEO0NBQ0MsZ0JBQWdCO0NBQ2hCOztBQUNEO0NBQ0MsbUJBQW1CO0NBQ25COztBQUNEO0NBQ0MsaUJBQWlCO0NBQ2pCOztBQUNEO0NBQ0Msa0JBQWtCO0NBQ2xCOztBQUdELDZCQUE2Qjs7QUFFN0I7Q0FDQyxvQkFBb0I7Q0FDcEI7O0FBQ0Q7Q0FDQyxVQUFVO0NBQ1YsdUNBQXVDO1NBRS9CLCtCQUErQjtDQUN2Qzs7QUFDRDtDQUNDLFVBQVU7Q0FDVjs7QUFDRDtDQUNDLDZCQUE2QjtTQUVyQixxQkFBcUI7Q0FDN0I7O0FBQ0Q7Q0FDQyxzQkFBc0I7Q0FDdEI7O0FBQ0Q7Q0FDQyxvRUFBb0U7U0FFNUQsb0VBQTREO1NBQTVELDREQUE0RDtTQUE1RCw4R0FBNEQ7Q0FDcEU7O0FBQ0Q7O0NBRUMsd0JBQXdCO1NBRWhCLGdCQUFnQjtDQUN4Qjs7QUFFRDtDQUNDLGtCQUFrQjtDQUNsQjs7QUFHRCxZQUFZOztBQUVaO0NBQ0MsZUFBZTtDQUNmOztBQUNEO0NBQ0Msb0JBQW9CO0NBRXBCLG9CQUFvQjtDQUNwQjs7QUFDRDs7Q0FFQyxpQkFBaUI7Q0FDakI7O0FBQ0Q7O0NBRUMsWUFBWTtDQUNaOztBQUNEOzs7Q0FHQyxZQUFZO0NBQ1osd0JBQXdCO0NBRXhCLHdCQUF3QjtDQUN4Qjs7QUFFRCxvQ0FBb0M7O0FBQ3BDOzs7OztDQUtDLG9CQUFvQjtDQUNwQjs7QUFFRDs7OztDQUlDLDhCQUE4QixFQUFFLDhCQUE4QjtDQUM5RCxvQkFBb0I7Q0FDcEI7O0FBRUQsa0JBQWtCOztBQUVsQjtDQUNDLGdCQUFnQjtDQUNoQixVQUFVO0NBQ1Y7O0FBQ0Q7Q0FDQyxjQUFjO0NBQ2Q7O0FBQ0Q7Q0FDQyx5QkFBeUI7Q0FDekI7O0FBQ0Q7Q0FDQyx1QkFBdUI7Q0FDdkIsaUNBQWlDO0NBQ2pDOztBQUdELHVCQUF1Qjs7QUFDdkI7Q0FDQyw2REFBNkQ7Q0FDN0Q7O0FBR0QsMkJBQTJCOztBQUUzQjtDQUNDLHNDQUFzQztDQUN0QyxrQkFBa0I7Q0FDbEI7O0FBQ0Q7O0NBRUMsc0JBQXNCO0NBQ3RCLDZCQUE2QjtDQUM3QixXQUFXO0NBQ1gsWUFBWTtDQUNaLGlCQUFpQjtDQUNqQixjQUFjO0NBQ2Qsa0JBQWtCO0NBQ2xCLHFCQUFxQjtDQUNyQixZQUFZO0NBQ1o7O0FBQ0Q7O0NBRUMsNEJBQTRCO0NBQzVCLDRCQUE0QjtDQUM1QixjQUFjO0NBQ2Q7O0FBQ0Q7Q0FDQyx5QkFBeUI7Q0FDekI7O0FBQ0Q7Q0FDQywyQkFBMkI7Q0FDM0IsNEJBQTRCO0NBQzVCOztBQUNEO0NBQ0MsOEJBQThCO0NBQzlCLCtCQUErQjtDQUMvQixtQkFBbUI7Q0FDbkI7O0FBQ0Q7Q0FDQyxlQUFlO0NBQ2YseUJBQXlCO0NBQ3pCLFdBQVc7Q0FDWDs7QUFFRDtDQUNDLFdBQVc7Q0FDWCxZQUFZO0NBQ1osaUJBQWlCO0NBQ2pCOztBQUNEO0NBQ0MsMkJBQTJCO0NBQzNCLDRCQUE0QjtDQUM1Qjs7QUFDRDtDQUNDLDhCQUE4QjtDQUM5QiwrQkFBK0I7Q0FDL0I7O0FBRUQsaUJBQWlCOztBQUVqQjs7Q0FFQyxtREFBbUQ7Q0FDbkQsZ0JBQWdCO0NBQ2hCOztBQUVEO0NBQ0MsZUFBZTtDQUNmOztBQUdELG1CQUFtQjs7QUFFbkI7Q0FDQyxxQ0FBcUM7Q0FDckMsZ0JBQWdCO0NBQ2hCLGtCQUFrQjtDQUNsQjs7QUFDRDtDQUNDLG1DQUF3QztDQUN4QyxXQUFXO0NBQ1gsWUFBWTtDQUNaOztBQUNEO0NBQ0Msc0NBQTJDO0NBQzNDLDBCQUEwQjtDQUMxQjs7QUFDRDtDQUNDLFdBQVc7Q0FDWCxZQUFZO0NBQ1o7O0FBQ0Q7O0NBRUMsYUFBYTtDQUNiOztBQUNEO0NBQ0MsY0FBYztDQUNkLGtCQUFrQjtDQUNsQjs7QUFDRDtDQUNDLHlCQUF5QjtDQUN6QixXQUFXO0NBQ1gsZ0JBQWdCO0NBQ2hCOztBQUNEO0NBQ0Msa0JBQWtCO0NBQ2xCLGtCQUFrQjtDQUNsQixrQkFBa0I7Q0FDbEI7O0FBQ0Q7Q0FDQyxlQUFlO0NBQ2Ysa0JBQWtCO0NBQ2xCLFFBQVE7Q0FDUjs7QUFDRDtDQUNDLGNBQWM7Q0FDZDs7QUFDRDtDQUNDLFNBQVM7Q0FDVCwwQkFBMEI7Q0FDMUIsMEJBQTBCO0NBQzFCOztBQUVELHNCQUFzQjs7QUFDdEI7Q0FDQyx3Q0FBNkM7Q0FDN0M7O0FBR0QsbUNBQW1DOztBQUVuQztDQUNDLGdCQUFnQjtDQUNoQixvQ0FBb0M7Q0FDcEMsU0FBUztDQUNUOztBQUNEOztDQUVDLGNBQWM7Q0FDZCxXQUFXO0NBQ1g7O0FBQ0Q7Q0FDQyxxQkFBcUI7Q0FDckI7O0FBQ0Q7Q0FDQywwQkFBMEI7Q0FDMUI7O0FBQ0Q7O0NBRUMsZUFBZTtDQUNmOztBQUNEO0NBQ0MsZ0JBQWdCO0NBQ2hCOztBQUNEO0NBQ0Msa0JBQWtCO0NBQ2xCOztBQUNEO0NBQ0Msc0JBQXNCO0NBQ3RCLGdCQUFnQjtDQUNoQixnQkFBZ0I7Q0FDaEIsb0JBQW9CO0NBQ3BCLGVBQWU7Q0FDZixtQkFBbUI7Q0FDbkIsZ0JBQWdCO0NBRVgsc0JBQXNCOztDQUUzQixnQkFBZ0I7Q0FDaEIsb0NBQW9DO0NBQ3BDOztBQUNEO0NBQ0MsMEJBQTBCO0NBQzFCLG1CQUFtQjtDQUNuQixnQkFBZ0I7Q0FDaEI7O0FBQ0Q7Q0FDQyw2QkFBNkI7Q0FDN0I7O0FBRUQ7OztDQUdDLGdCQUFnQjtDQUNoQjs7QUFDRDs7Q0FFQyxpQ0FBaUM7Q0FDakMsNEJBQTRCO0NBQzVCOztBQUdELFVBQVU7O0FBRVY7Q0FDQyxrQkFBa0I7Q0FDbEIsa0JBQWtCO0NBQ2xCLG1CQUFtQjtDQUNuQjs7QUFDRDtDQUNDLFlBQVk7Q0FDWixnQkFBZ0I7Q0FDaEIsbUJBQW1CO0NBQ25COztBQUNEO0NBQ0MsaUJBQWlCO0NBQ2pCLGdCQUFnQjtDQUNoQjs7QUFDRDtDQUNDLGNBQWM7Q0FDZDs7QUFDRDtDQUNDLFdBQVc7Q0FDWCxZQUFZO0NBQ1osa0JBQWtCO0NBQ2xCLFNBQVM7Q0FDVCxrQkFBa0I7Q0FDbEIsZ0JBQWdCO0NBQ2hCLG9CQUFvQjtDQUNwQjs7QUFDRDtDQUNDLFdBQVc7Q0FDWCxZQUFZO0NBQ1osWUFBWTs7Q0FFWixvQkFBb0I7O0NBRXBCLGdDQUFnQztTQUd4Qix3QkFBd0I7Q0FDaEM7O0FBQ0Q7O0NBRUMsaUJBQWlCO0NBQ2pCLFdBQVc7Q0FDWCxzQ0FBc0M7Q0FDdEM7O0FBQ0Q7Q0FDQyxrQkFBa0I7Q0FDbEIsTUFBTTtDQUNOLFFBQVE7Q0FDUixvQkFBb0I7Q0FDcEIsWUFBWTtDQUNaLGtCQUFrQjtDQUNsQixXQUFXO0NBQ1gsWUFBWTtDQUNaLDJDQUEyQztDQUMzQyxjQUFjO0NBQ2QscUJBQXFCO0NBQ3JCLGlCQUFpQjtDQUNqQix1QkFBdUI7Q0FDdkI7O0FBQ0Q7Q0FDQyxXQUFXO0NBQ1g7O0FBQ0Q7Q0FDQyxjQUFjO0NBQ2QsNkJBQTZCO0NBQzdCLDBCQUEwQjtDQUMxQjs7QUFFRDtDQUNDLE9BQU87Q0FDUDs7QUFDRDtDQUNDLFdBQVc7Q0FDWCxjQUFjOztDQUVkLHVIQUF1SDtDQUN2SCxpSEFBaUg7Q0FDakg7O0FBQ0Q7Q0FDQyxnQkFBZ0I7Q0FDaEI7O0FBRUQ7Ozs7Q0FJQyxzQkFBc0I7Q0FDdEI7O0FBR0QsYUFBYTs7QUFFYjtDQUNDLGdCQUFnQjtDQUNoQixzQkFBc0I7Q0FDdEI7O0FBR0QsWUFBWTs7QUFDWixtREFBbUQ7O0FBQ25EO0NBQ0Msa0JBQWtCO0NBQ2xCLFlBQVk7Q0FDWixzQkFBc0I7Q0FDdEIsc0JBQXNCO0NBQ3RCLGtCQUFrQjtDQUNsQixXQUFXO0NBQ1gsbUJBQW1CO0NBQ25CLHlCQUF5QjtDQUN6QixzQkFBc0I7Q0FDdEIscUJBQXFCO0NBQ3JCLGlCQUFpQjtDQUNqQixvQkFBb0I7Q0FDcEIscUNBQXFDO0NBQ3JDOztBQUNEO0NBQ0MsZUFBZTtDQUNmLG9CQUFvQjtDQUNwQjs7QUFDRDs7OztDQUlDLGtCQUFrQjtDQUNsQixvQkFBb0I7Q0FDcEIsNkJBQTZCO0NBQzdCLHVCQUF1QjtDQUN2QixXQUFXO0NBQ1g7O0FBRUQsZUFBZTs7QUFFZjtDQUNDLGVBQWU7QUFDaEI7O0FBQ0E7Q0FDQyxnQkFBZ0I7QUFDakI7O0FBQ0E7O0NBRUMsU0FBUztDQUNULGlCQUFpQjtDQUNqQjs7QUFDRDtDQUNDLFNBQVM7Q0FDVCxvQkFBb0I7Q0FDcEIsc0JBQXNCO0NBQ3RCOztBQUNEO0NBQ0MsTUFBTTtDQUNOLGlCQUFpQjtDQUNqQixpQkFBaUI7Q0FDakIseUJBQXlCO0NBQ3pCOztBQUNEO0NBQ0MsaUJBQWlCO0FBQ2xCOztBQUNBO0NBQ0MsZ0JBQWdCO0FBQ2pCOztBQUNBOztDQUVDLFFBQVE7Q0FDUixnQkFBZ0I7Q0FDaEI7O0FBQ0Q7Q0FDQyxRQUFRO0NBQ1IsbUJBQW1CO0NBQ25CLHVCQUF1QjtDQUN2Qjs7QUFDRDtDQUNDLE9BQU87Q0FDUCxrQkFBa0I7Q0FDbEIsd0JBQXdCO0NBQ3hCOztBQzduQkQ7RUFDSSxrQkFBQTtFQUNBLE1BQUE7RUFDQSxPQUFBO0VBQ0EsUUFBQTtFQUNBLFNBQUE7RUFDQSxZQUFBO0FDQUo7O0FER0E7RUFDSSx1QkFBQTtFQUNBLFlBQUE7QUNBSjs7QURHQTtFQUNJLFlBQUE7QUNBSjs7QURHQTtFQUNFLGtCQUFBO0VBQ0EsUUFBQTtFQUNBLFNBQUE7RUFDQSx3Q0FBQTtVQUFBLGdDQUFBO0FDQUY7O0FERUE7RUFDRSxrQkFBQTtFQUNBLGtCQUFBO0VBQ0EsWUFBQTtBQ0NGIiwiZmlsZSI6InNyYy9hcHAvcGFnZXMvbWFwL21hcC5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi8qIHJlcXVpcmVkIHN0eWxlcyAqL1xyXG5cclxuLmxlYWZsZXQtcGFuZSxcclxuLmxlYWZsZXQtdGlsZSxcclxuLmxlYWZsZXQtbWFya2VyLWljb24sXHJcbi5sZWFmbGV0LW1hcmtlci1zaGFkb3csXHJcbi5sZWFmbGV0LXRpbGUtY29udGFpbmVyLFxyXG4ubGVhZmxldC1wYW5lID4gc3ZnLFxyXG4ubGVhZmxldC1wYW5lID4gY2FudmFzLFxyXG4ubGVhZmxldC16b29tLWJveCxcclxuLmxlYWZsZXQtaW1hZ2UtbGF5ZXIsXHJcbi5sZWFmbGV0LWxheWVyIHtcclxuXHRwb3NpdGlvbjogYWJzb2x1dGU7XHJcblx0bGVmdDogMDtcclxuXHR0b3A6IDA7XHJcblx0fVxyXG4ubGVhZmxldC1jb250YWluZXIge1xyXG5cdG92ZXJmbG93OiBoaWRkZW47XHJcblx0fVxyXG4ubGVhZmxldC10aWxlLFxyXG4ubGVhZmxldC1tYXJrZXItaWNvbixcclxuLmxlYWZsZXQtbWFya2VyLXNoYWRvdyB7XHJcblx0LXdlYmtpdC11c2VyLXNlbGVjdDogbm9uZTtcclxuXHQgICAtbW96LXVzZXItc2VsZWN0OiBub25lO1xyXG5cdCAgICAgICAgdXNlci1zZWxlY3Q6IG5vbmU7XHJcblx0ICAtd2Via2l0LXVzZXItZHJhZzogbm9uZTtcclxuXHR9XHJcbi8qIFByZXZlbnRzIElFMTEgZnJvbSBoaWdobGlnaHRpbmcgdGlsZXMgaW4gYmx1ZSAqL1xyXG4ubGVhZmxldC10aWxlOjpzZWxlY3Rpb24ge1xyXG5cdGJhY2tncm91bmQ6IHRyYW5zcGFyZW50O1xyXG59XHJcbi8qIFNhZmFyaSByZW5kZXJzIG5vbi1yZXRpbmEgdGlsZSBvbiByZXRpbmEgYmV0dGVyIHdpdGggdGhpcywgYnV0IENocm9tZSBpcyB3b3JzZSAqL1xyXG4ubGVhZmxldC1zYWZhcmkgLmxlYWZsZXQtdGlsZSB7XHJcblx0aW1hZ2UtcmVuZGVyaW5nOiAtd2Via2l0LW9wdGltaXplLWNvbnRyYXN0O1xyXG5cdH1cclxuLyogaGFjayB0aGF0IHByZXZlbnRzIGh3IGxheWVycyBcInN0cmV0Y2hpbmdcIiB3aGVuIGxvYWRpbmcgbmV3IHRpbGVzICovXHJcbi5sZWFmbGV0LXNhZmFyaSAubGVhZmxldC10aWxlLWNvbnRhaW5lciB7XHJcblx0d2lkdGg6IDE2MDBweDtcclxuXHRoZWlnaHQ6IDE2MDBweDtcclxuXHQtd2Via2l0LXRyYW5zZm9ybS1vcmlnaW46IDAgMDtcclxuXHR9XHJcbi5sZWFmbGV0LW1hcmtlci1pY29uLFxyXG4ubGVhZmxldC1tYXJrZXItc2hhZG93IHtcclxuXHRkaXNwbGF5OiBibG9jaztcclxuXHR9XHJcbi8qIC5sZWFmbGV0LWNvbnRhaW5lciBzdmc6IHJlc2V0IHN2ZyBtYXgtd2lkdGggZGVjbGVyYXRpb24gc2hpcHBlZCBpbiBKb29tbGEhIChqb29tbGEub3JnKSAzLnggKi9cclxuLyogLmxlYWZsZXQtY29udGFpbmVyIGltZzogbWFwIGlzIGJyb2tlbiBpbiBGRiBpZiB5b3UgaGF2ZSBtYXgtd2lkdGg6IDEwMCUgb24gdGlsZXMgKi9cclxuLmxlYWZsZXQtY29udGFpbmVyIC5sZWFmbGV0LW92ZXJsYXktcGFuZSBzdmcsXHJcbi5sZWFmbGV0LWNvbnRhaW5lciAubGVhZmxldC1tYXJrZXItcGFuZSBpbWcsXHJcbi5sZWFmbGV0LWNvbnRhaW5lciAubGVhZmxldC1zaGFkb3ctcGFuZSBpbWcsXHJcbi5sZWFmbGV0LWNvbnRhaW5lciAubGVhZmxldC10aWxlLXBhbmUgaW1nLFxyXG4ubGVhZmxldC1jb250YWluZXIgaW1nLmxlYWZsZXQtaW1hZ2UtbGF5ZXIsXHJcbi5sZWFmbGV0LWNvbnRhaW5lciAubGVhZmxldC10aWxlIHtcclxuXHRtYXgtd2lkdGg6IG5vbmUgIWltcG9ydGFudDtcclxuXHRtYXgtaGVpZ2h0OiBub25lICFpbXBvcnRhbnQ7XHJcblx0fVxyXG5cclxuLmxlYWZsZXQtY29udGFpbmVyLmxlYWZsZXQtdG91Y2gtem9vbSB7XHJcblx0LW1zLXRvdWNoLWFjdGlvbjogcGFuLXggcGFuLXk7XHJcblx0dG91Y2gtYWN0aW9uOiBwYW4teCBwYW4teTtcclxuXHR9XHJcbi5sZWFmbGV0LWNvbnRhaW5lci5sZWFmbGV0LXRvdWNoLWRyYWcge1xyXG5cdC1tcy10b3VjaC1hY3Rpb246IHBpbmNoLXpvb207XHJcblx0LyogRmFsbGJhY2sgZm9yIEZGIHdoaWNoIGRvZXNuJ3Qgc3VwcG9ydCBwaW5jaC16b29tICovXHJcblx0dG91Y2gtYWN0aW9uOiBub25lO1xyXG5cdHRvdWNoLWFjdGlvbjogcGluY2gtem9vbTtcclxufVxyXG4ubGVhZmxldC1jb250YWluZXIubGVhZmxldC10b3VjaC1kcmFnLmxlYWZsZXQtdG91Y2gtem9vbSB7XHJcblx0LW1zLXRvdWNoLWFjdGlvbjogbm9uZTtcclxuXHR0b3VjaC1hY3Rpb246IG5vbmU7XHJcbn1cclxuLmxlYWZsZXQtY29udGFpbmVyIHtcclxuXHQtd2Via2l0LXRhcC1oaWdobGlnaHQtY29sb3I6IHRyYW5zcGFyZW50O1xyXG59XHJcbi5sZWFmbGV0LWNvbnRhaW5lciBhIHtcclxuXHQtd2Via2l0LXRhcC1oaWdobGlnaHQtY29sb3I6IHJnYmEoNTEsIDE4MSwgMjI5LCAwLjQpO1xyXG59XHJcbi5sZWFmbGV0LXRpbGUge1xyXG5cdGZpbHRlcjogaW5oZXJpdDtcclxuXHR2aXNpYmlsaXR5OiBoaWRkZW47XHJcblx0fVxyXG4ubGVhZmxldC10aWxlLWxvYWRlZCB7XHJcblx0dmlzaWJpbGl0eTogaW5oZXJpdDtcclxuXHR9XHJcbi5sZWFmbGV0LXpvb20tYm94IHtcclxuXHR3aWR0aDogMDtcclxuXHRoZWlnaHQ6IDA7XHJcblx0LW1vei1ib3gtc2l6aW5nOiBib3JkZXItYm94O1xyXG5cdCAgICAgYm94LXNpemluZzogYm9yZGVyLWJveDtcclxuXHR6LWluZGV4OiA4MDA7XHJcblx0fVxyXG4vKiB3b3JrYXJvdW5kIGZvciBodHRwczovL2J1Z3ppbGxhLm1vemlsbGEub3JnL3Nob3dfYnVnLmNnaT9pZD04ODgzMTkgKi9cclxuLmxlYWZsZXQtb3ZlcmxheS1wYW5lIHN2ZyB7XHJcblx0LW1vei11c2VyLXNlbGVjdDogbm9uZTtcclxuXHR9XHJcblxyXG4ubGVhZmxldC1wYW5lICAgICAgICAgeyB6LWluZGV4OiA0MDA7IH1cclxuXHJcbi5sZWFmbGV0LXRpbGUtcGFuZSAgICB7IHotaW5kZXg6IDIwMDsgfVxyXG4ubGVhZmxldC1vdmVybGF5LXBhbmUgeyB6LWluZGV4OiA0MDA7IH1cclxuLmxlYWZsZXQtc2hhZG93LXBhbmUgIHsgei1pbmRleDogNTAwOyB9XHJcbi5sZWFmbGV0LW1hcmtlci1wYW5lICB7IHotaW5kZXg6IDYwMDsgfVxyXG4ubGVhZmxldC10b29sdGlwLXBhbmUgICB7IHotaW5kZXg6IDY1MDsgfVxyXG4ubGVhZmxldC1wb3B1cC1wYW5lICAgeyB6LWluZGV4OiA3MDA7IH1cclxuXHJcbi5sZWFmbGV0LW1hcC1wYW5lIGNhbnZhcyB7IHotaW5kZXg6IDEwMDsgfVxyXG4ubGVhZmxldC1tYXAtcGFuZSBzdmcgICAgeyB6LWluZGV4OiAyMDA7IH1cclxuXHJcbi5sZWFmbGV0LXZtbC1zaGFwZSB7XHJcblx0d2lkdGg6IDFweDtcclxuXHRoZWlnaHQ6IDFweDtcclxuXHR9XHJcbi5sdm1sIHtcclxuXHRiZWhhdmlvcjogdXJsKCNkZWZhdWx0I1ZNTCk7XHJcblx0ZGlzcGxheTogaW5saW5lLWJsb2NrO1xyXG5cdHBvc2l0aW9uOiBhYnNvbHV0ZTtcclxuXHR9XHJcblxyXG5cclxuLyogY29udHJvbCBwb3NpdGlvbmluZyAqL1xyXG5cclxuLmxlYWZsZXQtY29udHJvbCB7XHJcblx0cG9zaXRpb246IHJlbGF0aXZlO1xyXG5cdHotaW5kZXg6IDgwMDtcclxuXHRwb2ludGVyLWV2ZW50czogdmlzaWJsZVBhaW50ZWQ7IC8qIElFIDktMTAgZG9lc24ndCBoYXZlIGF1dG8gKi9cclxuXHRwb2ludGVyLWV2ZW50czogYXV0bztcclxuXHR9XHJcbi5sZWFmbGV0LXRvcCxcclxuLmxlYWZsZXQtYm90dG9tIHtcclxuXHRwb3NpdGlvbjogYWJzb2x1dGU7XHJcblx0ei1pbmRleDogMTAwMDtcclxuXHRwb2ludGVyLWV2ZW50czogbm9uZTtcclxuXHR9XHJcbi5sZWFmbGV0LXRvcCB7XHJcblx0dG9wOiAwO1xyXG5cdH1cclxuLmxlYWZsZXQtcmlnaHQge1xyXG5cdHJpZ2h0OiAwO1xyXG5cdH1cclxuLmxlYWZsZXQtYm90dG9tIHtcclxuXHRib3R0b206IDA7XHJcblx0fVxyXG4ubGVhZmxldC1sZWZ0IHtcclxuXHRsZWZ0OiAwO1xyXG5cdH1cclxuLmxlYWZsZXQtY29udHJvbCB7XHJcblx0ZmxvYXQ6IGxlZnQ7XHJcblx0Y2xlYXI6IGJvdGg7XHJcblx0fVxyXG4ubGVhZmxldC1yaWdodCAubGVhZmxldC1jb250cm9sIHtcclxuXHRmbG9hdDogcmlnaHQ7XHJcblx0fVxyXG4ubGVhZmxldC10b3AgLmxlYWZsZXQtY29udHJvbCB7XHJcblx0bWFyZ2luLXRvcDogMTBweDtcclxuXHR9XHJcbi5sZWFmbGV0LWJvdHRvbSAubGVhZmxldC1jb250cm9sIHtcclxuXHRtYXJnaW4tYm90dG9tOiAxMHB4O1xyXG5cdH1cclxuLmxlYWZsZXQtbGVmdCAubGVhZmxldC1jb250cm9sIHtcclxuXHRtYXJnaW4tbGVmdDogMTBweDtcclxuXHR9XHJcbi5sZWFmbGV0LXJpZ2h0IC5sZWFmbGV0LWNvbnRyb2wge1xyXG5cdG1hcmdpbi1yaWdodDogMTBweDtcclxuXHR9XHJcblxyXG5cclxuLyogem9vbSBhbmQgZmFkZSBhbmltYXRpb25zICovXHJcblxyXG4ubGVhZmxldC1mYWRlLWFuaW0gLmxlYWZsZXQtdGlsZSB7XHJcblx0d2lsbC1jaGFuZ2U6IG9wYWNpdHk7XHJcblx0fVxyXG4ubGVhZmxldC1mYWRlLWFuaW0gLmxlYWZsZXQtcG9wdXAge1xyXG5cdG9wYWNpdHk6IDA7XHJcblx0LXdlYmtpdC10cmFuc2l0aW9uOiBvcGFjaXR5IDAuMnMgbGluZWFyO1xyXG5cdCAgIC1tb3otdHJhbnNpdGlvbjogb3BhY2l0eSAwLjJzIGxpbmVhcjtcclxuXHQgICAgICAgIHRyYW5zaXRpb246IG9wYWNpdHkgMC4ycyBsaW5lYXI7XHJcblx0fVxyXG4ubGVhZmxldC1mYWRlLWFuaW0gLmxlYWZsZXQtbWFwLXBhbmUgLmxlYWZsZXQtcG9wdXAge1xyXG5cdG9wYWNpdHk6IDE7XHJcblx0fVxyXG4ubGVhZmxldC16b29tLWFuaW1hdGVkIHtcclxuXHQtd2Via2l0LXRyYW5zZm9ybS1vcmlnaW46IDAgMDtcclxuXHQgICAgLW1zLXRyYW5zZm9ybS1vcmlnaW46IDAgMDtcclxuXHQgICAgICAgIHRyYW5zZm9ybS1vcmlnaW46IDAgMDtcclxuXHR9XHJcbi5sZWFmbGV0LXpvb20tYW5pbSAubGVhZmxldC16b29tLWFuaW1hdGVkIHtcclxuXHR3aWxsLWNoYW5nZTogdHJhbnNmb3JtO1xyXG5cdH1cclxuLmxlYWZsZXQtem9vbS1hbmltIC5sZWFmbGV0LXpvb20tYW5pbWF0ZWQge1xyXG5cdC13ZWJraXQtdHJhbnNpdGlvbjogLXdlYmtpdC10cmFuc2Zvcm0gMC4yNXMgY3ViaWMtYmV6aWVyKDAsMCwwLjI1LDEpO1xyXG5cdCAgIC1tb3otdHJhbnNpdGlvbjogICAgLW1vei10cmFuc2Zvcm0gMC4yNXMgY3ViaWMtYmV6aWVyKDAsMCwwLjI1LDEpO1xyXG5cdCAgICAgICAgdHJhbnNpdGlvbjogICAgICAgICB0cmFuc2Zvcm0gMC4yNXMgY3ViaWMtYmV6aWVyKDAsMCwwLjI1LDEpO1xyXG5cdH1cclxuLmxlYWZsZXQtem9vbS1hbmltIC5sZWFmbGV0LXRpbGUsXHJcbi5sZWFmbGV0LXBhbi1hbmltIC5sZWFmbGV0LXRpbGUge1xyXG5cdC13ZWJraXQtdHJhbnNpdGlvbjogbm9uZTtcclxuXHQgICAtbW96LXRyYW5zaXRpb246IG5vbmU7XHJcblx0ICAgICAgICB0cmFuc2l0aW9uOiBub25lO1xyXG5cdH1cclxuXHJcbi5sZWFmbGV0LXpvb20tYW5pbSAubGVhZmxldC16b29tLWhpZGUge1xyXG5cdHZpc2liaWxpdHk6IGhpZGRlbjtcclxuXHR9XHJcblxyXG5cclxuLyogY3Vyc29ycyAqL1xyXG5cclxuLmxlYWZsZXQtaW50ZXJhY3RpdmUge1xyXG5cdGN1cnNvcjogcG9pbnRlcjtcclxuXHR9XHJcbi5sZWFmbGV0LWdyYWIge1xyXG5cdGN1cnNvcjogLXdlYmtpdC1ncmFiO1xyXG5cdGN1cnNvcjogICAgLW1vei1ncmFiO1xyXG5cdGN1cnNvcjogICAgICAgICBncmFiO1xyXG5cdH1cclxuLmxlYWZsZXQtY3Jvc3NoYWlyLFxyXG4ubGVhZmxldC1jcm9zc2hhaXIgLmxlYWZsZXQtaW50ZXJhY3RpdmUge1xyXG5cdGN1cnNvcjogY3Jvc3NoYWlyO1xyXG5cdH1cclxuLmxlYWZsZXQtcG9wdXAtcGFuZSxcclxuLmxlYWZsZXQtY29udHJvbCB7XHJcblx0Y3Vyc29yOiBhdXRvO1xyXG5cdH1cclxuLmxlYWZsZXQtZHJhZ2dpbmcgLmxlYWZsZXQtZ3JhYixcclxuLmxlYWZsZXQtZHJhZ2dpbmcgLmxlYWZsZXQtZ3JhYiAubGVhZmxldC1pbnRlcmFjdGl2ZSxcclxuLmxlYWZsZXQtZHJhZ2dpbmcgLmxlYWZsZXQtbWFya2VyLWRyYWdnYWJsZSB7XHJcblx0Y3Vyc29yOiBtb3ZlO1xyXG5cdGN1cnNvcjogLXdlYmtpdC1ncmFiYmluZztcclxuXHRjdXJzb3I6ICAgIC1tb3otZ3JhYmJpbmc7XHJcblx0Y3Vyc29yOiAgICAgICAgIGdyYWJiaW5nO1xyXG5cdH1cclxuXHJcbi8qIG1hcmtlciAmIG92ZXJsYXlzIGludGVyYWN0aXZpdHkgKi9cclxuLmxlYWZsZXQtbWFya2VyLWljb24sXHJcbi5sZWFmbGV0LW1hcmtlci1zaGFkb3csXHJcbi5sZWFmbGV0LWltYWdlLWxheWVyLFxyXG4ubGVhZmxldC1wYW5lID4gc3ZnIHBhdGgsXHJcbi5sZWFmbGV0LXRpbGUtY29udGFpbmVyIHtcclxuXHRwb2ludGVyLWV2ZW50czogbm9uZTtcclxuXHR9XHJcblxyXG4ubGVhZmxldC1tYXJrZXItaWNvbi5sZWFmbGV0LWludGVyYWN0aXZlLFxyXG4ubGVhZmxldC1pbWFnZS1sYXllci5sZWFmbGV0LWludGVyYWN0aXZlLFxyXG4ubGVhZmxldC1wYW5lID4gc3ZnIHBhdGgubGVhZmxldC1pbnRlcmFjdGl2ZSxcclxuc3ZnLmxlYWZsZXQtaW1hZ2UtbGF5ZXIubGVhZmxldC1pbnRlcmFjdGl2ZSBwYXRoIHtcclxuXHRwb2ludGVyLWV2ZW50czogdmlzaWJsZVBhaW50ZWQ7IC8qIElFIDktMTAgZG9lc24ndCBoYXZlIGF1dG8gKi9cclxuXHRwb2ludGVyLWV2ZW50czogYXV0bztcclxuXHR9XHJcblxyXG4vKiB2aXN1YWwgdHdlYWtzICovXHJcblxyXG4ubGVhZmxldC1jb250YWluZXIge1xyXG5cdGJhY2tncm91bmQ6ICNkZGQ7XHJcblx0b3V0bGluZTogMDtcclxuXHR9XHJcbi5sZWFmbGV0LWNvbnRhaW5lciBhIHtcclxuXHRjb2xvcjogIzAwNzhBODtcclxuXHR9XHJcbi5sZWFmbGV0LWNvbnRhaW5lciBhLmxlYWZsZXQtYWN0aXZlIHtcclxuXHRvdXRsaW5lOiAycHggc29saWQgb3JhbmdlO1xyXG5cdH1cclxuLmxlYWZsZXQtem9vbS1ib3gge1xyXG5cdGJvcmRlcjogMnB4IGRvdHRlZCAjMzhmO1xyXG5cdGJhY2tncm91bmQ6IHJnYmEoMjU1LDI1NSwyNTUsMC41KTtcclxuXHR9XHJcblxyXG5cclxuLyogZ2VuZXJhbCB0eXBvZ3JhcGh5ICovXHJcbi5sZWFmbGV0LWNvbnRhaW5lciB7XHJcblx0Zm9udDogMTJweC8xLjUgXCJIZWx2ZXRpY2EgTmV1ZVwiLCBBcmlhbCwgSGVsdmV0aWNhLCBzYW5zLXNlcmlmO1xyXG5cdH1cclxuXHJcblxyXG4vKiBnZW5lcmFsIHRvb2xiYXIgc3R5bGVzICovXHJcblxyXG4ubGVhZmxldC1iYXIge1xyXG5cdGJveC1zaGFkb3c6IDAgMXB4IDVweCByZ2JhKDAsMCwwLDAuNjUpO1xyXG5cdGJvcmRlci1yYWRpdXM6IDRweDtcclxuXHR9XHJcbi5sZWFmbGV0LWJhciBhLFxyXG4ubGVhZmxldC1iYXIgYTpob3ZlciB7XHJcblx0YmFja2dyb3VuZC1jb2xvcjogI2ZmZjtcclxuXHRib3JkZXItYm90dG9tOiAxcHggc29saWQgI2NjYztcclxuXHR3aWR0aDogMjZweDtcclxuXHRoZWlnaHQ6IDI2cHg7XHJcblx0bGluZS1oZWlnaHQ6IDI2cHg7XHJcblx0ZGlzcGxheTogYmxvY2s7XHJcblx0dGV4dC1hbGlnbjogY2VudGVyO1xyXG5cdHRleHQtZGVjb3JhdGlvbjogbm9uZTtcclxuXHRjb2xvcjogYmxhY2s7XHJcblx0fVxyXG4ubGVhZmxldC1iYXIgYSxcclxuLmxlYWZsZXQtY29udHJvbC1sYXllcnMtdG9nZ2xlIHtcclxuXHRiYWNrZ3JvdW5kLXBvc2l0aW9uOiA1MCUgNTAlO1xyXG5cdGJhY2tncm91bmQtcmVwZWF0OiBuby1yZXBlYXQ7XHJcblx0ZGlzcGxheTogYmxvY2s7XHJcblx0fVxyXG4ubGVhZmxldC1iYXIgYTpob3ZlciB7XHJcblx0YmFja2dyb3VuZC1jb2xvcjogI2Y0ZjRmNDtcclxuXHR9XHJcbi5sZWFmbGV0LWJhciBhOmZpcnN0LWNoaWxkIHtcclxuXHRib3JkZXItdG9wLWxlZnQtcmFkaXVzOiA0cHg7XHJcblx0Ym9yZGVyLXRvcC1yaWdodC1yYWRpdXM6IDRweDtcclxuXHR9XHJcbi5sZWFmbGV0LWJhciBhOmxhc3QtY2hpbGQge1xyXG5cdGJvcmRlci1ib3R0b20tbGVmdC1yYWRpdXM6IDRweDtcclxuXHRib3JkZXItYm90dG9tLXJpZ2h0LXJhZGl1czogNHB4O1xyXG5cdGJvcmRlci1ib3R0b206IG5vbmU7XHJcblx0fVxyXG4ubGVhZmxldC1iYXIgYS5sZWFmbGV0LWRpc2FibGVkIHtcclxuXHRjdXJzb3I6IGRlZmF1bHQ7XHJcblx0YmFja2dyb3VuZC1jb2xvcjogI2Y0ZjRmNDtcclxuXHRjb2xvcjogI2JiYjtcclxuXHR9XHJcblxyXG4ubGVhZmxldC10b3VjaCAubGVhZmxldC1iYXIgYSB7XHJcblx0d2lkdGg6IDMwcHg7XHJcblx0aGVpZ2h0OiAzMHB4O1xyXG5cdGxpbmUtaGVpZ2h0OiAzMHB4O1xyXG5cdH1cclxuLmxlYWZsZXQtdG91Y2ggLmxlYWZsZXQtYmFyIGE6Zmlyc3QtY2hpbGQge1xyXG5cdGJvcmRlci10b3AtbGVmdC1yYWRpdXM6IDJweDtcclxuXHRib3JkZXItdG9wLXJpZ2h0LXJhZGl1czogMnB4O1xyXG5cdH1cclxuLmxlYWZsZXQtdG91Y2ggLmxlYWZsZXQtYmFyIGE6bGFzdC1jaGlsZCB7XHJcblx0Ym9yZGVyLWJvdHRvbS1sZWZ0LXJhZGl1czogMnB4O1xyXG5cdGJvcmRlci1ib3R0b20tcmlnaHQtcmFkaXVzOiAycHg7XHJcblx0fVxyXG5cclxuLyogem9vbSBjb250cm9sICovXHJcblxyXG4ubGVhZmxldC1jb250cm9sLXpvb20taW4sXHJcbi5sZWFmbGV0LWNvbnRyb2wtem9vbS1vdXQge1xyXG5cdGZvbnQ6IGJvbGQgMThweCAnTHVjaWRhIENvbnNvbGUnLCBNb25hY28sIG1vbm9zcGFjZTtcclxuXHR0ZXh0LWluZGVudDogMXB4O1xyXG5cdH1cclxuXHJcbi5sZWFmbGV0LXRvdWNoIC5sZWFmbGV0LWNvbnRyb2wtem9vbS1pbiwgLmxlYWZsZXQtdG91Y2ggLmxlYWZsZXQtY29udHJvbC16b29tLW91dCAge1xyXG5cdGZvbnQtc2l6ZTogMjJweDtcclxuXHR9XHJcblxyXG5cclxuLyogbGF5ZXJzIGNvbnRyb2wgKi9cclxuXHJcbi5sZWFmbGV0LWNvbnRyb2wtbGF5ZXJzIHtcclxuXHRib3gtc2hhZG93OiAwIDFweCA1cHggcmdiYSgwLDAsMCwwLjQpO1xyXG5cdGJhY2tncm91bmQ6ICNmZmY7XHJcblx0Ym9yZGVyLXJhZGl1czogNXB4O1xyXG5cdH1cclxuLmxlYWZsZXQtY29udHJvbC1sYXllcnMtdG9nZ2xlIHtcclxuXHRiYWNrZ3JvdW5kLWltYWdlOiB1cmwoaW1hZ2VzL2xheWVycy5wbmcpO1xyXG5cdHdpZHRoOiAzNnB4O1xyXG5cdGhlaWdodDogMzZweDtcclxuXHR9XHJcbi5sZWFmbGV0LXJldGluYSAubGVhZmxldC1jb250cm9sLWxheWVycy10b2dnbGUge1xyXG5cdGJhY2tncm91bmQtaW1hZ2U6IHVybChpbWFnZXMvbGF5ZXJzLTJ4LnBuZyk7XHJcblx0YmFja2dyb3VuZC1zaXplOiAyNnB4IDI2cHg7XHJcblx0fVxyXG4ubGVhZmxldC10b3VjaCAubGVhZmxldC1jb250cm9sLWxheWVycy10b2dnbGUge1xyXG5cdHdpZHRoOiA0NHB4O1xyXG5cdGhlaWdodDogNDRweDtcclxuXHR9XHJcbi5sZWFmbGV0LWNvbnRyb2wtbGF5ZXJzIC5sZWFmbGV0LWNvbnRyb2wtbGF5ZXJzLWxpc3QsXHJcbi5sZWFmbGV0LWNvbnRyb2wtbGF5ZXJzLWV4cGFuZGVkIC5sZWFmbGV0LWNvbnRyb2wtbGF5ZXJzLXRvZ2dsZSB7XHJcblx0ZGlzcGxheTogbm9uZTtcclxuXHR9XHJcbi5sZWFmbGV0LWNvbnRyb2wtbGF5ZXJzLWV4cGFuZGVkIC5sZWFmbGV0LWNvbnRyb2wtbGF5ZXJzLWxpc3Qge1xyXG5cdGRpc3BsYXk6IGJsb2NrO1xyXG5cdHBvc2l0aW9uOiByZWxhdGl2ZTtcclxuXHR9XHJcbi5sZWFmbGV0LWNvbnRyb2wtbGF5ZXJzLWV4cGFuZGVkIHtcclxuXHRwYWRkaW5nOiA2cHggMTBweCA2cHggNnB4O1xyXG5cdGNvbG9yOiAjMzMzO1xyXG5cdGJhY2tncm91bmQ6ICNmZmY7XHJcblx0fVxyXG4ubGVhZmxldC1jb250cm9sLWxheWVycy1zY3JvbGxiYXIge1xyXG5cdG92ZXJmbG93LXk6IHNjcm9sbDtcclxuXHRvdmVyZmxvdy14OiBoaWRkZW47XHJcblx0cGFkZGluZy1yaWdodDogNXB4O1xyXG5cdH1cclxuLmxlYWZsZXQtY29udHJvbC1sYXllcnMtc2VsZWN0b3Ige1xyXG5cdG1hcmdpbi10b3A6IDJweDtcclxuXHRwb3NpdGlvbjogcmVsYXRpdmU7XHJcblx0dG9wOiAxcHg7XHJcblx0fVxyXG4ubGVhZmxldC1jb250cm9sLWxheWVycyBsYWJlbCB7XHJcblx0ZGlzcGxheTogYmxvY2s7XHJcblx0fVxyXG4ubGVhZmxldC1jb250cm9sLWxheWVycy1zZXBhcmF0b3Ige1xyXG5cdGhlaWdodDogMDtcclxuXHRib3JkZXItdG9wOiAxcHggc29saWQgI2RkZDtcclxuXHRtYXJnaW46IDVweCAtMTBweCA1cHggLTZweDtcclxuXHR9XHJcblxyXG4vKiBEZWZhdWx0IGljb24gVVJMcyAqL1xyXG4ubGVhZmxldC1kZWZhdWx0LWljb24tcGF0aCB7XHJcblx0YmFja2dyb3VuZC1pbWFnZTogdXJsKGltYWdlcy9tYXJrZXItaWNvbi5wbmcpO1xyXG5cdH1cclxuXHJcblxyXG4vKiBhdHRyaWJ1dGlvbiBhbmQgc2NhbGUgY29udHJvbHMgKi9cclxuXHJcbi5sZWFmbGV0LWNvbnRhaW5lciAubGVhZmxldC1jb250cm9sLWF0dHJpYnV0aW9uIHtcclxuXHRiYWNrZ3JvdW5kOiAjZmZmO1xyXG5cdGJhY2tncm91bmQ6IHJnYmEoMjU1LCAyNTUsIDI1NSwgMC43KTtcclxuXHRtYXJnaW46IDA7XHJcblx0fVxyXG4ubGVhZmxldC1jb250cm9sLWF0dHJpYnV0aW9uLFxyXG4ubGVhZmxldC1jb250cm9sLXNjYWxlLWxpbmUge1xyXG5cdHBhZGRpbmc6IDAgNXB4O1xyXG5cdGNvbG9yOiAjMzMzO1xyXG5cdH1cclxuLmxlYWZsZXQtY29udHJvbC1hdHRyaWJ1dGlvbiBhIHtcclxuXHR0ZXh0LWRlY29yYXRpb246IG5vbmU7XHJcblx0fVxyXG4ubGVhZmxldC1jb250cm9sLWF0dHJpYnV0aW9uIGE6aG92ZXIge1xyXG5cdHRleHQtZGVjb3JhdGlvbjogdW5kZXJsaW5lO1xyXG5cdH1cclxuLmxlYWZsZXQtY29udGFpbmVyIC5sZWFmbGV0LWNvbnRyb2wtYXR0cmlidXRpb24sXHJcbi5sZWFmbGV0LWNvbnRhaW5lciAubGVhZmxldC1jb250cm9sLXNjYWxlIHtcclxuXHRmb250LXNpemU6IDExcHg7XHJcblx0fVxyXG4ubGVhZmxldC1sZWZ0IC5sZWFmbGV0LWNvbnRyb2wtc2NhbGUge1xyXG5cdG1hcmdpbi1sZWZ0OiA1cHg7XHJcblx0fVxyXG4ubGVhZmxldC1ib3R0b20gLmxlYWZsZXQtY29udHJvbC1zY2FsZSB7XHJcblx0bWFyZ2luLWJvdHRvbTogNXB4O1xyXG5cdH1cclxuLmxlYWZsZXQtY29udHJvbC1zY2FsZS1saW5lIHtcclxuXHRib3JkZXI6IDJweCBzb2xpZCAjNzc3O1xyXG5cdGJvcmRlci10b3A6IG5vbmU7XHJcblx0bGluZS1oZWlnaHQ6IDEuMTtcclxuXHRwYWRkaW5nOiAycHggNXB4IDFweDtcclxuXHRmb250LXNpemU6IDExcHg7XHJcblx0d2hpdGUtc3BhY2U6IG5vd3JhcDtcclxuXHRvdmVyZmxvdzogaGlkZGVuO1xyXG5cdC1tb3otYm94LXNpemluZzogYm9yZGVyLWJveDtcclxuXHQgICAgIGJveC1zaXppbmc6IGJvcmRlci1ib3g7XHJcblxyXG5cdGJhY2tncm91bmQ6ICNmZmY7XHJcblx0YmFja2dyb3VuZDogcmdiYSgyNTUsIDI1NSwgMjU1LCAwLjUpO1xyXG5cdH1cclxuLmxlYWZsZXQtY29udHJvbC1zY2FsZS1saW5lOm5vdCg6Zmlyc3QtY2hpbGQpIHtcclxuXHRib3JkZXItdG9wOiAycHggc29saWQgIzc3NztcclxuXHRib3JkZXItYm90dG9tOiBub25lO1xyXG5cdG1hcmdpbi10b3A6IC0ycHg7XHJcblx0fVxyXG4ubGVhZmxldC1jb250cm9sLXNjYWxlLWxpbmU6bm90KDpmaXJzdC1jaGlsZCk6bm90KDpsYXN0LWNoaWxkKSB7XHJcblx0Ym9yZGVyLWJvdHRvbTogMnB4IHNvbGlkICM3Nzc7XHJcblx0fVxyXG5cclxuLmxlYWZsZXQtdG91Y2ggLmxlYWZsZXQtY29udHJvbC1hdHRyaWJ1dGlvbixcclxuLmxlYWZsZXQtdG91Y2ggLmxlYWZsZXQtY29udHJvbC1sYXllcnMsXHJcbi5sZWFmbGV0LXRvdWNoIC5sZWFmbGV0LWJhciB7XHJcblx0Ym94LXNoYWRvdzogbm9uZTtcclxuXHR9XHJcbi5sZWFmbGV0LXRvdWNoIC5sZWFmbGV0LWNvbnRyb2wtbGF5ZXJzLFxyXG4ubGVhZmxldC10b3VjaCAubGVhZmxldC1iYXIge1xyXG5cdGJvcmRlcjogMnB4IHNvbGlkIHJnYmEoMCwwLDAsMC4yKTtcclxuXHRiYWNrZ3JvdW5kLWNsaXA6IHBhZGRpbmctYm94O1xyXG5cdH1cclxuXHJcblxyXG4vKiBwb3B1cCAqL1xyXG5cclxuLmxlYWZsZXQtcG9wdXAge1xyXG5cdHBvc2l0aW9uOiBhYnNvbHV0ZTtcclxuXHR0ZXh0LWFsaWduOiBjZW50ZXI7XHJcblx0bWFyZ2luLWJvdHRvbTogMjBweDtcclxuXHR9XHJcbi5sZWFmbGV0LXBvcHVwLWNvbnRlbnQtd3JhcHBlciB7XHJcblx0cGFkZGluZzogMXB4O1xyXG5cdHRleHQtYWxpZ246IGxlZnQ7XHJcblx0Ym9yZGVyLXJhZGl1czogMTJweDtcclxuXHR9XHJcbi5sZWFmbGV0LXBvcHVwLWNvbnRlbnQge1xyXG5cdG1hcmdpbjogMTNweCAxOXB4O1xyXG5cdGxpbmUtaGVpZ2h0OiAxLjQ7XHJcblx0fVxyXG4ubGVhZmxldC1wb3B1cC1jb250ZW50IHAge1xyXG5cdG1hcmdpbjogMThweCAwO1xyXG5cdH1cclxuLmxlYWZsZXQtcG9wdXAtdGlwLWNvbnRhaW5lciB7XHJcblx0d2lkdGg6IDQwcHg7XHJcblx0aGVpZ2h0OiAyMHB4O1xyXG5cdHBvc2l0aW9uOiBhYnNvbHV0ZTtcclxuXHRsZWZ0OiA1MCU7XHJcblx0bWFyZ2luLWxlZnQ6IC0yMHB4O1xyXG5cdG92ZXJmbG93OiBoaWRkZW47XHJcblx0cG9pbnRlci1ldmVudHM6IG5vbmU7XHJcblx0fVxyXG4ubGVhZmxldC1wb3B1cC10aXAge1xyXG5cdHdpZHRoOiAxN3B4O1xyXG5cdGhlaWdodDogMTdweDtcclxuXHRwYWRkaW5nOiAxcHg7XHJcblxyXG5cdG1hcmdpbjogLTEwcHggYXV0byAwO1xyXG5cclxuXHQtd2Via2l0LXRyYW5zZm9ybTogcm90YXRlKDQ1ZGVnKTtcclxuXHQgICAtbW96LXRyYW5zZm9ybTogcm90YXRlKDQ1ZGVnKTtcclxuXHQgICAgLW1zLXRyYW5zZm9ybTogcm90YXRlKDQ1ZGVnKTtcclxuXHQgICAgICAgIHRyYW5zZm9ybTogcm90YXRlKDQ1ZGVnKTtcclxuXHR9XHJcbi5sZWFmbGV0LXBvcHVwLWNvbnRlbnQtd3JhcHBlcixcclxuLmxlYWZsZXQtcG9wdXAtdGlwIHtcclxuXHRiYWNrZ3JvdW5kOiB3aGl0ZTtcclxuXHRjb2xvcjogIzMzMztcclxuXHRib3gtc2hhZG93OiAwIDNweCAxNHB4IHJnYmEoMCwwLDAsMC40KTtcclxuXHR9XHJcbi5sZWFmbGV0LWNvbnRhaW5lciBhLmxlYWZsZXQtcG9wdXAtY2xvc2UtYnV0dG9uIHtcclxuXHRwb3NpdGlvbjogYWJzb2x1dGU7XHJcblx0dG9wOiAwO1xyXG5cdHJpZ2h0OiAwO1xyXG5cdHBhZGRpbmc6IDRweCA0cHggMCAwO1xyXG5cdGJvcmRlcjogbm9uZTtcclxuXHR0ZXh0LWFsaWduOiBjZW50ZXI7XHJcblx0d2lkdGg6IDE4cHg7XHJcblx0aGVpZ2h0OiAxNHB4O1xyXG5cdGZvbnQ6IDE2cHgvMTRweCBUYWhvbWEsIFZlcmRhbmEsIHNhbnMtc2VyaWY7XHJcblx0Y29sb3I6ICNjM2MzYzM7XHJcblx0dGV4dC1kZWNvcmF0aW9uOiBub25lO1xyXG5cdGZvbnQtd2VpZ2h0OiBib2xkO1xyXG5cdGJhY2tncm91bmQ6IHRyYW5zcGFyZW50O1xyXG5cdH1cclxuLmxlYWZsZXQtY29udGFpbmVyIGEubGVhZmxldC1wb3B1cC1jbG9zZS1idXR0b246aG92ZXIge1xyXG5cdGNvbG9yOiAjOTk5O1xyXG5cdH1cclxuLmxlYWZsZXQtcG9wdXAtc2Nyb2xsZWQge1xyXG5cdG92ZXJmbG93OiBhdXRvO1xyXG5cdGJvcmRlci1ib3R0b206IDFweCBzb2xpZCAjZGRkO1xyXG5cdGJvcmRlci10b3A6IDFweCBzb2xpZCAjZGRkO1xyXG5cdH1cclxuXHJcbi5sZWFmbGV0LW9sZGllIC5sZWFmbGV0LXBvcHVwLWNvbnRlbnQtd3JhcHBlciB7XHJcblx0em9vbTogMTtcclxuXHR9XHJcbi5sZWFmbGV0LW9sZGllIC5sZWFmbGV0LXBvcHVwLXRpcCB7XHJcblx0d2lkdGg6IDI0cHg7XHJcblx0bWFyZ2luOiAwIGF1dG87XHJcblxyXG5cdC1tcy1maWx0ZXI6IFwicHJvZ2lkOkRYSW1hZ2VUcmFuc2Zvcm0uTWljcm9zb2Z0Lk1hdHJpeChNMTE9MC43MDcxMDY3OCwgTTEyPTAuNzA3MTA2NzgsIE0yMT0tMC43MDcxMDY3OCwgTTIyPTAuNzA3MTA2NzgpXCI7XHJcblx0ZmlsdGVyOiBwcm9naWQ6RFhJbWFnZVRyYW5zZm9ybS5NaWNyb3NvZnQuTWF0cml4KE0xMT0wLjcwNzEwNjc4LCBNMTI9MC43MDcxMDY3OCwgTTIxPS0wLjcwNzEwNjc4LCBNMjI9MC43MDcxMDY3OCk7XHJcblx0fVxyXG4ubGVhZmxldC1vbGRpZSAubGVhZmxldC1wb3B1cC10aXAtY29udGFpbmVyIHtcclxuXHRtYXJnaW4tdG9wOiAtMXB4O1xyXG5cdH1cclxuXHJcbi5sZWFmbGV0LW9sZGllIC5sZWFmbGV0LWNvbnRyb2wtem9vbSxcclxuLmxlYWZsZXQtb2xkaWUgLmxlYWZsZXQtY29udHJvbC1sYXllcnMsXHJcbi5sZWFmbGV0LW9sZGllIC5sZWFmbGV0LXBvcHVwLWNvbnRlbnQtd3JhcHBlcixcclxuLmxlYWZsZXQtb2xkaWUgLmxlYWZsZXQtcG9wdXAtdGlwIHtcclxuXHRib3JkZXI6IDFweCBzb2xpZCAjOTk5O1xyXG5cdH1cclxuXHJcblxyXG4vKiBkaXYgaWNvbiAqL1xyXG5cclxuLmxlYWZsZXQtZGl2LWljb24ge1xyXG5cdGJhY2tncm91bmQ6ICNmZmY7XHJcblx0Ym9yZGVyOiAxcHggc29saWQgIzY2NjtcclxuXHR9XHJcblxyXG5cclxuLyogVG9vbHRpcCAqL1xyXG4vKiBCYXNlIHN0eWxlcyBmb3IgdGhlIGVsZW1lbnQgdGhhdCBoYXMgYSB0b29sdGlwICovXHJcbi5sZWFmbGV0LXRvb2x0aXAge1xyXG5cdHBvc2l0aW9uOiBhYnNvbHV0ZTtcclxuXHRwYWRkaW5nOiA2cHg7XHJcblx0YmFja2dyb3VuZC1jb2xvcjogI2ZmZjtcclxuXHRib3JkZXI6IDFweCBzb2xpZCAjZmZmO1xyXG5cdGJvcmRlci1yYWRpdXM6IDNweDtcclxuXHRjb2xvcjogIzIyMjtcclxuXHR3aGl0ZS1zcGFjZTogbm93cmFwO1xyXG5cdC13ZWJraXQtdXNlci1zZWxlY3Q6IG5vbmU7XHJcblx0LW1vei11c2VyLXNlbGVjdDogbm9uZTtcclxuXHQtbXMtdXNlci1zZWxlY3Q6IG5vbmU7XHJcblx0dXNlci1zZWxlY3Q6IG5vbmU7XHJcblx0cG9pbnRlci1ldmVudHM6IG5vbmU7XHJcblx0Ym94LXNoYWRvdzogMCAxcHggM3B4IHJnYmEoMCwwLDAsMC40KTtcclxuXHR9XHJcbi5sZWFmbGV0LXRvb2x0aXAubGVhZmxldC1jbGlja2FibGUge1xyXG5cdGN1cnNvcjogcG9pbnRlcjtcclxuXHRwb2ludGVyLWV2ZW50czogYXV0bztcclxuXHR9XHJcbi5sZWFmbGV0LXRvb2x0aXAtdG9wOmJlZm9yZSxcclxuLmxlYWZsZXQtdG9vbHRpcC1ib3R0b206YmVmb3JlLFxyXG4ubGVhZmxldC10b29sdGlwLWxlZnQ6YmVmb3JlLFxyXG4ubGVhZmxldC10b29sdGlwLXJpZ2h0OmJlZm9yZSB7XHJcblx0cG9zaXRpb246IGFic29sdXRlO1xyXG5cdHBvaW50ZXItZXZlbnRzOiBub25lO1xyXG5cdGJvcmRlcjogNnB4IHNvbGlkIHRyYW5zcGFyZW50O1xyXG5cdGJhY2tncm91bmQ6IHRyYW5zcGFyZW50O1xyXG5cdGNvbnRlbnQ6IFwiXCI7XHJcblx0fVxyXG5cclxuLyogRGlyZWN0aW9ucyAqL1xyXG5cclxuLmxlYWZsZXQtdG9vbHRpcC1ib3R0b20ge1xyXG5cdG1hcmdpbi10b3A6IDZweDtcclxufVxyXG4ubGVhZmxldC10b29sdGlwLXRvcCB7XHJcblx0bWFyZ2luLXRvcDogLTZweDtcclxufVxyXG4ubGVhZmxldC10b29sdGlwLWJvdHRvbTpiZWZvcmUsXHJcbi5sZWFmbGV0LXRvb2x0aXAtdG9wOmJlZm9yZSB7XHJcblx0bGVmdDogNTAlO1xyXG5cdG1hcmdpbi1sZWZ0OiAtNnB4O1xyXG5cdH1cclxuLmxlYWZsZXQtdG9vbHRpcC10b3A6YmVmb3JlIHtcclxuXHRib3R0b206IDA7XHJcblx0bWFyZ2luLWJvdHRvbTogLTEycHg7XHJcblx0Ym9yZGVyLXRvcC1jb2xvcjogI2ZmZjtcclxuXHR9XHJcbi5sZWFmbGV0LXRvb2x0aXAtYm90dG9tOmJlZm9yZSB7XHJcblx0dG9wOiAwO1xyXG5cdG1hcmdpbi10b3A6IC0xMnB4O1xyXG5cdG1hcmdpbi1sZWZ0OiAtNnB4O1xyXG5cdGJvcmRlci1ib3R0b20tY29sb3I6ICNmZmY7XHJcblx0fVxyXG4ubGVhZmxldC10b29sdGlwLWxlZnQge1xyXG5cdG1hcmdpbi1sZWZ0OiAtNnB4O1xyXG59XHJcbi5sZWFmbGV0LXRvb2x0aXAtcmlnaHQge1xyXG5cdG1hcmdpbi1sZWZ0OiA2cHg7XHJcbn1cclxuLmxlYWZsZXQtdG9vbHRpcC1sZWZ0OmJlZm9yZSxcclxuLmxlYWZsZXQtdG9vbHRpcC1yaWdodDpiZWZvcmUge1xyXG5cdHRvcDogNTAlO1xyXG5cdG1hcmdpbi10b3A6IC02cHg7XHJcblx0fVxyXG4ubGVhZmxldC10b29sdGlwLWxlZnQ6YmVmb3JlIHtcclxuXHRyaWdodDogMDtcclxuXHRtYXJnaW4tcmlnaHQ6IC0xMnB4O1xyXG5cdGJvcmRlci1sZWZ0LWNvbG9yOiAjZmZmO1xyXG5cdH1cclxuLmxlYWZsZXQtdG9vbHRpcC1yaWdodDpiZWZvcmUge1xyXG5cdGxlZnQ6IDA7XHJcblx0bWFyZ2luLWxlZnQ6IC0xMnB4O1xyXG5cdGJvcmRlci1yaWdodC1jb2xvcjogI2ZmZjtcclxuXHR9XHJcbiIsIkBpbXBvcnQgXCJ+bGVhZmxldC9kaXN0L2xlYWZsZXQuY3NzXCI7XHJcblxyXG4ubWFwLWNvbnRhaW5lciB7XHJcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XHJcbiAgICB0b3A6IDA7XHJcbiAgICBsZWZ0OiAwO1xyXG4gICAgcmlnaHQ6IDA7XHJcbiAgICBib3R0b206IDA7XHJcbiAgICBtYXJnaW46IDMwcHg7XHJcbn1cclxuICBcclxuLm1hcC1mcmFtZSB7XHJcbiAgICBib3JkZXI6IDJweCBzb2xpZCBibGFjaztcclxuICAgIGhlaWdodDogMTAwJTtcclxufVxyXG4gIFxyXG4jbWFwIHtcclxuICAgIGhlaWdodDogMTAwJTtcclxufVxyXG5cclxuLmNlbnRlcmVkIHtcclxuICBwb3NpdGlvbjogYWJzb2x1dGU7XHJcbiAgdG9wOiA1MCU7XHJcbiAgbGVmdDogNTAlO1xyXG4gIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC0zMCUpO1xyXG59XHJcbi5jb250YWluZXIge1xyXG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcclxuICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbiAgY29sb3I6IHdoaXRlO1xyXG59IiwiQGltcG9ydCBcIn5sZWFmbGV0L2Rpc3QvbGVhZmxldC5jc3NcIjtcbi5tYXAtY29udGFpbmVyIHtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICB0b3A6IDA7XG4gIGxlZnQ6IDA7XG4gIHJpZ2h0OiAwO1xuICBib3R0b206IDA7XG4gIG1hcmdpbjogMzBweDtcbn1cblxuLm1hcC1mcmFtZSB7XG4gIGJvcmRlcjogMnB4IHNvbGlkIGJsYWNrO1xuICBoZWlnaHQ6IDEwMCU7XG59XG5cbiNtYXAge1xuICBoZWlnaHQ6IDEwMCU7XG59XG5cbi5jZW50ZXJlZCB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgdG9wOiA1MCU7XG4gIGxlZnQ6IDUwJTtcbiAgdHJhbnNmb3JtOiB0cmFuc2xhdGUoLTUwJSwgLTMwJSk7XG59XG5cbi5jb250YWluZXIge1xuICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgY29sb3I6IHdoaXRlO1xufSJdfQ== */");
 
 /***/ }),
 
@@ -2181,6 +2343,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! leaflet */ "./node_modules/leaflet/dist/leaflet-src.js");
 /* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(leaflet__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var src_app_services_data_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/data.service */ "./src/app/services/data.service.ts");
+/* harmony import */ var src_app_services_node_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/node.service */ "./src/app/services/node.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2229,6 +2392,7 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
   return (mod && mod.__esModule) ? mod : { "default": mod };
 };
+
 
 
 
@@ -2248,45 +2412,67 @@ var iconDefault = leaflet__WEBPACK_IMPORTED_MODULE_1__["icon"]({
     tooltipAnchor: [16, -28],
     shadowSize: [41, 41]
 });
+// const icon = L.divIcon({
+//   // iconUrl: 'assets/icon/happy.png',
+//   iconSize: [0, 0],
+//   // iconAnchor:   [22, 94],
+//   html: '<div class="container"><img style="margin-left: -30px; margin-top: -20px; width: 35px;" src="assets/marker/Marker1.png"><div><h1 style="color: black; font-size: 18px; margin-left: -24px; margin-top: -34px;">50</h1></div></div>'
+// })
 leaflet__WEBPACK_IMPORTED_MODULE_1__["Marker"].prototype.options.icon = iconDefault;
 ;
 var MapComponent = /** @class */ (function () {
-    function MapComponent(dataService) {
+    function MapComponent(dataService, nodeService) {
         this.dataService = dataService;
+        this.nodeService = nodeService;
         this.polygon = [];
+        this.activeNode = [];
+        this.activeNodeId = "";
     }
     MapComponent.prototype.ngOnInit = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var location;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         this.initMap();
                         // var marker = L.marker([20.975986, 105.815191]).addTo(this.map);
                         // marker.bindPopup("<b>nameNode1</b><br>AQI:96");
-                        return [4 /*yield*/, this.getDataByLastHour()];
+                        return [4 /*yield*/, this.getNodeList()];
                     case 1:
                         // var marker = L.marker([20.975986, 105.815191]).addTo(this.map);
                         // marker.bindPopup("<b>nameNode1</b><br>AQI:96");
                         _a.sent();
-                        location = "Thanh Xuan";
-                        //   var markers = [
-                        //     [ -0.1244324, 51.5006728, "Big Ben" ],
-                        //     [ -0.119623, 51.503308, "London Eye" ],
-                        //     [ -0.1279688, 51.507728, `<b>${location}</b><table style="width: 100%;"><tbody><td><i class="fa fa-tint fa-2x" aria-hidden="true" style="float:left;margin-right:6px;"><span style="font-size:18px">30</span></i></td><td><i class="fa fa-tint fa-2x" aria-hidden="true" style="float:left;margin-right:6px;"><span>30</span></i></td></tbody></table>`] 
-                        //  ];
-                        //Loop through the markers array
-                        // for (var i=0; i<markers.length; i++) {
-                        //   var lon = Number(markers[i][0]);
-                        //   var lat = Number(markers[i][1]);
-                        //   var popupText = String(markers[i][2]);
-                        //    var markerLocation = new L.LatLng(lat, lon);
-                        //    var marker = new L.Marker(markerLocation);
-                        //    this.map.addLayer(marker);
-                        //    marker.bindPopup(popupText);
-                        // }
-                        this.getDataByLastHour();
-                        this.getMarkers();
+                        return [4 /*yield*/, this.getDataByLastHour({ node_ids: this.activeNodeId })];
+                    case 2:
+                        _a.sent();
+                        if (!(this.sensor_data != "" && this.sensor_data != null)) return [3 /*break*/, 4];
+                        return [4 /*yield*/, this.getMarkers()];
+                    case 3:
+                        _a.sent();
+                        _a.label = 4;
+                    case 4: return [2 /*return*/];
+                }
+            });
+        });
+    };
+    MapComponent.prototype.getNodeList = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var _this = this;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.nodeService.getNodeListApprovedFilter({ approve: 1, status: 1 }).then(function (data) {
+                            _this.activeNode = data.data;
+                        })];
+                    case 1:
+                        _a.sent();
+                        this.activeNode.forEach(function (e) {
+                            if (_this.activeNodeId.length == 0) {
+                                _this.activeNodeId = _this.activeNodeId + e._id;
+                            }
+                            else {
+                                _this.activeNodeId = _this.activeNodeId + "," + e._id;
+                            }
+                        });
+                        console.log("active", this.activeNodeId);
                         return [2 /*return*/];
                 }
             });
@@ -2295,7 +2481,7 @@ var MapComponent = /** @class */ (function () {
     MapComponent.prototype.initMap = function () {
         this.map = leaflet__WEBPACK_IMPORTED_MODULE_1__["map"]('map', {
             center: [20.992966, 105.813566],
-            zoom: 15
+            zoom: 10
         });
         var tiles = leaflet__WEBPACK_IMPORTED_MODULE_1__["tileLayer"]('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 19,
@@ -2303,14 +2489,13 @@ var MapComponent = /** @class */ (function () {
         });
         tiles.addTo(this.map);
     };
-    MapComponent.prototype.getDataByLastHour = function () {
+    MapComponent.prototype.getDataByLastHour = function (filter) {
         return __awaiter(this, void 0, void 0, function () {
             var _this = this;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.dataService.getDataByLastHour().then(function (data) {
-                            console.log(data);
-                            _this.sensor_data = data;
+                    case 0: return [4 /*yield*/, this.dataService.getDataByLastHour(filter).then(function (data) {
+                            _this.sensor_data = data.data.filter(function (v) { return v && v.id; });
                         })];
                     case 1:
                         _a.sent();
@@ -2320,6 +2505,7 @@ var MapComponent = /** @class */ (function () {
         });
     };
     MapComponent.prototype.getMarkers = function () {
+        console.log(4324, this.sensor_data);
         var markers = [];
         var temp = [];
         for (var i = 0; i < this.sensor_data.length; i++) {
@@ -2330,23 +2516,87 @@ var MapComponent = /** @class */ (function () {
             temp.push(this.sensor_data[i].tem);
             temp.push(this.sensor_data[i].hum);
             temp.push(this.sensor_data[i].location);
-            temp.push("<b style=\"font-size:21px\">" + this.sensor_data[i].location + "</b>\n      <br>\n      <table>\n        <tbody>\n          <tr style=\"text-align:left;\">\n            <td style=\"text-align:left; padding-right: 20px;\"><span style=\"font-size:20px\">AQI: " + this.sensor_data[i].aqi + "</span></td>\n            <td style=\"text-align:left;\"><span style=\"font-size:20px\">T\u1ED1t</span></td>\n          </tr>\n          <tr style=\"text-align:left;\">\n            <td style=\"text-align:left; padding-right: 20px;\"><i class=\"fa fa-tint fa-2x\" aria-hidden=\"true\" style=\"float:left;margin-right:6px;\"></i><span style=\"font-size:18px;line-height:24px;\">" + this.sensor_data[i].tem + "&#8451;</span></td>\n            <td style=\"text-align:left;\"><i class=\"fa fa-thermometer-empty fa-2x\" aria-hidden=\"true\" style=\"float:left;margin-right:6px;\"></i><span style=\"font-size:18px;line-height:24px;\">" + this.sensor_data[i].hum + "%</span></td>\n          </tr>\n        </tbody>\n      </table>");
+            if (this.sensor_data[i].aqi >= 0 && this.sensor_data[i].aqi <= 50) {
+                temp.push("Tốt");
+            }
+            else if (this.sensor_data[i].aqi >= 51 && this.sensor_data[i].aqi <= 100) {
+                temp.push("Trung bình");
+            }
+            else if (this.sensor_data[i].aqi >= 101 && this.sensor_data[i].aqi <= 150) {
+                temp.push("Kém");
+            }
+            else if (this.sensor_data[i].aqi >= 151 && this.sensor_data[i].aqi <= 200) {
+                temp.push("Xấu");
+            }
+            else if (this.sensor_data[i].aqi >= 201 && this.sensor_data[i].aqi <= 300) {
+                temp.push("Rất xấu");
+            }
+            else if (this.sensor_data[i].aqi >= 301) {
+                temp.push("Nguy hại");
+            }
+            ;
+            temp.push("<b style=\"font-size:21px\">" + this.sensor_data[i].location + "</b>\n      <br>\n      <table>\n        <tbody>\n          <tr style=\"text-align:left;\">\n            <td style=\"text-align:left; padding-right: 20px;\"><span style=\"font-size:20px\">AQI: " + this.sensor_data[i].aqi + "</span></td>\n            <td style=\"text-align:left;\"><span style=\"font-size:20px\">" + temp[6] + "</span></td>\n          </tr>\n          <tr style=\"text-align:left;\">\n            <td style=\"text-align:left; padding-right: 20px;\"><i class=\"fa fa-tint fa-2x\" aria-hidden=\"true\" style=\"float:left;margin-right:6px;\"></i><span style=\"font-size:18px;line-height:24px;\">" + this.sensor_data[i].tem + "&#8451;</span></td>\n            <td style=\"text-align:left;\"><i class=\"fa fa-thermometer-empty fa-2x\" aria-hidden=\"true\" style=\"float:left;margin-right:6px;\"></i><span style=\"font-size:18px;line-height:24px;\">" + this.sensor_data[i].hum + "%</span></td>\n          </tr>\n        </tbody>\n      </table>");
             markers.push(temp);
         }
         //Loop through the markers array
         for (var i = 0; i < markers.length; i++) {
+            // var icon = L.divIcon({
+            //   html:'<div class="map-label"><div class="map-label-content"></div><div class="map-label-arrow">Hello</div></div>'
+            // });
             var lon = Number(markers[i][1]);
             var lat = Number(markers[i][0]);
-            var popupText = String(markers[i][6]);
+            var popupText = String(markers[i][7]);
             var markerLocation = new leaflet__WEBPACK_IMPORTED_MODULE_1__["LatLng"](lat, lon);
-            var marker = new leaflet__WEBPACK_IMPORTED_MODULE_1__["Marker"](markerLocation);
+            if (markers[i][6] == "Tốt") {
+                var icon1 = leaflet__WEBPACK_IMPORTED_MODULE_1__["divIcon"]({
+                    iconSize: [0, 0],
+                    html: "<div class=\"container\"><img style=\"margin-left: -30px; margin-top: -20px; width: 35px;\" src=\"assets/marker/Marker1.png\"><div><h1 style=\"color: black; font-size: 18px; margin-left: -24px; margin-top: -34px;\">" + markers[i][2] + "</h1></div></div>"
+                });
+                var marker = new leaflet__WEBPACK_IMPORTED_MODULE_1__["Marker"](markerLocation, { icon: icon1 });
+            }
+            else if (markers[i][6] == "Trung bình") {
+                var icon2 = leaflet__WEBPACK_IMPORTED_MODULE_1__["divIcon"]({
+                    iconSize: [0, 0],
+                    html: "<div class=\"container\"><img style=\"margin-left: -30px; margin-top: -20px; width: 35px;\" src=\"assets/marker/Marker2.png\"><div><h1 style=\"color: black; font-size: 18px; margin-left: -24px; margin-top: -34px;\">" + markers[i][2] + "</h1></div></div>"
+                });
+                var marker = new leaflet__WEBPACK_IMPORTED_MODULE_1__["Marker"](markerLocation, { icon: icon2 });
+            }
+            else if (markers[i][6] == "Kém") {
+                var icon3 = leaflet__WEBPACK_IMPORTED_MODULE_1__["divIcon"]({
+                    iconSize: [0, 0],
+                    html: "<div class=\"container\"><img style=\"margin-left: -30px; margin-top: -20px; width: 35px;\" src=\"assets/marker/Marker3.png\"><div><h1 style=\"color: black; font-size: 18px; margin-left: -24px; margin-top: -34px;\">" + markers[i][2] + "</h1></div></div>"
+                });
+                var marker = new leaflet__WEBPACK_IMPORTED_MODULE_1__["Marker"](markerLocation, { icon: icon3 });
+            }
+            else if (markers[i][6] == "Xấu") {
+                var icon4 = leaflet__WEBPACK_IMPORTED_MODULE_1__["divIcon"]({
+                    iconSize: [0, 0],
+                    html: "<div class=\"container\"><img style=\"margin-left: -30px; margin-top: -20px; width: 35px;\" src=\"assets/marker/Marker4.png\"><div><h1 style=\"color: black; font-size: 18px; margin-left: -24px; margin-top: -34px;\">" + markers[i][2] + "</h1></div></div>"
+                });
+                var marker = new leaflet__WEBPACK_IMPORTED_MODULE_1__["Marker"](markerLocation, { icon: icon4 });
+            }
+            else if (markers[i][6] == "Rất xấu") {
+                var icon5 = leaflet__WEBPACK_IMPORTED_MODULE_1__["divIcon"]({
+                    iconSize: [0, 0],
+                    html: "<div class=\"container\"><img style=\"margin-left: -30px; margin-top: -20px; width: 35px;\" src=\"assets/marker/Marker5.png\"><div><h1 style=\"color: black; font-size: 18px; margin-left: -24px; margin-top: -34px;\">" + markers[i][2] + "</h1></div></div>"
+                });
+                var marker = new leaflet__WEBPACK_IMPORTED_MODULE_1__["Marker"](markerLocation, { icon: icon5 });
+            }
+            else if (markers[i][6] == "Nguy hại") {
+                var icon6 = leaflet__WEBPACK_IMPORTED_MODULE_1__["divIcon"]({
+                    iconSize: [0, 0],
+                    html: "<div class=\"container\"><img style=\"margin-left: -30px; margin-top: -20px; width: 35px;\" src=\"assets/marker/Marker6.png\"><div><h1 style=\"color: black; font-size: 18px; margin-left: -24px; margin-top: -34px;\">" + markers[i][2] + "</h1></div></div>"
+                });
+                var marker = new leaflet__WEBPACK_IMPORTED_MODULE_1__["Marker"](markerLocation, { icon: icon6 });
+            }
             this.map.addLayer(marker);
             marker.bindPopup(popupText);
         }
         console.log(12, markers);
     };
     MapComponent.ctorParameters = function () { return [
-        { type: src_app_services_data_service__WEBPACK_IMPORTED_MODULE_2__["DataService"] }
+        { type: src_app_services_data_service__WEBPACK_IMPORTED_MODULE_2__["DataService"] },
+        { type: src_app_services_node_service__WEBPACK_IMPORTED_MODULE_3__["NodeService"] }
     ]; };
     MapComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -2354,7 +2604,8 @@ var MapComponent = /** @class */ (function () {
             template: __importDefault(__webpack_require__(/*! raw-loader!./map.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/map/map.component.html")).default,
             styles: [__importDefault(__webpack_require__(/*! ./map.component.scss */ "./src/app/pages/map/map.component.scss")).default]
         }),
-        __metadata("design:paramtypes", [src_app_services_data_service__WEBPACK_IMPORTED_MODULE_2__["DataService"]])
+        __metadata("design:paramtypes", [src_app_services_data_service__WEBPACK_IMPORTED_MODULE_2__["DataService"],
+            src_app_services_node_service__WEBPACK_IMPORTED_MODULE_3__["NodeService"]])
     ], MapComponent);
     return MapComponent;
 }());
@@ -2691,22 +2942,40 @@ var DataService = /** @class */ (function () {
         this.http = http;
         this.API_URL = src_environments_environment__WEBPACK_IMPORTED_MODULE_1__["environment"].apiUrl;
     }
-    DataService.prototype.getDataByLastHour = function () {
+    DataService.prototype.getDataByLastHour = function (filter) {
         var _this = this;
+        console.log(filter);
+        filter = JSON.stringify(filter);
+        filter = btoa(unescape(encodeURIComponent(filter)));
+        console.log(filter);
         return new Promise(function (resolve, reject) {
-            _this.http.get(_this.API_URL + "/api/v1/nodes/hours/last").subscribe(function (res) {
+            _this.http.get(_this.API_URL + ("/api/v1/nodes/hours/last?filter=" + filter)).subscribe(function (res) {
+                console.log(res);
+                resolve(res);
+            }, function (err) {
+                reject(err);
+            });
+        });
+    };
+    DataService.prototype.getDataOfNode = function (filter, page, size) {
+        var _this = this;
+        filter = JSON.stringify(filter);
+        filter = btoa(unescape(encodeURIComponent(filter)));
+        console.log(filter);
+        return new Promise(function (resolve, reject) {
+            _this.http.get(_this.API_URL + ("/api/v1/nodes/hours?filter=" + filter + "&page=" + page + "&size=" + size)).subscribe(function (res) {
                 resolve(res.data);
             }, function (err) {
                 reject(err);
             });
         });
     };
-    DataService.prototype.getDataBy24Hour = function (filter) {
+    DataService.prototype.getDataBy24Hour = function (filter, size) {
         var _this = this;
         filter = JSON.stringify(filter);
-        filter = btoa(filter);
+        filter = btoa(unescape(encodeURIComponent(filter)));
         return new Promise(function (resolve, reject) {
-            _this.http.get(_this.API_URL + ("/api/v1/nodes/hours?filter=" + filter)).subscribe(function (res) {
+            _this.http.get(_this.API_URL + ("/api/v1/nodes/hours?filter=" + filter + "&size=" + size)).subscribe(function (res) {
                 console.log(res.data);
                 resolve(res.data);
             }, function (err) {
@@ -2716,12 +2985,25 @@ var DataService = /** @class */ (function () {
     };
     DataService.prototype.getDataBy3Day = function (filter) {
         var _this = this;
-        console.log(filter);
         filter = JSON.stringify(filter);
-        filter = btoa(filter);
+        filter = btoa(unescape(encodeURIComponent(filter)));
         console.log(filter);
         return new Promise(function (resolve, reject) {
-            _this.http.get(_this.API_URL + ("/api/v1/nodes/days/last/three/?filter=" + filter)).subscribe(function (res) {
+            _this.http.get(_this.API_URL + ("/api/v1/nodes/days/last/three?filter=" + filter)).subscribe(function (res) {
+                console.log(_this.API_URL + ("/api/v1/nodes/days/last/three?filter=" + filter));
+                resolve(res);
+            }, function (err) {
+                reject(err);
+            });
+        });
+    };
+    DataService.prototype.getDataOfAllNodeByDay = function (filter) {
+        var _this = this;
+        filter = JSON.stringify(filter);
+        filter = btoa(unescape(encodeURIComponent(filter)));
+        console.log(9999999, filter);
+        return new Promise(function (resolve, reject) {
+            _this.http.get(_this.API_URL + ("/api/v1/nodes/days/last/all?filter=" + filter)).subscribe(function (res) {
                 resolve(res.data);
             }, function (err) {
                 reject(err);
@@ -2739,6 +3021,152 @@ var DataService = /** @class */ (function () {
     ], DataService);
     return DataService;
 }());
+
+
+
+/***/ }),
+
+/***/ "./src/app/services/node.service.ts":
+/*!******************************************!*\
+  !*** ./src/app/services/node.service.ts ***!
+  \******************************************/
+/*! exports provided: NodeService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NodeService", function() { return NodeService; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm5/core.js");
+/* harmony import */ var rxjs_Rx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs/Rx */ "./node_modules/rxjs-compat/_esm5/Rx.js");
+/* harmony import */ var _base_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./base.service */ "./src/app/services/base.service.ts");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/__ivy_ngcc__/fesm5/http.js");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+
+
+
+
+var NodeService = /** @class */ (function (_super) {
+    __extends(NodeService, _super);
+    function NodeService(httpClient) {
+        var _this = _super.call(this, httpClient) || this;
+        _this.httpClient = httpClient;
+        return _this;
+    }
+    NodeService.prototype.getNodeList = function (filter, page, size) {
+        var _this = this;
+        filter = JSON.stringify(filter);
+        filter = btoa(unescape(encodeURIComponent(filter)));
+        return new Promise(function (resolve, reject) {
+            _this.httpClient.get(_this.API_URL + ("/api/node?filter=" + filter + "&page=" + page + "&size=" + size), _this.getOptions())
+                .subscribe(function (res) {
+                console.log(1, filter);
+                console.log(2, res.responseData);
+                resolve(res.responseData);
+            }, function (err) {
+                reject(err);
+            });
+        });
+    };
+    NodeService.prototype.getNodeListNoFilter = function () {
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            _this.httpClient.get(_this.API_URL + "/api/node", _this.getOptions())
+                .subscribe(function (res) {
+                resolve(res.responseData);
+            }, function (err) {
+                reject(err);
+            });
+        });
+    };
+    NodeService.prototype.getNodeListApprovedFilter = function (filter) {
+        var _this = this;
+        filter = JSON.stringify(filter);
+        filter = btoa(unescape(encodeURIComponent(filter)));
+        return new Promise(function (resolve, reject) {
+            _this.httpClient.get(_this.API_URL + ("/api/node?filter=" + filter))
+                .subscribe(function (res) {
+                resolve(res.responseData);
+            }, function (err) {
+                reject(err);
+            });
+        });
+    };
+    NodeService.prototype.createNode = function (node) {
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            _this.httpClient.post(_this.API_URL + "/api/node", node, _this.getOptions())
+                .subscribe(function (res) {
+                resolve(true);
+            }, function (err) { return reject(err); });
+        });
+    };
+    NodeService.prototype.updateNodeInfo = function (id, nodeInfo) {
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            _this.httpClient.put(_this.API_URL + ("/api/node/parameter/" + id), nodeInfo, _this.getOptions())
+                .subscribe(function (res) {
+                resolve(res);
+            }, function (err) {
+                reject(err);
+            });
+        });
+    };
+    NodeService.prototype.approve = function (id, nodeInfo) {
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            _this.httpClient.put(_this.API_URL + ("/api/node/approve/" + id), nodeInfo, _this.getOptions()).subscribe(function (res) {
+                resolve(true);
+            }, function (err) {
+                reject(err);
+            });
+        });
+    };
+    NodeService.prototype.updateStatus = function (id, status) {
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            _this.httpClient.put(_this.API_URL + ("/api/node/status/" + id), status, _this.getOptions())
+                .subscribe(function (res) {
+                resolve(res);
+            }, function (err) {
+                reject(err);
+            });
+        });
+    };
+    NodeService.ctorParameters = function () { return [
+        { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"] }
+    ]; };
+    NodeService = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
+            providedIn: 'root'
+        }),
+        __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"]])
+    ], NodeService);
+    return NodeService;
+}(_base_service__WEBPACK_IMPORTED_MODULE_2__["BaseService"]));
 
 
 
@@ -2841,8 +3269,21 @@ var ProfileService = /** @class */ (function (_super) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RoleService", function() { return RoleService; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm5/core.js");
-/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/environments/environment */ "./src/environments/environment.ts");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/__ivy_ngcc__/fesm5/http.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/__ivy_ngcc__/fesm5/http.js");
+/* harmony import */ var _base_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./base.service */ "./src/app/services/base.service.ts");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2858,23 +3299,17 @@ var __importDefault = (undefined && undefined.__importDefault) || function (mod)
 
 
 
-var RoleService = /** @class */ (function () {
-    function RoleService(http) {
-        this.http = http;
-        this.headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
-            "Content-Type": "application/json",
-            Accept: "application/json",
-            Cookies: document.cookie,
-        });
-        this.API_URL = src_environments_environment__WEBPACK_IMPORTED_MODULE_1__["environment"].apiUrl;
+var RoleService = /** @class */ (function (_super) {
+    __extends(RoleService, _super);
+    function RoleService(httpClient) {
+        var _this = _super.call(this, httpClient) || this;
+        _this.httpClient = httpClient;
+        return _this;
     }
-    RoleService.prototype.getOptions = function () {
-        return { headers: this.headers };
-    };
     RoleService.prototype.getActionPermissions = function () {
         var _this = this;
         return new Promise(function (resolve, reject) {
-            _this.http.get(_this.API_URL + '/api/action', _this.getOptions())
+            _this.httpClient.get(_this.API_URL + '/api/action', _this.getOptions())
                 .subscribe(function (res) {
                 resolve(res.responseData);
             }, function (err) {
@@ -2885,7 +3320,7 @@ var RoleService = /** @class */ (function () {
     RoleService.prototype.getAreaPermissions = function () {
         var _this = this;
         return new Promise(function (resolve, reject) {
-            _this.http.get(_this.API_URL + '/api/district', _this.getOptions())
+            _this.httpClient.get(_this.API_URL + '/api/district', _this.getOptions())
                 .subscribe(function (res) {
                 resolve(res.responseData);
             }, function (err) {
@@ -2896,7 +3331,7 @@ var RoleService = /** @class */ (function () {
     RoleService.prototype.getRoles = function () {
         var _this = this;
         return new Promise(function (resolve, reject) {
-            _this.http.get(_this.API_URL + '/api/role', _this.getOptions())
+            _this.httpClient.get(_this.API_URL + '/api/role', _this.getOptions())
                 .subscribe(function (res) {
                 resolve(res.responseData);
             }, function (err) {
@@ -2907,9 +3342,9 @@ var RoleService = /** @class */ (function () {
     RoleService.prototype.getRoleList = function (filter, page, size) {
         var _this = this;
         filter = JSON.stringify(filter);
-        filter = btoa(filter);
+        filter = btoa(unescape(encodeURIComponent(filter)));
         return new Promise(function (resolve, reject) {
-            _this.http.get(_this.API_URL + ("/api/role?filter=" + filter + "&page=" + page + "&size=" + size), _this.getOptions()).subscribe(function (res) {
+            _this.httpClient.get(_this.API_URL + ("/api/role?filter=" + filter + "&page=" + page + "&size=" + size), _this.getOptions()).subscribe(function (res) {
                 resolve(res.responseData);
             }, function (err) {
                 reject(err);
@@ -2919,7 +3354,7 @@ var RoleService = /** @class */ (function () {
     RoleService.prototype.createRole = function (role) {
         var _this = this;
         return new Promise(function (resolve, reject) {
-            _this.http.post(_this.API_URL + "/api/role", role, _this.getOptions()).subscribe(function (res) {
+            _this.httpClient.post(_this.API_URL + "/api/role", role, _this.getOptions()).subscribe(function (res) {
                 resolve(true);
             }, function (err) {
                 reject(err);
@@ -2929,7 +3364,7 @@ var RoleService = /** @class */ (function () {
     RoleService.prototype.updateRole = function (role) {
         var _this = this;
         return new Promise(function (resolve, reject) {
-            _this.http.put(_this.API_URL + "/api/role", role, _this.getOptions()).subscribe(function (res) {
+            _this.httpClient.put(_this.API_URL + "/api/role", role, _this.getOptions()).subscribe(function (res) {
                 resolve(true);
             }, function (err) {
                 reject(err);
@@ -2937,16 +3372,16 @@ var RoleService = /** @class */ (function () {
         });
     };
     RoleService.ctorParameters = function () { return [
-        { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
+        { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"] }
     ]; };
     RoleService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
             providedIn: "root",
         }),
-        __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+        __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]])
     ], RoleService);
     return RoleService;
-}());
+}(_base_service__WEBPACK_IMPORTED_MODULE_2__["BaseService"]));
 
 var PERMISSIONS = [
     {
@@ -3162,9 +3597,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UserService", function() { return UserService; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm5/core.js");
 /* harmony import */ var _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @auth0/angular-jwt */ "./node_modules/@auth0/angular-jwt/__ivy_ngcc__/fesm5/auth0-angular-jwt.js");
-/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../environments/environment */ "./src/environments/environment.ts");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/__ivy_ngcc__/fesm5/router.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/__ivy_ngcc__/fesm5/router.js");
+/* harmony import */ var _base_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./base.service */ "./src/app/services/base.service.ts");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/__ivy_ngcc__/fesm5/http.js");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3182,32 +3630,22 @@ var __importDefault = (undefined && undefined.__importDefault) || function (mod)
 
 
 
-var UserService = /** @class */ (function () {
-    function UserService(http, router, jwtHelper) {
-        this.http = http;
-        this.router = router;
-        this.jwtHelper = jwtHelper;
-        this.headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpHeaders"]({
-            "Content-Type": "application/json",
-            Accept: "application/json",
-            Cookies: document.cookie,
-        });
-        this.API_URL = _environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].apiUrl;
+var UserService = /** @class */ (function (_super) {
+    __extends(UserService, _super);
+    function UserService(httpClient, router, jwtHelper) {
+        var _this = _super.call(this, httpClient) || this;
+        _this.httpClient = httpClient;
+        _this.router = router;
+        _this.jwtHelper = jwtHelper;
+        return _this;
     }
-    UserService.prototype.getOptions = function () {
-        return { headers: this.headers };
-    };
-    // filter(filter: any) {
-    //     filter = JSON.stringify(filter);
-    //     filter = btoa(filter);
-    // }
     UserService.prototype.getUserList = function (filter, page, size) {
         var _this = this;
         filter = JSON.stringify(filter);
-        filter = btoa(filter);
+        filter = btoa(unescape(encodeURIComponent(filter)));
         return new Promise(function (resolve, reject) {
-            _this.http.get(_this.API_URL + ("/api/user?filter=" + filter + "&page=" + page + "&size=" + size), _this.getOptions()).subscribe(function (res) {
-                resolve(res);
+            _this.httpClient.get(_this.API_URL + ("/api/user?filter=" + filter + "&page=" + page + "&size=" + size), _this.getOptions()).subscribe(function (res) {
+                resolve(res.responseData);
             }, function (err) {
                 reject(err);
             });
@@ -3216,9 +3654,9 @@ var UserService = /** @class */ (function () {
     UserService.prototype.getUser = function (filter) {
         var _this = this;
         filter = JSON.stringify(filter);
-        filter = btoa(filter);
+        filter = btoa(unescape(encodeURIComponent(filter)));
         return new Promise(function (resolve, reject) {
-            _this.http.get(_this.API_URL + ("/api/user?filter=" + filter), _this.getOptions()).subscribe(function (res) {
+            _this.httpClient.get(_this.API_URL + ("/api/user?filter=" + filter), _this.getOptions()).subscribe(function (res) {
                 console.log(res.data);
                 resolve(res.data);
             }, function (err) {
@@ -3229,7 +3667,7 @@ var UserService = /** @class */ (function () {
     UserService.prototype.getUserById = function (id) {
         var _this = this;
         return new Promise(function (resolve, reject) {
-            _this.http.get(_this.API_URL + ("/api/user/" + id)).subscribe(function (res) {
+            _this.httpClient.get(_this.API_URL + ("/api/user/" + id)).subscribe(function (res) {
                 resolve(res.data);
             }, function (err) {
                 reject(err);
@@ -3239,7 +3677,7 @@ var UserService = /** @class */ (function () {
     UserService.prototype.createUser = function (user) {
         var _this = this;
         return new Promise(function (resolve, reject) {
-            _this.http.post(_this.API_URL + "/api/user", user, _this.getOptions()).subscribe(function (res) {
+            _this.httpClient.post(_this.API_URL + "/api/user", user, _this.getOptions()).subscribe(function (res) {
                 resolve(true);
             }, function (err) {
                 reject(err);
@@ -3249,7 +3687,7 @@ var UserService = /** @class */ (function () {
     UserService.prototype.updateUserInfo = function (id, userInfo) {
         var _this = this;
         return new Promise(function (resolve, reject) {
-            _this.http.put(_this.API_URL + ("/api/user/basic/" + id), userInfo, _this.getOptions()).subscribe(function (res) {
+            _this.httpClient.put(_this.API_URL + ("/api/user/basic/" + id), userInfo, _this.getOptions()).subscribe(function (res) {
                 resolve(true);
             }, function (err) {
                 reject(err);
@@ -3259,7 +3697,7 @@ var UserService = /** @class */ (function () {
     UserService.prototype.approve = function (id, userInfo) {
         var _this = this;
         return new Promise(function (resolve, reject) {
-            _this.http.put(_this.API_URL + ("/api/user/approve/" + id), userInfo, _this.getOptions()).subscribe(function (res) {
+            _this.httpClient.put(_this.API_URL + ("/api/user/approve/" + id), userInfo, _this.getOptions()).subscribe(function (res) {
                 resolve(true);
             }, function (err) {
                 reject(err);
@@ -3269,7 +3707,7 @@ var UserService = /** @class */ (function () {
     UserService.prototype.updateStatus = function (id, userInfo) {
         var _this = this;
         return new Promise(function (resolve, reject) {
-            _this.http.put(_this.API_URL + ("/api/user/status/" + id), userInfo, _this.getOptions()).subscribe(function (res) {
+            _this.httpClient.put(_this.API_URL + ("/api/user/status/" + id), userInfo, _this.getOptions()).subscribe(function (res) {
                 resolve(true);
             }, function (err) {
                 reject(err);
@@ -3278,7 +3716,7 @@ var UserService = /** @class */ (function () {
     };
     UserService.ctorParameters = function () { return [
         { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClient"] },
-        { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] },
+        { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] },
         { type: _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_1__["JwtHelperService"] }
     ]; };
     UserService = __decorate([
@@ -3286,11 +3724,11 @@ var UserService = /** @class */ (function () {
             providedIn: 'root'
         }),
         __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClient"],
-            _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"],
             _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_1__["JwtHelperService"]])
     ], UserService);
     return UserService;
-}());
+}(_base_service__WEBPACK_IMPORTED_MODULE_3__["BaseService"]));
 
 
 
@@ -3540,11 +3978,6 @@ function chartOptions() {
         ticks: {
             beginAtZero: true,
             padding: 10,
-            callback: function (value) {
-                if (!(value % 10)) {
-                    return value;
-                }
-            }
         }
     });
     // xAxes
@@ -3583,12 +4016,12 @@ var chartExample1 = {
                         zeroLineBorderDash: []
                     },
                     ticks: {
-                        // maxTicksLimit: 3,
-                        callback: function (value) {
-                            if (!(value % 10)) {
-                                return value;
-                            }
-                        }
+                    // maxTicksLimit: 3,
+                    // callback: function(value) {
+                    //   if (!(value % 10)) {
+                    //     return 5;
+                    //   }
+                    // }
                     },
                     scaleLabel: {
                         display: true,
