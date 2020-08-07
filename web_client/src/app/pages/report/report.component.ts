@@ -28,6 +28,7 @@ export class ReportComponent implements OnInit {
     end_date: ""
   }
   end_date: any = "";
+  currentNode: any = "";
   check: boolean = false;
 
   async ngOnInit() {
@@ -50,8 +51,6 @@ export class ReportComponent implements OnInit {
     this.spinnerService.show();
     this.currentPage = currentPage;
     await this.dataService.getDataOfNode(filter, currentPage, sizePage).then((data: any) => {
-      console.log(88888, data);
-      
       this.dataList = data.rows;
       this.totalItems = data.count;
     }).catch(err => {
@@ -65,13 +64,29 @@ export class ReportComponent implements OnInit {
   makeAReport() {
     this.check = true;
     console.log(this.filter);
+    if (this.currentNode != {}) {
+      this.filter.node_id = this.currentNode._id;
+    }
     if (this.end_date != "") {
-      this.filter.end_date = moment(this.end_date).subtract(1, 'hours').format("YYYY-MM-DD HH:mm:ss");
+      this.filter.end_date = moment(this.end_date).add(23, 'hours').format("YYYY-MM-DD HH:mm:ss");
     }
     if (this.filter.node_id != "" && this.filter.start_date != "" && this.filter.end_date != "") {
       this.currentPage = 1;
       this.getDataOfNode(this.filter, this.currentPage, this.sizePage);
+      this.getDate();
     }
+  }
+
+  getDate() {
+    var name = this.currentNode.name;
+    var start = moment(this.filter.start_date).format("DD/MM/YYYY");
+    var end = moment(this.end_date).format("DD/MM/YYYY");
+    if (this.filter.start_date == this.end_date) {
+      return `Báo cáo thông số các cảm biến và chỉ số chất lượng không khí tại ${name} trong ngày ${start} `;
+    } else {
+      return `Báo cáo thông số các cảm biến và chỉ số chất lượng không khí tại ${name} từ ${start} đến ${end} `;
+    }
+    
   }
 
   evaluate(aqi) {

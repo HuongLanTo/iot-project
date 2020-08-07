@@ -35,6 +35,7 @@ export class HomeComponent implements OnInit {
   co2_data = [];
   pm25_data = [];
   time = [];
+  backgroundColor = [];
 
   activeNode = [];
   activeNodeId = "";
@@ -331,6 +332,7 @@ export class HomeComponent implements OnInit {
             {
               label: "AQI",
               data: this.searchAqiList,
+              backgroundColor: this.backgroundColor
             },
           ],
         },
@@ -462,6 +464,7 @@ export class HomeComponent implements OnInit {
   async searchByDay(value) {
     this.searchNameList = [];
     this.searchAqiList = [];
+    this.backgroundColor = [];
     this.filterSearch.date = value;
     await this.dataService.getDataOfAllNodeByDay(this.filterSearch).then(data => {
       console.log(555, data);
@@ -473,8 +476,21 @@ export class HomeComponent implements OnInit {
       this.searchList.forEach(e => {
         this.searchAqiList.push(e.aqi);
         this.searchNameList.push(e.name);
+        if (e.aqi >= 0 && e.aqi <= 50) {
+          this.backgroundColor.push("#57F83B");
+        } else if (e.aqi >= 51 && e.aqi <= 100) {
+          this.backgroundColor.push("#F8D82E");
+        } else if (e.aqi >= 101 && e.aqi <= 150) {
+          this.backgroundColor.push("#F1923D");
+        } else if (e.aqi >= 151 && e.aqi <= 200) {
+          this.backgroundColor.push("#FF3232");
+        } else if (e.aqi >= 201 && e.aqi <= 300) {
+          this.backgroundColor.push("#CC3399");
+        } else if (e.aqi >= 301) {
+          this.backgroundColor.push("#A52A2A");
+        }
       });
-      this.setLineTypeOfChart()
+      this.setBarTypeOfChart();
     }
   }
     

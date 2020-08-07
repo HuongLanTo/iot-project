@@ -16,16 +16,16 @@
                   >Node</label
                 >
                 <select
-                  name="role"
-                  id="role"
+                  name="node"
+                  id="node"
                   class="form-control form-control-alternative"
-                  [(ngModel)]="filter.node_id"
+                  [(ngModel)]="currentNode"
                 >
                   <option value="" disabled selected hidden>Chọn node</option>
                   <option
                     *ngFor="let node of nodeList"
                     name="node"
-                    [ngValue]="node._id"
+                    [ngValue]="node"
                     id="node"
                     >{{ node.name }}</option
                   >
@@ -92,7 +92,7 @@
     <div class="col">
       <div class="card shadow">
         <div class="card-header border-0">
-          <h3 class="mb-0">Danh sách Action Log</h3>
+          <h3 *ngIf="check==true" class="mb-0">{{ getDate() }}</h3>
         </div>
         <div class="table-responsive">
           <table class="table align-items-center table-flush">
