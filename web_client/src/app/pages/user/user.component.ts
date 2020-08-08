@@ -47,6 +47,7 @@ export class UserComponent implements OnInit {
   ) { }
 
   async ngOnInit() {
+    this.spinnerService.show();
     await this.checkEditUserPermission();
     await this.getRoleList();
     await this.getUserList(this.filter, this.currentPage, this.sizePage);
@@ -144,12 +145,6 @@ export class UserComponent implements OnInit {
 
   redirect() {
     this.getUserList(this.filter, this.currentPage, this.sizePage);
-  }
-
-  async goToPage(page) {
-    this.spinnerService.show()
-    await this.getUserList(this.filter, page, this.sizePage)
-    this.spinnerService.hide()
   }
 
   async search() {
