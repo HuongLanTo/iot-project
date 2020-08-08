@@ -145,6 +145,10 @@ const DETAILS = [
     name: "response",
   },
   {
+    label: "Dữ liệu cũ",
+    name: "previous_data",
+  },
+  {
     label: "Dữ liệu hiện tại",
     name: "current_data",
   }
