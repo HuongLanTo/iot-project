@@ -34,6 +34,8 @@ export class ReportComponent implements OnInit {
   dayList: any = [];
   aqiList: any = [];
   backgroundColor: any = [];
+  percentageList: any = [];
+  tableList: any = []
   filter = {
     node_id: "",
     start_date: "",
@@ -76,7 +78,7 @@ export class ReportComponent implements OnInit {
     var tempList = [];
     this.aqiList = [];
     this.dayList = [];
-    var percentageList = [0, 0, 0, 0, 0, 0];
+    this.percentageList = [0, 0, 0, 0, 0, 0];
     this.backgroundColor = [];
     await this.dataService.getDataOfNode(this.filter, 1, this.totalItems).then((data: any) => {
       tempList = data.rows;
@@ -86,30 +88,33 @@ export class ReportComponent implements OnInit {
       this.aqiList.push(e.aqi);
       if (e.aqi >= 0 && e.aqi <= 50) {
         this.backgroundColor.push("#57F83B");
-        percentageList[0]++;
+        this.percentageList[0]++;
       } else if (e.aqi >= 51 && e.aqi <= 100) {
         this.backgroundColor.push("#F8D82E");
-        percentageList[1]++;
+        this.percentageList[1]++;
       } else if (e.aqi >= 101 && e.aqi <= 150) {
         this.backgroundColor.push("#F1923D");
-        percentageList[2]++;
+        this.percentageList[2]++;
       } else if (e.aqi >= 151 && e.aqi <= 200) {
         this.backgroundColor.push("#FF3232");
-        percentageList[3]++;
+        this.percentageList[3]++;
       } else if (e.aqi >= 201 && e.aqi <= 300) {
         this.backgroundColor.push("#CC3399");
-        percentageList[4]++;
+        this.percentageList[4]++;
       } else if (e.aqi >= 301) {
         this.backgroundColor.push("#A52A2A");
-        percentageList[5]++;
+        this.percentageList[5]++;
       }
     });
     console.log("date", this.dayList);
     console.log("date", this.aqiList);
     console.log("date", this.backgroundColor);
-
+    console.log("pie", this.percentageList);
+    console.log("pie", this.percentageList);
+    
     // create chart
     var aqiBarChart = document.getElementById("aqi_bar_chart");
+    var aqiPieChart = document.getElementById("aqi_pie_chart");
     var aqi_bar_chart = new Chart(aqiBarChart, {
       type: "bar",
       options: {
@@ -139,6 +144,32 @@ export class ReportComponent implements OnInit {
             label: "AQI",
             data: this.aqiList,
             backgroundColor: this.backgroundColor
+          },
+        ],
+      },
+    });
+
+    var aqi_pie_chart = new Chart(aqiPieChart, {
+      type: "pie",
+      options: {
+        title: {
+          display: true,
+          position: top
+        },
+        legend: {
+          display: true,
+          labels: ["Tốt", "Trung bình", "Kém", "Xấu", "Rất xấu", "Nguy hại"]
+        }
+      },
+      data: {
+        labels: ["Tốt", "Trung bình", "Kém", "Xấu", "Rất xấu", "Nguy hại"],
+        datasets: [
+          {
+            fill: true,
+            label: "AQI",
+            backgroundColor: ["#57F83B","#F8D82E", "#F1923D", "#FF3232", "#CC3399", "#A52A2A"],
+            borderWidth: [0, 0, 0, 0, 0, 0],
+            data: this.percentageList
           },
         ],
       },

@@ -65,29 +65,28 @@
               </div>
             </div>
             <div class="col-xl-6">
-              <div class="row">
-                <div class="form-group">
-                  <label class="form-control-label-white" style="color: white;"
-                    ></label
+              <div class="form-group">
+                <label
+                  class="form-control-label-white"
+                  style="color: white;"
+                ></label>
+                <div class="row" style="margin-top: 8px;">
+                  <button
+                    type="button"
+                    class="btn btn-primary"
+                    style="background-color: #fdc667; border-color: #fea200;"
+                    (click)="makeAReport()"
                   >
-                  <div class="row">
-                    <button
-                      type="button"
-                      class="btn btn-primary"
-                      style="background-color: #fdc667; border-color: #fea200; margin-top: 32px;"
-                      (click)="makeAReport()"
-                    >
-                      <i class="fa fa-search" aria-hidden="true"></i>
-                    </button>
-                    <button
-                      type="button"
-                      class="btn btn-primary"
-                      style="background-color: #fdc667; border-color: #fea200; margin-top: 32px;"
-                      (click)="isShowingTable=false"
-                    >
-                      <i class="fa fa-search" aria-hidden="true"></i>
-                    </button>
-                  </div>
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-primary"
+                    style="background-color: #0165b9; border-color: #0165b9;"
+                    (click)="reset()"
+                  >
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                  </button>
                 </div>
               </div>
             </div>
@@ -104,7 +103,7 @@
     <div class="col">
       <div class="card shadow">
         <div class="card-header border-0">
-          <h3 *ngIf="check==true" class="mb-0">{{ getDate() }}</h3>
+          <h3 *ngIf="check == true" class="mb-0">{{ getDate() }}</h3>
         </div>
         <div>
           <div class="table-responsive">
@@ -118,37 +117,105 @@
                   <th>Đánh giá</th>
                 </tr>
               </thead>
-              <tbody *ngIf="check==true">
+              <tbody *ngIf="check == true">
                 <tr
                   *ngFor="let data of dataList; let index = index"
                   style="text-align: center;"
                 >
                   <td>{{ (currentPage - 1) * sizePage + index + 1 }}</td>
                   <td *ngFor="let field of fields">
-                    <span *ngIf="field.name!='datetime'">{{ data[field.name] }}</span
+                    <span *ngIf="field.name != 'datetime'">{{
+                      data[field.name]
+                    }}</span>
+                    <span *ngIf="field.name == 'datetime'"
+                      >{{ data.datetime | date: "dd/MM/yyyy HH" }}h</span
                     >
-                    <span *ngIf="field.name=='datetime'">{{ data.datetime | date:'dd/MM/yyyy HH' }}h</span
-                      >
                   </td>
                   <td>{{ evaluate(data.aqi) }}</td>
                 </tr>
               </tbody>
             </table>
-            <h4 class="mb-0" style="padding: 10px 24px 20px 24px;" *ngIf="dataList.length==0">Không tìm thấy kết quả phù hợp</h4>
+            <h4
+              class="mb-0"
+              style="padding: 10px 24px 20px 24px;"
+              *ngIf="dataList.length == 0"
+            >
+              Không tìm thấy kết quả phù hợp
+            </h4>
           </div>
           <ngx-spinner></ngx-spinner>
           <app-pagination
             [totalPages]="totalItems"
             [pageSize]="sizePage"
             (pageEmit)="getDataOfNode(filter, $event, sizePage)"
-            *ngIf="check==true"
+            *ngIf="check == true"
           ></app-pagination>
         </div>
         <div>
           <div>
             <div class="card-body">
-              <div class="chart">
-                  <canvas id="aqi_bar_chart" class="chart-canvas"></canvas>
+              <div class="row">
+                <div class="col-xl-6">
+                  <div class="chart">
+                    <canvas id="aqi_pie_chart" class="chart-canvas"></canvas>
+                  </div>
+                </div>
+                <div class="col-xl-6">
+                  <div class="col-xl-2"></div>
+                  <div class="col-xl-10">
+                    <div class="table-responsive">
+                      <table class="table align-items-center table-dark table-flush out">
+                        <thead class="thead-dark">
+                          <tr style="text-align: center;">
+                            <th>Mức độ</th>
+                            <th>Số giờ</th>
+                            <th>Phần trăm</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr style="text-align: center;">
+                            <td>Tốt</td>
+                            <td>{{ percentageList[0] }}</td>
+                            <td>{{ percentageList[0] / totalItems * 100 }}%</td>
+                          </tr>
+                          <tr style="text-align: center;">
+                            <td>Trung bình</td>
+                            <td>{{ percentageList[1] }}</td>
+                            <td>{{ percentageList[1] / totalItems * 100 }}%</td>
+                          </tr>
+                          <tr style="text-align: center;">
+                            <td>Kém</td>
+                            <td>{{ percentageList[2] }}</td>
+                            <td>{{ percentageList[2] / totalItems * 100 }}%</td>
+                          </tr>
+                          <tr style="text-align: center;">
+                            <td>Xấu</td>
+                            <td>{{ percentageList[3] }}</td>
+                            <td>{{ percentageList[3] / totalItems * 100 }}%</td>
+                          </tr>
+                          <tr style="text-align: center;">
+                            <td>Rất xấu</td>
+                            <td>{{ percentageList[4] }}</td>
+                            <td>{{ percentageList[4] / totalItems * 100 }}%</td>
+                          </tr>
+                          <tr style="text-align: center;">
+                            <td>Nguy hại</td>
+                            <td>{{ percentageList[5] }}</td>
+                            <td>{{ percentageList[5] / totalItems * 100 }}%</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <div class="col-xl-2"></div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xl-12">
+                  <div class="chart">
+                    <canvas id="aqi_bar_chart" class="chart-canvas"></canvas>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
