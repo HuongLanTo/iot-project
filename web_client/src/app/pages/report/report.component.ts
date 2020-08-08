@@ -44,6 +44,7 @@ export class ReportComponent implements OnInit {
   end_date: any = "";
   currentNode: any = "";
   check: boolean = false;
+  isShowingTable = true;
 
   async ngOnInit() {
     parseOptions(Chart, chartOptions());

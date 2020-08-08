@@ -80,10 +80,11 @@
                     <i class="fa fa-search" aria-hidden="true"></i>
                   </button>
                   <button
+                    *ngIf="check==true"
                     type="button"
                     class="btn btn-primary"
                     style="background-color: #0165b9; border-color: #0165b9;"
-                    (click)="reset()"
+                    (click)="isShowingTable=!isShowingTable"
                   >
                     <i class="fa fa-times" aria-hidden="true"></i>
                   </button>
@@ -105,7 +106,7 @@
         <div class="card-header border-0">
           <h3 *ngIf="check == true" class="mb-0">{{ getDate() }}</h3>
         </div>
-        <div>
+        <div *ngIf="isShowingTable">
           <div class="table-responsive">
             <table class="table align-items-center table-flush">
               <thead class="thead-light">
@@ -151,7 +152,7 @@
             *ngIf="check == true"
           ></app-pagination>
         </div>
-        <div>
+        <div *ngIf="!isShowingTable">
           <div>
             <div class="card-body">
               <div class="row">
