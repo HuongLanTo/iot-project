@@ -93,19 +93,11 @@ export class NewUserComponent implements OnInit {
       }
     });
     
-    // await this.getUserList();
+    await this.userService.getUserList(this.filter, 1, temp).then((data: any) => {
+      this.userList = data.data;
+    })
     await this.getRoleList();
   }
-
-  // async getUserList() {
-  //   await this.userService.getUserList({}, 1, 20).then((data: any) => {
-  //     if (data.total < 10) {
-  //       this.newUser.username = "A000" + String(data.total + 1);
-  //     } else if (data.total >= 10) {
-  //       this.newUser.username = "A00" + String(data.total + 1);
-  //     }
-  //   })
-  // }
 
   async getRoleList() {
     await this.roleService.getRoles().then((data: any) => {
