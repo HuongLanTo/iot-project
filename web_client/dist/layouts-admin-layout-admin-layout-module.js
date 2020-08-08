@@ -3329,25 +3329,19 @@ var NewUserComponent = /** @class */ (function () {
                         })];
                     case 1:
                         _a.sent();
-                        // await this.getUserList();
-                        return [4 /*yield*/, this.getRoleList()];
+                        return [4 /*yield*/, this.userService.getUserList(this.filter, 1, temp).then(function (data) {
+                                _this.userList = data.data;
+                            })];
                     case 2:
-                        // await this.getUserList();
+                        _a.sent();
+                        return [4 /*yield*/, this.getRoleList()];
+                    case 3:
                         _a.sent();
                         return [2 /*return*/];
                 }
             });
         });
     };
-    // async getUserList() {
-    //   await this.userService.getUserList({}, 1, 20).then((data: any) => {
-    //     if (data.total < 10) {
-    //       this.newUser.username = "A000" + String(data.total + 1);
-    //     } else if (data.total >= 10) {
-    //       this.newUser.username = "A00" + String(data.total + 1);
-    //     }
-    //   })
-    // }
     NewUserComponent.prototype.getRoleList = function () {
         return __awaiter(this, void 0, void 0, function () {
             var _this = this;
