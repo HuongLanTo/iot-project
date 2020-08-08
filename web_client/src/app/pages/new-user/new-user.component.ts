@@ -170,7 +170,7 @@ export class NewUserComponent implements OnInit {
       role: "",
       status: ""
     };
-    this.router.navigate(["/new-user"]);
+    this.router.navigate(["/user"]);
   }
 
   checkValue(event: any) {
