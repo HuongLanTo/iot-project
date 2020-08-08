@@ -155,11 +155,11 @@ export class ReportComponent implements OnInit {
       options: {
         title: {
           display: true,
-          position: top
+          position: 'top'
         },
         legend: {
           display: true,
-          labels: ["Tốt", "Trung bình", "Kém", "Xấu", "Rất xấu", "Nguy hại"]
+          position: 'top'
         }
       },
       data: {
@@ -178,6 +178,7 @@ export class ReportComponent implements OnInit {
   }
 
   async makeAReport() {
+    this.isShowingTable = true;
     this.check = true;
     console.log(this.filter);
     if (this.currentNode != {}) {
@@ -190,8 +191,16 @@ export class ReportComponent implements OnInit {
       this.currentPage = 1;
       await this.getDataOfNode(this.filter, this.currentPage, this.sizePage);
       await this.getDate();
-      await this.getChart();
     }
+  }
+
+  table() {
+    this.isShowingTable = true;
+  }
+
+  async chart() {
+    this.isShowingTable = false;
+    await this.getChart();
   }
 
   getDate() {
@@ -230,10 +239,6 @@ const FIELDS = [
     name: "datetime",
   },
   {
-    label: "Chỉ số AQI",
-    name: "aqi",
-  },
-  {
     label: "Nhiệt độ",
     name: "tem",
   },
@@ -252,5 +257,9 @@ const FIELDS = [
   {
     label: "Bụi PM2.5",
     name: "pm_25"
+  },
+  {
+    label: "Chỉ số AQI",
+    name: "aqi",
   }
 ];

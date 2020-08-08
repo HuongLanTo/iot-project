@@ -84,9 +84,18 @@
                     type="button"
                     class="btn btn-primary"
                     style="background-color: #0165b9; border-color: #0165b9;"
-                    (click)="isShowingTable=!isShowingTable"
+                    (click)="table()"
                   >
-                    <i class="fa fa-times" aria-hidden="true"></i>
+                    <i class="fa fa-table" aria-hidden="true"></i>
+                  </button>
+                  <button
+                    *ngIf="check==true"
+                    type="button"
+                    class="btn btn-primary"
+                    style="background-color: #0165b9; border-color: #0165b9;"
+                    (click)="chart()"
+                  >
+                    <i class="fas fa-chart-pie"></i>
                   </button>
                 </div>
               </div>
@@ -125,12 +134,30 @@
                 >
                   <td>{{ (currentPage - 1) * sizePage + index + 1 }}</td>
                   <td *ngFor="let field of fields">
-                    <span *ngIf="field.name != 'datetime'">{{
+                    <span *ngIf="field.name != 'datetime' && field.name != 'aqi'">{{
                       data[field.name]
                     }}</span>
-                    <span *ngIf="field.name == 'datetime'"
+                    <span *ngIf="field.name == 'datetime' && field.name != 'aqi'"
                       >{{ data.datetime | date: "dd/MM/yyyy HH" }}h</span
                     >
+                    <span *ngIf="field.name == 'aqi' && evaluate(data.aqi)=='Tốt'" style="color: #006100; font-weight: bold;">{{
+                      data[field.name]
+                    }}</span>
+                    <span *ngIf="field.name == 'aqi' && evaluate(data.aqi)=='Trung bình'" style="color: #DFAC05; font-weight: bold;">{{
+                      data[field.name]
+                    }}</span>
+                    <span *ngIf="field.name == 'aqi' && evaluate(data.aqi)=='Kém'" style="color: #F1923D; font-weight: bold;">{{
+                      data[field.name]
+                    }}</span>
+                    <span *ngIf="field.name == 'aqi' && evaluate(data.aqi)=='Xấu'" style="color: #FF3232; font-weight: bold;">{{
+                      data[field.name]
+                    }}</span>
+                    <span *ngIf="field.name == 'aqi' && evaluate(data.aqi)=='Rất xấu'" style="color: #CC3399; font-weight: bold;">{{
+                      data[field.name]
+                    }}</span>
+                    <span *ngIf="field.name == 'aqi' && evaluate(data.aqi)=='Nguy hại'" style="color: #A52A2A; font-weight: bold;">{{
+                      data[field.name]
+                    }}</span>
                   </td>
                   <td>{{ evaluate(data.aqi) }}</td>
                 </tr>
@@ -152,7 +179,7 @@
             *ngIf="check == true"
           ></app-pagination>
         </div>
-        <div *ngIf="!isShowingTable">
+        <div *ngIf="isShowingTable==false">
           <div>
             <div class="card-body">
               <div class="row">
@@ -162,7 +189,7 @@
                   </div>
                 </div>
                 <div class="col-xl-6">
-                  <div class="col-xl-2"></div>
+                  <div class="col-xl-1"></div>
                   <div class="col-xl-10">
                     <div class="table-responsive">
                       <table class="table align-items-center table-dark table-flush out">
@@ -208,9 +235,12 @@
                       </table>
                     </div>
                   </div>
-                  <div class="col-xl-2"></div>
+                  <div class="col-xl-1"></div>
                 </div>
               </div>
+              <br>
+              <br>
+              <br>
               <div class="row">
                 <div class="col-xl-12">
                   <div class="chart">
