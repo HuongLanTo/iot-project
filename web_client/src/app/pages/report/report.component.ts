@@ -88,13 +88,13 @@ export class ReportComponent implements OnInit {
       this.dayList.push(moment(e.datetime).format("DD/MM/YYYY HH:mm"));
       this.aqiList.push(e.aqi);
       if (e.aqi >= 0 && e.aqi <= 50) {
-        this.backgroundColor.push("#57F83B");
+        this.backgroundColor.push("#02B067");
         this.percentageList[0]++;
       } else if (e.aqi >= 51 && e.aqi <= 100) {
-        this.backgroundColor.push("#F8D82E");
+        this.backgroundColor.push("#F8D22E");
         this.percentageList[1]++;
       } else if (e.aqi >= 101 && e.aqi <= 150) {
-        this.backgroundColor.push("#F1923D");
+        this.backgroundColor.push("#FF6037");
         this.percentageList[2]++;
       } else if (e.aqi >= 151 && e.aqi <= 200) {
         this.backgroundColor.push("#FF3232");
@@ -168,7 +168,7 @@ export class ReportComponent implements OnInit {
           {
             fill: true,
             label: "AQI",
-            backgroundColor: ["#57F83B","#F8D82E", "#F1923D", "#FF3232", "#CC3399", "#A52A2A"],
+            backgroundColor: ["#02B067","#F8D22E", "#FF6037", "#FF3232", "#CC3399", "#A52A2A"],
             borderWidth: [0, 0, 0, 0, 0, 0],
             data: this.percentageList
           },

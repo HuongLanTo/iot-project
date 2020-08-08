@@ -466,11 +466,11 @@ export class HomeComponent implements OnInit {
         this.searchAqiList.push(e.aqi);
         this.searchNameList.push(e.name);
         if (e.aqi >= 0 && e.aqi <= 50) {
-          this.backgroundColor.push("#57F83B");
+          this.backgroundColor.push("#02B067");
         } else if (e.aqi >= 51 && e.aqi <= 100) {
-          this.backgroundColor.push("#F8D82E");
+          this.backgroundColor.push("#F8D22E");
         } else if (e.aqi >= 101 && e.aqi <= 150) {
-          this.backgroundColor.push("#F1923D");
+          this.backgroundColor.push("#FF6037");
         } else if (e.aqi >= 151 && e.aqi <= 200) {
           this.backgroundColor.push("#FF3232");
         } else if (e.aqi >= 201 && e.aqi <= 300) {
