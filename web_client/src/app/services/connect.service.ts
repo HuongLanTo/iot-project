@@ -12,12 +12,14 @@ export class ConnectService extends BaseService {
         super(httpClient)
     }
 
-    getConnectingManagementList(filter:any, page: number, size: number) {
-        filter = JSON.stringify(filter);
-        filter = btoa(unescape(encodeURIComponent(filter)));
+    getConnectingManagementList() {
+        // filter = JSON.stringify(filter);
+        // filter = btoa(unescape(encodeURIComponent(filter)));
         return new Promise((resolve, reject) => {
-            this.httpClient.get(this.API_URL + `api/currentConnection?filter=${filter}&page=${page}&size=${size}`, this.getOptions()).
+            this.httpClient.get(this.API_URL + "/api/currentConnection", this.getOptions()).
                 subscribe((res: {responseData: any}) => {
+                    console.log(res);
+                    
                     resolve(res.responseData)
                 }, err => {
                     reject(err)

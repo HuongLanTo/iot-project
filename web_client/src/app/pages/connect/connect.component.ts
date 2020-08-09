@@ -19,16 +19,16 @@ export class ConnectComponent implements OnInit {
   ) { }
 
   async ngOnInit() {
-    await this.getConnectingManagementList(this.filter, this.currentPage, this.sizePage);
+    await this.getConnectingManagementList();
   }
 
   get fields() {
     return FIELDS;
   }
-  async getConnectingManagementList(filter, currentPage, sizePage) {
+
+  async getConnectingManagementList() {
     this.spinnerService.show();
-    this.currentPage = currentPage;
-    this.connectService.getConnectingManagementList(filter, currentPage, sizePage).then((data: any) => {
+    await this.connectService.getConnectingManagementList().then((data: any) => {
       this.connectList = data.data;
       this.totalItems = data.total;
     }).catch(err => {
@@ -46,10 +46,10 @@ const FIELDS = [
   },
   {
     label: "Thời gian nhận dũ liệu cuối cùng",
-    name: "datetime",
+    name: "last_time_recieve",
   },
   {
     label: "Dữ liệu",
-    name: "action_time"
+    name: "last_data_recieve"
   },
 ];

@@ -34,23 +34,21 @@
                 *ngFor="let connect of connectList; let index = index"
                 style="text-align: center;"
               >
-                <td>{{ (currentPage - 1) * sizePage + index + 1 }}</td>
+                <td>{{ index + 1 }}</td>
                 <td *ngFor="let field of fields">
-                  <span>{{
+                  <span *ngIf="field.name != 'last_time_recieve'">{{
                     connect[field.name]
                   }}</span>
+                  <span *ngIf="field.name == 'last_time_recieve'">{{
+                    connect[field.name] | date:'dd/MM/yyyy HH:mm:ss'
+                  }}</span>
                 </td>
-                <td><span>{{ action.execution_time }}</span></td>
               </tr>
             </tbody>
           </table>
-          <h4 class="mb-0" style="padding: 10px 24px 20px 24px;" *ngIf="connectList.length==0">Không tìm thấy kết quả phù hợp</h4>
+          <!-- <h4 class="mb-0" style="padding: 10px 24px 20px 24px;" *ngIf="connectList.length==0">Không tìm thấy kết quả phù hợp</h4> -->
         </div>
         <ngx-spinner></ngx-spinner>
-        <app-pagination
-          [totalPages]="totalItems"
-          (pageEmit)="getConnectingManagementList(filter, $event, sizePage)"
-        ></app-pagination>
       </div>
     </div>
   </div>
