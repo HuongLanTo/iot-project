@@ -4,6 +4,8 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { ActionlogService } from 'src/app/services/actionlog.service';
 import { stringify } from 'querystring';
 
+import moment from "moment";
+
 @Component({
   selector: 'app-action-log',
   templateUrl: './action-log.component.html',
@@ -15,7 +17,8 @@ export class ActionLogComponent implements OnInit {
     action_user: undefined,
     action_type: undefined,
     collection_store: undefined,
-    action_time: undefined
+    fromDate: undefined,
+    toDate: undefined
   };
   currentActionLog: any = [];
   private currentPage: number = 1;
@@ -27,7 +30,8 @@ export class ActionLogComponent implements OnInit {
   searchActionUser: any = "";
   searchActionType: any = "";
   searchCollectionType: any = "";
-  searchActionTime: any = ""
+  searchStartDate: any = "";
+  searchEndDate: any = "";
 
   constructor(
     private actionLogService: ActionlogService,
@@ -91,21 +95,29 @@ export class ActionLogComponent implements OnInit {
     } else {
       this.filter.collection_store = this.searchCollectionType;
     }
-    if (this.searchActionTime.length == 0) {
-      this.filter.action_time = undefined;
+    if (this.searchStartDate.length == 0) {
+      this.filter.fromDate = undefined;
     } else {
-      this.filter.action_time = this.searchActionTime;
+      this.filter.fromDate = this.searchStartDate;
+    }
+    if (this.searchEndDate.length == 0) {
+      this.filter.toDate = undefined;
+    } else {
+      this.filter.toDate = moment(this.searchEndDate).add(1, 'days');
     }
     this.currentPage = 1;
     await this.getActionLogList(this.filter, this.currentPage, this.sizePage);
+    console.log(this.filter);
+    
   }
 
   async reset() {
-    this.filter.action_time = undefined;
+    this.filter.fromDate = undefined;
+    this.filter.toDate = undefined;
     this.filter.action_user = undefined;
     this.filter.action_type = undefined;
     this.filter.collection_store = undefined;
-    this.searchActionTime = this.searchActionType = this.searchActionUser = this.searchCollectionType = "";
+    this.searchEndDate = this.searchStartDate = this.searchActionType = this.searchActionUser = this.searchCollectionType = "";
     this.currentPage = 1;
     await this.getActionLogList(this.filter, this.currentPage, this.sizePage);
   }

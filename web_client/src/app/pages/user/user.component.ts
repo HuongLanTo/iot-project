@@ -47,7 +47,6 @@ export class UserComponent implements OnInit {
   ) { }
 
   async ngOnInit() {
-    this.spinnerService.show();
     await this.checkEditUserPermission();
     await this.getRoleList();
     await this.getUserList(this.filter, this.currentPage, this.sizePage);
