@@ -367,12 +367,12 @@ const MODAL = [
     type: "input",
     readonly: true,
   },
-  // {
-  //   label: "Cảm biến",
-  //   fin: "sensor", // fin = for, id, name
-  //   key: "sensor",
-  //   type: "switch",
-  // },
+  {
+    label: "Cảm biến",
+    fin: "sensor", // fin = for, id, name
+    key: "sensor",
+    type: "switch",
+  },
 ];
 
 const STATUS = [

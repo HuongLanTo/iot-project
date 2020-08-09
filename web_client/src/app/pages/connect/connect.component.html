@@ -1,1 +1,58 @@
-<p>connect works!</p>
+<div
+  class="header pb-8 pt-5 pt-md-8"
+  style="
+    background: linear-gradient(87deg, #13547a 0, #80d0c7 100%) !important;
+  "
+>
+  <div class="container-fluid">
+    <div class="header-body">
+      <!-- Card stats -->
+    </div>
+  </div>
+</div>
+<!-- Page content -->
+<div class="container-fluid mt--7">
+  <!-- Table -->
+  <div class="row">
+    <div class="col">
+      <div class="card shadow">
+        <div class="card-header border-0">
+          <h3 class="mb-0">Quản lý kết nối</h3>
+        </div>
+        <div class="table-responsive">
+          <table class="table align-items-center table-flush">
+            <thead class="thead-light">
+              <tr style="text-align: center;">
+                <th scope="col">STT</th>
+                <th scope="col" *ngFor="let field of fields">
+                  {{ field.label }}
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                *ngFor="let connect of connectList; let index = index"
+                style="text-align: center;"
+              >
+                <td>{{ (currentPage - 1) * sizePage + index + 1 }}</td>
+                <td *ngFor="let field of fields">
+                  <span>{{
+                    connect[field.name]
+                  }}</span>
+                </td>
+                <td><span>{{ action.execution_time }}</span></td>
+              </tr>
+            </tbody>
+          </table>
+          <h4 class="mb-0" style="padding: 10px 24px 20px 24px;" *ngIf="connectList.length==0">Không tìm thấy kết quả phù hợp</h4>
+        </div>
+        <ngx-spinner></ngx-spinner>
+        <app-pagination
+          [totalPages]="totalItems"
+          (pageEmit)="getConnectingManagementList(filter, $event, sizePage)"
+        ></app-pagination>
+      </div>
+    </div>
+  </div>
+</div>
+

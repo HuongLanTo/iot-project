@@ -61,7 +61,7 @@ export class ActionLogComponent implements OnInit {
 
   getModalInfo(field) {
     if (Object.keys(this.currentActionLog).length && this.currentActionLog[field.name]) {
-      return this.currentActionLog[field.name];
+      return this.currentActionLog[field.name][field.key];
     }
   }
 

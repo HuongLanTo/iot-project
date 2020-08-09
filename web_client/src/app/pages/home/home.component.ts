@@ -51,7 +51,7 @@ export class HomeComponent implements OnInit {
   }
 
   filterSearch: any = {
-    date: moment(new Date()).format("YYYY-MM-DD HH:mm:ss"),
+    date: moment(new Date()).subtract(1, 'day').format("YYYY-MM-DD"),
   }
 
   // search
@@ -63,6 +63,9 @@ export class HomeComponent implements OnInit {
   searchNameList: any = [];
   currentDay = moment(new Date()).subtract(1, 'day').format("YYYY-MM-DD");
 
+  // chart
+  aqi_bar_chart = null;
+  aqi_line_chart = null
   
 
   public sensorChart: any;
@@ -85,7 +88,7 @@ export class HomeComponent implements OnInit {
     if (this.sensor_data!="" && this.sensor_data!=null) {
       await this.getChart();
     }
-    await this.searchByDay(this.searchingDay);
+    await this.searchByDay(this.filterSearch.date);
   }
 
   evaluate(aqi) {
@@ -245,10 +248,12 @@ export class HomeComponent implements OnInit {
   setLineTypeOfChart() {
     this.lineTypeOfChart = true;
     this.barTypeOfChart = false;
+    if (this.aqi_line_chart != null) {
+      this.aqi_line_chart.destroy();
+    }
     if (this.lineTypeOfChart) {
       var aqiLineChart = document.getElementById("aqi_line_chart");
-      var aqiBarChart = document.getElementById("aqi_bar_chart");
-      var aqi_line_chart = new Chart(aqiLineChart, {
+      this.aqi_line_chart = new Chart(aqiLineChart, {
         type: "line",
         options: {
           maintainAspectRatio: false,
@@ -291,9 +296,14 @@ export class HomeComponent implements OnInit {
   setBarTypeOfChart() {
     this.lineTypeOfChart = false;
     this.barTypeOfChart = true;
+    // var aqi_bar_chart = new Chart(aqiBarChart, {});
+    // aqi_bar_chart.destroy();
+    if (this.aqi_bar_chart != null) {
+      this.aqi_bar_chart.destroy();
+    }
     if (this.barTypeOfChart) {
       var aqiBarChart = document.getElementById("aqi_bar_chart");
-      var aqi_bar_chart = new Chart(aqiBarChart, {
+      this.aqi_bar_chart = new Chart(aqiBarChart, {
         type: "bar",
         options: {
           maintainAspectRatio: false,
@@ -451,6 +461,7 @@ export class HomeComponent implements OnInit {
   }
 
   async searchByDay(value) {
+    this.searchList = [];
     this.searchNameList = [];
     this.searchAqiList = [];
     this.backgroundColor = [];
@@ -459,6 +470,8 @@ export class HomeComponent implements OnInit {
       console.log(555, data);
       
       this.searchList = data;
+      console.log(5555555555, this.searchList);
+      
     });
     
     if (this.searchList.length != 0) {
@@ -479,8 +492,12 @@ export class HomeComponent implements OnInit {
           this.backgroundColor.push("#A52A2A");
         }
       });
-      this.setBarTypeOfChart();
     }
+
+    console.log(1, this.backgroundColor);
+    console.log(2, this.searchAqiList);
+    console.log(3, this.searchNameList);
+    this.setBarTypeOfChart();
   }
     
 }

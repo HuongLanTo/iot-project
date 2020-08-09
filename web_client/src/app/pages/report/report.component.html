@@ -201,35 +201,10 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <tr style="text-align: center;">
-                            <td>Tốt</td>
-                            <td>{{ percentageList[0] }}</td>
-                            <td>{{ percentageList[0] / totalItems * 100 }}%</td>
-                          </tr>
-                          <tr style="text-align: center;">
-                            <td>Trung bình</td>
-                            <td>{{ percentageList[1] }}</td>
-                            <td>{{ percentageList[1] / totalItems * 100 }}%</td>
-                          </tr>
-                          <tr style="text-align: center;">
-                            <td>Kém</td>
-                            <td>{{ percentageList[2] }}</td>
-                            <td>{{ percentageList[2] / totalItems * 100 }}%</td>
-                          </tr>
-                          <tr style="text-align: center;">
-                            <td>Xấu</td>
-                            <td>{{ percentageList[3] }}</td>
-                            <td>{{ percentageList[3] / totalItems * 100 }}%</td>
-                          </tr>
-                          <tr style="text-align: center;">
-                            <td>Rất xấu</td>
-                            <td>{{ percentageList[4] }}</td>
-                            <td>{{ percentageList[4] / totalItems * 100 }}%</td>
-                          </tr>
-                          <tr style="text-align: center;">
-                            <td>Nguy hại</td>
-                            <td>{{ percentageList[5] }}</td>
-                            <td>{{ percentageList[5] / totalItems * 100 }}%</td>
+                          <tr *ngFor="let percent of percentageList; let index = index" style="text-align: center;">
+                            <td>{{ evaluates[index] }}</td>
+                            <td>{{ percent }}</td>
+                            <td>{{ getPercent(percent) }}%</td>
                           </tr>
                         </tbody>
                       </table>
