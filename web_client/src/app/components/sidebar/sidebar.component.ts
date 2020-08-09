@@ -82,6 +82,13 @@ export const ROUTES: RouteInfo[] = [
       subPath: [
         { path: '/report', title: 'Báo cáo', role: ['Admin'], icon: 'ni ni-collection' },
       ]
+    },
+    {
+      path: 'Quản lý kết nối',
+      role: ['Admin'],
+      subPath: [
+        { path: '/connect', title: 'Quản lý kết nối', role: ['Admin'], icon: 'ni ni-laptop' },
+      ]
     }
 ];
 

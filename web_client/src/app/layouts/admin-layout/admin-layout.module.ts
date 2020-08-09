@@ -28,6 +28,7 @@ import { PendingNodeComponent } from 'src/app/pages/pending-node/pending-node.co
 import { ActionLogComponent } from 'src/app/pages/action-log/action-log.component';
 import { SupportMapComponent } from 'src/app/pages/support-map/support-map.component';
 import { ReportComponent } from 'src/app/pages/report/report.component';
+import { ConnectComponent } from 'src/app/pages/connect/connect.component';
 
 
 
@@ -60,7 +61,8 @@ import { ReportComponent } from 'src/app/pages/report/report.component';
     PendingNodeComponent,
     ActionLogComponent,
     SupportMapComponent,
-    ReportComponent
+    ReportComponent,
+    ConnectComponent
   ],
 })
 
