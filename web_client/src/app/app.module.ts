@@ -24,6 +24,7 @@ import { AuthGuardService } from './guards/auth.guard';
 import { AuthService } from './services/auth.service';
 import { RoleService } from './services/role.service';
 import { CookieService } from "angular2-cookie/services/cookies.service";
+import { ConnectComponent } from './pages/connect/connect.component';
 
 @NgModule({
   imports: [
@@ -44,7 +45,8 @@ import { CookieService } from "angular2-cookie/services/cookies.service";
     AdminLayoutComponent,
     AuthLayoutComponent,
     HomeComponent,
-    MapComponent
+    MapComponent,
+    ConnectComponent
   ],
   providers: [
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },

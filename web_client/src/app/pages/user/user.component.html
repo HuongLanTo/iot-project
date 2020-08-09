@@ -145,7 +145,7 @@
           <h4 class="mb-0" style="padding: 10px 24px 20px 24px;" *ngIf="userList.length==0">Không có kết quả tìm kiếm phù hợp</h4>
         </div>
         <ngx-spinner></ngx-spinner>
-        <app-pagination [totalPages]='totalItems' (pageEmit)='goToPage($event)'></app-pagination>
+        <app-pagination [totalPages]='totalItems' (pageEmit)='getUserList(filter, $event, sizePage)'></app-pagination>
       </div>
     </div>
   </div>
