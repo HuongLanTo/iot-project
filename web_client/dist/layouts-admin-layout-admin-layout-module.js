@@ -898,7 +898,20 @@ var WINDOW = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["InjectionToken"]('W
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div\r\n  class=\"header pb-8 pt-5 pt-md-8\"\r\n  style=\"\r\n    background: linear-gradient(87deg, #13547a 0, #80d0c7 100%) !important;\r\n  \"\r\n>\r\n  <div class=\"container-fluid\">\r\n    <div class=\"header-body\">\r\n      <!-- Card stats -->\r\n      <div class=\"row\">\r\n        <div class=\"col-xl-4\">\r\n          <div class=\"form-group\">\r\n            <label\r\n              class=\"form-control-label-white\"\r\n              style=\"color: white;\"\r\n              for=\"inputLocation\"\r\n              >Kiểu tác động</label\r\n            >\r\n            <div class=\"input-group mb-4\">\r\n              <input\r\n                class=\"form-control\"\r\n                placeholder=\"Nhập hành động cần tìm kiếm\"\r\n                type=\"text\"\r\n                [(ngModel)]=\"searchActionType\"\r\n              />\r\n            </div>\r\n          </div>\r\n        </div>\r\n        <div class=\"col-xl-4\">\r\n          <div class=\"form-group\">\r\n            <label\r\n              class=\"form-control-label-white\"\r\n              style=\"color: white;\"\r\n              for=\"inputLocation\"\r\n              >Tên bảng</label\r\n            >\r\n            <div class=\"input-group mb-4\">\r\n              <input\r\n                class=\"form-control\"\r\n                placeholder=\"Nhập tên bảng cần tìm kiếm\"\r\n                type=\"text\"\r\n                [(ngModel)]=\"searchLocationStore\"\r\n              />\r\n            </div>\r\n          </div>\r\n        </div>\r\n        <div class=\"col-xl-4\">\r\n          <div class=\"form-group\">\r\n            <label\r\n              class=\"form-control-label-white\"\r\n              style=\"color: white;\"\r\n              for=\"inputLocation\"\r\n              >Tài khoản tác động</label\r\n            >\r\n            <div class=\"input-group mb-4\">\r\n              <input\r\n                class=\"form-control\"\r\n                placeholder=\"Nhập tài khoản cần tìm kiếm\"\r\n                type=\"text\"\r\n                [(ngModel)]=\"searchActionUser\"\r\n              />\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n      <div class=\"row\">\r\n        <div class=\"col-xl-4\">\r\n          <div class=\"form-group\">\r\n            <label\r\n              class=\"form-control-label-white\"\r\n              style=\"color: white;\"\r\n              for=\"inputLocation\"\r\n              >Ngày bắt đầu</label\r\n            >\r\n            <div class=\"input-group mb-4\">\r\n              <input\r\n                  class=\"form-control\"\r\n                  type=\"date\"\r\n                  value=\"30-07-2020\"\r\n                  id=\"example-date-input\"\r\n                  [(ngModel)]=\"searchActionTime\"\r\n                />\r\n            </div>\r\n          </div>\r\n        </div>\r\n        <div class=\"col-xl-4\">\r\n          <div class=\"form-group\">\r\n            <label\r\n              class=\"form-control-label-white\"\r\n              style=\"color: white;\"\r\n              for=\"inputLocation\"\r\n              >Ngày kết thúc</label\r\n            >\r\n            <div class=\"input-group mb-4\">\r\n              <input\r\n                  class=\"form-control\"\r\n                  type=\"date\"\r\n                  value=\"30-07-2020\"\r\n                  id=\"example-date-input\"\r\n                  [(ngModel)]=\"searchEndDate\"\r\n                />\r\n            </div>\r\n          </div>\r\n        </div>\r\n        <div class=\"col-xl-4\">\r\n          <div class=\"form-group\">\r\n            <label\r\n              class=\"form-control-label-white\"\r\n              style=\"color: white;\"\r\n              for=\"inputLocation\"\r\n              ></label\r\n            >\r\n            <div class=\"row\" style=\"margin-top: 8px;\">\r\n              <div class=\"col-1\"></div>\r\n              <button type=\"button\" class=\"btn btn-primary\" style=\"background-color: #FDC667; border-color: #FEA200;\" (click)=\"search()\"><i class=\"fa fa-search\" aria-hidden=\"true\"></i></button>\r\n              <button type=\"button\" class=\"btn btn-primary\" style=\"background-color: #0165B9; border-color: #0165B9;\" (click)=\"reset()\"><i class=\"fa fa-times\" aria-hidden=\"true\"></i>\r\n              </button>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n<!-- Page content -->\r\n<div class=\"container-fluid mt--7\">\r\n  <!-- Table -->\r\n  <div class=\"row\">\r\n    <div class=\"col\">\r\n      <div class=\"card shadow\">\r\n        <div class=\"card-header border-0\">\r\n          <h3 class=\"mb-0\">Danh sách Action Log</h3>\r\n        </div>\r\n        <div class=\"table-responsive\">\r\n          <table class=\"table align-items-center table-flush\">\r\n            <thead class=\"thead-light\">\r\n              <tr style=\"text-align: center;\">\r\n                <th scope=\"col\">STT</th>\r\n                <th scope=\"col\" *ngFor=\"let field of fields\">\r\n                  {{ field.label }}\r\n                </th>\r\n                <th>Thời gian xử lý (ms)</th>\r\n              </tr>\r\n            </thead>\r\n            <tbody>\r\n              <tr\r\n                *ngFor=\"let action of actionLogList; let index = index\"\r\n                style=\"text-align: center;\"\r\n                data-toggle=\"modal\" data-target=\"#detailModal\" (click)=\"currentActionLog=action\"\r\n              >\r\n                <td>{{ (currentPage - 1) * sizePage + index + 1 }}</td>\r\n                <td *ngFor=\"let field of fields\">\r\n                  <span *ngIf=\"field.name!='action_time' && field.name!='action_user'\">{{\r\n                    getTableInfo(action, field.name)\r\n                  }}</span>\r\n                  <span *ngIf=\"field.name=='action_time'\">{{\r\n                    getTableInfo(action, field.name) | date:'dd/MM/yyyy HH:mm:ss'\r\n                  }}</span>\r\n                  <span *ngIf=\"field.name=='action_user'\">{{\r\n                    getTableInfo(action, field.name, field.key)\r\n                  }}</span>\r\n                </td>\r\n                <td><span>{{ action.execution_time }}</span></td>\r\n              </tr>\r\n            </tbody>\r\n          </table>\r\n          <h4 class=\"mb-0\" style=\"padding: 10px 24px 20px 24px;\" *ngIf=\"actionLogList.length==0\">Không tìm thấy kết quả phù hợp</h4>\r\n        </div>\r\n        <ngx-spinner></ngx-spinner>\r\n        <app-pagination\r\n          [totalPages]=\"totalItems\"\r\n          (pageEmit)=\"getActionLogList(filter, $event, sizePage)\"\r\n        ></app-pagination>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n<div  class=\"modal fade bd-example-modal-lg\" id=\"detailModal\" tabindex=\"-1\" role=\"dialog\" aria-hidden=\"true\">\r\n    <div class=\"modal-dialog modal-lg\" role=\"document\">\r\n        <div class=\"modal-content\">\r\n            <div class=\"modal-header\">\r\n            <h3 class=\"modal-title\">Chi tiết action log</h3>\r\n            <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\r\n                <span aria-hidden=\"true\">&times;</span>\r\n            </button>\r\n            </div>\r\n            <div class=\"modal-body\">\r\n            <div class=\"w-100 d-inline-block\">\r\n                <div *ngFor=\"let field of fields\" class=\"w-50 float-left prl-15 col-md-6\">\r\n                    <div class=\"form-group\">\r\n                        <label class=\"form-control-label\">{{ field.label }}</label>\r\n                        <div class=\"form-group\">\r\n                            <input\r\n                                *ngIf=\"field.name!='action_time' && field.name!='action_user'\"\r\n                                value=\"{{ currentActionLog[field.name] }}\"\r\n                                type=\"text\"\r\n                                class=\"form-control\"\r\n                                readonly\r\n                            />\r\n                            <input\r\n                                *ngIf=\"field.name=='action_time'\"\r\n                                value=\"{{ currentActionLog[field.name] | date:'dd/MM/yyyy HH:mm:ss' }}\"\r\n                                type=\"text\"\r\n                                class=\"form-control\"\r\n                                readonly\r\n                            />\r\n                            <input\r\n                                *ngIf=\"field.name=='action_user'\"\r\n                                value=\"{{ getModalInfo(field) }}\"\r\n                                type=\"text\"\r\n                                class=\"form-control\"\r\n                                readonly\r\n                            />\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <div *ngFor=\"let detail of details\" class=\"w-50 float-left prl-15 col-md-6\">\r\n                    <div class=\"form-group\">\r\n                        <label class=\"form-control-label\">{{ detail.label }}</label>\r\n                        <div class=\"form-group\">\r\n                            <textarea \r\n                                value=\"\"\r\n                                type=\"text\"\r\n                                class=\"form-control\"\r\n                                readonly\r\n                                style=\"height: 250px;\"\r\n                            >{{ currentActionLog[detail.name] }}\r\n                            </textarea>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <div class=\"w-50 float-left prl-15 col-md-6\">\r\n                  <div class=\"form-group\">\r\n                    <label class=\"form-control-label\">Thời gian xử lý (ms)</label>\r\n                    <div class=\"form-group\">\r\n                        <input \r\n                          value=\"{{ currentActionLog.execution_time }}\"\r\n                          type=\"text\"\r\n                          class=\"form-control\"\r\n                          readonly\r\n                        />\r\n                    </div>\r\n                </div>\r\n                </div>\r\n            </div>\r\n            <div class=\"modal-footer\">\r\n            </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n    \r\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div\r\n  class=\"header pb-8 pt-5 pt-md-8\"\r\n  style=\"\r\n    background: linear-gradient(87deg, #13547a 0, #80d0c7 100%) !important;\r\n  \"\r\n>\r\n  <div class=\"container-fluid\">\r\n    <div class=\"header-body\">\r\n      <!-- Card stats -->\r\n      <div class=\"row\">\r\n        <div class=\"col-xl-4\">\r\n          <div class=\"form-group\">\r\n            <label\r\n              class=\"form-control-label-white\"\r\n              style=\"color: white;\"\r\n              for=\"inputLocation\"\r\n              >Kiểu tác động</label\r\n            >\r\n            <div class=\"input-group mb-4\">\r\n              <input\r\n                class=\"form-control\"\r\n                placeholder=\"Nhập hành động cần tìm kiếm\"\r\n                type=\"text\"\r\n                [(ngModel)]=\"searchActionType\"\r\n              />\r\n            </div>\r\n          </div>\r\n        </div>\r\n        <div class=\"col-xl-4\">\r\n          <div class=\"form-group\">\r\n            <label\r\n              class=\"form-control-label-white\"\r\n              style=\"color: white;\"\r\n              for=\"inputLocation\"\r\n              >Tên bảng</label\r\n            >\r\n            <div class=\"input-group mb-4\">\r\n              <input\r\n                class=\"form-control\"\r\n                placeholder=\"Nhập tên bảng cần tìm kiếm\"\r\n                type=\"text\"\r\n                [(ngModel)]=\"searchCollectionType\"\r\n              />\r\n            </div>\r\n          </div>\r\n        </div>\r\n        <div class=\"col-xl-4\">\r\n          <div class=\"form-group\">\r\n            <label\r\n              class=\"form-control-label-white\"\r\n              style=\"color: white;\"\r\n              for=\"inputLocation\"\r\n              >Tài khoản tác động</label\r\n            >\r\n            <div class=\"input-group mb-4\">\r\n              <input\r\n                class=\"form-control\"\r\n                placeholder=\"Nhập tài khoản cần tìm kiếm\"\r\n                type=\"text\"\r\n                [(ngModel)]=\"searchActionUser\"\r\n              />\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n      <div class=\"row\">\r\n        <div class=\"col-xl-4\">\r\n          <div class=\"form-group\">\r\n            <label\r\n              class=\"form-control-label-white\"\r\n              style=\"color: white;\"\r\n              for=\"inputLocation\"\r\n              >Ngày bắt đầu</label\r\n            >\r\n            <div class=\"input-group mb-4\">\r\n              <input\r\n                  class=\"form-control\"\r\n                  type=\"date\"\r\n                  value=\"30-07-2020\"\r\n                  id=\"example-date-input\"\r\n                  [(ngModel)]=\"searchStartDate\"\r\n                />\r\n            </div>\r\n          </div>\r\n        </div>\r\n        <div class=\"col-xl-4\">\r\n          <div class=\"form-group\">\r\n            <label\r\n              class=\"form-control-label-white\"\r\n              style=\"color: white;\"\r\n              for=\"inputLocation\"\r\n              >Ngày kết thúc</label\r\n            >\r\n            <div class=\"input-group mb-4\">\r\n              <input\r\n                  class=\"form-control\"\r\n                  type=\"date\"\r\n                  value=\"30-07-2020\"\r\n                  id=\"example-date-input\"\r\n                  [(ngModel)]=\"searchEndDate\"\r\n                />\r\n            </div>\r\n          </div>\r\n        </div>\r\n        <div class=\"col-xl-4\">\r\n          <div class=\"form-group\">\r\n            <label\r\n              class=\"form-control-label-white\"\r\n              style=\"color: white;\"\r\n              for=\"inputLocation\"\r\n              ></label\r\n            >\r\n            <div class=\"row\" style=\"margin-top: 8px;\">\r\n              <div class=\"col-1\"></div>\r\n              <button type=\"button\" class=\"btn btn-primary\" style=\"background-color: #FDC667; border-color: #FEA200;\" (click)=\"search()\"><i class=\"fa fa-search\" aria-hidden=\"true\"></i></button>\r\n              <button type=\"button\" class=\"btn btn-primary\" style=\"background-color: #0165B9; border-color: #0165B9;\" (click)=\"reset()\"><i class=\"fa fa-times\" aria-hidden=\"true\"></i>\r\n              </button>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n<!-- Page content -->\r\n<div class=\"container-fluid mt--7\">\r\n  <!-- Table -->\r\n  <div class=\"row\">\r\n    <div class=\"col\">\r\n      <div class=\"card shadow\">\r\n        <div class=\"card-header border-0\">\r\n          <h3 class=\"mb-0\">Danh sách Action Log</h3>\r\n        </div>\r\n        <div class=\"table-responsive\">\r\n          <table class=\"table align-items-center table-flush\">\r\n            <thead class=\"thead-light\">\r\n              <tr style=\"text-align: center;\">\r\n                <th scope=\"col\">STT</th>\r\n                <th scope=\"col\" *ngFor=\"let field of fields\">\r\n                  {{ field.label }}\r\n                </th>\r\n                <th>Thời gian xử lý (ms)</th>\r\n              </tr>\r\n            </thead>\r\n            <tbody>\r\n              <tr\r\n                *ngFor=\"let action of actionLogList; let index = index\"\r\n                style=\"text-align: center;\"\r\n                data-toggle=\"modal\" data-target=\"#detailModal\" (click)=\"currentActionLog=action\"\r\n              >\r\n                <td>{{ (currentPage - 1) * sizePage + index + 1 }}</td>\r\n                <td *ngFor=\"let field of fields\">\r\n                  <span *ngIf=\"field.name!='action_time' && field.name!='action_user'\">{{\r\n                    getTableInfo(action, field.name)\r\n                  }}</span>\r\n                  <span *ngIf=\"field.name=='action_time'\">{{\r\n                    getTableInfo(action, field.name) | date:'dd/MM/yyyy HH:mm:ss'\r\n                  }}</span>\r\n                  <span *ngIf=\"field.name=='action_user'\">{{\r\n                    getTableInfo(action, field.name, field.key)\r\n                  }}</span>\r\n                </td>\r\n                <td><span>{{ action.execution_time }}</span></td>\r\n              </tr>\r\n            </tbody>\r\n          </table>\r\n          <h4 class=\"mb-0\" style=\"padding: 10px 24px 20px 24px;\" *ngIf=\"actionLogList.length==0\">Không tìm thấy kết quả phù hợp</h4>\r\n        </div>\r\n        <ngx-spinner></ngx-spinner>\r\n        <app-pagination\r\n          [totalPages]=\"totalItems\"\r\n          (pageEmit)=\"getActionLogList(filter, $event, sizePage)\"\r\n        ></app-pagination>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n<div  class=\"modal fade bd-example-modal-lg\" id=\"detailModal\" tabindex=\"-1\" role=\"dialog\" aria-hidden=\"true\">\r\n    <div class=\"modal-dialog modal-lg\" role=\"document\">\r\n        <div class=\"modal-content\">\r\n            <div class=\"modal-header\">\r\n            <h3 class=\"modal-title\">Chi tiết action log</h3>\r\n            <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\r\n                <span aria-hidden=\"true\">&times;</span>\r\n            </button>\r\n            </div>\r\n            <div class=\"modal-body\">\r\n            <div class=\"w-100 d-inline-block\">\r\n                <div *ngFor=\"let field of fields\" class=\"w-50 float-left prl-15 col-md-6\">\r\n                    <div class=\"form-group\">\r\n                        <label class=\"form-control-label\">{{ field.label }}</label>\r\n                        <div class=\"form-group\">\r\n                            <input\r\n                                *ngIf=\"field.name!='action_time' && field.name!='action_user'\"\r\n                                value=\"{{ currentActionLog[field.name] }}\"\r\n                                type=\"text\"\r\n                                class=\"form-control\"\r\n                                readonly\r\n                            />\r\n                            <input\r\n                                *ngIf=\"field.name=='action_time'\"\r\n                                value=\"{{ currentActionLog[field.name] | date:'dd/MM/yyyy HH:mm:ss' }}\"\r\n                                type=\"text\"\r\n                                class=\"form-control\"\r\n                                readonly\r\n                            />\r\n                            <input\r\n                                *ngIf=\"field.name=='action_user'\"\r\n                                value=\"{{ getModalInfo(field) }}\"\r\n                                type=\"text\"\r\n                                class=\"form-control\"\r\n                                readonly\r\n                            />\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <div *ngFor=\"let detail of details\" class=\"w-50 float-left prl-15 col-md-6\">\r\n                    <div class=\"form-group\">\r\n                        <label class=\"form-control-label\">{{ detail.label }}</label>\r\n                        <div class=\"form-group\">\r\n                            <textarea \r\n                                value=\"\"\r\n                                type=\"text\"\r\n                                class=\"form-control\"\r\n                                readonly\r\n                                style=\"height: 250px;\"\r\n                            >{{ currentActionLog[detail.name] }}\r\n                            </textarea>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <div class=\"w-50 float-left prl-15 col-md-6\">\r\n                  <div class=\"form-group\">\r\n                    <label class=\"form-control-label\">Thời gian xử lý (ms)</label>\r\n                    <div class=\"form-group\">\r\n                        <input \r\n                          value=\"{{ currentActionLog.execution_time }}\"\r\n                          type=\"text\"\r\n                          class=\"form-control\"\r\n                          readonly\r\n                        />\r\n                    </div>\r\n                </div>\r\n                </div>\r\n            </div>\r\n            <div class=\"modal-footer\">\r\n            </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n    \r\n");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/connect/connect.component.html":
+/*!********************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/pages/connect/connect.component.html ***!
+  \********************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<div\n  class=\"header pb-8 pt-5 pt-md-8\"\n  style=\"\n    background: linear-gradient(87deg, #13547a 0, #80d0c7 100%) !important;\n  \"\n>\n  <div class=\"container-fluid\">\n    <div class=\"header-body\">\n      <!-- Card stats -->\n    </div>\n  </div>\n</div>\n<!-- Page content -->\n<div class=\"container-fluid mt--7\">\n  <!-- Table -->\n  <div class=\"row\">\n    <div class=\"col\">\n      <div class=\"card shadow\">\n        <div class=\"card-header border-0\">\n          <h3 class=\"mb-0\">Quản lý kết nối</h3>\n        </div>\n        <div class=\"table-responsive\">\n          <table class=\"table align-items-center table-flush\">\n            <thead class=\"thead-light\">\n              <tr style=\"text-align: center;\">\n                <th scope=\"col\">STT</th>\n                <th scope=\"col\" *ngFor=\"let field of fields\">\n                  {{ field.label }}\n                </th>\n              </tr>\n            </thead>\n            <tbody>\n              <tr\n                *ngFor=\"let connect of connectList; let index = index\"\n                style=\"text-align: center;\"\n              >\n                <td>{{ index + 1 }}</td>\n                <td *ngFor=\"let field of fields\">\n                  <span *ngIf=\"field.name != 'last_time_recieve'\">{{\n                    connect[field.name]\n                  }}</span>\n                  <span *ngIf=\"field.name == 'last_time_recieve'\">{{\n                    connect[field.name] | date:'dd/MM/yyyy HH:mm:ss'\n                  }}</span>\n                </td>\n              </tr>\n            </tbody>\n          </table>\n          <!-- <h4 class=\"mb-0\" style=\"padding: 10px 24px 20px 24px;\" *ngIf=\"connectList.length==0\">Không tìm thấy kết quả phù hợp</h4> -->\n        </div>\n        <ngx-spinner></ngx-spinner>\n      </div>\n    </div>\n  </div>\n</div>\n\n");
 
 /***/ }),
 
@@ -1067,7 +1080,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div\n  class=\"header pb-8 pt-5 pt-md-8\"\n  style=\"\n    background: linear-gradient(87deg, #13547a 0, #80d0c7 100%) !important;\n  \"\n>\n  <div class=\"container-fluid\">\n    <div class=\"header-body\">\n      <!-- Card stats -->\n      <div class=\"row\">\n        <div class=\"col-xl-5\">\n          <div class=\"row\">\n            <div class=\"col-xl-6\">\n              <div class=\"form-group\">\n                <label class=\"form-control-label-white\" style=\"color: white;\"\n                  >Node</label\n                >\n                <select\n                  name=\"node\"\n                  id=\"node\"\n                  class=\"form-control form-control-alternative\"\n                  [(ngModel)]=\"currentNode\"\n                >\n                  <option value=\"\" disabled selected hidden>Chọn node</option>\n                  <option\n                    *ngFor=\"let node of nodeList\"\n                    name=\"node\"\n                    [ngValue]=\"node\"\n                    id=\"node\"\n                    >{{ node.name }}</option\n                  >\n                </select>\n              </div>\n            </div>\n            <div class=\"col-xl-6\">\n              <div class=\"form-group\">\n                <label class=\"form-control-label-white\" style=\"color: white;\"\n                  >Ngày bắt đầu</label\n                >\n                <input\n                  class=\"form-control\"\n                  type=\"date\"\n                  value=\"30-07-2020\"\n                  id=\"example-date-input\"\n                  [(ngModel)]=\"filter.start_date\"\n                />\n              </div>\n            </div>\n          </div>\n        </div>\n        <div class=\"col-xl-5\">\n          <div class=\"row\">\n            <div class=\"col-xl-6\">\n              <div class=\"form-group\">\n                <label class=\"form-control-label-white\" style=\"color: white;\"\n                  >Ngày kết thúc</label\n                >\n                <input\n                  class=\"form-control\"\n                  type=\"date\"\n                  value=\"30-07-2020\"\n                  id=\"example-date-input\"\n                  [(ngModel)]=\"end_date\"\n                />\n              </div>\n            </div>\n            <div class=\"col-xl-6\">\n              <div class=\"form-group\">\n                <label\n                  class=\"form-control-label-white\"\n                  style=\"color: white;\"\n                ></label>\n                <div class=\"row\" style=\"margin-top: 8px;\">\n                  <button\n                    type=\"button\"\n                    class=\"btn btn-primary\"\n                    style=\"background-color: #fdc667; border-color: #fea200;\"\n                    (click)=\"makeAReport()\"\n                  >\n                    <i class=\"fa fa-search\" aria-hidden=\"true\"></i>\n                  </button>\n                  <button\n                    *ngIf=\"check==true\"\n                    type=\"button\"\n                    class=\"btn btn-primary\"\n                    style=\"background-color: #0165b9; border-color: #0165b9;\"\n                    (click)=\"table()\"\n                  >\n                    <i class=\"fa fa-table\" aria-hidden=\"true\"></i>\n                  </button>\n                  <button\n                    *ngIf=\"check==true\"\n                    type=\"button\"\n                    class=\"btn btn-primary\"\n                    style=\"background-color: #0165b9; border-color: #0165b9;\"\n                    (click)=\"chart()\"\n                  >\n                    <i class=\"fas fa-chart-pie\"></i>\n                  </button>\n                </div>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n<!-- Page content -->\n<div class=\"container-fluid mt--7\">\n  <!-- Table -->\n  <div class=\"row\">\n    <div class=\"col\">\n      <div class=\"card shadow\">\n        <div class=\"card-header border-0\">\n          <h3 *ngIf=\"check == true\" class=\"mb-0\">{{ getDate() }}</h3>\n        </div>\n        <div *ngIf=\"isShowingTable\">\n          <div class=\"table-responsive\">\n            <table class=\"table align-items-center table-flush\">\n              <thead class=\"thead-light\">\n                <tr style=\"text-align: center;\">\n                  <th scope=\"col\">STT</th>\n                  <th scope=\"col\" *ngFor=\"let field of fields\">\n                    {{ field.label }}\n                  </th>\n                  <th>Đánh giá</th>\n                </tr>\n              </thead>\n              <tbody *ngIf=\"check == true\">\n                <tr\n                  *ngFor=\"let data of dataList; let index = index\"\n                  style=\"text-align: center;\"\n                >\n                  <td>{{ (currentPage - 1) * sizePage + index + 1 }}</td>\n                  <td *ngFor=\"let field of fields\">\n                    <span *ngIf=\"field.name != 'datetime' && field.name != 'aqi'\">{{\n                      data[field.name]\n                    }}</span>\n                    <span *ngIf=\"field.name == 'datetime' && field.name != 'aqi'\"\n                      >{{ data.datetime | date: \"dd/MM/yyyy HH\" }}h</span\n                    >\n                    <span *ngIf=\"field.name == 'aqi' && evaluate(data.aqi)=='Tốt'\" style=\"color: #006100; font-weight: bold;\">{{\n                      data[field.name]\n                    }}</span>\n                    <span *ngIf=\"field.name == 'aqi' && evaluate(data.aqi)=='Trung bình'\" style=\"color: #DFAC05; font-weight: bold;\">{{\n                      data[field.name]\n                    }}</span>\n                    <span *ngIf=\"field.name == 'aqi' && evaluate(data.aqi)=='Kém'\" style=\"color: #F1923D; font-weight: bold;\">{{\n                      data[field.name]\n                    }}</span>\n                    <span *ngIf=\"field.name == 'aqi' && evaluate(data.aqi)=='Xấu'\" style=\"color: #FF3232; font-weight: bold;\">{{\n                      data[field.name]\n                    }}</span>\n                    <span *ngIf=\"field.name == 'aqi' && evaluate(data.aqi)=='Rất xấu'\" style=\"color: #CC3399; font-weight: bold;\">{{\n                      data[field.name]\n                    }}</span>\n                    <span *ngIf=\"field.name == 'aqi' && evaluate(data.aqi)=='Nguy hại'\" style=\"color: #A52A2A; font-weight: bold;\">{{\n                      data[field.name]\n                    }}</span>\n                  </td>\n                  <td>{{ evaluate(data.aqi) }}</td>\n                </tr>\n              </tbody>\n            </table>\n            <h4\n              class=\"mb-0\"\n              style=\"padding: 10px 24px 20px 24px;\"\n              *ngIf=\"dataList.length == 0\"\n            >\n              Không tìm thấy kết quả phù hợp\n            </h4>\n          </div>\n          <ngx-spinner></ngx-spinner>\n          <app-pagination\n            [totalPages]=\"totalItems\"\n            [pageSize]=\"sizePage\"\n            (pageEmit)=\"getDataOfNode(filter, $event, sizePage)\"\n            *ngIf=\"check == true\"\n          ></app-pagination>\n        </div>\n        <div *ngIf=\"isShowingTable==false\">\n          <div>\n            <div class=\"card-body\">\n              <div class=\"row\">\n                <div class=\"col-xl-6\">\n                  <div class=\"chart\">\n                    <canvas id=\"aqi_pie_chart\" class=\"chart-canvas\"></canvas>\n                  </div>\n                </div>\n                <div class=\"col-xl-6\">\n                  <div class=\"col-xl-1\"></div>\n                  <div class=\"col-xl-10\">\n                    <div class=\"table-responsive\">\n                      <table class=\"table align-items-center table-dark table-flush out\">\n                        <thead class=\"thead-dark\">\n                          <tr style=\"text-align: center;\">\n                            <th>Mức độ</th>\n                            <th>Số giờ</th>\n                            <th>Phần trăm</th>\n                          </tr>\n                        </thead>\n                        <tbody>\n                          <tr style=\"text-align: center;\">\n                            <td>Tốt</td>\n                            <td>{{ percentageList[0] }}</td>\n                            <td>{{ percentageList[0] / totalItems * 100 }}%</td>\n                          </tr>\n                          <tr style=\"text-align: center;\">\n                            <td>Trung bình</td>\n                            <td>{{ percentageList[1] }}</td>\n                            <td>{{ percentageList[1] / totalItems * 100 }}%</td>\n                          </tr>\n                          <tr style=\"text-align: center;\">\n                            <td>Kém</td>\n                            <td>{{ percentageList[2] }}</td>\n                            <td>{{ percentageList[2] / totalItems * 100 }}%</td>\n                          </tr>\n                          <tr style=\"text-align: center;\">\n                            <td>Xấu</td>\n                            <td>{{ percentageList[3] }}</td>\n                            <td>{{ percentageList[3] / totalItems * 100 }}%</td>\n                          </tr>\n                          <tr style=\"text-align: center;\">\n                            <td>Rất xấu</td>\n                            <td>{{ percentageList[4] }}</td>\n                            <td>{{ percentageList[4] / totalItems * 100 }}%</td>\n                          </tr>\n                          <tr style=\"text-align: center;\">\n                            <td>Nguy hại</td>\n                            <td>{{ percentageList[5] }}</td>\n                            <td>{{ percentageList[5] / totalItems * 100 }}%</td>\n                          </tr>\n                        </tbody>\n                      </table>\n                    </div>\n                  </div>\n                  <div class=\"col-xl-1\"></div>\n                </div>\n              </div>\n              <br>\n              <br>\n              <br>\n              <div class=\"row\">\n                <div class=\"col-xl-12\">\n                  <div class=\"chart\">\n                    <canvas id=\"aqi_bar_chart\" class=\"chart-canvas\"></canvas>\n                  </div>\n                </div>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div\n  class=\"header pb-8 pt-5 pt-md-8\"\n  style=\"\n    background: linear-gradient(87deg, #13547a 0, #80d0c7 100%) !important;\n  \"\n>\n  <div class=\"container-fluid\">\n    <div class=\"header-body\">\n      <!-- Card stats -->\n      <div class=\"row\">\n        <div class=\"col-xl-5\">\n          <div class=\"row\">\n            <div class=\"col-xl-6\">\n              <div class=\"form-group\">\n                <label class=\"form-control-label-white\" style=\"color: white;\"\n                  >Node</label\n                >\n                <select\n                  name=\"node\"\n                  id=\"node\"\n                  class=\"form-control form-control-alternative\"\n                  [(ngModel)]=\"currentNode\"\n                >\n                  <option value=\"\" disabled selected hidden>Chọn node</option>\n                  <option\n                    *ngFor=\"let node of nodeList\"\n                    name=\"node\"\n                    [ngValue]=\"node\"\n                    id=\"node\"\n                    >{{ node.name }}</option\n                  >\n                </select>\n              </div>\n            </div>\n            <div class=\"col-xl-6\">\n              <div class=\"form-group\">\n                <label class=\"form-control-label-white\" style=\"color: white;\"\n                  >Ngày bắt đầu</label\n                >\n                <input\n                  class=\"form-control\"\n                  type=\"date\"\n                  value=\"30-07-2020\"\n                  id=\"example-date-input\"\n                  [(ngModel)]=\"filter.start_date\"\n                />\n              </div>\n            </div>\n          </div>\n        </div>\n        <div class=\"col-xl-5\">\n          <div class=\"row\">\n            <div class=\"col-xl-6\">\n              <div class=\"form-group\">\n                <label class=\"form-control-label-white\" style=\"color: white;\"\n                  >Ngày kết thúc</label\n                >\n                <input\n                  class=\"form-control\"\n                  type=\"date\"\n                  value=\"30-07-2020\"\n                  id=\"example-date-input\"\n                  [(ngModel)]=\"end_date\"\n                />\n              </div>\n            </div>\n            <div class=\"col-xl-6\">\n              <div class=\"form-group\">\n                <label\n                  class=\"form-control-label-white\"\n                  style=\"color: white;\"\n                ></label>\n                <div class=\"row\" style=\"margin-top: 8px;\">\n                  <button\n                    type=\"button\"\n                    class=\"btn btn-primary\"\n                    style=\"background-color: #fdc667; border-color: #fea200;\"\n                    (click)=\"makeAReport()\"\n                  >\n                    <i class=\"fa fa-search\" aria-hidden=\"true\"></i>\n                  </button>\n                  <button\n                    *ngIf=\"check==true\"\n                    type=\"button\"\n                    class=\"btn btn-primary\"\n                    style=\"background-color: #0165b9; border-color: #0165b9;\"\n                    (click)=\"table()\"\n                  >\n                    <i class=\"fa fa-table\" aria-hidden=\"true\"></i>\n                  </button>\n                  <button\n                    *ngIf=\"check==true\"\n                    type=\"button\"\n                    class=\"btn btn-primary\"\n                    style=\"background-color: #0165b9; border-color: #0165b9;\"\n                    (click)=\"chart()\"\n                  >\n                    <i class=\"fas fa-chart-pie\"></i>\n                  </button>\n                </div>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n<!-- Page content -->\n<div class=\"container-fluid mt--7\">\n  <!-- Table -->\n  <div class=\"row\">\n    <div class=\"col\">\n      <div class=\"card shadow\">\n        <div class=\"card-header border-0\">\n          <h3 *ngIf=\"check == true\" class=\"mb-0\">{{ getDate() }}</h3>\n        </div>\n        <div *ngIf=\"isShowingTable\">\n          <div class=\"table-responsive\">\n            <table class=\"table align-items-center table-flush\">\n              <thead class=\"thead-light\">\n                <tr style=\"text-align: center;\">\n                  <th scope=\"col\">STT</th>\n                  <th scope=\"col\" *ngFor=\"let field of fields\">\n                    {{ field.label }}\n                  </th>\n                  <th>Đánh giá</th>\n                </tr>\n              </thead>\n              <tbody *ngIf=\"check == true\">\n                <tr\n                  *ngFor=\"let data of dataList; let index = index\"\n                  style=\"text-align: center;\"\n                >\n                  <td>{{ (currentPage - 1) * sizePage + index + 1 }}</td>\n                  <td *ngFor=\"let field of fields\">\n                    <span *ngIf=\"field.name != 'datetime' && field.name != 'aqi'\">{{\n                      data[field.name]\n                    }}</span>\n                    <span *ngIf=\"field.name == 'datetime' && field.name != 'aqi'\"\n                      >{{ data.datetime | date: \"dd/MM/yyyy HH\" }}h</span\n                    >\n                    <span *ngIf=\"field.name == 'aqi' && evaluate(data.aqi)=='Tốt'\" style=\"color: #006100; font-weight: bold;\">{{\n                      data[field.name]\n                    }}</span>\n                    <span *ngIf=\"field.name == 'aqi' && evaluate(data.aqi)=='Trung bình'\" style=\"color: #DFAC05; font-weight: bold;\">{{\n                      data[field.name]\n                    }}</span>\n                    <span *ngIf=\"field.name == 'aqi' && evaluate(data.aqi)=='Kém'\" style=\"color: #F1923D; font-weight: bold;\">{{\n                      data[field.name]\n                    }}</span>\n                    <span *ngIf=\"field.name == 'aqi' && evaluate(data.aqi)=='Xấu'\" style=\"color: #FF3232; font-weight: bold;\">{{\n                      data[field.name]\n                    }}</span>\n                    <span *ngIf=\"field.name == 'aqi' && evaluate(data.aqi)=='Rất xấu'\" style=\"color: #CC3399; font-weight: bold;\">{{\n                      data[field.name]\n                    }}</span>\n                    <span *ngIf=\"field.name == 'aqi' && evaluate(data.aqi)=='Nguy hại'\" style=\"color: #A52A2A; font-weight: bold;\">{{\n                      data[field.name]\n                    }}</span>\n                  </td>\n                  <td>{{ evaluate(data.aqi) }}</td>\n                </tr>\n              </tbody>\n            </table>\n            <h4\n              class=\"mb-0\"\n              style=\"padding: 10px 24px 20px 24px;\"\n              *ngIf=\"dataList.length == 0\"\n            >\n              Không tìm thấy kết quả phù hợp\n            </h4>\n          </div>\n          <ngx-spinner></ngx-spinner>\n          <app-pagination\n            [totalPages]=\"totalItems\"\n            [pageSize]=\"sizePage\"\n            (pageEmit)=\"getDataOfNode(filter, $event, sizePage)\"\n            *ngIf=\"check == true\"\n          ></app-pagination>\n        </div>\n        <div *ngIf=\"isShowingTable==false\">\n          <div>\n            <div class=\"card-body\">\n              <div class=\"row\">\n                <div class=\"col-xl-6\">\n                  <div class=\"chart\">\n                    <canvas id=\"aqi_pie_chart\" class=\"chart-canvas\"></canvas>\n                  </div>\n                </div>\n                <div class=\"col-xl-6\">\n                  <div class=\"col-xl-1\"></div>\n                  <div class=\"col-xl-10\">\n                    <div class=\"table-responsive\">\n                      <table class=\"table align-items-center table-dark table-flush out\">\n                        <thead class=\"thead-dark\">\n                          <tr style=\"text-align: center;\">\n                            <th>Mức độ</th>\n                            <th>Số giờ</th>\n                            <th>Phần trăm</th>\n                          </tr>\n                        </thead>\n                        <tbody>\n                          <tr *ngFor=\"let percent of percentageList; let index = index\" style=\"text-align: center;\">\n                            <td>{{ evaluates[index] }}</td>\n                            <td>{{ percent }}</td>\n                            <td>{{ getPercent(percent) }}%</td>\n                          </tr>\n                        </tbody>\n                      </table>\n                    </div>\n                  </div>\n                  <div class=\"col-xl-1\"></div>\n                </div>\n              </div>\n              <br>\n              <br>\n              <br>\n              <div class=\"row\">\n                <div class=\"col-xl-12\">\n                  <div class=\"chart\">\n                    <canvas id=\"aqi_bar_chart\" class=\"chart-canvas\"></canvas>\n                  </div>\n                </div>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n");
 
 /***/ }),
 
@@ -1132,7 +1145,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"header pb-8 pt-5 pt-md-8\" style=\"background: linear-gradient(87deg, #13547a 0, #80d0c7 100%) !important;\">\r\n  <div class=\"container-fluid\">\r\n    <div class=\"header-body\">\r\n      <!-- Card stats -->\r\n      <div class=\"row\">\r\n        <div class=\"col-xl-5\">\r\n          <div class=\"row\">\r\n            <div class=\"col-xl-6\">\r\n              <div class=\"form-group\">\r\n                <label\r\n                  class=\"form-control-label-white\"\r\n                  style=\"color: white;\"\r\n                  for=\"inputLocation\"\r\n                  >Username</label\r\n                >\r\n                <div class=\"input-group mb-4\">\r\n                  <input\r\n                    class=\"form-control\"\r\n                    placeholder=\"Nhập username cần tìm kiếm\"\r\n                    type=\"text\"\r\n                    [(ngModel)]=\"searchUsername\"\r\n                  />\r\n                </div>\r\n              </div>\r\n            </div>\r\n            <div class=\"col-xl-6\">\r\n              <div class=\"form-group\">\r\n                <label\r\n                  class=\"form-control-label-white\"\r\n                  style=\"color: white;\"\r\n                  for=\"inputLocation\"\r\n                  >Họ và tên</label\r\n                >\r\n                <div class=\"input-group mb-4\">\r\n                  <input\r\n                    class=\"form-control\"\r\n                    placeholder=\"Nhập họ và tên cần tìm kiếm\"\r\n                    type=\"text\"\r\n                    [(ngModel)]=\"searchName\"\r\n                  />\r\n                </div>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n        <div class=\"col-xl-5\">\r\n          <div class=\"row\">\r\n            <div class=\"col-xl-6\">\r\n              <div class=\"form-group\">\r\n                <label class=\"form-control-label-white\" style=\"color: white;\"\r\n                  >Vai trò</label\r\n                >\r\n                <select\r\n                  name=\"role\"\r\n                  id=\"role\"\r\n                  class=\"form-control form-control-alternative\"\r\n                  [(ngModel)]=\"searchRole\" \r\n                >\r\n                  <option value=\"\" disabled selected hidden\r\n                    >Chọn vai trò cần tìm kiếm</option\r\n                  >\r\n                  <option *ngFor=\"let role of roleList\" name=\"role\" [ngValue]=\"role._id\" id=\"role\">{{ role.name }}</option>\r\n                  <option value=\"all\">Tất cả</option>\r\n                </select>\r\n              </div>\r\n            </div>\r\n            <div class=\"col-xl-6\">\r\n              <div class=\"form-group\">\r\n                <label class=\"form-control-label-white\" style=\"color: white;\"\r\n                  >Trạng thái</label\r\n                >\r\n                <select\r\n                  name=\"status\"\r\n                  id=\"status\"\r\n                  class=\"form-control form-control-alternative\"\r\n                  [(ngModel)]=\"searchStatus\" \r\n                >\r\n                  <option value=\"\" disabled selected hidden\r\n                    >Chọn trạng thái cần tìm kiếm</option\r\n                  >\r\n                  <option *ngFor=\"let status of status\" [ngValue]=\"status.value\">{{ status.name }}</option>\r\n                  <option value=\"all\">Tất cả</option>\r\n                </select>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n        <div class=\"col-xl-2\">\r\n          <label class=\"form-control-label-white\" style=\"color: white;\"\r\n                  ></label\r\n                >\r\n          <div class=\"row\" style=\"margin-top: 8px;\">\r\n            <button type=\"button\" class=\"btn btn-primary\" style=\"background-color: #FDC667; border-color: #FEA200;\" (click)=\"search()\"><i class=\"fa fa-search\" aria-hidden=\"true\"></i></button>\r\n            <button type=\"button\" class=\"btn btn-primary\" style=\"background-color: #0165B9; border-color: #0165B9;\" (click)=\"reset()\"><i class=\"fa fa-times\" aria-hidden=\"true\"></i>\r\n            </button>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n<!-- Page content -->\r\n<div class=\"container-fluid mt--7\">\r\n  <!-- Table -->\r\n  <div class=\"row\">\r\n    <div class=\"col\">\r\n      <div class=\"card shadow\">\r\n        <div class=\"card-header border-0\">\r\n          <h3 class=\"mb-0\">Danh sách người dùng</h3>\r\n        </div>\r\n        <div class=\"table-responsive\">\r\n          <table class=\"table align-items-center table-flush\" *ngIf=\"check==true\">\r\n            <thead class=\"thead-light\">\r\n              <tr style=\"text-align: center;\">\r\n                <th scope=\"col\">STT</th>\r\n                <th scope=\"col\" *ngFor=\"let field of fields;\">{{ field.label }}</th>\r\n                <th scope=\"col\" *ngIf=\"isHavingEditUserPermission\">Lựa chọn</th>\r\n              </tr>\r\n            </thead>\r\n            <tbody>\r\n              <tr *ngFor=\"let user of userList; let index=index\" style=\"text-align: center;\">\r\n                <td>{{ (currentPage - 1) * sizePage + index + 1 }}</td>\r\n                <td *ngFor=\"let key_data of key_data\">\r\n                  <span *ngIf=\"key_data.key=='role'\">{{ user[key_data.key].name }}</span>\r\n                  <span *ngIf=\"is_string(key_data.type) && key_data.key!='role'\">{{ user[key_data.key] }}</span>\r\n                  <div *ngIf=\"is_boolean(key_data.type)\">\r\n                    <span\r\n                      [ngClass]=\"[\r\n                        'badge',\r\n                        'badge-pill',\r\n                        user[key_data.key] ? 'badge-success' : 'badge-danger'\r\n                      ]\"\r\n                      >{{ status_vn(user[key_data.key]) }}</span\r\n                    >\r\n                  </div>\r\n                </td>\r\n                <td *ngIf=\"isHavingEditUserPermission\">\r\n                  <button class=\"btn btn-icon btn-sm btn-info\" type=\"button\" placement=\"top\" ngbTooltip=\"Sửa\" data-toggle=\"modal\" data-target=\"#editModal\" (click)=\"currentUser=user\" (click)=\"nameRole = currentUser.role.name\">\r\n                    <span class=\"btn-inner--icon\"><i class=\"ni ni-single-copy-04\"></i></span>\r\n                  </button>\r\n                </td>\r\n              </tr>\r\n            </tbody>\r\n          </table>\r\n          <h4 class=\"mb-0\" style=\"padding: 10px 24px 20px 24px;\" *ngIf=\"userList.length==0\">Không có kết quả tìm kiếm phù hợp</h4>\r\n        </div>\r\n        <ngx-spinner></ngx-spinner>\r\n        <app-pagination [totalPages]='totalItems' (pageEmit)='goToPage($event)'></app-pagination>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  \r\n\r\n<!-- Modal Sửa -->\r\n<div *ngIf=\"is_have_data\" class=\"modal fade bd-example-modal-lg\" id=\"editModal\" tabindex=\"-1\" role=\"dialog\" aria-hidden=\"true\">\r\n  <div class=\"modal-dialog modal-lg\" role=\"document\">\r\n    <div class=\"modal-content\">\r\n      <div class=\"modal-header\">\r\n        <h3 class=\"modal-title\">Cập nhật thông tin người dùng</h3>\r\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\r\n          <span aria-hidden=\"true\">&times;</span>\r\n        </button>\r\n      </div>\r\n      <div class=\"modal-body\">\r\n        <div class=\"w-100 d-inline-block\">\r\n          <div *ngFor=\"let modal of modals\" class=\"w-50 float-left prl-15 col-md-6\">\r\n            <div class=\"form-group\">\r\n              <label class=\"form-control-label\" [for]=\"modal.fin\">{{ modal.label }}</label>\r\n              <div class=\"form-group\">\r\n                <input\r\n                    *ngIf=\"is_input(modal.type)\"\r\n                    value=\"{{ currentUser[modal.key] }}\"\r\n                    [name]=\"modal.fin\"\r\n                    [id]=\"modal.fin\"\r\n                    type=\"text\"\r\n                    class=\"form-control form-control-alternative\"\r\n                    [readonly]=\"modal.readonly\"\r\n                />\r\n                <select\r\n                  *ngIf=\"is_select(modal.type) && modal.key!='role'\"\r\n                  [(ngModel)]=\"currentUser[modal.key]\"\r\n                  [name]=\"modal.fin\"\r\n                  [id]=\"modal.fin\"\r\n                  class=\"form-control form-control-alternative\"\r\n                >\r\n                  <option value=\"\" disabled selected hidden>{{ status_vn(currentUser[modal.key]) }}</option>\r\n                  <option *ngFor=\"let data of data[modal.key]\" [ngValue]=\"data.value\" >{{ data.name }}</option>\r\n                </select>\r\n                <select\r\n                  *ngIf=\"is_select(modal.type) && modal.key=='role'\"\r\n                  [(ngModel)]=\"currentUser[modal.key]._id\"\r\n                  [name]=\"modal.fin\"\r\n                  [id]=\"modal.fin\"\r\n                  class=\"form-control form-control-alternative\"\r\n                >\r\n                  <!-- <option value=\"\" disabled selected hidden>{{ log(currentUser, modal) }}</option> -->\r\n                  <option *ngFor=\"let data of roleList\" [value]=\"data._id\" >{{ data.name }}</option>\r\n                </select>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n        <div class=\"modal-footer\">\r\n          <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\" (click)=\"redirect()\">Hủy</button>\r\n          <button type=\"button\" class=\"btn btn-primary\" data-dismiss=\"modal\" style=\"background-color: #004D90; border-color:#013E7A\"\r\n            (click)=\"updateUserInfo(currentUser)\">Lưu</button>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n  ");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"header pb-8 pt-5 pt-md-8\" style=\"background: linear-gradient(87deg, #13547a 0, #80d0c7 100%) !important;\">\r\n  <div class=\"container-fluid\">\r\n    <div class=\"header-body\">\r\n      <!-- Card stats -->\r\n      <div class=\"row\">\r\n        <div class=\"col-xl-5\">\r\n          <div class=\"row\">\r\n            <div class=\"col-xl-6\">\r\n              <div class=\"form-group\">\r\n                <label\r\n                  class=\"form-control-label-white\"\r\n                  style=\"color: white;\"\r\n                  for=\"inputLocation\"\r\n                  >Username</label\r\n                >\r\n                <div class=\"input-group mb-4\">\r\n                  <input\r\n                    class=\"form-control\"\r\n                    placeholder=\"Nhập username cần tìm kiếm\"\r\n                    type=\"text\"\r\n                    [(ngModel)]=\"searchUsername\"\r\n                  />\r\n                </div>\r\n              </div>\r\n            </div>\r\n            <div class=\"col-xl-6\">\r\n              <div class=\"form-group\">\r\n                <label\r\n                  class=\"form-control-label-white\"\r\n                  style=\"color: white;\"\r\n                  for=\"inputLocation\"\r\n                  >Họ và tên</label\r\n                >\r\n                <div class=\"input-group mb-4\">\r\n                  <input\r\n                    class=\"form-control\"\r\n                    placeholder=\"Nhập họ và tên cần tìm kiếm\"\r\n                    type=\"text\"\r\n                    [(ngModel)]=\"searchName\"\r\n                  />\r\n                </div>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n        <div class=\"col-xl-5\">\r\n          <div class=\"row\">\r\n            <div class=\"col-xl-6\">\r\n              <div class=\"form-group\">\r\n                <label class=\"form-control-label-white\" style=\"color: white;\"\r\n                  >Vai trò</label\r\n                >\r\n                <select\r\n                  name=\"role\"\r\n                  id=\"role\"\r\n                  class=\"form-control form-control-alternative\"\r\n                  [(ngModel)]=\"searchRole\" \r\n                >\r\n                  <option value=\"\" disabled selected hidden\r\n                    >Chọn vai trò cần tìm kiếm</option\r\n                  >\r\n                  <option *ngFor=\"let role of roleList\" name=\"role\" [ngValue]=\"role._id\" id=\"role\">{{ role.name }}</option>\r\n                  <option value=\"all\">Tất cả</option>\r\n                </select>\r\n              </div>\r\n            </div>\r\n            <div class=\"col-xl-6\">\r\n              <div class=\"form-group\">\r\n                <label class=\"form-control-label-white\" style=\"color: white;\"\r\n                  >Trạng thái</label\r\n                >\r\n                <select\r\n                  name=\"status\"\r\n                  id=\"status\"\r\n                  class=\"form-control form-control-alternative\"\r\n                  [(ngModel)]=\"searchStatus\" \r\n                >\r\n                  <option value=\"\" disabled selected hidden\r\n                    >Chọn trạng thái cần tìm kiếm</option\r\n                  >\r\n                  <option *ngFor=\"let status of status\" [ngValue]=\"status.value\">{{ status.name }}</option>\r\n                  <option value=\"all\">Tất cả</option>\r\n                </select>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n        <div class=\"col-xl-2\">\r\n          <label class=\"form-control-label-white\" style=\"color: white;\"\r\n                  ></label\r\n                >\r\n          <div class=\"row\" style=\"margin-top: 8px;\">\r\n            <button type=\"button\" class=\"btn btn-primary\" style=\"background-color: #FDC667; border-color: #FEA200;\" (click)=\"search()\"><i class=\"fa fa-search\" aria-hidden=\"true\"></i></button>\r\n            <button type=\"button\" class=\"btn btn-primary\" style=\"background-color: #0165B9; border-color: #0165B9;\" (click)=\"reset()\"><i class=\"fa fa-times\" aria-hidden=\"true\"></i>\r\n            </button>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n<!-- Page content -->\r\n<div class=\"container-fluid mt--7\">\r\n  <!-- Table -->\r\n  <div class=\"row\">\r\n    <div class=\"col\">\r\n      <div class=\"card shadow\">\r\n        <div class=\"card-header border-0\">\r\n          <h3 class=\"mb-0\">Danh sách người dùng</h3>\r\n        </div>\r\n        <div class=\"table-responsive\">\r\n          <table class=\"table align-items-center table-flush\" *ngIf=\"check==true\">\r\n            <thead class=\"thead-light\">\r\n              <tr style=\"text-align: center;\">\r\n                <th scope=\"col\">STT</th>\r\n                <th scope=\"col\" *ngFor=\"let field of fields;\">{{ field.label }}</th>\r\n                <th scope=\"col\" *ngIf=\"isHavingEditUserPermission\">Lựa chọn</th>\r\n              </tr>\r\n            </thead>\r\n            <tbody>\r\n              <tr *ngFor=\"let user of userList; let index=index\" style=\"text-align: center;\">\r\n                <td>{{ (currentPage - 1) * sizePage + index + 1 }}</td>\r\n                <td *ngFor=\"let key_data of key_data\">\r\n                  <span *ngIf=\"key_data.key=='role'\">{{ user[key_data.key].name }}</span>\r\n                  <span *ngIf=\"is_string(key_data.type) && key_data.key!='role'\">{{ user[key_data.key] }}</span>\r\n                  <div *ngIf=\"is_boolean(key_data.type)\">\r\n                    <span\r\n                      [ngClass]=\"[\r\n                        'badge',\r\n                        'badge-pill',\r\n                        user[key_data.key] ? 'badge-success' : 'badge-danger'\r\n                      ]\"\r\n                      >{{ status_vn(user[key_data.key]) }}</span\r\n                    >\r\n                  </div>\r\n                </td>\r\n                <td *ngIf=\"isHavingEditUserPermission\">\r\n                  <button class=\"btn btn-icon btn-sm btn-info\" type=\"button\" placement=\"top\" ngbTooltip=\"Sửa\" data-toggle=\"modal\" data-target=\"#editModal\" (click)=\"currentUser=user\" (click)=\"nameRole = currentUser.role.name\">\r\n                    <span class=\"btn-inner--icon\"><i class=\"ni ni-single-copy-04\"></i></span>\r\n                  </button>\r\n                </td>\r\n              </tr>\r\n            </tbody>\r\n          </table>\r\n          <h4 class=\"mb-0\" style=\"padding: 10px 24px 20px 24px;\" *ngIf=\"userList.length==0\">Không có kết quả tìm kiếm phù hợp</h4>\r\n        </div>\r\n        <ngx-spinner></ngx-spinner>\r\n        <app-pagination [totalPages]='totalItems' (pageEmit)='getUserList(filter, $event, sizePage)'></app-pagination>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  \r\n\r\n<!-- Modal Sửa -->\r\n<div *ngIf=\"is_have_data\" class=\"modal fade bd-example-modal-lg\" id=\"editModal\" tabindex=\"-1\" role=\"dialog\" aria-hidden=\"true\">\r\n  <div class=\"modal-dialog modal-lg\" role=\"document\">\r\n    <div class=\"modal-content\">\r\n      <div class=\"modal-header\">\r\n        <h3 class=\"modal-title\">Cập nhật thông tin người dùng</h3>\r\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\r\n          <span aria-hidden=\"true\">&times;</span>\r\n        </button>\r\n      </div>\r\n      <div class=\"modal-body\">\r\n        <div class=\"w-100 d-inline-block\">\r\n          <div *ngFor=\"let modal of modals\" class=\"w-50 float-left prl-15 col-md-6\">\r\n            <div class=\"form-group\">\r\n              <label class=\"form-control-label\" [for]=\"modal.fin\">{{ modal.label }}</label>\r\n              <div class=\"form-group\">\r\n                <input\r\n                    *ngIf=\"is_input(modal.type)\"\r\n                    value=\"{{ currentUser[modal.key] }}\"\r\n                    [name]=\"modal.fin\"\r\n                    [id]=\"modal.fin\"\r\n                    type=\"text\"\r\n                    class=\"form-control form-control-alternative\"\r\n                    [readonly]=\"modal.readonly\"\r\n                />\r\n                <select\r\n                  *ngIf=\"is_select(modal.type) && modal.key!='role'\"\r\n                  [(ngModel)]=\"currentUser[modal.key]\"\r\n                  [name]=\"modal.fin\"\r\n                  [id]=\"modal.fin\"\r\n                  class=\"form-control form-control-alternative\"\r\n                >\r\n                  <option value=\"\" disabled selected hidden>{{ status_vn(currentUser[modal.key]) }}</option>\r\n                  <option *ngFor=\"let data of data[modal.key]\" [ngValue]=\"data.value\" >{{ data.name }}</option>\r\n                </select>\r\n                <select\r\n                  *ngIf=\"is_select(modal.type) && modal.key=='role'\"\r\n                  [(ngModel)]=\"currentUser[modal.key]._id\"\r\n                  [name]=\"modal.fin\"\r\n                  [id]=\"modal.fin\"\r\n                  class=\"form-control form-control-alternative\"\r\n                >\r\n                  <!-- <option value=\"\" disabled selected hidden>{{ log(currentUser, modal) }}</option> -->\r\n                  <option *ngFor=\"let data of roleList\" [value]=\"data._id\" >{{ data.name }}</option>\r\n                </select>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n        <div class=\"modal-footer\">\r\n          <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\" (click)=\"redirect()\">Hủy</button>\r\n          <button type=\"button\" class=\"btn btn-primary\" data-dismiss=\"modal\" style=\"background-color: #004D90; border-color:#013E7A\"\r\n            (click)=\"updateUserInfo(currentUser)\">Lưu</button>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n  ");
 
 /***/ }),
 
@@ -1281,6 +1294,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var src_app_pages_action_log_action_log_component__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! src/app/pages/action-log/action-log.component */ "./src/app/pages/action-log/action-log.component.ts");
 /* harmony import */ var src_app_pages_support_map_support_map_component__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! src/app/pages/support-map/support-map.component */ "./src/app/pages/support-map/support-map.component.ts");
 /* harmony import */ var src_app_pages_report_report_component__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! src/app/pages/report/report.component */ "./src/app/pages/report/report.component.ts");
+/* harmony import */ var src_app_pages_connect_connect_component__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! src/app/pages/connect/connect.component */ "./src/app/pages/connect/connect.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1319,6 +1333,7 @@ var __importDefault = (undefined && undefined.__importDefault) || function (mod)
 
 
 
+
 var AdminLayoutModule = /** @class */ (function () {
     function AdminLayoutModule() {
     }
@@ -1352,7 +1367,8 @@ var AdminLayoutModule = /** @class */ (function () {
                 src_app_pages_pending_node_pending_node_component__WEBPACK_IMPORTED_MODULE_24__["PendingNodeComponent"],
                 src_app_pages_action_log_action_log_component__WEBPACK_IMPORTED_MODULE_25__["ActionLogComponent"],
                 src_app_pages_support_map_support_map_component__WEBPACK_IMPORTED_MODULE_26__["SupportMapComponent"],
-                src_app_pages_report_report_component__WEBPACK_IMPORTED_MODULE_27__["ReportComponent"]
+                src_app_pages_report_report_component__WEBPACK_IMPORTED_MODULE_27__["ReportComponent"],
+                src_app_pages_connect_connect_component__WEBPACK_IMPORTED_MODULE_28__["ConnectComponent"]
             ],
         })
     ], AdminLayoutModule);
@@ -1387,9 +1403,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var src_app_pages_action_log_action_log_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! src/app/pages/action-log/action-log.component */ "./src/app/pages/action-log/action-log.component.ts");
 /* harmony import */ var src_app_guards_authorization_guard__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! src/app/guards/authorization.guard */ "./src/app/guards/authorization.guard.ts");
 /* harmony import */ var src_app_pages_report_report_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! src/app/pages/report/report.component */ "./src/app/pages/report/report.component.ts");
+/* harmony import */ var src_app_pages_connect_connect_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! src/app/pages/connect/connect.component */ "./src/app/pages/connect/connect.component.ts");
 var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
   return (mod && mod.__esModule) ? mod : { "default": mod };
 };
+
 
 
 
@@ -1505,6 +1523,14 @@ var AdminLayoutRoutes = [
         data: {
             allowedRoles: ['Admin']
         }
+    },
+    {
+        path: 'connect',
+        component: src_app_pages_connect_connect_component__WEBPACK_IMPORTED_MODULE_14__["ConnectComponent"],
+        canActivate: [src_app_guards_authorization_guard__WEBPACK_IMPORTED_MODULE_12__["AuthorizationGuard"]],
+        data: {
+            allowedRoles: ['Admin']
+        }
     }
 ];
 
@@ -1537,6 +1563,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm5/core.js");
 /* harmony import */ var ngx_spinner__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ngx-spinner */ "./node_modules/ngx-spinner/__ivy_ngcc__/fesm5/ngx-spinner.js");
 /* harmony import */ var src_app_services_actionlog_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/actionlog.service */ "./src/app/services/actionlog.service.ts");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_3__);
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1588,6 +1616,7 @@ var __importDefault = (undefined && undefined.__importDefault) || function (mod)
 
 
 
+
 var ActionLogComponent = /** @class */ (function () {
     function ActionLogComponent(actionLogService, spinnerService) {
         this.actionLogService = actionLogService;
@@ -1597,7 +1626,8 @@ var ActionLogComponent = /** @class */ (function () {
             action_user: undefined,
             action_type: undefined,
             collection_store: undefined,
-            action_time: undefined
+            fromDate: undefined,
+            toDate: undefined
         };
         this.currentActionLog = [];
         this.currentPage = 1;
@@ -1606,7 +1636,8 @@ var ActionLogComponent = /** @class */ (function () {
         this.searchActionUser = "";
         this.searchActionType = "";
         this.searchCollectionType = "";
-        this.searchActionTime = "";
+        this.searchStartDate = "";
+        this.searchEndDate = "";
     }
     ActionLogComponent.prototype.ngOnInit = function () {
         return __awaiter(this, void 0, void 0, function () {
@@ -1658,7 +1689,7 @@ var ActionLogComponent = /** @class */ (function () {
     };
     ActionLogComponent.prototype.getModalInfo = function (field) {
         if (Object.keys(this.currentActionLog).length && this.currentActionLog[field.name]) {
-            return this.currentActionLog[field.name];
+            return this.currentActionLog[field.name][field.key];
         }
     };
     ActionLogComponent.prototype.getTableInfo = function (data, name, key) {
@@ -1695,16 +1726,23 @@ var ActionLogComponent = /** @class */ (function () {
                         else {
                             this.filter.collection_store = this.searchCollectionType;
                         }
-                        if (this.searchActionTime.length == 0) {
-                            this.filter.action_time = undefined;
+                        if (this.searchStartDate.length == 0) {
+                            this.filter.fromDate = undefined;
                         }
                         else {
-                            this.filter.action_time = this.searchActionTime;
+                            this.filter.fromDate = this.searchStartDate;
+                        }
+                        if (this.searchEndDate.length == 0) {
+                            this.filter.toDate = undefined;
+                        }
+                        else {
+                            this.filter.toDate = moment__WEBPACK_IMPORTED_MODULE_3___default()(this.searchEndDate).add(1, 'days');
                         }
                         this.currentPage = 1;
                         return [4 /*yield*/, this.getActionLogList(this.filter, this.currentPage, this.sizePage)];
                     case 1:
                         _a.sent();
+                        console.log(this.filter);
                         return [2 /*return*/];
                 }
             });
@@ -1715,11 +1753,12 @@ var ActionLogComponent = /** @class */ (function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        this.filter.action_time = undefined;
+                        this.filter.fromDate = undefined;
+                        this.filter.toDate = undefined;
                         this.filter.action_user = undefined;
                         this.filter.action_type = undefined;
                         this.filter.collection_store = undefined;
-                        this.searchActionTime = this.searchActionType = this.searchActionUser = this.searchCollectionType = "";
+                        this.searchEndDate = this.searchStartDate = this.searchActionType = this.searchActionUser = this.searchCollectionType = "";
                         this.currentPage = 1;
                         return [4 /*yield*/, this.getActionLogList(this.filter, this.currentPage, this.sizePage)];
                     case 1:
@@ -1781,6 +1820,167 @@ var DETAILS = [
         label: "Dữ liệu hiện tại",
         name: "current_data",
     }
+];
+
+
+/***/ }),
+
+/***/ "./src/app/pages/connect/connect.component.css":
+/*!*****************************************************!*\
+  !*** ./src/app/pages/connect/connect.component.css ***!
+  \*****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL2Nvbm5lY3QvY29ubmVjdC5jb21wb25lbnQuY3NzIn0= */");
+
+/***/ }),
+
+/***/ "./src/app/pages/connect/connect.component.ts":
+/*!****************************************************!*\
+  !*** ./src/app/pages/connect/connect.component.ts ***!
+  \****************************************************/
+/*! exports provided: ConnectComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ConnectComponent", function() { return ConnectComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm5/core.js");
+/* harmony import */ var src_app_services_connect_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/app/services/connect.service */ "./src/app/services/connect.service.ts");
+/* harmony import */ var ngx_spinner__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ngx-spinner */ "./node_modules/ngx-spinner/__ivy_ngcc__/fesm5/ngx-spinner.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (undefined && undefined.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+
+
+
+var ConnectComponent = /** @class */ (function () {
+    function ConnectComponent(connectService, spinnerService) {
+        this.connectService = connectService;
+        this.spinnerService = spinnerService;
+        this.filter = {};
+        this.currentPage = 1;
+        this.sizePage = 5;
+        this.connectList = [];
+    }
+    ConnectComponent.prototype.ngOnInit = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.getConnectingManagementList()];
+                    case 1:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    Object.defineProperty(ConnectComponent.prototype, "fields", {
+        get: function () {
+            return FIELDS;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    ConnectComponent.prototype.getConnectingManagementList = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var _this = this;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        this.spinnerService.show();
+                        return [4 /*yield*/, this.connectService.getConnectingManagementList().then(function (data) {
+                                _this.connectList = data.data;
+                                _this.totalItems = data.total;
+                            }).catch(function (err) {
+                                _this.currentPage = 1;
+                            })];
+                    case 1:
+                        _a.sent();
+                        this.spinnerService.hide();
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    ;
+    ConnectComponent.ctorParameters = function () { return [
+        { type: src_app_services_connect_service__WEBPACK_IMPORTED_MODULE_1__["ConnectService"] },
+        { type: ngx_spinner__WEBPACK_IMPORTED_MODULE_2__["NgxSpinnerService"] }
+    ]; };
+    ConnectComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-connect',
+            template: __importDefault(__webpack_require__(/*! raw-loader!./connect.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/connect/connect.component.html")).default,
+            styles: [__importDefault(__webpack_require__(/*! ./connect.component.css */ "./src/app/pages/connect/connect.component.css")).default]
+        }),
+        __metadata("design:paramtypes", [src_app_services_connect_service__WEBPACK_IMPORTED_MODULE_1__["ConnectService"],
+            ngx_spinner__WEBPACK_IMPORTED_MODULE_2__["NgxSpinnerService"]])
+    ], ConnectComponent);
+    return ConnectComponent;
+}());
+
+var FIELDS = [
+    {
+        label: "IP",
+        name: "ip",
+    },
+    {
+        label: "Thời gian nhận dũ liệu cuối cùng",
+        name: "last_time_recieve",
+    },
+    {
+        label: "Dữ liệu",
+        name: "last_data_recieve"
+    },
 ];
 
 
@@ -3428,7 +3628,7 @@ var NewUserComponent = /** @class */ (function () {
             role: "",
             status: ""
         };
-        this.router.navigate(["/new-user"]);
+        this.router.navigate(["/user"]);
     };
     NewUserComponent.prototype.checkValue = function (event) {
         console.log(event);
@@ -4056,6 +4256,12 @@ var MODAL = [
         key: "ip",
         type: "input",
         readonly: true,
+    },
+    {
+        label: "Cảm biến",
+        fin: "sensor",
+        key: "sensor",
+        type: "switch",
     },
 ];
 var STATUS = [
@@ -5030,12 +5236,15 @@ var ReportComponent = /** @class */ (function () {
         this.filter = {
             node_id: "",
             start_date: "",
-            end_date: ""
+            end_date: "",
         };
         this.end_date = "";
         this.currentNode = "";
         this.check = false;
         this.isShowingTable = true;
+        // chart
+        this.aqi_bar_chart = null;
+        this.aqi_pie_chart = null;
     }
     ReportComponent.prototype.ngOnInit = function () {
         return __awaiter(this, void 0, void 0, function () {
@@ -5059,11 +5268,20 @@ var ReportComponent = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
+    Object.defineProperty(ReportComponent.prototype, "evaluates", {
+        get: function () {
+            return EVALUATE;
+        },
+        enumerable: true,
+        configurable: true
+    });
     ReportComponent.prototype.getNodeList = function () {
         return __awaiter(this, void 0, void 0, function () {
             var _this = this;
             return __generator(this, function (_a) {
-                this.nodeService.getNodeListApprovedFilter({ approve: 1 }).then(function (data) {
+                this.nodeService
+                    .getNodeListApprovedFilter({ approve: 1 })
+                    .then(function (data) {
                     _this.nodeList = data.data;
                 });
                 return [2 /*return*/];
@@ -5078,10 +5296,13 @@ var ReportComponent = /** @class */ (function () {
                     case 0:
                         this.spinnerService.show();
                         this.currentPage = currentPage;
-                        return [4 /*yield*/, this.dataService.getDataOfNode(filter, currentPage, sizePage).then(function (data) {
+                        return [4 /*yield*/, this.dataService
+                                .getDataOfNode(filter, currentPage, sizePage)
+                                .then(function (data) {
                                 _this.dataList = data.rows;
                                 _this.totalItems = data.count;
-                            }).catch(function (err) {
+                            })
+                                .catch(function (err) {
                                 _this.currentPage = 1;
                             })];
                     case 1:
@@ -5094,7 +5315,7 @@ var ReportComponent = /** @class */ (function () {
     };
     ReportComponent.prototype.getChart = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var tempList, aqiBarChart, aqiPieChart, aqi_bar_chart, aqi_pie_chart;
+            var tempList, aqiBarChart, aqiPieChart;
             var _this = this;
             return __generator(this, function (_a) {
                 switch (_a.label) {
@@ -5104,7 +5325,9 @@ var ReportComponent = /** @class */ (function () {
                         this.dayList = [];
                         this.percentageList = [0, 0, 0, 0, 0, 0];
                         this.backgroundColor = [];
-                        return [4 /*yield*/, this.dataService.getDataOfNode(this.filter, 1, this.totalItems).then(function (data) {
+                        return [4 /*yield*/, this.dataService
+                                .getDataOfNode(this.filter, 1, this.totalItems)
+                                .then(function (data) {
                                 tempList = data.rows;
                             })];
                     case 1:
@@ -5144,7 +5367,10 @@ var ReportComponent = /** @class */ (function () {
                         console.log("pie", this.percentageList);
                         aqiBarChart = document.getElementById("aqi_bar_chart");
                         aqiPieChart = document.getElementById("aqi_pie_chart");
-                        aqi_bar_chart = new chart_js__WEBPACK_IMPORTED_MODULE_4___default.a(aqiBarChart, {
+                        if (this.aqi_bar_chart != null) {
+                            this.aqi_bar_chart.destroy();
+                        }
+                        this.aqi_bar_chart = new chart_js__WEBPACK_IMPORTED_MODULE_4___default.a(aqiBarChart, {
                             type: "bar",
                             options: {
                                 maintainAspectRatio: false,
@@ -5172,22 +5398,25 @@ var ReportComponent = /** @class */ (function () {
                                     {
                                         label: "AQI",
                                         data: this.aqiList,
-                                        backgroundColor: this.backgroundColor
+                                        backgroundColor: this.backgroundColor,
                                     },
                                 ],
                             },
                         });
-                        aqi_pie_chart = new chart_js__WEBPACK_IMPORTED_MODULE_4___default.a(aqiPieChart, {
+                        if (this.aqi_pie_chart != null) {
+                            this.aqi_pie_chart.destroy();
+                        }
+                        this.aqi_pie_chart = new chart_js__WEBPACK_IMPORTED_MODULE_4___default.a(aqiPieChart, {
                             type: "pie",
                             options: {
                                 title: {
                                     display: true,
-                                    position: 'top'
+                                    position: "top",
                                 },
                                 legend: {
                                     display: true,
-                                    position: 'top'
-                                }
+                                    position: "top",
+                                },
                             },
                             data: {
                                 labels: ["Tốt", "Trung bình", "Kém", "Xấu", "Rất xấu", "Nguy hại"],
@@ -5195,9 +5424,16 @@ var ReportComponent = /** @class */ (function () {
                                     {
                                         fill: true,
                                         label: "AQI",
-                                        backgroundColor: ["#02B067", "#F8D22E", "#FF6037", "#FF3232", "#CC3399", "#A52A2A"],
+                                        backgroundColor: [
+                                            "#02B067",
+                                            "#F8D22E",
+                                            "#FF6037",
+                                            "#FF3232",
+                                            "#CC3399",
+                                            "#A52A2A",
+                                        ],
                                         borderWidth: [0, 0, 0, 0, 0, 0],
-                                        data: this.percentageList
+                                        data: this.percentageList,
                                     },
                                 ],
                             },
@@ -5219,9 +5455,13 @@ var ReportComponent = /** @class */ (function () {
                             this.filter.node_id = this.currentNode._id;
                         }
                         if (this.end_date != "") {
-                            this.filter.end_date = moment__WEBPACK_IMPORTED_MODULE_5___default()(this.end_date).add(23, 'hours').format("YYYY-MM-DD HH:mm:ss");
+                            this.filter.end_date = moment__WEBPACK_IMPORTED_MODULE_5___default()(this.end_date)
+                                .add(23, "hours")
+                                .format("YYYY-MM-DD HH:mm:ss");
                         }
-                        if (!(this.filter.node_id != "" && this.filter.start_date != "" && this.filter.end_date != "")) return [3 /*break*/, 3];
+                        if (!(this.filter.node_id != "" &&
+                            this.filter.start_date != "" &&
+                            this.filter.end_date != "")) return [3 /*break*/, 3];
                         this.currentPage = 1;
                         return [4 /*yield*/, this.getDataOfNode(this.filter, this.currentPage, this.sizePage)];
                     case 1:
@@ -5283,6 +5523,9 @@ var ReportComponent = /** @class */ (function () {
             return "Nguy hại";
         }
     };
+    ReportComponent.prototype.getPercent = function (value) {
+        return (value / this.totalItems * 100).toFixed(2);
+    };
     ReportComponent.ctorParameters = function () { return [
         { type: src_app_services_data_service__WEBPACK_IMPORTED_MODULE_1__["DataService"] },
         { type: src_app_services_node_service__WEBPACK_IMPORTED_MODULE_3__["NodeService"] },
@@ -5290,7 +5533,7 @@ var ReportComponent = /** @class */ (function () {
     ]; };
     ReportComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: 'app-report',
+            selector: "app-report",
             template: __importDefault(__webpack_require__(/*! raw-loader!./report.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/report/report.component.html")).default,
             styles: [__importDefault(__webpack_require__(/*! ./report.component.css */ "./src/app/pages/report/report.component.css")).default]
         }),
@@ -5312,25 +5555,26 @@ var FIELDS = [
     },
     {
         label: "Độ ẩm",
-        name: "hum"
+        name: "hum",
     },
     {
         label: "Khí CO",
-        name: "co"
+        name: "co",
     },
     {
         label: "Khí CO2",
-        name: "co2"
+        name: "co2",
     },
     {
         label: "Bụi PM2.5",
-        name: "pm_25"
+        name: "pm_25",
     },
     {
         label: "Chỉ số AQI",
         name: "aqi",
-    }
+    },
 ];
+var EVALUATE = ["Tốt", "Trung bình", "Kém", "Xấu", "Rất xấu", "Nguy hại"];
 
 
 /***/ }),
@@ -6203,9 +6447,7 @@ var UserComponent = /** @class */ (function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0:
-                        this.spinnerService.show();
-                        return [4 /*yield*/, this.checkEditUserPermission()];
+                    case 0: return [4 /*yield*/, this.checkEditUserPermission()];
                     case 1:
                         _a.sent();
                         return [4 /*yield*/, this.getRoleList()];
@@ -6285,8 +6527,8 @@ var UserComponent = /** @class */ (function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        this.currentPage = currentPage;
                         this.spinnerService.show();
+                        this.currentPage = currentPage;
                         return [4 /*yield*/, this.userService.getUserList(filter, currentPage, sizePage).then(function (data) {
                                 _this.totalItems = data.total;
                                 _this.userList = data.data;
@@ -6629,6 +6871,7 @@ var ActionlogService = /** @class */ (function (_super) {
         return new Promise(function (resolve, reject) {
             _this.httpClient.get(_this.API_URL + ("/api/actionLog?filter=" + filter + "&page=" + page + "&size=" + size), _this.getOptions()).
                 subscribe(function (res) {
+                console.log(_this.API_URL + ("/api/actionLog?filter=" + filter + "&page=" + page + "&size=" + size));
                 resolve(res.responseData);
             }, function (err) {
                 reject(err);
@@ -6645,6 +6888,84 @@ var ActionlogService = /** @class */ (function (_super) {
         __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]])
     ], ActionlogService);
     return ActionlogService;
+}(_base_service__WEBPACK_IMPORTED_MODULE_2__["BaseService"]));
+
+
+
+/***/ }),
+
+/***/ "./src/app/services/connect.service.ts":
+/*!*********************************************!*\
+  !*** ./src/app/services/connect.service.ts ***!
+  \*********************************************/
+/*! exports provided: ConnectService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ConnectService", function() { return ConnectService; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/__ivy_ngcc__/fesm5/http.js");
+/* harmony import */ var _base_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./base.service */ "./src/app/services/base.service.ts");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+
+
+
+var ConnectService = /** @class */ (function (_super) {
+    __extends(ConnectService, _super);
+    function ConnectService(httpClient) {
+        var _this = _super.call(this, httpClient) || this;
+        _this.httpClient = httpClient;
+        return _this;
+    }
+    ConnectService.prototype.getConnectingManagementList = function () {
+        var _this = this;
+        // filter = JSON.stringify(filter);
+        // filter = btoa(unescape(encodeURIComponent(filter)));
+        return new Promise(function (resolve, reject) {
+            _this.httpClient.get(_this.API_URL + "/api/currentConnection", _this.getOptions()).
+                subscribe(function (res) {
+                console.log(res);
+                resolve(res.responseData);
+            }, function (err) {
+                reject(err);
+            });
+        });
+    };
+    ConnectService.ctorParameters = function () { return [
+        { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"] }
+    ]; };
+    ConnectService = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
+            providedIn: 'root'
+        }),
+        __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]])
+    ], ConnectService);
+    return ConnectService;
 }(_base_service__WEBPACK_IMPORTED_MODULE_2__["BaseService"]));
 
 
