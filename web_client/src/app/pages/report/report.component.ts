@@ -52,7 +52,6 @@ export class ReportComponent implements OnInit {
   async ngOnInit() {
     parseOptions(Chart, chartOptions());
     await this.getNodeList();
-    console.log(this.dataList);
   }
 
   get fields() {
@@ -120,11 +119,6 @@ export class ReportComponent implements OnInit {
         this.percentageList[5]++;
       }
     });
-    console.log("date", this.dayList);
-    console.log("date", this.aqiList);
-    console.log("date", this.backgroundColor);
-    console.log("pie", this.percentageList);
-    console.log("pie", this.percentageList);
 
     // create chart
     var aqiBarChart = document.getElementById("aqi_bar_chart");
@@ -206,7 +200,6 @@ export class ReportComponent implements OnInit {
   async makeAReport() {
     this.isShowingTable = true;
     this.check = true;
-    console.log(this.filter);
     if (this.currentNode != {}) {
       this.filter.node_id = this.currentNode._id;
     }

@@ -23,14 +23,11 @@ export class AuthorizationGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Promise<boolean> {
-      console.log(123);
-      
     const allowedRoles = next.data.allowedRoles;
     const res = await this.authService.isAuthorized(allowedRoles);
     
     
     if (!res) {
-      console.log("res", res);
       this.router.navigate(['user-profile']);
     }
 

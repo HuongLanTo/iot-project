@@ -132,7 +132,5 @@ export class SidebarComponent implements OnInit {
         this.actionName.push(e.name);
       });
     }
-    console.log(this.actionName);
-    
   }
 }

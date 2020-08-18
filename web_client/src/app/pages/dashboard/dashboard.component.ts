@@ -25,7 +25,6 @@ export class DashboardComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(123);
     
     this.datasets = [
       [0, 20, 10, 30, 15, 40, 20, 60, 60],

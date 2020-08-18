@@ -107,7 +107,6 @@ export class ActionLogComponent implements OnInit {
     }
     this.currentPage = 1;
     await this.getActionLogList(this.filter, this.currentPage, this.sizePage);
-    console.log(this.filter);
     
   }
 

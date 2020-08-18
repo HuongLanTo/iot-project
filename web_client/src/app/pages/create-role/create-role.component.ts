@@ -102,7 +102,6 @@ export class CreateRoleComponent implements OnInit {
       }
     }
     if (this.is_permissions_valid == true && isCreate == true) {
-        console.log(this.role);
         await this.roles.createRole(this.role).then((data) => {
         this.toastrService.success("Tạo mới vai trò thành công");
         this.router.navigate(["/role"]);
@@ -146,8 +145,6 @@ export class CreateRoleComponent implements OnInit {
           this.temp = this.temp + this.area_name[i];
         } else {
           this.temp = this.temp + " + " + this.area_name[i];
-          console.log(this.temp);
-          
         }
       }
     }
@@ -217,13 +214,11 @@ export class CreateRoleComponent implements OnInit {
     this.role.area_permission = await this.role.area_permission.filter(
       (v) => v !== id
     );
-    console.log(1, this.role.area_permission);
     
     var index = await this.area_name.indexOf(this.getAreaName(id));
     if (index > -1) {
       await this.area_name.splice(index, 1);
     } 
-    console.log(2, this.area_name);
     
     if (this.role.area_permission.length > 0) {
       this.temp = "";
@@ -238,13 +233,10 @@ export class CreateRoleComponent implements OnInit {
     if (this.role.area_permission.length == 0) {
       this.temp = "";
     }
-    console.log(3, this.temp);
     
     if (this.checkCreateNode > -1) {
       this.name[this.checkCreateNode] = "Tạo mới node " + this.temp;
     }
-    console.log(4, this.name[this.checkCreateNode]);
-    console.log(5, this.checkCreateNode);
     
     
     if (this.role.action_permission.length >= 1) {
@@ -257,7 +249,6 @@ export class CreateRoleComponent implements OnInit {
         }
       }
     }
-    console.log(6, this.role.name);
     
   }
 }

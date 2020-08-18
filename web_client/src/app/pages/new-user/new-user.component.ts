@@ -102,7 +102,6 @@ export class NewUserComponent implements OnInit {
   async getRoleList() {
     await this.roleService.getRoles().then((data: any) => {
       this.roleList = data.data;
-      console.log(this.roleList);
       
     })
   }
@@ -174,7 +173,6 @@ export class NewUserComponent implements OnInit {
   }
 
   checkValue(event: any) {
-    console.log(event);
   }
 
   checkUsername(value: any) {

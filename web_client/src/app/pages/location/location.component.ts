@@ -67,13 +67,11 @@ export class LocationComponent implements OnInit {
     this.checkCityCode = true
     this.provinceCode = value.code;
     this.searchByProvince = value._id;
-    console.log(this.provinceCode, this.searchByProvince);
     
   }
 
   getDistrictId(value) {
     this.searchByDistrict = value._id;
-    console.log(this.searchByDistrict);
     
   }
 

@@ -61,43 +61,8 @@ export class MapComponent implements OnInit {
 
   async ngOnInit() {
     this.initMap();
-    // var marker = L.marker([20.975986, 105.815191]).addTo(this.map);
-    // marker.bindPopup("<b>nameNode1</b><br>AQI:96");
     await this.getNodeList();
     await this.getDataByLastHour({node_ids:this.activeNodeId});
-    // await this.getDataByLastHour();
-    // this.sensor_data.forEach(e => {
-    //   this.polygon.push([Number(e.long), Number(e.lat)]);
-    // });
-    // console.log(145, this.sensor_data);
-    // console.log();
-    //     console.log(this.polygon);
-        
-    // for (var i = 0; i < this.polygon.length; i++) {
-    //   var markerLocation = new L.LatLng(this.polygon[i][0], this.polygon[i][1]);
-    //   var marker = new L.Marker(markerLocation);
-    //   this.map.addLayer(marker);
-    // }
-    // var location = "Thanh Xuan";
-  //   var markers = [
-  //     [ -0.1244324, 51.5006728, "Big Ben" ],
-  //     [ -0.119623, 51.503308, "London Eye" ],
-  //     [ -0.1279688, 51.507728, `<b>${location}</b><table style="width: 100%;"><tbody><td><i class="fa fa-tint fa-2x" aria-hidden="true" style="float:left;margin-right:6px;"><span style="font-size:18px">30</span></i></td><td><i class="fa fa-tint fa-2x" aria-hidden="true" style="float:left;margin-right:6px;"><span>30</span></i></td></tbody></table>`] 
-  //  ];
-   
-    //Loop through the markers array
-    // for (var i=0; i<markers.length; i++) {
-     
-    //   var lon = Number(markers[i][0]);
-    //   var lat = Number(markers[i][1]);
-    //   var popupText = String(markers[i][2]);
-      
-    //    var markerLocation = new L.LatLng(lat, lon);
-    //    var marker = new L.Marker(markerLocation);
-    //    this.map.addLayer(marker);
-   
-    //    marker.bindPopup(popupText);
-    // }
     if (this.sensor_data!="" && this.sensor_data!=null) {
       await this.getMarkers();
     }
@@ -115,7 +80,6 @@ export class MapComponent implements OnInit {
         this.activeNodeId = this.activeNodeId + "," + e._id;
       }
     });
-    console.log("active", this.activeNodeId);
     
   }
 
@@ -141,7 +105,6 @@ export class MapComponent implements OnInit {
   }
 
   getMarkers() {
-    console.log(4324, this.sensor_data);
     
     var markers = [];
     var temp = [];
@@ -185,9 +148,6 @@ export class MapComponent implements OnInit {
     //Loop through the markers array
     for (var i = 0; i < markers.length; i++) {
 
-      // var icon = L.divIcon({
-      //   html:'<div class="map-label"><div class="map-label-content"></div><div class="map-label-arrow">Hello</div></div>'
-      // });
      
       var lon = Number(markers[i][1]);
       var lat = Number(markers[i][0]);
@@ -238,7 +198,6 @@ export class MapComponent implements OnInit {
    
       marker.bindPopup(popupText);
     }
-    console.log(12, markers);
     
   }
 

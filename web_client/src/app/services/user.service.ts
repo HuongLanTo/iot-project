@@ -35,7 +35,6 @@ export class UserService extends BaseService {
         filter = btoa(unescape(encodeURIComponent(filter)));
         return new Promise((resolve, reject) => {
             this.httpClient.get(this.API_URL + `/api/user?filter=${filter}`, this.getOptions()).subscribe((res: {data: any}) => {
-                console.log(res.data);
                 resolve(res.data);
             }, err => {
                 reject(err);

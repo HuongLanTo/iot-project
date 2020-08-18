@@ -67,7 +67,6 @@ export class NewNodeComponent implements OnInit {
       this.isNameInvalid = false;
     }
     if (!this.isIpInvalid && !this.isNameInvalid && !this.isLocationInvalid) {
-      console.log(this.newNode);
       this.newNode.approve = "0";
       this.newNode.status = "0";
       this.newNode.created_by = this.id_current_user;

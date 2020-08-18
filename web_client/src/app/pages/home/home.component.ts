@@ -125,10 +125,8 @@ export class HomeComponent implements OnInit {
   async getDataByLastHour(filter) {
     this.dataService.getDataByLastHour(filter)
       .then((data: any) => {
-        console.log("data", data);
         
         this.sensor_data = data.data.filter(v => v && v.id);
-        console.log('sensor', this.sensor_data);
         
         if (this.sensor_data!="" && this.sensor_data!=null) {
           this.current_sensor_data = this.sensor_data[0];
@@ -154,7 +152,6 @@ export class HomeComponent implements OnInit {
       for (var i = temp.length - 1; i >= 0; i--) {
         this.three_day_aqi_data.push(temp[i]);
       }
-      console.log(2324324, this.three_day_aqi_data);
       
       if (this.three_day_aqi_data.length == 3) {
         this.set3DayAqiInfo(this.three_day_aqi_data[0].aqi, this.three_day_aqi_data[1].aqi, this.three_day_aqi_data[2].aqi);
@@ -349,9 +346,6 @@ export class HomeComponent implements OnInit {
     this.co2_data = [];
     this.pm25_data = []
     this.time = [];
-    console.log(999, this.filterDataBy24Hour);
-    
-    console.log(999, dataBy24Hour);
     
     
     for (var i = dataBy24Hour.length - 1; i >= 0; i--) {
@@ -467,11 +461,7 @@ export class HomeComponent implements OnInit {
     this.backgroundColor = [];
     this.filterSearch.date = value;
     await this.dataService.getDataOfAllNodeByDay(this.filterSearch).then(data => {
-      console.log(555, data);
-      
       this.searchList = data;
-      console.log(5555555555, this.searchList);
-      
     });
     
     if (this.searchList.length != 0) {
@@ -493,10 +483,6 @@ export class HomeComponent implements OnInit {
         }
       });
     }
-
-    console.log(1, this.backgroundColor);
-    console.log(2, this.searchAqiList);
-    console.log(3, this.searchNameList);
     this.setBarTypeOfChart();
   }
     

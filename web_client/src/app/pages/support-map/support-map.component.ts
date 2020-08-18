@@ -146,7 +146,6 @@ export class SupportMapComponent implements OnInit {
    
       marker.bindPopup(popupText);
     }
-    console.log(12, markers);
     
   }
 

@@ -137,7 +137,6 @@ export class UserComponent implements OnInit {
   async getRoleList() {
     await this.roleService.getRoles().then((data: any) => {
       this.roleList = data.data;
-      console.log(this.roleList);
       
     })
   }
@@ -176,7 +175,6 @@ export class UserComponent implements OnInit {
       }
     }
     this.currentPage = 1;
-    console.log("filter", this.filter);
     
     await this.getUserList(this.filter, this.currentPage, this.sizePage);
   }
@@ -214,13 +212,6 @@ export class UserComponent implements OnInit {
         }
       }
     })
-  }
-
-  log(value, modal) {
-    if (value[modal.key]) {
-      console.log(value[modal.key].name);
-    }
-    console.log(modal);
   }
 }
 

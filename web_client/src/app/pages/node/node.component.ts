@@ -114,7 +114,6 @@ export class NodeComponent implements OnInit {
       this.check = true;
       this.totalItems = data.total;
       this.nodeList = data.data;
-      console.log(data);
       
     }).catch(err => {
       this.check = false;
@@ -138,13 +137,13 @@ export class NodeComponent implements OnInit {
         this.toastrService.warning("Cập nhật thông tin node thất bại");
       });
     
-    await this.nodeService.updateStatus(this.currentNode._id, {
-      status: this.currentNode.status
-    })
-    .then(data => {})
-    .catch(err => {
-      this.toastrService.warning("Cập nhật trạng thái node thất bại");
-    })
+    // await this.nodeService.updateStatus(this.currentNode._id, {
+    //   status: this.currentNode.status
+    // })
+    // .then(data => {})
+    // .catch(err => {
+    //   this.toastrService.warning("Cập nhật trạng thái node thất bại");
+    // })
   }
 
   async checkEditNodePermission() {
@@ -171,7 +170,6 @@ export class NodeComponent implements OnInit {
         await areaName.forEach(e => {
           this.districCode.push(e._id);
         });
-        console.log('districtCode', this.districCode);
         
         this.filter.district = this.districCode;
         this.currentPage = 1;
@@ -238,7 +236,6 @@ export class NodeComponent implements OnInit {
         this.filter.status = String(this.searchStatus);
       }
     }
-    console.log(this.filter);
     
     this.currentPage = 1;
     this.spinnerService.show();

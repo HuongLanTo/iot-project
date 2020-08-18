@@ -83,7 +83,6 @@ export class PaginationComponent implements OnInit {
     // create an array of pages to ng-repeat in the pager control
     var pages = Array.from(Array((endPage + 1) - startPage).keys()).map(function (i) { return startPage + i; });
     // return object with all pager properties required by the view
-    console.log(pages);
     
     return {
         totalItems: totalItems,

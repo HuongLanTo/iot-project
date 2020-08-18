@@ -31,7 +31,6 @@ export class LocationService extends BaseService {
         return new Promise((resolve, reject) => {
             this.httpClient.get(this.API_URL + "/api/location", this.getOptions()).
                 subscribe((res: {responseData: any}) => {
-                    console.log(res.responseData);
                     resolve(res.responseData)
                 }, err => {
                     reject(err)

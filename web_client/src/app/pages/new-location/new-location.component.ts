@@ -55,15 +55,8 @@ export class NewLocationComponent implements OnInit {
 
   async ngOnInit() {
     this.getProvinceList();
-    // this.getDistrictList();
-    // this.getSubDistrictList();
   }
 
-  // async ngAfterViewInit() {
-  //   this.message = this.map.latlng;
-  //   console.log(this.message);
-    
-  // }
 
   createLocation() {
     if (!this.newLocation.province) {
@@ -98,7 +91,6 @@ export class NewLocationComponent implements OnInit {
     }
     if (!this.isProvinceInvalid && !this.isDistrictInvalid && !this.isSubDistrictInvalid && !this.isDetailLocationInvalid && !this.isLatitudeInvalid && !this.isLongitudeInvalid) {
       // this.newLocation.numberNode = this.newLocation.numberActiveNode = this.newLocation.numberDeactiveNode = "0";
-      console.log(this.newLocation);
       
       this.locationService.createLocation(this.newLocation)
         .then(data => {

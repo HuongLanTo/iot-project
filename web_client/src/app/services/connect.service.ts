@@ -18,8 +18,6 @@ export class ConnectService extends BaseService {
         return new Promise((resolve, reject) => {
             this.httpClient.get(this.API_URL + "/api/currentConnection", this.getOptions()).
                 subscribe((res: {responseData: any}) => {
-                    console.log(res);
-                    
                     resolve(res.responseData)
                 }, err => {
                     reject(err)
