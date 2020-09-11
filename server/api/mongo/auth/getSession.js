@@ -11,9 +11,18 @@ const logger = log4js.getLogger("haveSession");
 
 const haveSession = async function haveSession(req, res) {
   try {
-    logger.info("request.headers.cookies: " + stringify(req.headers.cookie));
-    // const result = await getSession(req.cookies);
-    const result = await getSession(cookie.parse(req.headers.cookie));
+    // logger.info("request.headers.cookies: " + stringify(req.headers.cookie));
+    // // const result = await getSession(req.cookies);
+    // const result = await getSession(cookie.parse(req.headers.cookie));
+
+    var result;
+    if(req.headers.cookie){
+      logger.info("request.headers.cookie: " + stringify(req.headers.cookie));
+      result = await getSession(cookie.parse(req.headers.cookie));
+    }else if (req.headers.cookies) {
+      logger.info("request.headers.cookies: " + stringify(req.headers.cookies));
+      result = await getSession(cookie.parse(req.headers.cookies));
+    }
 
     return res.status(200).send({
       responseCode: 0,

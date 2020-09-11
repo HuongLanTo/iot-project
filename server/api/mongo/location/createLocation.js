@@ -1,18 +1,24 @@
 const fs = require("fs");
+const path = require('path');
 const Location = require("../../../models/mongo/location");
 const Province = require("../../../models/mongo/province");
 const District = require("../../../models/mongo/district");
+const ActionLog = require("../../../models/mongo/actionLog");
 const Sub_district = require("../../../models/mongo/sub-district");
+const {parse, stringify} = require('flatted');
+const moment = require('moment');
 
 const log4js = require("log4js");
 const { slugify } = require("../../../utils/common");
 
 log4js.configure("./config/log4js.json");
-const logger = log4js.getLogger("createPrivince");
+const logger = log4js.getLogger(path.basename(__filename));
 
 const createLocation = async function createLocation(req, res) {
   const body = req.body;
-
+  logger.info("request.body: " + stringify(body))
+  const action_time = moment();
+  let response;
   if (
     !body.province ||
     !body.district ||
@@ -20,12 +26,21 @@ const createLocation = async function createLocation(req, res) {
     !body.latitude ||
     !body.longitude
   ) {
-    logger.info("Param invalid");
-    return res.status(400).send({
+    response = {
       responseCode: 11,
       responseMessage: "PARAM.INVALID",
-    });
+    }
+    logger.info("response: " + stringify(response));
+    return res.status(400).send(response);
   }
+
+  var actionLog = new ActionLog({
+    action_user : req.user_id,
+    action_time : action_time.format(),
+    action_type : req.method,
+    collection_store : "locations",
+    request : stringify(req.body)
+  })
 
   var _value = {
     detail_location: body.detail_location,
@@ -39,50 +54,66 @@ const createLocation = async function createLocation(req, res) {
 
   await getProvince(body.province).then(p => _province = p);
   if (!_province || !_province._id) {
-    return res.status(400).send({
+    response = {
       responseCode: 2,
       responseMessage: "Không xác thực được tỉnh/thành phố",
-    });
+    }
+    logger.info("response: " + stringify(response));
+    return res.status(400).send(response);
   }
   _value.province = body.province;
 
   await getDistrict(body.district).then(d => _district = d);
   if (!_district || !_district._id) {
-    return res.status(400).send({
+    response = {
       responseCode: 2,
       responseMessage: "Không xác thực được quận/huyện",
-    });
+    }
+    logger.info("response: " + stringify(response));
+    return res.status(400).send(response);
   }
   _value.district = body.district;
 
   if(body.sub_district){
-    await getSub_district(body.location).then(s => _sub_district = s);
+    await getSub_district(body.sub_district).then(s => _sub_district = s);
     if (!_sub_district || !_sub_district._id) {
-      return res.status(400).send({
+      response = {
         responseCode: 2,
         responseMessage: "Không xác thực được xã/phường",
-      });
+      }
+      logger.info("response: " + stringify(response));
+      return res.status(400).send(response);
     }
     _value.sub_district = body.sub_district;
   }
 
   var value = new Location(_value);
 
-  try {
-    const saveLocation = await value.save();
-    return res.status(200).send({
-      responseCode: 1,
-      responseMessage: "SUCCEED",
-      responseData: value,
+    await value.save()
+    .then(data => {
+      response = {
+        responseCode: 1,
+        responseMessage: "SUCCEED",
+        responseData: value,
+      }
+      actionLog.current_data = data
+      actionLog.response = stringify(response);
+      logger.info("response: " + stringify(response));
+      return res.status(200).send(response);
+    })
+    .catch(err => {
+      response = {
+        responseCode: 0,
+        responseMessage: "Tạo mới user không thành công, Hệ thống đang bận " + err.message,
+      }
+      actionLog.response = stringify(response);
+      logger.error("Error create location\n" + stringify(err))
+      return res.status(500).send(response);
+    })
+    .finally(() => {
+      actionLog.execution_time = moment().valueOf() - action_time.valueOf();
+      actionLog.save();
     });
-  } catch (err) {
-    logger.error(err.message);
-    return res.status(500).send({
-      responseCode: 0,
-      responseMessage: "Tạo mới không thành công, Hệ thống đang bận",
-      responseDecription: err.message,
-    });
-  }
 };
 
 async function getProvince(provinceId) { 
@@ -90,9 +121,10 @@ async function getProvince(provinceId) {
     Province.findById(provinceId)
       .exec((err, data) => {
         if (err) {
+          logger.error("Error verify province\n" + stringify(err));
           return res.status(500).send({
             responseCode: 0,
-            responseMessage: "Lỗi trong quá trình kiểm tra tỉnh/thành phố",
+            responseMessage: "Lỗi trong quá trình kiểm tra tỉnh/thành phố" + err.message
           });
         }
         resolve(data)
@@ -105,6 +137,7 @@ async function getDistrict(districtId) {
     District.findById(districtId)
       .exec((err, data) => {
         if (err) {
+          logger.error("Error verify district\n" + stringify(err));
           return res.status(500).send({
             responseCode: 0,
             responseMessage: "Lỗi trong quá trình kiểm tra quận/huyện",
@@ -120,6 +153,7 @@ async function getSub_district(sub_districtId) {
     Sub_district.findById(sub_districtId)
       .exec((err, data) => {
         if (err) {
+          logger.error("Error verify sub district\n" + stringify(err));
           return res.status(500).send({
             responseCode: 0,
             responseMessage: "Lỗi trong quá trình kiểm tra xã/phường",

@@ -7,13 +7,16 @@ const sensorSchema = new Schema(
       type: mongoose.Schema.ObjectId,
       ref: "Node",
     },
+    ip: {
+      type: String
+    },
     temperature: {
       type: Number,
     },
     humidity: {
       type: Number,
     },
-    dust: {
+    pm25: {
       type: Number,
     },
     co: {
@@ -42,5 +45,5 @@ const sensorSchema = new Schema(
   }
 );
 
-const sensorSchema = mongoose.model("Humidity", sensorSchema);
-module.exports = Humidity;
+const Sensor = mongoose.model("Sensor", sensorSchema);
+module.exports = Sensor;

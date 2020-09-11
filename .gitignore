@@ -5,3 +5,5 @@
 /mobile_client/Pods
 
 /server/logs
+
+/server/process/logs

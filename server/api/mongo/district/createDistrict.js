@@ -1,12 +1,12 @@
 const fs = require("fs");
 const District = require("../../../models/mongo/district");
 const Province = require("../../../models/mongo/province");
-
+const path = require('path');
 const log4js = require("log4js");
 const { slugify } = require("../../../utils/common");
 
 log4js.configure("./config/log4js.json");
-const logger = log4js.getLogger("createPrivince");
+const logger = log4js.getLogger(path.basename(__filename));
 
 const createDistrict = async function createDistrict(req, res) {
   const body = req.body;

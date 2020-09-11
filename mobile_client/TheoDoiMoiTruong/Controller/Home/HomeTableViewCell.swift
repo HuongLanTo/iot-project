@@ -9,7 +9,7 @@
 import UIKit
 
 class HomeTableViewCell: UITableViewCell {
-
+    
     //View
     @IBOutlet weak var viewNhat: UIView!
     @IBOutlet weak var viewDam: UIView!
@@ -37,12 +37,12 @@ class HomeTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-
+        
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
     }
     
 }

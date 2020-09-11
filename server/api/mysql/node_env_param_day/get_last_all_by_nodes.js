@@ -23,8 +23,6 @@ module.exports = async function findLastByNodes(req, res) {
       ? filter.field_order
       : "aqi";
 
-    console.log(date);
-
     const start_date = moment(date)
       .set({ hour: 0, minute: 0, second: 0 })
       .toDate();
@@ -32,7 +30,6 @@ module.exports = async function findLastByNodes(req, res) {
       .set({ hour: 23, minute: 59, second: 59 })
       .toDate();
 
-    console.log(start_date, end_date);
     const where = {
       datetime: { [Op.between]: [start_date, end_date] },
     };
@@ -46,6 +43,7 @@ module.exports = async function findLastByNodes(req, res) {
       const keys = [
         "id",
         "node_id",
+        "name",
         field_order,
         "datetime",
         "location",

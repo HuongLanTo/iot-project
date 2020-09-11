@@ -1,19 +1,37 @@
 const cron = require("node-cron");
+const path = require('path');
 const moment = require("moment");
+const getAreas = require("../utils/getAreas");
 const mysql = require("../../models/mysql");
 const Op = mysql.Sequelize.Op;
 
 const AreaEnvParamHour = mysql.area_env_param_hours;
 const AreaEnvParamDay = mysql.area_env_param_days;
+const log4js = require("log4js");
 
+// log4js.configure("./process/config/log4js.json");
+log4js.configure({
+  "appenders": {
+    "everything": {
+      "type": ["dateFile"],
+      "filename": "./process/logs/log.txt",
+      "pattern": ".yyyy-MM-dd-hh",
+      "compress": false
+    }
+  },
+  "categories": {
+    "default": { "appenders": ["everything"], "level": "debug" }
+  }
+});
+const logger = log4js.getLogger(path.basename(__filename));
 /**
  * Cron run
  */
 
-module.exports = cron.schedule("10 0 * * *", async () => {
-  console.log("CRON: Get area data in every day.");
-  console.log("FROM: area_env_param_hours");
-  console.log("TO: area_env_param_days");
+module.exports = cron.schedule("15 0 * * *", async () => {
+  logger.info("CRON: Get area data in every day.");
+  logger.info("FROM: area_env_param_hours");
+  logger.info("TO: area_env_param_days");
 
   const start_date = moment()
     .subtract(1, "day")
@@ -31,11 +49,24 @@ module.exports = cron.schedule("10 0 * * *", async () => {
     order: [["area_id", "ASC"]],
   });
 
+  const nodes = await getAreas("day");
+
   if (!data.length) {
-    return;
+    return
+    // return await AreaEnvParamDay.bulkCreate(nodes);
   }
 
-  const day_data_by_area = getAllDayData(data).filter((e) => e.area_id !== 0);
+  let day_data_by_area = getAllDayData(data).filter((e) =>
+    ![undefined, null, 0, ""].includes(e.area_id)
+  );
+
+  // const ids = day_data_by_area.map((v) => v.area_id);
+
+  // const nodes_left = nodes.filter((v) => !ids.includes(v.area_id));
+
+  // if (nodes_left.length) {
+  //   day_data_by_area = day_data_by_area.concat(nodes_left);
+  // }
 
   if (day_data_by_area.length) {
     await AreaEnvParamDay.bulkCreate(day_data_by_area);
@@ -47,20 +78,20 @@ module.exports = cron.schedule("10 0 * * *", async () => {
  */
 
 function getAllDayData(data) {
-  let cur_area_id = 1;
+  let cur_area_id = data[0].area_id;
   let cur_data = [];
   const day_data = [];
 
-  data.forEach((hour, index) => {
-    if (hour.area_id === cur_area_id) {
-      cur_data.push(hour);
+  data.forEach((v, index) => {
+    if (v.area_id === cur_area_id) {
+      cur_data.push(v);
     }
 
-    if (hour.area_id !== cur_area_id) {
+    if (v.area_id !== cur_area_id) {
       day_data.push(getDayData(cur_data));
-      cur_area_id = hour.area_id;
+      cur_area_id = v.area_id;
       cur_data = [];
-      cur_data.push(hour);
+      cur_data.push(v);
     }
 
     if (index === data.length - 1) {
@@ -82,14 +113,20 @@ function getDayData(cur_data) {
   const env_keys = ["tem", "hum", "pm_25", "no", "co", "co2", "aqi"];
 
   cur_data.forEach((e) => {
-    if (day_data.area_id === 0 && e.area_id !== 0) {
+    if (!day_data.area_id && ![undefined, null, 0, ""].includes(e.area_id)) {
       inf_keys.forEach((key) => (day_data[key] = e[key]));
     }
 
     env_keys.forEach((key) => (day_data[key] += e[key]));
   });
 
-  env_keys.forEach((key) => (day_data[key] = Math.round(day_data[key] / 24)));
+  env_keys.forEach((key) => {
+    if (["tem", "hum", "aqi"].includes(key)) {
+      day_data[key] = Math.round(day_data[key] / cur_data.length);
+    } else {
+      day_data[key] = Math.round((day_data[key] / cur_data.length) * 100) / 100;
+    }
+  });
 
   return day_data;
 }
@@ -105,7 +142,7 @@ function getDefault() {
     .toDate();
 
   return {
-    area_id: 0,
+    area_id: "",
     tem: 0,
     hum: 0,
     pm_25: 0,

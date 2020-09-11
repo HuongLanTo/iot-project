@@ -10,7 +10,7 @@ import UIKit
 import WebKit
 
 class DetailInformation: UIViewController {
-
+    
     @IBOutlet weak var wvInformation: WKWebView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,5 +21,5 @@ class DetailInformation: UIViewController {
         let urlRequest = URLRequest(url: url)
         wvInformation.load(urlRequest)
     }
-
+    
 }

@@ -1,0 +1,12 @@
+[2020-07-25T11:45:00.008] [INFO] node_hour - CRON: Get hour data in every hour.
+[2020-07-25T11:45:00.011] [INFO] node_hour - FROM: MongoDB
+[2020-07-25T11:45:00.011] [INFO] node_hour - TO: node_env_param_hours
+[2020-07-25T11:46:00.045] [INFO] node_hour - CRON: Get hour data in every hour.
+[2020-07-25T11:46:00.046] [INFO] node_hour - FROM: MongoDB
+[2020-07-25T11:46:00.046] [INFO] node_hour - TO: node_env_param_hours
+[2020-07-25T11:47:00.039] [INFO] node_hour - CRON: Get hour data in every hour.
+[2020-07-25T11:47:00.040] [INFO] node_hour - FROM: MongoDB
+[2020-07-25T11:47:00.040] [INFO] node_hour - TO: node_env_param_hours
+[2020-07-25T11:48:00.005] [INFO] node_hour - CRON: Get hour data in every hour.
+[2020-07-25T11:48:00.006] [INFO] node_hour - FROM: MongoDB
+[2020-07-25T11:48:00.006] [INFO] node_hour - TO: node_env_param_hours

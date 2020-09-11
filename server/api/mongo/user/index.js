@@ -19,7 +19,7 @@ router.put("/basic/:id", UpdateUserInfo);
 router.put("/role/:id", UpdateUserRole);
 
 router.put("/status/:id", UpdateUserStatus);
-
+    
 router.put("/approve/:id", ApproveUser);
 
 module.exports = router;

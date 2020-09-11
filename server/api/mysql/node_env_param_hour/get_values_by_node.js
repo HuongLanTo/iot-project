@@ -55,8 +55,6 @@ module.exports = async function findByNode(req, res) {
 
     return res.send({ data: data });
   } catch (err) {
-    console.log(err);
-
     return res.status(500).send({ error: err });
   }
 };

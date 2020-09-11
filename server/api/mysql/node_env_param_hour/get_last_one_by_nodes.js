@@ -50,6 +50,8 @@ module.exports = async function findLastByNodes(req, res) {
           return result[0];
         })
       );
+
+      data = data.filter((v) => v && Object.keys(v).length > 0);
     }
 
     return res.send({ data: data });

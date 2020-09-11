@@ -30,7 +30,7 @@ module.exports = async function findByAreas(req, res) {
 
     const area_ids = filter.area_ids.split(",").map((v) => String(v));
 
-    const data = await Promise.all(
+    let data = await Promise.all(
       area_ids.map(async (v) => {
         return await AreaEnvParamDay.findAll({
           where: {
@@ -47,6 +47,8 @@ module.exports = async function findByAreas(req, res) {
         });
       })
     );
+
+    data = data.filter((v) => v && Object.keys(v).length > 0);
 
     return res.send({ data: data });
   } catch (err) {

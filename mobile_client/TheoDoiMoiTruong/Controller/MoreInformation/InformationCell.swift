@@ -9,7 +9,7 @@
 import UIKit
 
 class InformationCell: UITableViewCell {
-
+    
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var imgInfor: UIImageView!
     
@@ -17,10 +17,10 @@ class InformationCell: UITableViewCell {
         super.awakeFromNib()
         
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
     }
     
 }

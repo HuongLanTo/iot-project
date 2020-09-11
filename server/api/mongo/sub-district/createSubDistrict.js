@@ -1,8 +1,9 @@
 const fs = require("fs");
-const SubDistrict = require(".");
+const SubDistrict = require("../../../models/mongo/sub-district");
 const log4js = require("log4js");
 const { slugify } = require("../../../utils/common");
 const bodyParser = require("body-parser");
+const District = require("../../../models/mongo/district");
 
 log4js.configure("./config/log4js.json");
 const logger = log4js.getLogger("createPrivince");
@@ -35,7 +36,7 @@ const createSubDistrict = async function createSubDistrict(req, res) {
   });
 
   try {
-    const saveDistrict = await value.save();
+    await value.save();
     return res.status(200).send({
       responseCode: 1,
       responseMessage: "SUCCEED",
@@ -50,5 +51,38 @@ const createSubDistrict = async function createSubDistrict(req, res) {
     });
   }
 };
+
+function gen_name_with_type(name, type) {
+  if (type == "xa") {
+    return "Xã " + name;
+  }
+  return "Phường " + name;
+}
+
+function gen_path(name, parent) {
+  return name + ", " + parent;
+}
+
+function gen_path_with_type(name, type, parent_name_with_type) {
+  if (type == "xa") {
+    return "Xã " + name + ", " + parent_name_with_type;
+  }
+  return (path_with_type = "Phường " + name + " , " + parent_name_with_type);
+}
+
+
+async function getParent(parent_code) {
+  return new Promise((resolve) => {
+    District.findOne({ code: parent_code }).exec((err, data) => {
+      if (err) {
+        return res.status(500).send({
+          responseCode: 0,
+          responseMessage: "Lỗi trong quá trình tạo mới Quận/Huyện",
+        });
+      }
+      resolve(data);
+    });
+  });
+}
 
 module.exports = createSubDistrict;

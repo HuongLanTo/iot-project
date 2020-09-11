@@ -11,11 +11,11 @@ import UIKit
 var curURLInfor: String = ""
 
 class InformationViewController: UIViewController {
-
+    
     let arrTitleInfor:[String] = ["Nhiệt độ", "Độ ẩm", "Chỉ số AQI", "Bụi PM2.5",
-                                  "SO2", "NO2", "O3", "CO"]
+                                  "SO2", "NO2", "O3", "CO", "CO2"]
     let arrImgInfor:[String] = ["img_NhietDoInfor", "img_DoAmInfor", "img_AQIInfor", "img_BuiPM25Infor",
-                                "img_SO2Infor", "img_NO2Infor", "img_O3Infor", "img_COInfor"]
+                                "img_SO2Infor", "img_NO2Infor", "img_O3Infor", "img_COInfor", "img_CO2Infor"]
     let arrURLInfor:[String] = ["https://vi.wikipedia.org/wiki/Nhi%E1%BB%87t_%C4%91%E1%BB%99",
                                 "https://vi.wikipedia.org/wiki/%C4%90%E1%BB%99_%E1%BA%A9m",
                                 "https://vi.wikipedia.org/wiki/Ch%E1%BB%89_s%E1%BB%91_ch%E1%BA%A5t_l%C6%B0%E1%BB%A3ng_kh%C3%B4ng_kh%C3%AD",
@@ -23,7 +23,8 @@ class InformationViewController: UIViewController {
                                 "https://vi.wikipedia.org/wiki/L%C6%B0u_hu%E1%BB%B3nh_%C4%91i%C3%B4x%C3%ADt",
                                 "https://vi.wikipedia.org/wiki/Nit%C6%A1_%C4%91i%C3%B4x%C3%ADt",
                                 "https://vi.wikipedia.org/wiki/%C3%94z%C3%B4n",
-                                "https://vi.wikipedia.org/wiki/Cacbon_monoxit"]
+                                "https://vi.wikipedia.org/wiki/Cacbon_monoxit",
+                                "https://vi.wikipedia.org/wiki/Cacbon_%C4%91i%C3%B4x%C3%ADt"]
     
     @IBOutlet weak var tableViewInformation: UITableView!
     
@@ -38,6 +39,7 @@ class InformationViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        tableViewInformation.reloadData()
         print("Information will appear")
     }
 }

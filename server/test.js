@@ -1,4 +1,5 @@
 const moment = require('moment');
+const { stringify } = require('flatted');
 moment().format(); 
 var value = {
   name: "Tung",
@@ -91,3 +92,6 @@ console.log(moment("2020-07-01 09:00:00").format())
 
 //   res.redirect('/')
 // }
+
+console.log(moment().format())
+console.log(JSON.stringify(moment().format()))

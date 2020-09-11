@@ -17,28 +17,28 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZLE-3a-hT0">
-                        <rect key="frame" x="20" y="10" width="8" height="21"/>
+                        <rect key="frame" x="20" y="10" width="41.5" height="21"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="21" id="bBu-xp-GJM"/>
+                            <constraint firstAttribute="height" constant="21" id="rDN-WE-u99"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="155" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RcX-VS-Ik0">
-                        <rect key="frame" x="347" y="10" width="40" height="21"/>
+                        <rect key="frame" x="345.5" y="10" width="41.5" height="21"/>
                         <color key="backgroundColor" red="0.89411764705882346" green="0.16078431372549018" blue="0.23921568627450979" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="40" id="gbK-t7-o4R"/>
+                            <constraint firstAttribute="height" constant="21" id="PpN-dr-nXf"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thang Long University" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3PI-vn-Qv0">
-                        <rect key="frame" x="68" y="10" width="172" height="21"/>
+                        <rect key="frame" x="66.5" y="10" width="274" height="21"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="21" id="VvR-VX-ubJ"/>
+                            <constraint firstAttribute="height" constant="21" id="pkg-eh-0zj"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
@@ -46,19 +46,22 @@
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="3PI-vn-Qv0" firstAttribute="leading" secondItem="ZLE-3a-hT0" secondAttribute="trailing" constant="40" id="1lo-mG-pxL"/>
-                    <constraint firstItem="ZLE-3a-hT0" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="2hZ-ih-k4P"/>
-                    <constraint firstItem="3PI-vn-Qv0" firstAttribute="centerY" secondItem="ZLE-3a-hT0" secondAttribute="centerY" id="ACm-uS-GC2"/>
-                    <constraint firstItem="RcX-VS-Ik0" firstAttribute="centerY" secondItem="ZLE-3a-hT0" secondAttribute="centerY" id="OtH-qI-0co"/>
-                    <constraint firstItem="ZLE-3a-hT0" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="q4U-RR-uid"/>
-                    <constraint firstAttribute="trailing" secondItem="RcX-VS-Ik0" secondAttribute="trailing" constant="27" id="wt5-kF-d8p"/>
+                    <constraint firstItem="RcX-VS-Ik0" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="1hx-TG-fs5"/>
+                    <constraint firstItem="RcX-VS-Ik0" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="0.1" id="EYQ-G6-fA1"/>
+                    <constraint firstAttribute="trailing" secondItem="RcX-VS-Ik0" secondAttribute="trailing" constant="27" id="YbY-TQ-Uyb"/>
+                    <constraint firstItem="3PI-vn-Qv0" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="aFN-Ya-aJ9"/>
+                    <constraint firstItem="RcX-VS-Ik0" firstAttribute="leading" secondItem="3PI-vn-Qv0" secondAttribute="trailing" constant="5" id="eJf-uN-1oS"/>
+                    <constraint firstItem="ZLE-3a-hT0" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="esw-4o-aGM"/>
+                    <constraint firstItem="3PI-vn-Qv0" firstAttribute="leading" secondItem="ZLE-3a-hT0" secondAttribute="trailing" constant="5" id="lsF-DT-wzO"/>
+                    <constraint firstItem="ZLE-3a-hT0" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="xj5-vn-Acp"/>
+                    <constraint firstItem="ZLE-3a-hT0" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="0.1" id="xnP-Zo-Y1M"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="lblAQI" destination="RcX-VS-Ik0" id="Ko9-nQ-fhd"/>
                 <outlet property="lblDiaDiem" destination="3PI-vn-Qv0" id="v5t-bc-nS8"/>
-                <outlet property="lblID" destination="ZLE-3a-hT0" id="X93-6k-Nrk"/>
+                <outlet property="lblSTT" destination="ZLE-3a-hT0" id="SbO-sF-pFb"/>
             </connections>
             <point key="canvasLocation" x="131.8840579710145" y="2.6785714285714284"/>
         </tableViewCell>

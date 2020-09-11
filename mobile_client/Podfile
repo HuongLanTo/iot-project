@@ -11,4 +11,8 @@ target 'TheoDoiMoiTruong' do
   pod 'Charts'
   pod 'GoogleMaps'
   pod 'GooglePlaces'
+  pod 'Firebase/Analytics'
+  pod 'Firebase/Crashlytics'
+  pod 'Firebase/Performance'
+  pod 'ESPullToRefresh'
 end

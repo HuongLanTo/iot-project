@@ -11,6 +11,9 @@ module.exports = function (sequelize, DataTypes) {
     area_id: {
       type: DataTypes.STRING(55),
     },
+    name: {
+      type: DataTypes.STRING(55),
+    },
     tem: {
       type: DataTypes.FLOAT,
       defaultValue: 0,

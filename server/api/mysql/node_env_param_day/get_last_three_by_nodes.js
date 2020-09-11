@@ -30,7 +30,7 @@ module.exports = async function findByNodes(req, res) {
 
     const node_ids = filter.node_ids.split(",").map((v) => String(v));
 
-    const data = await Promise.all(
+    let data = await Promise.all(
       node_ids.map(async (v) => {
         return await NodeEnvParamDay.findAll({
           where: {
@@ -48,10 +48,10 @@ module.exports = async function findByNodes(req, res) {
       })
     );
 
+    data = data.filter((v) => v && Object.keys(v).length > 0);
+
     return res.send({ data: data });
   } catch (err) {
-    console.log(err);
-
     return res.status(500).send({ error: err });
   }
 };

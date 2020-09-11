@@ -6,10 +6,10 @@
   Copyright © 2020 Duc. All rights reserved.
 */
 
-"Monday"="Mondays";
-"Tuesday"="Tuesdays";
-"Wednesday"="Wednesdays";
-"Thursday"="Thursdays";
-"Friday"="Fridays";
-"Saturday"="Saturdays";
-"Sunday"="Sundays";
+"Monday"="Mon";
+"Tuesday"="Tue";
+"Wednesday"="Wed";
+"Thursday"="Thu";
+"Friday"="Fri";
+"Saturday"="Sat";
+"Sunday"="Sun";

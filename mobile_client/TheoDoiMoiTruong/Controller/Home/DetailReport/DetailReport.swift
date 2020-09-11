@@ -10,19 +10,27 @@ import UIKit
 import Charts
 
 class DetailReport: UIViewController {
-
+    
     var gioArr:[String] = [] //Mảng lưu các giá trị GIỜ (Trục x)
-    var valueGioArr:[Double] = [] //Mảng lưu thông số của giá trị theo giờ (Trục y)
+    var valueGioArrInt:[Int] = [] //Mảng lưu thông số của giá trị theo giờ (Trục y - INT)
+    var valueGioArrDouble:[Double] = [] //Mảng lưu thông số của giá trị theo giờ (Trục y - DOUBLE)
     var dateArr:[String] = [] //Mảng lưu các giá trị NGÀY (Trục x)
-    var valueDateArr:[Double] = [] //Mảng lưu thông số của giá trị theo ngày (Trục y)
+    var valueDateArrInt:[Int] = [] //Mảng lưu thông số giá trị theo ngày (Trục y - INT)
+    var valueDateArrDouble:[Double] = [] //Mảng lưu thông số của giá trị theo ngày (Trục y - DOUBLE)
     var isHourBarSelected:Bool = true //Biến kiểm tra biểu đồ GIỜ được chọn
     var isDateBarSelected:Bool = false //Biến kiểm tra biểu đồ NGÀY được chọn
     var arrKhung8Gio:[String] = ["01:00", "04:00", "07:00", "10:00", "13:00", "16:00", "19:00", "22:00"] //String khung 8 giờ
-    var dateBefore:String = ""
-    var monthNow:String = ""
+    var dateBefore:String = "" //Ngày hôm qua (hiển thị phần biểu đồ)
+    var monthNow:String = "" //Tháng hiện tại (hiển thị phần biểu đồ)
+    var preTime:String = "" //Giờ đẹp gần nhất (hiển thị phần đầu)
+    var isoDate1:String = "" //Ngày ISO 1 (tham số truyền để gọi API phần collectionView)
+    var isoDate2:String = "" //Ngày ISO 2 (--)
+    var isoDate3:String = "" //Ngày ISO 3 (--)
+    var arr8Gio:[ThongSoGioModel] = [] //Mảng dùng trong collection view
     
     @IBOutlet weak var myCollectionView: UICollectionView!
     @IBOutlet weak var myBarChartView: BarChartView!
+    @IBOutlet weak var heightContentView: NSLayoutConstraint!
     
     //Địa điểm
     @IBOutlet weak var lblDistrict: UILabel!
@@ -51,7 +59,7 @@ class DetailReport: UIViewController {
     //Chất gây ô nhiễm
     @IBOutlet weak var lblValueSO2: UILabel!
     @IBOutlet weak var lblValueCO2: UILabel!
-    @IBOutlet weak var lblValueO3: UILabel!
+    @IBOutlet weak var lblValueBuiPM: UILabel!
     @IBOutlet weak var lblValueCO: UILabel!
     
     //3 ngày trước đấy
@@ -72,15 +80,24 @@ class DetailReport: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //Setup API truyền vào 3 ngày (collection view)
+        getChiSoKhung8Gio(curNode_ID: curNode_ID, date: isoDate1, slot: 8)
+        
         myCollectionView.delegate = self
         myCollectionView.dataSource = self
         myBarChartView.delegate = self
+        getPreTime()
+        getDateBefore()
+        getMonthNow()
+        get31DateBefore()
+        getISO3DayBefore()
         //Hiển thị thông số giờ
-        lblDistrict.text = curDistrict
-        lblProvince.text = curProvince
+        lblDistrict.text = String(curNode_ID)
+        lblProvince.text = curLocation
         lblNhietDoGio.text = String(curNhietDo) + "°C"
         lblDoAmGio.text = String(curDoAm) + "%" 
         lblAQIGio.text = String(curAQI)
+        lblGioThongSo.text = preTime
         //Tuỳ vào AQI mà từng view màu, ảnh, label nhận xét sẽ khác
         if (curAQI > 0 && curAQI <= 50) {
             view1_2.backgroundColor = UIColor(red: 174/255, green: 231/255, blue: 102/255, alpha: 1) //Xanh la cay nhat.
@@ -142,7 +159,7 @@ class DetailReport: UIViewController {
         //Khuyến nghị về sức khoẻ
         lblValueSO2.text = String(curSO2) + "μg/m3"
         lblValueCO2.text = String(curCO2) + "μg/m3"
-        lblValueO3.text = String(curO3) + "μg/m3"
+        lblValueBuiPM.text = String(curBuiPM) + "μg/m3"
         lblValueCO.text = String(curCO) + "μg/m3"
         
         //UI Lịch Sử
@@ -156,7 +173,6 @@ class DetailReport: UIViewController {
         lblNgay.clipsToBounds = true
         
         //Lấy ngày hôm qua hiển thị (Lịch sử)
-        getDateBefore()
         lblDate.text = dateBefore
         
         //Set giá trị cho mảng Hour
@@ -164,26 +180,41 @@ class DetailReport: UIViewController {
                   "07:00","08:00","09:00","10:00","11:00","12:00",
                   "13:00","14:00","15:00","16:00","17:00","18:00",
                   "19:00","20:00","21:00","22:00","23:00","24:00"]
-        valueGioArr = [110,110,125,120,146,137,53,51,62,123,62,91,33,167,110,85,92,44,120,95,104,107,132,165]
+//        valueGioArrInt = [110,110,125,120,146,137,53,51,62,123,62,91,33,167,110,85,92,44,120,95,104,107,132,165]
+        getChiSoKhung24Gio(curNode_ID: curNode_ID, date: isoDate1, slot: 24)
         
         //Set giá trị cho mảng Date
-        get31DateBefore()
-        valueDateArr = [85,92,110,33,42,152,94,18,120,110,45,32,67,83,92,95,167,152,124,145,124,34,45,62,71,89,120,167,129,130,141]
+        //        valueDateArrInt = [85,92,110,33,42,152,94,18,120,110,45,32,67,83,92,95,167,152,124,145,124,34,45,62,71,89,120,167,129,130,141]
+        getChiSoAQI31Ngay(curNode_ID: curNode_ID)
         
         isHourBarSelected = true
         isDateBarSelected = false
-        setHourBarChart(name: gioArr, value: valueGioArr)
         
         //Set high màn hình để scroll tuỳ vào thiết bị
         if (UIScreen.main.nativeBounds.size.height >= 2436) {
-            
+            heightContentView = heightContentView.setMultiplier(multiplier: 1.3)
         } else {
-            if (UIScreen.main.nativeBounds.size.height == 1792) /*ip11*/ {
-                
-            } else {
-                
+            if (UIScreen.main.nativeBounds.size.height == 1792) /*ip11,  */ {
+                heightContentView = heightContentView.setMultiplier(multiplier: 1.3)
+            }
+            if (UIScreen.main.nativeBounds.size.height == 2208) /*6+, 6s+, 7+, 8+*/ {
+                heightContentView = heightContentView.setMultiplier(multiplier: 1.5)
+            }
+            else {
+                heightContentView = heightContentView.setMultiplier(multiplier: 1.7)
             }
         }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        valueGioArrInt.removeAll()
+        valueGioArrDouble.removeAll()
+        dateArr.removeAll()
+        valueDateArrInt.removeAll()
+        valueDateArrDouble.removeAll()
+        arr8Gio.removeAll()
+        isHourBarSelected = true
+        isDateBarSelected = false
     }
     
     //Button action khuyến nghị về sức khoẻ (click vào từng image)
@@ -238,14 +269,14 @@ class DetailReport: UIViewController {
         }
         let dataSet:BarChartDataSet = BarChartDataSet(entries: dataArr, label: "Chỉ số ô nhiễm")
         //Check giá trị rồi set màu tương ứng
-        dataSet.colors = [setColorBarChart(value: valueGioArr[0]), setColorBarChart(value: valueGioArr[1]), setColorBarChart(value: valueGioArr[2]),
-                          setColorBarChart(value: valueGioArr[3]), setColorBarChart(value: valueGioArr[4]), setColorBarChart(value: valueGioArr[5]),
-                          setColorBarChart(value: valueGioArr[6]), setColorBarChart(value: valueGioArr[7]), setColorBarChart(value: valueGioArr[8]),
-                          setColorBarChart(value: valueGioArr[9]), setColorBarChart(value: valueGioArr[10]), setColorBarChart(value: valueGioArr[11]),
-                          setColorBarChart(value: valueGioArr[12]), setColorBarChart(value: valueGioArr[13]), setColorBarChart(value: valueGioArr[14]),
-                          setColorBarChart(value: valueGioArr[15]), setColorBarChart(value: valueGioArr[16]), setColorBarChart(value: valueGioArr[17]),
-                          setColorBarChart(value: valueGioArr[18]), setColorBarChart(value: valueGioArr[19]), setColorBarChart(value: valueGioArr[20]),
-                          setColorBarChart(value: valueGioArr[21]), setColorBarChart(value: valueGioArr[22]), setColorBarChart(value: valueGioArr[23])]
+        dataSet.colors = [setColorBarChart(value: valueGioArrDouble[0]), setColorBarChart(value: valueGioArrDouble[1]), setColorBarChart(value: valueGioArrDouble[2]),
+                          setColorBarChart(value: valueGioArrDouble[3]), setColorBarChart(value: valueGioArrDouble[4]), setColorBarChart(value: valueGioArrDouble[5]),
+                          setColorBarChart(value: valueGioArrDouble[6]), setColorBarChart(value: valueGioArrDouble[7]), setColorBarChart(value: valueGioArrDouble[8]),
+                          setColorBarChart(value: valueGioArrDouble[9]), setColorBarChart(value: valueGioArrDouble[10]), setColorBarChart(value: valueGioArrDouble[11]),
+                          setColorBarChart(value: valueGioArrDouble[12]), setColorBarChart(value: valueGioArrDouble[13]), setColorBarChart(value: valueGioArrDouble[14]),
+                          setColorBarChart(value: valueGioArrDouble[15]), setColorBarChart(value: valueGioArrDouble[16]), setColorBarChart(value: valueGioArrDouble[17]),
+                          setColorBarChart(value: valueGioArrDouble[18]), setColorBarChart(value: valueGioArrDouble[19]), setColorBarChart(value: valueGioArrDouble[20]),
+                          setColorBarChart(value: valueGioArrDouble[21]), setColorBarChart(value: valueGioArrDouble[22]), setColorBarChart(value: valueGioArrDouble[23])]
         //Không hiện thông số trên mỗi bar
         dataSet.drawValuesEnabled = false
         //Ko hiện chú thích
@@ -278,17 +309,17 @@ class DetailReport: UIViewController {
         }
         let dataSet:BarChartDataSet = BarChartDataSet(entries: dataArr, label: "Chỉ số ô nhiễm")
         //Check giá trị rồi set màu tương ứng
-        dataSet.colors = [setColorBarChart(value: valueDateArr[0]), setColorBarChart(value: valueDateArr[1]), setColorBarChart(value: valueDateArr[2]),
-                          setColorBarChart(value: valueDateArr[3]), setColorBarChart(value: valueDateArr[4]), setColorBarChart(value: valueDateArr[5]),
-                          setColorBarChart(value: valueDateArr[6]), setColorBarChart(value: valueDateArr[7]), setColorBarChart(value: valueDateArr[8]),
-                          setColorBarChart(value: valueDateArr[9]), setColorBarChart(value: valueDateArr[10]), setColorBarChart(value: valueDateArr[11]),
-                          setColorBarChart(value: valueDateArr[12]), setColorBarChart(value: valueDateArr[13]), setColorBarChart(value: valueDateArr[14]),
-                          setColorBarChart(value: valueDateArr[15]), setColorBarChart(value: valueDateArr[16]), setColorBarChart(value: valueDateArr[17]),
-                          setColorBarChart(value: valueDateArr[18]), setColorBarChart(value: valueDateArr[19]), setColorBarChart(value: valueDateArr[20]),
-                          setColorBarChart(value: valueDateArr[21]), setColorBarChart(value: valueDateArr[22]), setColorBarChart(value: valueDateArr[23]),
-                          setColorBarChart(value: valueDateArr[24]), setColorBarChart(value: valueDateArr[25]), setColorBarChart(value: valueDateArr[26]),
-                          setColorBarChart(value: valueDateArr[27]), setColorBarChart(value: valueDateArr[28]), setColorBarChart(value: valueDateArr[29]),
-                          setColorBarChart(value: valueDateArr[30])]
+        dataSet.colors = [setColorBarChart(value: valueDateArrDouble[0]), setColorBarChart(value: valueDateArrDouble[1]), setColorBarChart(value: valueDateArrDouble[2]),
+                          setColorBarChart(value: valueDateArrDouble[3]), setColorBarChart(value: valueDateArrDouble[4]), setColorBarChart(value: valueDateArrDouble[5]),
+                          setColorBarChart(value: valueDateArrDouble[6]), setColorBarChart(value: valueDateArrDouble[7]), setColorBarChart(value: valueDateArrDouble[8]),
+                          setColorBarChart(value: valueDateArrDouble[9]), setColorBarChart(value: valueDateArrDouble[10]), setColorBarChart(value: valueDateArrDouble[11]),
+                          setColorBarChart(value: valueDateArrDouble[12]), setColorBarChart(value: valueDateArrDouble[13]), setColorBarChart(value: valueDateArrDouble[14]),
+                          setColorBarChart(value: valueDateArrDouble[15]), setColorBarChart(value: valueDateArrDouble[16]), setColorBarChart(value: valueDateArrDouble[17]),
+                          setColorBarChart(value: valueDateArrDouble[18]), setColorBarChart(value: valueDateArrDouble[19]), setColorBarChart(value: valueDateArrDouble[20]),
+                          setColorBarChart(value: valueDateArrDouble[21]), setColorBarChart(value: valueDateArrDouble[22]), setColorBarChart(value: valueDateArrDouble[23]),
+                          setColorBarChart(value: valueDateArrDouble[24]), setColorBarChart(value: valueDateArrDouble[25]), setColorBarChart(value: valueDateArrDouble[26]),
+                          setColorBarChart(value: valueDateArrDouble[27]), setColorBarChart(value: valueDateArrDouble[28]), setColorBarChart(value: valueDateArrDouble[29]),
+                          setColorBarChart(value: valueDateArrDouble[30])]
         //Không hiện thông số trên mỗi bar
         dataSet.drawValuesEnabled = false
         //Ko hiện chú thích
@@ -324,10 +355,11 @@ class DetailReport: UIViewController {
             return UIColor.black
         }
     }
-
+    
     //Action chọn từng ngày
     @IBAction func actionThu1(_ sender: UIButton) {
-        myCollectionView.reloadData()
+        getChiSoKhung8Gio(curNode_ID: curNode_ID, date: isoDate1, slot: 8)
+        //        myCollectionView.reloadData()
         lblThu1.textColor = UIColor.darkText //Den
         viewThu1.backgroundColor = UIColor(red: 91/255, green: 155/255, blue: 213/255, alpha: 1) //Xanh
         lblThu2.textColor = UIColor(red: 174/255, green: 171/255, blue: 171/255, alpha: 1) //Xam
@@ -337,7 +369,8 @@ class DetailReport: UIViewController {
     }
     
     @IBAction func actionThu2(_ sender: UIButton) {
-        myCollectionView.reloadData()
+        getChiSoKhung8Gio(curNode_ID: curNode_ID, date: isoDate2, slot: 8)
+        //        myCollectionView.reloadData()
         lblThu2.textColor = UIColor.darkText //Den
         viewThu2.backgroundColor = UIColor(red: 91/255, green: 155/255, blue: 213/255, alpha: 1) //Xanh
         lblThu1.textColor = UIColor(red: 174/255, green: 171/255, blue: 171/255, alpha: 1) //Xam
@@ -347,7 +380,8 @@ class DetailReport: UIViewController {
     }
     
     @IBAction func actionThu3(_ sender: UIButton) {
-        myCollectionView.reloadData()
+        getChiSoKhung8Gio(curNode_ID: curNode_ID, date: isoDate3, slot: 8)
+        //        myCollectionView.reloadData()
         lblThu3.textColor = UIColor.darkText //Den
         viewThu3.backgroundColor = UIColor(red: 91/255, green: 155/255, blue: 213/255, alpha: 1) //Xanh
         lblThu2.textColor = UIColor(red: 174/255, green: 171/255, blue: 171/255, alpha: 1) //Xam
@@ -368,7 +402,7 @@ class DetailReport: UIViewController {
         lblGio.backgroundColor = UIColor(red: 91/255, green: 155/255, blue: 213/255, alpha: 1) //Xanh nuoc bien nhat
         lblNgay.backgroundColor = UIColor.white
         lblDate.text = dateBefore
-        setHourBarChart(name: gioArr, value: valueGioArr)
+        setHourBarChart(name: gioArr, value: valueGioArrDouble)
         myBarChartView.reloadInputViews()
     }
     //Chọn NGÀY
@@ -381,28 +415,168 @@ class DetailReport: UIViewController {
         lblGio.textColor = UIColor(red: 91/255, green: 155/255, blue: 213/255, alpha: 1) //Xanh nuoc bien nhat
         lblNgay.backgroundColor = UIColor(red: 91/255, green: 155/255, blue: 213/255, alpha: 1) //Xanh nuoc bien nhat
         lblGio.backgroundColor = UIColor.white
-        getMonthNow()
         lblDate.text = monthNow
-        setDateBarChart(name: dateArr, value: valueDateArr)
+        setDateBarChart(name: dateArr, value: valueDateArrDouble)
         myBarChartView.reloadInputViews()
     }
+}
+
+//MARK: Call API
+extension DetailReport {
+    func getChiSoKhung8Gio(curNode_ID: String, date: String, slot: Int) {
+        //        var urlString = "/api/v1/nodes/hours/\(curNode_ID)/values?date=\(date)&slot=\(slot)"
+        //        var urlString = "localhost:1234/api/v1/nodes/hours/last?node_ids="
+        let strParam = "{\"date\":\"\(date)\",\"slot\":\"\(slot)\"}"
+        let strParam64 = changeStringToBase64(str: strParam)
+        var urlString = "http://52.221.233.65:1234/api/v1/nodes/hours/\(curNode_ID)/values?filter=\(strParam64)"
+        guard let url = URL(string: urlString) else { return }
+        let session = URLSession.shared
+        
+        arr8Gio.removeAll()
+        
+        let task = session.dataTask(with: url) { (data, response, error) in
+            if let response = response {
+                
+            }
+            if let data = data {
+                do {
+                    let json = try JSONSerialization.jsonObject(with: data, options: [])
+                    if let myJson = json as? [String:Any] {
+                        if let myData = myJson["data"] as? [[String:Any]] {
+                            for my8GioDic in myData {
+                                let my8Gio = ThongSoGioModel.init(dic: my8GioDic)
+                                self.arr8Gio.append(my8Gio)
+                            }
+                        }
+                    }
+                    DispatchQueue.main.async {
+                        self.myCollectionView.reloadData()
+                    }
+                }
+                catch {
+                    print (error)
+                }
+            }
+        }
+        task.resume()
+    }
     
+    func getChiSoKhung24Gio(curNode_ID: String, date: String, slot: Int) {
+        //        var urlString = "/api/v1/nodes/hours/\(curNode_ID)/values?date=\(date)&slot=\(slot)"
+        //        var urlString = "localhost:1234/api/v1/nodes/hours/last?node_ids="
+        let strParam = "{\"date\":\"\(date)\",\"slot\":\"\(slot)\"}"
+        let strParam64 = changeStringToBase64(str: strParam)
+        var urlString = "http://52.221.233.65:1234/api/v1/nodes/hours/\(curNode_ID)/values?filter=\(strParam64)"
+        guard let url = URL(string: urlString) else { return }
+        let session = URLSession.shared
+        
+        valueGioArrInt.removeAll()
+        
+        let task = session.dataTask(with: url) { (data, response, error) in
+            if let response = response {
+                
+            }
+            if let data = data {
+                do {
+                    let json = try JSONSerialization.jsonObject(with: data, options: [])
+                    if let myJson = json as? [String:Any] {
+                        if let myData = myJson["data"] as? [[String:Any]] {
+                            for my24GioDic in myData {
+                                if let myAQI = my24GioDic["aqi"] as? Int {
+                                    self.valueGioArrInt.append(myAQI)
+                                }
+                            }
+                            self.valueGioArrDouble = self.valueGioArrInt.map {Double($0)}
+                        }
+                    }
+                    DispatchQueue.main.async {
+                        self.setHourBarChart(name: self.gioArr, value: self.valueGioArrDouble)
+                        self.myBarChartView.reloadInputViews()
+                    }
+                }
+                catch {
+                    print (error)
+                }
+            }
+        }
+        task.resume()
+    }
     
+    func getChiSoAQI31Ngay(curNode_ID: String) {
+        var urlString = "http://52.221.233.65:1234/api/v1/nodes/days/\(curNode_ID)/values"
+        //        var urlString = "localhost:1234/api/v1/nodes/hours/last?node_ids="
+        guard let url = URL(string: urlString) else { return }
+        let session = URLSession.shared
+        
+        valueDateArrInt.removeAll()
+        
+        let task = session.dataTask(with: url) { (data, response, error) in
+            if let response = response {
+                
+            }
+            if let data = data {
+                do {
+                    let json = try JSONSerialization.jsonObject(with: data, options: [])
+                    if let myJson = json as? [String:Any] {
+                        if let myData = myJson["data"] as? [[String:Any]] {
+                            for my31NgayDic in myData {
+                                if let myAQI = my31NgayDic["aqi"] as? Int {
+                                    self.valueDateArrInt.append(myAQI)
+                                }
+                            }
+                            self.valueDateArrDouble = self.valueDateArrInt.map {Double($0)}
+                        }
+                    }
+                    DispatchQueue.main.async {
+                        self.myBarChartView.reloadInputViews()
+                    }
+                }
+                catch {
+                    print (error)
+                }
+            }
+        }
+        task.resume()
+    }
 }
 
 //Collection View
 extension DetailReport: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 8
+        return arrKhung8Gio.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionCell", for: indexPath) as? DetailRPCollectionViewCell {
             cell.lblGio.text = arrKhung8Gio[indexPath.row]
-            //cell. ...
+            if !arr8Gio.isEmpty {
+                let valueAQI = arr8Gio[indexPath.row].aqi
+                if (valueAQI > 0 && valueAQI <= 50) {
+                    cell.lblAQI.text = "0-50"
+                    cell.lblAQI.backgroundColor = UIColor(red: 174/255, green: 231/255, blue: 102/255, alpha: 1) //Xanh nhat.
+                }
+                else if (valueAQI > 50 && valueAQI <= 100) {
+                    cell.lblAQI.text = "50-100"
+                    cell.lblAQI.backgroundColor = UIColor(red: 248/255, green: 217/255, blue: 76/255, alpha: 1) //Vang nhat.
+                }
+                else if (valueAQI > 100 && valueAQI <= 150) {
+                    cell.lblAQI.text = "100-150"
+                    cell.lblAQI.backgroundColor = UIColor(red: 232/255, green: 154/255, blue: 85/255, alpha: 1) //Cam nhat.
+                }
+                else if (valueAQI > 150) {
+                    cell.lblAQI.text = "150-200"
+                    cell.lblAQI.backgroundColor = UIColor(red: 224/255, green: 155/255, blue: 155/255, alpha: 1) //Do nhat.
+                }
+                cell.lblDoAm.text = String(arr8Gio[indexPath.row].doam) + "%"
+                cell.lblNhietDo.text = String(arr8Gio[indexPath.row].nhietdo) + "°C"
+            }
             return cell
         }
         return UICollectionViewCell()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 76.0, height: 100.0)
     }
 }
 
@@ -411,12 +585,12 @@ extension DetailReport: ChartViewDelegate {
     func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
         if isHourBarSelected == true {
             let pos = NSInteger(entry.x)
-            let valueInt:Int = Int(valueGioArr[pos])
+            let valueInt:Int = Int(valueGioArrDouble[pos])
             lblAQI.text = String(valueInt)
         }
         if isDateBarSelected == true {
             let pos = NSInteger(entry.x)
-            let valueInt:Int = Int(valueDateArr[pos])
+            let valueInt:Int = Int(valueDateArrDouble[pos])
             lblAQI.text = String(valueInt)
         }
     }
@@ -453,5 +627,60 @@ extension DetailReport {
         formaterDate.dateFormat = "MM/YYYY"
         
         monthNow = formaterDate.string(from: dateNow)
+    }
+    
+    //Lấy String giờ đẹp gần nhất
+    func getPreTime() {
+        let timeNow = Date()
+        let timePre = timeNow.addingTimeInterval(-60*60)
+        let formaterTime = DateFormatter()
+        formaterTime.dateFormat = "HH:00"
+        
+        preTime = formaterTime.string(from: timePre)
+    }
+    
+    //Lấy String dạng ISO 3 ngày trước đấy
+    func getISO3DayBefore() {
+        let dateYesterday1 = Date().addingTimeInterval(-60*60*24)
+        let dateYesterday2 = Date().addingTimeInterval(-60*60*24*2)
+        let dateYesterday3 = Date().addingTimeInterval(-60*60*24*3)
+        
+        let formaterDate = DateFormatter()
+        formaterDate.dateFormat = "yyyy-MM-dd'T'07:00:00.000'Z'"
+        
+        isoDate1 = formaterDate.string(from: dateYesterday1)
+        isoDate2 = formaterDate.string(from: dateYesterday2)
+        isoDate3 = formaterDate.string(from: dateYesterday3)
+    }
+    
+    func changeStringToBase64(str: String) -> String {
+        let utf8str = str.data(using: .utf8)
+        if let base64Encoded = utf8str?.base64EncodedString(options: Data.Base64EncodingOptions(rawValue: 0)) {
+            return base64Encoded
+        }
+        return ""
+    }
+}
+
+extension NSLayoutConstraint {
+    func setMultiplier(multiplier:CGFloat) -> NSLayoutConstraint {
+        
+        NSLayoutConstraint.deactivate([self])
+        
+        let newConstraint = NSLayoutConstraint(
+            item: firstItem as Any,
+            attribute: firstAttribute,
+            relatedBy: relation,
+            toItem: secondItem,
+            attribute: secondAttribute,
+            multiplier: multiplier,
+            constant: constant)
+        
+        newConstraint.priority = priority
+        newConstraint.shouldBeArchived = self.shouldBeArchived
+        newConstraint.identifier = self.identifier
+        
+        NSLayoutConstraint.activate([newConstraint])
+        return newConstraint
     }
 }

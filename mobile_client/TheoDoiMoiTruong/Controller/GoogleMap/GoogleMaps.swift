@@ -14,38 +14,29 @@ class GoogleMaps: UIViewController {
     
     var mapView:GMSMapView?
     
-    var currentDestination: TrackDestination?
+    var currentDestination: TrackDestinationModel? //Địa điểm đầu tiên / hiện tại
     
-    var destinations:[TrackDestination] = [TrackDestination(name: "KDT Kim Văn Kim Lũ", location: CLLocationCoordinate2DMake(20.972998, 105.820044), aqi: "137 AQI", zoom: 18),                                      TrackDestination(name: "Royal City", location: CLLocationCoordinate2DMake(21.001763, 105.815960), aqi: "145 AQI", zoom: 15)]
+    var destinations:[TrackDestinationModel] = [] //Mảng lưu danh sách địa điểm cùng chỉ số aqi
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.navigationItem.title = "AQI tại khu vực theo dõi"
         
-        let camera = GMSCameraPosition.camera(withLatitude: 20.976106, longitude: 105.815626, zoom: 15)
-        mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
-        view = mapView
-        
-        let currentLocation = CLLocationCoordinate2DMake(20.976096, 105.815593)
-        let marker = GMSMarker(position: currentLocation)
-        marker.title = "Thang Long University"
-        marker.map = mapView
-        marker.snippet = "124 AQI"
-        
+        getAreaGGMap()
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Next", style: .plain, target: self, action: #selector(nextL))
-    
+        
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        print("gg map will appear")
-        destinations.append(TrackDestination(name: "Thang Long University", location: CLLocationCoordinate2DMake(20.976096, 105.815593), aqi: "124 AQI", zoom: 15))
+    override func viewDidAppear(_ animated: Bool) {
+        print("gg map did appear")
+        //        destinations.append(TrackDestination(name: "Thang Long University", location: CLLocationCoordinate2DMake(20.976096, 105.815593), aqi: "124 AQI", zoom: 15))
     }
     
     @objc func nextL() {
         
         if currentDestination == nil {
-            currentDestination =  destinations.first
+            currentDestination =  destinations[1]
         } else {
             if let index = destinations.index(of: currentDestination!) {
                 currentDestination = destinations[(index + 1) % destinations.count]
@@ -59,14 +50,61 @@ class GoogleMaps: UIViewController {
         CATransaction.begin()
         CATransaction.setValue(2, forKey: kCATransactionAnimationDuration)
         
-        mapView?.animate(to: GMSCameraPosition.camera(withTarget: currentDestination!.location, zoom: currentDestination!.zoom))
+        mapView?.animate(to: GMSCameraPosition.camera(withTarget: CLLocationCoordinate2D(latitude: Double(currentDestination!.lat) as! CLLocationDegrees, longitude: Double(currentDestination!.long) as! CLLocationDegrees), zoom: Float(Int.random(in: 15..<19))))
         
         CATransaction.commit()
         
-        let marker = GMSMarker(position: currentDestination!.location)
-        marker.title = currentDestination!.name
-        marker.snippet = currentDestination!.aqi
+        let marker = GMSMarker(position: CLLocationCoordinate2D(latitude: Double(currentDestination!.lat) as! CLLocationDegrees, longitude: Double(currentDestination!.long) as! CLLocationDegrees))
+        marker.title = currentDestination!.nameArea
+        marker.snippet = String(currentDestination!.aqi ?? 0) + " AQI"
         marker.map = mapView
     }
+}
 
+// MARK: Call API
+extension GoogleMaps {
+    func getAreaGGMap() {
+        var urlString = "http://52.221.233.65:1234/api/v1/areas/hours/last"
+        //        var urlString = "localhost:1234/api/v1/nodes/hours/last?node_ids="
+        //        let urlString = "https://5ed9c5914378690016c6b36f.mockapi.io/api/ranking"
+        guard let url = URL(string: urlString) else { return }
+        let session = URLSession.shared
+        
+        destinations.removeAll()
+        
+        let task = session.dataTask(with: url) { (data, response, error) in
+            if let response = response {
+                
+            }
+            if let data = data {
+                do {
+                    let json = try JSONSerialization.jsonObject(with: data, options: [])
+                    if let myJson = json as? [String:Any] {
+                        if let myData = myJson["data"] as? [[String:Any]] {
+                            for myAreaDic in myData {
+                                let myArea = TrackDestinationModel.init(dic: myAreaDic)
+                                self.destinations.append(myArea)
+                            }
+                        }
+                    }
+                }
+                catch {
+                    print(error)
+                }
+                DispatchQueue.main.async {
+                    let camera = GMSCameraPosition.camera(withLatitude: Double(self.destinations[0].lat) as! CLLocationDegrees, longitude: Double(self.destinations[0].long) as! CLLocationDegrees, zoom: Float(Int.random(in: 15..<19)))
+                    self.mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
+                    self.view = self.mapView
+                    
+                    let currentLocation = CLLocationCoordinate2DMake(Double(self.destinations[0].lat) as! CLLocationDegrees, Double(self.destinations[0].long) as! CLLocationDegrees)
+                    let marker = GMSMarker(position: currentLocation)
+                    marker.title = self.destinations[0].nameArea
+                    marker.map = self.mapView
+                    marker.snippet = String(self.destinations[0].aqi) + " AQI"
+                    
+                }
+            }
+        }
+        task.resume()
+    }
 }

@@ -1,44 +1,46 @@
 const fs = require("fs");
 const User = require("../../models/mongo/user");
 const Node = require("../../models/mongo/node");
+const Sensor = require("../../models/mongo/sensor");
 const Location = require("../../models/mongo/location");
+const District = require("../../models/mongo/district");
+const Province = require("../../models/mongo/province");
 const bcrypt = require("bcrypt");
 const log4js = require("log4js");
 const base64 = require("js-base64").Base64;
-const moment = require('moment');
+const moment = require("moment");
 const { db } = require("../../models/mongo/user");
 
 // log4js.configure("./config/log4js.json");
 // const logger = log4js.getLogger("getDataSensorByHour");
 
-const getDataSensorByHour = async function getDataSensorByHour(req, res) {
-    // const filter = JSON.parse(base64.decode(req.query.filter));
-    // const startTime = req.body.year + '-' + req.body.month + '-' + req.body.day + 'T' + req.body.hour + ':00:00';
-    // const endHour = parseInt(req.body.hour) + 1;
 
-    // const endTime = req.body.year + '-' + req.body.month + '-' + req.body.day + 'T' + endHour + ':00:00';
+const getDataByHour = async function getDataByHour(date) {
+  const start_date = moment(date).set({ minute: 0, second: 0 }).toDate();
+  const end_date = moment(date).set({ minute: 59, second: 59 }).toDate();
 
-    const startTime = new Date(new Date(req.body.year + '-' + req.body.month + '-' + req.body.day).setHours(parseInt(req.body.hour) + 7,00,00))
-    const endTime = new Date(new Date(req.body.year + '-' + req.body.month + '-' + req.body.day).setHours(parseInt(req.body.hour) + 8,00,00))
-
-    console.log(moment(startTime).format())
-    console.log(moment(endTime).format())
-
-    Node.find({ 
-        "created_at" : 
-           {     
-            //    $gte:   new Date(new Date('2020-06-30').setHours(15 + 7,00,00)) ,     
-            //    $lt :  new Date(new Date('2020-06-30').setHours(16 + 7,00,00)) 
-               $gte:   new Date(new Date(req.body.year + '-' + req.body.month + '-' + req.body.day).setHours(parseInt(req.body.hour) + 7,00,00)) ,     
-               $lt :  new Date(new Date(req.body.year + '-' + req.body.month + '-' + req.body.day).setHours(parseInt(req.body.hour) + 8,00,00)) 
-          } 
-       })
-     .then(data => {
-        console.log('abc');
-        console.log(data)
-        res.send(data)
-
-    })
+  return await Sensor.find({
+    created_at: {
+      $gte: start_date,
+      $lt: end_date,
+    },
+  })
+  .sort({ node_id: 1 })
+  .populate({
+    path : 'node_id',
+    populate : {
+      path : 'location',
+      populate: {
+        path: 'district province',
+        select: "_id name code"
+      },
+      select: "_id detail_location latitude longitude province district"
+    },
+    select: "_id ip name  created_by location"
+  })
+  .then((data) => {
+    return data;
+  });
 };
 
-module.exports = getDataSensorByHour;
+module.exports = getDataByHour;

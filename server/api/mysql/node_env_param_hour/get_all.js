@@ -9,8 +9,8 @@ module.exports = async function findAll(req, res) {
     ? JSON.parse(base64.decode(req.query.filter))
     : {};
 
-  const page = req.query.page || 0;
-  const size = req.query.size || 20;
+  const page = Number(req.query.page) - 1 || 0;
+  const size = Number(req.query.size) || 20;
 
   var where = {};
 
@@ -32,7 +32,7 @@ module.exports = async function findAll(req, res) {
     }
   }
 
-  await NodeEnvParamHour.findAndCountAll({ where, ...paginate(page, size) })
+  await NodeEnvParamHour.findAndCountAll({ where, ...paginate(page, size), order: [['datetime', 'desc']] })
     .then((data) => {
       res.send({ data: data });
     })
